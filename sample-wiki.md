@@ -10,7 +10,7 @@ Helping Sleep Deprived Students
 ## Meet The Team:
 
 ### Muhammad Z Khan
-<img src=”admin/misc/mzk.jpg” width=”201” height=”244” /> \
+<img src=”admin/misc/IMG_9509.jpg” width=”201” height=”244” /> \
 2nd Year, Computer Science Major \
 Role: Coordinator / Developer \
 [Personal Link](https://mz-k.github.io/)<br>
@@ -34,7 +34,7 @@ Role: Designing / Building \
 [Personal page](https://ynshah3.github.io)
 
 ## Xavier Tan 
-<img src=”admin/misc/xavier-img.png” width=”250” height=”250” /> \
+<img src="admin/misc/xavier-img.png" width="250" height="250" /> \
 4th Year Computer Engineering Major \ 
 Role: Coordinator - Dev / Plan / Design \ 
-[Personal page](https://xavierkst.github.io/CSE_110_Lab_2/)<br> 
+[Personal Page](https://xavierkst.github.io/CSE_110_Lab_2/)<br> 
