@@ -15,6 +15,14 @@ Helping Sleep Deprived Students
 Role: Coordinator / Developer \
 [Personal Link](https://mz-k.github.io/)<br>
 
+
+### Xavier Tan 
+<img src="admin/misc/xavier-img.png" width="250" height="250" /> \
+4th Year Computer Engineering Major \ 
+Role: Coordinator - Dev / Plan / Design \
+[Personal Page](https://xavierkst.github.io/CSE_110_Lab_2/)<br> 
+
+
 ### James Zhao
 <img src="admin/misc/James.JPG" width="201" height="244" /> \
 2nd Year, Computer Science Major \
@@ -33,14 +41,8 @@ Role: Planning / Designing / Testing \
 Role: Designing / Building \
 [Personal page](https://ynshah3.github.io)
 
-### Xavier Tan 
-<img src="admin/misc/xavier-img.png" width="250" height="250" /> \
-4th Year Computer Engineering Major \ 
-Role: Coordinator - Dev / Plan / Design \ 
-[Personal Page](https://xavierkst.github.io/CSE_110_Lab_2/)<br> 
-
 ### Haaris Waleh
-<img src="admin/misc/HaarisWaleh.jpg" width=”250” height=”250”> \
+<img src=”admin/misc/haariswaleh.jpg” width=”250” height=”250”> \
 3rd year  Computer Science Major \
 Role: Designing / Dev \
 [Personal page](https://hwaleh.github.io)<br>
