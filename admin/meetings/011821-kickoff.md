@@ -1,46 +1,58 @@
-# Kick-Off Meeting
+# Teamato
 
-**Meeting Type**: Full group meeting
+## Meeting Minutes
+## January 18, 2021
+<br>
 
-**Members present**: Everyone (except Chad)
+**Opening**:  
+The kickoff meeting of Teamato was called to order at 3:00 PM PST on January 18, 2021 virtually via Zoom by Muhammad Z Khan.
 
-**Time of meeting**: 3:00 to ~5:00pm , 1/18/21
+**Meeting Type**:  
+Kick-off, setup
 
-**Where**: Zoom
+**Members present**:  
+Muhammad Z Khan  
+Xavier  
+James Zhao  
+Ivan Robles  
+Yash Shah  
+Haaris Waleh  
+Luke
 
-**Purpose of meeting**: discuss how to approach management assignments due on wednesday, 1/20/21, and finalize video
+**Absent**:  
+None
 
-## Completed tasks:
-Almost finished wiki, group contract, github setup
+## Agenda
+Create GitHub repository for the team  
+Team Contract  
+Team Video
 
-## Tasks to be completed:
-See sub-bullet points of agenda and notes
+## New Business
+<u>GitHub Repository</u>  
+A Github organization was created. The organization name was finalized to be the Team Name. All members have currently been added. A private repository has been made with necessary READMEs and descriptions.
 
-## Meeting Agenda and Notes: 
-- Make a Github for our team where we will be storing all our code and docs
-  - Github created and team members added
-  - **TODO**: add Chad to the github
-- Jot down a team contract i.e. rules, expectations, roles, expectations etc.
-  - Contract created in repo
-  - Contact Chad regarding specific roles we should have, and update contract afterwards
-  - Luke: working on putting into markdown format
-  - **TODO**: finalize contract, finalize (initial) roles, and have each member sign the contract, upload to the repo
-- Make a Github Wiki introducing our team.
-  - Public org or private org? - waiting on chad to respond
-    - Public org: can create wiki, but code is public
-    - Private org: cannot create wiki without premium, but code is private
-    - Private repo(no org): possibility, but lose the organization
-  - Created brief introduction cards, title, mantra
-    - markdown/html format
-  - Temporarily turned into markdown file in repo
-    - Will upload to github wiki after Chad’s response
-  - **TODO**: finalize wiki and upload to organization wiki
-- Finalize how our video will come out.
-  - Film sections on Monday or Tuesday, 
-    - Yash will edit with iMovie
-  - Wednesday: finalizing things
-  - Still waiting on chad for roles specifications
-  - Script: name, hobby, major, funny thing/hobby 
-    - See pinned document in #general
-  - Potentially add video to the wiki website?
-  - **TODO**: write scripts, film individual parts, acquire tomatoes, edit, and submit
+<u>Team Contract</u>  
+An unfinalized Team Contract has been created in the repository. Team contract has rules about what roles each person has during the lifecycle of the project, what needs to be done in case of disputes, what are communication standards for the team, and what is seen as acceptable behaviour with other colleages. These set of rules have been decided upon by the entire team and will be abided by completely.
+
+<u>GitHub Wiki</u>  
+The team was confused as to whether the Wikis for the repository should be hosted by making the repository public instead of private. Advantages and disadvantages were presented by the team members on the motion to turn the repository visibility public. James Zhao suggested the possibility of removing the organization and working as collaboraters on the project. None of the motions have been passed or dismissed, and the motion has been added to the TODO list. In the meantime, a temporary *sample-wiki.md* page was created in the repository and introduction cards, a title, a mantra, and team values were added.
+
+<u>Video</u>  
+Team members have agreed on submitting their personal introductions to Yash Shah who will concatenate the clips using iMovie. The script will include the name of the presenter, their hobby/fun fact, and something funny to say/do. The video will then be added to the Wiki page.
+
+## TODOs
+| Tasks to be done | Deadline |
+| ---------------- | -------- |
+| Add Manager Chad Hayen as Member to GitHub organization | January 20, 2021 |
+| Finalize the team contract by adding suitab;e team roles | January 20, 2021 |
+| Create Wiki for team | January 20, 2021 |
+| Film personal clips and submit to Yash Shah | January 19, 2021 |
+| Compile the video and add to repository | January 20, 2021 |
+
+
+**Adjournment**:  
+Meeting was adjourned at 5:18 PM PST by Muhammad Z Khan.
+
+Minutes submitted by: James Zhao; edited: Yash Shah
+
+Approved by: Muhammad Z Khan
