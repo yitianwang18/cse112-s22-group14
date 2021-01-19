@@ -1,47 +1,86 @@
-# Teamato
+# Team-ato
 
-## Theme: Tomato Timers
+**Theme:** Tomato Timers
 
-## Mantra: :tomato:Tackling one “Tomato” at a time! :tomato:
+**Mantra:** :tomato:Tackling one “Tomato” at a time! :tomato:
 
-## Values:
-Helping Sleep Deprived Students 
+**Values:** Helping sleep deprived students organize
 
 ## Meet The Team:
+<table>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+<tr>
+<td>
 
-### Muhammad Z Khan
-<img src="admin/misc/mzk.jpg" width="201" height="244" /> \
-2nd Year, Computer Science Major \
-Role: Coordinator / Developer \
-[Personal Link](https://mz-k.github.io/)<br>
+<h3>Muhammad Z Khan</h3>
+<br>
+<img src="admin/misc/img/mzk.jpg" width="207" height="250" /><br>
+2nd Year, Computer Science Major<br>
+Role: Coordinator / Developer<br>
+<a href="https://mz-k.github.io/">Personal Website</a>
 
-### Xavier Tan 
-<img src="admin/misc/xavier-img.png" width="250" height="250" /> \
-4th Year Computer Engineering Major \ 
-Role: Coordinator - Dev / Plan / Design \ 
-[Personal Page](https://xavierkst.github.io/CSE_110_Lab_2/)<br> 
+</td>
+<td>
 
-### James Zhao
-<img src="admin/misc/James.JPG" width="201" height="244" /> \
-2nd Year, Computer Science Major \
-Role: Dev/Documentation \
-[Personal Page](https://jameszhao01.github.io/CSE110_Lab2/)<br>
+<h3>Xavier Tan</h3>
+<br>
+<img src="admin/misc/img/xavier-img.png" width="250" height="250" /><br>
+4th Year Computer Engineering Major<br>
+Role: Coordinator - Dev / Plan / Design<br>
+<a href="https://xavierkst.github.io/CSE_110_Lab_2/">Personal Website</a> 
 
-### Ivan Robles
-<img src="admin/misc/IvanRobles.jpg" height="244" /> \
-4th Year Computer Engineering Major \
-Role: Planning / Designing / Testing \
-[Personal Page](https://i1robles.github.io/index.html/)<br>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
 
-### Yash Shah
-<img src="admin/misc/Yash_Shah.jpg" width="250" height="250" /> \
-2nd year Computer Science Major \
-Role: Designing / Building \
-[Personal page](https://ynshah3.github.io)
+<h3>James Zhao</h3><br>
+<img src="admin/misc/img/James.JPG" width="207" height="250" /><br>
+2nd Year, Computer Science Major<br>
+Role: Dev / Documentation<br>
+<a href="https://jameszhao01.github.io/CSE110_Lab2/">Personal Website</a><br>
 
-### Haaris Waleh
-<img src="admin/misc/HaarisWaleh.jpg" height="244"> \
-3rd year  Computer Science Major \
-Role: Designing / Dev \
-[Personal page](https://hwaleh.github.io)<br>
+</td>
+<td>
 
+<h3>Ivan Robles</h3><br>
+<img src="admin/misc/img/IvanRobles.jpg" height="250" /><br>
+4th Year Computer Engineering Major<br>
+Role: Planning / Designing / Testing<br>
+<a href="https://i1robles.github.io/index.html/">Personal Website</a><br>
+
+</td>
+<td>
+
+<h3>Yash Shah</h3><br>
+<img src="admin/misc/img/YashShah.jpg" width="250" height="250" /><br>
+2nd year Computer Science Major<br>
+Role: Designing / Building<br>
+<a href="https://ynshah3.github.io">Personal Website</a><br>
+
+</td>
+</tr>
+<tr>
+<td>
+
+<h3>Haaris Waleh</h3><br>
+<img src="admin/misc/img/HaarisWaleh.jpg" height="250"><br>
+3rd year  Computer Science Major<br>
+Role: Designing / Dev<br>
+<a href="https://hwaleh.github.io">Personal Website</a><br>
+
+</td>
+<td>
+
+
+</td>
+<td>
+</td>
+</tr>
+</table>
