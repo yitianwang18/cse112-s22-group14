@@ -33,3 +33,8 @@ Role: Planning / Designing / Testing \
 Role: Designing / Building
 [Personal page](https://ynshah3.github.io)
 
+## Xavier Tan 
+<img src=”admin/misc/xavier-img.png” width=”250” height=”250” />
+4th Year Computer Engineering Major
+Role: Coordinator - Dev / Plan / Design
+[personal page](https://xavierkst.github.io/CSE_110_Lab_2/) 
