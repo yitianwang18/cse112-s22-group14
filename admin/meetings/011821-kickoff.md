@@ -53,6 +53,6 @@ Team members have agreed on submitting their personal introductions to Yash Shah
 **Adjournment**:  
 Meeting was adjourned at 5:18 PM PST by Muhammad Z Khan.
 
-Minutes submitted by: James Zhao; edited: Yash Shah
+Minutes submitted by: James Zhao; edited by: Yash Shah
 
 Approved by: Muhammad Z Khan
