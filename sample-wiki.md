@@ -40,7 +40,7 @@ Role: Coordinator - Dev / Plan / Design \
 [Personal Page](https://xavierkst.github.io/CSE_110_Lab_2/)<br> 
 
 ### Haaris Waleh
-<img src="admin/misc/HaarisWaleh.jpg" width="201" height="244"> \
+<img src="admin/misc/HaarisWaleh.jpg" width="250" height="250"> \
 3rd year  Computer Science Major \
 Role: Designing / Dev \
 [Personal page](https://hwaleh.github.io)<br>
