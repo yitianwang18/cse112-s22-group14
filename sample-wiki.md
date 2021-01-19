@@ -27,13 +27,13 @@ Role: Dev/Documentation \
 Role: Planning / Designing / Testing \
 [Personal Page](https://i1robles.github.io/index.html/)<br>
 
-## Yash Shah
+### Yash Shah
 <img src=”admin/misc/Yash_Shah.jpg” width=”250” height=”250” /> \
 2nd year Computer Science Major \
 Role: Designing / Building \
 [Personal page](https://ynshah3.github.io)
 
-## Xavier Tan 
+### Xavier Tan 
 <img src=”admin/misc/xavier-img.png” width=”250” height=”250” /> \
 4th Year Computer Engineering Major \ 
 Role: Coordinator - Dev / Plan / Design \ 
