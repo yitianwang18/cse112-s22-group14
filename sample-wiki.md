@@ -28,9 +28,9 @@ Role: Planning / Designing / Testing \
 [Personal Page](https://i1robles.github.io/index.html/)<br>
 
 ## Yash Shah
-<img src=”admin/misc/Yash-Shah.jpg” width=”250” height=”250”>
-2nd year Computer Science Major
-Role: Designing / Building
+<img src=”admin/misc/Yash_Shah.jpg” width=”250” height=”250”>  
+2nd year Computer Science Major  
+Role: Designing / Building  
 [Personal page](https://ynshah3.github.io)
 
 ## Xavier Tan 
