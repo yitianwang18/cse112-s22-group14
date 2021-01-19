@@ -1,23 +1,21 @@
 # Teamato
 
-## Theme: Tomato Timers
-
-## Mantra: :tomato:Tackling one “Tomato” at a time! :tomato:
-
-## Values:
-Helping Sleep Deprived Students 
-
-## Meet The Team:
-
-
-### James Zhao
+## James Zhao
 <img src="admin/misc/James.JPG" width="201" height="244" /> \
 2nd Year, Computer Science Major \
 Role: Dev/Documentation \
 [Personal Page](https://jameszhao01.github.io/CSE110_Lab2/)<br>
+<hr>
 
-### Ivan Robles
-<img src="admin/misc/IvanRobles.jpg" height="244" /> \
+##Ivan Robles
+<img src="admin/misc/IvanRobles.jpg" width="201" height="244" /> \
 4th Year Computer Engineering Major \
 Role: Planning / Designing / Testing \
 [Personal Page](https://i1robles.github.io/index.html/)<br>
+
+## Haaris Waleh
+<img src="admin/misc/HaarisWaleh.JPG" width="201" height="244" /> \
+3nd Year Computer Science Major \
+Role: Designing / Dev \
+[Personal Page](https://hwaleh.github.io)<br>
+<hr>
