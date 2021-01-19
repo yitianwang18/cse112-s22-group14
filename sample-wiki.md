@@ -9,9 +9,6 @@
 ## Meet The Team:
 <table>
 <tr>
-<th></th>
-<th></th>
-<th></th>
 </tr>
 <tr>
 <td>
@@ -33,8 +30,6 @@ Role: Coordinator / Developer<br>
 Role: Coordinator - Dev / Plan / Design<br>
 <a href="https://xavierkst.github.io/CSE_110_Lab_2/">Personal Website</a> 
 
-</td>
-<td>
 </td>
 </tr>
 <tr>
