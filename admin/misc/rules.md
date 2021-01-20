@@ -49,17 +49,17 @@ All members will be expected to read emails and check general slack messages and
 
 - Feel free to consider changing roles if that helps the team. 
 
-### **6. Conflict Resolution**
+### **5. Conflict Resolution**
 - Try to keep conflicts to a minimum
 - Speak up when you are uncomfortable with something
 - Resolve problems/disagreements as a group if needed.
 - Don’t attack others; don’t bring your arrogance to the team.
 
-### **7. Specifications of Faculty and TA’s**
+### **6. Specifications of Faculty and TA’s**
 - Try to resolve any issues internally; if not resolvable, seek help from the team; if not resolvable, seek help from TA; if not resolvable, seek help from the Professor. 
 - Keep in mind that even if one person fails to finish a task by the appointed deadline, the rest of the team is still responsible for presenting a completed project before the end of the quarter. 
 
-### **8. Individual Signature**
+### **7. Individual Signature**
 I attest that I have carefully read through the above contract and will try to abide by it to the fullest.
 
 
