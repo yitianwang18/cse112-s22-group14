@@ -47,13 +47,7 @@ All members will be expected to read emails and check general slack messages and
 
 - Document all meetings in the github repository, including important direct messages, asynchronous meetings, and full group meetings.
 
-- Feel free to consider changing roles if that helps the team.
-
-### **5. Specific Team Member Responsibilities**
-Refer to team member info for specific team member roles.
-- Coordinator: 
-- Designer: 
-- Developer: 
+- Feel free to consider changing roles if that helps the team. 
 
 ### **6. Conflict Resolution**
 - Try to keep conflicts to a minimum
