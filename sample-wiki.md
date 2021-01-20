@@ -4,7 +4,10 @@
 
 **Mantra:** :tomato:Tackling one “Tomato” at a time! :tomato:
 
-**Values:** Helping sleep deprived students organize
+**Values:**  
+We help sleep-deprived students organize  
+We consider no job to be menial  
+People matter more than job
 
 ## Meet The Team:
 <table>
