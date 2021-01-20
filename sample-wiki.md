@@ -73,6 +73,11 @@ Role: Designing / Dev<br>
 </td>
 <td>
 
+<h3>Mrinmoy Dutta (Luke)</h3><br>
+<img src="admin/misc/img/MrinmoyDutta.jpg" height="250"><br>
+2nd year Computer Science Major<br>
+Role: Building / Testing<br>
+<a href="https://lukedutta9.github.io/">Personal Website</a><br>
 
 </td>
 </tr>
