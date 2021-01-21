@@ -30,7 +30,7 @@ All members will be expected to read emails and check general slack messages and
 ### **3. Scheduling Meetings**
 - Meeting with Chad Hayen: Thursdays, 2:00pm PST to 3:00pm PST
 
-- Team Meeting: Saturdays or Sundays
+- Team Meeting: Sundays, 3:00pm PST to 4:00pm PST 
 
 - Stand-up Meetings: TBD  
 
