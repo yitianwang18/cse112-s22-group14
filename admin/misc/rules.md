@@ -32,7 +32,7 @@ All members will be expected to read emails and check general slack messages and
 
 - Team Meeting: Sundays, 3:00pm PST to 4:00pm PST 
 
-- Stand-up Meetings: TBD  
+- Stand-up Meetings: Tuesdays, 4:00pm PST to 4:30pm PST  
 
 ### **4. General Responsibilities of All Team Members**
 - If a member can’t make it to a meeting, they must inform the team 3+ hours ahead.
