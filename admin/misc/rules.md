@@ -20,7 +20,7 @@ Team Members Info:
 | Ivan Robles | i1robles@ucsd.edu | (559)201-3223 | Designing / Testing| 
 | Yash Shah | ynshah@ucsd.edu | (201)759-3766 | Designing / Building |
 | Haaris Waleh | hwaleh@ucsd.edu | (858)382-2105 | Dev / Documentation |
-| Luke | mrdutta@ucsd.edu | (714)277-8426 | Building / Testing | 
+| Luke | mrdutta@ucsd.edu | (714)277-8426 | Testing / Building | 
 
 
 
