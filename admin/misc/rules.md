@@ -17,9 +17,9 @@ Team Members Info:
 | Muhammad Z Khan | mzkhan@ucsd.edu | (424)426-9103 | Coordinator - Dev / Build / Test | 
 | Xavier | ktan@ucsd.edu | (310)962-6180 | Coordinator - Plan / Design / Dev |
 | James Zhao | jjz005@ucsd.edu | (415)259-8170 | Dev / Documentation |
-| Ivan Robles | i1robles@ucsd.edu | (559)201-3223 | Planning / Designing / Testing| 
+| Ivan Robles | i1robles@ucsd.edu | (559)201-3223 | Designing / Testing| 
 | Yash Shah | ynshah@ucsd.edu | (201)759-3766 | Designing / Building |
-| Haaris Waleh | hwaleh@ucsd.edu | (858)382-2105 | Designing / Dev |
+| Haaris Waleh | hwaleh@ucsd.edu | (858)382-2105 | Dev / Documentation |
 | Luke | mrdutta@ucsd.edu | (714)277-8426 | Building / Testing | 
 
 
