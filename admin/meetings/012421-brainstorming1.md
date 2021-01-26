@@ -46,7 +46,7 @@ All of the following prototyping and planning work can be found at [Miro for Tea
   The long break tab will handle breaks of duration approximately 20-25 minutes which will begin once a task is completed, or if 4 pomodoro sessions have been run in succession.  
   We also plan to add APIs like voice recognition in order to enhance the app. Breaks may be accompanied by relaxing visuals and audios.
 
-- **Minimum Viable Product (App Version #1)**
+- **Minimum Viable Product (App Version #1)**  
   A mockup was created for the first version of the app - the Minimum Viable product - which meets all of the basic requirements for being classified as a pomodoro app. We discussed on what features needed to be in the MVP and we decided that a start button, a stop button, a timer, and two break tabs will be implemented. As part of this, a flowchart was created which detailed what course of action the app will take given the pressing of a particular button during the execution of the app. We considered cases when users would refresh a page, stop the timer before the session was completed, or including an *end-of-day* button to reset the entire app page.
   Basic assumptions were made like the user will not refresh the page.
   
