@@ -5,7 +5,7 @@
 <br>
 
 **Opening**:  
-The brainstorming meeting of Teamato was called to order at 4:00 PM PST on January 24, 2021 virtually via Zoom by Muhammad Z Khan.
+The brainstorming meeting of Teamato was called to order at 4:00 PM PST on January 26, 2021 virtually via Zoom by Xavier.
 
 **Meeting Type**:  
 Planning, Brainstorming
