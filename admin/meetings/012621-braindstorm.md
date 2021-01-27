@@ -32,6 +32,7 @@ Muhammad Z Khan (other commitment)
   - Keybinds, notification sound/methods, visuals
     - Visualization? Should show/hide timer customization
     - Default configuration? 
+    
 **Project Pitch**
 - We also began the project pitch
 
