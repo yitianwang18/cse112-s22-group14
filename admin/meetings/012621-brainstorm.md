@@ -24,23 +24,25 @@ Muhammad Z Khan (other commitment)
 ## Business from previous meeting
 
 **Planning and Brainstorming**  
-- Instead of using a timer, have an animation of a tomato growing
-  - This makes the actual time more ambiguous to help keep people from getting distracted from the time
-- Customizability
-  - Pre-set customizability, but not changeable during the app
-  - Or don’t have customizability
-  - Keybinds, notification sound/methods, visuals
-    - Visualization? Should show/hide timer customization
-    - Default configuration? 
+- Potential idea 1: Instead of using a timer, have an animation of a tomato growing
+  - This makes it actually more difficult for people to stop getting distracted
+- Potential idea 2: Customizability
+  - Should users be allowed to select from a pre-defined set of timeds for their breaks betweeen of pomodoro sessions?
+  - This will be pre-set customizability; not changeable during the session execution
+  - Or maybe users should not be given customizability options
+  - Keybinds, notification sound/methods, visuals as a potential add-on feature in later iterations of the app
+    - Visualization? Should the user be given the choice of showing/hiding the timer
+    - Should this be made a default configuration asked once before the start of the session and unchanging for the rest of the day? 
     
+## New Business
 **Project Pitch**
-- We also began the project pitch
+- We began working on the project pitch, discussing about the key problem, the structure of our solutions, how we will implement it, our appetites, any rabbit holes, etc.
 
 
 ## TODOs
 | Tasks to be done | Deadline |
 | ---------------- | -------- |
-| Work on Brainstorming assginment | January 31, 2021 |
+| Start with Project Pitch, then move on to user stories and personas | January 31, 2021 |
 
 <br>
 
