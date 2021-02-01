@@ -5,10 +5,11 @@
 <br>
 
 **Opening**:  
-The mentor meeting of Teamato was called to order at 3:00 PM PST on January 31, 2021 virtually via Zoom by Muhammad Z Khan.
+The brainstorming meeting of Teamato was called to order at 3:00 PM PST on January 31, 2021 virtually via Zoom by Muhammad Z Khan.
 
 **Meeting Type**:  
-Group
+Brainstorming  
+
 **Members present**:  
 Muhammad Z Khan  
 Xavier  
@@ -21,17 +22,21 @@ Luke
 Haaris Waleh  
 
 ## Agenda
-Continuing Brainstorming, making design decisions
+Continue Brainstorming  
+Make design decisions
 
 ## New Business
+- **User stories**  
+Created user stories that dictated the problem statement for the team
+
 - **Design Considerations**  
-- Strict scheduling cuts out demographic
-- Dealing with ending 
+- Strict scheduling cuts out demographic    
+- Dealing with ending  
   - Smaller amount of cycles
   - “Cancel cycle” button
   - MZK - no long break at all?
-  - A button to stop in the session. 
-- How to consider Tasks
+  - A button to stop in the session  
+- How to consider Tasks  
   - How to consider days
     - Group by Task
     - Group by Session
@@ -46,9 +51,9 @@ Continuing Brainstorming, making design decisions
       - At the end, maps tasks to pomos
       - Or have a google-calendar like visualization
       - Spamming: not logged, or a thin line, or thin block
-    - Do you pre-input tasks and the duration?
+    - Do you pre-input tasks and the duration?  
 - Dealing with distractions & restarting singular pomodoros
-  - Start becomes “I got distracted button”
+  - Start becomes “I got distracted button”  
 - Sound while working?
 
 **Brainstorming/Design Assignments**  
