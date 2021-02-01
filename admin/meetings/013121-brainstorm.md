@@ -26,10 +26,10 @@ Continue Brainstorming
 Make design decisions
 
 ## New Business
-- **User stories**  
+**User stories**  
 Created user stories that dictated the problem statement for the team
 
-- **Design Considerations**  
+**Design Considerations**  
 - Strict scheduling cuts out demographic    
 - Dealing with ending  
   - Smaller amount of cycles
