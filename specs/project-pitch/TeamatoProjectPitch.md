@@ -8,7 +8,7 @@ Many Pomodoro apps exist out there that tend to have too many overly-complicated
 
 Or lack critical features that help analyze time management...
 
-![Pomodoro App without critical features](img/wrongFeature.png)
+<img src="img/wrongFeature.png" width=750px height=auto>
 
 Or are inherently too distracting...
 
@@ -46,7 +46,7 @@ What we like about this product idea overall is that it is very straightforward 
 
 No pause buttons. No extraordinary UIs. Minimal (or No) customizability choices for the user.
 
-> > Simplicity is the ultimate sophistication
+> Simplicity is the ultimate sophistication
 
 for our product as well as for the user to focus. If users have come to use the app in order to focus, the app better allow them to focus and we will make sure this happens.
 
