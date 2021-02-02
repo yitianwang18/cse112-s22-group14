@@ -25,6 +25,6 @@ it impossible for him/her to follow the Pomodoro timer.
 * The 'Total Flexibility' is too leniant to actually help the user follow the Pomodoro philosophy, which kills the purpose of our app. The Pomodoro philosophy is primarily
 based on the 25 min work, 5 min break cycle. If the user can change these durations, then our app is not a Pomodoro timer but rather just another generic timer.
 * The 'Somewhat Flexibility' allows the user to flexibly pick the times of the day in which he will like to be completely focused and productive. This allows him/her 
-work around his/her other commitments for the day, while keeping him/her completely focused and productive for the timeslot that she is free to work.
+work around his/her other commitments for the day, while helping him/her follow the Pomodoro philosophy and completely focused and productive during his/her work session.
 
 
