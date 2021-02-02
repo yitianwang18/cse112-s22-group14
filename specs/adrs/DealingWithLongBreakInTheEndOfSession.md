@@ -19,4 +19,4 @@ Chosen option: 'Keep the long break as it is', because
 * Removing the automated long breaks gives user too much flexibility which defeats the purpose of our Pomodoro app.
 * Reducing the lifetime cycle meddles with the optimal cycle put forward by the Pomodoro philosophy.
 * Letting the user work in the ending 30 minutes is not even worth it that much and will unnecessarily alter the Pomodoro cycle. The user will probably be exhausted from his previous 2 hours of work and his focus span will be diminished. Thus working in the ending 30 minutes will be quite unproductive.
-* Thus it is best to leave the long breaks as it is to keep consistent with the Pomodoro philosophy as we are not gaining anything too much by meddling with it. 
+* Thus for now, it is best to leave the long breaks as it is to keep consistent with the Pomodoro philosophy as we are not gaining anything too much by meddling with it. 
