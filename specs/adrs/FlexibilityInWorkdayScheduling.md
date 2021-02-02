@@ -2,7 +2,7 @@
 
 ## Context and Problem Statement
 
-When using our Pomodoro App, how much flexibility should the user be given around scheduling his workday?
+When using our Pomodoro App, how much flexibility should the user be given around scheduling his/her workday?
 
 ## Considered Options
 
