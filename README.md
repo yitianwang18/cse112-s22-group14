@@ -1,4 +1,4 @@
-# Pomo-From-Tomato
+# PomoHero
 
 If you are looking for a place where you can organize your work, better concentrate, and get actual work done, you are at the right place!
 
