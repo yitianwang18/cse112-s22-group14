@@ -1,4 +1,4 @@
-# Pomodoro App
+# PomoHero - A Pomodoro Timer App
 
 In the world, many individuals and groups struggle with structured time management, keeping focus on important tasks, being held accountable for their mistakes, and learning from past experiences.
 
@@ -18,7 +18,7 @@ These apps are not allowing us to focus and concentrate effectively. Giving us t
 
 It is now time to right the wrongs.
 
-## [Name of our app]
+## PomoHero
 
 Our team came up with a solution idea that aims to incorporate the Pomodoro Technique to the fullest, automating as much as possible to make it easy for the user, keeping it simple to avoid distracting the user, and provifing clear analytics of both completions and mistakes to aid the user in learning better time management.
 
