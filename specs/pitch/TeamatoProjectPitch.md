@@ -38,6 +38,10 @@ A product is incomplete without a section that tells its users why they should u
 
 ![Fat Marker Sketch 3](../interface/rough/info.png)
 
+We envision our product to look something like this after the first sprint...
+
+![MVP](../interface/rough/mvp-detailed.jpg)
+
 We also thought of creating tasks, storing data, and reporting analytics to the user during and after the completion of the session. While these ideas can significantly improve the app, they are rabbit holes which can stretch the completion of the sprint beyond the proposed deadline and we will likely keep them for our future plans.
 
 What we like about this product idea overall is that it is very straightforward to use. It stays true to the Pomodoro Technique. There is no over the top UI and no features that go anti-Pomodoro. The entire app will be automatic once the user clicks on the *Start* button. This will allow the user to focus on his work rather than on the app itself and to avoid increasing breaks and/or Pomodoro sessions if the user doesn’t choose to click the button immediately.
