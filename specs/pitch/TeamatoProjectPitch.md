@@ -28,15 +28,15 @@ Here's how it works:
 
 The app will have all of the basic functionality that the Pomodoro Technique lists. It will have a *Start* and a *Reset* button. Each individual Pomodoro session will be 25 minutes long, with a short break that is 5 minutes long after every Pomodoro session, and a long break that is 30 minutes long after 4 Pomodoro sessions have been completed...
 
-![Fat Marker Sketch 1](img/basic.png)
+![Fat Marker Sketch 1](../interface/rough/basic.png)
 
 In order to accomodate tight working schedules, the users will be provided an *End* button which will reset the count of the number of Pomodoro sessions, congratulate and reward the user on completing the number of Pomodoro sessions they did complete, and reset the timer. This will mark the end of the usage of the app currently as seen below...
 
-![Fat Marker Sketch 4](img/end.png)
+![Fat Marker Sketch 4](../interface/rough/end.png)
 
 A product is incomplete without a section that tells its users why they should use the app and the instructions that guide them through it. Many of our target users may not know about the Pomodoro Technique and it will be helpful to motivate them to reuse the product like so...
 
-![Fat Marker Sketch 3](img/info.png)
+![Fat Marker Sketch 3](../interface/rough/info.png)
 
 We also thought of creating tasks, storing data, and reporting analytics to the user during and after the completion of the session. While these ideas can significantly improve the app, they are rabbit holes which can stretch the completion of the sprint beyond the proposed deadline and we will likely keep them for our future plans.
 
@@ -54,4 +54,4 @@ for our product as well as for the user to focus. If users have come to use the 
 
 Down the road we'd like to incorporate a To-Do List API in order to allow the user to add tasks and track their completion. The app will then be able to provide analytics on how the user performed during the day. We would also like to add features like notification blockers which will further aid the user in focusing and not getting distracted. The final product may end up looking like this...
 
-![Fat Marker Sketch 3](img/future.png)
+![Fat Marker Sketch 3](../interface/rough/future.png)
