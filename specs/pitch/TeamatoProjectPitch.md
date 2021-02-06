@@ -62,7 +62,7 @@ for our product as well as for the user to focus. If users have come to use the 
 
 ## Future Plans
 
-Down the road we'd like to incorporate a To-Do List in order to allow the user to add tasks and track their completion. We may end up making our own To-Do List or fork the code for an existing To-Do List over using a To-Do API because we do not want our users to have to spend their time behind creating accounts and worrying about what their username or password was.
+Down the road we'd like to incorporate a To-Do List in order to allow the user to add tasks and track their completion. We may end up making our own To-Do List or fork the code for an existing To-Do List over using a To-Do API because we do not want our users to have to spend their time behind creating accounts and worrying about what their username or password was. Here is a prototype for how this will work: [Tasks](https://jameszhao01.github.io/pomodoro-prototype/task)
 
 We would store the information - which and how many tasks were completed, how many Pomodoros did it take to complete each task, how many sessions did the user work for - in the Local Storage Database. We would like to store all of these information in a form that is easily accessible for generating reports.
 
