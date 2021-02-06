@@ -14,21 +14,55 @@
 
 - User Thinking: 
   - Flesh out all User personas and then construct User Profiles
-  - 
 
 - Wireframing: 
   - Finalize low fidelity wireframes
   - High fidelity wireframes are a bonus
 
 -  Agile Proces:
+   -  Planning / Meeting notes 
 
 - Pipeline:
   - Linting: Proposed coding style guidelines for uniformity / readability
-  
 
+- Finish Project Pitch
+
+---
 
 ## Sprint 2 - Realizing the MVP: 
 
+### Initial Code Development
+- Revamp high fidelity wireframe (Ivan)   
+
+### Pipeline Improvement: 
+- 
+- Fully functional pipeline of our website
+
+### Whats included in our MVP: 
+
+We will integrate all prototyping and exploratory work into MVP? 
+
+- Full auto-timer with start / restart and end + Basic Notifications 
+- Instructions box + Instructions header 
+Note: Local storage used, no fancy Databases 
+
+### Future add-ons: 
+- Task list
+- Muting Notification sounds  
+- Animations in the design
+- Progress Analytics chart at end of session
+
+---
+
 ## Sprint 3 - Realizing the Beta version of PomoHero
+
+### Whats included in our Beta: 
+
+- Incorporating a subset of the future add-ons: 
+- Incorporating a version of PomoHero for specific edge cases:
+  - user disabled javascript
+  - Different display layouts for devices: Laptops, Ipad, Mobile 
+
+
 
 ## Sprint 4 - 
