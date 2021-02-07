@@ -64,7 +64,7 @@ for our product as well as for the user to focus. If users have come to use the 
 
 Down the road we'd like to incorporate a To-Do List in order to allow the user to add tasks and track their completion. We may end up making our own To-Do List or fork the code for an existing To-Do List over using a To-Do API because we do not want our users to have to spend their time behind creating accounts and worrying about what their username or password was. Here is a prototype for how this will work: [Tasks](https://jameszhao01.github.io/pomodoro-prototype/task)
 
-We would store the information - which and how many tasks were completed, how many Pomodoros did it take to complete each task, how many sessions did the user work for - in the Local Storage Database. We would like to store all of these information in a form that is easily accessible for generating reports.
+We would store the information - which and how many tasks were completed, how many Pomodoros did it take to complete each task, how many sessions did the user work for - in the Local Storage Database. We would like to store all of these information in a form that is easily accessible for generating reports. It would work like this: [Local Storage](https://jameszhao01.github.io/pomodoro-prototype/local)
 
 The app will then be able to provide analytics/reports on how the user performed during the day. It will be a chart of how many pomodoros each task took enabling the user to see which tasks were the most time consuming, or which tasks were the least time consuming. We are thinking of this feature looking like so...
 
@@ -75,7 +75,6 @@ The idea behind incorporating the features of To-Do List, Analytics, and Local s
 This may increase the complexity of our product by a notch, but providing the user with a one-for-all platform will make things simpler from the user's perspective as he/she doesn't have to deal with issues such of simultaneously working with two products, which in the end is our ultimate goal. If implemented carefully, a little bit more complicated Pomodoro timer with an integrated task-list is better than a simple Pomodoro timer coupled with an extenal, disconnected, and possibly complex, tasking tool. 
 
 Also, the practice of retrospectively analyzing your work patterns is a noticeable part of the Pomodoro philosophy. Thus integrating task-lists to better user analytics will only increase the "Pomodoriness" of our web app.
-
 
 The final product may end up looking like this...
 
