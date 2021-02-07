@@ -70,7 +70,9 @@ The app will then be able to provide analytics/reports on how the user performed
 
 <img src="./img/analytics.png" width=700px height=auto>
 
-The idea behind incorporating the features of To-Do List, Analytics, and Local storage is that we do not want our users to waste their time looking for other external tools, where they would have to manually enter all of the data and wait for the results to be generated. We want to give our users a one-stop to provide a list of tasks that they want to get done with and automatically track how they are doing and presenting the results in a form that is easy to retrospect on.
+The idea behind incorporating the features of To-Do List, Analytics, and Local storage is that we do not want our users to waste their time looking for other external tools, where they would have to manually enter all of the data and wait for the results to be generated. We want to give our users a one-stop to provide a list of tasks that they want to get done with and automatically track how they are doing and presenting the results in a form that is easy to retrospect on.<br>
+
+This may increase the complexity of our product by a notch, but providing the user with a one-for-all platform will make things simpler from the user's perspective, which in the end is our ultimate focus. Also, the practice of retrospectively analyzing your work patterns is a noticeable part of the Pomodoro philosophy. Thus integrating task-lists to better user analytics will only increase the "Pomodoriness" of our web app.
 
 
 The final product may end up looking like this...
