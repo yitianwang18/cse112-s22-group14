@@ -46,7 +46,7 @@ We envision our product to look something like this after the first sprint...
 
 The entire app will be automatic once the user clicks on the *Start* button. This will allow the user to focus on his work rather than on the app itself and to avoid increasing breaks and/or Pomodoro sessions if the user doesn’t choose to click the button immediately. The page will keep transitioning between showing working Pomodoro, short breaks, and long breaks. Hitting the reset button will restart the current Pomodoro instantly. The only way to stop the cycle/session of work is by clicking on the *End* button. This feature will help prevent unnecessary user interactions with the app and breaking of the Pomodoro Technique. A prototype of how this will work is linked here: [Automation](https://jameszhao01.github.io/pomodoro-prototype/index)
 
-With the automating of the app, we needed to think of a way to notify the user when a Pomodoro gets completed, or when a break starts. These notifications could be either a web-notification or a simple audio alarm. We came to the decision that we would send the user browser notifications when the state of the app/timer changes. A prototype of how we will do this is linked here: [Notification](https://jameszhao01.github.io/pomodoro-prototype/notify)
+With the automating of the app, we needed to think of a way to notify the user when a Pomodoro gets completed, or when a break starts. These notifications could be either a web-notification or a simple audio alarm. We came to the decision that we would send the user browser notifications, plus an audio cue, when the state of the app/timer changes. A prototype of how we will do this is linked here: [Notification](https://jameszhao01.github.io/pomodoro-prototype/notify)
 
 We also thought of creating tasks, storing data, and reporting analytics to the user during and after the completion of the session. While these ideas can significantly improve the app, they are rabbit holes which can stretch the completion of the sprint beyond the proposed deadline and we will likely keep them for our future plans.
 
@@ -64,14 +64,17 @@ for our product as well as for the user to focus. If users have come to use the 
 
 Down the road we'd like to incorporate a To-Do List in order to allow the user to add tasks and track their completion. We may end up making our own To-Do List or fork the code for an existing To-Do List over using a To-Do API because we do not want our users to have to spend their time behind creating accounts and worrying about what their username or password was. Here is a prototype for how this will work: [Tasks](https://jameszhao01.github.io/pomodoro-prototype/task)
 
-We would store the information - which and how many tasks were completed, how many Pomodoros did it take to complete each task, how many sessions did the user work for - in the Local Storage Database. We would like to store all of these information in a form that is easily accessible for generating reports.
+We would store the information - which and how many tasks were completed, how many Pomodoros did it take to complete each task, how many sessions did the user work for - in the Local Storage Database. We would like to store all of these information in a form that is easily accessible for generating reports. It would work like this: [Local Storage](https://jameszhao01.github.io/pomodoro-prototype/local)
 
 The app will then be able to provide analytics/reports on how the user performed during the day. It will be a chart of how many pomodoros each task took enabling the user to see which tasks were the most time consuming, or which tasks were the least time consuming. We are thinking of this feature looking like so...
 
 <img src="./img/analytics.png" width=700px height=auto>
 
-The idea behind incorporating the features of To-Do List, Analytics, and Local storage is that we do not want our users to waste their time looking for other external tools, where they would have to manually enter all of the data and wait for the results to be generated. We want to give our users a one-stop to provide a list of tasks that they want to get done with and automatically track how they are doing and presenting the results in a form that is easy to retrospect on.
+The idea behind incorporating the features of To-Do List, Analytics, and Local storage is that we do not want our users to waste their time looking for other external tools, where they would have to manually enter all of the data and wait for the results to be generated. We want to give our users a one-stop to provide a list of tasks that they want to get done with and automatically track how they are doing and presenting the results in a form that is easy to retrospect on.<br>
 
+This may increase the complexity of our product by a notch, but providing the user with a one-for-all platform will make things simpler from the user's perspective as he/she doesn't have to deal with issues such of simultaneously working with two products, which in the end is our ultimate goal. If implemented carefully, a little bit more complicated Pomodoro timer with an integrated task-list is better than a simple Pomodoro timer coupled with an extenal, disconnected, and possibly complex, tasking tool. 
+
+Also, the practice of retrospectively analyzing your work patterns is a noticeable part of the Pomodoro philosophy. Thus integrating task-lists to better user analytics will only increase the "Pomodoriness" of our web app.
 
 The final product may end up looking like this...
 
