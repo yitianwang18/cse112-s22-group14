@@ -44,13 +44,3 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
       - run: yarn test
-  gen_docs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Generate Documentation
-        uses: andstor/jsdoc-action@v1
-        with:
-          source_dir: ./source
-          recurse: true
-          output_dir: ./docs
