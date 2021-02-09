@@ -3,7 +3,8 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-      "test": "jest"
+      "test": "jest source/",
+      "docs": "jsdoc source -r -d docs"
     },
     "dependencies": {
         "jest": "26.4.2",
