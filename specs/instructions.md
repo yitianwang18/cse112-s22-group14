@@ -1,4 +1,4 @@
-# How To Use:
+# How To Use
 
 - List all of the tasks you want to get done for the day
 - Click on “Start” when you are ready
@@ -9,6 +9,6 @@ Pomodoros
 your current interval from the very beginning
 - Have other jobs to do? Hit “End Session” to log out
   
-# Pomodoro Technique:
+# Pomodoro Technique
 
 The Pomodoro technique is a scientifically proven way to help increase productivity. It is a way to work with time instead of struggling against it. It is a smart method for handling interruptions, meeting deadlines, improving content of work, and reducing useless work sessions.
