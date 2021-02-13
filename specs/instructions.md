@@ -1,3 +1,5 @@
+# Instructions
+
 # How To Use
 
 - List all of the tasks you want to get done for the day
