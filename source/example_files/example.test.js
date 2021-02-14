@@ -1,5 +1,7 @@
 const example = require('./example');
+const { Timer } = require("../js/timer")
 
+console.log(Timer)
 // tests for hello (msg)
 test('print hello msg', () => {
     console.log = jest.fn();
