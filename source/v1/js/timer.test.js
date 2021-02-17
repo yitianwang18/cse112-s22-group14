@@ -1,4 +1,11 @@
 const { TimerDisplay } = require("./timer");
+const { TimerContainer } = require("./timerContainer");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const dom = new JSDOM(`<!DOCTYPE html>
+  <script src="js/main.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/timerContainer.js"></script>`);
 
 // test(' ', () => {
 //     expect().toBe();
@@ -39,5 +46,11 @@ test('Test TimerDisplay.formatMilliTime', () => {
     millisecs = milTime(44, 59);
     expect(TimerDisplay.formatMilliTime(millisecs)).toBe('44:59');
 
+});
+
+test('Test TimerDisplay constructor', () => {
+    // o_time_cont = new TimerContainer();
+    // expect(o_time_cont.querySelector("#work-message").innerText).toBe('Ready To Focus?');
+    expect(dom.window.document.querySelector("p").textContent).toBe('Hello world');
 });
 
