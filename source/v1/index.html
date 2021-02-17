@@ -1,55 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>PomoHero</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="Images/PomoCountYesFavicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Montserrat:wght@500&family=Sacramento&display=swap" rel="stylesheet">
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title>PomoHero</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="icon" href="./assets/img/PomoCountYesFavicon.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Montserrat:wght@500&family=Sacramento&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>    <!-- <script src="https://use.fontawesome.com/e3f6f09fc4.js"></script> -->
+</head>
+
+<body>
+
+  <section class="full-height timer-section">
+    <img class="tomato-pic-left" src="assets/img/tomato_left.png" alt="tomato juice picture">
     <div class="header-container">
       <a href="#">
-        <img class="pomo-logo" src="Images/PomoLogoCropped.png" alt="pomo hero logo" href="#">
+        <img class="pomo-logo" src="assets/img/PomoLogoCropped.png" alt="pomo hero logo" href="#">
       </a>
       <a href="#">
-        <img class="banner" src="Images/PomoTitle.png" alt="PomoHero Banner" >
+        <img class="banner" src="assets/img/PomoTitle.png" alt="PomoHero Banner">
       </a>
     </div>
     <hr>
     <div class="top-container">
       <div class="main-box">
-        <div class="timer-box">
-          <h1 id="work-message">Pomodoro Get to Work!</h3>
-          <div class="timer">
-            <h1 id="time-display">22:37</h1>
-            <h3 id="pomos-completed">Pomodoros Completed:</h3>
-            <br />
-            <img id="pomo1" class="pomo-count" src="Images/PomoCountYes.png" alt="">
-            <img id="pomo2" class="pomo-count" src="Images/PomoCountYes.png" alt="">
-            <img id="pomo3" class="pomo-count" src="Images/PomoCountNo.png" alt="">
-            <img id="pomo4" class="pomo-count" src="Images/PomoCountNo.png" alt="">
-          </div>
-          <!-- <div class="pomo-complete-box">
-
-          </div> -->
-            <a id="start-btn" class="custom-btn" href="#">Start Pomo!</a>
-            <a id="end-btn" class="custom-btn" href="#">End Session</a>
-        </div>
+        <timer-element></timer-element>
       </div>
     </div>
 
-    <div class="middle-container">
+    <!-- <div class="middle-container">
 
       <h3 class="h3-tasks">Current Task: </h3>
       <hr id="special-hr">
       <h3 class="h3-tasks">Next Task: </h3>
-    </div>
-    <div class="bottom-container">
-      <a class="footer-link" href="https://instagram.com">Instagram</a>
-      <a class="footer-link" href="https://www.facebook.com">Facebook</a>
-      <a class="footer-link" href="https://github.com/ynshah3/cse110-w21-group30/wiki">Github</a>
-      <p class="copy-right">© PomoHero 2021</p>
-    </div>
-  </body>
+    </div> -->
+  </section>
+  <section class="instructions-section full-height flex flex-column">
+    <h2 class="instruct-head">How to use PomoHero</h2>
+    <p id="instructions-para">
+    • Listall of the tasks you want to get done for the day
+    <br><br>
+    • Click “Start” when you are ready. Once started, there is no goingback.
+    <br><br>
+    Note: The timer waits for no one! Take a 5-minute break after every Pomodoro and a 30-minute break after every 4 Pomodoros.
+    <br>
+    Get distracted at your own risk!
+    <br><br>
+    • If distracted, click “Restart” and you will have to start your current interval from the very beginning
+    <br><br>
+    • Have other jobs to do? Hit “End Session” to log out of Pomodoro Technique. Voila, you're done!
+    <br><br><br><br><br>
+    The Pomodoro technique is a scientifically proven way to help increase productivity.
+    <br><br>
+    It is a way to work with time instead of struggling against it.
+    <br><br>
+    It is a smart method for handling interruptions, meeting deadlines, improving content of work, and reducing useless work sessions.
+    <br><br>
+    Follow us for the latest updates on Facebook, Instagram, and development progress on Github below!
+    <br>
+    <br>
+  </p>
+  <i id="up-arrow" class="fas fa-arrow-alt-circle-up fa-5x arrow-up-icon"></i>
+</section>
+
+  <div class="bottom-container">
+    <a class="footer-link" href="https://instagram.com">Instagram</a>
+    <a class="footer-link" href="https://www.facebook.com">Facebook</a>
+    <a class="footer-link" href="https://github.com/ynshah3/cse110-w21-group30/wiki">Github</a>
+    <p class="copy-right">© PomoHero 2021</p>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/timerContainer.js"></script>
+</body>
+
 </html>
