@@ -3,12 +3,17 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-      "test": "jest source/",
-      "docs": "jsdoc source -r -d docs"
+        "test": "jest source/",
+        "docs": "jsdoc source -r -d docs"
     },
     "dependencies": {
-        "jest": "26.4.2",
         "jsdoc": "3.6.6"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.16",
+        "@babel/preset-env": "^7.12.16",
+        "babel-jest": "^26.6.3",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "jest": "^26.4.2"
     }
-  }
-  
+}
