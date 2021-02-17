@@ -130,9 +130,17 @@ class TimerContainer extends HTMLElement {
         o_end_btn.addEventListener("click", this.handleEndSession.bind(this));
 
         // shortcut to instructions
-        let o_information = document.createElement("button");
-        o_information.className = "info-btn";
-        o_information.innerText = "i";
+        // let o_information = document.createElement("button");
+        // o_information.className = "info-btn";
+        // o_information.innerText = "i";
+        // o_information.setAttribute("target", TimerContainer.S_INSTRUCTIONS_TARGET);
+        // o_information.addEventListener("click", this.handleInfoBtnPressed.bind(this));
+        //
+
+        // shortcut to instructions
+        let o_information = document.createElement("i");
+        o_information.className = "info-btn fas fa-info-circle fa-2x";
+        // o_information.innerText = "";
         o_information.setAttribute("target", TimerContainer.S_INSTRUCTIONS_TARGET);
         o_information.addEventListener("click", this.handleInfoBtnPressed.bind(this));
 
@@ -221,7 +229,7 @@ class TimerContainer extends HTMLElement {
     // State-updating components
 
     /**
-     * Function to advance the timer state one step(e.x. work -> s/l break, breaks -> work, etc). 
+     * Function to advance the timer state one step(e.x. work -> s/l break, breaks -> work, etc).
      * Does not perform any validation, validation must be performed before calling progressState()
      */
     progressState() {
@@ -257,7 +265,7 @@ class TimerContainer extends HTMLElement {
     }
 
     /**
-     * Initializes interval to repeatedly update timer, and progresses state. 
+     * Initializes interval to repeatedly update timer, and progresses state.
      * Does nothing if the previous state was not NOT_STARTED
      */
     beginSession() {
