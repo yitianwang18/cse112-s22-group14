@@ -93,9 +93,9 @@ class TimerContainer extends HTMLElement {
     n_interval_id;
 
     /**
-     * Constructs a new Timer Container, initializes elements, and assigns event listeners
+     * Overloaded constructor for testing purposes
      */
-    constructor() {
+    constructor(time_disp) {
         super();
         // Speed up timer if in debug mode
         if (TimerContainer.DEBUG) {
@@ -107,7 +107,7 @@ class TimerContainer extends HTMLElement {
         let o_work_message = document.createElement("h1");
         o_work_message.id = "work-message";
 
-        let o_timer_display = new TimerDisplay();
+        let o_timer_display = time_disp; //changed line for testing purposes
         o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
 
@@ -148,6 +148,63 @@ class TimerContainer extends HTMLElement {
 
         this.renderComponents();
     }
+
+    /**
+     * Constructs a new Timer Container, initializes elements, and assigns event listeners
+     */
+    // constructor() {
+    //     super();
+    //     // Speed up timer if in debug mode
+    //     if (TimerContainer.DEBUG) {
+    //         TimerContainer.A_STATE_DURATIONS = [3000, 3000, 3000, 0];
+    //     }
+    //     let o_wrapper = document.createElement("div");
+    //     o_wrapper.className = "timer-box";
+
+    //     let o_work_message = document.createElement("h1");
+    //     o_work_message.id = "work-message";
+
+    //     let o_timer_display = new TimerDisplay();
+    //     o_timer_display.setAttribute("time", 0);
+    //     o_timer_display.setAttribute("pomos-comp", 0);
+
+    //     let o_start_btn = document.createElement("button");
+    //     o_start_btn.id = "start-btn";
+    //     o_start_btn.className = "custom-btn";
+    //     o_start_btn.innerText = TimerContainer.S_BEGIN_MESSAGE;
+    //     o_start_btn.addEventListener("click", this.handleStartPomo.bind(this));
+
+    //     let o_reset_btn = document.createElement("button");
+    //     o_reset_btn.id = "reset-btn";
+    //     o_reset_btn.classList.add("custom-btn", "hidden");
+    //     o_reset_btn.innerText = TimerContainer.S_RESET_MESSAGE;
+    //     o_reset_btn.addEventListener("click", this.handleResetPomo.bind(this))
+
+    //     let o_end_btn = document.createElement("button");
+    //     o_end_btn.id = "end-btn";
+    //     o_end_btn.className = "custom-btn";
+    //     o_end_btn.innerText = TimerContainer.S_END_MESSAGE;
+    //     o_end_btn.addEventListener("click", this.handleEndSession.bind(this));
+
+    //     // shortcut to instructions
+    //     let o_information = document.createElement("button");
+    //     o_information.className = "info-btn";
+    //     o_information.innerText = "i";
+    //     o_information.setAttribute("target", TimerContainer.S_INSTRUCTIONS_TARGET);
+    //     o_information.addEventListener("click", this.handleInfoBtnPressed.bind(this));
+
+    //     o_wrapper.append(o_information, o_work_message, o_timer_display, o_start_btn, o_reset_btn, o_end_btn);
+
+    //     this.append(o_wrapper);
+
+    //     // initialize state variables
+    //     this.n_start_time = -1;
+    //     this.n_curr_state = TimerContainer.NOT_STARTED;
+    //     this.n_done_pomos = 0;
+    //     this.n_interval_id = -1;
+
+    //     this.renderComponents();
+    // }
 
     /**
      * Event handler function for when the "start session" button is pressed
