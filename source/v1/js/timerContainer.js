@@ -3,8 +3,6 @@
  * @module timerContainer
  */
 
-import { TimerDisplay } from "./timer.js";
-
 /**
  * Custom HTML element for a TimerContainer, including the display and functionality
  * @extends HTMLElement
@@ -111,7 +109,7 @@ class TimerContainer extends HTMLElement {
 
         let o_timer_display = new TimerDisplay();
         o_timer_display.setAttribute("time", 0);
-        o_timer_display.setAttribute("pomos_comp", 0);
+        o_timer_display.setAttribute("pomos-comp", 0);
 
         let o_start_btn = document.createElement("button");
         o_start_btn.id = "start-btn";
@@ -288,4 +286,7 @@ class TimerContainer extends HTMLElement {
     }
 }
 customElements.define("timer-element", TimerContainer);
-export { TimerContainer }
+
+if (typeof exports !== 'undefined') {
+    module.exports = { TimerContainer };
+}
