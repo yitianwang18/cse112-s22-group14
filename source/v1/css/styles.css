@@ -50,22 +50,7 @@ h1 {
 
 /*.timer-section {
   background-color: #CDE8D6;
-}*/
-/* -------------------- tomato picture styling ---------------- */
-.tomato-pic-left {
-  padding-top: 60vh;
-  left: -50px;
-  position: absolute;
-  width: 550px;
 }
-
-/* .tomato-pic-right {
-  padding-top: 70vh;
-  right: 0;
-  position: absolute;
-  width: 20%;
-}
- */
 /* -------------------- Timer Box ---------------------------- */
 
 .timer-box {
