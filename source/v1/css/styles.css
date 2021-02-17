@@ -96,7 +96,7 @@ h1 {
 }
 
 #end-btn {
-  color:  #34A364;
+  color:  #B32B24;
   margin: 30px 10px 10px 20px;
 }
 
@@ -127,23 +127,23 @@ h1 {
 /* Mobile phone display */
 .custom-btn {
    background: #E1E3CC;
-   background-image: -webkit-linear-gradient(top, #E1E3CC, #A2A393);
+   /* background-image: -webkit-linear-gradient(top, #E1E3CC, #A2A393);
    background-image: -moz-linear-gradient(top, #E1E3CC, #A2A393);
    background-image: -ms-linear-gradient(top, #E1E3CC, #A2A393);
-   background-image: -o-linear-gradient(top, #E1E3CC, #A2A393);
+   background-image: -o-linear-gradient(top, #E1E3CC, #A2A393); */
    background-image: -webkit-gradient(to bottom, #E1E3CC, #A2A393);
    -webkit-border-radius: 20px;
    -moz-border-radius: 20px;
-   border-radius: 20px;
-   height: 50px;
+   border-radius: 12px;
+   height: 65px;
    line-height: 50px;
    color: #FFFFFF;
    width: 200px;
    font-family: "Montserrat";
    font-size: 22px;
-   font-weight: 600;
-   padding: 7px;
-   box-shadow: 1px 1px 20px 0 #000000;
+   font-weight: 900;
+   /* padding: 7px; */
+   /* box-shadow: 1px 1px 20px 0 #000000; */
    text-decoration: none;
    display: inline-block;
    cursor: pointer;
@@ -152,25 +152,23 @@ h1 {
 }
 
 .custom-btn:hover {
-   border: solid #B36356 1px;
-   background: #B36356;
-   background-image: -webkit-linear-gradient(top, #B32B24, #B36356);
-   background-image: -moz-linear-gradient(top, #B32B24, #B36356);
-   background-image: -ms-linear-gradient(top,#B32B24, #B36356);
-   background-image: -o-linear-gradient(top,  #B32B24, #B36356);
-   background-image: -webkit-gradient(to bottom, #B32B24, #B36356);
+  opacity: 80%;
+   /* border: solid #B36356 1px; */
+   background: #cfc5a5;
+   /* background-image: -webkit-linear-gradient(top, #B36356, #B32B24);
+   background-image: -moz-linear-gradient(top, #B36356, #B32B24);
+   background-image: -ms-linear-gradient(top,#B36356, #B32B24);
+   background-image: -o-linear-gradient(top, #B36356, #B32B24);
+   background-image: -webkit-gradient(to bottom, ##B36356, #B32B24); */
    -webkit-border-radius: 20px;
    -moz-border-radius: 20px;
-   border-radius: 20px;
+   border-radius: 10px;
    text-decoration: none;
 }
-
 .bottom-container {
   background-color: #80CF98;
   height: 200px;
 }
-
-
 
 .footer-link {
   font-family: "Montserrat";
@@ -182,7 +180,12 @@ h1 {
   text-decoration: none;
 }
 
+.footer-link:hover {
+  color: #B36356;
+}
+
 .copy-right {
+  font-family: "Montserrat";
   padding-top: 80px;
   font-weight: bold;
 }
@@ -223,4 +226,3 @@ h1 {
 
 
 }
-
