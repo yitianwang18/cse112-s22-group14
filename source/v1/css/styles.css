@@ -17,37 +17,40 @@ h1 {
 }
 
 .pomo-logo {
-  width: 70px;
+  width: 100px;
+  margin-top: -10px;
   margin-left: 20px;
   float: left;
 }
 
 .banner {
   width: 250px;
-  margin: 0 80px 0 0;
+  height: 50px;
+  margin: 20px 80px 0px 0;
 }
 
 .header-container {
-  background-color: #CDE8D6;
-  padding: 20px 0;
+  background-color: #8ab7e7;
+  padding: 20px 0px;
 }
 .top-container {
-  background-color: #CDE8D6;
-  margin: 0 0;
-  height: 550px;
+  background-color: #FFFFFF;
+  margin: 0 0 0 0;
+  height: 500px;
+  padding: 0 0 0px 0;
   /* padding: auto auto; */
   /* position: relatve; */
 }
 
 .main-box {
-  background-color: #CDE8D6;
+  background-color: #FFFFFF;
   /* border: 100 0; */
-  padding: 80px 0 80px 0;
+  padding: 20px 0 20px 0;
 }
 
-.timer-section {
+/*.timer-section {
   background-color: #CDE8D6;
-}
+}*/
 /* -------------------- tomato picture styling ---------------- */
 .tomato-pic-left {
   padding-top: 60vh;
@@ -66,75 +69,66 @@ h1 {
 /* -------------------- Timer Box ---------------------------- */
 
 .timer-box {
-  background-color: #80CF98;
-  /* height: 300px; */
-  width: 600px;
-  margin: auto;
-  padding: 30px 100px 30px 100px;
-  border-radius: 40px;
+  background-color: #CBDEF3;
+  height: auto;
+  width: auto;
+  max-width: 480px;
+  margin: 50px auto;
+  padding: 20px 100px 30px 100px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   /* margin-top: 50px; */
-  /* need this for absolute positioning to work*/
-  position: relative;
 }
 
 #work-message {
-  font-size: 2rem;
-  color: white;
-  font-family: "Montserrat", "Ubuntu";
+  font-size: 1.5rem;
+  color: #000000;
+  font-family: "Zapfino";
   padding-bottom: 10px;
 }
 
 .timer {
-  background-color: #6BA0B1;
-  height: 240px;
-  margin: auto;
-  border-radius: 20px;
+  background-color: #CBDEF3;
 }
 
 .pomo-count {
-  width: 70px;
+  width: 60px;
 }
 
 #time-display {
-  font-size: 5.5rem;
-  padding-top: 10px;
-  font-family: "Montserrat";
+  display: inline;
+  color: #165D81;
+  font-size: 4rem;
+  padding: 10px 30px ;
+  border-style: solid;
 }
 
 #pomos-completed {
-  font-size: 1.5rem;
-  margin: 10px 0 0 0;
-  font-family: "Montserrat";
+  padding-top: 50px;
+  color: #000000;
+  font-size: 1.2rem;
+  margin: 0 0 -10px -10px;
 }
 
-#start-btn {
-  color: #34A364;
-  margin: 30px 20px 10px 10px;
-}
-
-#end-btn {
-  color:  #B32B24;
-  margin: 30px 10px 10px 20px;
-}
-
+/*
 .h3-tasks {
-  color: #34A364;
+  color: white;
   font-size: 2rem;
   padding-left: 20%;
   text-align: left;
-  /* float: left; */
 }
 
 #special-hr {
-  /* color: #76B57A; */
-  opacity: 30%;
-  width: 60%;
-  margin: 0 auto;
-}
+  opacity: 70%;
+  width: 50%;
+  margin: auto;
+  border-width: 4px;
+}*/
 
 .middle-container {
-  padding: 100px 0;
-  background-color: #CDE8D6;
+  padding: 0 0 0 0;
+  margin: -55px 0 0 0;
+  background-color: #94eabb;
+  height: 200px;
 }
 /* .pomo-complete-box {
   background-color: #6C979E;
@@ -143,49 +137,34 @@ h1 {
 } */
 /* Mobile phone display */
 .custom-btn {
-   background: #E1E3CC;
-   /* background-image: -webkit-linear-gradient(top, #E1E3CC, #A2A393);
-   background-image: -moz-linear-gradient(top, #E1E3CC, #A2A393);
-   background-image: -ms-linear-gradient(top, #E1E3CC, #A2A393);
-   background-image: -o-linear-gradient(top, #E1E3CC, #A2A393); */
-   /* background-image: -webkit-gradient(to bottom, #E1E3CC, #A2A393); */
-   -webkit-border-radius: 15px;
-   -moz-border-radius: 15px;
-   /* border-radius: 15px; */
-   height: 65px;
-   line-height: 50px;
-   color: #FFFFFF;
-   width: 200px;
-   font-family: "Montserrat";
-   font-size: 22px;
-   font-weight: 900;
-   /* padding: 7px; */
-   /* box-shadow: 1px 1px 20px 0 #000000; */
-   text-decoration: none;
-   display: inline-block;
-   cursor: pointer;
-   text-align: center;
-   margin: 30px auto;
+  background: #48A1EE;
+  height: 40px;
+  line-height: 40px;
+  color: #000000;
+  width: 150px;
+  font-family: "Times New Roman";
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0 10px 0 0;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin: 30px 10px 10px 10px;
 }
 
 .custom-btn:hover {
-  opacity: 80%;
-   /* border: solid #B36356 1px; */
-   background: #cfc5a5;
-   /* background-image: -webkit-linear-gradient(top, #B36356, #B32B24);
-   background-image: -moz-linear-gradient(top, #B36356, #B32B24);
-   background-image: -ms-linear-gradient(top,#B36356, #B32B24);
-   background-image: -o-linear-gradient(top, #B36356, #B32B24);
-   background-image: -webkit-gradient(to bottom, ##B36356, #B32B24); */
-   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
-   border-radius: 15px;
-   text-decoration: none;
+  background-color: #2f70a8;
 }
 
 .bottom-container {
-  background-color: #80CF98;
-  height: 200px;
+  background-color: #8ab7e7;
+  padding: -200px 0 0 0;
+  height: 80px;
+}
+
+.center-column > p, ul{
+  text-align: left;
 }
 
 .footer-link {
@@ -198,14 +177,21 @@ h1 {
   text-decoration: none;
 }
 
-.footer-link:hover {
-  color: #B36356;
+.copy-right {
+  margin: auto;
+  padding: 30px;
+  font-weight: bold;
 }
 
-.copy-right {
-  font-family: "Montserrat";
-  padding-top: 80px;
-  font-weight: bold;
+/* To accomodate for different sized viewports */
+
+@media (max-width: 1028px) {
+/*
+  #title {
+    text-align: center;
+  } */
+
+
 }
 /* used for hiding buttons */
 .hidden{
@@ -229,16 +215,15 @@ h1 {
   width: 30px;
   height: 30px;
   position: absolute;
-  right: 25px;
-  top: 25px;
+  right: 20px;
   border-radius: 15px;
   /* border: none; */
-  color: #184d47;
+  color: #48A1EE;
   opacity: 80%;
 }
 
 .info-btn:hover {
-  color: #96bb7c;
+  color: #2f70a8;
 }
 
 /*  --------------------------- Instructions Section --------------------------- */
@@ -250,31 +235,19 @@ h1 {
 }
 
 .instructions-section {
-  font-family: "Montserrat";
-  background-color: #f4f9f9;
-  padding: 10px 0;
+  background-color: #FFFFFF;
+  height: auto;
+  width: auto;
+  max-width: 720px;
+  margin: auto;
+  padding: 20px 100px 30px 100px;
+  box-shadow: 12px 0 15px -8px rgba(0, 0, 0, 0.2), -12px 0 8px -8px rgba(0, 0, 0, 0.19);
 
-}
-
-#instructions-para {
-  color: #5b5b5b;
-  font-weight: 900;
-  font-size: 1.1rem;
-  padding: 0 20%;
-  text-align: left;
-}
-
-#hr-instructions {
-  width: 60%;
-  margin: 0 auto;
-  color: #5b5b5b;
-  opacity: 0.3;
-  /* text-align: center; */
 }
 
 .arrow-up-icon {
   margin-left: 50%;
-  width: 80px;
+  width: 50px;
   color: #5b5b5b;
 }
 .arrow-up-icon:hover {

@@ -27,7 +27,7 @@ class TimerContainer extends HTMLElement {
      * @static
      * @type {string}
      */
-    static S_RESET_MESSAGE = "Reset Pomo";
+    static S_RESET_MESSAGE = "Reset Pomo!";
 
     /**
      * Target selector of the "i" button

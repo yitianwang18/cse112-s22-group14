@@ -43,7 +43,7 @@ class TimerDisplay extends HTMLElement {
 
         let o_pomos_completed = document.createElement("h3");
         o_pomos_completed.id = "pomos-completed";
-        o_pomos_completed.innerText = "Pomodoros Completed:"
+        o_pomos_completed.innerText = "Number of Pomodoros Completed:"
 
         let o_br = document.createElement("br");
 
@@ -85,7 +85,7 @@ class TimerDisplay extends HTMLElement {
      */
     static formatMilliTime(n_milli_time) {
         if (n_milli_time < 0) {
-            return "--:--"
+            return "00:00"
         }
         let o_date = new Date(n_milli_time + 500);
         let s_minutes = this.padZeroes(o_date.getMinutes(), 2);
