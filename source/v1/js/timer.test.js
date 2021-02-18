@@ -15,8 +15,13 @@ const { TimerContainer } = require("./timerContainer");
 //   <script src="js/timer.js"></script>
 //   <script src="js/timerContainer.js"></script>`);
 
+let milTime = function (min, sec) {
+    return (min * 60 + sec) * 1000;
+};
+
 let timer_disp = new TimerDisplay();
-test('Test timer-display element', () => {
+
+test('Test timer-display element initialization', () => {
     //Test custom element timer-display shape
     let timer_disp_wrapper = timer_disp.querySelector("div"); 
     expect(timer_disp_wrapper.childElementCount).toBe(7);
@@ -45,10 +50,7 @@ test('Test TimerDisplay.padZeroes()', () => {
 
 test('Test TimerDisplay.formatMilliTime', () => {
     let millisecs;
-    let milTime = function (min, sec) {
-        return (min * 60 + sec) * 1000;
-    };
-
+    
     expect(TimerDisplay.formatMilliTime(-1)).toBe('--:--');
     expect(TimerDisplay.formatMilliTime(0)).toBe('00:00');
 
@@ -69,39 +71,118 @@ test('Test TimerDisplay.formatMilliTime', () => {
 
 });
 
-let timer_cont = new TimerContainer(timer_disp);
-test('Test timer-element', () => {
-    
+
+test('Start / Reset button Toggle', () => {
+    let timer_cont = new TimerContainer(new TimerDisplay());
     let timer_cont_wrapper = timer_cont.querySelector("div");
 
-    //Test start button toggling to reset button
+    //initialize buttons
     let start_btn = timer_cont_wrapper.querySelector("#start-btn");
     let reset_btn = timer_cont_wrapper.querySelector("#reset-btn");
+    let end_btn = timer_cont_wrapper.querySelector("#end-btn");
 
+    //Test start button and reset button initialization
     expect(start_btn.innerText).toBe("Start Pomo!");
     expect(reset_btn.innerText).toBe("Reset Pomo");
 
     expect(start_btn.classList.contains("hidden")).toBe(false);
     expect(reset_btn.classList.contains("hidden")).toBe(true);
 
+    //Test start button toggling to reset button once session starts
     start_btn.click();
-
     expect(start_btn.classList.contains("hidden")).toBe(true);
     expect(reset_btn.classList.contains("hidden")).toBe(false);
 
-    //Test reset button toggling back to start button
+    //Test reset button not toggling back to start button if pomo is reset
+    reset_btn.click();
+    expect(start_btn.classList.contains("hidden")).toBe(true);
+    expect(reset_btn.classList.contains("hidden")).toBe(false);
 
-    //Test getTimeRemaining() function
-
-    //Test progressState() function
-
-    //Test resetPomo() function
-
-    //Test click Start button event
-
-    //Test click Reset button event
-
-    //Test click End button event
+    //Test reset button toggling back to start button once session ends
+    end_btn.click();
+    expect(start_btn.classList.contains("hidden")).toBe(false);
+    expect(reset_btn.classList.contains("hidden")).toBe(true);
 });
 
+//Test getTimeRemaining() function
+
+function pause(time) {
+    let start = new Date().getTime();
+    let timeElapsed = 0;
+    while (timeElapsed < time) {
+        timeElapsed = new Date().getTime() - start; 
+    }
+}
+
+test('Test getTimeRemaining function', () => {
+
+    let timer_cont = new TimerContainer(/*new TimerDisplay()*/);
+
+    timer_cont.n_start_time = new Date().getTime();
+    timer_cont.n_curr_state = TimerContainer.NOT_STARTED;
+    expect(timer_cont.getTimeRemaining()).toBe(0);
+
+    timer_cont.n_curr_state = TimerContainer.WORK;
+
+    timer_cont.n_start_time = new Date().getTime();
+    expect(timer_cont.getTimeRemaining()).toBe(3000);
+
+    timer_cont.n_start_time = new Date().getTime();
+    pause(1000);
+    expect(timer_cont.getTimeRemaining()).toBe(2000);
+
+    timer_cont.n_start_time = new Date().getTime();
+    pause(3000);
+    expect(timer_cont.getTimeRemaining()).toBe(0);
+
+    timer_cont.n_start_time = new Date().getTime();
+    pause(3001);
+    expect(timer_cont.getTimeRemaining()).toBe(-1);
+
+    timer_cont.n_start_time = new Date().getTime();
+    pause(4000);
+    expect(timer_cont.getTimeRemaining()).toBe(-1);
+
+});
+
+//Test timer display 
+// test('Test timer-display in timer-container', () => {
+
+//     let timer_cont = new TimerContainer(new TimerDisplay());
+//     let timer_cont_wrapper = timer_cont.querySelector("div");
+
+//     let time_disp = timer_cont_wrapper.querySelector("#timer-display");
+
+//     let start_btn = timer_cont_wrapper.querySelector("#start-btn");
+//     let reset_btn = timer_cont_wrapper.querySelector("#reset-btn");
+//     let end_btn = timer_cont_wrapper.querySelector("#end-btn");
+
+//     //timer_cont.n_start_time = new Date().getTime();
+//     //timer_cont.n_curr_state = TimerContainer.NOT_STARTED;
+//     expect(time_disp.getAttribute("time")).toBe("-1");
+//     expect(time_disp.getAttribute("pomos-comp")).toBe("0");
+
+//     start_btn.click();
+
+//     expect(parseInt(time_disp.getAttribute("time"))).toBeCloseTo(3000);
+//     expect(time_disp.getAttribute("pomos-comp")).toBe("0");
+
+
+
+
+
+
+
+
+// });
+
+// Test progressState() function
+
+// Test resetPomo() function
+
+// Test click Start button event
+
+// Test click Reset button event
+
+// Test click End button event
 
