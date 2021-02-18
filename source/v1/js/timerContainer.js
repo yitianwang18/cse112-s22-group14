@@ -239,8 +239,10 @@ class TimerContainer extends HTMLElement {
                 ++(this.n_done_pomos);
                 if (this.n_done_pomos == 4) {
                     this.n_curr_state = TimerContainer.L_BREAK;
+                    notify(this.n_curr_state);
                 } else {
                     this.n_curr_state = TimerContainer.S_BREAK;
+                    notify(this.n_curr_state)
                 }
                 break;
             case TimerContainer.L_BREAK:
@@ -249,6 +251,7 @@ class TimerContainer extends HTMLElement {
             case TimerContainer.NOT_STARTED:
                 this.querySelector("#reset-btn").disabled = false;
                 this.n_curr_state = TimerContainer.WORK;
+                notify(this.n_curr_state);
                 break;
 
         }
