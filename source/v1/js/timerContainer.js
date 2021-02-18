@@ -1,9 +1,4 @@
 /**
- * Timer container module.
- * @module timerContainer
- */
-
-/**
  * Custom HTML element for a TimerContainer, including the display and functionality
  * @extends HTMLElement
  */

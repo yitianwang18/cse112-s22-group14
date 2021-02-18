@@ -1,9 +1,4 @@
 /**
- * Timer display module.
- * @module timer
- */
-
-/**
  * Custom HTML element for a timer display, where the values to display are passed in as attributes
  * @extends HTMLElement
  */
