@@ -21,7 +21,7 @@ test('Test TimerDisplay.formatMilliTime', () => {
         return (min * 60 + sec) * 1000;
     };
 
-    expect(TimerDisplay.formatMilliTime(-1)).toBe('--:--');
+    expect(TimerDisplay.formatMilliTime(-1)).toBe('00:00');
     expect(TimerDisplay.formatMilliTime(0)).toBe('00:00');
 
     millisecs = milTime(24, 59);
