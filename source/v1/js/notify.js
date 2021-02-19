@@ -55,3 +55,4 @@ function notify(n_state){
   }
 } 
 
+export default notify;
