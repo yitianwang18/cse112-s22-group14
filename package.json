@@ -9,12 +9,12 @@
     },
     "dependencies": {
         "jest": "26.4.2",
-        "jsdoc": "3.6.6"
+        "jsdoc": "3.6.6",
+        "jsdom": "^16.4.0"
     },
 
     "jest": {
-        "testEnvironment": "jest-environment-node",
+        "testEnvironment": "jest-environment-jsdom",
         "transform": {}
     }
 }
-  
