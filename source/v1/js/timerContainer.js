@@ -1,3 +1,4 @@
+import { TimerDisplay } from "./timer.js";
 /**
  * Custom HTML element for a TimerContainer, including the display and functionality
  * @extends HTMLElement
@@ -290,6 +291,9 @@ class TimerContainer extends HTMLElement {
 }
 customElements.define("timer-element", TimerContainer);
 
-if (typeof exports !== 'undefined') {
-    module.exports = { TimerContainer };
-}
+// commonjs
+// if (typeof exports !== 'undefined') {
+//     module.exports = { TimerContainer };
+// }
+
+export { TimerContainer };

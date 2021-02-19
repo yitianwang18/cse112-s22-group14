@@ -1,5 +1,5 @@
-const { TimerDisplay } = require("./timer");
-
+import { TimerDisplay } from "./timer.js";
+import { TimerContainer } from "./timerContainer.js";
 // test(' ', () => {
 //     expect().toBe();
 // });
@@ -41,3 +41,7 @@ test('Test TimerDisplay.formatMilliTime', () => {
 
 });
 
+test("sample", () => {
+    let obj = new TimerContainer();
+    let obj2 = new TimerDisplay();
+})

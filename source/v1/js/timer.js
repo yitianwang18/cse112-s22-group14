@@ -115,6 +115,8 @@ class TimerDisplay extends HTMLElement {
 }
 customElements.define("timer-display", TimerDisplay);
 
-if (typeof exports !== 'undefined') {
-    module.exports = { TimerDisplay };
-}
+// if (typeof exports !== 'undefined') {
+//     module.exports = { TimerDisplay };
+// }
+
+export { TimerDisplay }
