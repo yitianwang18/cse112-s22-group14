@@ -1,0 +1,213 @@
+body {
+  text-align: center;
+  margin: 0;
+}
+
+hr {
+  color: #79a3b1;
+  border-style: none;
+  border-top-style: solid;
+  border-width: 10px;
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+.pomo-logo {
+  width: 90px;
+  margin-top: -5px;
+  margin-left: 3px;
+  float: left;
+}
+
+.banner {
+  width: 250px;
+  margin: 0 80px 0 0;
+}
+
+.header-container {
+  padding: 10px 0;
+}
+
+.top-container {
+  margin: 0 0 0 0;
+  height: 500px;
+  padding: 0 0 0 0;
+}
+
+.main-box {
+  padding: 20px 0 20px 0;
+}
+
+.timer-section {
+  background-color: #d0e8f2;
+}
+
+.tomato-pic-left {
+  padding-top: 60vh;
+  left: -50px;
+  position: absolute;
+  width: 550px;
+}
+
+.timer-box {
+  border-radius: 3px;
+  background-color: #79a3b1;
+  height: auto;
+  width: auto;
+  max-width: 480px;
+  margin: 50px auto;
+  padding: 20px 100px 30px 100px;
+}
+
+#work-message {
+  font-size: 1.5rem;
+  color: #000;
+  font-family: "Montserrat", "Zapfino";
+  font-weight: 900;
+  padding-bottom: 30px;
+}
+
+.timer {
+  background-color: #79a3b1;
+}
+
+.pomo-count {
+  width: 60px;
+}
+
+#time-display {
+  display: inline;
+  color: #165d81;
+  font-size: 5rem;
+  padding: 10px 30px;
+  border-style: solid;
+}
+
+#pomos-completed {
+  padding-top: 40px;
+  font-family: "Montserrat", "Zapfino";
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.middle-container {
+  padding: 0 0 0 0;
+  margin: -55px 0 0 0;
+  background-color: #94eabb;
+  height: 200px;
+}
+
+.custom-btn {
+  border-radius: 3px;
+  background: #d0e8f2;
+  height: 45px;
+  line-height: 40px;
+  width: 150px;
+  font-family: "Times New Roman";
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin: 10px 30px 30px 10px;
+}
+
+.custom-btn:hover {
+  background-color: #2f70a8;
+}
+
+.bottom-container {
+  background-color: #d0e8f2;
+  padding: -200px 0 0 0;
+  height: 80px;
+}
+
+.center-column > p,
+ul {
+  text-align: left;
+}
+
+.footer-link {
+  font-family: "Montserrat";
+  color: #79a3b1;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: inline-block;
+  margin: 20px 20px;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #456268;
+}
+
+.copy-right {
+  background-color: #d0e8f2;
+  margin: auto;
+  padding: 80px 20px 20px 20px;
+  font-weight: 900;
+  font-family: "Montserrat";
+}
+
+.hidden {
+  display: none;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.info-btn {
+  position: absolute;
+  right: 15px;
+  top: 115px;
+  border-radius: 15px;
+  color: #79a3b1;
+  opacity: 80%;
+}
+
+.info-btn:hover {
+  color: #456268;
+}
+
+.instruct-head {
+  color: #5b5b5b;
+  font-size: 2.5rem;
+  margin: 30px 0 30px 0;
+}
+
+.instructions-section {
+  font-family: "Montserrat";
+  background-color: #f4f9f9;
+  padding: 10px 0;
+}
+
+#instructions-para {
+  color: #5b5b5b;
+  font-weight: 900;
+  font-size: 1.1rem;
+  padding: 0 20%;
+  text-align: left;
+}
+
+.arrow-up-icon {
+  margin-left: 50%;
+  width: 50px;
+  color: #5b5b5b;
+}
+
+.arrow-up-icon:hover {
+  color: #184d47;
+}
