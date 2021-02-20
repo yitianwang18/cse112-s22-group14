@@ -258,12 +258,27 @@ input[type=text] {
   top: 115px;
   border-radius: 15px;
   /* border: none; */
-  color: #79a3b1;
+  color: #405f69;
   opacity: 80%;
 }
 
 .info-btn:hover {
-  color: #456268;
+  color: #213336;
+}
+
+.task-btn{
+  margin-right: 50px;
+  position: absolute;
+  right: 15px;
+  top: 115px;
+  border-radius: 15px;
+  /* border: none; */
+  color: #405f69;
+  opacity: 80%;
+}
+
+.task-btn:hover {
+  color: #213336;
 }
 
 /*  --------------------------- Instructions Section --------------------------- */
@@ -316,6 +331,43 @@ input[type=text] {
 
 .arrow-up-icon:hover {
   color: #184d47;
+}
+
+#side-tasks > h1{
+  font-family: 'Alegreya', serif;
+  padding: 60px;
+}
+
+.sidenav {
+  padding: 50px;
+  height: 87.4vh;
+  /* display: none; */
+  width: auto;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.btn {
+  text-decoration: none;
+  font-size: 2rem;
+  color: #7e8080;
+}
+
+.close {
+  
+  position: absolute;
+  top: 20px;
+  right: 0;
+  margin-right: 25px;
+}
+
+.btn:hover {
+  color: #000000;
 }
 
 /* To accomodate for different sized viewports */
