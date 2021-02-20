@@ -114,67 +114,83 @@ function pause(time) {
     }
 }
 
-test('Test getTimeRemaining function', () => {
-
-    let timer_cont = new TimerContainer(/*new TimerDisplay()*/);
-
-    timer_cont.n_start_time = new Date().getTime();
-    timer_cont.n_curr_state = TimerContainer.NOT_STARTED;
-    expect(timer_cont.getTimeRemaining()).toBe(0);
-
-    timer_cont.n_curr_state = TimerContainer.WORK;
-
-    timer_cont.n_start_time = new Date().getTime();
-    expect(timer_cont.getTimeRemaining()).toBe(3000);
-
-    timer_cont.n_start_time = new Date().getTime();
-    pause(1000);
-    expect(timer_cont.getTimeRemaining()).toBe(2000);
-
-    timer_cont.n_start_time = new Date().getTime();
-    pause(3000);
-    expect(timer_cont.getTimeRemaining()).toBe(0);
-
-    timer_cont.n_start_time = new Date().getTime();
-    pause(3001);
-    expect(timer_cont.getTimeRemaining()).toBe(-1);
-
-    timer_cont.n_start_time = new Date().getTime();
-    pause(4000);
-    expect(timer_cont.getTimeRemaining()).toBe(-1);
-
-});
-
-//Test timer display 
-// test('Test timer-display in timer-container', () => {
+// test('Test getTimeRemaining function', () => {
 
 //     let timer_cont = new TimerContainer(new TimerDisplay());
-//     let timer_cont_wrapper = timer_cont.querySelector("div");
 
-//     let time_disp = timer_cont_wrapper.querySelector("#timer-display");
+//     timer_cont.n_start_time = new Date().getTime();
+//     timer_cont.n_curr_state = TimerContainer.NOT_STARTED;
+//     expect(timer_cont.getTimeRemaining()).toBe(0);
 
-//     let start_btn = timer_cont_wrapper.querySelector("#start-btn");
-//     let reset_btn = timer_cont_wrapper.querySelector("#reset-btn");
-//     let end_btn = timer_cont_wrapper.querySelector("#end-btn");
+//     timer_cont.n_curr_state = TimerContainer.WORK;
 
-//     //timer_cont.n_start_time = new Date().getTime();
-//     //timer_cont.n_curr_state = TimerContainer.NOT_STARTED;
-//     expect(time_disp.getAttribute("time")).toBe("-1");
-//     expect(time_disp.getAttribute("pomos-comp")).toBe("0");
+//     timer_cont.n_start_time = new Date().getTime();
+//     expect(timer_cont.getTimeRemaining()).toBe(3000);
 
-//     start_btn.click();
+//     timer_cont.n_start_time = new Date().getTime();
+//     pause(1000);
+//     expect(timer_cont.getTimeRemaining()).toBe(2000);
 
-//     expect(parseInt(time_disp.getAttribute("time"))).toBeCloseTo(3000);
-//     expect(time_disp.getAttribute("pomos-comp")).toBe("0");
+//     timer_cont.n_start_time = new Date().getTime();
+//     pause(3000);
+//     expect(timer_cont.getTimeRemaining()).toBe(0);
 
+//     timer_cont.n_start_time = new Date().getTime();
+//     pause(3001);
+//     expect(timer_cont.getTimeRemaining()).toBe(-1);
 
-
-
-
-
-
-
+//     timer_cont.n_start_time = new Date().getTime();
+//     pause(4000);
+//     expect(timer_cont.getTimeRemaining()).toBe(-1);
 // });
+
+//Test timer display 
+test('Test timer-display in timer-container', () => {
+
+    let timer_cont = new TimerContainer(new TimerDisplay());
+    let timer_cont_wrapper = timer_cont.querySelector("div");
+
+    let time_disp = timer_cont_wrapper.querySelector("#timer-display");
+
+    let start_btn = timer_cont_wrapper.querySelector("#start-btn");
+    let reset_btn = timer_cont_wrapper.querySelector("#reset-btn");
+    let end_btn = timer_cont_wrapper.querySelector("#end-btn");
+
+
+    console.log(timer_cont.n_start_time);
+
+    expect(time_disp.getAttribute("time")).toBe("-1");
+    expect(time_disp.getAttribute("pomos-comp")).toBe("0");
+    expect(timer_cont.n_curr_state).toBe(TimerContainer.NOT_STARTED);
+
+    start_btn.click();
+
+    console.log(timer_cont.n_start_time);
+
+    expect(parseInt(time_disp.getAttribute("time"))).toBeGreaterThanOrEqual(2000);
+    expect(parseInt(time_disp.getAttribute("time"))).toBeLessThanOrEqual(3000);
+    expect(time_disp.getAttribute("pomos-comp")).toBe("0");
+    expect(timer_cont.n_curr_state).toBe(TimerContainer.WORK);
+
+    pause(1000);
+
+    console.log(timer_cont.n_start_time);
+
+    time_disp = timer_cont_wrapper.querySelector("#timer-display");
+    expect(parseInt(time_disp.getAttribute("time"))).toBeGreaterThanOrEqual(1000);
+    expect(parseInt(time_disp.getAttribute("time"))).toBeLessThanOrEqual(2000);
+    expect(time_disp.getAttribute("pomos-comp")).toBe("0");
+
+
+
+
+
+
+
+
+
+
+});
 
 // Test progressState() function
 
