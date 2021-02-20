@@ -28,43 +28,29 @@ h1 {
 }
 
 .header-container {
-  /* background-color: #8ab7e7; */
-  padding: 10px 0px;
+  padding: 10px 0;
 }
+
 .top-container {
-  /* background-color: #8ab7e7; */
   margin: 0 0 0 0;
   height: 500px;
-  padding: 0 0 0px 0;
-  /* padding: auto auto; */
-  /* position: relatve; */
+  padding: 0 0 0 0;
 }
 
 .main-box {
-  /* background-color: #8ab7e7; */
-  /* border: 100 0; */
   padding: 20px 0 20px 0;
 }
 
 .timer-section {
   background-color: #d0e8f2;
 }
-/* -------------------- tomato picture styling ---------------- */
+
 .tomato-pic-left {
   padding-top: 60vh;
   left: -50px;
   position: absolute;
   width: 550px;
 }
-
-/* .tomato-pic-right {
-  padding-top: 70vh;
-  right: 0;
-  position: absolute;
-  width: 20%;
-}
- */
-/* -------------------- Timer Box ---------------------------- */
 
 .timer-box {
   border-radius: 3px;
@@ -74,14 +60,11 @@ h1 {
   max-width: 480px;
   margin: 50px auto;
   padding: 20px 100px 30px 100px;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-  /* margin-top: 50px; */
 }
 
 #work-message {
   font-size: 1.5rem;
-  color: #000000;
-  /* font-family: "Zapfino"; */
+  color: #000;
   font-family: "Montserrat", "Zapfino";
   font-weight: 900;
   padding-bottom: 30px;
@@ -97,9 +80,9 @@ h1 {
 
 #time-display {
   display: inline;
-  color: #165D81;
+  color: #165d81;
   font-size: 5rem;
-  padding: 10px 30px ;
+  padding: 10px 30px;
   border-style: solid;
 }
 
@@ -108,23 +91,7 @@ h1 {
   font-family: "Montserrat", "Zapfino";
   font-size: 1.2rem;
   margin: 0;
-  /* margin: 0 0 -10px -10px; */
 }
-
-/*
-.h3-tasks {
-  color: white;
-  font-size: 2rem;
-  padding-left: 20%;
-  text-align: left;
-}
-
-#special-hr {
-  opacity: 70%;
-  width: 50%;
-  margin: auto;
-  border-width: 4px;
-}*/
 
 .middle-container {
   padding: 0 0 0 0;
@@ -132,12 +99,7 @@ h1 {
   background-color: #94eabb;
   height: 200px;
 }
-/* .pomo-complete-box {
-  background-color: #6C979E;
-  height: 80px;
-  margin: auto;
-} */
-/* Mobile phone display */
+
 .custom-btn {
   border-radius: 3px;
   background: #d0e8f2;
@@ -147,7 +109,6 @@ h1 {
   font-family: "Times New Roman";
   font-size: 20px;
   font-weight: 600;
-  /* padding: 0 0 0 0; */
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
@@ -165,7 +126,8 @@ h1 {
   height: 80px;
 }
 
-.center-column > p, ul{
+.center-column > p,
+ul {
   text-align: left;
 }
 
@@ -191,40 +153,27 @@ h1 {
   font-family: "Montserrat";
 }
 
-/* To accomodate for different sized viewports */
-
-@media (max-width: 1028px) {
-/*
-  #title {
-    text-align: center;
-  } */
-
-
-}
-/* used for hiding buttons */
-.hidden{
+.hidden {
   display: none;
 }
 
-.full-height{
+.full-height {
   height: 100vh;
 }
 
-.flex{
+.flex {
   display: flex;
 }
 
-.flex-column{
+.flex-column {
   flex-direction: column;
 }
 
-/* Information button styling */
-.info-btn{
+.info-btn {
   position: absolute;
   right: 15px;
   top: 115px;
   border-radius: 15px;
-  /* border: none; */
   color: #79a3b1;
   opacity: 80%;
 }
@@ -233,22 +182,13 @@ h1 {
   color: #456268;
 }
 
-/*  --------------------------- Instructions Section --------------------------- */
 .instruct-head {
   color: #5b5b5b;
   font-size: 2.5rem;
-  /* padding: 0; */
   margin: 30px 0 30px 0;
 }
 
 .instructions-section {
-  /* background-color: #FFFFFF;
-  height: auto;
-  width: auto;
-  max-width: 720px; */
-  /* margin: auto; */
-  /* padding: 20px 100px 30px 100px; */
-  /* box-shadow: 12px 0 15px -8px rgba(0, 0, 0, 0.2), -12px 0 8px -8px rgba(0, 0, 0, 0.19); */
   font-family: "Montserrat";
   background-color: #f4f9f9;
   padding: 10px 0;
@@ -263,7 +203,6 @@ h1 {
 }
 
 .arrow-up-icon {
-
   margin-left: 50%;
   width: 50px;
   color: #5b5b5b;
@@ -271,14 +210,4 @@ h1 {
 
 .arrow-up-icon:hover {
   color: #184d47;
-}
-
-/* To accomodate for different sized viewports */
-@media (max-width: 1028px) {
-/*
-  #title {
-    text-align: center;
-  } */
-
-
 }
