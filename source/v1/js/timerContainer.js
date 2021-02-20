@@ -291,9 +291,4 @@ class TimerContainer extends HTMLElement {
 }
 customElements.define("timer-element", TimerContainer);
 
-// commonjs
-// if (typeof exports !== 'undefined') {
-//     module.exports = { TimerContainer };
-// }
-
 export { TimerContainer };
