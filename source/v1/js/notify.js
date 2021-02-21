@@ -1,6 +1,6 @@
 /**
  * Sends web notifications to the user representing the state of the timer.
- * @param n_state number denoting the state of the timer. 
+ * @param {number} n_state number denoting the state of the timer. 
  * See timerContainer.js for timer state values.
  */
 function notify(n_state){
@@ -28,13 +28,14 @@ function notify(n_state){
           var o_notification = new Notification("Time to start the next work session!",o_options);
           var o_audio = document.getElementById("notifs");
           o_audio.play();
+          return o_notification;
         }
-        
         //start short break notif
         else if(n_state==1){
           var o_notification = new Notification("Time for a short break!",o_options);
           var o_audio = document.getElementById("notifs");
           o_audio.play();
+          return o_notification;
         }
         
         //start long break notif
@@ -42,6 +43,7 @@ function notify(n_state){
           var o_notification = new Notification("Time for a long break!",o_options);
           var o_audio = document.getElementById("notifs");
           o_audio.play();
+          return o_notification
         }
       
         //end of session notif
@@ -49,10 +51,11 @@ function notify(n_state){
           var o_notification = new Notification("All tasks completed. Good work!",o_options);
           var o_audio = document.getElementById("notifs");
           o_audio.play();
+          return o_notification;
         }
       }
     });
   }
 } 
 
-export default notify;
+
