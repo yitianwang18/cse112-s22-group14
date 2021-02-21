@@ -1,8 +1,25 @@
+/*********************
+ * Styling HTML Tags *
+ *********************/
+
+/**
+ * Entire document body
+ */
 body {
   text-align: center;
   margin: 0;
 }
 
+/**
+ * All full size headers
+ */
+h1 {
+  margin: 0;
+}
+
+/**
+ * Horizontal rule between header and Pomodoro Timer
+ */
 hr {
   border-style: none;
   border-top-style: solid;
@@ -10,296 +27,79 @@ hr {
   margin: 0;
 }
 
-h1 {
-  margin: 0;
+/******************
+ * Fit one screen *
+ ******************/
+
+/**
+ * Lets the container cover one entire screen
+ */
+.full-height {
+  height: 100vh;
 }
 
+/**********************
+ * Styling Top Header *
+ **********************/
+
+/**
+ * Container for Header - includes logo and title
+ */
+.header-container {
+  padding: 10px 0;
+}
+
+/**
+ * PomoHero App Logo
+ */
 .pomo-logo {
   width: 90px;
   margin-top: -15px;
-
-  /* margin-left: 1px; */
-
   float: left;
 }
 
+/**
+ * Image of PomoHero title
+ */
 .banner {
   width: 250px;
   margin: 0 80px 0 0;
 }
 
-.header-container {
-  /* background-color: #8ab7e7; */
+/**************************
+ * Styling Navigation Bar *
+ **************************/
 
-  padding: 10px 0;
-}
-
-.top-container {
-  /* background-color: #8ab7e7; */
-
-  margin: 0 0 0 0;
-  height: 500px;
-  padding: 0 0 0 0;
-
-  /* padding: auto auto; */
-
-  /* position: relatve; */
-}
-
-.main-box {
-  /* background-color: #8ab7e7; */
-
-  /* border: 100 0; */
-
-  padding: 20px 0 20px 0;
-}
-
-/* .tomato-pic-left {
-  padding-top: 60vh;
-  left: -50px;
-  position: absolute;
-  width: 550px;
-} */
-
-/* .tomato-pic-right {
-  padding-top: 70vh;
-  right: 0;
-  position: absolute;
-  width: 20%;
-}
+/**
+ * Styling for information button
  */
-
-.timer-box {
-  border-radius: 3px;
-  height: auto;
-  width: auto;
-  max-width: 450px;
-  margin: 45px auto 0 auto;
-  padding: 20px 100px 10px 100px;
-
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-
-  /* margin-top: 50px; */
-}
-
-#work-message {
-  font-size: 1.5rem;
-
-  /* font-family: "Zapfino"; */
-
-  /* font-family: "Montserrat", "Zapfino"; */
-
-  font-family: 'Alegreya', serif;
-
-  /* font-weight: 900; */
-
-  padding-bottom: 30px;
-}
-
-.pomo-count {
-  width: 50px;
-}
-
-#time-display {
-  display: inline;
-  font-size: 4rem;
-  padding: 10px 30px;
-  border-style: solid;
-}
-
-#pomos-completed {
-  padding-top: 40px;
-
-  /* font-family: "Montserrat", "Zapfino"; */
-
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-
-  /* margin: 0; */
-
-  margin: 0 0 -10px -10px;
-}
-
-/*
-.h3-tasks {
-  color: white;
-  font-size: 2rem;
-  padding-left: 20%;
-  text-align: left;
-}
-
-#special-hr {
-  opacity: 70%;
-  width: 50%;
-  margin: auto;
-  border-width: 4px;
-} */
-
-.middle-container {
-  padding: 10px;
-  margin: -100px 0 0 0;
-  height: auto;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-input[type=text] {
-  width: 450px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 2px solid;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 1rem;
-}
-
-/* .pomo-complete-box {
-  background-color: #6C979E;
-  height: 80px;
-  margin: auto;
-} */
-
-.custom-btn {
-  border-radius: 3px;
-  height: 40px;
-  line-height: 40px;
-  width: 150px;
-
-  /* font-family: "Times New Roman"; */
-
-  font-family: 'Alegreya', serif;
-  font-size: 20px;
-  font-weight: bold;
-
-  /* padding: 0 0 0 0; */
-
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
-  margin: 0 30px 15px 10px;
-}
-
-.bottom-container {
-  padding: -200px 0 0 0;
-  height: 80px;
-}
-
-.center-column > p,
-ul {
-  text-align: left;
-}
-
-.copy-right {
-  margin: auto;
-  padding: 80px 20px 20px 20px;
-  font-weight: 900;
-
-  /* font-family: "Montserrat"; */
-
-  font-family: 'Roboto', sans-serif;
-}
-
-/* To accomodate for different sized viewports */
-
-@media (max-width: 1028px) {
-  /*
-  #title {
-    text-align: center;
-  } */
-}
-
-/* used for hiding buttons */
-.hidden {
-  display: none;
-}
-
-.full-height {
-  height: 100vh;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-/* Information button styling */
 .info-btn {
   position: absolute;
   right: 15px;
   top: 115px;
   border-radius: 15px;
-
-  /* border: none; */
-
   opacity: 80%;
 }
 
+/**
+ * Styling for task button
+ */
 .task-btn {
   margin-right: 50px;
   position: absolute;
   right: 15px;
   top: 115px;
   border-radius: 15px;
-
-  /* border: none; */
-
   opacity: 80%;
 }
 
-.instruct-head {
-  font-size: 2.5rem;
-  font-family: 'Alegreya', serif;
+/***************************
+ * Styling Slide-out tasks *
+ ***************************/
 
-  /* padding: 0; */
-
-  margin: 30px 0 30px 0;
-}
-
-.instructions-section {
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px 100px 30px 100px;
-
-  /* box-shadow: 12px 0 15px -8px rgba(0, 0, 0, 0.2), -12px 0 8px -8px rgba(0, 0, 0, 0.19);
-  font-family: "Montserrat"; */
-
-  font-family: 'Roboto', sans-serif;
-  padding: 10px 0;
-}
-
-#instructions-para {
-  font-weight: 900;
-  font-size: 1.1rem;
-  padding: 0 20%;
-  text-align: left;
-}
-
-#instructions-para ~ p {
-  margin: 20px;
-  text-align: left;
-  line-height: 25px;
-}
-
-#instructions-para ~ ul > li {
-  padding: 5px;
-}
-
-.arrow-up-icon {
-  margin: auto;
-  width: 50px;
-}
-
-#side-tasks > h1 {
-  font-family: 'Alegreya', serif;
-  padding: 60px;
-}
-
+/**
+ * Container for slide-out tasks
+ */
 .sidenav {
   padding: 50px;
   height: 87.4vh;
@@ -313,11 +113,25 @@ ul {
   transition: 0.5s;
 }
 
+/**
+ * Styling header for slide-out tasks
+ */
+#side-tasks > h1 {
+  font-family: 'Alegreya', serif;
+  padding: 60px;
+}
+
+/**
+ * All buttons within slide-out tasks
+ */
 .btn {
   text-decoration: none;
   font-size: 2rem;
 }
 
+/**
+ * Close button inside slide-out tasks
+ */
 .close {
   position: absolute;
   top: 20px;
@@ -325,10 +139,219 @@ ul {
   margin-right: 25px;
 }
 
-/* To accomodate for different sized viewports */
-@media (max-width: 1028px) {
-  /*
-  #title {
-    text-align: center;
-  } */
+/**************************
+ * Styling Pomodoro Timer *
+ **************************/
+
+/**
+ * Outer container for Pomodoro Timer
+ */
+.top-container {
+  margin: auto;
+  height: auto;
+  padding: auto;
+}
+
+/**
+ * Inner container for Pomodoro Timer
+ */
+.main-box {
+  padding: 20px 0 20px 0;
+}
+
+/**
+ * Container for Pomodoro Timer
+ */
+.timer-box {
+  border-radius: 3px;
+  height: auto;
+  width: auto;
+  max-width: 450px;
+  margin: 45px auto 0 auto;
+  padding: 20px 100px 15px 100px;
+}
+
+/**
+ * Message about the timer indicating works and breaks
+ */
+#work-message {
+  font-size: 1.5rem;
+  font-family: 'Alegreya', serif;
+  padding-bottom: 30px;
+}
+
+/**
+ * Styling for the timer
+ */
+#time-display {
+  display: inline;
+  font-size: 4rem;
+  padding: 10px 30px;
+  border-style: solid;
+}
+
+/**
+ * Message about the number of Pomodoro Timers completed
+ */
+#pomos-completed {
+  padding-top: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin: 0 0 -10px -10px;
+}
+
+/**
+ * Small tomatos denoting if Pomodoro is completed
+ */
+.pomo-count {
+  width: 50px;
+}
+
+/**
+ * Styling Start and End buttons
+ */
+.custom-btn {
+  border-radius: 3px;
+  height: 40px;
+  line-height: 40px;
+  width: 150px;
+  font-family: 'Alegreya', serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 30px 15px 10px;
+}
+
+/**
+ * Hiding buttons
+ */
+.hidden {
+  display: none;
+}
+
+/**************************
+ * Styling Viewable Tasks *
+ **************************/
+
+/**
+ * Container for displaying current and next task
+ */
+.middle-container {
+  padding: 10px;
+  margin: auto;
+  height: auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/**
+ * Input field for displaying task description
+ */
+input[type=text] {
+  width: 450px;
+  padding: 10px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/******************
+ * Styling Footer *
+ ******************/
+
+/**
+ * Container for footer at end of page
+ */
+.bottom-container {
+  padding: -200px 0 0 0;
+  height: 80px;
+}
+
+/**
+ * Styling the copyright in footer
+ */
+.copy-right {
+  margin: auto;
+  padding: 80px 20px 20px 20px;
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif;
+}
+
+/************************
+ * Styling Instructions *
+ ************************/
+
+/**
+ * Container for instructions
+ */
+.instructions-section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px 100px 30px 100px;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 0;
+}
+
+/**
+ * Styling the header in instructions section
+ */
+.instruct-head {
+  font-size: 2.5rem;
+  font-family: 'Alegreya', serif;
+  margin: 30px 0 30px 0;
+}
+
+/**
+ * Paragraph of instructions within instructions section
+ */
+#instructions-para {
+  font-weight: 900;
+  font-size: 1.1rem;
+  padding: 0 20%;
+  text-align: left;
+}
+
+/**
+ * Selecting all paragraphs inside instructions-para container
+ */
+#instructions-para ~ p {
+  margin: 20px;
+  text-align: left;
+  line-height: 25px;
+}
+
+/**
+ * Selecting all li's whose parent is ul inside instructions-para container
+ */
+#instructions-para ~ ul > li {
+  padding: 5px;
+}
+
+/**
+ * Displays as block-level flex container
+ */
+.flex {
+  display: flex;
+}
+
+/**
+ * Specifies direction of flexible item
+ */
+.flex-column {
+  flex-direction: column;
+}
+
+/**
+ * Styling up arrow button after instructions
+ */
+.arrow-up-icon {
+  margin: auto;
+  width: 50px;
 }

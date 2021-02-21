@@ -1,17 +1,55 @@
+/***********************
+ * Color for HTML Tags *
+ ***********************/
 hr {
   color: #79a3b1;
 }
 
+/************************
+ * Color for Navigation *
+ ************************/
+
+.info-btn {
+  color: #405f69;
+}
+
+.info-btn:hover {
+  color: #213336;
+}
+
+.task-btn {
+  color: #405f69;
+}
+
+.task-btn:hover {
+  color: #213336;
+}
+
+/*****************************
+ * Color for Slide-out Tasks *
+ *****************************/
+
+.sidenav {
+  background-color: #fff;
+}
+
+.btn {
+  color: #7e8080;
+}
+
+.btn:hover {
+  color: #000;
+}
+
+/****************************
+ * Color for Pomodoro Timer *
+ ****************************/
 .timer-section {
   background-color: #d0e8f2;
 }
 
 .timer-box {
   background-color: #79a3b1;
-}
-
-#work-message {
-  color: #000;
 }
 
 .timer {
@@ -21,6 +59,22 @@ hr {
 #time-display {
   color: #165d81;
 }
+
+#work-message {
+  color: #000;
+}
+
+.custom-btn {
+  background: #d0e8f2;
+}
+
+.custom-btn:hover {
+  background-color: #2f70a8;
+}
+
+/****************************
+ * Color for Viewable Tasks *
+ ****************************/
 
 .middle-container {
   background-color: #d0e8f2;
@@ -38,37 +92,9 @@ hr {
   border-color: #615e5e;
 }
 
-.custom-btn {
-  background: #d0e8f2;
-}
-
-.custom-btn:hover {
-  background-color: #2f70a8;
-}
-
-.bottom-container {
-  background-color: #d0e8f2;
-}
-
-.copy-right {
-  background-color: #d0e8f2;
-}
-
-.info-btn {
-  color: #405f69;
-}
-
-.info-btn:hover {
-  color: #213336;
-}
-
-.task-btn {
-  color: #405f69;
-}
-
-.task-btn:hover {
-  color: #213336;
-}
+/**************************
+ * Color for Instructions *
+ **************************/
 
 .instruct-head {
   color: #5b5b5b;
@@ -87,14 +113,14 @@ hr {
   color: #184d47;
 }
 
-.sidenav {
-  background-color: #fff;
+/********************
+ * Color for Footer *
+ ********************/
+
+.bottom-container {
+  background-color: #d0e8f2;
 }
 
-.btn {
-  color: #7e8080;
-}
-
-.btn:hover {
-  color: #000;
+.copy-right {
+  background-color: #d0e8f2;
 }
