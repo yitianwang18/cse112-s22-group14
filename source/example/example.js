@@ -3,7 +3,7 @@
  * inputted message
  * @param {string} msg - msg to be logged
 */
-export function hello (msg) {
+export function hello(msg) {
     console.log(msg);
 }
 
@@ -12,6 +12,6 @@ export function hello (msg) {
  * @param {number} a 
  * @param {number} b 
  */
-export function sum (a, b) {
+export function sum(a, b) {
     return a + b;
 }

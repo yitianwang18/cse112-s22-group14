@@ -4,15 +4,14 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-      "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js source/",
-      "docs": "jsdoc source -r -d docs"
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js source/",
+        "docs": "jsdoc source -r -d docs"
     },
     "dependencies": {
         "jest": "26.4.2",
         "jsdoc": "3.6.6",
         "jsdom": "^16.4.0"
     },
-
     "jest": {
         "testEnvironment": "jest-environment-jsdom",
         "transform": {}
