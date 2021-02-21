@@ -15,4 +15,4 @@ Chosen option: 'Green and Blue', because
 
 * It does a better job of matching our main aim i.e. propogating calm, concentration and coolness.
 * If our timer is used correctly, the user will be looking our UI less and focusing on the work on hand more. Thus it becomes unimportant how close our colors matched the tomato theme.
-* The chosen color scheme hasn't been implemented to the MVP due totime constraint but it will be implemented in our final product.
+* The chosen color scheme hasn't been implemented to the MVP due to time constraint but it will be implemented in our final product.
