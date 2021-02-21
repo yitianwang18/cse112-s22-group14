@@ -16,8 +16,8 @@ Xavier
 James Zhao  
 Ivan Robles  
 Yash Shah  
-Luke
-Haaris Waleh 
+Luke  
+Haaris Waleh  
 
 ## Agenda
 Discuss what to work on during the MVP sprint

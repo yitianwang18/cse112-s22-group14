@@ -1,9 +1,4 @@
 /**
- * Timer display module.
- * @module timer
- */
-
-/**
  * Custom HTML element for a timer display, where the values to display are passed in as attributes
  * @extends HTMLElement
  */
@@ -43,7 +38,7 @@ class TimerDisplay extends HTMLElement {
 
         let o_pomos_completed = document.createElement("h3");
         o_pomos_completed.id = "pomos-completed";
-        o_pomos_completed.innerText = "Pomodoros Completed:"
+        o_pomos_completed.innerText = "Number of Pomodoros Completed:"
 
         let o_br = document.createElement("br");
 
@@ -64,9 +59,9 @@ class TimerDisplay extends HTMLElement {
     }
 
     /**
-     * Pads a number to the desired length with preceding zeroes. If n_desired_length < # of digits in n_time, 
+     * Pads a number to the desired length with preceding zeroes. If n_desired_length < # of digits in n_time,
      * the original number will simply be returned
-     * @param {number} n_time - the value to pad 
+     * @param {number} n_time - the value to pad
      * @param {number} n_desired_length - the final desired length of the number
      * @return {number} The padded number
      */
@@ -81,11 +76,11 @@ class TimerDisplay extends HTMLElement {
     /**
      * Formats a millisecond duration to 'minutes:seconds', while accounting for rounding
      * @param {number} n_milli_time - the time to format
-     * @return {string} The formatted XX:YY time. 
+     * @return {string} The formatted XX:YY time.
      */
     static formatMilliTime(n_milli_time) {
         if (n_milli_time < 0) {
-            return "--:--"
+            return "00:00"
         }
         let o_date = new Date(n_milli_time + 500);
         let s_minutes = this.padZeroes(o_date.getMinutes(), 2);
@@ -120,6 +115,4 @@ class TimerDisplay extends HTMLElement {
 }
 customElements.define("timer-display", TimerDisplay);
 
-if (typeof exports !== 'undefined') {
-    module.exports = { TimerDisplay };
-}
+export { TimerDisplay }
