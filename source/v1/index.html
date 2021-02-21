@@ -4,22 +4,23 @@
 <head>
   <meta charset="utf-8">
   <title>PomoHero</title>
+
+  <!-- Import css stylesheets for layout and colors -->
   <link rel="stylesheet" href="./css/layout.css">
   <link rel="stylesheet" href="./css/colors.css">
-  <link rel="icon" href="./assets/img/PomoCountYesFavicon.png">
-  <!--link
-    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Montserrat:wght@500&family=Sacramento&display=swap"
-    rel="stylesheet"-->
+
+  <!-- Import google font styles -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500&display=swap" rel="stylesheet-head">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet-body">
+
+  <!-- Import icons for buttons -->
   <script src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>    <!-- <script src="https://use.fontawesome.com/e3f6f09fc4.js"></script> -->
 </head>
 
 <body>
-
+  <!-- Contains the header : logo, title -->
   <section class="full-height timer-section">
-    <!--img class="tomato-pic-left" src="assets/img/tomato_left.png" alt="tomato juice picture"-->
     <div class="header-container">
       <a href="#">
         <img class="pomo-logo" src="assets/img/PomoHeroLogo.png" alt="pomo hero logo" href="#">
@@ -28,8 +29,8 @@
         <img class="banner" src="assets/img/PomoTitleB.png" alt="PomoHero Banner">
       </a>
     </div>
-    <hr>
 
+    <!-- Contains the slide-out tasklist -->
     <div id="side-tasks" class="sidenav">
       <a href="javascript:void(0)" class="close btn">&times;</a>
       <h1>TaskList</h1>
@@ -43,6 +44,7 @@
       </div>
     </div>
 
+    <!-- Contains the Pomodoro timer -->
     <div class="top-container">
       <div class="main-box">
         <i id="task-btn" class="fas fa-tasks fa-2x task-btn"></i>
@@ -50,6 +52,7 @@
       </div>
     </div>
 
+    <!-- Contains the current and next task of the user -->
     <div class="middle-container">
       <form>
         <label for="current">Current Task:</label><br>
@@ -60,6 +63,7 @@
     </div>
   </section>
   
+  <!-- Contains the instructions -->
   <section class="instructions-section full-height flex flex-column">
     <h2 class="instruct-head">Instructions</h2>
     <p id="instructions-para">
@@ -88,10 +92,12 @@
   <i id="up-arrow" class="fas fa-arrow-alt-circle-up fa-4x arrow-up-icon"></i>
   </section>
 
+  <!-- Contains the footer : Copyright for app name-->
   <div class="bottom-container">
     <p class="copy-right">© PomoHero 2021</p>
   </div>
 
+  <!-- Import js scripts -->
   <script src="js/main.js"></script>
   <script src="js/timer.js"></script>
   <script src="js/timerContainer.js"></script>
