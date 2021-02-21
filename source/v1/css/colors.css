@@ -1,0 +1,100 @@
+hr {
+  color: #79a3b1;
+}
+
+.timer-section {
+  background-color: #d0e8f2;
+}
+
+.timer-box {
+  background-color: #79a3b1;
+}
+
+#work-message {
+  color: #000;
+}
+
+.timer {
+  background-color: #79a3b1;
+}
+
+#time-display {
+  color: #165d81;
+}
+
+.middle-container {
+  background-color: #d0e8f2;
+}
+
+#current {
+  background-color: #fff;
+  color: black;
+  border-color: green;
+}
+
+#next {
+  background-color: #e7e2e2;
+  color: rgb(48, 46, 46);
+  border-color: #615e5e;
+}
+
+.custom-btn {
+  background: #d0e8f2;
+}
+
+.custom-btn:hover {
+  background-color: #2f70a8;
+}
+
+.bottom-container {
+  background-color: #d0e8f2;
+}
+
+.copy-right {
+  background-color: #d0e8f2;
+}
+
+.info-btn {
+  color: #405f69;
+}
+
+.info-btn:hover {
+  color: #213336;
+}
+
+.task-btn {
+  color: #405f69;
+}
+
+.task-btn:hover {
+  color: #213336;
+}
+
+.instruct-head {
+  color: #5b5b5b;
+}
+
+.instructions-section {
+  background-color: #f4f9f9;
+}
+
+#instructions-para,
+.arrow-up-icon {
+  color: #5b5b5b;
+}
+
+.arrow-up-icon:hover {
+  color: #184d47;
+}
+
+.sidenav {
+  background-color: #fff;
+}
+
+.btn {
+  color: #7e8080;
+}
+
+.btn:hover {
+  color: #000;
+}
