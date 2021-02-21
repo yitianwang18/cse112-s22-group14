@@ -5,7 +5,7 @@
 <br>
 
 **Opening**:  
-The standup meeting of Teamato was called to order at 3:00 PM PST on February 9, 2021 virtually via Zoom by Muhammad Z Khan.
+The standup meeting of Teamato was called to order at 3:00 PM PST on February 16, 2021 virtually via Zoom by Muhammad Z Khan.
 
 **Meeting Type**:  
 Standup
