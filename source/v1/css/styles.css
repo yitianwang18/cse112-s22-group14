@@ -1,8 +1,18 @@
+/*********************
+ * Styling HTML Tags *
+ *********************/
+
+/**
+ * Entire document body
+ */
 body {
   text-align: center;
   margin: 0;
 }
 
+/**
+ * Horizontal rule between header and Pomodoro Timer
+ */
 hr {
   color: #79a3b1;
   border-style: none;
@@ -11,10 +21,38 @@ hr {
   margin: 0;
 }
 
+/**
+ * All full size headers
+ */
 h1 {
   margin: 0;
 }
 
+/******************
+ * Fit one screen *
+ ******************/
+
+/**
+ * Lets the container cover one entire screen
+ */
+.full-height {
+  height: 100vh;
+}
+
+/**********************
+ * Styling Top Header *
+ **********************/
+
+/**
+ * Container for Header - includes logo and title
+ */
+.header-container {
+  padding: 10px 0;
+}
+
+/**
+ * PomoHero App Logo
+ */
 .pomo-logo {
   width: 90px;
   margin-top: -5px;
@@ -22,36 +60,60 @@ h1 {
   float: left;
 }
 
+/**
+ * Image of PomoHero title
+ */
 .banner {
   width: 250px;
   margin: 0 80px 0 0;
 }
 
-.header-container {
-  padding: 10px 0;
+/**************************
+ * Styling Navigation Bar *
+ **************************/
+
+/**
+ * Styling for information button
+ */
+.info-btn {
+  position: absolute;
+  right: 15px;
+  top: 115px;
+  border-radius: 15px;
+  color: #79a3b1;
+  opacity: 80%;
 }
 
+/**
+ * Styling for information button upon hover
+ */
+.info-btn:hover {
+  color: #456268;
+}
+
+/**************************
+ * Styling Pomodoro Timer *
+ **************************/
+
+/**
+ * Outer container for Pomodoro Timer
+ */
 .top-container {
   margin: 0 0 0 0;
   height: 500px;
   padding: 0 0 0 0;
 }
 
+/**
+ * Inner container for Pomodoro Timer
+ */
 .main-box {
   padding: 20px 0 20px 0;
 }
 
-.timer-section {
-  background-color: #d0e8f2;
-}
-
-.tomato-pic-left {
-  padding-top: 60vh;
-  left: -50px;
-  position: absolute;
-  width: 550px;
-}
-
+/**
+ * Container for Pomodoro Timer
+ */
 .timer-box {
   border-radius: 3px;
   background-color: #79a3b1;
@@ -62,6 +124,16 @@ h1 {
   padding: 20px 100px 30px 100px;
 }
 
+/**
+ * Color for timer container
+ */
+.timer-section {
+  background-color: #d0e8f2;
+}
+
+/**
+ * Message about the timer indicating works and breaks
+ */
 #work-message {
   font-size: 1.5rem;
   color: #000;
@@ -70,14 +142,23 @@ h1 {
   padding-bottom: 30px;
 }
 
+/**
+ * Color for timer
+ */
 .timer {
   background-color: #79a3b1;
 }
 
+/**
+ * Small tomatos denoting if Pomodoro is completed
+ */
 .pomo-count {
   width: 60px;
 }
 
+/**
+ * Styling for the timer
+ */
 #time-display {
   display: inline;
   color: #165d81;
@@ -86,6 +167,9 @@ h1 {
   border-style: solid;
 }
 
+/**
+ * Message about the number of Pomodoro Timers completed
+ */
 #pomos-completed {
   padding-top: 40px;
   font-family: "Montserrat", "Zapfino";
@@ -93,13 +177,9 @@ h1 {
   margin: 0;
 }
 
-.middle-container {
-  padding: 0 0 0 0;
-  margin: -55px 0 0 0;
-  background-color: #94eabb;
-  height: 200px;
-}
-
+/**
+ * Styling Start and End buttons
+ */
 .custom-btn {
   border-radius: 3px;
   background: #d0e8f2;
@@ -116,35 +196,36 @@ h1 {
   margin: 10px 30px 30px 10px;
 }
 
+/**
+ * Styling Start and End buttons upon hover
+ */
 .custom-btn:hover {
   background-color: #2f70a8;
 }
 
+/**
+ * Hiding buttons
+ */
+.hidden {
+  display: none;
+}
+
+/******************
+ * Styling Footer *
+ ******************/
+
+/**
+ * Container for footer at end of page
+ */
 .bottom-container {
   background-color: #d0e8f2;
   padding: -200px 0 0 0;
   height: 80px;
 }
 
-.center-column > p,
-ul {
-  text-align: left;
-}
-
-.footer-link {
-  font-family: "Montserrat";
-  color: #79a3b1;
-  font-size: 1.2rem;
-  font-weight: bold;
-  display: inline-block;
-  margin: 20px 20px;
-  text-decoration: none;
-}
-
-.footer-link:hover {
-  color: #456268;
-}
-
+/**
+ * Styling the copyright in footer
+ */
 .copy-right {
   background-color: #d0e8f2;
   margin: auto;
@@ -153,47 +234,31 @@ ul {
   font-family: "Montserrat";
 }
 
-.hidden {
-  display: none;
-}
+/************************
+ * Styling Instructions *
+ ************************/
 
-.full-height {
-  height: 100vh;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.info-btn {
-  position: absolute;
-  right: 15px;
-  top: 115px;
-  border-radius: 15px;
-  color: #79a3b1;
-  opacity: 80%;
-}
-
-.info-btn:hover {
-  color: #456268;
-}
-
-.instruct-head {
-  color: #5b5b5b;
-  font-size: 2.5rem;
-  margin: 30px 0 30px 0;
-}
-
+/**
+ * Container for instructions
+ */
 .instructions-section {
   font-family: "Montserrat";
   background-color: #f4f9f9;
   padding: 10px 0;
 }
 
+/**
+ * Styling the header in instructions section
+ */
+.instruct-head {
+  color: #5b5b5b;
+  font-size: 2.5rem;
+  margin: 30px 0 30px 0;
+}
+
+/**
+ * Paragraph of instructions within instructions section
+ */
 #instructions-para {
   color: #5b5b5b;
   font-weight: 900;
@@ -202,12 +267,32 @@ ul {
   text-align: left;
 }
 
+/**
+ * Styling up arrow button after instructions
+ */
 .arrow-up-icon {
   margin-left: 50%;
   width: 50px;
   color: #5b5b5b;
 }
 
+/**
+ * Styling up arrow button after instructions upon hover
+ */
 .arrow-up-icon:hover {
   color: #184d47;
+}
+
+/**
+ * Displays as block-level flex container
+ */
+.flex {
+  display: flex;
+}
+
+/**
+ * Specifies direction of flexible item
+ */
+.flex-column {
+  flex-direction: column;
 }
