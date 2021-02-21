@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { jest } from '@jest/globals';
 import { hello, sum } from './example.js';
+=======
+import {jest} from '@jest/globals';
+import {hello, sum} from './example.js';
+>>>>>>> merge-notify
 
 // tests for hello (msg)
 test('print hello msg', () => {
