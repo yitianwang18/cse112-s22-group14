@@ -1,0 +1,298 @@
+/*********************
+ * Styling HTML Tags *
+ *********************/
+
+/**
+ * Entire document body
+ */
+body {
+  text-align: center;
+  margin: 0;
+}
+
+/**
+ * Horizontal rule between header and Pomodoro Timer
+ */
+hr {
+  color: #79a3b1;
+  border-style: none;
+  border-top-style: solid;
+  border-width: 10px;
+  margin: 0;
+}
+
+/**
+ * All full size headers
+ */
+h1 {
+  margin: 0;
+}
+
+/******************
+ * Fit one screen *
+ ******************/
+
+/**
+ * Lets the container cover one entire screen
+ */
+.full-height {
+  height: 100vh;
+}
+
+/**********************
+ * Styling Top Header *
+ **********************/
+
+/**
+ * Container for Header - includes logo and title
+ */
+.header-container {
+  padding: 10px 0;
+}
+
+/**
+ * PomoHero App Logo
+ */
+.pomo-logo {
+  width: 90px;
+  margin-top: -5px;
+  margin-left: 3px;
+  float: left;
+}
+
+/**
+ * Image of PomoHero title
+ */
+.banner {
+  width: 250px;
+  margin: 0 80px 0 0;
+}
+
+/**************************
+ * Styling Navigation Bar *
+ **************************/
+
+/**
+ * Styling for information button
+ */
+.info-btn {
+  position: absolute;
+  right: 15px;
+  top: 115px;
+  border-radius: 15px;
+  color: #79a3b1;
+  opacity: 80%;
+}
+
+/**
+ * Styling for information button upon hover
+ */
+.info-btn:hover {
+  color: #456268;
+}
+
+/**************************
+ * Styling Pomodoro Timer *
+ **************************/
+
+/**
+ * Outer container for Pomodoro Timer
+ */
+.top-container {
+  margin: 0 0 0 0;
+  height: 500px;
+  padding: 0 0 0 0;
+}
+
+/**
+ * Inner container for Pomodoro Timer
+ */
+.main-box {
+  padding: 20px 0 20px 0;
+}
+
+/**
+ * Container for Pomodoro Timer
+ */
+.timer-box {
+  border-radius: 3px;
+  background-color: #79a3b1;
+  height: auto;
+  width: auto;
+  max-width: 480px;
+  margin: 50px auto;
+  padding: 20px 100px 30px 100px;
+}
+
+/**
+ * Color for timer container
+ */
+.timer-section {
+  background-color: #d0e8f2;
+}
+
+/**
+ * Message about the timer indicating works and breaks
+ */
+#work-message {
+  font-size: 1.5rem;
+  color: #000;
+  font-family: "Montserrat", "Zapfino";
+  font-weight: 900;
+  padding-bottom: 30px;
+}
+
+/**
+ * Color for timer
+ */
+.timer {
+  background-color: #79a3b1;
+}
+
+/**
+ * Small tomatos denoting if Pomodoro is completed
+ */
+.pomo-count {
+  width: 60px;
+}
+
+/**
+ * Styling for the timer
+ */
+#time-display {
+  display: inline;
+  color: #165d81;
+  font-size: 5rem;
+  padding: 10px 30px;
+  border-style: solid;
+}
+
+/**
+ * Message about the number of Pomodoro Timers completed
+ */
+#pomos-completed {
+  padding-top: 40px;
+  font-family: "Montserrat", "Zapfino";
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/**
+ * Styling Start and End buttons
+ */
+.custom-btn {
+  border-radius: 3px;
+  background: #d0e8f2;
+  height: 45px;
+  line-height: 40px;
+  width: 150px;
+  font-family: "Times New Roman";
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin: 10px 30px 30px 10px;
+}
+
+/**
+ * Styling Start and End buttons upon hover
+ */
+.custom-btn:hover {
+  background-color: #2f70a8;
+}
+
+/**
+ * Hiding buttons
+ */
+.hidden {
+  display: none;
+}
+
+/******************
+ * Styling Footer *
+ ******************/
+
+/**
+ * Container for footer at end of page
+ */
+.bottom-container {
+  background-color: #d0e8f2;
+  padding: -200px 0 0 0;
+  height: 80px;
+}
+
+/**
+ * Styling the copyright in footer
+ */
+.copy-right {
+  background-color: #d0e8f2;
+  margin: auto;
+  padding: 80px 20px 20px 20px;
+  font-weight: 900;
+  font-family: "Montserrat";
+}
+
+/************************
+ * Styling Instructions *
+ ************************/
+
+/**
+ * Container for instructions
+ */
+.instructions-section {
+  font-family: "Montserrat";
+  background-color: #f4f9f9;
+  padding: 10px 0;
+}
+
+/**
+ * Styling the header in instructions section
+ */
+.instruct-head {
+  color: #5b5b5b;
+  font-size: 2.5rem;
+  margin: 30px 0 30px 0;
+}
+
+/**
+ * Paragraph of instructions within instructions section
+ */
+#instructions-para {
+  color: #5b5b5b;
+  font-weight: 900;
+  font-size: 1.1rem;
+  padding: 0 20%;
+  text-align: left;
+}
+
+/**
+ * Styling up arrow button after instructions
+ */
+.arrow-up-icon {
+  margin-left: 50%;
+  width: 50px;
+  color: #5b5b5b;
+}
+
+/**
+ * Styling up arrow button after instructions upon hover
+ */
+.arrow-up-icon:hover {
+  color: #184d47;
+}
+
+/**
+ * Displays as block-level flex container
+ */
+.flex {
+  display: flex;
+}
+
+/**
+ * Specifies direction of flexible item
+ */
+.flex-column {
+  flex-direction: column;
+}
