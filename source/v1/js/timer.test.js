@@ -79,7 +79,7 @@ test('Start / Reset button Toggle', () => {
 
     //Test start button and reset button initialization
     expect(start_btn.innerText).toBe("Start Pomo!");
-    expect(reset_btn.innerText).toBe("Reset Pomo");
+    expect(reset_btn.innerText).toBe("Reset Pomo!");
 
     expect(start_btn.classList.contains("hidden")).toBe(false);
     expect(reset_btn.classList.contains("hidden")).toBe(true);
