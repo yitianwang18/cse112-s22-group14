@@ -5,6 +5,6 @@ We compiled all these thought to define the approach we will take for our next s
 
 ## What went well, What could have been done better and What actions we can take to do better
 
-![Software first screen](../misc/img/retro.png)           ![Software first screen](../misc/img/action.png =1000)
+![Software first screen](../misc/img/retro.png)            <img src="../misc/img/action.png" width="100px">
 
 
