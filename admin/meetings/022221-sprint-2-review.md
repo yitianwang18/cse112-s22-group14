@@ -25,6 +25,23 @@ The software which we have shipped as a group is something that we all are proud
 
 We are also aware that our team leaders have given in their one hundred percent with their continuous supervision, help, and valuable insights. We have come closer as a team, trusting and working with each other, and growing together in the process.
 
+### Team Member Efforts
+
+**Muhammad Z Khan:**  
+
+**Xavier:**  
+
+**James Zhao:**  
+
+**Ivan Robles:** Worked with Yash and Xavier on the design for the MVP - including layout of the entire page, button placements, and timer display. Designed several different high fidelity designs, did research on how colors impacted focus and concentration, created graphic designs for the logo and the banner for the web page and chose color palettes for the background. Also implemented CSS styling by working on the entire CSS file, adjusting text and background colors, positions and sizes of containers and texts, etc.
+
+**Yash Shah:** Worked with Ivan and Xavier on the design for the MVP. Also wrote down the instructions that would be shown up on the website. Added CSS functionality like borders, padding, and margins. Documented entire CSS source code with comments and grouped classes for the same container together using commented dividers. Also made different design prototypes for how our app should look for the beta sprint. Also implemented front page and slide out task list in HTML and CSS for the development team to add JavaScript functionality to.
+
+**Haaris Waleh:** Did mob programming along with the other developers - MZ and James. Helped lay down the rules for style guidelines and enforcement. Primary implementor of using the Notification API which involved calling it using a new Notification object, adding audio sounds to be played after breaks and work sessions, as well as testing whether Notifications worked properly.
+
+**Luke:** Was the primary builder for the pipeline. Handled the entire setup and maintenance of the pipeline, including a linting procedure using the GitHub Super Linter, a testing framework (Jest), and document generation with JSDoc. Also worked on handling merge conflicts for the Pull Requests from the dev and the design branches, as well as hosting of the app on Firebase. Planned on how the Git Flow will change for the next sprint after talking with team mentor and the Professor.
+
+
 ### Current backlog
 The current central backlog includes the implementation of task list functionality, which will enable the user to add and delete tasks within the app instead of having to use an external software to manage work. This will greatly minimize unintentional investments of time.
 
