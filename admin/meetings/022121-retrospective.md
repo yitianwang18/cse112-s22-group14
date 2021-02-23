@@ -5,6 +5,6 @@ We compiled all these thought to define the approach we will take for our next s
 
 ## What went well & What could have been done better
 
-![Software first screen](../misc/img/sprint2first.png)
+![Software first screen](../misc/img/retro.png)
 
 
