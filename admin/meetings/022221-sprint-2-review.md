@@ -29,7 +29,7 @@ We are also aware that our team leaders have given in their one hundred percent 
 
 **Muhammad Z Khan:** As one of the managers, my duties were to oversee the whole team while focusing more on the development part. In the early weeks, me and Xavier, the other manager, took care of the logistical stuff such as coordinating with the team to decide meeting times, leading those meetings etc. After we were done with all the logistics and planning, I partnered with the dev team and took part in mob coding the javascript aspect of our timerContainer Custom Components. Specifically, I implemented the ```getTimeRemaining()``` function and the ```progressState()``` function. I also wrote the tests for our Custom Web Components i.e. the timerDisplay and the timerContainer. Lastly, I was also responsible of creating and updating our team's ADRs.
 
-**Xavier:**  
+**Xavier:** Worked with Ivan and Yash in creating the HTML and CSS files. As a team, the 3 of us further developed upon the finalized component layout for the product (in a way that helped us to keep the longterm design in mind). Helped to realize the designs in terms of CSS styling, and some javascript components. As a coordinator, I worked with my other coordinator, MZ, in delegating roles and helping in whichever "department" needed aid. Helped to facilitate Sunday standup meetings and Retros.
 
 **James Zhao:**  
 
