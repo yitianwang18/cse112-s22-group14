@@ -101,7 +101,14 @@ body {
  */
 #side-tasks > h1 {
   font-family: 'Alegreya', serif;
-  padding: 60px;
+  padding: 30px;
+  position: fixed;
+}
+
+#side-tasks > hr {
+  margin: 50px 0;
+  border: 1px solid rgb(133, 129, 129);
+  position: fixed;
 }
 
 /**
@@ -121,6 +128,20 @@ body {
   right: 0;
   margin-right: 25px;
 }
+
+input[type=text] {
+  width: 450px;
+  margin: 5px;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+
 
 /**************************
  * Styling Pomodoro Timer *
@@ -236,6 +257,7 @@ body {
  */
 .middle-container > div {
   width: 450px;
+  margin: 0 5px;
   padding: 10px 20px;
   display: inline-block;
   border: 2px solid;
@@ -243,6 +265,12 @@ body {
   box-sizing: border-box;
   font-size: 1rem;
   font-weight: normal;
+}
+
+.check {
+  text-decoration: none;
+  font-size: 2rem;
+  position: absolute;
 }
 
 /******************
