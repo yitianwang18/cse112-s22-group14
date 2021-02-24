@@ -36,8 +36,8 @@ body {
  * PomoHero App Logo
  */
 .pomo-logo {
-  width: 90px;
-  margin-top: -15px;
+  width: 45px;
+  margin-left: 5px;
   float: left;
 }
 
@@ -59,7 +59,7 @@ body {
 .info-btn {
   position: absolute;
   right: 15px;
-  top: 115px;
+  top: 90px;
   border-radius: 15px;
   opacity: 80%;
 }
@@ -71,7 +71,7 @@ body {
   margin-right: 50px;
   position: absolute;
   right: 15px;
-  top: 115px;
+  top: 90px;
   border-radius: 15px;
   opacity: 80%;
 }
@@ -234,15 +234,15 @@ body {
 /**
  * Input field for displaying task description
  */
-input[type=text] {
+.middle-container > div {
   width: 450px;
   padding: 10px 20px;
-  margin: 8px 0;
   display: inline-block;
   border: 2px solid;
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 1rem;
+  font-weight: normal;
 }
 
 /******************
