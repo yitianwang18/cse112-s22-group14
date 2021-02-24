@@ -1,0 +1,27 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Build
+        run: |
+          # make file executable
+          chmod +x "${GITHUB_WORKSPACE}/scripts/build.sh"
+
+          "${GITHUB_WORKSPACE}/scripts/build.sh"
+          cd build
+          ls -al
+
+      - name: Archive Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: archives/
