@@ -4,7 +4,7 @@
 *Minimum:*
 | Chrome | Edge | Firefox | Internet Explorer | Opera | Safari |
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|22|14|22|No|25|7|
+|22|No|63|No|25|No|
 
 This is the very first version of PomoHero, a web application to help users implement the Pomodoro Technique and find themselves master time management and focus undistractedly on their tasks.
 
@@ -16,4 +16,4 @@ With features like a self-working timer, an option to end your working session, 
 Do keep in mind that our web application will not allow to, and even force you (in a good way) to not get distracted while working. If you do get distracted, fret not. There is a reset button to restart your current Pomodoro.
 This encourages you to not just pause and play the timer whenever you feel like, and it is a way of punishing you by making you work again for the time that you did spend working before getting distracted.
 
-To go to the website, [Click here](https://xavierkst.github.io/PomoHeroTest/#)
+To go to the website, [Click here](https://pomo-hero-dev.web.app/)

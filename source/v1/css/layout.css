@@ -1,0 +1,368 @@
+/*********************
+ * Styling HTML Tags *
+ *********************/
+
+/**
+ * Entire document body
+ */
+body {
+  text-align: center;
+  margin: 0;
+}
+
+/******************
+ * Fit one screen *
+ ******************/
+
+/**
+ * Lets the container cover one entire screen
+ */
+.full-height {
+  height: 100vh;
+}
+
+/**********************
+ * Styling Top Header *
+ **********************/
+
+/**
+ * Container for Header - includes logo and title
+ */
+.header-container {
+  padding: 10px 0;
+}
+
+/**
+ * PomoHero App Logo
+ */
+.pomo-logo {
+  width: 45px;
+  margin-left: 5px;
+  float: left;
+}
+
+/**
+ * Image of PomoHero title
+ */
+.banner {
+  width: 250px;
+  margin: 0 80px 0 0;
+}
+
+/**************************
+ * Styling Navigation Bar *
+ **************************/
+
+/**
+ * Styling for information button
+ */
+.info-btn {
+  position: absolute;
+  right: 15px;
+  top: 90px;
+  border-radius: 15px;
+  opacity: 80%;
+}
+
+/**
+ * Styling for task button
+ */
+.task-btn {
+  margin-right: 50px;
+  position: absolute;
+  right: 15px;
+  top: 90px;
+  border-radius: 15px;
+  opacity: 80%;
+}
+
+/***************************
+ * Styling Slide-out tasks *
+ ***************************/
+
+/**
+ * Container for slide-out tasks
+ */
+.sidenav {
+  padding: 50px;
+  height: 87.4vh;
+  display: none;
+  width: auto;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+/**
+ * Styling header for slide-out tasks
+ */
+#side-tasks > h1 {
+  font-family: 'Alegreya', serif;
+  padding: 30px;
+  position: fixed;
+}
+
+#side-tasks > hr {
+  margin: 50px 0;
+  border: 1px solid rgb(133, 129, 129);
+  position: fixed;
+}
+
+/**
+ * All buttons within slide-out tasks
+ */
+.btn {
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+/**
+ * Close button inside slide-out tasks
+ */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  margin-right: 25px;
+}
+
+input[type=text] {
+  width: 450px;
+  margin: 5px;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+
+
+/**************************
+ * Styling Pomodoro Timer *
+ **************************/
+
+/**
+ * Outer container for Pomodoro Timer
+ */
+.top-container {
+  margin: auto;
+  height: auto;
+  padding: auto;
+}
+
+/**
+ * Inner container for Pomodoro Timer
+ */
+.main-box {
+  padding: 20px 0 20px 0;
+}
+
+/**
+ * Container for Pomodoro Timer
+ */
+.timer-box {
+  border-radius: 3px;
+  height: auto;
+  width: auto;
+  max-width: 450px;
+  margin: 45px auto 0 auto;
+  padding: 20px 100px 15px 100px;
+}
+
+/**
+ * Message about the timer indicating works and breaks
+ */
+#work-message {
+  font-size: 1.5rem;
+  font-family: 'Alegreya', serif;
+  padding-bottom: 30px;
+}
+
+/**
+ * Styling for the timer
+ */
+#time-display {
+  display: inline;
+  font-size: 4rem;
+  padding: 10px 30px;
+  border-style: solid;
+}
+
+/**
+ * Message about the number of Pomodoro Timers completed
+ */
+#pomos-completed {
+  padding-top: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin: 0 0 -10px -10px;
+}
+
+/**
+ * Small tomatos denoting if Pomodoro is completed
+ */
+.pomo-count {
+  width: 50px;
+}
+
+/**
+ * Styling Start and End buttons
+ */
+.custom-btn {
+  border-radius: 3px;
+  height: 40px;
+  line-height: 40px;
+  width: 150px;
+  font-family: 'Alegreya', serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 30px 15px 10px;
+}
+
+/**
+ * Hiding buttons
+ */
+.hidden {
+  display: none;
+}
+
+/**************************
+ * Styling Viewable Tasks *
+ **************************/
+
+/**
+ * Container for displaying current and next task
+ */
+.middle-container {
+  padding: 10px;
+  margin: auto;
+  height: auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/**
+ * Input field for displaying task description
+ */
+.middle-container > div {
+  width: 450px;
+  margin: 0 5px;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.check {
+  text-decoration: none;
+  font-size: 2rem;
+  position: absolute;
+}
+
+/******************
+ * Styling Footer *
+ ******************/
+
+/**
+ * Container for footer at end of page
+ */
+.bottom-container {
+  padding: -200px 0 0 0;
+  height: 80px;
+}
+
+/**
+ * Styling the copyright in footer
+ */
+.copy-right {
+  margin: auto;
+  padding: 80px 20px 20px 20px;
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif;
+}
+
+/************************
+ * Styling Instructions *
+ ************************/
+
+/**
+ * Container for instructions
+ */
+.instructions-section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px 100px 30px 100px;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 0;
+}
+
+/**
+ * Styling the header in instructions section
+ */
+.instruct-head {
+  font-size: 2.5rem;
+  font-family: 'Alegreya', serif;
+  margin: 30px 0 30px 0;
+}
+
+/**
+ * Paragraph of instructions within instructions section
+ */
+#instructions-para {
+  font-weight: 900;
+  font-size: 1.1rem;
+  padding: 0 20%;
+  text-align: left;
+}
+
+/**
+ * Selecting all paragraphs inside instructions-para container
+ */
+#instructions-para ~ p {
+  margin: 20px;
+  text-align: left;
+  line-height: 25px;
+}
+
+/**
+ * Selecting all li's whose parent is ul inside instructions-para container
+ */
+#instructions-para ~ ul > li {
+  padding: 5px;
+}
+
+/**
+ * Displays as block-level flex container
+ */
+.flex {
+  display: flex;
+}
+
+/**
+ * Specifies direction of flexible item
+ */
+.flex-column {
+  flex-direction: column;
+}
+
+/**
+ * Styling up arrow button after instructions
+ */
+.arrow-up-icon {
+  margin: auto;
+  width: 50px;
+}
