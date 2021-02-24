@@ -16,9 +16,7 @@ jobs:
           # make file executable
           chmod +x "${GITHUB_WORKSPACE}/scripts/build.sh"
 
-          "${GITHUB_WORKSPACE}/scripts/build.sh"
-          cd build
-          ls -al
+          sh "${GITHUB_WORKSPACE}/scripts/build.sh"
 
       - name: Archive Build Artifact
         uses: actions/upload-artifact@v2
