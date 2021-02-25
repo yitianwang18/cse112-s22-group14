@@ -1,4 +1,5 @@
 import { TimerContainer } from "./timerContainer.js";
+import { TaskList } from "./taskList.js";
 window.addEventListener("DOMContentLoaded", () => {
     // Code for Up arrow scroll-up functionality -- not sure where to put this
     const TIMER_SECTION_TARGET = ".timer-section";
