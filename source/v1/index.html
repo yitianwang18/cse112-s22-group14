@@ -15,7 +15,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet-body">
 
   <!-- Import icons for buttons -->
-  <script src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>    <!-- <script src="https://use.fontawesome.com/e3f6f09fc4.js"></script> -->
+  <script src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://use.fontawesome.com/e3f6f09fc4.js"></script> -->
 </head>
 
 <body>
@@ -31,67 +32,70 @@
     </div>
 
     <!-- Contains the slide-out tasklist -->
-    <div id="side-tasks" class="sidenav">
-      <a href="javascript:void(0)" class="close btn">&times;</a>
-      <div id="task-title">
-        <h1>TaskList</h1>
-        <div id="add-task">
-          <input type="text" id="add" name="task" placeholder="Enter task description...">
-          <i id="add-btn" class="fas fa-plus-square fa-2x btn"></i>
+    <template>
+      <div id="side-tasks" class="sidenav">
+        <a href="javascript:void(0)" class="close btn">&times;</a>
+        <div id="task-title">
+          <h1>TaskList</h1>
+          <div id="add-task">
+            <input type="text" id="add" name="task" placeholder="Enter task description...">
+            <i id="add-btn" class="fas fa-plus-square fa-2x btn"></i>
+          </div>
+          <hr>
         </div>
-        <hr>
-      </div>
-      <div id="all-tasks">
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
+        <div id="all-tasks">
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <!-- <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div> -->
         </div>
-        <!-- <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div> -->
-      </div>
-    </div>
+    </template>
+    <task-list></task-list>
+
 
     <!-- Contains the Pomodoro timer -->
     <div class="top-container">
@@ -112,35 +116,35 @@
       <h3>Next task:</h3>
       <div id="next">
         Do that
-      </div> 
+      </div>
     </div>
   </section>
-  
+
   <!-- Contains the instructions -->
   <section class="instructions-section flex flex-column">
     <h2 class="instruct-head">Instructions</h2>
     <p id="instructions-para">
-      <h3>How To Use</h3>
-      <ul>
-        <li>List all of the tasks you want to get done for the day</li>
-        <li>Click on “Start” when you are ready</li>
-        <li>Note: Once started, there is no going back. The timer won’t stop</li>
-        <li>Take a 5-minute break after every Pomodoro and a 30-minute break after every 4
-          Pomodoros</li>
-        <li>Get distracted at your own risk. If distracted, click “Restart” and you will have to start
-          your current interval from the very beginning</li>
-        <li>Have other jobs to do? Hit “End Session” to log out</li>
-      </ul>
+    <h3>How To Use</h3>
+    <ul>
+      <li>List all of the tasks you want to get done for the day</li>
+      <li>Click on “Start” when you are ready</li>
+      <li>Note: Once started, there is no going back. The timer won’t stop</li>
+      <li>Take a 5-minute break after every Pomodoro and a 30-minute break after every 4
+        Pomodoros</li>
+      <li>Get distracted at your own risk. If distracted, click “Restart” and you will have to start
+        your current interval from the very beginning</li>
+      <li>Have other jobs to do? Hit “End Session” to log out</li>
+    </ul>
 
-      <h3>Pomodoro Technique</h3>
-      <p>
-        The Pomodoro technique is a scientifically proven way to help increase productivity. 
-        It is a way to work with time instead of struggling against it. 
-        It is a smart method for handling interruptions, 
-        meeting deadlines, 
-        improving content of work, 
-        and reducing useless work sessions.
-      </p>
+    <h3>Pomodoro Technique</h3>
+    <p>
+      The Pomodoro technique is a scientifically proven way to help increase productivity.
+      It is a way to work with time instead of struggling against it.
+      It is a smart method for handling interruptions,
+      meeting deadlines,
+      improving content of work,
+      and reducing useless work sessions.
+    </p>
     </p>
     <div class="instruct-bottom">
       <i id="up-arrow" class="fas fa-arrow-alt-circle-up fa-4x arrow-up-icon"></i>
@@ -156,6 +160,6 @@
   <script type="module" src="js/main.js"></script>
   <!-- <script src="js/timer.js"></script>
   <script src="js/timerContainer.js"></script> -->
- </body>
+</body>
 
 </html>
