@@ -35,7 +35,10 @@ class TaskList extends HTMLElement {
 
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn");
-        o_close_button.innerText = "×";
+        o_close_button.innerHTML = "&times;";
+
+        let o_task_title_wrapper = document.createElement("div");
+        o_task_title_wrapper.id = "task-title";
 
 
         let o_tasklist_title = document.createElement("h1");
@@ -61,10 +64,12 @@ class TaskList extends HTMLElement {
 
         let o_hr = document.createElement("hr");
 
-        let o_tasks = document.createElement("div");
-        o_tasks.id = "tasks";
+        o_task_title_wrapper.append(o_tasklist_title, o_add_task, o_hr);
 
-        o_wrapper_obj.append(o_close_button, o_tasklist_title, o_add_task, o_hr, o_tasks);
+        let o_tasks = document.createElement("div");
+        o_tasks.id = "all-tasks";
+
+        o_wrapper_obj.append(o_close_button, o_task_title_wrapper, o_tasks);
         this.append(o_wrapper_obj);
 
         // update the + icon, as it's by default not initialized
@@ -144,7 +149,7 @@ class TaskList extends HTMLElement {
         o_task.setAttribute("taskname", s_task_name);
         o_task.setAttribute("taskid", n_task_id);
         o_task.bindHandleDelete(() => { console.log(this); this.removeItem(n_task_id) });
-        this.querySelector("#tasks").append(o_task);
+        this.querySelector("#all-tasks").append(o_task);
     }
 
     /**

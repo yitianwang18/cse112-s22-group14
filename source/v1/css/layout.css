@@ -84,12 +84,12 @@ body {
  * Container for slide-out tasks
  */
 .sidenav {
-  padding: 50px;
-  height: 87.4vh;
-  display: none;
+  padding: 0 50px;
+  height: 100vh;
+  /* display: none; */
   width: auto;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   right: 0;
   overflow-x: hidden;
@@ -99,16 +99,17 @@ body {
 /**
  * Styling header for slide-out tasks
  */
-#side-tasks > h1 {
+#side-tasks  div > h1 {
   font-family: 'Alegreya', serif;
   padding: 30px;
-  position: fixed;
 }
 
-#side-tasks > hr {
-  margin: 50px 0;
+/**
+ * Horizontal rule used to separate add and show tasks
+ */
+#task-title hr {
+  margin: 30px 0;
   border: 1px solid rgb(133, 129, 129);
-  position: fixed;
 }
 
 /**
@@ -129,6 +130,9 @@ body {
   margin-right: 25px;
 }
 
+/**
+ * Input fields in order to show and add tasks
+ */
 input[type=text] {
   width: 450px;
   margin: 5px;
@@ -141,7 +145,15 @@ input[type=text] {
   font-weight: normal;
 }
 
-
+/**
+ * Container displaying all of the user tasks
+ */
+#all-tasks {
+  height: 60vh;
+  margin: 10px;
+  padding: 10px;
+  overflow: auto;
+}
 
 /**************************
  * Styling Pomodoro Timer *
@@ -267,6 +279,9 @@ input[type=text] {
   font-weight: normal;
 }
 
+/**
+ * Check button beside the current task
+ */
 .check {
   text-decoration: none;
   font-size: 2rem;

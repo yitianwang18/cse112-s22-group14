@@ -75,7 +75,7 @@ class TimerContainer extends HTMLElement {
      * @static
      * @type {string[]}
      */
-    static A_STATE_MESSAGES = ["Start working!", "Take a quick break!", "Take a long break!", "Ready to focus?"];
+    static A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - Good job!", "Long Break - Relax and unwind", "Ready to focus?"];
 
     /**
      * Delay of interval
@@ -128,9 +128,17 @@ class TimerContainer extends HTMLElement {
     //     o_end_btn.addEventListener("click", this.handleEndSession.bind(this));
 
     //     // shortcut to instructions
-    //     let o_information = document.createElement("button");
-    //     o_information.className = "info-btn";
-    //     o_information.innerText = "i";
+    //     // let o_information = document.createElement("button");
+    //     // o_information.className = "info-btn";
+    //     // o_information.innerText = "i";
+    //     // o_information.setAttribute("target", TimerContainer.S_INSTRUCTIONS_TARGET);
+    //     // o_information.addEventListener("click", this.handleInfoBtnPressed.bind(this));
+    //     //
+
+    //     // shortcut to instructions
+    //     let o_information = document.createElement("i");
+    //     o_information.className = "info-btn fas fa-info-circle fa-2x";
+    //     // o_information.innerText = "";
     //     o_information.setAttribute("target", TimerContainer.S_INSTRUCTIONS_TARGET);
     //     o_information.addEventListener("click", this.handleInfoBtnPressed.bind(this));
 
@@ -185,17 +193,9 @@ class TimerContainer extends HTMLElement {
         o_end_btn.addEventListener("click", this.handleEndSession.bind(this));
 
         // shortcut to instructions
-        // let o_information = document.createElement("button");
-        // o_information.className = "info-btn";
-        // o_information.innerText = "i";
-        // o_information.setAttribute("target", TimerContainer.S_INSTRUCTIONS_TARGET);
-        // o_information.addEventListener("click", this.handleInfoBtnPressed.bind(this));
-        //
-
-        // shortcut to instructions
-        let o_information = document.createElement("i");
-        o_information.className = "info-btn fas fa-info-circle fa-2x";
-        // o_information.innerText = "";
+        let o_information = document.createElement("button");
+        o_information.className = "info-btn";
+        o_information.innerText = "i";
         o_information.setAttribute("target", TimerContainer.S_INSTRUCTIONS_TARGET);
         o_information.addEventListener("click", this.handleInfoBtnPressed.bind(this));
 
@@ -337,7 +337,7 @@ class TimerContainer extends HTMLElement {
                 }
                 this.renderComponents();
             }, TimerContainer.N_MILLI_DELAY);
-            this.progressState();
+            this.progressState();     
         }
     }
 
