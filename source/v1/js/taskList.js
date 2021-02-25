@@ -64,7 +64,10 @@ class TaskList extends HTMLElement {
 
         let o_hr = document.createElement("hr");
 
-        o_task_title_wrapper.append(o_tasklist_title, o_add_task, o_hr);
+        let o_existing_tasks_title = document.createElement("div")
+        o_existing_tasks_title.innerHTML = "Tasks to finish:";
+
+        o_task_title_wrapper.append(o_tasklist_title, o_add_task, o_hr, o_existing_tasks_title);
 
         let o_tasks = document.createElement("div");
         o_tasks.id = "all-tasks";
@@ -154,7 +157,7 @@ class TaskList extends HTMLElement {
 
     /**
      * Removes a specific task from the task list(from dom and data structure)
-     * @param {Number} n_task_id id of task to remove 
+     * @param {Number} n_task_id id of task to remove
      */
     removeItem(n_task_id) {
         let s_string_id = String(n_task_id);
@@ -165,8 +168,8 @@ class TaskList extends HTMLElement {
         delete this.o_tasks[n_task_id];
 
         // attribute query selector
-        this.querySelector(`#tasks task-item[taskid='${n_task_id}']`).remove();
-
+        this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
+        this.n_next_task_id--;
         return item;
     }
 
