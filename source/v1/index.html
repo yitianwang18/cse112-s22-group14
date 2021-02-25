@@ -38,7 +38,7 @@
         <div id="task-title">
           <h1>TaskList</h1>
           <div id="add-task">
-            <input type="text" id="1" name="task" placeholder="Enter task description...">
+            <input type="text" id="add" name="task" placeholder="Enter task description...">
             <i id="add-btn" class="fas fa-plus-square fa-2x btn"></i>
           </div>
           <hr>
@@ -49,49 +49,49 @@
             <i class="fas fa-trash-alt fa-2x btn"></i>
           </div>
           <!-- <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div>
-        <div id="show-tasks">
-          <input type="text" id="1" name="task" placeholder="Blah blah...">
-          <i class="fas fa-trash-alt fa-2x btn"></i>
-        </div> -->
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div>
+          <div id="show-tasks">
+            <input type="text" id="1" name="task" placeholder="Blah blah...">
+            <i class="fas fa-trash-alt fa-2x btn"></i>
+          </div> -->
         </div>
     </template>
     <task-list></task-list>
@@ -101,6 +101,7 @@
     <div class="top-container">
       <div class="main-box">
         <i id="task-btn" class="fas fa-tasks fa-2x task-btn"></i>
+        <!-- <i id="info-btn" class="fas fa-info-circle fa-2x info-btn"></i> -->
         <timer-element></timer-element>
       </div>
     </div>
@@ -120,7 +121,7 @@
   </section>
 
   <!-- Contains the instructions -->
-  <section class="instructions-section full-height flex flex-column">
+  <section class="instructions-section flex flex-column">
     <h2 class="instruct-head">Instructions</h2>
     <p id="instructions-para">
     <h3>How To Use</h3>
@@ -145,13 +146,13 @@
       and reducing useless work sessions.
     </p>
     </p>
-    <i id="up-arrow" class="fas fa-arrow-alt-circle-up fa-4x arrow-up-icon"></i>
+    <div class="instruct-bottom">
+      <i id="up-arrow" class="fas fa-arrow-alt-circle-up fa-4x arrow-up-icon"></i>
+    </div>
   </section>
 
   <!-- Contains the footer : Copyright for app name-->
-  <div class="bottom-container">
-    <p class="copy-right">© PomoHero 2021</p>
-  </div>
+  <p class="copy-right">© PomoHero 2021</p>
 
   <audio id="notifs" src="assets/audio/notif_tone.mp3"></audio>
 

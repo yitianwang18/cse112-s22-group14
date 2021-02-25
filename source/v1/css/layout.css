@@ -57,11 +57,17 @@ body {
  * Styling for information button
  */
 .info-btn {
+  width: 30px;
+  height: 30px;
   position: absolute;
   right: 15px;
   top: 90px;
-  border-radius: 15px;
+  border-radius: 50%;
   opacity: 80%;
+  font-family: 'Calibri', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
 }
 
 /**
@@ -86,7 +92,7 @@ body {
 .sidenav {
   padding: 0 50px;
   height: 100vh;
-  /* display: none; */
+  display: none;
   width: auto;
   position: absolute;
   z-index: 2;
@@ -182,7 +188,7 @@ input[type=text] {
   border-radius: 3px;
   height: auto;
   width: auto;
-  max-width: 450px;
+  max-width: 380px;
   margin: 45px auto 0 auto;
   padding: 20px 100px 15px 100px;
 }
@@ -220,25 +226,27 @@ input[type=text] {
  * Small tomatos denoting if Pomodoro is completed
  */
 .pomo-count {
-  width: 50px;
+  margin: 5px 5px 20px 5px;
+  width: 25px;
 }
 
 /**
  * Styling Start and End buttons
  */
 .custom-btn {
-  border-radius: 3px;
+  border-radius: 10px;
   height: 40px;
   line-height: 40px;
   width: 150px;
   font-family: 'Alegreya', serif;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: normal;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
   text-align: center;
   margin: 0 30px 15px 10px;
+  border: 2px solid;
 }
 
 /**
@@ -256,7 +264,7 @@ input[type=text] {
  * Container for displaying current and next task
  */
 .middle-container {
-  padding: 10px;
+  padding: 10px 10px 40px 10px;
   margin: auto;
   height: auto;
   font-family: 'Roboto', sans-serif;
@@ -288,28 +296,6 @@ input[type=text] {
   position: absolute;
 }
 
-/******************
- * Styling Footer *
- ******************/
-
-/**
- * Container for footer at end of page
- */
-.bottom-container {
-  padding: -200px 0 0 0;
-  height: 80px;
-}
-
-/**
- * Styling the copyright in footer
- */
-.copy-right {
-  margin: auto;
-  padding: 80px 20px 20px 20px;
-  font-weight: 900;
-  font-family: 'Roboto', sans-serif;
-}
-
 /************************
  * Styling Instructions *
  ************************/
@@ -318,20 +304,19 @@ input[type=text] {
  * Container for instructions
  */
 .instructions-section {
-  max-width: 1000px;
+  max-height: 100vh;
   margin: auto;
-  padding: 20px 100px 30px 100px;
   font-family: 'Roboto', sans-serif;
-  padding: 10px 0;
 }
 
 /**
  * Styling the header in instructions section
  */
 .instruct-head {
+  margin-top: 0;
+  padding: 15px;
   font-size: 2.5rem;
   font-family: 'Alegreya', serif;
-  margin: 30px 0 30px 0;
 }
 
 /**
@@ -375,9 +360,31 @@ input[type=text] {
 }
 
 /**
+ * Styling the up arrow container
+ */
+.instruct-bottom {
+  padding: 5px;
+}
+
+/**
  * Styling up arrow button after instructions
  */
 .arrow-up-icon {
   margin: auto;
   width: 50px;
+}
+
+/******************
+ * Styling Footer *
+ ******************/
+
+/**
+ * Styling the copyright in footer
+ */
+.copy-right {
+  position: relative;
+  padding: 30px;
+  margin: auto;
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif;
 }
