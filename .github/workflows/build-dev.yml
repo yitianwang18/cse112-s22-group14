@@ -21,5 +21,24 @@ jobs:
       - name: Archive Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: build
+          name: dev-build
           path: build
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dev-build
+          path: build
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@v2.0.0
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: pomo-hero-dev
