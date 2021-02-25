@@ -75,7 +75,7 @@ class TimerContainer extends HTMLElement {
      * @static
      * @type {string[]}
      */
-    static A_STATE_MESSAGES = ["Start working!", "Take a quick break!", "Take a long break!", "Ready to focus?"];
+    static A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - Good job!", "Long Break - Relax and unwind", "Ready to focus?"];
 
     /**
      * Delay of interval
