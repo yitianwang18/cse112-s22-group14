@@ -5,24 +5,29 @@ hr {
   color: #79a3b1;
 }
 
+.header-container {
+  background-color: #1f288f;
+}
+
 /************************
  * Color for Navigation *
  ************************/
 
 .info-btn {
-  color: #405f69;
+  color: #fff;
+  background-color: #1f288f;
 }
 
 .info-btn:hover {
-  color: #213336;
+  background-color: rgb(240, 197, 104);
 }
 
 .task-btn {
-  color: #405f69;
+  color: #1f288f;
 }
 
 .task-btn:hover {
-  color: #213336;
+  color: rgb(240, 197, 104);
 }
 
 /*****************************
@@ -34,42 +39,49 @@ hr {
 }
 
 .btn {
-  color: #7e8080;
+  color: #1f288f;
 }
 
 .btn:hover {
-  color: #000;
+  color: rgb(240, 197, 104);
 }
 
 /****************************
  * Color for Pomodoro Timer *
  ****************************/
 .timer-section {
-  background-color: #d0e8f2;
+  background-color: #fff;
 }
 
 .timer-box {
-  background-color: #79a3b1;
+  background-color: #1f288f;
 }
 
 .timer {
-  background-color: #79a3b1;
+  background-color: #1f288f;
 }
 
 #time-display {
-  color: #165d81;
+  color: #fff;
 }
 
 #work-message {
-  color: #000;
+  color: #fff;
+}
+
+#pomos-completed {
+  color: #fff;
 }
 
 .custom-btn {
-  background: #d0e8f2;
+  border-color: #fff;
+  color: #fff;
+  background: #1f288f;
 }
 
 .custom-btn:hover {
-  background-color: #2f70a8;
+  background-color: #fff;
+  color: #1f288f;
 }
 
 /****************************
@@ -77,19 +89,19 @@ hr {
  ****************************/
 
 .middle-container {
-  background-color: #d0e8f2;
+  background-color: #fff;
 }
 
 #current {
   background-color: #fff;
-  color: black;
-  border-color: green;
+  color: #000;
+  border-color: #1f288f;
 }
 
 #next {
-  background-color: #e7e2e2;
+  background-color: rgb(234, 234, 245);
   color: rgb(48, 46, 46);
-  border-color: #615e5e;
+  border-color: #1f288f;
 }
 
 /**************************
@@ -97,30 +109,31 @@ hr {
  **************************/
 
 .instruct-head {
-  color: #5b5b5b;
+  color: #fff;
+  background-color: #e07d0b;
 }
 
-.instructions-section {
-  background-color: #f4f9f9;
+#instructions-para {
+  background-color: #fff;
 }
 
-#instructions-para,
 .arrow-up-icon {
-  color: #5b5b5b;
+  color: #fff;
+}
+
+.instruct-bottom {
+  background-color: rgb(224, 125, 11);
 }
 
 .arrow-up-icon:hover {
-  color: #184d47;
+  color: #000;
 }
 
 /********************
  * Color for Footer *
  ********************/
 
-.bottom-container {
-  background-color: #d0e8f2;
-}
-
 .copy-right {
-  background-color: #d0e8f2;
+  background-color: #1f288f;
+  color: #fff;
 }
