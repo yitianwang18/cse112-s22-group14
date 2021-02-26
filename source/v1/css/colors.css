@@ -1,12 +1,26 @@
+/************************************
+ * Declare and initialize variables *
+ ************************************/
+
+ :root {
+  --white: #fff;
+  --black: #000;
+  --dark-blue: #1f288f;
+  --light-blue: #eaeaf5;
+  --dark-orange: #e07d0b;
+  --light-orange: #f0c568;
+  --grey: #949697
+}
+
 /***********************
  * Color for HTML Tags *
  ***********************/
 hr {
-  color: #79a3b1;
+  color: var(--grey);
 }
 
 .header-container {
-  background-color: #1f288f;
+  background-color: var(--dark-blue);
 }
 
 /************************
@@ -14,16 +28,16 @@ hr {
  ************************/
 
 .info-btn {
-  color: #fff;
-  background-color: #1f288f;
+  color: var(--white);
+  background-color: var(--dark-blue);
 }
 
 .info-btn:hover {
-  background-color: rgb(240, 197, 104);
+  background-color: var(--light-orange);
 }
 
 .task-btn {
-  color: #1f288f;
+  color: var(--dark-blue);
 }
 
 .task-btn:hover {
@@ -35,11 +49,11 @@ hr {
  *****************************/
 
 .sidenav {
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 .btn {
-  color: #1f288f;
+  color: var(--dark-blue);
 }
 
 .btn:hover {
@@ -50,38 +64,38 @@ hr {
  * Color for Pomodoro Timer *
  ****************************/
 .timer-section {
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 .timer-box {
-  background-color: #1f288f;
+  background-color: var(--dark-blue);
 }
 
 .timer {
-  background-color: #1f288f;
+  background-color: var(--dark-blue);
 }
 
 #time-display {
-  color: #fff;
+  color: var(--white);
 }
 
 #work-message {
-  color: #fff;
+  color: var(--white);
 }
 
 #pomos-completed {
-  color: #fff;
+  color: var(--white);
 }
 
 .custom-btn {
-  border-color: #fff;
-  color: #fff;
-  background: #1f288f;
+  border-color: var(--white);
+  color: var(--white);
+  background: var(--dark-blue);
 }
 
 .custom-btn:hover {
-  background-color: #fff;
-  color: #1f288f;
+  background-color: var(--white);
+  color: var(--dark-blue);
 }
 
 /****************************
@@ -89,19 +103,19 @@ hr {
  ****************************/
 
 .middle-container {
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 #current {
-  background-color: #fff;
-  color: #000;
-  border-color: #1f288f;
+  background-color: var(--white);
+  color: var(--black);
+  border-color: var(--dark-blue);
 }
 
 #next {
-  background-color: rgb(234, 234, 245);
+  background-color: var(--light-blue);
   color: rgb(48, 46, 46);
-  border-color: #1f288f;
+  border-color: var(--dark-blue);
 }
 
 /**************************
@@ -109,24 +123,24 @@ hr {
  **************************/
 
 .instruct-head {
-  color: #fff;
-  background-color: #e07d0b;
+  color: var(--white);
+  background-color: var(--dark-orange);
 }
 
 #instructions-para {
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 .arrow-up-icon {
-  color: #fff;
+  color: var(--white);
 }
 
 .instruct-bottom {
-  background-color: rgb(224, 125, 11);
+  background-color: var(--dark-orange);
 }
 
 .arrow-up-icon:hover {
-  color: #000;
+  color: var(--black);
 }
 
 /********************
@@ -134,6 +148,6 @@ hr {
  ********************/
 
 .copy-right {
-  background-color: #1f288f;
-  color: #fff;
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
