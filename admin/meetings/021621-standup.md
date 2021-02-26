@@ -24,7 +24,7 @@ Ivan Robles
 ## Agenda
 Perform standups and report progress
 
-## General Notes
+## Standup Notes
 **Haaris**
 - Working on notifications, integration, and tests
 - Will continue to work on it until end of MVP sprint
