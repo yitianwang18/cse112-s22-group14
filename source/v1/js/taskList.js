@@ -160,8 +160,7 @@ class TaskList extends HTMLElement {
      * @param {Number} n_task_id id of task to remove
      */
     removeItem(n_task_id) {
-        let s_string_id = String(n_task_id);
-        if (!Object.keys(this.o_tasks).includes(s_string_id)) {
+        if (this.o_tasks[n_task_id] == undefined) {
             return -1;
         }
         let item = this.o_tasks[n_task_id];
@@ -169,7 +168,7 @@ class TaskList extends HTMLElement {
 
         // attribute query selector
         this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
-        this.n_next_task_id--;
+
         return item;
     }
 

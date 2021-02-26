@@ -59,32 +59,17 @@ class TimerDisplay extends HTMLElement {
     }
 
     /**
-     * Pads a number to the desired length with preceding zeroes. If n_desired_length < # of digits in n_time,
-     * the original number will simply be returned
-     * @param {number} n_time - the value to pad
-     * @param {number} n_desired_length - the final desired length of the number
-     * @return {number} The padded number
-     */
-    static padZeroes(n_time, n_desired_length) {
-        let s_output = String(n_time);
-        while (s_output.length < n_desired_length) {
-            s_output = "0" + s_output;
-        }
-        return s_output;
-    }
-
-    /**
      * Formats a millisecond duration to 'minutes:seconds', while accounting for rounding
      * @param {number} n_milli_time - the time to format
      * @return {string} The formatted XX:YY time.
      */
     static formatMilliTime(n_milli_time) {
         if (n_milli_time < 0) {
-            return "--:--"
+            return "00:00"
         }
         let o_date = new Date(n_milli_time + 500);
-        let s_minutes = this.padZeroes(o_date.getMinutes(), 2);
-        let s_seconds = this.padZeroes(o_date.getSeconds(), 2);
+        let s_minutes = String(o_date.getMinutes()).padStart(2, "0");
+        let s_seconds = String(o_date.getSeconds()).padStart(2, "0");
         return `${s_minutes}:${s_seconds}`;
     }
 
