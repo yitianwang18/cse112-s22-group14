@@ -36,6 +36,10 @@ class TaskList extends HTMLElement {
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn");
         o_close_button.innerHTML = "&times;";
+        o_close_button.addEventListener("click", function() {
+            let o_tasks = document.getElementById("side-tasks");
+            o_tasks.style.display = "none";
+        });
 
         let o_task_title_wrapper = document.createElement("div");
         o_task_title_wrapper.id = "task-title";
