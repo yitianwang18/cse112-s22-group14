@@ -65,7 +65,7 @@ class TimerDisplay extends HTMLElement {
      */
     static formatMilliTime(n_milli_time) {
         if (n_milli_time < 0) {
-            return "00:00"
+            return "25:00"
         }
         let o_date = new Date(n_milli_time + 500);
         let s_minutes = String(o_date.getMinutes()).padStart(2, "0");
