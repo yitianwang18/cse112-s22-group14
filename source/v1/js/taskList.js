@@ -174,7 +174,7 @@ class TaskList extends HTMLElement {
     }
 
     /**
-     * Event handler function to show task list display from the main user screen
+     * Function to show task list display from the main user screen
      */
     showTaskList() {
         let o_tasks = this.querySelector("#side-tasks");
@@ -182,7 +182,7 @@ class TaskList extends HTMLElement {
     }
 
     /**
-     * Event handler function to close task list display from the main user screen
+     * Function to close task list display from the main user screen
      */
     closeTaskList() {
         let o_tasks = this.querySelector("#side-tasks");
