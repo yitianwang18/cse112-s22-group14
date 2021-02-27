@@ -26,8 +26,9 @@ window.addEventListener("DOMContentLoaded", () => {
      * Event handler function to show TaskList when task button is pressed
      */
     function showTaskList() {
-        let tasks = document.getElementById("side-tasks");
-        tasks.style.display = "block";
+        let tasks = document.querySelector("task-list");
+        tasks.showTaskList();
+        //TaskList.showTaskList().bind(tasks);
     }
 
 });

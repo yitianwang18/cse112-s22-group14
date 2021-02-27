@@ -36,7 +36,7 @@ class TaskList extends HTMLElement {
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn");
         o_close_button.innerHTML = "&times;";
-        o_close_button.addEventListener("click", this.closeTaskList);
+        o_close_button.addEventListener("click", this.closeTaskList.bind(this));
 
         let o_task_title_wrapper = document.createElement("div");
         o_task_title_wrapper.id = "task-title";
@@ -174,10 +174,18 @@ class TaskList extends HTMLElement {
     }
 
     /**
+     * Event handler function to show task list display from the main user screen
+     */
+    showTaskList() {
+        let o_tasks = this.querySelector("#side-tasks");
+        o_tasks.style.display = "block";
+    }
+
+    /**
      * Event handler function to close task list display from the main user screen
      */
     closeTaskList() {
-        let o_tasks = document.getElementById("side-tasks");
+        let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "none";
     }
 
