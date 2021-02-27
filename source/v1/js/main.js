@@ -28,7 +28,6 @@ window.addEventListener("DOMContentLoaded", () => {
     function showTaskList() {
         let tasks = document.querySelector("task-list");
         tasks.showTaskList();
-        //TaskList.showTaskList().bind(tasks);
     }
 
 });
