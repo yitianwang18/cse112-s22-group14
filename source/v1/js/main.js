@@ -18,4 +18,16 @@ window.addEventListener("DOMContentLoaded", () => {
         scroll({ top: n_offset, behavior: "smooth" });
     }
 
+    // Code for showing / hiding TaskList functionality
+    let task_btn = document.getElementById("task-btn");
+    task_btn.addEventListener("click", showTaskList); 
+
+    /**
+     * Event handler function to show TaskList when task button is pressed
+     */
+    function showTaskList() {
+        let tasks = document.querySelector("task-list");
+        tasks.showTaskList();
+    }
+
 });
