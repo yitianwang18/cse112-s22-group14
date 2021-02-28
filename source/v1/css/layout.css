@@ -64,10 +64,11 @@ body {
   top: 90px;
   border-radius: 50%;
   opacity: 80%;
-  font-family: 'Calibri', sans-serif;
+  font-family: 'Calibri', 'Helvetica', sans-serif;
   font-weight: bold;
   font-size: 1.1rem;
   border: none;
+  cursor: pointer;
 }
 
 /**
@@ -80,6 +81,7 @@ body {
   top: 90px;
   border-radius: 15px;
   opacity: 80%;
+  cursor: pointer;
 }
 
 /***************************
@@ -99,14 +101,13 @@ body {
   top: 0;
   right: 0;
   overflow-x: hidden;
-  transition: 0.5s;
 }
 
 /**
  * Styling header for slide-out tasks
  */
 #side-tasks  div > h1 {
-  font-family: 'Alegreya', serif;
+  font-family: 'Alegreya', 'Georgia', 'Times New Roman', serif;
   padding: 30px;
 }
 
@@ -115,7 +116,7 @@ body {
  */
 #task-title hr {
   margin: 30px 0;
-  border: 1px solid rgb(133, 129, 129);
+  border: 1px solid;
 }
 
 /**
@@ -124,6 +125,7 @@ body {
 .btn {
   text-decoration: none;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 /**
@@ -198,8 +200,8 @@ input[type=text] {
  */
 #work-message {
   font-size: 1.5rem;
-  font-family: 'Alegreya', serif;
-  padding-bottom: 30px;
+  font-family: 'Alegreya', 'Georgia', 'Times New Roman', serif;
+  padding-bottom: 15px;
 }
 
 /**
@@ -216,17 +218,17 @@ input[type=text] {
  * Message about the number of Pomodoro Timers completed
  */
 #pomos-completed {
-  padding-top: 40px;
-  font-family: 'Roboto', sans-serif;
+  padding-top: 10px;
+  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
-  margin: 0 0 -10px -10px;
+  margin: 25px 0 0 0;
 }
 
 /**
  * Small tomatos denoting if Pomodoro is completed
  */
 .pomo-count {
-  margin: 5px 5px 20px 5px;
+  margin: 5px 5px 10px 5px;
   width: 25px;
 }
 
@@ -238,14 +240,14 @@ input[type=text] {
   height: 40px;
   line-height: 40px;
   width: 150px;
-  font-family: 'Alegreya', serif;
+  font-family: 'Alegreya', 'Georgia', 'Times New Roman', serif;
   font-size: 20px;
   font-weight: normal;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
   text-align: center;
-  margin: 0 30px 15px 10px;
+  margin: 10px;;
   border: 2px solid;
 }
 
@@ -264,12 +266,16 @@ input[type=text] {
  * Container for displaying current and next task
  */
 .middle-container {
-  padding: 10px 10px 40px 10px;
+  padding: 10px;
   margin: auto;
   height: auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.middle-container > h3 {
+  position: relative;
 }
 
 /**
@@ -306,7 +312,7 @@ input[type=text] {
 .instructions-section {
   max-height: 100vh;
   margin: auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
 }
 
 /**
@@ -316,7 +322,7 @@ input[type=text] {
   margin-top: 0;
   padding: 15px;
   font-size: 2.5rem;
-  font-family: 'Alegreya', serif;
+  font-family: 'Alegreya', 'Georgia', 'Times New Roman', serif;
 }
 
 /**
@@ -372,6 +378,7 @@ input[type=text] {
 .arrow-up-icon {
   margin: auto;
   width: 50px;
+  cursor: pointer;
 }
 
 /******************
@@ -386,5 +393,5 @@ input[type=text] {
   padding: 30px;
   margin: auto;
   font-weight: 900;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
 }
