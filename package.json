@@ -8,6 +8,7 @@
         "docs": "jsdoc source -r -d docs"
     },
     "dependencies": {
+        "@types/jest": "^26.0.20",
         "jest": "26.4.2",
         "jsdoc": "3.6.6",
         "jsdom": "^16.4.0"
@@ -15,5 +16,8 @@
     "jest": {
         "testEnvironment": "jest-environment-jsdom",
         "transform": {}
+    },
+    "devDependencies": {
+        "cypress": "^6.5.0"
     }
 }

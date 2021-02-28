@@ -129,6 +129,9 @@ class TaskList extends HTMLElement {
         }
     }
 
+    /**
+     * Clears the task input field
+     */
     clearInput() {
         let o_input = this.querySelector("input[name=task]");
         o_input.value = "";
