@@ -32,14 +32,6 @@ test('Start / Reset button Toggle', () => {
     expect(reset_btn.classList.contains("hidden")).toBe(true);
 });
 
-function pause(time) {
-    let start = new Date().getTime();
-    let timeElapsed = 0;
-    while (timeElapsed < time) {
-        timeElapsed = new Date().getTime() - start;
-    }
-}
-
 test('Test getTimeRemaining function', () => {
 
     let timer_cont = new TimerContainer();
@@ -54,27 +46,6 @@ test('Test getTimeRemaining function', () => {
     timer_cont.n_start_time = new Date().getTime();
     expect(timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(2900);
     expect(timer_cont.getTimeRemaining()).toBeLessThanOrEqual(3000);
-
-    //Remaining time is equal to current state time(3000) - elapsed time(1000) after some time has elapsed
-    timer_cont.n_start_time = new Date().getTime();
-    pause(1000);
-    expect(timer_cont.getTimeRemaining()).toBeLessThanOrEqual(2000);
-    expect(timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(1990);
-
-    //Remaining time is equal to 0 after all of current state time has elapsed
-    timer_cont.n_start_time = new Date().getTime();
-    pause(3000);
-    expect(timer_cont.getTimeRemaining()).toBe(0);
-
-    //Remaining time is equal to -1 if time elapsed exceedes current state time
-    timer_cont.n_start_time = new Date().getTime();
-    pause(3001);
-    expect(timer_cont.getTimeRemaining()).toBe(-1);
-
-    //Remaining time is equal to -1 if time elapsed exceedes current state time
-    timer_cont.n_start_time = new Date().getTime();
-    pause(4000);
-    expect(timer_cont.getTimeRemaining()).toBe(-1);
 
 });
 
@@ -173,50 +144,7 @@ test('Test TimerContainer.beginSession()', () => {
     expect(timer_cont.n_curr_state).toBe(TimerContainer.L_BREAK);
 });
 
-test('Test TimerContainer.resetPomo()', () => {
-    let timer_cont = new TimerContainer();
 
-    //If current state is WORK, then reset timer on resetPomo() call
-    timer_cont.n_curr_state = TimerContainer.WORK;
-    timer_cont.n_start_time = new Date().getTime();
-    
-    expect(timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(2990);
-    expect(timer_cont.getTimeRemaining()).toBeLessThanOrEqual(3000);
-    
-    pause(1000);
-    
-    // after a pause of 1000, our timer should have come down to 1990 - 2000 (10ms error allowed to account for processing time)
-    expect(timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(1990);  
-    expect(timer_cont.getTimeRemaining()).toBeLessThanOrEqual(2000);    
-    
-    timer_cont.resetPomo();
-
-    // after reset, our timer go back to 2990 - 3000 (10ms error allowed to account for processing time)
-    expect(timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(2990); 
-    expect(timer_cont.getTimeRemaining()).toBeLessThanOrEqual(3000);    
-
-    //If current state is not WORK, then resetPomo() call should have no effect
-
-    timer_cont.n_curr_state = TimerContainer.S_BREAK;
-    timer_cont.n_start_time = new Date().getTime();
-    expect(timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(2900);
-    expect(timer_cont.getTimeRemaining()).toBeLessThanOrEqual(3000);
-    pause(1000);
-    timer_cont.resetPomo();
-    // timer isn't reset to 3000 (remains between 1990 and 2000)
-    expect(timer_cont.getTimeRemaining()).toBeLessThanOrEqual(2000); 
-    expect(timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(1990); 
-
-    timer_cont.n_curr_state = TimerContainer.L_BREAK;
-    timer_cont.n_start_time = new Date().getTime();
-    expect(timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(2900);
-    expect(timer_cont.getTimeRemaining()).toBeLessThanOrEqual(3000);
-    pause(1000);
-    timer_cont.resetPomo();
-    // timer isn't reset to 3000 (remains between 1990 and 2000)
-    expect(timer_cont.getTimeRemaining()).toBeLessThanOrEqual(2000); 
-    expect(timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(1990); 
-});
 
 test('Test TimerContainer.endSession()', () => {
     let timer_cont = new TimerContainer();
