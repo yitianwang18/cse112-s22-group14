@@ -395,3 +395,25 @@ input[type=text] {
   font-weight: 900;
   font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
 }
+
+/************
+ * NoScript *
+ ************/
+
+/**
+ * When JavaScript is disabled or not supported
+ */
+noscript > div {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 30000000;
+  height: 100%;
+  width: 100%;
+}
+
+noscript > div > p {
+  margin-top: 50px;
+  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
+  font-size: 1.5rem;
+}
