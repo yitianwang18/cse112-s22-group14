@@ -107,7 +107,7 @@ body {
  * Styling header for slide-out tasks
  */
 #side-tasks  div > h1 {
-  font-family: 'Alegreya', 'Georgia', 'Times New Roman', serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   padding: 30px;
 }
 
@@ -200,7 +200,7 @@ input[type=text] {
  */
 #work-message {
   font-size: 1.5rem;
-  font-family: 'Alegreya', 'Georgia', 'Times New Roman', serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   padding-bottom: 15px;
 }
 
@@ -219,7 +219,7 @@ input[type=text] {
  */
 #pomos-completed {
   padding-top: 10px;
-  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
+  font-family: 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
   margin: 25px 0 0 0;
 }
@@ -240,7 +240,7 @@ input[type=text] {
   height: 40px;
   line-height: 40px;
   width: 150px;
-  font-family: 'Alegreya', 'Georgia', 'Times New Roman', serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 20px;
   font-weight: normal;
   text-decoration: none;
@@ -269,7 +269,7 @@ input[type=text] {
   padding: 10px;
   margin: auto;
   height: auto;
-  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
+  font-family: 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -312,7 +312,7 @@ input[type=text] {
 .instructions-section {
   max-height: 100vh;
   margin: auto;
-  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
+  font-family: 'Helvetica', 'Calibri', sans-serif;
 }
 
 /**
@@ -322,7 +322,7 @@ input[type=text] {
   margin-top: 0;
   padding: 15px;
   font-size: 2.5rem;
-  font-family: 'Alegreya', 'Georgia', 'Times New Roman', serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 /**
@@ -393,27 +393,5 @@ input[type=text] {
   padding: 30px;
   margin: auto;
   font-weight: 900;
-  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
-}
-
-/************
- * NoScript *
- ************/
-
-/**
- * When JavaScript is disabled or not supported
- */
-noscript > div {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 30000000;
-  height: 100%;
-  width: 100%;
-}
-
-noscript > div > p {
-  margin-top: 50px;
-  font-family: 'Roboto', 'Helvetica', 'Calibri', sans-serif;
-  font-size: 1.5rem;
+  font-family: 'Helvetica', 'Calibri', sans-serif;
 }
