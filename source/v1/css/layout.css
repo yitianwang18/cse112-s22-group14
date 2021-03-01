@@ -64,7 +64,7 @@ body {
   top: 90px;
   border-radius: 50%;
   opacity: 80%;
-  font-family: 'Calibri', 'Helvetica', sans-serif;
+  font-family: 'Courier New', 'Lucida Console', sans-serif;
   font-weight: bold;
   font-size: 1.1rem;
   border: none;
@@ -74,12 +74,19 @@ body {
 /**
  * Styling for task button
  */
-.task-btn {
+#task-btn {
   margin-right: 50px;
   position: absolute;
   right: 15px;
   top: 90px;
-  border-radius: 15px;
+}
+
+/**
+ * Styling for buttons
+ */
+.btn {
+  background: transparent;
+  border: none !important;
   opacity: 80%;
   cursor: pointer;
 }
@@ -281,7 +288,7 @@ input[type=text] {
 /**
  * Input field for displaying task description
  */
- .middle-container > div {
+.middle-container > div {
   width: 450px;
   margin: 0 5px;
   padding: 10px 20px;
@@ -296,10 +303,8 @@ input[type=text] {
 /**
  * Check button beside the current task
  */
-.check {
-  margin-top: 10px;
-  text-decoration: none;
-  font-size: 2rem;
+#check {
+  margin-top: 2.5px;
   position: absolute;
 }
 
