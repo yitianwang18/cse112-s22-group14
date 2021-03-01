@@ -18,7 +18,7 @@ body {
  * Lets the container cover one entire screen
  */
 .full-height {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /**********************
@@ -281,7 +281,7 @@ input[type=text] {
 /**
  * Input field for displaying task description
  */
-.middle-container > div {
+ .middle-container > div {
   width: 450px;
   margin: 0 5px;
   padding: 10px 20px;
@@ -297,6 +297,7 @@ input[type=text] {
  * Check button beside the current task
  */
 .check {
+  margin-top: 10px;
   text-decoration: none;
   font-size: 2rem;
   position: absolute;
@@ -310,9 +311,8 @@ input[type=text] {
  * Container for instructions
  */
 .instructions-section {
-  max-height: 100vh;
   margin: auto;
-  font-family: 'Helvetica', 'Calibri', sans-serif;
+  min-height: 100vh;
 }
 
 /**
@@ -329,26 +329,17 @@ input[type=text] {
  * Paragraph of instructions within instructions section
  */
 #instructions-para {
-  font-weight: 900;
-  font-size: 1.1rem;
-  padding: 0 20%;
-  text-align: left;
-}
-
-/**
- * Selecting all paragraphs inside instructions-para container
- */
-#instructions-para ~ p {
-  margin: 20px;
+  margin: auto;
+  width: auto;
+  max-width: 900px;
+  font-family: 'Helvetica', 'Calibri', sans-serif;
+  font-size: 1rem;
   text-align: left;
   line-height: 25px;
 }
 
-/**
- * Selecting all li's whose parent is ul inside instructions-para container
- */
-#instructions-para ~ ul > li {
-  padding: 5px;
+#instructions-para > h3 {
+  text-align: center;
 }
 
 /**
@@ -369,6 +360,7 @@ input[type=text] {
  * Styling the up arrow container
  */
 .instruct-bottom {
+  position: relative;
   padding: 5px;
 }
 
