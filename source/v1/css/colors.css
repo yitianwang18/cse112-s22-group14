@@ -151,11 +151,3 @@ hr {
   background-color: var(--dark-blue);
   color: var(--white);
 }
-
-/**********************
- * Color for NoScript *
- **********************/
-
-noscript > div {
-  background-color: var(--dark-orange);
-}
