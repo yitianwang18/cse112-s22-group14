@@ -9,15 +9,24 @@
   --light-blue: #eaeaf5;
   --dark-orange: #e07d0b;
   --light-orange: #f0c568;
-  --grey: #949697
+  --grey: #949697;
 }
 
 /***********************
  * Color for HTML Tags *
  ***********************/
+
 hr {
   color: var(--grey);
 }
+
+button:disabled {
+  background-color: var(--grey);
+}
+
+/********************
+ * Color for header *
+ ********************/
 
 .header-container {
   background-color: var(--dark-blue);
@@ -32,7 +41,7 @@ hr {
   background-color: var(--dark-blue);
 }
 
-.info-btn:hover {
+.info-btn:hover:enabled {
   background-color: var(--light-orange);
 }
 
@@ -63,6 +72,7 @@ hr {
 /****************************
  * Color for Pomodoro Timer *
  ****************************/
+
 .timer-section {
   background-color: var(--white);
 }
@@ -93,7 +103,7 @@ hr {
   background: var(--dark-blue);
 }
 
-.custom-btn:hover {
+.custom-btn:hover:enabled {
   background-color: var(--white);
   color: var(--dark-blue);
 }
