@@ -2,37 +2,56 @@
  * Declare and initialize variables *
  ************************************/
 
- :root {
+:root {
   --white: #fff;
   --black: #000;
+  --darkest-blue: #050a3f;
   --dark-blue: #1f288f;
+  --blue: #4294ff;
   --light-blue: #eaeaf5;
+  --darkest-orange: #8b4402;
   --dark-orange: #e07d0b;
+  --orange: #d48816;
   --light-orange: #f0c568;
-  --grey: #949697
+  --grey: #949697;
+  --transparent: #00000000;
 }
 
 /***********************
  * Color for HTML Tags *
  ***********************/
+
 hr {
   color: var(--grey);
 }
 
+/******************************
+ * Color for Disabled Buttons *
+ ******************************/
+
+.btn:disabled {
+  color: var(--grey);
+}
+
+/********************
+ * Color for header *
+ ********************/
+
 .header-container {
   background-color: var(--dark-blue);
+  background-image: linear-gradient(to right,  var(--darkest-blue), var(--dark-blue), var(--blue));
 }
 
-/************************
- * Color for Navigation *
- ************************/
+/*************************
+ * Color for Info Button *
+ *************************/
 
 .info-btn {
-  color: var(--white);
   background-color: var(--dark-blue);
+  color: var(--white);
 }
 
-.info-btn:hover {
+.info-btn:hover:enabled {
   background-color: var(--light-orange);
 }
 
@@ -41,7 +60,7 @@ hr {
 }
 
 .task-btn:hover {
-  color: rgb(240, 197, 104);
+  color: var(--light-orange);
 }
 
 /*****************************
@@ -50,29 +69,35 @@ hr {
 
 .sidenav {
   background-color: var(--white);
+  box-shadow: inset 20px 0 20px -20px var(--grey);
 }
 
-.btn {
+.btn,
+.close {
   color: var(--dark-blue);
+  
 }
 
-.btn:hover {
-  color: rgb(240, 197, 104);
+.btn:hover:enabled,
+.close:hover {
+  color: var(--light-orange);
 }
 
 /****************************
  * Color for Pomodoro Timer *
  ****************************/
+
 .timer-section {
   background-color: var(--white);
 }
 
 .timer-box {
   background-color: var(--dark-blue);
+  background-image: linear-gradient(to right,  var(--darkest-blue), var(--dark-blue), var(--blue));
 }
 
 .timer {
-  background-color: var(--dark-blue);
+  background-color: var(--transparent); 
 }
 
 #time-display {
@@ -90,12 +115,16 @@ hr {
 .custom-btn {
   border-color: var(--white);
   color: var(--white);
-  background: var(--dark-blue);
+  background-color: var(--transparent); 
 }
 
-.custom-btn:hover {
+.custom-btn:hover:enabled {
   background-color: var(--white);
   color: var(--dark-blue);
+}
+
+.custom-btn:disabled {
+  background-color: var(--grey);
 }
 
 /****************************
@@ -114,7 +143,6 @@ hr {
 
 #next {
   background-color: var(--light-blue);
-  color: rgb(48, 46, 46);
   border-color: var(--dark-blue);
 }
 
@@ -125,6 +153,7 @@ hr {
 .instruct-head {
   color: var(--white);
   background-color: var(--dark-orange);
+  background-image: linear-gradient(to right,  var(--darkest-orange), var(--dark-orange), var(--orange));
 }
 
 #instructions-para {
@@ -137,6 +166,8 @@ hr {
 
 .instruct-bottom {
   background-color: var(--dark-orange);
+  background-image: linear-gradient(to right,  var(--darkest-orange), var(--dark-orange), var(--orange));
+
 }
 
 .arrow-up-icon:hover {
@@ -148,6 +179,6 @@ hr {
  ********************/
 
 .copy-right {
-  background-color: var(--dark-blue);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--black);
 }
