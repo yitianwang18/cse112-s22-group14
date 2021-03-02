@@ -1,4 +1,5 @@
 import { Task } from "./task.js";
+import { TaskDisplay } from "./taskDisplay.js";
 
 /**
  * Custom HTML element encapsulating all of the functionality related to the Task List
@@ -58,7 +59,7 @@ class TaskList extends HTMLElement {
 
         let o_add_task_icon = document.createElement("i");
         o_add_task_icon.id = 'add-btn';
-        o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-2x", "btn");
+        o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-2x", "tool", "check-btn");
         o_add_task_icon.addEventListener("click", this.handleAddTask.bind(this));
 
         o_add_task.append(o_add_task_input, o_add_task_icon);
@@ -154,6 +155,9 @@ class TaskList extends HTMLElement {
         o_task.setAttribute("taskid", n_task_id);
         o_task.bindHandleDelete(() => { console.log(this); this.removeItem(n_task_id) });
         this.querySelector("#all-tasks").append(o_task);
+        
+        TaskDisplay.update_List(this.o_tasks);
+        TaskDisplay.updateDisp();
     }
 
     /**
@@ -165,12 +169,15 @@ class TaskList extends HTMLElement {
             return -1;
         }
         let item = this.o_tasks[n_task_id];
+
         delete this.o_tasks[n_task_id];
 
         // attribute query selector
         this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
 
-        return item;
+        TaskDisplay.update_List(this.o_tasks);
+        TaskDisplay.updateDisp();
+        return item;       
     }
 
     /**
