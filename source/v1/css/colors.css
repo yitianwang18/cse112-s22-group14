@@ -2,7 +2,7 @@
  * Declare and initialize variables *
  ************************************/
 
- :root {
+:root {
   --white: #fff;
   --black: #000;
   --darkest-blue: #050a3f;
@@ -25,8 +25,12 @@ hr {
   color: var(--grey);
 }
 
-button:disabled {
-  background-color: var(--grey);
+/******************************
+ * Color for Disabled Buttons *
+ ******************************/
+
+.btn:disabled {
+  color: var(--grey);
 }
 
 /********************
@@ -38,13 +42,13 @@ button:disabled {
   background-image: linear-gradient(to right,  var(--darkest-blue), var(--dark-blue), var(--blue));
 }
 
-/************************
- * Color for Navigation *
- ************************/
+/*************************
+ * Color for Info Button *
+ *************************/
 
 .info-btn {
-  color: var(--white);
   background-color: var(--dark-blue);
+  color: var(--white);
 }
 
 .info-btn:hover:enabled {
@@ -68,12 +72,14 @@ button:disabled {
   box-shadow: inset 20px 0 20px -20px var(--grey);
 }
 
-.btn {
+.btn,
+.close {
   color: var(--dark-blue);
   
 }
 
-.btn:hover {
+.btn:hover:enabled,
+.close:hover {
   color: var(--light-orange);
 }
 
@@ -115,6 +121,10 @@ button:disabled {
 .custom-btn:hover:enabled {
   background-color: var(--white);
   color: var(--dark-blue);
+}
+
+.custom-btn:disabled {
+  background-color: var(--grey);
 }
 
 /****************************
