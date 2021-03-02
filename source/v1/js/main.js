@@ -26,8 +26,11 @@ window.addEventListener("DOMContentLoaded", () => {
      * Event handler function to show TaskList when task button is pressed
      */
     function showTaskList() {
-        let tasks = document.querySelector("task-list");
-        tasks.showTaskList();
+        let timer = document.querySelector("timer-element");
+        if (timer.n_curr_state == TimerContainer.NOT_STARTED) {
+            let tasks = document.querySelector("task-list");
+            tasks.showTaskList();
+        }
     }
 
 });

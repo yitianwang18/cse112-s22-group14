@@ -154,6 +154,7 @@ class TimerContainer extends HTMLElement {
         this.beginSession();
         this.querySelector("#reset-btn").classList.remove("hidden");
         this.querySelector("#start-btn").classList.add("hidden");
+        document.querySelector("task-list").closeTaskList();
         this.renderComponents();
     }
 
