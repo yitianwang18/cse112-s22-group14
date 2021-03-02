@@ -89,6 +89,7 @@ body {
   border: none !important;
   opacity: 80%;
   cursor: pointer;
+  font-size: 2rem;
 }
 
 /***************************
@@ -135,20 +136,17 @@ body {
   background-color: black;
 }
 
-/**
- * All buttons within slide-out tasks
- */
-.btn {
-  text-decoration: none;
-  font-size: 2rem;
-  cursor: pointer;
+#add-btn,
+#delete {
+  position: relative;
+  top: 5px;
 }
-
 
 /**
  * Close button inside slide-out tasks
  */
 .close {
+  text-decoration: none;
   position: absolute;
   top: 20px;
   right: 0;
