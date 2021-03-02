@@ -40,19 +40,19 @@
       <!-- Contains the slide-out tasklist -->
       <template>
         <div id="side-tasks" class="sidenav">
-          <a href="javascript:void(0)" class="close btn">&times;</a>
+          <a href="javascript:void(0)" class="close">&times;</a>
           <div id="task-title">
             <h1>TaskList</h1>
             <div id="add-task">
               <input type="text" id="add" name="task" placeholder="Enter task description...">
-              <i id="add-btn" class="fas fa-plus-square fa-2x btn"></i>
+              <button id="add-btn" class="btn"><i class="fas fa-plus-square fa-2x"></i></button>
             </div>
             <hr>
           </div>
           <div id="all-tasks">
             <div id="show-tasks">
               <input type="text" id="1" name="task" placeholder="Blah blah...">
-              <i class="fas fa-trash-alt fa-2x btn"></i>
+              <button id="delete" class="btn"><i class="fas fa-trash-alt fa-2x btn"></i></button>
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@
       <!-- Contains the Pomodoro timer -->
       <div class="top-container">
         <div class="main-box">
-          <i id="task-btn" class="fas fa-tasks fa-2x task-btn"></i>
+          <button id="task-btn" class="btn"><i class="fas fa-tasks fa-x"></i></button>
           <!-- <i id="info-btn" class="fas fa-info-circle fa-2x info-btn"></i> -->
           <timer-element></timer-element>
         </div>
@@ -74,7 +74,7 @@
         <div id="current">
           Do this
         </div>
-        <i class="fas fa-check-circle fa-2x tool check btn"></i>
+        <button id="check" class="btn"><i class="fas fa-check-circle fa-x tool"></i></button>
         <h3>Next task:</h3>
         <div id="next">
           Do that

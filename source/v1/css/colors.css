@@ -2,7 +2,7 @@
  * Declare and initialize variables *
  ************************************/
 
- :root {
+:root {
   --white: #fff;
   --black: #000;
   --dark-blue: #1f288f;
@@ -20,8 +20,12 @@ hr {
   color: var(--grey);
 }
 
-button:disabled {
-  background-color: var(--grey);
+/******************************
+ * Color for Disabled Buttons *
+ ******************************/
+
+.btn:disabled {
+  color: var(--grey);
 }
 
 /********************
@@ -32,25 +36,18 @@ button:disabled {
   background-color: var(--dark-blue);
 }
 
-/************************
- * Color for Navigation *
- ************************/
+/*************************
+ * Color for Info Button *
+ *************************/
 
 .info-btn {
-  color: var(--white);
   background-color: var(--dark-blue);
+  color: var(--white);
 }
 
 .info-btn:hover:enabled {
   background-color: var(--light-orange);
-}
-
-.task-btn {
-  color: var(--dark-blue);
-}
-
-.task-btn:hover {
-  color: rgb(240, 197, 104);
+  color: var(--white);
 }
 
 /*****************************
@@ -61,12 +58,14 @@ button:disabled {
   background-color: var(--white);
 }
 
-.btn {
+.btn,
+.close {
   color: var(--dark-blue);
 }
 
-.btn:hover {
-  color: rgb(240, 197, 104);
+.btn:hover:enabled,
+.close:hover {
+  color: var(--light-orange);
 }
 
 /****************************
@@ -106,6 +105,10 @@ button:disabled {
 .custom-btn:hover:enabled {
   background-color: var(--white);
   color: var(--dark-blue);
+}
+
+.custom-btn:disabled {
+  background-color: var(--grey);
 }
 
 /****************************
