@@ -12,6 +12,12 @@ class TaskDisplay extends HTMLElement {
     /*Map containing tasks*/
     o_tasks = {};
 
+    /*Current task's id*/
+    n_curr_taskid=-1;
+
+    /*Next task's id*/
+    n_next_taskid=-1;
+
     /**
      * Constructor. Initializes task display
      */
@@ -30,7 +36,8 @@ class TaskDisplay extends HTMLElement {
         let o_next_btn = document.createElement("i");
         o_next_btn.id = 'check';
         o_next_btn.classList.add("fas", "fa-check-circle", "fa-2x", "tool", "check", "btn");
-        //o_next_btn.addEventListener("click", this.handleAddTask.bind(this));
+        //o_next_btn.addEventListener("click", TaskDisplay.pressCheck());
+        o_next_btn.addEventListener("click", TaskDisplay.pressCheck.bind(this));
 
         let o_next_title = document.createElement("h3");
         o_next_title.innerText = "Next Task:";
@@ -44,25 +51,68 @@ class TaskDisplay extends HTMLElement {
     }
 
     /**
-     * Updates display for current and next task.
+     * Handles pressing the check button.
      */
-    updateDisp(){
+    static pressCheck(o_event){
+        delete TaskDisplay.o_tasks[TaskDisplay.n_curr_taskid];
+
+        TaskDisplay.updateDisp();
+    }
+
+    /**
+     * Enables next task button.
+     */
+    static enableBtn(){}
+
+    /**
+     * Disables next task button during breaks and when all tasks are completed.
+     */
+    static disableBtn(){}
+    
+    /**
+     * Mimics end of session functionality when all tasks are completed.
+     */
+    static tasksComplete(){
+        let o_vals=new Array(Object.values(this.o_tasks));
+        console.log(o_vals[0].length);
+        //no tasks left, so it displays finish
+        if(o_vals[0].length==0){
+            document.getElementById("current").innerHTML="All tasks for this session completed!";
+            document.getElementById("next").innerHTML="All tasks for this session completed!";
+            this.disableBtn();
+        }
+    }
+    
+    /**
+     * Updates display for current and next task (from task list).
+     */
+    static updateDisp(){
         let b_curr=new Boolean(false);
         let b_next=new Boolean(false);
-        console.log("why");
-        /*this.o_tasks.forEach((values,keys) => {
-            if(!b_curr && element != undefined){
-                console.log(element);
-                document.getElementById("current").innerHTML=element;
+        
+        //iterate through tasks and find first two valid tasks to display
+        for (const [key, value] of Object.entries(this.o_tasks)) {
+            if(b_curr == false && this.o_tasks[key] != undefined){
+                document.getElementById("current").innerHTML=value;
                 b_curr=true;
+                this.n_curr_taskid=key;
             }
-            else if(!b_next && element != undefined){
-                console.log(element);
-                document.getElementById("next").innerHTML=element;
+            else if(b_next == false && this.o_tasks[key] != undefined){
+                this.n_next_taskid=key;
+                document.getElementById("next").innerHTML=value;
                 b_next=true;
                 return;
-            }
-        });*/
+            } 
+        }        
+        //if bools are false and exits loop, there are no tasks to fill next or current
+        if(b_curr==false){
+            console.log(typeof TaskDisplay.o_tasks);
+            this.tasksComplete();
+        }
+
+        else if(b_next==false){
+            document.getElementById("next").innerHTML="No more tasks for this session!";
+        }
     }
     
     /**
@@ -71,11 +121,6 @@ class TaskDisplay extends HTMLElement {
      */
     static update_List(o_task_list){
         this.o_tasks=o_task_list;
-        document.getElementById("current").innerHTML=this.o_tasks[0];
-        console.log(document.getElementById("task-list"));
-        //console.log(this.o_tasks);
-        //let this.o_tasks=TaskList.getItems(); 
-        //this.o_tasks=0;
     }
 
     
