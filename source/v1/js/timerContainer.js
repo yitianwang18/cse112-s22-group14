@@ -155,6 +155,7 @@ class TimerContainer extends HTMLElement {
         this.querySelector("#reset-btn").classList.remove("hidden");
         this.querySelector("#start-btn").classList.add("hidden");
         document.querySelector("task-list").closeTaskList();
+        document.querySelector("#task-btn").disabled = true;
         this.renderComponents();
     }
 
@@ -179,6 +180,7 @@ class TimerContainer extends HTMLElement {
         this.querySelector("#reset-btn").classList.add("hidden");
         this.querySelector("#reset-btn").disabled = false;
         this.querySelector("#start-btn").classList.remove("hidden");
+        document.querySelector("#task-btn").disabled = false;
     }
 
     /**
