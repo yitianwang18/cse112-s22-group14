@@ -16,7 +16,7 @@ Moreover, we have also given users the ability to change the theme of the app si
 There will be two themes to choose from - first, a theme which uses only warm and cool colors to bring a colorful yet calming experience to the user, and second, 
 a theme which uses an image of nature since nature is known to remove all negative emotions from the mind and body.
 
-Finally, twe have also fixed how our app responds to screen resizing. We have made our app more responsive by adding media queries so that ultimately, even mobile devices can support it.
+Finally, we have also fixed how our app responds to screen resizing. We have made our app more responsive by adding media queries so that ultimately, even mobile devices can support it.
 
 Hope you like the refined look and the incorporation of some amazing features, 
 
