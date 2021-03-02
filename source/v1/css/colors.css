@@ -5,11 +5,16 @@
  :root {
   --white: #fff;
   --black: #000;
+  --darkest-blue: #050a3f;
   --dark-blue: #1f288f;
+  --blue: #4294ff;
   --light-blue: #eaeaf5;
+  --darkest-orange: #8b4402;
   --dark-orange: #e07d0b;
+  --orange: #d48816;
   --light-orange: #f0c568;
   --grey: #949697;
+  --transparent: #00000000;
 }
 
 /***********************
@@ -30,6 +35,7 @@ button:disabled {
 
 .header-container {
   background-color: var(--dark-blue);
+  background-image: linear-gradient(to right,  var(--darkest-blue), var(--dark-blue), var(--blue));
 }
 
 /************************
@@ -50,7 +56,7 @@ button:disabled {
 }
 
 .task-btn:hover {
-  color: rgb(240, 197, 104);
+  color: var(--light-orange);
 }
 
 /*****************************
@@ -59,14 +65,16 @@ button:disabled {
 
 .sidenav {
   background-color: var(--white);
+  box-shadow: inset 20px 0 20px -20px var(--grey);
 }
 
 .btn {
   color: var(--dark-blue);
+  
 }
 
 .btn:hover {
-  color: rgb(240, 197, 104);
+  color: var(--light-orange);
 }
 
 /****************************
@@ -79,10 +87,11 @@ button:disabled {
 
 .timer-box {
   background-color: var(--dark-blue);
+  background-image: linear-gradient(to right,  var(--darkest-blue), var(--dark-blue), var(--blue));
 }
 
 .timer {
-  background-color: var(--dark-blue);
+  background-color: var(--transparent); 
 }
 
 #time-display {
@@ -100,7 +109,7 @@ button:disabled {
 .custom-btn {
   border-color: var(--white);
   color: var(--white);
-  background: var(--dark-blue);
+  background-color: var(--transparent); 
 }
 
 .custom-btn:hover:enabled {
@@ -124,7 +133,6 @@ button:disabled {
 
 #next {
   background-color: var(--light-blue);
-  color: rgb(48, 46, 46);
   border-color: var(--dark-blue);
 }
 
@@ -135,6 +143,7 @@ button:disabled {
 .instruct-head {
   color: var(--white);
   background-color: var(--dark-orange);
+  background-image: linear-gradient(to right,  var(--darkest-orange), var(--dark-orange), var(--orange));
 }
 
 #instructions-para {
@@ -147,6 +156,8 @@ button:disabled {
 
 .instruct-bottom {
   background-color: var(--dark-orange);
+  background-image: linear-gradient(to right,  var(--darkest-orange), var(--dark-orange), var(--orange));
+
 }
 
 .arrow-up-icon:hover {
@@ -158,6 +169,6 @@ button:disabled {
  ********************/
 
 .copy-right {
-  background-color: var(--dark-blue);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--black);
 }
