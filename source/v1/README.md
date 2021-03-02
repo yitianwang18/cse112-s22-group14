@@ -1,4 +1,4 @@
-# PomoHero Version 1
+# PomoHero Version 1 (***DEPRECATED***)
 
 *Release date: February 20, 2021*  
 *Minimum:*
@@ -16,4 +16,6 @@ With features like a self-working timer, an option to end your working session, 
 Do keep in mind that our web application will not allow to, and even force you (in a good way) to not get distracted while working. If you do get distracted, fret not. There is a reset button to restart your current Pomodoro.
 This encourages you to not just pause and play the timer whenever you feel like, and it is a way of punishing you by making you work again for the time that you did spend working before getting distracted.
 
-To go to the website, [Click here](https://pomo-hero-dev.web.app/)
+To go to the website, ~~[Click here](https://pomo-hero-dev.web.app/)~~
+
+**CAUTION**: This version of the app has been DEPRECATED! All URL redirects to the web page will lead to the current version of the app!
