@@ -55,14 +55,17 @@ class TaskDisplay extends HTMLElement {
      */
     static pressCheck(o_event){
         delete TaskDisplay.o_tasks[TaskDisplay.n_curr_taskid];
-
         TaskDisplay.updateDisp();
     }
 
     /**
      * Enables next task button.
      */
-    static enableBtn(){}
+    static enableBtn(){
+        console.log(TimerContainer.n_curr_state);
+        TaskDisplay.n
+        //if(TimerContainer.n_curr_state){}
+    }
 
     /**
      * Disables next task button during breaks and when all tasks are completed.
