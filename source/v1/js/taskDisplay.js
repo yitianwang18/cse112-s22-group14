@@ -33,14 +33,14 @@ class TaskDisplay extends HTMLElement {
         o_curr_disp.id="current";
         o_curr_disp.innerHTML="Do this";
 
-        //let o_check_btn= document.createElement("button");
-        //o_check_btn.id= 'check';
+        let o_check_btn= document.createElement("button");
+        o_check_btn.id= 'check';
         let o_next_btn = document.createElement("i");
-        o_next_btn.id = 'check';
-        o_next_btn.classList.add("fas", "fa-check-circle", "fa-2x", "tool", "check", "btn");
+        //o_next_btn.id = 'check';
+        o_next_btn.classList.add("fas", "fa-check-circle", "fa-x", "tool"); //"fas", "fa-check-circle", "fa-2x", "tool", "check", "btn"
         //o_next_btn.addEventListener("click", TaskDisplay.pressCheck());
-        o_next_btn.addEventListener("click", TaskDisplay.pressCheck.bind(this));
-        //o_check_btn.append(o_next_btn);
+        o_check_btn.addEventListener("click", TaskDisplay.pressCheck);
+        o_check_btn.append(o_next_btn);
 
         let o_next_title = document.createElement("h3");
         o_next_title.innerText = "Next Task:";
@@ -49,7 +49,7 @@ class TaskDisplay extends HTMLElement {
         o_next_disp.id="next";
         o_next_disp.innerHTML="Do that";
 
-        o_wrapper_obj.append(o_curr_title,o_curr_disp,o_next_btn,o_next_title,o_next_disp);
+        o_wrapper_obj.append(o_curr_title,o_curr_disp,o_check_btn,o_next_title,o_next_disp);
         this.append(o_wrapper_obj);
     }
 
@@ -57,8 +57,14 @@ class TaskDisplay extends HTMLElement {
      * Handles pressing the check button.
      */
     static pressCheck(o_event){
+        //console.log(TaskDisplay.o_tasks);
+        
+        if(TaskDisplay.o_tasks==undefined || Object.values(TaskDisplay.o_tasks).length==0){
+            return;
+        }
         delete TaskDisplay.o_tasks[TaskDisplay.n_curr_taskid];
         TaskDisplay.updateDisp();
+        console.log(document.getElementById("timercont").n_curr_state);
     }
 
     /**
@@ -129,7 +135,9 @@ class TaskDisplay extends HTMLElement {
         this.o_tasks=o_task_list;
     }
 
-    
+   /* test(){
+        console.log(TaskList.o_tasks);
+    }   */ 
 }
 
 
