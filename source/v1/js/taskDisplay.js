@@ -33,14 +33,14 @@ class TaskDisplay extends HTMLElement {
         o_curr_disp.id="current";
         o_curr_disp.innerHTML="Do this";
 
-        let o_check_btn= document.createElement("button");
+        //let o_check_btn= document.createElement("button");
         //o_check_btn.id= 'check';
         let o_next_btn = document.createElement("i");
         o_next_btn.id = 'check';
         o_next_btn.classList.add("fas", "fa-check-circle", "fa-2x", "tool", "check", "btn");
         //o_next_btn.addEventListener("click", TaskDisplay.pressCheck());
         o_next_btn.addEventListener("click", TaskDisplay.pressCheck.bind(this));
-        o_check_btn.append(o_next_btn);
+        //o_check_btn.append(o_next_btn);
 
         let o_next_title = document.createElement("h3");
         o_next_title.innerText = "Next Task:";
