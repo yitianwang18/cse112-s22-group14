@@ -155,9 +155,6 @@ class TaskList extends HTMLElement {
         o_task.setAttribute("taskid", n_task_id);
         o_task.bindHandleDelete(() => { console.log(this); this.removeItem(n_task_id) });
         this.querySelector("#all-tasks").append(o_task);
-        
-        TaskDisplay.update_List(this.o_tasks);
-        TaskDisplay.updateDisp();
     }
 
     /**
@@ -174,9 +171,6 @@ class TaskList extends HTMLElement {
 
         // attribute query selector
         this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
-
-        TaskDisplay.update_List(this.o_tasks);
-        TaskDisplay.updateDisp();
         return item;       
     }
 

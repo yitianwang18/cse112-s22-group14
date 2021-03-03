@@ -19,7 +19,7 @@ class TaskDisplay extends HTMLElement {
     n_next_taskid=-1;
 
     /**
-     * Constructor. Initializes task display
+     * Constructor. Initializes task display.
      */
     constructor(){
         super();
@@ -36,10 +36,8 @@ class TaskDisplay extends HTMLElement {
         let o_check_btn= document.createElement("button");
         o_check_btn.id= 'check';
         let o_next_btn = document.createElement("i");
-        //o_next_btn.id = 'check';
-        o_next_btn.classList.add("fas", "fa-check-circle", "fa-x", "tool"); //"fas", "fa-check-circle", "fa-2x", "tool", "check", "btn"
-        //o_next_btn.addEventListener("click", TaskDisplay.pressCheck());
-        o_check_btn.addEventListener("click", TaskDisplay.pressCheck);
+        o_next_btn.classList.add("fas", "fa-check-circle", "fa-x", "tool"); 
+        o_check_btn.addEventListener("click", this.pressCheck.bind(this));
         o_check_btn.append(o_next_btn);
 
         let o_next_title = document.createElement("h3");
@@ -51,54 +49,63 @@ class TaskDisplay extends HTMLElement {
 
         o_wrapper_obj.append(o_curr_title,o_curr_disp,o_check_btn,o_next_title,o_next_disp);
         this.append(o_wrapper_obj);
+        
+        document.getElementById("start-btn").addEventListener("click", this.startDisp.bind(this));
+        document.getElementById("end-btn").addEventListener("click", this.endDisp.bind(this));
+    }
+
+    /**
+     * 
+     * @param {object} o_event click event
+     * Finishes display at end of session.
+     */
+    endDisp(o_event){
+        document.getElementById("current").innerHTML="All tasks for this session completed!";
+        document.getElementById("next").innerHTML="All tasks for this session completed!"; 
+    }
+
+    /**
+     * 
+     * @param {object} o_event click event
+     * Initializes display on session start.
+     */
+    startDisp(o_event){
+        this.updateList();
     }
 
     /**
      * Handles pressing the check button.
      */
-    static pressCheck(o_event){
-        //console.log(TaskDisplay.o_tasks);
-        
-        if(TaskDisplay.o_tasks==undefined || Object.values(TaskDisplay.o_tasks).length==0){
+    pressCheck(o_event){                     
+        //checks edge cases
+        if(this.o_tasks==undefined || Object.values(this.o_tasks).length==0 
+          || document.getElementById("timercont").n_curr_state !== 0){
             return;
         }
-        delete TaskDisplay.o_tasks[TaskDisplay.n_curr_taskid];
-        TaskDisplay.updateDisp();
-        console.log(document.getElementById("timercont").n_curr_state);
+        
+        //removes task
+        document.querySelector(`#all-tasks task-item[taskid='${this.n_curr_taskid}']`).remove();    
+        delete this.o_tasks[this.n_curr_taskid];
+        this.updateDisp();
     }
-
-    /**
-     * Enables next task button.
-     */
-    static enableBtn(){
-        console.log(TimerContainer.n_curr_state);
-        //TaskDisplay.n
-        //if(TimerContainer.n_curr_state){}
-    }
-
-    /**
-     * Disables next task button during breaks and when all tasks are completed.
-     */
-    static disableBtn(){}
     
     /**
      * Mimics end of session functionality when all tasks are completed.
      */
-    static tasksComplete(){
+    tasksComplete(){
         let o_vals=new Array(Object.values(this.o_tasks));
-        console.log(o_vals[0].length);
+
         //no tasks left, so it displays finish
         if(o_vals[0].length==0){
             document.getElementById("current").innerHTML="All tasks for this session completed!";
             document.getElementById("next").innerHTML="All tasks for this session completed!";
-            this.disableBtn();
         }
     }
     
     /**
      * Updates display for current and next task (from task list).
      */
-    static updateDisp(){
+    updateDisp(){
         let b_curr=new Boolean(false);
         let b_next=new Boolean(false);
         
@@ -118,7 +125,6 @@ class TaskDisplay extends HTMLElement {
         }        
         //if bools are false and exits loop, there are no tasks to fill next or current
         if(b_curr==false){
-            console.log(typeof TaskDisplay.o_tasks);
             this.tasksComplete();
         }
 
@@ -128,16 +134,14 @@ class TaskDisplay extends HTMLElement {
     }
     
     /**
-     * Updates the list of tasks whenever a task is added or deleted.
+     * Updates the list of tasks to match taskList at start of session.
      * @param {map} o_task_list 
      */
-    static update_List(o_task_list){
-        this.o_tasks=o_task_list;
+    updateList(){
+        let temp=document.querySelector("task-list").o_tasks;
+        this.o_tasks=temp;
+        this.updateDisp();
     }
-
-   /* test(){
-        console.log(TaskList.o_tasks);
-    }   */ 
 }
 
 
