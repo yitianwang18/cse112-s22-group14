@@ -1,6 +1,6 @@
 import { TimerContainer } from "./timerContainer.js";
 import { TaskList } from "./taskList.js";
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     // Code for Up arrow scroll-up functionality 
     const TIMER_SECTION_TARGET = ".timer-section";
     let up_arrow = document.getElementById("up-arrow");
@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Code for showing / hiding TaskList functionality
     let task_btn = document.getElementById("task-btn");
-    task_btn.addEventListener("click", showTaskList); 
+    task_btn.addEventListener("click", showTaskList);
 
     /**
      * Event handler function to show TaskList when task button is pressed
