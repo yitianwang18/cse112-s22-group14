@@ -1,0 +1,237 @@
+/************************************
+ * Declare and initialize variables *
+ ************************************/
+
+ :root {
+    --white: #fff;
+    --black: #000;
+    --darkest-blue: #050a3f;
+    --dark-blue: #1f288f;
+    --blue: #4294ff;
+    --light-blue: #eaeaf5;
+    --red: #ff0000;
+    --darkest-orange: #8b4402;
+    --dark-orange: #e07d0b;
+    --orange: #d48816;
+    --light-orange: #f0c568;
+    --light-green: #b1f060;
+    --green: #178800;
+    --dark-green: #00570e;
+    --darker-green: #003809;
+    --darkest-green: #001303;
+    --grey: #949697;
+    --transparent: #00000000;
+    --alm-transparent: #0000006b;
+    --less-transparent: #0000009c;
+    
+  }
+  
+  /***********************
+   * Color for HTML Tags *
+   ***********************/
+  
+  hr {
+    color: var(--grey);
+  }
+  
+  /******************************
+   * Color for Disabled Buttons *
+   ******************************/
+  
+  .btn:disabled {
+    color: var(--grey);
+  }
+  
+  /********************
+   * Color for header *
+   ********************/
+  
+  .header-container {
+    background-color: var(--less-transparent);
+    
+  }
+  
+  /*************************
+   * Color for Info Button *
+   *************************/
+  
+  .info-btn {
+    background-color: var(--red);
+    color: var(--black);
+  }
+  
+  .info-btn:hover:enabled {
+    background-color: var(--light-orange);
+  }
+  
+  .task-btn {
+    color: var(--white);
+  }
+  
+  .task-btn:hover {
+    color: var(--green);
+  }
+
+  .info-btn-new {
+    color: var(--white);
+  }
+  
+  .info-btn-new:hover {
+    color: var(--green);
+  }
+
+  
+  .theme-btn {
+    color: var(--white);
+  }
+  
+  .theme-btn:hover {
+    color: var(--green);
+  }
+  
+  /*****************************
+   * Color for Slide-out Tasks *
+   *****************************/
+  
+  .sidenav {
+    background-color: var(--white);
+    box-shadow: -0.5em 0 1em var(--black);
+  }
+  
+  .btn{
+    color: var(--white); /*change to white, except for inside the tasklist*/
+    
+  }
+
+  .btn:hover:enabled,
+  .close:hover {
+    color: var(--green);
+  }
+
+  #add-btn {
+      color: var(--black);
+  }
+
+  #add-btn:hover:enabled {
+    color: var(--green);
+  }
+
+  #add-btn:disabled {
+    color: var(--grey);
+  }
+  
+  .close {
+    color: var(--black); 
+  }
+  
+  .close:hover {
+    color: var(--red); 
+  }
+  
+  /****************************
+   * Color for Pomodoro Timer *
+   ****************************/
+  .full-height {
+    background-image: url("../assets/img/1.jpg");
+    background-size: cover;
+  }
+
+  .timer-section {
+    background-color: var(--transparent);
+  }
+  
+  .timer-box {
+    background-color: var(--less-transparent);
+  }
+  
+  .timer {
+    background-color: var(--transparent); 
+  }
+  
+  #time-display {
+    color: var(--white);
+  }
+  
+  #work-message {
+    color: var(--white);
+  }
+  
+  #pomos-completed {
+    color: var(--white);
+  }
+  
+  .custom-btn {
+    border-color: var(--white);
+    color: var(--white);
+    background-color: var(--transparent); 
+  }
+  
+  .custom-btn:hover:enabled {
+    background-color: var(--white);
+    color: var(--black);
+  }
+  
+  .custom-btn:disabled {
+    background-color: var(--grey);
+  }
+  
+  /****************************
+   * Color for Viewable Tasks *
+   ****************************/
+  
+  .middle-container {
+    background-color: var(--transparent);
+    color: var(--white);
+  }
+  
+  #current {
+    background-color: var(--less-transparent);
+    color: var(--white);
+    border-color: var(--white);
+  }
+  
+  #next {
+    background-color: var(--less-transparent);
+    border-color: var(--white);
+  }
+  
+  /**************************
+   * Color for Instructions *
+   **************************/
+  
+  .instruct-head {
+    color: var(--white);
+    background-color: var(--less-transparent);
+  }
+  
+  #instructions-para {
+    background-color: var(--alm-transparent);
+    color: var(--white);
+  }
+  
+  .instructions-section {
+    background-image: url("../assets/img/1.jpg");
+    background-size: cover;
+  }
+
+  .arrow-up-icon {
+    color: var(--white);
+  }
+  
+  .instruct-bottom {
+    background-color: var(--less-transparent);
+  
+  }
+  
+  .arrow-up-icon:hover {
+    color: var(--green);
+  }
+  
+  /********************
+   * Color for Footer *
+   ********************/
+  
+  .copy-right {
+    background-color: var(--black);
+    color: var(--white);
+  }
