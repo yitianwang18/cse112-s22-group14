@@ -56,32 +56,21 @@ body {
  * Styling Navigation Bar *
  **************************/
 
+
+
 /**
- * Styling for information button
+ * Inner container for Pomodoro Timer
  */
-.info-btn {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  right: 15px;
-  top: 88px;
-  border-radius: 50%;
-  opacity: 100%;
-  font-family: 'Courier New', 'Lucida Console', sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
+ .all-btns {
+  padding: 10px 0;
+  text-align: right;
 }
 
 /**
  * Styling for task button
  */
  #theme-btn {
-  margin-right: 95px;
-  position: absolute;
-  right: 15px;
-  top: 92px;
+  position: relative;
   cursor: pointer;
 }
 
@@ -89,10 +78,8 @@ body {
  * Styling for task button
  */
 #task-btn {
-  margin-right: 40px;
-  position: absolute;
-  right: 15px;
-  top: 90px;
+  padding-right: 10px;
+  position: relative;
   cursor: pointer;
 }
 
@@ -100,9 +87,8 @@ body {
  * Styling for new info button
  */
  #info-btn-new {
-  position: absolute;
-  right: 15px;
-  top: 92px;
+  margin-right: 10px;
+  position: relative;
   cursor: pointer;
 }
 
@@ -222,7 +208,7 @@ input {
  * Inner container for Pomodoro Timer
  */
 .main-box {
-  padding: 10px 0 10px 0;
+  padding: 0 0 10px 0;
   text-align: center;
 }
 
@@ -233,8 +219,10 @@ input {
   border-radius: 3px;
   height: auto;
   width: 450px;
-  margin: 45px auto 0 auto;
+  margin: 0 auto 0 auto;
   padding: 20px 100px 15px 100px;
+  border: 3px solid;
+  border-color: var(--white);
 }
 
 

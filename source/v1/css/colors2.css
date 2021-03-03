@@ -139,9 +139,6 @@
   
   .timer-box {
     background-color: var(--less-transparent);
-    border: 3px solid;
-    border-color: var(--white);
-    padding: 17px 97px 12px 97px;
   }
   
   .timer {
