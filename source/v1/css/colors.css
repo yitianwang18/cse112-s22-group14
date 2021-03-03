@@ -95,21 +95,11 @@ hr {
 }
 
 .btn{
-  color: var(--dark-blue); 
-  
+  color: var(--dark-blue);
 }
-
 
 .btn:hover:enabled,
 .close:hover {
-  color: var(--light-green);
-}
-
-#add-btn {
-    color: var(--dark-blue);
-}
-
-#add-btn:hover {
   color: var(--light-green);
 }
 
