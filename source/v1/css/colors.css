@@ -13,6 +13,9 @@
   --dark-orange: #e07d0b;
   --orange: #d48816;
   --light-orange: #f0c568;
+  --light-green: #b1f060;
+  --green: #178800;
+  --dark-green: #00570e;
   --grey: #949697;
   --transparent: #00000000;
 }
@@ -52,7 +55,7 @@ hr {
 }
 
 .info-btn:hover:enabled {
-  background-color: var(--light-orange);
+  background-color: var(--light-green);
 }
 
 .task-btn {
@@ -60,7 +63,7 @@ hr {
 }
 
 .task-btn:hover {
-  color: var(--light-orange);
+  color: var(--light-green);
 }
 
 /*****************************
@@ -69,7 +72,7 @@ hr {
 
 .sidenav {
   background-color: var(--white);
-  box-shadow: inset 20px 0 20px -20px var(--grey);
+  box-shadow: -0.5em 0 1em var(--black);
 }
 
 .btn,
@@ -80,7 +83,7 @@ hr {
 
 .btn:hover:enabled,
 .close:hover {
-  color: var(--light-orange);
+  color: var(--light-green);
 }
 
 /****************************
@@ -153,7 +156,7 @@ hr {
 .instruct-head {
   color: var(--white);
   background-color: var(--dark-orange);
-  background-image: linear-gradient(to right,  var(--darkest-orange), var(--dark-orange), var(--orange));
+  background-image: linear-gradient(to right,  var(--dark-green), var(--green), var(--light-green));
 }
 
 #instructions-para {
@@ -166,7 +169,7 @@ hr {
 
 .instruct-bottom {
   background-color: var(--dark-orange);
-  background-image: linear-gradient(to right,  var(--darkest-orange), var(--dark-orange), var(--orange));
+  background-image: linear-gradient(to right,  var(--dark-green), var(--green), var(--light-green));
 
 }
 
