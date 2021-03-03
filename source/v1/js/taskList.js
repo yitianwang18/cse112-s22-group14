@@ -74,7 +74,7 @@ class TaskList extends HTMLElement {
         let o_hr = document.createElement("hr");
 
         let o_existing_tasks_title = document.createElement("div")
-        o_existing_tasks_title.innerHTML = "Tasks to finish:";
+        o_existing_tasks_title.innerHTML = "Tasks remaining:";
 
         o_task_title_wrapper.append(o_tasklist_title, o_add_task, o_hr, o_existing_tasks_title);
 
@@ -164,7 +164,22 @@ class TaskList extends HTMLElement {
         o_task.setAttribute("taskname", s_task_name);
         o_task.setAttribute("taskid", n_task_id);
         o_task.bindHandleDelete(() => { console.log(this); this.removeItem(n_task_id) });
+        o_task.bindHandleEdit(() => { this.editItemName(n_task_id); });
+        // bind a function that listen to an onchange for a task input element
+
         this.querySelector("#all-tasks").append(o_task);
+    }
+
+    /**
+     * Enter 'edit task name' mode after clicking on existing task
+     * @param {number} n_task_id task id number
+     */
+    editItemName(n_task_id) {
+        // get the task object that we'll be editing the name of
+        let o_task = this.querySelector(`#all-tasks show-tasks[taskid='${n_task_id}']`);
+        o_task.updateName(n_task_id);
+        // update array of tasks (o_tasks)
+        this.o_tasks[n_task_id] = o_task.getAttribute('taskname');
     }
 
     /**
@@ -179,7 +194,7 @@ class TaskList extends HTMLElement {
         delete this.o_tasks[n_task_id];
 
         // attribute query selector
-        this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
+        this.querySelector(`#all-tasks show-tasks[taskid='${n_task_id}']`).remove();
 
         return item;
     }

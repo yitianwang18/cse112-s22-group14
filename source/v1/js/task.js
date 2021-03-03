@@ -5,13 +5,6 @@
 class Task extends HTMLElement {
 
     /**
-     * Attributes that this object observes
-     * @static
-     * @type {String[]}
-     */
-    static get observedAttributes() { return ['taskname', 'taskid']; }
-
-    /**
      * Maximum length of trimmed input task
      * @static
      * @type {Number}
@@ -19,37 +12,28 @@ class Task extends HTMLElement {
     static N_MAX_TASK_LENGTH = 50;
 
     /**
+     * Attributes that this object observes
+     * @static
+     * @type {String[]}
+     */
+    static get observedAttributes() { return ['taskname', 'taskid']; }
+
+    /**
      * Constructs a Task item, initializing the task name and delete button
      */
     constructor() {
         super();
-        let o_item = document.createElement("div");
-        // Enter edit mode for existing tasks in the task list
-        o_item.addEventListener("click", () => {
-          // small bug in this event handler, when u click on the edit box
-          // multiple times, <input> fills the box up
-          let stringVal = o_item.innerHTML;
-          // hide the task name
-          o_item.innerHTML = "";
-          let input = document.createElement("input");
-          input.onblur = function() {
-            if (Task.validateString(input.value))
-                o_item.innerHTML = input.value;
-            else
-              o_item.innerHTML = stringVal;
+        let o_item = document.createElement("input");
+        // let o_item_input = document.createElement("input");
+        o_item.setAttribute('type', 'text');
+        o_item.setAttribute('name', 'task');
 
-            input.value = "";
-          }
-
-          input.value = stringVal;
-          o_item.appendChild(input);
-          input.focus();
-        });
-
-        // when a task is clicked on, its name is also editable?
-        // listener for taskname?
         let o_del_button = document.createElement("button");
-        o_del_button.innerText = "del";
+        o_del_button.classList.add("btn");
+        let o_del_button_icon = document.createElement("i");
+        o_del_button_icon.classList.add("fas", "fa-trash-alt", "fa-x");
+
+        o_del_button.append(o_del_button_icon);
 
         this.append(o_item, o_del_button);
     }
@@ -70,8 +54,9 @@ class Task extends HTMLElement {
      * Renders the Task
      */
     renderComponents() {
-        let o_div = this.querySelector("div");
-        o_div.innerHTML = this.getAttribute("taskname");
+        let o_div = this.querySelector("input");
+        // o_div.innerHTML = this.getAttribute("taskname");
+        o_div.value = this.getAttribute("taskname");
     }
 
     /**
@@ -96,25 +81,63 @@ class Task extends HTMLElement {
      * Binds edit handler to the task-item. Allows task name to be editable upon click
      * @param {Function}  edit_action
      */
-    bindHandleEdit(edit_action) {
-        // let item = this;
-        // let stringVal = item.innerHTML;
-        // let input = document.createElement("input");
-        // input.onblur = function() {
-        //   // check if input string same as current string value
-        //   if (Task.validateString(input.value)) {
-        //       item.innerHTML = input.value;
-        //   }
-        //   else {
-        //     item.innerHTML = stringVal;
-        //   }
-        //   input.value = "";
-        // }
-        //
-        // input.value = stringVal;
-        // item.appendChild(input);
-        // input.focus();
+    bindHandleEdit(f_edit_action) {
+        // let text = this.querySelector("div").addEventListener("click", f_edit_action);
+        this.querySelector("input").addEventListener("change", f_edit_action);
     }
+
+    /**
+     * updates the taskname attrib after editing it
+     * @param {number} n_task_id task id number
+     */
+    updateName(n_task_id) {
+        // update the taskname attribute + input.value
+        let o_task_item = document.querySelector(`#all-tasks show-tasks[taskid='${n_task_id}']`);
+        let o_task_item_input = o_task_item.querySelector('input');
+
+        // save the old string value, perform str validation
+        // if new string invalid, replace with old value
+        let s_curr_input_val = o_task_item.getAttribute('taskname');
+
+        if (Task.validateString(o_task_item_input.value)) {
+          // set the attribute name to be the new value
+          o_task_item.setAttribute('taskname', o_task_item_input.value.trim());
+        }
+        else {
+            o_task_item.setAttribute('taskname', s_curr_input_val);
+        }
+    }
+
+    /**
+     * edits the task #n_task_id after clicking on it
+     * @param {number} n_task_id task id number
+     */
+    // editName(n_task_id) {
+        // let o_task_item = document.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`);
+        // let o_task_item_div = o_task_item.querySelector('div');
+        // // keep the original taskname string incase new input invalid
+        // let s_stringVal = o_task_item_div.innerHTML;
+        //
+        // // hide task name
+        // o_task_item_div.innerHTML = "";
+        // let o_input = document.createElement("input");
+        // o_input.setAttribute('type', 'text');
+        // o_input.onblur = function () {
+        //   if (Task.validateString(o_input.value)) {
+        //     o_input.value = o_input.value.trim();
+        //     o_task_item_div.innerHTML = o_input.value;
+        //   }
+        //   else
+        //     o_task_item_div.innerHTML = s_stringVal;
+        //
+        //   o_task_item.removeChild(o_input);
+        // }
+        // // input box should show existing name to edit
+        // o_input.value = s_stringVal;
+        // o_task_item.appendChild(o_input);
+        // o_input.focus();
+    // }
 }
-window.customElements.define("task-item", Task);
+
+window.customElements.define("show-tasks", Task);
 export { Task }
