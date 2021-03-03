@@ -40,3 +40,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    class StaticOutsideComponent extends HTMLElement {
+        static get observedAttributes() {
+            return ["pog"];
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+            this.querySelector("p").innerText = StaticOutsideComponent.poggers + newValue;
+        }
+        constructor() {
+            super();
+            let p = document.createElement("p");
+            p.innerHTML = "smwc";
+            this.append(p);
+        }
+    }
+    StaticOutsideComponent.poggers = "poggggg";
+    customElements.define("so-comp", StaticOutsideComponent);
+    let sowc = new StaticOutsideComponent();
+    sowc.setAttribute("pog", "sowc");
+    document.querySelector("body").appendChild(sowc);
+
+});
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     class StaticMemberComponent extends HTMLElement {
+//         static poggers = "asdf";
+
+//         static get observedAttributes() {
+//             return ["pog"];
+//         }
+
+//         attributeChangedCallback(name, oldValue, newValue) {
+//             this.querySelector("p").innerText = StaticMemberComponent.poggers + newValue;
+//         }
+//         constructor() {
+//             super();
+//             let p = document.createElement("p");
+//             p.innerHTML = "smwc";
+//             this.append(p);
+//         }
+//     }
+//     customElements.define("sm-comp", StaticMemberComponent);
+//     let smwc = new StaticMemberComponent();
+//     smwc.setAttribute("pog", "smwc");
+//     document.querySelector("body").appendChild(smwc);
+
+// });
+
+
