@@ -20,15 +20,16 @@ class TaskList extends HTMLElement {
      */
     static N_ENTER_KEYCODE = 13;
 
-    o_tasks = {};
-    n_next_task_id = 0;
+    o_tasks;
+    n_next_task_id;
 
     /**
      * Constructs a new Timer Display, initializing all elements and adding handlers
      */
     constructor() {
         super();
-
+        this.o_tasks = {};
+        this.n_next_task_id = 0;
         let o_wrapper_obj = document.createElement("div");
         o_wrapper_obj.className = "sidenav";
         o_wrapper_obj.id = "side-tasks";
