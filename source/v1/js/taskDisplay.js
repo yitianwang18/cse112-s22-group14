@@ -34,6 +34,7 @@ class TaskDisplay extends HTMLElement {
         o_curr_disp.innerHTML="Do this";
 
         let o_check_btn= document.createElement("button");
+        o_check_btn.className="btn";
         o_check_btn.id= 'check';
         let o_next_btn = document.createElement("i");
         o_next_btn.classList.add("fas", "fa-check-circle", "fa-x", "tool"); 
@@ -99,6 +100,7 @@ class TaskDisplay extends HTMLElement {
         if(o_vals[0].length==0){
             document.getElementById("current").innerHTML="All tasks for this session completed!";
             document.getElementById("next").innerHTML="All tasks for this session completed!";
+            document.getElementById("timercont").endSession();
         }
     }
     
