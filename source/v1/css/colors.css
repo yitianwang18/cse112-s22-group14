@@ -2,38 +2,61 @@
  * Declare and initialize variables *
  ************************************/
 
- :root {
+:root {
   --white: #fff;
   --black: #000;
+  --darkest-blue: #050a3f;
   --dark-blue: #1f288f;
+  --blue: #539eff;
   --light-blue: #eaeaf5;
+  --red: #ff0000;
+  --darkest-orange: #8b4402;
   --dark-orange: #e07d0b;
+  --orange: #d48816;
   --light-orange: #f0c568;
-  --grey: #949697
+  --light-green: #b1f060;
+  --green: #178800;
+  --dark-green: #00570e;
+  --grey: #949697;
+  --transparent: #00000000;
 }
 
 /***********************
  * Color for HTML Tags *
  ***********************/
+
 hr {
   color: var(--grey);
 }
 
+/******************************
+ * Color for Disabled Buttons *
+ ******************************/
+
+.btn:disabled {
+  color: var(--grey);
+}
+
+/********************
+ * Color for header *
+ ********************/
+
 .header-container {
   background-color: var(--dark-blue);
+  background-image: linear-gradient(to right,  var(--darkest-blue), var(--dark-blue), var(--blue));
 }
 
-/************************
- * Color for Navigation *
- ************************/
+/*************************
+ * Color for Info Button *
+ *************************/
 
 .info-btn {
+  background-color: var(--red);
   color: var(--white);
-  background-color: var(--dark-blue);
 }
 
-.info-btn:hover {
-  background-color: var(--light-orange);
+.info-btn:hover:enabled {
+  background-color: var(--black);
 }
 
 .task-btn {
@@ -41,38 +64,77 @@ hr {
 }
 
 .task-btn:hover {
-  color: rgb(240, 197, 104);
+  color: var(--light-green);
+}
+
+
+.info-btn-new {
+  color: var(--dark-blue);
+}
+
+.info-btn-new:hover {
+  color: var(--light-green);
+}
+
+  
+.theme-btn {
+  color: var(--dark-blue);
+}
+
+.theme-btn:hover {
+  color: var(--light-green);
 }
 
 /*****************************
  * Color for Slide-out Tasks *
  *****************************/
-
-.sidenav {
+  
+ .sidenav {
   background-color: var(--white);
+  box-shadow: -0.5em 0 1em var(--black);
 }
 
-.btn {
-  color: var(--dark-blue);
+.btn{
+  color: var(--dark-blue); 
+  
 }
 
-.btn:hover {
-  color: rgb(240, 197, 104);
+
+.btn:hover:enabled,
+.close:hover {
+  color: var(--light-green);
 }
 
+#add-btn {
+    color: var(--dark-blue);
+}
+
+#add-btn:hover {
+  color: var(--light-green);
+}
+
+.close {
+  color: var(--black); 
+}
+
+.close:hover {
+  color: var(--red); 
+}
 /****************************
  * Color for Pomodoro Timer *
  ****************************/
+
 .timer-section {
   background-color: var(--white);
 }
 
 .timer-box {
   background-color: var(--dark-blue);
+  background-image: linear-gradient(to right,  var(--darkest-blue), var(--dark-blue), var(--blue));
 }
 
 .timer {
-  background-color: var(--dark-blue);
+  background-color: var(--transparent); 
 }
 
 #time-display {
@@ -90,12 +152,16 @@ hr {
 .custom-btn {
   border-color: var(--white);
   color: var(--white);
-  background: var(--dark-blue);
+  background-color: var(--transparent); 
 }
 
-.custom-btn:hover {
+.custom-btn:hover:enabled {
   background-color: var(--white);
   color: var(--dark-blue);
+}
+
+.custom-btn:disabled {
+  background-color: var(--grey);
 }
 
 /****************************
@@ -114,7 +180,6 @@ hr {
 
 #next {
   background-color: var(--light-blue);
-  color: rgb(48, 46, 46);
   border-color: var(--dark-blue);
 }
 
@@ -125,6 +190,7 @@ hr {
 .instruct-head {
   color: var(--white);
   background-color: var(--dark-orange);
+  background-image: linear-gradient(to right,  var(--dark-green), var(--green), var(--light-green));
 }
 
 #instructions-para {
@@ -137,6 +203,8 @@ hr {
 
 .instruct-bottom {
   background-color: var(--dark-orange);
+  background-image: linear-gradient(to right,  var(--dark-green), var(--green), var(--light-green));
+
 }
 
 .arrow-up-icon:hover {
@@ -148,14 +216,6 @@ hr {
  ********************/
 
 .copy-right {
-  background-color: var(--dark-blue);
-  color: var(--white);
-}
-
-/**********************
- * Color for NoScript *
- **********************/
-
-noscript > div {
-  background-color: var(--dark-orange);
+  background-color: var(--white);
+  color: var(--black);
 }

@@ -1,0 +1,6 @@
+{
+  "ignorePatterns": ["cypress/plugins/*.js"],
+  "extends": [
+    "plugin:cypress/recommended"
+  ]
+}
