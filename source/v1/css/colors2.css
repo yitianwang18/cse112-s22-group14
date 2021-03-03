@@ -103,7 +103,6 @@
     
   }
 
-  
   .btn:hover:enabled,
   .close:hover {
     color: var(--green);
@@ -113,8 +112,12 @@
       color: var(--black);
   }
 
-  #add-btn:hover {
+  #add-btn:hover:enabled {
     color: var(--green);
+  }
+
+  #add-btn:disabled {
+    color: var(--grey);
   }
   
   .close {
