@@ -36,8 +36,10 @@ body {
  * PomoHero App Logo
  */
 .pomo-logo {
-  width: 45px;
+  width: 60px;
   margin-left: 5px;
+  padding-left: 10px;
+  padding-top: 5px;
   float: left;
 }
 
@@ -46,7 +48,8 @@ body {
  */
 .banner {
   width: 250px;
-  margin: 0 auto 0 0;
+  padding-top: 5px;
+  margin: auto;
 }
 
 /**************************
@@ -61,7 +64,7 @@ body {
   height: 30px;
   position: absolute;
   right: 15px;
-  top: 90px;
+  top: 88px;
   border-radius: 50%;
   opacity: 100%;
   font-family: 'Courier New', 'Lucida Console', sans-serif;
@@ -74,11 +77,33 @@ body {
 /**
  * Styling for task button
  */
+ #theme-btn {
+  margin-right: 95px;
+  position: absolute;
+  right: 15px;
+  top: 92px;
+  cursor: pointer;
+}
+
+/**
+ * Styling for task button
+ */
 #task-btn {
-  margin-right: 50px;
+  margin-right: 40px;
   position: absolute;
   right: 15px;
   top: 90px;
+  cursor: pointer;
+}
+
+/**
+ * Styling for new info button
+ */
+ #info-btn-new {
+  position: absolute;
+  right: 15px;
+  top: 92px;
+  cursor: pointer;
 }
 
 /**
@@ -112,16 +137,7 @@ body {
   
 }
 
-@media screen and (max-width:900px) {
-  .sidenav {
-    max-width: 80%; /* The width is 80%, when the viewport is 900px or smaller */
-  }
-  
-  .pomo-logo {
-    width: 35px;
-    margin: 10px 0 0 10px;
-  }
-}
+
 
 /**
  * Styling header for slide-out tasks
@@ -156,6 +172,8 @@ body {
   top: 20px;
   right: 0;
   margin-right: 25px;
+  padding: 0 9px;
+  border-radius: 20px;
 }
 
 /**
@@ -219,12 +237,6 @@ input {
   padding: 20px 100px 15px 100px;
 }
 
-@media screen and (max-width:900px) {
-  .timer-box {
-    max-width: 50%; /* The width is 50%, when the viewport is 900px or smaller */
-  }
-}
-
 
 /**
  * Message about the timer indicating works and breaks
@@ -245,16 +257,6 @@ input {
   border-style: solid;
 }
 
-@media screen and (max-width:500px) {
-  .timer-box {
-    width: 100%; /* The width is 50%, when the viewport is 900px or smaller */
-    padding: 10px 21% 20px 21%;
-  }
-
-  #time-display {
-    padding: 10px 10px;
-  }
-}
 
 /**
  * Message about the number of Pomodoro Timers completed
@@ -320,13 +322,6 @@ input {
   position: relative;
 }
 
-
-@media screen and (max-width:900px) {
-  .middle-container > div {
-    max-width: 80%; /* The width is 80%, when the viewport is 900px or smaller */
-  }
-}
-
 /**
  * Input field for displaying task description
  */
@@ -367,6 +362,7 @@ input {
  */
 .instruct-head {
   margin-top: 0;
+  margin-bottom: 0;
   padding: 15px;
   font-size: 2.5rem;
   font-family: 'Georgia', 'Times New Roman', serif;
@@ -434,4 +430,49 @@ input {
   margin: auto;
   font-weight: 900;
   font-family: 'Helvetica', 'Calibri', sans-serif;
+}
+
+/** 
+ * When the viewport is 900px or smaller 
+ */
+@media screen and (max-width:900px) {
+  .timer-box {
+    max-width: 50%; /* The width is 50%, when the viewport is 900px or smaller */
+  }
+
+  .sidenav {
+    max-width: 80%; 
+  }
+  
+  .pomo-logo {
+    width: 45px;
+    padding-top: 15px;
+  }
+
+  .middle-container > div {
+    max-width: 80%; /* The width is 80%, when the viewport is 900px or smaller */
+  }
+}
+
+/** 
+ * When the viewport is 500px or smaller 
+ */
+@media screen and (max-width:500px) {
+  .timer-box {
+    width: 100%; 
+    padding: 10px 21% 20px 21%;
+  }
+
+  #time-display {
+    padding: 10px 10px;
+  }
+
+  .sidenav {
+    max-width: 80%; /* The width is 80%, when the viewport is 900px or smaller */
+    padding-right: 80px;
+  }
+
+  .pomo-logo {
+    width: 0;
+  }
 }

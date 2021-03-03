@@ -7,8 +7,9 @@
   --black: #000;
   --darkest-blue: #050a3f;
   --dark-blue: #1f288f;
-  --blue: #4294ff;
+  --blue: #539eff;
   --light-blue: #eaeaf5;
+  --red: #ff0000;
   --darkest-orange: #8b4402;
   --dark-orange: #e07d0b;
   --orange: #d48816;
@@ -50,12 +51,12 @@ hr {
  *************************/
 
 .info-btn {
-  background-color: var(--dark-blue);
+  background-color: var(--red);
   color: var(--white);
 }
 
 .info-btn:hover:enabled {
-  background-color: var(--light-green);
+  background-color: var(--black);
 }
 
 .task-btn {
@@ -66,26 +67,59 @@ hr {
   color: var(--light-green);
 }
 
+
+.info-btn-new {
+  color: var(--dark-blue);
+}
+
+.info-btn-new:hover {
+  color: var(--light-green);
+}
+
+  
+.theme-btn {
+  color: var(--dark-blue);
+}
+
+.theme-btn:hover {
+  color: var(--light-green);
+}
+
 /*****************************
  * Color for Slide-out Tasks *
  *****************************/
-
-.sidenav {
+  
+ .sidenav {
   background-color: var(--white);
   box-shadow: -0.5em 0 1em var(--black);
 }
 
-.btn,
-.close {
-  color: var(--dark-blue);
+.btn{
+  color: var(--dark-blue); 
   
 }
+
 
 .btn:hover:enabled,
 .close:hover {
   color: var(--light-green);
 }
 
+#add-btn {
+    color: var(--dark-blue);
+}
+
+#add-btn:hover {
+  color: var(--light-green);
+}
+
+.close {
+  color: var(--black); 
+}
+
+.close:hover {
+  color: var(--red); 
+}
 /****************************
  * Color for Pomodoro Timer *
  ****************************/
