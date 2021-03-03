@@ -56,20 +56,18 @@ body {
  * Styling Navigation Bar *
  **************************/
 
-
-
 /**
- * Inner container for Pomodoro Timer
+ * Container to hold all navigation bar buttons
  */
- .all-btns {
+.all-btns {
   padding: 10px 0;
   text-align: right;
 }
 
 /**
- * Styling for task button
+ * Styling theme changing button
  */
- #theme-btn {
+#theme-btn {
   position: relative;
   cursor: pointer;
 }
@@ -86,14 +84,14 @@ body {
 /**
  * Styling for new info button
  */
- #info-btn-new {
+#info-btn-new {
   margin-right: 10px;
   position: relative;
   cursor: pointer;
 }
 
 /**
- * Styling for buttons
+ * Styling for buttons in general
  */
 .btn {
   background: transparent;
@@ -113,25 +111,23 @@ body {
 .sidenav {
   padding: 0 50px;
   height: 100%;
+  min-height: 750px;
   display: none;
   width: auto;
   position: absolute;
   z-index: 2;
   top: 0;
-  right: 0; 
+  right: 0;
   overflow-x: hidden;
-  
+  box-shadow: -0.5em 0 1em;
 }
-
-
 
 /**
  * Styling header for slide-out tasks
  */
-#side-tasks  div > h1 {
+#side-tasks div > h1 {
   font-family: 'Georgia', 'Times New Roman', serif;
   padding: 30px;
-  
 }
 
 /**
@@ -143,6 +139,9 @@ body {
   background-color: black;
 }
 
+/**
+ * Styling add and delete buttons
+ */
 #add-btn,
 #delete {
   position: relative;
@@ -167,6 +166,7 @@ body {
  */
 input[type=text] {
   width: 340px;
+  max-width: 89%;
   margin: 5px;
   padding: 10px 20px;
   display: inline-block;
@@ -175,10 +175,6 @@ input[type=text] {
   box-sizing: border-box;
   font-size: 1rem;
   font-weight: normal;
-}
-
-input {
-  max-width: 89%;
 }
 
 /**
@@ -225,7 +221,6 @@ input {
   border-color: var(--white);
 }
 
-
 /**
  * Message about the timer indicating works and breaks
  */
@@ -244,7 +239,6 @@ input {
   padding: 10px 30px;
   border-style: solid;
 }
-
 
 /**
  * Message about the number of Pomodoro Timers completed
@@ -279,7 +273,7 @@ input {
   display: inline-block;
   cursor: pointer;
   text-align: center;
-  margin: 10px;;
+  margin: 10px;
   border: 2px solid;
 }
 
@@ -306,12 +300,15 @@ input {
   font-weight: 600;
 }
 
+/**
+ * Headers in the middle container
+ */
 .middle-container > h3 {
   position: relative;
 }
 
 /**
- * Input field for displaying task description
+ * Fields for displaying task description
  */
 .middle-container > div {
   width: 450px;
@@ -370,6 +367,9 @@ input {
   line-height: 25px;
 }
 
+/**
+ * Headers within the instruction para
+ */
 #instructions-para > h3 {
   text-align: center;
 }
@@ -420,34 +420,38 @@ input {
   font-family: 'Helvetica', 'Calibri', sans-serif;
 }
 
-/** 
- * When the viewport is 900px or smaller 
+/*************************************
+ * Responsiveness with media queries *
+ *************************************/
+
+/**
+ * When the viewport is 900px or smaller
  */
-@media screen and (max-width:900px) {
+@media screen and (max-width: 900px) {
   .timer-box {
-    max-width: 50%; /* The width is 50%, when the viewport is 900px or smaller */
+    max-width: 50%;
   }
 
   .sidenav {
-    max-width: 80%; 
+    max-width: 80%;
   }
-  
+
   .pomo-logo {
     width: 45px;
     padding-top: 15px;
   }
 
   .middle-container > div {
-    max-width: 80%; /* The width is 80%, when the viewport is 900px or smaller */
+    max-width: 80%;
   }
 }
 
-/** 
- * When the viewport is 500px or smaller 
+/**
+ * When the viewport is 500px or smaller
  */
-@media screen and (max-width:500px) {
+@media screen and (max-width: 500px) {
   .timer-box {
-    width: 100%; 
+    width: 100%;
     padding: 10px 21% 20px 21%;
   }
 
@@ -456,8 +460,8 @@ input {
   }
 
   .sidenav {
-    max-width: 80%; /* The width is 80%, when the viewport is 900px or smaller */
-    padding-right: 80px;
+    max-width: 80%;
+    padding: 0 10%;
   }
 
   .pomo-logo {
