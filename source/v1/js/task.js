@@ -5,13 +5,6 @@
 class Task extends HTMLElement {
 
     /**
-     * Maximum length of trimmed input task
-     * @static
-     * @type {Number}
-     */
-    static N_MAX_TASK_LENGTH = 50;
-
-    /**
      * Attributes that this object observes
      * @static
      * @type {String[]}
