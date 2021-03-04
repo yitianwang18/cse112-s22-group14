@@ -188,11 +188,10 @@ class TaskDisplay extends HTMLElement {
         this.o_tasks=temp;
         this.updateDisp();
         //hides next task if no next available
-        if(this.o_tasks.length==1){
-            console.log("1");
+        if(this.o_tasks.length<=1){
             this.querySelector("#next").style.display="none";
         }
-        else{
+        else if(this.o_tasks.length>=2){
             this.querySelector("#next").style.display="";
         }
     }
