@@ -68,7 +68,7 @@ class TimerContainer extends HTMLElement {
      * @static
      * @type {number[]}
      */
-    static A_STATE_DURATIONS = [1500000, 300000, 2100000, 0];
+    static A_STATE_DURATIONS = [1500000, 300000, 2100000, 0]; 
 
     /**
      * Array mapping states to their displayed messages
