@@ -66,8 +66,8 @@ class TaskDisplay extends HTMLElement {
      * @param {Event} o_event event instance
      */
     endDisp(o_event){                                     
-        document.getElementById("current").innerHTML="All tasks for this session completed!";
-        document.getElementById("next").innerHTML="All tasks for this session completed!"; 
+        this.querySelector("#current").innerHTML="All tasks for this session completed!";
+        this.querySelector("#next").innerHTML="All tasks for this session completed!"; 
         this.o_tasks={};
         this.tasksComplete();
     }
@@ -87,7 +87,7 @@ class TaskDisplay extends HTMLElement {
     pressCheck(o_event){                     
         //checks edge cases
         if(this.o_tasks==undefined || Object.values(this.o_tasks).length==0 
-          || document.getElementById("timercont").n_curr_state !== 0){
+          || document.querySelector("timer-element").n_curr_state !== 0){
             return;
         }
         
@@ -136,11 +136,11 @@ class TaskDisplay extends HTMLElement {
         let o_vals=new Array(Object.values(this.o_tasks));
         //no tasks left, so it displays finish
         if(o_vals[0].length==0){
-            document.getElementById("current").innerHTML="All tasks for this session completed!";
-            document.getElementById("next").innerHTML="All tasks for this session completed!";
-            document.getElementsByClassName("next")[0].style.display="none";
-            document.getElementById("timercont").endSession();
-            document.getElementById("timercont").renderComponents();
+            this.querySelector("#current").innerHTML="All tasks for this session completed!";
+            this.querySelector("#next").innerHTML="All tasks for this session completed!";
+            this.querySelector("#next").style.display="none";
+            document.querySelector("timer-element").endSession();
+            document.querySelector("timer-element").renderComponents();
             document.querySelector("#reset-btn").classList.add("hidden");
             document.querySelector("#reset-btn").disabled = false;
             document.querySelector("#start-btn").classList.remove("hidden");
@@ -157,13 +157,13 @@ class TaskDisplay extends HTMLElement {
         //iterate through tasks and find first two valid tasks to display
         for (const [key, value] of Object.entries(this.o_tasks)) {
             if(!b_curr && this.o_tasks[key] != undefined){
-                document.getElementById("current").innerHTML=value;
+                this.querySelector("#current").innerHTML=value;
                 b_curr=true;
                 this.n_curr_taskid=key;
             }
             else if(b_next == false && this.o_tasks[key] != undefined){
                 this.n_next_taskid=key;
-                document.getElementById("next").innerHTML=value;
+                this.querySelector("#next").innerHTML=value;
                 b_next=true;
                 return;
             } 
@@ -174,8 +174,8 @@ class TaskDisplay extends HTMLElement {
         }
 
         else if(!b_next){
-            document.getElementById("next").innerHTML="No more tasks for this session!";
-            document.getElementById("next").style.display="none";
+            this.querySelector("#next").innerHTML="No more tasks for this session!";
+            this.querySelector("#next").style.display="none";
         }
     }
     
@@ -189,10 +189,10 @@ class TaskDisplay extends HTMLElement {
         //hides next task if no next available
         if(this.o_tasks.length==1){
             console.log("1");
-            document.getElementById("next").style.display="none";
+            this.querySelector("#next").style.display="none";
         }
         else{
-            document.getElementById("next").style.display="";
+            this.querySelector("#next").style.display="";
         }
     }
 }
