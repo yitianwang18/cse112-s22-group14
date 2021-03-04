@@ -138,6 +138,7 @@ class TaskDisplay extends HTMLElement {
         if(o_vals[0].length==0){
             document.getElementById("current").innerHTML="All tasks for this session completed!";
             document.getElementById("next").innerHTML="All tasks for this session completed!";
+            document.getElementsByClassName("next")[0].style.display="none";
             document.getElementById("timercont").endSession();
             document.getElementById("timercont").renderComponents();
             document.querySelector("#reset-btn").classList.add("hidden");
@@ -174,6 +175,7 @@ class TaskDisplay extends HTMLElement {
 
         else if(!b_next){
             document.getElementById("next").innerHTML="No more tasks for this session!";
+            document.getElementById("next").style.display="none";
         }
     }
     
@@ -184,6 +186,14 @@ class TaskDisplay extends HTMLElement {
         let temp=document.querySelector("task-list").o_tasks;
         this.o_tasks=temp;
         this.updateDisp();
+        //hides next task if no next available
+        if(this.o_tasks.length==1){
+            console.log("1");
+            document.getElementById("next").style.display="none";
+        }
+        else{
+            document.getElementById("next").style.display="";
+        }
     }
 }
 
