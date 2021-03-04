@@ -96,15 +96,18 @@ hr {
   color: var(--grey);
 }
 
-#add-btn {
+#add-btn,
+#delete-btn {
   color: var(--black);
 }
 
-#add-btn:hover:enabled {
+#add-btn:hover:enabled,
+#delete-btn:hover:enabled {
   color: var(--green);
 }
 
-#add-btn:disabled {
+#add-btn:disabled,
+#delete-btn:disabled {
   color: var(--grey);
 }
 

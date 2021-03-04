@@ -10,10 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /**
      * Event handler function for instruction section: when "up-arrow" button pressed
-     * @param {Event} o_event The event instance
      */
-    function handleUpBtnPressed(o_event) {
-        let o_target = o_event.target.getAttribute("target");
+    function handleUpBtnPressed() {
+      let o_target = document.getElementById("up-arrow").getAttribute("target");
         let n_offset = document.querySelector(o_target).offsetTop;
 
         scroll({ top: n_offset, behavior: "smooth" });
@@ -23,14 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const S_INSTRUCTIONS_TARGET = ".instructions-section";
     let info_btn_new = document.getElementById("info-btn-new");
     info_btn_new.setAttribute("target", S_INSTRUCTIONS_TARGET);
-    info_btn_new.addEventListener("click", handleInfoBtnPressed.bind(this));
+    info_btn_new.addEventListener("click", handleInfoBtnPressed);
 
     /**
      * Event handler function for when the "info" button is pressed
-     * @param {Event} o_event The event instance
      */
-    function handleInfoBtnPressed(o_event) {
-        let o_target = o_event.target.getAttribute("target");
+    function handleInfoBtnPressed() {
+        let o_target = document.getElementById("info-btn-new").getAttribute("target");
         let n_offset = document.querySelector(o_target).offsetTop;
 
         scroll({ top: n_offset, behavior: "smooth" });
