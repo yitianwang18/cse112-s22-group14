@@ -36,8 +36,10 @@ body {
  * PomoHero App Logo
  */
 .pomo-logo {
-  width: 45px;
+  width: 60px;
   margin-left: 5px;
+  padding-left: 10px;
+  padding-top: 5px;
   float: left;
 }
 
@@ -46,28 +48,29 @@ body {
  */
 .banner {
   width: 250px;
-  margin: 0 80px 0 0;
+  padding-top: 5px;
+  margin: auto;
 }
 
 /**************************
  * Styling Navigation Bar *
  **************************/
 
+
+
 /**
- * Styling for information button
+ * Inner container for Pomodoro Timer
  */
-.info-btn {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  right: 15px;
-  top: 90px;
-  border-radius: 50%;
-  opacity: 80%;
-  font-family: 'Courier New', 'Lucida Console', sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-  border: none;
+ .all-btns {
+  padding: 10px 0;
+  text-align: right;
+}
+
+/**
+ * Styling for task button
+ */
+ #theme-btn {
+  position: relative;
   cursor: pointer;
 }
 
@@ -75,10 +78,18 @@ body {
  * Styling for task button
  */
 #task-btn {
-  margin-right: 50px;
-  position: absolute;
-  right: 15px;
-  top: 90px;
+  padding-right: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+/**
+ * Styling for new info button
+ */
+ #info-btn-new {
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
 }
 
 /**
@@ -87,8 +98,9 @@ body {
 .btn {
   background: transparent;
   border: none !important;
-  opacity: 80%;
+  opacity: 100%;
   cursor: pointer;
+  font-size: 2rem;
 }
 
 /***************************
@@ -111,11 +123,7 @@ body {
   
 }
 
-@media screen and (max-width:900px) {
-  .sidenav {
-    max-width: 80%; /* The width is 50%, when the viewport is 900px or smaller */
-  }
-}
+
 
 /**
  * Styling header for slide-out tasks
@@ -135,24 +143,23 @@ body {
   background-color: black;
 }
 
-/**
- * All buttons within slide-out tasks
- */
-.btn {
-  text-decoration: none;
-  font-size: 2rem;
-  cursor: pointer;
+#add-btn,
+#delete {
+  position: relative;
+  top: 5px;
 }
-
 
 /**
  * Close button inside slide-out tasks
  */
 .close {
+  text-decoration: none;
   position: absolute;
   top: 20px;
   right: 0;
   margin-right: 25px;
+  padding: 0 9px;
+  border-radius: 20px;
 }
 
 /**
@@ -201,7 +208,8 @@ input {
  * Inner container for Pomodoro Timer
  */
 .main-box {
-  padding: 10px 0 10px 0;
+  padding: 0 0 10px 0;
+  text-align: center;
 }
 
 /**
@@ -211,15 +219,12 @@ input {
   border-radius: 3px;
   height: auto;
   width: 450px;
-  margin: 45px auto 0 auto;
+  margin: 0 auto 0 auto;
   padding: 20px 100px 15px 100px;
+  border: 3px solid;
+  border-color: var(--white);
 }
 
-@media screen and (max-width:900px) {
-  .timer-box {
-    max-width: 50%; /* The width is 50%, when the viewport is 900px or smaller */
-  }
-}
 
 /**
  * Message about the timer indicating works and breaks
@@ -239,6 +244,7 @@ input {
   padding: 10px 30px;
   border-style: solid;
 }
+
 
 /**
  * Message about the number of Pomodoro Timers completed
@@ -292,7 +298,7 @@ input {
  * Container for displaying current and next task
  */
 .middle-container {
-  padding: 0 10px 30px 10px;
+  padding: 0 20px 30px 10px;
   margin: auto;
   height: auto;
   font-family: 'Helvetica', 'Calibri', sans-serif;
@@ -302,13 +308,6 @@ input {
 
 .middle-container > h3 {
   position: relative;
-}
-
-
-@media screen and (max-width:900px) {
-  .middle-container > div {
-    max-width: 80%; /* The width is 80%, when the viewport is 900px or smaller */
-  }
 }
 
 /**
@@ -351,6 +350,7 @@ input {
  */
 .instruct-head {
   margin-top: 0;
+  margin-bottom: 0;
   padding: 15px;
   font-size: 2.5rem;
   font-family: 'Georgia', 'Times New Roman', serif;
@@ -418,4 +418,49 @@ input {
   margin: auto;
   font-weight: 900;
   font-family: 'Helvetica', 'Calibri', sans-serif;
+}
+
+/** 
+ * When the viewport is 900px or smaller 
+ */
+@media screen and (max-width:900px) {
+  .timer-box {
+    max-width: 50%; /* The width is 50%, when the viewport is 900px or smaller */
+  }
+
+  .sidenav {
+    max-width: 80%; 
+  }
+  
+  .pomo-logo {
+    width: 45px;
+    padding-top: 15px;
+  }
+
+  .middle-container > div {
+    max-width: 80%; /* The width is 80%, when the viewport is 900px or smaller */
+  }
+}
+
+/** 
+ * When the viewport is 500px or smaller 
+ */
+@media screen and (max-width:500px) {
+  .timer-box {
+    width: 100%; 
+    padding: 10px 21% 20px 21%;
+  }
+
+  #time-display {
+    padding: 10px 10px;
+  }
+
+  .sidenav {
+    max-width: 80%; /* The width is 80%, when the viewport is 900px or smaller */
+    padding-right: 80px;
+  }
+
+  .pomo-logo {
+    width: 0;
+  }
 }

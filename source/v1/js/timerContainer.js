@@ -68,14 +68,14 @@ class TimerContainer extends HTMLElement {
      * @static
      * @type {number[]}
      */
-    static A_STATE_DURATIONS = [1500000, 300000, 2100000, 0];
+    static A_STATE_DURATIONS = [1500000, 300000, 2100000, 0]; 
 
     /**
      * Array mapping states to their displayed messages
      * @static
      * @type {string[]}
      */
-    static A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - Good job!", "Long Break - Relax and unwind", "Ready to focus?"];
+    static A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - Good job!", "Long Break - Relax", "Ready to focus?"];
 
     /**
      * Delay of interval
@@ -126,6 +126,7 @@ class TimerContainer extends HTMLElement {
         o_end_btn.innerText = TimerContainer.S_END_MESSAGE;
         o_end_btn.addEventListener("click", this.handleEndSession.bind(this));
 
+        /*
         // shortcut to instructions
         let o_information = document.createElement("button");
         o_information.className = "info-btn";
@@ -134,6 +135,8 @@ class TimerContainer extends HTMLElement {
         o_information.addEventListener("click", this.handleInfoBtnPressed.bind(this));
 
         o_wrapper.append(o_information, o_work_message, o_timer_display, o_start_btn, o_reset_btn, o_end_btn);
+        */
+        o_wrapper.append(o_work_message, o_timer_display, o_start_btn, o_reset_btn, o_end_btn);
 
         this.append(o_wrapper);
 

@@ -7,12 +7,16 @@
   --black: #000;
   --darkest-blue: #050a3f;
   --dark-blue: #1f288f;
-  --blue: #4294ff;
+  --blue: #539eff;
   --light-blue: #eaeaf5;
+  --red: #ff0000;
   --darkest-orange: #8b4402;
   --dark-orange: #e07d0b;
   --orange: #d48816;
   --light-orange: #f0c568;
+  --light-green: #b1f060;
+  --green: #178800;
+  --dark-green: #00570e;
   --grey: #949697;
   --transparent: #00000000;
 }
@@ -47,12 +51,12 @@ hr {
  *************************/
 
 .info-btn {
-  background-color: var(--dark-blue);
+  background-color: var(--red);
   color: var(--white);
 }
 
 .info-btn:hover:enabled {
-  background-color: var(--light-orange);
+  background-color: var(--black);
 }
 
 .task-btn {
@@ -60,29 +64,62 @@ hr {
 }
 
 .task-btn:hover {
-  color: var(--light-orange);
+  color: var(--light-green);
+}
+
+
+.info-btn-new {
+  color: var(--dark-blue);
+}
+
+.info-btn-new:hover {
+  color: var(--light-green);
+}
+
+  
+.theme-btn {
+  color: var(--dark-blue);
+}
+
+.theme-btn:hover {
+  color: var(--light-green);
 }
 
 /*****************************
  * Color for Slide-out Tasks *
  *****************************/
-
-.sidenav {
+  
+ .sidenav {
   background-color: var(--white);
-  box-shadow: inset 20px 0 20px -20px var(--grey);
+  box-shadow: -0.5em 0 1em var(--black);
 }
 
-.btn,
-.close {
-  color: var(--dark-blue);
+.btn{
+  color: var(--dark-blue); 
   
 }
 
+
 .btn:hover:enabled,
 .close:hover {
-  color: var(--light-orange);
+  color: var(--light-green);
 }
 
+#add-btn {
+    color: var(--dark-blue);
+}
+
+#add-btn:hover {
+  color: var(--light-green);
+}
+
+.close {
+  color: var(--black); 
+}
+
+.close:hover {
+  color: var(--red); 
+}
 /****************************
  * Color for Pomodoro Timer *
  ****************************/
@@ -153,7 +190,7 @@ hr {
 .instruct-head {
   color: var(--white);
   background-color: var(--dark-orange);
-  background-image: linear-gradient(to right,  var(--darkest-orange), var(--dark-orange), var(--orange));
+  background-image: linear-gradient(to right,  var(--dark-green), var(--green), var(--light-green));
 }
 
 #instructions-para {
@@ -166,7 +203,7 @@ hr {
 
 .instruct-bottom {
   background-color: var(--dark-orange);
-  background-image: linear-gradient(to right,  var(--darkest-orange), var(--dark-orange), var(--orange));
+  background-image: linear-gradient(to right,  var(--dark-green), var(--green), var(--light-green));
 
 }
 

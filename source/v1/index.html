@@ -3,11 +3,12 @@
 
 <head>
   <meta charset="utf-8">
+
   <title>PomoHero</title>
 
   <!-- Import css stylesheets for layout and colors -->
   <link rel="stylesheet" href="./css/layout.css">
-  <link rel="stylesheet" href="./css/colors.css">
+  <link rel="stylesheet" href="./css/colors2.css">
 
   <!-- Import google font styles -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,36 +24,36 @@
 </head>
 
 <body>
-  
+
   <main>
     <section class="full-height timer-section">
 
       <!-- Contains the header : logo, title -->
       <div class="header-container">
         <a href="#">
-          <img class="pomo-logo" src="assets/img/PomoHeroLogo.png" alt="pomo hero logo" href="#">
+          <img class="pomo-logo" src="assets/img/PomoHeroLogo2.png" alt="pomo hero logo" href="#">
         </a>
         <a href="#">
-          <img class="banner" src="assets/img/PomoTitleB.png" alt="PomoHero Banner">
+          <img class="banner" src="assets/img/PomoTitleA.png" alt="PomoHero Banner">
         </a>
       </div>
 
       <!-- Contains the slide-out tasklist -->
       <template>
         <div id="side-tasks" class="sidenav">
-          <a href="javascript:void(0)" class="close">&times;</a>
+          <a href="javascript:void(0)" class="close btn">&times;</a>
           <div id="task-title">
             <h1>TaskList</h1>
             <div id="add-task">
               <input type="text" id="add" name="task" placeholder="Enter task description...">
-              <button id="add-btn" class="btn"><i class="fas fa-plus-square fa-2x"></i></button>
+              <button id="add-btn" class="btn"><i class="fas fa-plus-square fa-x"></i></button>
             </div>
             <hr>
           </div>
           <div id="all-tasks">
             <div id="show-tasks">
               <input type="text" id="1" name="task" placeholder="Blah blah...">
-              <button id="delete" class="btn"><i class="fas fa-trash-alt fa-2x btn"></i></button>
+              <button id="delete" class="btn"><i class="fas fa-trash-alt fa-x"></i></button>
             </div>
           </div>
         </div>
@@ -62,25 +63,32 @@
       <!-- Contains the Pomodoro timer -->
       <div class="top-container">
         <div class="main-box">
-          <button id="task-btn" class="btn"><i class="fas fa-tasks fa-x"></i></button>
-          <!-- <i id="info-btn" class="fas fa-info-circle fa-2x info-btn"></i> -->
+          <nav class="all-btns">
+            <button id="theme-btn" class="btn"><i class="fas fa-palette fa-x theme-btn"></i></button>
+            <button id="task-btn" class="btn"><i class="fas fa-tasks fa-x"></i></button>
+            <i id="info-btn-new" class="fas fa-info-circle fa-2x info-btn-new"></i>
+          </nav>
           <timer-element></timer-element>
         </div>
       </div>
-
-      <!-- Contains the current and next task of the user -->
-      <div class="middle-container">
-        <h3>Current task:</h3>
-        <div id="current">
-          Do this
-        </div>
-        <button id="check" class="btn"><i class="fas fa-check-circle fa-x tool"></i></button>
-        <h3>Next task:</h3>
-        <div id="next">
-          Do that
-        </div>
+    </div>
+    
+    <!-- <div class="middle-container">
+      <h3>Current task:</h3>
+      <div id="current">
+        Do this
       </div>
-    </section>
+      <button id="check" class="btn"><i class="fas fa-check-circle fa-x tool"></i></button>
+      <h3>Next task:</h3>
+      <div id="next">
+        Do that
+      </div>
+    </div> -->
+    
+    <!-- Contains the current and next task of the user -->
+    <task-display></task-display>
+    
+  </section>
 
     <!-- Contains the instructions -->
     <section class="instructions-section flex flex-column">
@@ -130,13 +138,13 @@
 
   <script src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>
   <script type="module" src="js/main.js"></script>
-  <!-- <script src="js/timer.js"></script>
-  <script src="js/timerContainer.js"></script> -->
+  <script type="module" src="js/sample.js"></script>
+  <!-- <script src="js/timerContainer.js"></script>  -->
 
   <!-- No Script for when JS is not supported or disabled -->
   <noscript>
     <div>
-        <p>Sorry, either your browser does not support JavaScript, or it has been disabled...</p>
+      <p>Sorry, either your browser does not support JavaScript, or it has been disabled...</p>
     </div>
   </noscript>
 </body>

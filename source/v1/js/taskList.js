@@ -1,4 +1,5 @@
 import { Task } from "./task.js";
+import { TaskDisplay } from "./taskDisplay.js";
 
 /**
  * Custom HTML element encapsulating all of the functionality related to the Task List
@@ -20,15 +21,16 @@ class TaskList extends HTMLElement {
      */
     static N_ENTER_KEYCODE = 13;
 
-    o_tasks = {};
-    n_next_task_id = 0;
+    o_tasks;
+    n_next_task_id;
 
     /**
      * Constructs a new Timer Display, initializing all elements and adding handlers
      */
     constructor() {
         super();
-
+        this.o_tasks = {};
+        this.n_next_task_id = 0;
         let o_wrapper_obj = document.createElement("div");
         o_wrapper_obj.className = "sidenav";
         o_wrapper_obj.id = "side-tasks";
@@ -48,6 +50,7 @@ class TaskList extends HTMLElement {
         let o_add_task = document.createElement("div");
         o_add_task.id = "add-task";
 
+        // add input field
         let o_add_task_input = document.createElement("input");
         o_add_task_input.type = "text";
         o_add_task_input.name = "task";
@@ -56,12 +59,18 @@ class TaskList extends HTMLElement {
         o_add_task_input.addEventListener("keyup", this.handleKeyUpChange.bind(this));
         o_add_task_input.addEventListener("input", this.handleInputChange.bind(this));
 
-        let o_add_task_icon = document.createElement("i");
-        o_add_task_icon.id = 'add-btn';
-        o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-2x", "btn");
-        o_add_task_icon.addEventListener("click", this.handleAddTask.bind(this));
+        // creating add button
+        let o_add_task_button = document.createElement("button");
+        o_add_task_button.classList.add("btn");
+        o_add_task_button.id = "add-btn";
 
-        o_add_task.append(o_add_task_input, o_add_task_icon);
+        let o_add_task_icon = document.createElement("i");
+        o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-2x", "btn");
+        o_add_task_button.appendChild(o_add_task_icon);
+
+        o_add_task_button.addEventListener("click", this.handleAddTask.bind(this));
+
+        o_add_task.append(o_add_task_input, o_add_task_button);
 
         let o_hr = document.createElement("hr");
 
@@ -98,9 +107,9 @@ class TaskList extends HTMLElement {
      */
     handleInputChange(o_event) {
         if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
-            this.querySelector("#add-btn").setAttribute("invalid", true);
+            this.querySelector("#add-btn").disabled = true;
         } else {
-            this.querySelector("#add-btn").setAttribute("invalid", false);
+            this.querySelector("#add-btn").disabled = false;
         }
     }
 
@@ -129,6 +138,9 @@ class TaskList extends HTMLElement {
         }
     }
 
+    /**
+     * Clears the task input field
+     */
     clearInput() {
         let o_input = this.querySelector("input[name=task]");
         o_input.value = "";
@@ -165,12 +177,12 @@ class TaskList extends HTMLElement {
             return -1;
         }
         let item = this.o_tasks[n_task_id];
+
         delete this.o_tasks[n_task_id];
 
         // attribute query selector
         this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
-
-        return item;
+        return item;       
     }
 
     /**
