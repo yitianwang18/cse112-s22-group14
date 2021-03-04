@@ -144,6 +144,7 @@ class TaskDisplay extends HTMLElement {
             document.querySelector("#reset-btn").classList.add("hidden");
             document.querySelector("#reset-btn").disabled = false;
             document.querySelector("#start-btn").classList.remove("hidden");
+            document.querySelector("#task-btn").disabled=false;
         }
     }
     
