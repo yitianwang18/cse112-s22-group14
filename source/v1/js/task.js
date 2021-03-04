@@ -5,6 +5,13 @@
 class Task extends HTMLElement {
 
     /**
+     * Maximum length of trimmed input task
+     * @static
+     * @type {Number}
+     */
+    static N_MAX_TASK_LENGTH = 50;
+
+    /**
      * Attributes that this object observes
      * @static
      * @type {String[]}
@@ -16,35 +23,21 @@ class Task extends HTMLElement {
      */
     constructor() {
         super();
-        let o_item = document.createElement("div");
-        // Enter edit mode for existing tasks in the task list
-        o_item.addEventListener("click", () => {
-            // small bug in this event handler, when u click on the edit box
-            // multiple times, <input> fills the box up
-            let stringVal = o_item.innerHTML;
-            // hide the task name
-            o_item.innerHTML = "";
-            let input = document.createElement("input");
-            input.onblur = function () {
-                if (Task.validateString(input.value))
-                    o_item.innerHTML = input.value;
-                else
-                    o_item.innerHTML = stringVal;
+        let o_div = document.createElement("div");
+        let o_item = document.createElement("input");
+        // let o_item_input = document.createElement("input");
+        o_item.setAttribute('type', 'text');
+        o_item.setAttribute('name', 'task');
 
-                input.value = "";
-            }
-
-            input.value = stringVal;
-            o_item.appendChild(input);
-            input.focus();
-        });
-
-        // when a task is clicked on, its name is also editable?
-        // listener for taskname?
         let o_del_button = document.createElement("button");
-        o_del_button.innerText = "del";
+        o_del_button.classList.add("btn");
+        let o_del_button_icon = document.createElement("i");
+        o_del_button_icon.classList.add("fas", "fa-trash-alt", "fa-x");
 
-        this.append(o_item, o_del_button);
+        o_del_button.append(o_del_button_icon);
+
+        o_div.append(o_item, o_del_button);
+        this.append(o_div);
     }
 
     /**
@@ -60,18 +53,18 @@ class Task extends HTMLElement {
     }
 
     /**
-     * Renders the Task
+     * Renders the Task with given attributes
      */
     renderComponents() {
-        let o_div = this.querySelector("div");
-        o_div.innerHTML = this.getAttribute("taskname");
+        let o_task_input = this.querySelector("input");
+        o_task_input.value = this.getAttribute("taskname");
     }
 
     /**
      * Handler for when attributes are changed
      * @param {String} name name of changed attribute
-     * @param {*} oldValue old value of attribute
-     * @param {*} newValue new value of attribute
+     * @param {String} oldValue old value of attribute
+     * @param {String} newValue new value of attribute
      */
     attributeChangedCallback(name, oldValue, newValue) {
         this.renderComponents();
@@ -89,25 +82,12 @@ class Task extends HTMLElement {
      * Binds edit handler to the task-item. Allows task name to be editable upon click
      * @param {Function}  edit_action
      */
-    bindHandleEdit(edit_action) {
-        // let item = this;
-        // let stringVal = item.innerHTML;
-        // let input = document.createElement("input");
-        // input.onblur = function() {
-        //   // check if input string same as current string value
-        //   if (Task.validateString(input.value)) {
-        //       item.innerHTML = input.value;
-        //   }
-        //   else {
-        //     item.innerHTML = stringVal;
-        //   }
-        //   input.value = "";
-        // }
-        //
-        // input.value = stringVal;
-        // item.appendChild(input);
-        // input.focus();
+    bindHandleEdit(f_edit_action) {
+        // let text = this.querySelector("div").addEventListener("click", f_edit_action);
+        // this.f_handle_edit = f_edit_action;
+        this.querySelector("input").addEventListener("change", f_edit_action);
     }
+
 }
 /**
  * Maximum length of trimmed input task
