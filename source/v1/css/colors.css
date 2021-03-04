@@ -9,16 +9,12 @@
   --dark-blue: #1f288f;
   --blue: #539eff;
   --light-blue: #eaeaf5;
-  --red: #ff0000;
-  --darkest-orange: #8b4402;
-  --dark-orange: #e07d0b;
-  --orange: #d48816;
-  --light-orange: #f0c568;
+  --red: #f00;
   --light-green: #b1f060;
   --green: #178800;
   --dark-green: #00570e;
   --grey: #949697;
-  --transparent: #00000000;
+  --transparent: #0000;
 }
 
 /***********************
@@ -29,34 +25,25 @@ hr {
   color: var(--grey);
 }
 
-/******************************
- * Color for Disabled Buttons *
- ******************************/
-
-.btn:disabled {
-  color: var(--grey);
-}
-
 /********************
  * Color for header *
  ********************/
 
 .header-container {
   background-color: var(--dark-blue);
-  background-image: linear-gradient(to right,  var(--darkest-blue), var(--dark-blue), var(--blue));
+  background-image: linear-gradient(to right, var(--darkest-blue), var(--dark-blue), var(--blue));
 }
 
-/*************************
- * Color for Info Button *
- *************************/
+/************************************
+ * Color for Navigation Bar Buttons *
+ ************************************/
 
-.info-btn {
-  background-color: var(--red);
-  color: var(--white);
+.theme-btn {
+  color: var(--dark-blue);
 }
 
-.info-btn:hover:enabled {
-  background-color: var(--black);
+.theme-btn:hover {
+  color: var(--light-green);
 }
 
 .task-btn {
@@ -67,7 +54,6 @@ hr {
   color: var(--light-green);
 }
 
-
 .info-btn-new {
   color: var(--dark-blue);
 }
@@ -76,50 +62,35 @@ hr {
   color: var(--light-green);
 }
 
-  
-.theme-btn {
-  color: var(--dark-blue);
-}
-
-.theme-btn:hover {
-  color: var(--light-green);
-}
-
 /*****************************
  * Color for Slide-out Tasks *
  *****************************/
-  
- .sidenav {
+
+.sidenav {
   background-color: var(--white);
-  box-shadow: -0.5em 0 1em var(--black);
 }
 
-.btn{
-  color: var(--dark-blue); 
-  
+.btn {
+  color: var(--dark-blue);
 }
-
 
 .btn:hover:enabled,
 .close:hover {
   color: var(--light-green);
 }
 
-#add-btn {
-    color: var(--dark-blue);
-}
-
-#add-btn:hover {
-  color: var(--light-green);
+.btn:disabled {
+  color: var(--grey);
 }
 
 .close {
-  color: var(--black); 
+  color: var(--black);
 }
 
 .close:hover {
-  color: var(--red); 
+  color: var(--red);
 }
+
 /****************************
  * Color for Pomodoro Timer *
  ****************************/
@@ -130,11 +101,11 @@ hr {
 
 .timer-box {
   background-color: var(--dark-blue);
-  background-image: linear-gradient(to right,  var(--darkest-blue), var(--dark-blue), var(--blue));
+  background-image: linear-gradient(to right, var(--darkest-blue), var(--dark-blue), var(--blue));
 }
 
 .timer {
-  background-color: var(--transparent); 
+  background-color: var(--transparent);
 }
 
 #time-display {
@@ -152,7 +123,7 @@ hr {
 .custom-btn {
   border-color: var(--white);
   color: var(--white);
-  background-color: var(--transparent); 
+  background-color: var(--transparent);
 }
 
 .custom-btn:hover:enabled {
@@ -190,21 +161,20 @@ hr {
 .instruct-head {
   color: var(--white);
   background-color: var(--dark-orange);
-  background-image: linear-gradient(to right,  var(--dark-green), var(--green), var(--light-green));
+  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
 }
 
 #instructions-para {
   background-color: var(--white);
 }
 
-.arrow-up-icon {
-  color: var(--white);
-}
-
 .instruct-bottom {
   background-color: var(--dark-orange);
-  background-image: linear-gradient(to right,  var(--dark-green), var(--green), var(--light-green));
+  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
+}
 
+.arrow-up-icon {
+  color: var(--white);
 }
 
 .arrow-up-icon:hover {

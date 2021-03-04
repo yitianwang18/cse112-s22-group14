@@ -65,7 +65,7 @@ class TaskList extends HTMLElement {
         o_add_task_button.id = "add-btn";
 
         let o_add_task_icon = document.createElement("i");
-        o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-2x", "btn");
+        o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-x");
         o_add_task_button.appendChild(o_add_task_icon);
 
         o_add_task_button.addEventListener("click", this.handleAddTask.bind(this));
