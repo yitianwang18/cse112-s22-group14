@@ -23,6 +23,7 @@ class Task extends HTMLElement {
      */
     constructor() {
         super();
+        let o_div = document.createElement("div");
         let o_item = document.createElement("input");
         // let o_item_input = document.createElement("input");
         o_item.setAttribute('type', 'text');
@@ -35,7 +36,8 @@ class Task extends HTMLElement {
 
         o_del_button.append(o_del_button_icon);
 
-        this.append(o_item, o_del_button);
+        o_div.append(o_item, o_del_button);
+        this.append(o_div);
     }
 
     /**
@@ -54,9 +56,8 @@ class Task extends HTMLElement {
      * Renders the Task
      */
     renderComponents() {
-        let o_div = this.querySelector("input");
-        // o_div.innerHTML = this.getAttribute("taskname");
-        o_div.value = this.getAttribute("taskname");
+        let o_task_input = this.querySelector("input");
+        o_task_input.value = this.getAttribute("taskname");
     }
 
     /**
@@ -92,19 +93,18 @@ class Task extends HTMLElement {
      */
     updateName(n_task_id) {
         // update the taskname attribute + input.value
-        let o_task_item = document.querySelector(`#all-tasks show-tasks[taskid='${n_task_id}']`);
-        let o_task_item_input = o_task_item.querySelector('input');
+        let o_task_item_input = this.querySelector('input');
 
         // save the old string value, perform str validation
         // if new string invalid, replace with old value
-        let s_curr_input_val = o_task_item.getAttribute('taskname');
+        let s_curr_input_val = this.getAttribute('taskname');
 
         if (Task.validateString(o_task_item_input.value)) {
           // set the attribute name to be the new value
-          o_task_item.setAttribute('taskname', o_task_item_input.value.trim());
+          this.setAttribute('taskname', o_task_item_input.value.trim());
         }
         else {
-            o_task_item.setAttribute('taskname', s_curr_input_val);
+            this.setAttribute('taskname', s_curr_input_val);
         }
     }
 
@@ -139,5 +139,5 @@ class Task extends HTMLElement {
     // }
 }
 
-window.customElements.define("show-tasks", Task);
+window.customElements.define("task-item", Task);
 export { Task }

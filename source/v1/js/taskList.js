@@ -176,7 +176,7 @@ class TaskList extends HTMLElement {
      */
     editItemName(n_task_id) {
         // get the task object that we'll be editing the name of
-        let o_task = this.querySelector(`#all-tasks show-tasks[taskid='${n_task_id}']`);
+        let o_task = this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`);
         o_task.updateName(n_task_id);
         // update array of tasks (o_tasks)
         this.o_tasks[n_task_id] = o_task.getAttribute('taskname');
@@ -194,7 +194,7 @@ class TaskList extends HTMLElement {
         delete this.o_tasks[n_task_id];
 
         // attribute query selector
-        this.querySelector(`#all-tasks show-tasks[taskid='${n_task_id}']`).remove();
+        this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
 
         return item;
     }
