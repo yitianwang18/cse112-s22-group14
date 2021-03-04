@@ -45,12 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleThemeBtnPressed() {
         // Obtains an array of all <link> elements. Select your element using indexing. 
         let theme = document.getElementsByTagName('link')[1]; 
+        let theme_btn = document.getElementById("theme-btn");
 
         // Change the value of href attribute to change the css sheet. 
         if (theme.getAttribute("href") == "./css/colors.css") { 
             theme.setAttribute("href", "./css/colors2.css"); 
+            theme_btn.setAttribute("title", "Simple Theme");
         } else { 
             theme.setAttribute("href", "./css/colors.css"); 
+            theme_btn.setAttribute("title", "Complex Theme");
         } 
     }
 
