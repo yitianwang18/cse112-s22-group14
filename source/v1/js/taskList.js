@@ -1,4 +1,5 @@
 import { Task } from "./task.js";
+import { TaskDisplay } from "./taskDisplay.js";
 
 /**
  * Custom HTML element encapsulating all of the functionality related to the Task List
@@ -176,12 +177,12 @@ class TaskList extends HTMLElement {
             return -1;
         }
         let item = this.o_tasks[n_task_id];
+
         delete this.o_tasks[n_task_id];
 
         // attribute query selector
         this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
-
-        return item;
+        return item;       
     }
 
     /**
