@@ -1,5 +1,6 @@
 import { TimerContainer } from "./timerContainer.js";
 import { TaskList } from "./taskList.js";
+import { EventBus } from "./eventbus.js";
 document.addEventListener("DOMContentLoaded", () => {
     // Code for Up arrow scroll-up functionality 
     const TIMER_SECTION_TARGET = ".timer-section";
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         scroll({ top: n_offset, behavior: "smooth" });
     }
-    
+
     // Code for scrolling to instructions functionality 
     const S_INSTRUCTIONS_TARGET = ".instructions-section";
     let info_btn_new = document.getElementById("info-btn-new");
@@ -44,19 +45,19 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     function handleThemeBtnPressed() {
         // Obtains an array of all <link> elements. Select your element using indexing. 
-        let theme = document.getElementsByTagName('link')[1]; 
+        let theme = document.getElementsByTagName('link')[1];
 
         // Change the value of href attribute to change the css sheet. 
-        if (theme.getAttribute("href") == "./css/colors.css") { 
-            theme.setAttribute("href", "./css/colors2.css"); 
-        } else { 
-            theme.setAttribute("href", "./css/colors.css"); 
-        } 
+        if (theme.getAttribute("href") == "./css/colors.css") {
+            theme.setAttribute("href", "./css/colors2.css");
+        } else {
+            theme.setAttribute("href", "./css/colors.css");
+        }
     }
 
     // Code for showing / hiding TaskList functionality
     let task_btn = document.getElementById("task-btn");
-    task_btn.addEventListener("click", showTaskList); 
+    task_btn.addEventListener("click", showTaskList);
 
     /**
      * Event handler function to show TaskList when task button is pressed
@@ -65,6 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let tasks = document.querySelector("task-list");
         tasks.showTaskList();
     }
+
+    document.EventBus = new EventBus();
 
 });
 

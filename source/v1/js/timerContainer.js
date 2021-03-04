@@ -5,85 +5,6 @@ import { notify } from "./notify.js"
  * @extends HTMLElement
  */
 class TimerContainer extends HTMLElement {
-    /**
-     * Start Pomo button message
-     * @static
-     * @type {string}
-     */
-    static S_BEGIN_MESSAGE = "Start Pomo!";
-
-    /**
-     * End session button message
-     * @static
-     * @type {string}
-     */
-    static S_END_MESSAGE = "End Session";
-
-    /**
-     * Reset pomo button message
-     * @static
-     * @type {string}
-     */
-    static S_RESET_MESSAGE = "Reset Pomo!";
-
-    /**
-     * Target selector of the "i" button
-     * @static
-     * @type {string}
-     */
-    static S_INSTRUCTIONS_TARGET = ".instructions-section";
-
-    static DEBUG = true;
-
-    /**
-     * Enumerator for 'not started' state
-     * @static
-     * @type {number}
-     */
-    static NOT_STARTED = 3;
-
-    /**
-     * Enumerator for 'work' state
-     * @static
-     * @type {number}
-     */
-    static WORK = 0;
-
-    /**
-     * Enumerator for 'short break' state
-     * @static
-     * @type {number}
-     */
-    static S_BREAK = 1;
-
-    /**
-     * Enumerator for 'long break' state
-     * @static
-     * @type {number}
-     */
-    static L_BREAK = 2;
-
-    /**
-     * Array mapping states to their corresponding durations
-     * @static
-     * @type {number[]}
-     */
-    static A_STATE_DURATIONS = [1500000, 300000, 2100000, 0];
-
-    /**
-     * Array mapping states to their displayed messages
-     * @static
-     * @type {string[]}
-     */
-    static A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - Good job!", "Long Break - Relax", "Ready to focus?"];
-
-    /**
-     * Delay of interval
-     * @static
-     * @type {number}
-     */
-    static N_MILLI_DELAY = 100;
-
     n_start_time;
     n_curr_state;
     n_done_pomos;
@@ -292,6 +213,84 @@ class TimerContainer extends HTMLElement {
         this.n_interval_id = -1;
     }
 }
+/**
+* Start Pomo button message
+* @static
+* @type {string}
+*/
+TimerContainer.S_BEGIN_MESSAGE = "Start Pomo!";
+
+/**
+ * End session button message
+ * @static
+ * @type {string}
+ */
+TimerContainer.S_END_MESSAGE = "End Session";
+
+/**
+ * Reset pomo button message
+ * @static
+ * @type {string}
+ */
+TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
+
+/**
+ * Target selector of the "i" button
+ * @static
+ * @type {string}
+ */
+TimerContainer.S_INSTRUCTIONS_TARGET = ".instructions-section";
+
+TimerContainer.DEBUG = true;
+
+/**
+ * Enumerator for 'not started' state
+ * @static
+ * @type {number}
+ */
+TimerContainer.NOT_STARTED = 3;
+
+/**
+ * Enumerator for 'work' state
+ * @static
+ * @type {number}
+ */
+TimerContainer.WORK = 0;
+
+/**
+ * Enumerator for 'short break' state
+ * @static
+ * @type {number}
+ */
+TimerContainer.S_BREAK = 1;
+
+/**
+ * Enumerator for 'long break' state
+ * @static
+ * @type {number}
+ */
+TimerContainer.L_BREAK = 2;
+
+/**
+ * Array mapping states to their corresponding durations
+ * @static
+ * @type {number[]}
+ */
+TimerContainer.A_STATE_DURATIONS = [1500000, 300000, 2100000, 0];
+
+/**
+ * Array mapping states to their displayed messages
+ * @static
+ * @type {string[]}
+ */
+TimerContainer.A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - Good job!", "Long Break - Relax", "Ready to focus?"];
+
+/**
+ * Delay of interval
+ * @static
+ * @type {number}
+ */
+TimerContainer.N_MILLI_DELAY = 100;
 customElements.define("timer-element", TimerContainer);
 
 export { TimerContainer };

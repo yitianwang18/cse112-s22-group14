@@ -12,13 +12,6 @@ class Task extends HTMLElement {
     static get observedAttributes() { return ['taskname', 'taskid']; }
 
     /**
-     * Maximum length of trimmed input task
-     * @static
-     * @type {Number}
-     */
-    static N_MAX_TASK_LENGTH = 50;
-
-    /**
      * Constructs a Task item, initializing the task name and delete button
      */
     constructor() {
@@ -26,24 +19,24 @@ class Task extends HTMLElement {
         let o_item = document.createElement("div");
         // Enter edit mode for existing tasks in the task list
         o_item.addEventListener("click", () => {
-          // small bug in this event handler, when u click on the edit box
-          // multiple times, <input> fills the box up
-          let stringVal = o_item.innerHTML;
-          // hide the task name
-          o_item.innerHTML = "";
-          let input = document.createElement("input");
-          input.onblur = function() {
-            if (Task.validateString(input.value))
-                o_item.innerHTML = input.value;
-            else
-              o_item.innerHTML = stringVal;
+            // small bug in this event handler, when u click on the edit box
+            // multiple times, <input> fills the box up
+            let stringVal = o_item.innerHTML;
+            // hide the task name
+            o_item.innerHTML = "";
+            let input = document.createElement("input");
+            input.onblur = function () {
+                if (Task.validateString(input.value))
+                    o_item.innerHTML = input.value;
+                else
+                    o_item.innerHTML = stringVal;
 
-            input.value = "";
-          }
+                input.value = "";
+            }
 
-          input.value = stringVal;
-          o_item.appendChild(input);
-          input.focus();
+            input.value = stringVal;
+            o_item.appendChild(input);
+            input.focus();
         });
 
         // when a task is clicked on, its name is also editable?
@@ -116,5 +109,11 @@ class Task extends HTMLElement {
         // input.focus();
     }
 }
+/**
+ * Maximum length of trimmed input task
+ * @static
+ * @type {Number}
+ */
+Task.N_MAX_TASK_LENGTH = 50;
 window.customElements.define("task-item", Task);
 export { Task }

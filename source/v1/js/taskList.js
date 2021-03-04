@@ -5,21 +5,6 @@ import { Task } from "./task.js";
  * @extends HTMLElement
  */
 class TaskList extends HTMLElement {
-
-    /**
-     * Maximum length of trimmed input task
-     * @static
-     * @type {Number}
-     */
-    static N_MAX_TASK_LENGTH = 50;
-
-    /**
-     * Key code of Enter Key
-     * @static
-     * @type {Number}
-     */
-    static N_ENTER_KEYCODE = 13;
-
     o_tasks;
     n_next_task_id;
 
@@ -201,6 +186,19 @@ class TaskList extends HTMLElement {
     }
 
 }
+/**
+ * Maximum length of trimmed input task
+ * @static
+ * @type {Number}
+ */
+TaskList.N_MAX_TASK_LENGTH = 50;
+
+/**
+ * Key code of Enter Key
+ * @static
+ * @type {Number}
+ */
+TaskList.N_ENTER_KEYCODE = 13;
 customElements.define("task-list", TaskList);
 
 
