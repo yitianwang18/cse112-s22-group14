@@ -14,7 +14,7 @@ class TaskDisplay extends HTMLElement {
      * @static
      * @type {String[]}
      */
-    static get observedAttributes() { return ["curtask", "nexttask", "numtasks"]; }
+    static get observedAttributes() { return ["currtask", "nexttask", "numtasks"]; }
 
     /**
      * Constructor. Initializes task display.
@@ -73,18 +73,18 @@ class TaskDisplay extends HTMLElement {
      * @param {*} newValue new value of attribute
      */
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === "numtasks" && newValue <= 1) {
+        if (name == "numtasks" && newValue <= 1) {
             this.querySelector("#next").style.display = "none";
             this.getElementsByTagName("h3")[1].style.display = "none";
         }
-        else if (name === "numtasks" && newValue > 1) {
+        else if (name == "numtasks" && newValue > 1) {
             this.querySelector("#next").style.display = "";
             this.getElementsByTagName("h3")[1].style.display = "";
         }
-        else if (name === "currtask") {
+        else if (name == "currtask") {
             this.querySelector("#current").innerText = newValue;
         }
-        else if (name === "nexttask") {
+        else if (name == "nexttask") {
             this.querySelector("#next").innerText = newValue;
         }
     }

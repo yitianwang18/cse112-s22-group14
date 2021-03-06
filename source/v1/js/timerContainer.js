@@ -97,17 +97,13 @@ class TimerContainer extends HTMLElement {
         //document.querySelector("#task-btn").disabled = false;
     }
 
-    /**
-     * Event handler function for when the "info" button is pressed
-     * @param {Event} o_event The event instance
-     */
-    handleInfoBtnPressed(o_event) {
-        let o_target = o_event.target.getAttribute("target");
-        let n_offset = document.querySelector(o_target).offsetTop;
-
-        scroll({ top: n_offset, behavior: "smooth" });
+    disableStartButton() {
+        this.querySelector("start-btn").disabled = true;
     }
 
+    enableStartButton() {
+        this.querySelector("start-btn").disabled = false;
+    }
     /**
      * Get remaining time for the current state
      * @returns {number} milliseconds of remaining time

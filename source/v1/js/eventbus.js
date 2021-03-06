@@ -37,16 +37,25 @@ class EventBus {
     }
 
     handleStartSession() {
-        this.o_toolbar.querySelector("#task-btn").disabled = true;
-        this.o_task_display.handleStartSession();
-        this.updateTaskDisplay();
-        this.o_timer_container.handleStartPomo();
-        this.o_task_list.closeTaskList();
-        this.handleStartWork();
+        if (this.o_task_list.getNumTasks() != 0) {
+            this.o_toolbar.querySelector("#task-btn").disabled = true;
+            // hide toolbar
+            this.o_toolbar.style.visibility = "hidden";
+
+            this.o_task_display.handleStartSession();
+            this.updateTaskDisplay();
+            this.o_timer_container.handleStartPomo();
+            this.o_task_list.closeTaskList();
+            this.handleStartWork();
+        } else {
+            console.log("bruh");
+        }
+
     }
 
     handleEndSession() {
         this.o_toolbar.querySelector("#task-btn").disabled = false;
+        this.o_toolbar.style.visibility = "";
         this.o_task_display.handleEndSession();
         this.o_timer_container.handleEndSession();
 
@@ -61,18 +70,18 @@ class EventBus {
     }
 
     handleNextTask() {
-        if (this.o_task_list.getNumTasks() <= 1) {
-            this.endSession();
-        } else {
-            this.updateTaskCompleted();
+        this.updateTaskCompleted();
+        if (this.o_task_list.getNumTasks() == 0) {
+            this.handleEndSession();
         }
+
     }
 
     updateTaskDisplay() {
         let s_next_task = this.o_task_list.getNextTask();
         let s_next_next_task = this.o_task_list.getNextNextTask();
         let n_num_tasks = Math.min(this.o_task_list.getNumTasks(), 2);
-        this.o_task_display.setAttribute("curtask", s_next_task);
+        this.o_task_display.setAttribute("currtask", s_next_task);
         this.o_task_display.setAttribute("nexttask", s_next_next_task);
         this.o_task_display.setAttribute("numtasks", n_num_tasks);
     }
