@@ -2,21 +2,6 @@ import { TimerContainer } from "./timerContainer.js";
 import { TaskList } from "./taskList.js";
 import { TaskDisplay } from "./taskDisplay.js";
 document.addEventListener("DOMContentLoaded", () => {
-    // Code for Up arrow scroll-up functionality 
-    const TIMER_SECTION_TARGET = ".timer-section";
-    let up_arrow = document.getElementById("up-arrow");
-    up_arrow.setAttribute("target", TIMER_SECTION_TARGET);
-    up_arrow.addEventListener("click", handleUpBtnPressed.bind(this));
-
-    /**
-     * Event handler function for instruction section: when "up-arrow" button pressed
-     */
-    function handleUpBtnPressed() {
-      let o_target = document.getElementById("up-arrow").getAttribute("target");
-        let n_offset = document.querySelector(o_target).offsetTop;
-
-        scroll({ top: n_offset, behavior: "smooth" });
-    }
     
     // Code for scrolling to instructions functionality 
     const S_INSTRUCTIONS_TARGET = ".instructions-section";
