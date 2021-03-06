@@ -23,6 +23,7 @@ class Task extends HTMLElement {
         o_item.setAttribute('name', 'task');
 
         let o_del_button = document.createElement("button");
+        o_del_button.id = "delete-btn";
         o_del_button.classList.add("btn");
         let o_del_button_icon = document.createElement("i");
         o_del_button_icon.classList.add("fas", "fa-trash-alt", "fa-x");

@@ -38,6 +38,8 @@ class TaskDisplay extends HTMLElement {
         let o_check_btn = document.createElement("button");
         o_check_btn.className = "btn";
         o_check_btn.id = 'check';
+        o_check_btn.title = "Task completed";
+
         let o_next_btn = document.createElement("i");
         o_next_btn.classList.add("fas", "fa-check-circle", "fa-x", "tool");
 
