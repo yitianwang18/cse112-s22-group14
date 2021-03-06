@@ -6,21 +6,6 @@ import { TaskDisplay } from "./taskDisplay.js";
  * @extends HTMLElement
  */
 class TaskList extends HTMLElement {
-
-    /**
-     * Maximum length of trimmed input task
-     * @static
-     * @type {Number}
-     */
-    static N_MAX_TASK_LENGTH = 50;
-
-    /**
-     * Key code of Enter Key
-     * @static
-     * @type {Number}
-     */
-    static N_ENTER_KEYCODE = 13;
-
     o_tasks;
     n_next_task_id;
 
@@ -55,7 +40,6 @@ class TaskList extends HTMLElement {
         o_add_task_input.type = "text";
         o_add_task_input.name = "task";
         o_add_task_input.placeholder = "Enter task description";
-        o_add_task_input.required = true;
         o_add_task_input.addEventListener("keyup", this.handleKeyUpChange.bind(this));
         o_add_task_input.addEventListener("input", this.handleInputChange.bind(this));
 
@@ -135,6 +119,7 @@ class TaskList extends HTMLElement {
         if (TaskList.validateString(s_task_name)) {
             this.addItem(s_task_name);
             this.clearInput();
+            this.handleInputChange(undefined);
         }
     }
 
@@ -164,7 +149,7 @@ class TaskList extends HTMLElement {
         let o_task = new Task();
         o_task.setAttribute("taskname", s_task_name);
         o_task.setAttribute("taskid", n_task_id);
-        o_task.bindHandleDelete(() => { console.log(this); this.removeItem(n_task_id) });
+        o_task.bindHandleDelete(() => { this.removeItem(n_task_id) });
         o_task.bindHandleEdit(() => { this.editItemName(n_task_id); });
         // bind a function that listen to an onchange for a task input element
 
@@ -177,10 +162,18 @@ class TaskList extends HTMLElement {
      */
     editItemName(n_task_id) {
         // get the task object that we'll be editing the name of
-        let o_task = this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`);
-        o_task.updateName(n_task_id);
+        let o_task_item = this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`);
+        let o_task_item_input = o_task_item.querySelector('input');
+        let s_curr_input_val = o_task_item.getAttribute('taskname');
+        if (TaskList.validateString(o_task_item_input.value)) {
+            o_task_item.setAttribute('taskname', o_task_item_input.value.trim());
+        }
+        else {
+            o_task_item.setAttribute('taskname', s_curr_input_val);
+        }
+        // this.editTaskName()
         // update array of tasks (o_tasks)
-        this.o_tasks[n_task_id] = o_task.getAttribute('taskname');
+        this.o_tasks[n_task_id] = o_task_item.getAttribute('taskname');
     }
 
     /**
@@ -197,7 +190,7 @@ class TaskList extends HTMLElement {
 
         // attribute query selector
         this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
-        return item;       
+        return item;
     }
 
     /**
@@ -216,7 +209,64 @@ class TaskList extends HTMLElement {
         o_tasks.style.display = "none";
     }
 
+    /**
+     * Function to return number of tasks 
+     */
+    getNumTasks() {
+        return Object.keys(this.o_tasks).length;
+    }
+
+    /**
+     * Function to return the next task in the taskList
+     */
+    getNextTask() {
+        if (this.getNumTasks() == 0) {
+            return undefined;
+        }
+        return this.o_tasks[Object.keys(this.o_tasks)[0]];
+    }
+
+    /**
+     * Function to return the next-next task in taskList
+     */
+    getNextNextTask() {
+        if (this.getNumTasks() <= 1) {
+            return undefined;
+        }
+        return this.o_tasks[Object.keys(this.o_tasks)[1]];
+    }
+
+    /**
+     * Function to remove current task in taskList
+     */
+    popTask() {
+        if (this.getNumTasks() >= 1) {
+            this.removeItem(Object.keys(this.o_tasks)[0]);
+        }
+    }
+
+    /**
+     * Function to execute all actions for when the session
+     * has begun
+     */
+    handleStartSession() {
+        this.closeTaskList();
+    }
+
 }
+/**
+ * Maximum length of trimmed input task
+ * @static
+ * @type {Number}
+ */
+TaskList.N_MAX_TASK_LENGTH = 50;
+
+/**
+ * Key code of Enter Key
+ * @static
+ * @type {Number}
+ */
+TaskList.N_ENTER_KEYCODE = 13;
 customElements.define("task-list", TaskList);
 
 

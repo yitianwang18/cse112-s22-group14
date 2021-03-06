@@ -4,20 +4,6 @@
  */
 class TimerDisplay extends HTMLElement {
     /**
-     * Path to "Yes" icon.
-     * @static
-     * @type {string}
-     */
-    static S_POMO_YES_PATH = "./assets/img/PomoCountYes.png";
-
-    /**
-     * Path to "No" icon.
-     * @static
-     * @type {string}
-     */
-    static S_POMO_NO_PATH = "./assets/img/PomoCountNo.png";
-
-    /**
      * A list of observed attributes ("time" and "pomos-comp");
      * @static
      * @type {string[]}
@@ -98,6 +84,19 @@ class TimerDisplay extends HTMLElement {
     }
 
 }
+/**
+ * Path to "Yes" icon.
+ * @static
+ * @type {string}
+ */
+TimerDisplay.S_POMO_YES_PATH = "./assets/img/PomoCountYes.png";
+
+/**
+ * Path to "No" icon.
+ * @static
+ * @type {string}
+ */
+TimerDisplay.S_POMO_NO_PATH = "./assets/img/PomoCountNo.png";
 customElements.define("timer-display", TimerDisplay);
 
 export { TimerDisplay }
