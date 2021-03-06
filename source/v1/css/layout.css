@@ -137,6 +137,27 @@ body {
   border: 1px solid;
 }
 
+#wrap-add-btn {
+  display: inline-block;
+  position: relative;
+}
+
+#wrap-add-btn .error-message {
+  visibility: hidden;
+  width: auto;
+  bottom: 100%;
+  margin-left: -400px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+#wrap-add-btn:hover .error-message {
+  visibility: visible;
+}
+
 /**
  * Styling add and delete buttons
  */
@@ -151,12 +172,10 @@ body {
  */
 .close {
   text-decoration: none;
-  position: absolute;
+  position: relative;
   top: 20px;
-  right: 0;
-  margin-right: 25px;
+  right: -50%;
   padding: 0 9px;
-  border-radius: 20px;
 }
 
 /**
@@ -180,7 +199,7 @@ input[type=text] {
  */
 #all-tasks {
   margin-top: 20px;
-  height: 60vh;
+  height: 55vh;
   overflow-y: scroll !important;
 }
 
@@ -307,6 +326,7 @@ input[type=text] {
  * Fields for displaying task description
  */
 .middle-container > div {
+  overflow-x: auto;
   width: 450px;
   margin: 0 5px;
   padding: 10px 20px;
@@ -334,6 +354,10 @@ input[type=text] {
  * Container for instructions
  */
 .instructions-section {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
   margin: auto;
   min-height: 100vh;
 }
@@ -342,6 +366,7 @@ input[type=text] {
  * Styling the header in instructions section
  */
 .instruct-head {
+  text-align: center;
   margin-top: 0;
   margin-bottom: 0;
   padding: 15px;
@@ -371,34 +396,16 @@ input[type=text] {
 }
 
 /**
- * Displays as block-level flex container
- */
-.flex {
-  display: flex;
-}
-
-/**
  * Specifies direction of flexible item
  */
 .flex-column {
   flex-direction: column;
 }
 
-/**
- * Styling the up arrow container
- */
-.instruct-bottom {
-  position: relative;
-  padding: 5px;
-}
-
-/**
- * Styling up arrow button after instructions
- */
-.arrow-up-icon {
-  margin: auto;
-  width: 50px;
-  cursor: pointer;
+.center-align {
+  width: 98%;
+  height: 50px;
+  text-align: center;
 }
 
 /******************
@@ -445,7 +452,7 @@ input[type=text] {
 /**
  * When the viewport is 500px or smaller
  */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 487px) {
   .timer-box {
     width: 100%;
     padding: 10px 21% 20px 21%;
@@ -462,5 +469,15 @@ input[type=text] {
 
   .pomo-logo {
     width: 0;
+  }
+
+  #all-tasks {
+    height: 50vh;
+  }
+
+  #wrap-add-btn .error-message {
+    width: 93vw;
+    bottom: 220%;
+    margin-left: -55vw;
   }
 }
