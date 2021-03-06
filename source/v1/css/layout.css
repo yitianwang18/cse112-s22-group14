@@ -112,6 +112,7 @@ body {
   padding: 0 50px;
   height: 100%;
   min-height: 750px;
+  display: none;
   width: auto;
   position: absolute;
   z-index: 2;
@@ -134,14 +135,13 @@ body {
 #task-title hr {
   margin: 30px 0;
   border: 1px solid;
-  background-color: black;
 }
 
 /**
  * Styling add and delete buttons
  */
 #add-btn,
-#delete {
+#delete-btn {
   position: relative;
   top: 5px;
 }
@@ -215,7 +215,6 @@ input[type=text] {
   margin: 0 auto 0 auto;
   padding: 20px 100px 15px 100px;
   border: 3px solid;
-  border-color: var(--white);
 }
 
 /**
