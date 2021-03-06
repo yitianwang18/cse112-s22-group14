@@ -1,5 +1,6 @@
 import { TimerContainer } from "./timerContainer.js";
 import { TaskList } from "./taskList.js";
+import { EventBus } from "./eventBus.js";
 import { TaskDisplay } from "./taskDisplay.js";
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -28,22 +29,22 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     function handleThemeBtnPressed() {
         // Obtains an array of all <link> elements. Select your element using indexing. 
-        let theme = document.getElementsByTagName('link')[1]; 
+        let theme = document.getElementsByTagName('link')[1];
         let theme_btn = document.getElementById("theme-btn");
 
-        // Change the value of href attribute to change the css sheet. 
-        if (theme.getAttribute("href") == "./css/colors.css") { 
-            theme.setAttribute("href", "./css/colors2.css"); 
+        // Change the value of href attribute to change the css sheet.
+        if (theme.getAttribute("href") == "./css/colors.css") {
+            theme.setAttribute("href", "./css/colors2.css");
             theme_btn.setAttribute("title", "Simple Theme");
-        } else { 
-            theme.setAttribute("href", "./css/colors.css"); 
+        } else {
+            theme.setAttribute("href", "./css/colors.css");
             theme_btn.setAttribute("title", "Complex Theme");
-        } 
+        }
     }
 
     // Code for showing / hiding TaskList functionality
     let task_btn = document.getElementById("task-btn");
-    task_btn.addEventListener("click", showTaskList); 
+    task_btn.addEventListener("click", showTaskList);
 
     /**
      * Event handler function to show TaskList when task button is pressed
@@ -52,6 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let tasks = document.querySelector("task-list");
         tasks.showTaskList();
     }
+
+    document.EventBus = new EventBus();
 
 });
 

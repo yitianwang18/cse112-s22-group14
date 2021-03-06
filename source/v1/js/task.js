@@ -5,13 +5,6 @@
 class Task extends HTMLElement {
 
     /**
-     * Maximum length of trimmed input task
-     * @static
-     * @type {Number}
-     */
-    static N_MAX_TASK_LENGTH = 50;
-
-    /**
      * Attributes that this object observes
      * @static
      * @type {String[]}
@@ -54,7 +47,7 @@ class Task extends HTMLElement {
     }
 
     /**
-     * Renders the Task
+     * Renders the Task with given attributes
      */
     renderComponents() {
         let o_task_input = this.querySelector("input");
@@ -64,8 +57,8 @@ class Task extends HTMLElement {
     /**
      * Handler for when attributes are changed
      * @param {String} name name of changed attribute
-     * @param {*} oldValue old value of attribute
-     * @param {*} newValue new value of attribute
+     * @param {String} oldValue old value of attribute
+     * @param {String} newValue new value of attribute
      */
     attributeChangedCallback(name, oldValue, newValue) {
         this.renderComponents();
@@ -85,60 +78,16 @@ class Task extends HTMLElement {
      */
     bindHandleEdit(f_edit_action) {
         // let text = this.querySelector("div").addEventListener("click", f_edit_action);
+        // this.f_handle_edit = f_edit_action;
         this.querySelector("input").addEventListener("change", f_edit_action);
     }
 
-    /**
-     * updates the taskname attrib after editing it
-     * @param {number} n_task_id task id number
-     */
-    updateName(n_task_id) {
-        // update the taskname attribute + input.value
-        let o_task_item_input = this.querySelector('input');
-
-        // save the old string value, perform str validation
-        // if new string invalid, replace with old value
-        let s_curr_input_val = this.getAttribute('taskname');
-
-        if (Task.validateString(o_task_item_input.value)) {
-          // set the attribute name to be the new value
-          this.setAttribute('taskname', o_task_item_input.value.trim());
-        }
-        else {
-            this.setAttribute('taskname', s_curr_input_val);
-        }
-    }
-
-    /**
-     * edits the task #n_task_id after clicking on it
-     * @param {number} n_task_id task id number
-     */
-    // editName(n_task_id) {
-        // let o_task_item = document.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`);
-        // let o_task_item_div = o_task_item.querySelector('div');
-        // // keep the original taskname string incase new input invalid
-        // let s_stringVal = o_task_item_div.innerHTML;
-        //
-        // // hide task name
-        // o_task_item_div.innerHTML = "";
-        // let o_input = document.createElement("input");
-        // o_input.setAttribute('type', 'text');
-        // o_input.onblur = function () {
-        //   if (Task.validateString(o_input.value)) {
-        //     o_input.value = o_input.value.trim();
-        //     o_task_item_div.innerHTML = o_input.value;
-        //   }
-        //   else
-        //     o_task_item_div.innerHTML = s_stringVal;
-        //
-        //   o_task_item.removeChild(o_input);
-        // }
-        // // input box should show existing name to edit
-        // o_input.value = s_stringVal;
-        // o_task_item.appendChild(o_input);
-        // o_input.focus();
-    // }
 }
-
+/**
+ * Maximum length of trimmed input task
+ * @static
+ * @type {Number}
+ */
+Task.N_MAX_TASK_LENGTH = 50;
 window.customElements.define("task-item", Task);
 export { Task }
