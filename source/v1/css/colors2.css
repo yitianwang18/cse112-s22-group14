@@ -119,6 +119,11 @@ hr {
   color: var(--red);
 }
 
+#wrap-add-btn .error-message {
+  background-color: var(--white);
+  color: var(--red);
+}
+
 /****************************
   * Color for Pomodoro Timer *
   ****************************/
@@ -187,25 +192,13 @@ hr {
   **************************/
 
 .instruct-head {
-  color: var(--white);
-  background-color: var(--less-transparent);
+  color: var(--black);
+  background-color: var(--white);
 }
 
 #instructions-para {
-  background-color: var(--alm-transparent);
-  color: var(--white);
-}
-
-.arrow-up-icon {
-  color: var(--white);
-}
-
-.instruct-bottom {
-  background-color: var(--less-transparent);
-}
-
-.arrow-up-icon:hover {
-  color: var(--green);
+  background-color: var(--white);
+  color: var(--black);
 }
 
 /********************

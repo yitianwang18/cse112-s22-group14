@@ -60,6 +60,9 @@ class TaskList extends HTMLElement {
         o_add_task_input.addEventListener("input", this.handleInputChange.bind(this));
 
         // creating add button
+        let o_wrap_btn = document.createElement("span");
+        o_wrap_btn.id = "wrap-add-btn";
+
         let o_add_task_button = document.createElement("button");
         o_add_task_button.classList.add("btn");
         o_add_task_button.id = "add-btn";
@@ -68,9 +71,15 @@ class TaskList extends HTMLElement {
         o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-x");
         o_add_task_button.appendChild(o_add_task_icon);
 
+        let o_error_mssg = document.createElement("span");
+        o_error_mssg.id = "add-error";
+        o_error_mssg.className = "error-message";
+
+        o_wrap_btn.append(o_add_task_button, o_error_mssg);
+
         o_add_task_button.addEventListener("click", this.handleAddTask.bind(this));
 
-        o_add_task.append(o_add_task_input, o_add_task_button);
+        o_add_task.append(o_add_task_input, o_wrap_btn);
 
         let o_hr = document.createElement("hr");
 
@@ -108,8 +117,10 @@ class TaskList extends HTMLElement {
     handleInputChange(o_event) {
         if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
             this.querySelector("#add-btn").disabled = true;
+            this.querySelector("#add-error").innerHTML = "Input cannot be empty, contain only whitespaces, or be more than 50 chars long!";
         } else {
             this.querySelector("#add-btn").disabled = false;
+            this.querySelector("#add-error").innerHTML = "";
         }
     }
 
