@@ -57,7 +57,6 @@ class TaskList extends HTMLElement {
 
         let o_error_mssg = document.createElement("span");
         o_error_mssg.id = "add-error";
-        o_error_mssg.className = "error-message";
 
         o_wrap_btn.append(o_add_task_button, o_error_mssg);
 
@@ -68,9 +67,12 @@ class TaskList extends HTMLElement {
         let o_hr = document.createElement("hr");
 
         let o_existing_tasks_title = document.createElement("div")
+        
+        let o_make_bold = document.createElement("strong");
         o_existing_tasks_title.innerHTML = "Tasks remaining:";
+        o_make_bold.append(o_existing_tasks_title);
 
-        o_task_title_wrapper.append(o_tasklist_title, o_add_task, o_hr, o_existing_tasks_title);
+        o_task_title_wrapper.append(o_tasklist_title, o_add_task, o_hr, o_make_bold);
 
         let o_tasks = document.createElement("div");
         o_tasks.id = "all-tasks";

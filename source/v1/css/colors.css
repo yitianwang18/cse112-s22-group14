@@ -102,6 +102,7 @@ hr {
 .timer-box {
   background-color: var(--dark-blue);
   background-image: linear-gradient(to right, var(--darkest-blue), var(--dark-blue), var(--blue));
+  border-color: var(--white);
 }
 
 .timer {

@@ -111,15 +111,18 @@ hr {
   color: var(--grey);
 }
 
-.close {
+.close,
+.close2 {
   color: var(--black);
 }
 
-.close:hover {
+.close:hover,
+.close2:hover {
   color: var(--red);
 }
 
-#wrap-add-btn .error-message {
+#wrap-add-btn #add-error,
+#wrap-check-btn #check-error {
   background-color: var(--white);
   color: var(--red);
 }
@@ -134,6 +137,7 @@ hr {
 
 .timer-box {
   background-color: var(--less-transparent);
+  border-color: var(--white);
 }
 
 .timer {
@@ -193,12 +197,18 @@ hr {
 
 .instruct-head {
   color: var(--black);
-  background-color: var(--white);
+  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
+  background-color: var(--dark-green);
 }
 
 #instructions-para {
   background-color: var(--white);
   color: var(--black);
+}
+
+.center-align {
+  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
+  background-color: var(--dark-green);
 }
 
 /********************

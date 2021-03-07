@@ -34,6 +34,9 @@ class TaskDisplay extends HTMLElement {
         o_curr_disp.id = "current";
         o_curr_disp.innerHTML = "Do this";
 
+        let o_wrap_btn = document.createElement("span");
+        o_wrap_btn.id = "wrap-check-btn";
+
         //check button
         let o_check_btn = document.createElement("button");
         o_check_btn.className = "btn";
@@ -43,19 +46,26 @@ class TaskDisplay extends HTMLElement {
         let o_next_btn = document.createElement("i");
         o_next_btn.classList.add("fas", "fa-check-circle", "fa-x", "tool");
 
+        let o_error_mssg = document.createElement("span");
+        o_error_mssg.id = "check-error";
+        o_error_mssg.innerHTML = "Tasks cannot be checked off during breaks!";
+
         let f_handle_check = () => { document.EventBus.fireEvent("nextTask") };
         o_check_btn.addEventListener("click", f_handle_check);
         o_check_btn.append(o_next_btn);
 
+        o_wrap_btn.append(o_check_btn, o_error_mssg);
+
         //header for next task
         let o_next_title = document.createElement("h3");
+        o_next_title.id = "text-next";
         o_next_title.innerText = "Next Task";
 
         //div for box displaying next
         let o_next_disp = document.createElement("div");
         o_next_disp.id = "next";
 
-        o_wrapper_obj.append(o_curr_title, o_curr_disp, o_check_btn, o_next_title, o_next_disp);
+        o_wrapper_obj.append(o_curr_title, o_curr_disp, o_wrap_btn, o_next_title, o_next_disp);
         this.append(o_wrapper_obj);
 
         /*keeps track of the number of tasks*/
@@ -134,6 +144,9 @@ class TaskDisplay extends HTMLElement {
      */
     disableCheck() {
         this.querySelector("#check").disabled = true;
+        this.querySelector("#check-error").style.backgroundColor = "#fff";
+
+        this.querySelector("#check-error").style.color = "red";
     }
 
     /**
@@ -142,6 +155,8 @@ class TaskDisplay extends HTMLElement {
      */
     enableCheck() {
         this.querySelector("#check").disabled = false;
+        this.querySelector("#check-error").style.backgroundColor = "#0000";
+        this.querySelector("#check-error").style.color = "#0000";
     }
 
     // /**

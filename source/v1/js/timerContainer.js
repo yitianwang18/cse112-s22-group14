@@ -25,6 +25,9 @@ class TimerContainer extends HTMLElement {
         o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
 
+        let o_wrap_start_btn = document.createElement("span");
+        o_wrap_start_btn.id = "wrap-start-btn";
+
         let o_start_btn = document.createElement("button");
         o_start_btn.id = "start-btn";
         o_start_btn.className = "custom-btn";
