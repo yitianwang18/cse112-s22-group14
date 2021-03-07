@@ -74,8 +74,7 @@ hr {
   color: var(--dark-blue);
 }
 
-.btn:hover:enabled,
-.close:hover {
+.btn:hover:enabled {
   color: var(--light-green);
 }
 
@@ -87,7 +86,8 @@ hr {
   color: var(--black);
 }
 
-.close:hover {
+.close:hover,
+#delete-btn:hover:enabled {
   color: var(--red);
 }
 

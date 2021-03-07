@@ -16,6 +16,12 @@ class TaskList extends HTMLElement {
         super();
         this.o_tasks = {};
         this.n_next_task_id = 0;
+
+        let o_wrapper_obj_back = document.createElement("div");
+        o_wrapper_obj_back.className = "sidenav-blocker";
+        o_wrapper_obj_back.id = "side-tasks-blocker";
+        o_wrapper_obj_back.addEventListener("click", this.closeTaskList.bind(this));
+
         let o_wrapper_obj = document.createElement("div");
         o_wrapper_obj.className = "sidenav";
         o_wrapper_obj.id = "side-tasks";
@@ -78,6 +84,7 @@ class TaskList extends HTMLElement {
         o_tasks.id = "all-tasks";
 
         o_wrapper_obj.append(o_close_button, o_task_title_wrapper, o_tasks);
+        this.append(o_wrapper_obj_back);
         this.append(o_wrapper_obj);
 
         // update the + icon, as it's by default not initialized
@@ -212,6 +219,8 @@ class TaskList extends HTMLElement {
     showTaskList() {
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "block";
+        let o_tasks_back = this.querySelector("#side-tasks-blocker");
+        o_tasks_back.style.display = "block";
     }
 
     /**
@@ -220,6 +229,8 @@ class TaskList extends HTMLElement {
     closeTaskList() {
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "none";
+        let o_tasks_back = this.querySelector("#side-tasks-blocker");
+        o_tasks_back.style.display = "none";
     }
 
     /**

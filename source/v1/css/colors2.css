@@ -26,9 +26,12 @@
   background-size: cover;
 }
 
+.instructions-section-blocker {
+    background-color: var(--less-transparent);
+}
+
 .instructions-section {
-  background-image: url("../assets/img/1.jpg");
-  background-size: cover;
+  background-color: var(--white);
 }
 
 /***********************
@@ -79,6 +82,10 @@ hr {
   * Color for Slide-out Tasks *
   *****************************/
 
+.sidenav-blocker {
+background-color: var(--alm-transparent);
+}
+
 .sidenav {
   background-color: var(--white);
 }
@@ -101,8 +108,7 @@ hr {
   color: var(--black);
 }
 
-#add-btn:hover:enabled,
-#delete-btn:hover:enabled {
+#add-btn:hover:enabled {
   color: var(--green);
 }
 
@@ -117,7 +123,8 @@ hr {
 }
 
 .close:hover,
-.close2:hover {
+.close2:hover,
+#delete-btn:hover:enabled {
   color: var(--red);
 }
 

@@ -106,6 +106,19 @@ body {
  ***************************/
 
 /**
+ * Container for slide-out tasks mask
+ */
+ .sidenav-blocker {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+/**
  * Container for slide-out tasks
  */
 .sidenav {
@@ -113,7 +126,7 @@ body {
   height: 100%;
   min-height: 750px;
   display: none;
-  width: auto;
+  width: 420px;
   position: absolute;
   z-index: 2;
   top: 0;
@@ -215,6 +228,7 @@ input[type=text] {
 #all-tasks {
   margin-top: 20px;
   height: 55vh;
+  width: 420px;
   overflow-y: scroll !important;
 }
 
@@ -368,17 +382,34 @@ input[type=text] {
 /************************
  * Styling Instructions *
  ************************/
+/**
+ * Container for slide-out tasks mask
+ */
+ .instructions-section-blocker {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  align-items: center;
+  z-index: 2;
+}
 
 /**
  * Container for instructions
  */
 .instructions-section {
   display: none;
-  width: 100%;
-  position: absolute;
+  position: fixed;
+  width: 80%;
+  height: 90vh;
   top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   margin: auto;
-  min-height: 100vh;
+  z-index: 2;
 }
 
 /**
@@ -404,6 +435,7 @@ input[type=text] {
   font-family: 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
   text-align: left;
+  align-items: left;
   line-height: 25px;
 }
 
@@ -494,6 +526,11 @@ input[type=text] {
   }
 
   .sidenav {
+    max-width: 80%;
+    padding: 0 10%;
+  }
+
+  #all-tasks {
     max-width: 80%;
     padding: 0 10%;
   }
