@@ -1,4 +1,5 @@
 class EventBus {
+
     /**
      * Constructs a new EventBus, by obtaining references to all major webcomponents
      * and registering events
