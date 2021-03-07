@@ -4,7 +4,7 @@
 *Minimum:*
 | Chrome | Edge | Firefox | Internet Explorer | Opera | Safari |
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|22|No|63|No|25|No|
+|22|No|63|No|25|7|
 
 This is the second version of PomoHero, a web application to help users implement the Pomodoro Technique and find themselves master time management and focus undistractedly on their tasks.
 
