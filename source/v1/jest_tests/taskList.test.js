@@ -19,6 +19,8 @@ test('TaskList Item Addition', () => {
     expect(o_tasklist.o_tasks[2]).toBe(undefined);
     expect(o_tasklist.querySelector("#all-tasks").children.length).toBe(2);
     expect(o_tasklist.n_next_task_id).toBe(2);
+
+
 });
 
 test("TaskList Item Removing", () => {
@@ -85,3 +87,89 @@ test("TaskList static validateString", () => {
     expect(TaskList.validateString(s_oversize_padded)).toBe(true);
 });
 
+test("TaskList showTaskList + closeTaskList", () => {
+      let o_tasklist = new TaskList();
+      const s_is_displayed = "block";
+      const s_is_not_displayed = "none";
+
+      o_tasklist.showTaskList();
+      expect(o_tasklist.querySelector("#side-tasks").style.display).toBe(s_is_displayed);
+
+      o_tasklist.closeTaskList();
+      expect(o_tasklist.querySelector("#side-tasks").style.display).toBe(s_is_not_displayed);
+});
+
+test("TaskList get task number", () => {
+      let o_tasklist = new TaskList();
+
+      o_tasklist.showTaskList();
+      expect(o_tasklist.querySelector("#side-tasks").style.display).toBe(s_is_displayed);
+
+      o_tasklist.closeTaskList();
+      expect(o_tasklist.querySelector("#side-tasks").style.display).toBe(s_is_not_displayed);
+});
+
+test('TaskList test get number of tasks', () => {
+    let o_tasklist = new TaskList();
+
+    // adding single item
+    o_tasklist.addItem("Task1");
+    // adding another item
+    o_tasklist.addItem("Task2");
+
+    expect(o_tasklist.getNumTasks()).toBe(2);
+    o_tasklist.removeItem(1);
+    expect(o_tasklist.getNumTasks()).toBe(1);
+    o_tasklist.removeItem(0);
+    expect(o_tasklist.getNumTasks()).toBe(0);
+});
+
+test('TaskList test pop tasks', () => {
+    let o_tasklist = new TaskList();
+
+    // adding single item
+    o_tasklist.addItem("Task1");
+    // adding another item
+    o_tasklist.addItem("Task2");
+
+    expect(o_tasklist.getNumTasks()).toBe(2);
+    o_tasklist.popTask();
+    expect(o_tasklist.getNumTasks()).toBe(1);
+    o_tasklist.popTask();
+    expect(o_tasklist.getNumTasks()).toBe(0);
+});
+
+test('TaskList test get next task + get next-next task', () => {
+    let o_tasklist = new TaskList();
+
+    // adding single item
+    o_tasklist.addItem("Task1");
+    // adding another item
+    o_tasklist.addItem("Task2");
+
+    expect(o_tasklist.getNumTasks()).toBe(2);
+    expect(o_tasklist.getNextTask()).toBe(o_tasklist.o_tasks[Object.keys(o_tasklist.o_tasks)[0]]);
+    expect(o_tasklist.getNextNextTask()).toBe(o_tasklist.o_tasks[Object.keys(o_tasklist.o_tasks)[1]]);
+    o_tasklist.popTask();
+
+    expect(o_tasklist.getNextNextTask()).toBe(undefined);
+    expect(o_tasklist.getNextTask()).toBe(o_tasklist.o_tasks[Object.keys(o_tasklist.o_tasks)[0]]);
+    o_tasklist.popTask();
+
+    expect(o_tasklist.getNextTask()).toBe(undefined);
+});
+
+
+test("TaskList showTaskList + closeTaskList", () => {
+      let o_tasklist = new TaskList();
+      const s_is_displayed = "block";
+      const s_is_not_displayed = "none";
+
+      // adding single item
+      o_tasklist.addItem("Task1");
+      // adding another item
+      o_tasklist.addItem("Task2");
+
+      o_tasklist.handleStartSession();
+      expect(o_tasklist.querySelector("#side-tasks").style.display).toBe(s_is_not_displayed);
+});
