@@ -40,7 +40,7 @@ class TaskDisplay extends HTMLElement {
         //check button
         let o_check_btn = document.createElement("button");
         o_check_btn.className = "btn";
-        o_check_btn.id = 'check';
+        o_check_btn.id = "check";
         o_check_btn.title = "Task completed";
 
         let o_next_btn = document.createElement("i");
@@ -58,7 +58,6 @@ class TaskDisplay extends HTMLElement {
 
         //header for next task
         let o_next_title = document.createElement("h3");
-        o_next_title.id = "text-next";
         o_next_title.innerText = "Next Task";
 
         //div for box displaying next
@@ -144,9 +143,9 @@ class TaskDisplay extends HTMLElement {
      */
     disableCheck() {
         this.querySelector("#check").disabled = true;
-        this.querySelector("#check-error").style.backgroundColor = "#fff";
-
-        this.querySelector("#check-error").style.color = "red";
+        this.querySelector("#check-error").title = "";
+        this.querySelector("#check-error").style.backgroundColor = "#ffcdd2";
+        this.querySelector("#check-error").style.color = "#f44336";
     }
 
     /**
@@ -155,6 +154,7 @@ class TaskDisplay extends HTMLElement {
      */
     enableCheck() {
         this.querySelector("#check").disabled = false;
+        this.querySelector("#check-error").title = "Task completed!";
         this.querySelector("#check-error").style.backgroundColor = "#0000";
         this.querySelector("#check-error").style.color = "#0000";
     }

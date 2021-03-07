@@ -5,7 +5,7 @@
 :root {
   --white: #fff;
   --black: #000;
-  --red: #f00;
+  --red: #f44336;
   --light-green: #b1f060;
   --green: #178800;
   --dark-green: #00570e;
@@ -112,8 +112,7 @@ background-color: var(--alm-transparent);
   color: var(--green);
 }
 
-#add-btn:disabled,
-#delete-btn:disabled {
+#add-btn:disabled {
   color: var(--grey);
 }
 
@@ -125,12 +124,6 @@ background-color: var(--alm-transparent);
 .close:hover,
 .close2:hover,
 #delete-btn:hover:enabled {
-  color: var(--red);
-}
-
-#wrap-add-btn #add-error,
-#wrap-check-btn #check-error {
-  background-color: var(--white);
   color: var(--red);
 }
 

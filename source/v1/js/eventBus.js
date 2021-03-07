@@ -48,10 +48,20 @@ class EventBus {
             this.o_timer_container.handleStartPomo();
             this.o_task_list.closeTaskList();
             this.handleStartWork();
-        } else {
-            console.log("bruh");
-        }
 
+            this.o_timer_container.querySelector("#start-error").innerHTML = "";
+            this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#0000";
+            this.o_timer_container.querySelector("#start-error").style.color = "#0000";
+        } else { 
+          this.o_timer_container.querySelector("#start-error").innerHTML = "Cannot start session with no tasks!";
+          this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#ffcdd2";
+          this.o_timer_container.querySelector("#start-error").style.color = "#f44336";
+          setTimeout(() => {
+              this.o_timer_container.querySelector("#start-error").innerHTML = "";
+              this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#0000";
+              this.o_timer_container.querySelector("#start-error").style.color = "#0000";
+          }, 5000);
+        }
     }
 
     handleEndSession() {

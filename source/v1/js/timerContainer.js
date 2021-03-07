@@ -36,11 +36,22 @@ class TimerContainer extends HTMLElement {
         const f_fire_start_session = () => { document.EventBus.fireEvent("startSession") };
         o_start_btn.addEventListener("click", f_fire_start_session);
 
+        let o_start_error_mssg = document.createElement("span");
+        o_start_error_mssg.id = "start-error";
+
         let o_reset_btn = document.createElement("button");
         o_reset_btn.id = "reset-btn";
         o_reset_btn.classList.add("custom-btn", "hidden");
         o_reset_btn.innerText = TimerContainer.S_RESET_MESSAGE;
-        o_reset_btn.addEventListener("click", this.handleResetPomo.bind(this))
+        o_reset_btn.addEventListener("click", this.handleResetPomo.bind(this));
+
+        let o_reset_error_mssg = document.createElement("span");
+        o_reset_error_mssg.id = "reset-error";
+
+        o_wrap_start_btn.append(o_start_btn, o_start_error_mssg, o_reset_btn, o_reset_error_mssg);
+
+        let o_wrap_end_btn = document.createElement("span");
+        o_wrap_end_btn.id = "wrap-end-btn";
 
         let o_end_btn = document.createElement("button");
         o_end_btn.id = "end-btn";
@@ -49,7 +60,12 @@ class TimerContainer extends HTMLElement {
         const f_fire_end_session = () => { document.EventBus.fireEvent("endSession") };
         o_end_btn.addEventListener("click", f_fire_end_session);
 
-        o_wrapper.append(o_work_message, o_timer_display, o_start_btn, o_reset_btn, o_end_btn);
+        let o_end_error_mssg = document.createElement("span");
+        o_end_error_mssg.id = "end-error";
+
+        o_wrap_end_btn.append(o_end_btn, o_end_error_mssg);
+
+        o_wrapper.append(o_work_message, o_timer_display, o_wrap_start_btn, o_wrap_end_btn);
 
         this.append(o_wrapper);
 
@@ -72,6 +88,9 @@ class TimerContainer extends HTMLElement {
         this.querySelector("#reset-btn").classList.remove("hidden");
         this.querySelector("#start-btn").classList.add("hidden");
         this.querySelector("#end-btn").disabled = false;
+        this.querySelector("#end-error").innerHTML = "";
+        this.querySelector("#end-error").style.backgroundColor = "#0000";
+        this.querySelector("#end-error").style.color = "#0000";
         this.renderComponents();
     }
 
@@ -94,6 +113,9 @@ class TimerContainer extends HTMLElement {
         this.endSession();
         this.renderComponents();
         this.querySelector("#end-btn").disabled = true;
+        this.querySelector("#end-error").innerHTML = "Session not started!";
+        this.querySelector("#end-error").style.backgroundColor = "#ffcdd2";
+        this.querySelector("#end-error").style.color = "#f44336";
         this.querySelector("#reset-btn").classList.add("hidden");
         this.querySelector("#reset-btn").disabled = false;
         this.querySelector("#start-btn").classList.remove("hidden");
@@ -142,6 +164,9 @@ class TimerContainer extends HTMLElement {
         switch (this.n_curr_state) {
             case TimerContainer.WORK:
                 this.querySelector("#reset-btn").disabled = true;
+                this.querySelector("#reset-error").innerHTML = "Cannot reset timer during breaks!";
+                this.querySelector("#reset-error").style.backgroundColor = "#ffcdd2";
+                this.querySelector("#reset-error").style.color = "#f44336";
                 ++(this.n_done_pomos);
                 if (this.n_done_pomos == 4) {
                     this.n_curr_state = TimerContainer.L_BREAK;
@@ -158,6 +183,9 @@ class TimerContainer extends HTMLElement {
                 document.EventBus.fireEvent("startWork");
             case TimerContainer.NOT_STARTED:
                 this.querySelector("#reset-btn").disabled = false;
+                this.querySelector("#reset-error").innerHTML = "";
+                this.querySelector("#reset-error").style.backgroundColor = "#0000";
+                this.querySelector("#reset-error").style.color = "#0000";
                 this.n_curr_state = TimerContainer.WORK;
                 notify(this.n_curr_state);
                 break;

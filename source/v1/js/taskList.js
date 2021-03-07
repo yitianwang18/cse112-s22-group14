@@ -41,6 +41,13 @@ class TaskList extends HTMLElement {
         let o_add_task = document.createElement("div");
         o_add_task.id = "add-task";
 
+        let o_add_label_container = document.createElement("div")
+        
+        let o_make_add_label_bold = document.createElement("strong");
+        o_make_add_label_bold.innerHTML = "Add task:";
+
+        o_add_label_container.append(o_make_add_label_bold);
+
         // add input field
         let o_add_task_input = document.createElement("input");
         o_add_task_input.type = "text";
@@ -75,10 +82,11 @@ class TaskList extends HTMLElement {
         let o_existing_tasks_title = document.createElement("div")
         
         let o_make_bold = document.createElement("strong");
-        o_existing_tasks_title.innerHTML = "Tasks remaining:";
-        o_make_bold.append(o_existing_tasks_title);
+        o_make_bold.innerHTML = "Tasks remaining:";
 
-        o_task_title_wrapper.append(o_tasklist_title, o_add_task, o_hr, o_make_bold);
+        o_existing_tasks_title.append(o_make_bold);
+
+        o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, o_existing_tasks_title);
 
         let o_tasks = document.createElement("div");
         o_tasks.id = "all-tasks";
@@ -110,10 +118,14 @@ class TaskList extends HTMLElement {
     handleInputChange(o_event) {
         if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
             this.querySelector("#add-btn").disabled = true;
-            this.querySelector("#add-error").innerHTML = "Input cannot be empty, contain only whitespaces, or be more than 50 chars long!";
+            this.querySelector("#add-error").innerHTML = "Input cannot be empty or be more than 50 chars long!";
+            this.querySelector("#add-error").style.backgroundColor = "#ffcdd2";
+            this.querySelector("#add-error").style.color = "#f44336";
         } else {
             this.querySelector("#add-btn").disabled = false;
             this.querySelector("#add-error").innerHTML = "";
+            this.querySelector("#add-error").style.backgroundColor = "#0000";
+            this.querySelector("#add-error").style.color = "#0000";
         }
     }
 
@@ -185,11 +197,24 @@ class TaskList extends HTMLElement {
         let o_task_item = this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`);
         let o_task_item_input = o_task_item.querySelector('input');
         let s_curr_input_val = o_task_item.getAttribute('taskname');
+        let o_error_span = o_task_item.querySelector("span");
         if (TaskList.validateString(o_task_item_input.value)) {
             o_task_item.setAttribute('taskname', o_task_item_input.value.trim());
+            o_error_span.innerHTML = "";
+            o_error_span.style.backgroundColor = "#0000";
+            o_error_span.style.color = "#0000";
         }
         else {
             o_task_item.setAttribute('taskname', s_curr_input_val);
+            o_error_span.innerHTML = "Input cannot be empty or be more than 50 chars long!";
+            o_error_span.style.backgroundColor = "#ffcdd2";
+            o_error_span.style.color = "#f44336";
+
+            setTimeout(() => {
+              o_error_span.innerHTML = "";
+              o_error_span.style.backgroundColor = "#0000";
+              o_error_span.style.color = "#0000";
+            }, 5000);
         }
         // this.editTaskName()
         // update array of tasks (o_tasks)

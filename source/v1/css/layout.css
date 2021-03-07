@@ -124,7 +124,6 @@ body {
 .sidenav {
   padding: 0 50px;
   height: 100%;
-  min-height: 750px;
   display: none;
   width: 420px;
   position: absolute;
@@ -139,7 +138,7 @@ body {
  */
 #side-tasks div > h1 {
   font-family: 'Georgia', 'Times New Roman', serif;
-  padding: 30px;
+  padding: 0 30px 30px 30px;
 }
 
 /**
@@ -150,22 +149,82 @@ body {
   border: 1px solid;
 }
 
+#task-title > h1 + div {
+  margin-bottom: 10px;
+}
+
 #wrap-add-btn,
-#wrap-check-btn {
+#wrap-check-btn,
+#wrap-start-btn,
+#wrap-end-btn,
+#wrap-task {
   display: inline-block;
   position: relative;
 }
 
-#wrap-add-btn #add-error {
-  visibility: hidden;
+#wrap-start-btn #start-error {
+  font-weight: bold;
+  visibility: visible;
   width: auto;
   bottom: 100%;
-  margin-left: -400px;
+  margin-left: -200px;
   text-align: center;
   border-radius: 6px;
   padding: 5px;
   position: absolute;
   z-index: 1;
+}
+
+.edit-error {
+  font-weight: bold;
+  visibility: visible;
+  width: auto;
+  bottom: 20%;
+  margin-left: -400px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 100;
+}
+
+#wrap-start-btn #reset-error {
+  font-weight: bold;
+  visibility: hidden;
+  width: auto;
+  bottom: 100%;
+  margin-left: -200px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+#wrap-end-btn #end-error {
+  font-weight: bold;
+  visibility: hidden;
+  width: auto;
+  bottom: 100%;
+  margin-left: -165px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+#wrap-add-btn #add-error {
+  font-weight: bold;
+  visibility: hidden;
+  width: auto;
+  bottom: 100%;
+  margin-left: -385px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 100;
 }
 
 #wrap-check-btn #check-error {
@@ -182,7 +241,9 @@ body {
 }
 
 #wrap-add-btn:hover #add-error,
-#wrap-check-btn:hover #check-error {
+#wrap-check-btn:hover #check-error,
+#wrap-start-btn:hover #reset-error,
+#wrap-end-btn:hover #end-error {
   visibility: visible;
 }
 
@@ -227,9 +288,9 @@ input[type=text] {
  */
 #all-tasks {
   margin-top: 20px;
-  height: 55vh;
+  height: calc(100vh - 330px);
   width: 420px;
-  overflow-y: scroll !important;
+  overflow-y: auto;
 }
 
 /**************************
@@ -515,7 +576,7 @@ input[type=text] {
 /**
  * When the viewport is 500px or smaller
  */
-@media screen and (max-width: 487px) {
+@media screen and (max-width: 500px) {
   .timer-box {
     width: 100%;
     padding: 10px 21% 20px 21%;
@@ -537,10 +598,6 @@ input[type=text] {
 
   .pomo-logo {
     width: 0;
-  }
-
-  #all-tasks {
-    height: 50vh;
   }
 
   #wrap-add-btn #add-error {

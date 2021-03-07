@@ -17,6 +17,8 @@ class Task extends HTMLElement {
     constructor() {
         super();
         let o_div = document.createElement("div");
+        o_div.id = "wrap-task";
+
         let o_item = document.createElement("input");
         // let o_item_input = document.createElement("input");
         o_item.setAttribute('type', 'text');
@@ -30,7 +32,10 @@ class Task extends HTMLElement {
 
         o_del_button.append(o_del_button_icon);
 
-        o_div.append(o_item, o_del_button);
+        let o_error_mssg = document.createElement("span");
+        o_error_mssg.className = "edit-error";
+
+        o_div.append(o_item, o_del_button, o_error_mssg);
         this.append(o_div);
     }
 
