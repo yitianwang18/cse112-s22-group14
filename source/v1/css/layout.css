@@ -122,15 +122,15 @@ body {
  * Container for slide-out tasks
  */
 .sidenav {
-  padding: 0 50px;
+  padding: 0;
   height: 100%;
-  display: none;
-  width: 420px;
+  width: 0;
   position: absolute;
   z-index: 2;
   top: 0;
   right: 0;
-  box-shadow: -0.5em 0 1em;
+  box-shadow: -5px 5px 10px;
+  transition: 0.3s;
 }
 
 /**
@@ -139,6 +139,10 @@ body {
 #side-tasks div > h1 {
   font-family: 'Georgia', 'Times New Roman', serif;
   padding: 0 30px 30px 30px;
+}
+
+#task-title {
+  display: none;
 }
 
 /**
@@ -265,6 +269,7 @@ body {
   top: 20px;
   right: -50%;
   padding: 0 9px;
+  transition: 0.3s;
 }
 
 /**
@@ -287,6 +292,7 @@ input[type=text] {
  * Container displaying all of the user tasks
  */
 #all-tasks {
+  display: none;
   margin-top: 20px;
   height: calc(100vh - 330px);
   width: 420px;
@@ -446,7 +452,7 @@ input[type=text] {
 /**
  * Container for slide-out tasks mask
  */
- .instructions-section-blocker {
+#instructions-blocker {
   display: none;
   position: absolute;
   top: 0;
@@ -461,10 +467,11 @@ input[type=text] {
  * Container for instructions
  */
 .instructions-section {
-  display: none;
+  overflow: hidden;
   position: fixed;
-  width: 80%;
-  height: 90vh;
+  transition: 0.3s;
+  width: 0;
+  height: 0;
   top: 0;
   left: 0;
   right: 0;
@@ -485,10 +492,15 @@ input[type=text] {
   font-family: 'Georgia', 'Times New Roman', serif;
 }
 
+#instructions-title {
+  display: none;
+}
+
 /**
  * Paragraph of instructions within instructions section
  */
 #instructions-para {
+  display: none;
   padding-bottom: 20px;
   margin: auto;
   width: auto;

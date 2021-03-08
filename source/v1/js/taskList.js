@@ -243,7 +243,12 @@ class TaskList extends HTMLElement {
      */
     showTaskList() {
         let o_tasks = this.querySelector("#side-tasks");
-        o_tasks.style.display = "block";
+        o_tasks.style.width = "420px";
+        o_tasks.style.padding = "0 50px";
+        setTimeout(() => {
+          this.querySelector("#task-title").style.display = "block";
+          this.querySelector("#all-tasks").style.display = "block";
+        }, 200);
         let o_tasks_back = this.querySelector("#side-tasks-blocker");
         o_tasks_back.style.display = "block";
     }
@@ -253,7 +258,10 @@ class TaskList extends HTMLElement {
      */
     closeTaskList() {
         let o_tasks = this.querySelector("#side-tasks");
-        o_tasks.style.display = "none";
+        o_tasks.style.width = "0";
+        o_tasks.style.padding = "0";
+        this.querySelector("#task-title").style.display = "none";
+        this.querySelector("#all-tasks").style.display = "none";
         let o_tasks_back = this.querySelector("#side-tasks-blocker");
         o_tasks_back.style.display = "none";
     }

@@ -27,13 +27,12 @@ class InstructionsBox extends HTMLElement {
         let o_inst_title_wrapper = document.createElement("div");
         o_inst_title_wrapper.id = "instructions-title";
 
-
         let o_inst_title = document.createElement("h2");
         o_inst_title.className = "instruct-head";
         o_inst_title.innerText = "Instructions";
 
         let o_inst_text = document.createElement("div");
-        o_inst_text.className = "instructions-para";
+        o_inst_text.id = "instructions-para";
 
         let o_inst_tasks = document.createElement("h3");
         o_inst_tasks.innerText = "Add tasks for the session";
@@ -56,20 +55,28 @@ class InstructionsBox extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showInstructionsBox() {
-        let o_tasks = this.querySelector("#instructions");
-        o_tasks.style.display = "block";
-        let o_tasks_back = this.querySelector("#instructions-blocker");
-        o_tasks_back.style.display = "block";
+        let o_instructions = this.querySelector("#instructions");
+        o_instructions.style.width = "80%";
+        o_instructions.style.height = "90vh";
+        setTimeout(() => {
+          this.querySelector("#instructions-title").style.display = "block";
+          this.querySelector("#instructions-para").style.display = "block";
+        }, 200);
+        let o_instructions_back = this.querySelector("#instructions-blocker");
+        o_instructions_back.style.display = "block";
     }
 
     /**
      * Function to close task list display from the main user screen
      */
     closeInstructions() {
-        let o_tasks = this.querySelector("#instructions");
-        o_tasks.style.display = "none";
-        let o_tasks_back = this.querySelector("#instructions-blocker");
-        o_tasks_back.style.display = "none";
+        let o_instructions = this.querySelector("#instructions");
+        o_instructions.style.width = "0";
+        o_instructions.style.height = "0";
+        this.querySelector("#instructions-title").style.display = "none";
+        this.querySelector("#instructions-para").style.display = "none";
+        let o_instructions_back = this.querySelector("#instructions-blocker");
+        o_instructions_back.style.display = "none";
     }
 
 
