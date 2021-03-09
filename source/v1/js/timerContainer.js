@@ -5,10 +5,6 @@ import { notify } from "./notify.js"
  * @extends HTMLElement
  */
 class TimerContainer extends HTMLElement {
-    n_start_time;
-    n_curr_state;
-    n_done_pomos;
-    n_interval_id;
 
     /**
      * Constructs a new Timer Container, initializes elements, and assigns event listeners
