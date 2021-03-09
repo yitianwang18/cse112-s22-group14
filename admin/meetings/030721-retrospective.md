@@ -17,4 +17,7 @@ Fortunately, this issue was contained in the early-mid stages of the Sprint. Som
 We were not able to complete some of the features that we were planning to finish in this sprint. We plan to finish them in Sprint 4 i.e. the last week sprint. These features are listed below
 <img src="../misc/img/pasted image 3.png" >
 
+## Conclusion
+Compared to our Sprint 2 retrospective meeting, the amount of things that well were far more and the amount of things that could have have been better were far less. The Action Plan that we decided on in the previous retrospective was effectively implemented, which bore fruit.
+<img src="../misc/img/pasted image 2.png" >
 
