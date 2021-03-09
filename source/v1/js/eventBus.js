@@ -1,3 +1,5 @@
+import { TimerContainer } from "./timerContainer.js";
+
 class EventBus {
 
     /**
@@ -17,7 +19,10 @@ class EventBus {
         this.registerEvent("fetchTask", this.updateTaskDisplay.bind(this));
         this.registerEvent("startBreak", this.handleStartBreak.bind(this));
         this.registerEvent("startWork", this.handleStartWork.bind(this));
-
+        this.registerEvent("closeWindows", this.handleCloseWindows.bind(this));
+        this.registerEvent("spaceKeybind", this.handleSpaceKeybind.bind(this));
+        this.registerEvent("showTasks", this.handleShowTasks.bind(this));
+        this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
     }
 
     /**
@@ -38,7 +43,7 @@ class EventBus {
     }
 
     handleStartSession() {
-        if (this.o_task_list.getNumTasks() != 0) {
+        if (this.o_task_list.getNumTasks() != 0 && this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
             this.o_toolbar.querySelector("#task-btn").disabled = true;
             // hide toolbar
             this.o_toolbar.style.visibility = "hidden";
@@ -71,11 +76,34 @@ class EventBus {
     }
 
     handleNextTask() {
-        this.updateTaskCompleted();
-        if (this.o_task_list.getNumTasks() == 0) {
-            this.handleEndSession();
+        if (this.o_timer_container.n_curr_state == TimerContainer.WORK) {
+            this.updateTaskCompleted();
+            if (this.o_task_list.getNumTasks() == 0) {
+                this.handleEndSession();
+            }
         }
+    }
 
+    handleSpaceKeybind() {
+        if (this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
+            this.fireEvent("startSession");
+        } else {
+            this.fireEvent("endSession");
+        }
+    }
+
+    handleResetPomo() {
+        if (this.o_timer_container.n_curr_state == TimerContainer.WORK) {
+            this.o_timer_container.resetPomo();
+        }
+    }
+
+    handleCloseWindows() {
+        this.o_task_list.closeTaskList();
+    }
+
+    handleShowTasks() {
+        this.o_task_list.showTaskList();
     }
 
     updateTaskDisplay() {

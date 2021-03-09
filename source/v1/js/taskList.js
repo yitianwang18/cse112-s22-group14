@@ -102,8 +102,11 @@ class TaskList extends HTMLElement {
      * @param {Event} o_event event instance
      */
     handleKeyUpChange(o_event) {
-        if (o_event.keyCode == TaskList.N_ENTER_KEYCODE) {
+        if (o_event.key == "Enter") {
             this.handleAddTask();
+        } else if (o_event.key == "Escape") {
+            this.querySelector("input").blur();
+            this.closeTaskList();
         }
     }
 
@@ -199,6 +202,7 @@ class TaskList extends HTMLElement {
     showTaskList() {
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "block";
+        this.querySelector("input").focus();
     }
 
     /**
@@ -207,6 +211,7 @@ class TaskList extends HTMLElement {
     closeTaskList() {
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "none";
+        this.clearInput();
     }
 
     /**
