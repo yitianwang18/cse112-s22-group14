@@ -1,11 +1,11 @@
-# Sprint 2 Retrospective
+# Sprint 3 Retrospective
 
-For our retrospective, we used Retrium. Members of our team put forward what they thought went well in our Sprint 2 and what they thought could have been done better. 
-We compiled all these thought to define the approach we will take for our next sprint i.e. the Beta Sprint. These thoughts have been listed below.
+For our retrospective, we used Retrium. Members of our team put forward what they thought went well in our Sprint 3 and what they thought could have been done better. 
+We compiled all these thought to define the approach we will take for our next sprint i.e. the Last Sprint. These thoughts have been listed below.
 
 ## What went well, What could have been done better and the action plan we can take to do better
 
-![Software first screen](../misc/img/retro.png)            <img src="../misc/img/action.png" width="220px">
+<img src="../misc/img/pasted image 0.png" width="220px">
 
 ## What didn't go well & the corresponding Action Plan
 
