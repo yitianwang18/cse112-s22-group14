@@ -5,7 +5,7 @@ We compiled all these thought to define the approach we will take for our next s
 
 ## What went well, What could have been done better and the action plan we can take to do better
 
-<img src="../misc/img/pasted image 0.png" width="220px">
+<img src="../misc/img/pasted image 0.png" >
 
 ## What didn't go well & the corresponding Action Plan
 
