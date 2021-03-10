@@ -43,15 +43,41 @@ As a team, we are satisfied with how the sprint has gone by. Everything went wel
 
 **Luke:** Was the primary builder for the pipeline. Handled the entire setup and maintenance of the pipeline, including a linting procedure using the GitHub Super Linter, a testing framework (Jest), and document generation with JSDoc. Also worked on handling merge conflicts for the Pull Requests from the dev and the design branches, as well as hosting of the app on Firebase. Planned on how the Git Flow will change for the next sprint after talking with team mentor and the Professor.
 
+#### Current backlog 
 
-### Current backlog
-The current central backlog includes the implementation of task list functionality, which will enable the user to add and delete tasks within the app instead of having to use an external software to manage work. This will greatly minimize unintentional investments of time.
+“alt” attributes need to be included in images <img>
 
-We also plan on implementing a theme changing button which will help the user to focus on their work under a color theme of their preference.
+Currently Lighthouse-dev outputs show that all categories are healthy (Performance, Best Practices, SEO  >= 90). Only “Accessibility” seems to be at a lower 61/100 score due primarily to the duration it takes for certain image files to download and appear on the user’s browser. 
 
-Finally, we wish to have an analytics tab providing the user with useful analytics on how their day went and how much work they got done, which will be very effective for future retrospecting.
+Reasons: 
+This is narrowed down mainly to our background image file, which has an extremely large resolution ( greater than 4k res ~ 8.6MB). 
 
-### Next steps
-The coming sprint - the beta sprint - will prioritize the implementation of task list functionality. Once a working task list is set up, we will also execute a theme changing feature, given there is still time left. Analytics will be pushed back to the final sprint. The pipeline, during the sprint, will be further developed and nuanced, with emphasis on branch organization and handling of merge conflicts.
+Additionally, larger than required files are the images used in the completed Pomos icons, which are also large (~1MB) This is causing the overall average time for the page load-up to be disproportionately high. 
 
-The next sprint will again be a short two-week sprint. We expect to ship our revised software by March 7, 2021. 
+Solution: We may standardize the background image to be of one standard lower resolution. 2nd solution is to have one specific background resolution for each viewport size, however, it doesn’t eradicate the problem of long page load-up times for users with large viewports, so we might stick to the 1st one. 
+
+        Down-res of pomos completed image files as well
+
+Tooltips repositioning:
+Reasons: Current tooltip positionings are out of place, we are looking for non-obstructive placements. The main task display’s tooltips are a little off-center as well. 
+
+Placement of tooltips for the task-list page are currently covering the <input> values when a ‘wrong’ input is detected, displaying for a long duration of 5 seconds. 
+
+Solution: 
+We will reposition the tooltip so it doesn’t obstruct input value, and reduce duration.
+
+
+
+
+### Next Steps: 
+
+Turn instructions into modal display + Test modal display
+
+Hotkey features for easier access of buttons (Almost done / completed) + Test hotkey feature
+
+Adding Hotkey instructions into modal instruction display 
+
+Banner Image change possibly to one that is more of a minimalist style resembling Airbnb’s logo font
+
+Explain problems with attempting to fix safari bug?
+
