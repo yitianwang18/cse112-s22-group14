@@ -8,6 +8,7 @@
 body {
   text-align: center;
   margin: 0;
+  font-family: Helvetica, Arial, Symbol, sans-serif;
 }
 
 /******************
@@ -136,13 +137,6 @@ body {
 }
 
 /**
- * Styling header for slide-out tasks
- */
-#side-tasks div > h1 {
-  font-family: 'Georgia', 'Times New Roman', serif;
-}
-
-/**
  * Styling container for header of task list
  */
 #task-title {
@@ -177,6 +171,7 @@ body {
  * Class for styling error messages
  */
 .error-mssg {
+  font-family: 'Times New Roman', Times, serif;
   font-weight: normal;
   width: auto;
   text-align: center;
@@ -290,7 +285,6 @@ input[type=text] {
  */
 #work-message {
   font-size: 1.5rem;
-  font-family: 'Georgia', 'Times New Roman', serif;
   padding-bottom: 15px;
 }
 
@@ -309,7 +303,6 @@ input[type=text] {
  */
 #pomos-completed {
   padding-top: 10px;
-  font-family: 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
   margin: 25px 0 0 0;
 }
@@ -328,11 +321,10 @@ input[type=text] {
 .custom-btn {
   border-radius: 10px;
   height: 40px;
-  line-height: 40px;
+  line-height: 1;
   width: 150px;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 20px;
-  font-weight: normal;
+  font-size: 1rem;
+  font-weight: 600;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
@@ -386,7 +378,6 @@ input[type=text] {
   padding: 0 20px 30px 10px;
   margin: auto;
   height: auto;
-  font-family: 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -486,7 +477,6 @@ input[type=text] {
   margin-bottom: 0;
   padding: 15px;
   font-size: 2.5rem;
-  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 /**
@@ -505,7 +495,6 @@ input[type=text] {
   margin: auto;
   width: auto;
   max-width: 900px;
-  font-family: 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
   text-align: left;
   align-items: left;
@@ -565,7 +554,6 @@ input[type=text] {
   padding: 30px;
   margin: auto;
   font-weight: 900;
-  font-family: 'Helvetica', 'Calibri', sans-serif;
 }
 
 /*************************************
