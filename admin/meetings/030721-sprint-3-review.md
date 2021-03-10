@@ -66,6 +66,7 @@ Placement of tooltips for the task-list page are currently covering the <input> 
 Solution: 
 We will reposition the tooltip so it doesn’t obstruct input value, and reduce duration.
 
+standardize the format of all written code (eg. abiding by our agreed upon notations, white-spacing rules, and variable naming conventions -- hungarian)
 
 
 
