@@ -1,5 +1,5 @@
-/// <reference types="jest" />
 import { TaskList } from "../js/taskList.js";
+
 test('TaskList Item Addition', () => {
     let o_tasklist = new TaskList();
 
