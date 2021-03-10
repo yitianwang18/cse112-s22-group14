@@ -36,6 +36,7 @@ class TaskDisplay extends HTMLElement {
 
         let o_wrap_btn = document.createElement("span");
         o_wrap_btn.id = "wrap-check-btn";
+        o_wrap_btn.className = "btn-wrapper";
 
         //check button
         let o_check_btn = document.createElement("button");
@@ -48,7 +49,8 @@ class TaskDisplay extends HTMLElement {
 
         let o_error_mssg = document.createElement("span");
         o_error_mssg.id = "check-error";
-        o_error_mssg.innerHTML = "Tasks cannot be checked off during breaks!";
+        o_error_mssg.className = "error-mssg";
+        o_error_mssg.innerHTML = TaskDisplay.CHECK_ERROR;
 
         let f_handle_check = () => { document.EventBus.fireEvent("nextTask") };
         o_check_btn.addEventListener("click", f_handle_check);
@@ -154,7 +156,7 @@ class TaskDisplay extends HTMLElement {
      */
     enableCheck() {
         this.querySelector("#check").disabled = false;
-        this.querySelector("#check-error").title = "Task completed!";
+        this.querySelector("#check-error").title = TaskDisplay.CHECK_TOOLTIP;
         this.querySelector("#check-error").style.backgroundColor = "#0000";
         this.querySelector("#check-error").style.color = "#0000";
     }
@@ -257,6 +259,19 @@ class TaskDisplay extends HTMLElement {
     }
 }
 
+/**
+ * Tooltip when check button is hovered upon
+ * @static
+ * @type {String}
+ */
+TaskDisplay.CHECK_TOOLTIP = "Task completed!";
+
+/**
+ * Error message when check button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+ TaskDisplay.CHECK_ERROR = "Tasks cannot be checked off during breaks!";
 
 customElements.define("task-display", TaskDisplay);
 

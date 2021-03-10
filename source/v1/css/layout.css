@@ -37,6 +37,7 @@ body {
  */
 .pomo-logo {
   width: 60px;
+  height: auto;
   margin-left: 5px;
   padding-left: 10px;
   padding-top: 5px;
@@ -48,6 +49,7 @@ body {
  */
 .banner {
   width: 250px;
+  height: auto;
   padding-top: 5px;
   margin: auto;
 }
@@ -138,11 +140,11 @@ body {
  */
 #side-tasks div > h1 {
   font-family: 'Georgia', 'Times New Roman', serif;
-  padding: 0 30px 30px 30px;
 }
 
 #task-title {
   display: none;
+  position: relative;
 }
 
 /**
@@ -157,91 +159,55 @@ body {
   margin-bottom: 10px;
 }
 
-#wrap-add-btn,
-#wrap-check-btn,
-#wrap-start-btn,
-#wrap-end-btn,
-#wrap-task {
+.btn-wrapper {
   display: inline-block;
   position: relative;
 }
 
-#wrap-start-btn #start-error {
-  font-weight: bold;
-  visibility: visible;
+.error-mssg {
+  font-weight: normal;
   width: auto;
-  bottom: 100%;
-  margin-left: -200px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-}
-
-.edit-error {
-  font-weight: bold;
-  visibility: visible;
-  width: auto;
-  bottom: 20%;
-  margin-left: -400px;
   text-align: center;
   border-radius: 6px;
   padding: 5px;
   position: absolute;
   z-index: 100;
+}
+
+#wrap-start-btn #start-error {
+  visibility: visible;
+  bottom: 100%;
+  margin-left: -170px;
+}
+
+#edit-error {
+  visibility: visible;
+  left: 4.3%;
 }
 
 #wrap-start-btn #reset-error {
-  font-weight: bold;
   visibility: hidden;
-  width: auto;
   bottom: 100%;
-  margin-left: -200px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
+  margin-left: -170px;
 }
 
 #wrap-end-btn #end-error {
-  font-weight: bold;
   visibility: hidden;
-  width: auto;
   bottom: 100%;
-  margin-left: -165px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
+  margin-left: -153px;
 }
 
 #wrap-add-btn #add-error {
-  font-weight: bold;
   visibility: hidden;
-  width: auto;
   bottom: 100%;
-  margin-left: -385px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 100;
+  margin-left: -390px;
 }
 
 #wrap-check-btn #check-error {
   visibility: hidden;
-  width: auto;
   top: 100%;
   left: 50%;
   margin-left: -200px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
 }
 
 #wrap-add-btn:hover #add-error,
@@ -264,6 +230,7 @@ body {
  * Close button inside slide-out tasks
  */
 .close {
+  display: none;
   text-decoration: none;
   position: relative;
   top: 20px;
@@ -293,8 +260,8 @@ input[type=text] {
  */
 #all-tasks {
   display: none;
-  margin-top: 20px;
-  height: calc(100vh - 330px);
+  margin-top: 25px;
+  height: calc(100vh - 320px);
   width: 420px;
   overflow-y: auto;
 }
@@ -600,12 +567,16 @@ input[type=text] {
 
   .sidenav {
     max-width: 80%;
-    padding: 0 10%;
+    padding: 0;
+  }
+
+  #edit-error {
+    bottom: -15px;
   }
 
   #all-tasks {
-    max-width: 80%;
-    padding: 0 10%;
+    max-width: 100%;
+    height: calc(100vh - 365px);
   }
 
   .pomo-logo {
@@ -615,6 +586,6 @@ input[type=text] {
   #wrap-add-btn #add-error {
     width: 93vw;
     bottom: 220%;
-    margin-left: -55vw;
+    margin-left: -50vw;
   }
 }

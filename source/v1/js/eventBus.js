@@ -53,14 +53,14 @@ class EventBus {
             this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#0000";
             this.o_timer_container.querySelector("#start-error").style.color = "#0000";
         } else { 
-          this.o_timer_container.querySelector("#start-error").innerHTML = "Cannot start session with no tasks!";
+          this.o_timer_container.querySelector("#start-error").innerHTML = EventBus.START_ERROR;
           this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#ffcdd2";
           this.o_timer_container.querySelector("#start-error").style.color = "#f44336";
           setTimeout(() => {
               this.o_timer_container.querySelector("#start-error").innerHTML = "";
               this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#0000";
               this.o_timer_container.querySelector("#start-error").style.color = "#0000";
-          }, 5000);
+          }, 3000);
         }
     }
 
@@ -103,5 +103,12 @@ class EventBus {
     }
 
 }
+
+/**
+ * Error message when Start button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+EventBus.START_ERROR = "Cannot start session with no tasks!";
 
 export { EventBus };

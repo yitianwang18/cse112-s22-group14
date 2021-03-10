@@ -32,10 +32,7 @@ class Task extends HTMLElement {
 
         o_del_button.append(o_del_button_icon);
 
-        let o_error_mssg = document.createElement("span");
-        o_error_mssg.className = "edit-error";
-
-        o_div.append(o_item, o_del_button, o_error_mssg);
+        o_div.append(o_item, o_del_button);
         this.append(o_div);
     }
 
