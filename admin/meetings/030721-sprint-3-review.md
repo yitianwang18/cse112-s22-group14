@@ -1,4 +1,4 @@
-# Sprint 2 Review
+# Sprint 3 Review
 
 ## Teamato - Group 30
 
@@ -45,40 +45,36 @@ As a team, we are satisfied with how the sprint has gone by. Everything went wel
 
 #### Current backlog 
 
-“alt” attributes need to be included in images <img>
+- “alt” attributes need to be included in images <img>
 
-Currently Lighthouse-dev outputs show that all categories are healthy (Performance, Best Practices, SEO  >= 90). Only “Accessibility” seems to be at a lower 61/100 score due primarily to the duration it takes for certain image files to download and appear on the user’s browser. 
+  - Currently Lighthouse-dev outputs show that all categories are healthy (Performance, Best Practices, SEO  >= 90) Only “Accessibility” seems to be at a lower 61/100 score due primarily to the duration it takes for certain image files to download and appear on the user’s browser. 
 
-Reasons: 
-This is narrowed down mainly to our background image file, which has an extremely large resolution ( greater than 4k res ~ 8.6MB). 
+  - Reasons: This is narrowed down mainly to our background image file, which has an extremely large resolution ( greater than 4k res ~ 8.6MB). 
+  - Additionally, larger than required files are the images used in the completed Pomos icons, which are also large (~1MB) This is causing the overall average time for the page load-up to be disproportionately high. 
 
-Additionally, larger than required files are the images used in the completed Pomos icons, which are also large (~1MB) This is causing the overall average time for the page load-up to be disproportionately high. 
+  - Solution: We may standardize the background image to be of one standard lower resolution. 2nd solution is to have one specific background resolution for each viewport size, however, it doesn’t eradicate the problem of long page load-up times for users with large viewports, so we might stick to the 1st one. 
+  - Down-res of pomos completed image files as well
 
-Solution: We may standardize the background image to be of one standard lower resolution. 2nd solution is to have one specific background resolution for each viewport size, however, it doesn’t eradicate the problem of long page load-up times for users with large viewports, so we might stick to the 1st one. 
+- Tooltips repositioning:
+  - Reasons: Current tooltip positionings are out of place, we are looking for non-obstructive placements. The main task display’s tooltips are a little off-center as well. 
 
-        Down-res of pomos completed image files as well
+  - Placement of tooltips for the task-list page are currently covering the <input> values when a ‘wrong’ input is detected, displaying for a long duration of 5 seconds. 
 
-Tooltips repositioning:
-Reasons: Current tooltip positionings are out of place, we are looking for non-obstructive placements. The main task display’s tooltips are a little off-center as well. 
+  - Solution:
+    We will reposition the tooltip so it doesn’t obstruct input value, and reduce duration.
+    
+- standardize the format of all written code (eg. abiding by our agreed upon notations, white-spacing rules, and variable naming conventions -- hungarian)
 
-Placement of tooltips for the task-list page are currently covering the <input> values when a ‘wrong’ input is detected, displaying for a long duration of 5 seconds. 
-
-Solution: 
-We will reposition the tooltip so it doesn’t obstruct input value, and reduce duration.
-
-standardize the format of all written code (eg. abiding by our agreed upon notations, white-spacing rules, and variable naming conventions -- hungarian)
-
-
-
+ 
 ### Next Steps: 
 
-Turn instructions into modal display + Test modal display
+- Turn instructions into modal display + Test modal display
 
-Hotkey features for easier access of buttons (Almost done / completed) + Test hotkey feature
+- Hotkey features for easier access of buttons (Almost done / completed) + Test hotkey feature
 
-Adding Hotkey instructions into modal instruction display 
+- Adding Hotkey instructions into modal instruction display 
 
-Banner Image change possibly to one that is more of a minimalist style resembling Airbnb’s logo font
+- Banner Image change possibly to one that is more of a minimalist style resembling Airbnb’s logo font
 
-Explain problems with attempting to fix safari bug?
+- Explain problems with attempting to fix safari bug?
 
