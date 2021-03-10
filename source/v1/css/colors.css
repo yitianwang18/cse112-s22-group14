@@ -71,7 +71,11 @@ hr {
 }
 
 .sidenav {
-  background-color: var(--white);
+  background-color: var(--light-blue);
+}
+
+input[type=text] {
+  background-color: var(--light-blue);
 }
 
 .btn {

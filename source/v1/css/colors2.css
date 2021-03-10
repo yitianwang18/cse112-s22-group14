@@ -7,6 +7,7 @@
   --black: #000;
   --red: #f44336;
   --light-green: #b1f060;
+  --olive-green: #bdddb6;
   --green: #178800;
   --dark-green: #00570e;
   --darker-green: #003809;
@@ -87,7 +88,11 @@ hr {
 }
 
 .sidenav {
-  background-color: var(--white);
+  background-color: var(--olive-green);
+}
+
+input[type=text] {
+  background-color: var(--olive-green);
 }
 
 .btn {
