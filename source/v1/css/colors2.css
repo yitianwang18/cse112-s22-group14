@@ -27,7 +27,7 @@
 }
 
 .instructions-section-blocker {
-    background-color: var(--less-transparent);
+  background-color: var(--less-transparent);
 }
 
 .instructions-section {
@@ -83,7 +83,7 @@ hr {
   *****************************/
 
 .sidenav-blocker {
-background-color: var(--alm-transparent);
+  background-color: var(--alm-transparent);
 }
 
 .sidenav {

@@ -20,7 +20,7 @@ class InstructionsBox extends HTMLElement {
         o_wrapper_obj.id = "instructions";
 
         let o_close_button = document.createElement("a");
-        o_close_button.classList.add("close", "btn");
+        o_close_button.classList.add("close2", "btn");
         o_close_button.innerHTML = "&times;";
         o_close_button.addEventListener("click", this.closeInstructions.bind(this));
 

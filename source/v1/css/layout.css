@@ -110,7 +110,7 @@ body {
 /**
  * Container for slide-out tasks mask
  */
- .sidenav-blocker {
+.sidenav-blocker {
   display: none;
   position: absolute;
   top: 0;
@@ -142,6 +142,9 @@ body {
   font-family: 'Georgia', 'Times New Roman', serif;
 }
 
+/**
+ * Styling container for header of task list
+ */
 #task-title {
   display: none;
   position: relative;
@@ -155,15 +158,24 @@ body {
   border: 1px solid;
 }
 
+/**
+ * Styling div placed immediately after h1 inside task-title
+ */
 #task-title > h1 + div {
   margin-bottom: 10px;
 }
 
+/**
+ * Wrapper for adding error messages to buttons
+ */
 .btn-wrapper {
   display: inline-block;
   position: relative;
 }
 
+/**
+ * Class for styling error messages
+ */
 .error-mssg {
   font-weight: normal;
   width: auto;
@@ -174,47 +186,21 @@ body {
   z-index: 100;
 }
 
-#wrap-start-btn #start-error {
-  visibility: visible;
-  bottom: 100%;
-  margin-left: -170px;
-}
-
-#edit-error {
-  visibility: visible;
-  left: 4.3%;
-}
-
-#wrap-start-btn #reset-error {
-  visibility: hidden;
-  bottom: 100%;
-  margin-left: -170px;
-}
-
-#wrap-end-btn #end-error {
-  visibility: hidden;
-  bottom: 100%;
-  margin-left: -153px;
-}
-
+/**
+ * Positioning Add button error
+ */
 #wrap-add-btn #add-error {
   visibility: hidden;
   bottom: 100%;
   margin-left: -390px;
 }
 
-#wrap-check-btn #check-error {
-  visibility: hidden;
-  top: 100%;
-  left: 50%;
-  margin-left: -200px;
-}
-
-#wrap-add-btn:hover #add-error,
-#wrap-check-btn:hover #check-error,
-#wrap-start-btn:hover #reset-error,
-#wrap-end-btn:hover #end-error {
+/**
+ * Positioning Edit button error
+ */
+#edit-error {
   visibility: visible;
+  left: 4.3%;
 }
 
 /**
@@ -362,6 +348,33 @@ input[type=text] {
   display: none;
 }
 
+/**
+ * Positioning Start button error
+ */
+#wrap-start-btn #start-error {
+  visibility: visible;
+  bottom: 100%;
+  margin-left: -170px;
+}
+
+/**
+ * Positioning Reset button error
+ */
+#wrap-start-btn #reset-error {
+  visibility: hidden;
+  bottom: 100%;
+  margin-left: -170px;
+}
+
+/**
+ * Positioning End button error
+ */
+#wrap-end-btn #end-error {
+  visibility: hidden;
+  bottom: 100%;
+  margin-left: -153px;
+}
+
 /**************************
  * Styling Viewable Tasks *
  **************************/
@@ -402,20 +415,37 @@ input[type=text] {
 }
 
 /**
- * Check button beside the current task
+ * Wrapper class for check button in Task Display
  */
 #wrap-check-btn {
   margin-top: 2.5px;
   position: absolute;
 }
 
-#check-error {
-  display: inline-block;
+/**
+ * Positioning Check button error
+ */
+#wrap-check-btn #check-error {
+  visibility: hidden;
+  top: 100%;
+  left: 50%;
+  margin-left: -200px;
+}
+
+/**
+ * Make buttons visible only upon hovering
+ */
+#wrap-add-btn:hover #add-error,
+#wrap-check-btn:hover #check-error,
+#wrap-start-btn:hover #reset-error,
+#wrap-end-btn:hover #end-error {
+  visibility: visible;
 }
 
 /************************
  * Styling Instructions *
  ************************/
+
 /**
  * Container for slide-out tasks mask
  */
@@ -459,6 +489,9 @@ input[type=text] {
   font-family: 'Georgia', 'Times New Roman', serif;
 }
 
+/**
+ * Styling title for instructions
+ */
 #instructions-title {
   display: none;
 }
@@ -486,6 +519,9 @@ input[type=text] {
   text-align: center;
 }
 
+/**
+ * Styling paragraph within instructions-para container
+ */
 #instructions-para > p {
   margin: 0 20px;
 }
@@ -497,12 +533,18 @@ input[type=text] {
   flex-direction: column;
 }
 
-.center-align {
+/**
+ * Right Align close button for instructions box
+ */
+.right-align {
   width: 100%;
   height: 50px;
   text-align: right;
 }
 
+/**
+ * Style close button for instructions modal popup
+ */
 .close2 {
   text-decoration: none;
   position: relative;
