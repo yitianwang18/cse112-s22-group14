@@ -110,7 +110,7 @@ body {
  */
  .sidenav-blocker {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -448,7 +448,7 @@ input[type=text] {
  */
  .instructions-section-blocker {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -471,6 +471,7 @@ input[type=text] {
   bottom: 0;
   margin: auto;
   z-index: 2;
+  border: 2px solid;
 }
 
 /**
@@ -478,7 +479,7 @@ input[type=text] {
  */
 .instruct-head {
   text-align: center;
-  margin-top: -40px;
+  margin-top: -38px;
   margin-bottom: 0;
   padding: 15px;
   font-size: 2.5rem;
@@ -488,17 +489,19 @@ input[type=text] {
 /**
  * Paragraph of instructions within instructions section
  */
-#instructions-para {
-  padding-bottom: 20px;
+.instructions-para {
+  padding: 20px;
   margin: auto;
   width: auto;
   max-width: 900px;
   font-family: 'Helvetica', 'Calibri', sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: left;
   align-items: left;
   line-height: 25px;
 }
+
+
 
 /**
  * Headers within the instruction para
@@ -529,6 +532,7 @@ input[type=text] {
   position: relative;
   top: 20px;
   margin-right: 10px;
+  left: 47%;
   padding: 0 9px;
 }
 
@@ -559,6 +563,10 @@ input[type=text] {
     max-width: 50%;
   }
 
+  .close2 {
+    left: 46%;
+  }
+
   .sidenav {
     max-width: 80%;
   }
@@ -571,12 +579,76 @@ input[type=text] {
   .middle-container > div {
     max-width: 80%;
   }
+
+  .instructions-para {
+    padding: 20px;
+    font-size: 1.1rem;
+    line-height: 24px;
+  }
+
+  .inst-list {
+    padding-left: 6%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .instructions-para {
+    padding: 20px;
+    font-size: 1.0rem;
+    line-height: 23px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.9rem;
+    line-height: 23px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.9rem;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.85rem;
+    line-height: 21px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.82rem;
+    line-height: 21px;
+  }
 }
 
 /**
  * When the viewport is 500px or smaller
  */
 @media screen and (max-width: 500px) {
+  .instruct-head {
+    font-size: 2rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .inst-list {
+    padding-left: 4%;
+  }
+
+  .close2 {
+    left: 45%;
+  }
+  
   .timer-box {
     width: 100%;
     padding: 10px 21% 20px 21%;
@@ -605,4 +677,78 @@ input[type=text] {
     bottom: 220%;
     margin-left: -55vw;
   }
+
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.8rem;
+    line-height: 20px;
+  }
 }
+
+@media screen and (max-width: 460px) {
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.7rem;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.7rem;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .instruct-head {
+    text-align: left;
+    font-size: 1.8rem;
+    padding-top: 21px;
+    padding-bottom: 21px;
+  }
+
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.7rem;
+    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.7rem;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .instruct-head {
+    font-size: 1.5rem;
+    padding-top: 23px;
+    padding-bottom: 23px;
+  }
+
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.7rem;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 270px) {
+  .instruct-head {
+    font-size: 1.5rem;
+    padding-top: 23px;
+    padding-bottom: 23px;
+  }
+
+  .instructions-para {
+    padding: 20px;
+    font-size: 0.7rem;
+    line-height: 14px;
+  }
+}
+

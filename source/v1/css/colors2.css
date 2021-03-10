@@ -15,6 +15,8 @@
   --transparent: #0000;
   --alm-transparent: #0000006b;
   --less-transparent: #0000009c;
+  --least-transparent: #000000e8;
+  --least-transparent2: #061105ef;
 }
 
 /*******************************
@@ -31,7 +33,9 @@
 }
 
 .instructions-section {
-  background-color: var(--white);
+  background-color: var(--least-transparent2);
+  color:var(--white);
+  border-color: var(--white);
 }
 
 /***********************
@@ -116,9 +120,12 @@ background-color: var(--alm-transparent);
   color: var(--grey);
 }
 
-.close,
-.close2 {
+.close {
   color: var(--black);
+}
+
+.close2 {
+  color: var(--white);
 }
 
 .close:hover,
@@ -196,9 +203,8 @@ background-color: var(--alm-transparent);
   **************************/
 
 .instruct-head {
-  color: var(--black);
-  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
-  background-color: var(--dark-green);
+  color: var(--white);
+  background-color: var(--least-transparent2);
 }
 
 #instructions-para {
