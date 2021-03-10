@@ -28,6 +28,7 @@ class TaskList extends HTMLElement {
 
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn");
+        o_close_button.id = "close-task";
         o_close_button.innerHTML = "&times;";
         o_close_button.addEventListener("click", this.closeTaskList.bind(this));
 
@@ -59,6 +60,7 @@ class TaskList extends HTMLElement {
         // creating add button
         let o_wrap_btn = document.createElement("span");
         o_wrap_btn.id = "wrap-add-btn";
+        o_wrap_btn.className = "btn-wrapper";
 
         let o_add_task_button = document.createElement("button");
         o_add_task_button.classList.add("btn");
@@ -70,6 +72,7 @@ class TaskList extends HTMLElement {
 
         let o_error_mssg = document.createElement("span");
         o_error_mssg.id = "add-error";
+        o_error_mssg.className = "error-mssg";
 
         o_wrap_btn.append(o_add_task_button, o_error_mssg);
 
@@ -86,7 +89,11 @@ class TaskList extends HTMLElement {
 
         o_existing_tasks_title.append(o_make_bold);
 
-        o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, o_existing_tasks_title);
+        let o_error_mssg_2 = document.createElement("span");
+        o_error_mssg_2.id = "edit-error";
+        o_error_mssg_2.className = "error-mssg";
+
+        o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, o_existing_tasks_title, o_error_mssg_2);
 
         let o_tasks = document.createElement("div");
         o_tasks.id = "all-tasks";
@@ -118,7 +125,7 @@ class TaskList extends HTMLElement {
     handleInputChange(o_event) {
         if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
             this.querySelector("#add-btn").disabled = true;
-            this.querySelector("#add-error").innerHTML = "Input cannot be empty or be more than 50 chars long!";
+            this.querySelector("#add-error").innerHTML = TaskList.TASK_ERROR;
             this.querySelector("#add-error").style.backgroundColor = "#ffcdd2";
             this.querySelector("#add-error").style.color = "#f44336";
         } else {
@@ -197,7 +204,7 @@ class TaskList extends HTMLElement {
         let o_task_item = this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`);
         let o_task_item_input = o_task_item.querySelector('input');
         let s_curr_input_val = o_task_item.getAttribute('taskname');
-        let o_error_span = o_task_item.querySelector("span");
+        let o_error_span = this.querySelector("#edit-error");
         if (TaskList.validateString(o_task_item_input.value)) {
             o_task_item.setAttribute('taskname', o_task_item_input.value.trim());
             o_error_span.innerHTML = "";
@@ -206,7 +213,7 @@ class TaskList extends HTMLElement {
         }
         else {
             o_task_item.setAttribute('taskname', s_curr_input_val);
-            o_error_span.innerHTML = "Input cannot be empty or be more than 50 chars long!";
+            o_error_span.innerHTML = TaskList.TASK_ERROR;
             o_error_span.style.backgroundColor = "#ffcdd2";
             o_error_span.style.color = "#f44336";
 
@@ -214,7 +221,7 @@ class TaskList extends HTMLElement {
               o_error_span.innerHTML = "";
               o_error_span.style.backgroundColor = "#0000";
               o_error_span.style.color = "#0000";
-            }, 5000);
+            }, 3000);
         }
         // this.editTaskName()
         // update array of tasks (o_tasks)
@@ -242,8 +249,18 @@ class TaskList extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showTaskList() {
+        this.querySelector("#close-task").style.display = "block";
         let o_tasks = this.querySelector("#side-tasks");
-        o_tasks.style.display = "block";
+        o_tasks.style.width = "420px";
+        if (window.screen.width <= 500) {
+          o_tasks.style.padding = "0 10%";
+        } else {
+          o_tasks.style.padding = "0 50px";
+        }
+        setTimeout(() => {
+          this.querySelector("#task-title").style.display = "block";
+          this.querySelector("#all-tasks").style.display = "block";
+        }, 200);
         let o_tasks_back = this.querySelector("#side-tasks-blocker");
         o_tasks_back.style.display = "block";
     }
@@ -252,8 +269,12 @@ class TaskList extends HTMLElement {
      * Function to close task list display from the main user screen
      */
     closeTaskList() {
+        this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
-        o_tasks.style.display = "none";
+        o_tasks.style.width = "0";
+        o_tasks.style.padding = "0";
+        this.querySelector("#task-title").style.display = "none";
+        this.querySelector("#all-tasks").style.display = "none";
         let o_tasks_back = this.querySelector("#side-tasks-blocker");
         o_tasks_back.style.display = "none";
     }
@@ -316,6 +337,14 @@ TaskList.N_MAX_TASK_LENGTH = 50;
  * @type {Number}
  */
 TaskList.N_ENTER_KEYCODE = 13;
+
+/**
+ * Error message for adding or editing task incorrectly
+ * @static
+ * @type {String}
+ */
+TaskList.TASK_ERROR = "Input cannot be empty or be more than 50 chars long!";
+
 customElements.define("task-list", TaskList);
 
 

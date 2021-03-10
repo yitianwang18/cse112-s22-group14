@@ -8,6 +8,7 @@
 body {
   text-align: center;
   margin: 0;
+  font-family: Helvetica, Arial, Symbol, sans-serif;
 }
 
 /******************
@@ -37,6 +38,7 @@ body {
  */
 .pomo-logo {
   width: 60px;
+  height: auto;
   margin-left: 5px;
   padding-left: 10px;
   padding-top: 5px;
@@ -48,6 +50,7 @@ body {
  */
 .banner {
   width: 250px;
+  height: auto;
   padding-top: 5px;
   margin: auto;
 }
@@ -108,7 +111,7 @@ body {
 /**
  * Container for slide-out tasks mask
  */
- .sidenav-blocker {
+.sidenav-blocker {
   display: none;
   position: fixed;
   top: 0;
@@ -122,23 +125,23 @@ body {
  * Container for slide-out tasks
  */
 .sidenav {
-  padding: 0 50px;
+  padding: 0;
   height: 100%;
-  display: none;
-  width: 420px;
+  width: 0;
   position: absolute;
   z-index: 2;
   top: 0;
   right: 0;
-  box-shadow: -0.5em 0 1em;
+  box-shadow: -5px 5px 10px;
+  transition: 0.3s;
 }
 
 /**
- * Styling header for slide-out tasks
+ * Styling container for header of task list
  */
-#side-tasks div > h1 {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  padding: 0 30px 30px 30px;
+#task-title {
+  display: none;
+  position: relative;
 }
 
 /**
@@ -149,38 +152,28 @@ body {
   border: 1px solid;
 }
 
+/**
+ * Styling div placed immediately after h1 inside task-title
+ */
 #task-title > h1 + div {
   margin-bottom: 10px;
 }
 
-#wrap-add-btn,
-#wrap-check-btn,
-#wrap-start-btn,
-#wrap-end-btn,
-#wrap-task {
+/**
+ * Wrapper for adding error messages to buttons
+ */
+.btn-wrapper {
   display: inline-block;
   position: relative;
 }
 
-#wrap-start-btn #start-error {
-  font-weight: bold;
-  visibility: visible;
+/**
+ * Class for styling error messages
+ */
+.error-mssg {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: normal;
   width: auto;
-  bottom: 100%;
-  margin-left: -200px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-}
-
-.edit-error {
-  font-weight: bold;
-  visibility: visible;
-  width: auto;
-  bottom: 20%;
-  margin-left: -400px;
   text-align: center;
   border-radius: 6px;
   padding: 5px;
@@ -188,63 +181,21 @@ body {
   z-index: 100;
 }
 
-#wrap-start-btn #reset-error {
-  font-weight: bold;
-  visibility: hidden;
-  width: auto;
-  bottom: 100%;
-  margin-left: -200px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-}
-
-#wrap-end-btn #end-error {
-  font-weight: bold;
-  visibility: hidden;
-  width: auto;
-  bottom: 100%;
-  margin-left: -165px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-}
-
+/**
+ * Positioning Add button error
+ */
 #wrap-add-btn #add-error {
-  font-weight: bold;
   visibility: hidden;
-  width: auto;
   bottom: 100%;
-  margin-left: -385px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 100;
+  margin-left: -390px;
 }
 
-#wrap-check-btn #check-error {
-  visibility: hidden;
-  width: auto;
-  top: 100%;
-  left: 50%;
-  margin-left: -200px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-}
-
-#wrap-add-btn:hover #add-error,
-#wrap-check-btn:hover #check-error,
-#wrap-start-btn:hover #reset-error,
-#wrap-end-btn:hover #end-error {
+/**
+ * Positioning Edit button error
+ */
+#edit-error {
   visibility: visible;
+  left: 4.3%;
 }
 
 /**
@@ -260,11 +211,13 @@ body {
  * Close button inside slide-out tasks
  */
 .close {
+  display: none;
   text-decoration: none;
   position: relative;
   top: 20px;
   right: -50%;
   padding: 0 9px;
+  transition: 0.3s;
 }
 
 /**
@@ -287,8 +240,9 @@ input[type=text] {
  * Container displaying all of the user tasks
  */
 #all-tasks {
-  margin-top: 20px;
-  height: calc(100vh - 330px);
+  display: none;
+  margin-top: 25px;
+  height: calc(100vh - 320px);
   width: 420px;
   overflow-y: auto;
 }
@@ -331,7 +285,6 @@ input[type=text] {
  */
 #work-message {
   font-size: 1.5rem;
-  font-family: 'Georgia', 'Times New Roman', serif;
   padding-bottom: 15px;
 }
 
@@ -350,7 +303,6 @@ input[type=text] {
  */
 #pomos-completed {
   padding-top: 10px;
-  font-family: 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
   margin: 25px 0 0 0;
 }
@@ -369,11 +321,10 @@ input[type=text] {
 .custom-btn {
   border-radius: 10px;
   height: 40px;
-  line-height: 40px;
+  line-height: 1;
   width: 150px;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 20px;
-  font-weight: normal;
+  font-size: 1rem;
+  font-weight: 600;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
@@ -389,6 +340,33 @@ input[type=text] {
   display: none;
 }
 
+/**
+ * Positioning Start button error
+ */
+#wrap-start-btn #start-error {
+  visibility: visible;
+  bottom: 100%;
+  margin-left: -170px;
+}
+
+/**
+ * Positioning Reset button error
+ */
+#wrap-start-btn #reset-error {
+  visibility: hidden;
+  bottom: 100%;
+  margin-left: -170px;
+}
+
+/**
+ * Positioning End button error
+ */
+#wrap-end-btn #end-error {
+  visibility: hidden;
+  bottom: 100%;
+  margin-left: -153px;
+}
+
 /**************************
  * Styling Viewable Tasks *
  **************************/
@@ -400,7 +378,6 @@ input[type=text] {
   padding: 0 20px 30px 10px;
   margin: auto;
   height: auto;
-  font-family: 'Helvetica', 'Calibri', sans-serif;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -429,24 +406,41 @@ input[type=text] {
 }
 
 /**
- * Check button beside the current task
+ * Wrapper class for check button in Task Display
  */
 #wrap-check-btn {
   margin-top: 2.5px;
   position: absolute;
 }
 
-#check-error {
-  display: inline-block;
+/**
+ * Positioning Check button error
+ */
+#wrap-check-btn #check-error {
+  visibility: hidden;
+  top: 100%;
+  left: 50%;
+  margin-left: -200px;
+}
+
+/**
+ * Make buttons visible only upon hovering
+ */
+#wrap-add-btn:hover #add-error,
+#wrap-check-btn:hover #check-error,
+#wrap-start-btn:hover #reset-error,
+#wrap-end-btn:hover #end-error {
+  visibility: visible;
 }
 
 /************************
  * Styling Instructions *
  ************************/
+
 /**
  * Container for slide-out tasks mask
  */
- .instructions-section-blocker {
+#instructions-blocker {
   display: none;
   position: fixed;
   top: 0;
@@ -461,10 +455,11 @@ input[type=text] {
  * Container for instructions
  */
 .instructions-section {
-  display: none;
+  overflow: hidden;
   position: fixed;
-  width: 80%;
-  height: 90vh;
+  transition: 0.3s;
+  width: 0;
+  height: 0;
   top: 0;
   left: 0;
   right: 0;
@@ -483,7 +478,13 @@ input[type=text] {
   margin-bottom: 0;
   padding: 15px;
   font-size: 2.5rem;
-  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/**
+ * Styling title for instructions
+ */
+#instructions-title {
+  display: none;
 }
 
 /**
@@ -510,6 +511,9 @@ input[type=text] {
   text-align: center;
 }
 
+/**
+ * Styling paragraph within instructions-para container
+ */
 #instructions-para > p {
   margin: 0 20px;
 }
@@ -521,12 +525,18 @@ input[type=text] {
   flex-direction: column;
 }
 
-.center-align {
+/**
+ * Right Align close button for instructions box
+ */
+.right-align {
   width: 100%;
   height: 50px;
   text-align: right;
 }
 
+/**
+ * Style close button for instructions modal popup
+ */
 .close2 {
   text-decoration: none;
   position: relative;
@@ -548,7 +558,6 @@ input[type=text] {
   padding: 30px;
   margin: auto;
   font-weight: 900;
-  font-family: 'Helvetica', 'Calibri', sans-serif;
 }
 
 /*************************************
@@ -660,12 +669,16 @@ input[type=text] {
 
   .sidenav {
     max-width: 80%;
-    padding: 0 10%;
+    padding: 0;
+  }
+
+  #edit-error {
+    bottom: -15px;
   }
 
   #all-tasks {
-    max-width: 80%;
-    padding: 0 10%;
+    max-width: 100%;
+    height: calc(100vh - 365px);
   }
 
   .pomo-logo {
@@ -675,7 +688,7 @@ input[type=text] {
   #wrap-add-btn #add-error {
     width: 93vw;
     bottom: 220%;
-    margin-left: -55vw;
+    margin-left: -50vw;
   }
 
   .instructions-para {
