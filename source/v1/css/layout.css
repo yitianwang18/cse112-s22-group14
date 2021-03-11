@@ -466,7 +466,7 @@ input[type=text] {
   bottom: 0;
   margin: auto;
   z-index: 2;
-  border-width: 2px;
+  border-width: 0;
   border-style: solid;
 }
 
@@ -528,7 +528,7 @@ input[type=text] {
   text-align: center;
 }
 
-#instructions-para > h5 {
+#instructions-para > h4 {
   text-align: center;
 }
 
@@ -536,10 +536,6 @@ input[type=text] {
   text-align: center;
   font-size: 90%;
 }
-
-/**
- * Styling paragraph within instructions-para container
- */
 
 /**
  * Specifies direction of flexible item

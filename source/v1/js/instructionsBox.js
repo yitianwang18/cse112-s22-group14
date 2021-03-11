@@ -98,6 +98,7 @@ class InstructionsBox extends HTMLElement {
         let o_instructions = this.querySelector("#instructions");
         o_instructions.style.width = "80%";
         o_instructions.style.height = "90vh";
+        this.querySelector(".instructions-section").style.borderWidth = "2px";
         setTimeout(() => {
           this.querySelector("#instructions-title").style.display = "block";
           this.querySelector("#instructions-para").style.display = "block";
@@ -113,6 +114,7 @@ class InstructionsBox extends HTMLElement {
         let o_instructions = this.querySelector("#instructions");
         o_instructions.style.width = "0";
         o_instructions.style.height = "0";
+        this.querySelector(".instructions-section").style.borderWidth = "0";
         this.querySelector("#instructions-title").style.display = "none";
         this.querySelector("#instructions-para").style.display = "none";
         let o_instructions_back = this.querySelector("#instructions-blocker");
