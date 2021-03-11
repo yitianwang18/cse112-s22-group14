@@ -10,9 +10,10 @@ function notify(n_state){
   //check if notifications are supported
   if (!("Notification" in window)) {
     alert("This browser does not support desktop notifications.");
+    return;
   }
   
-  //check is notifications are turned on
+  //check if notifications are turned on
   if (Notification.permission !== "denied") {
     Notification.requestPermission().then(function (permission) {
       //ask user to enable notifications

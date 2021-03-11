@@ -17,6 +17,8 @@ class Task extends HTMLElement {
     constructor() {
         super();
         let o_div = document.createElement("div");
+        o_div.id = "wrap-task";
+
         let o_item = document.createElement("input");
         // let o_item_input = document.createElement("input");
         o_item.setAttribute('type', 'text');

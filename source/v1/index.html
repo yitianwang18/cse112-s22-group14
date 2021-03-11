@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="./css/layout.css">
   <link rel="stylesheet" href="./css/colors2.css">
 
+  <!-- Add favicon -->
+  <link rel="icon" type="image/png" href="./assets/img/PomoHeroLogo2.png">
+
   <!-- Import icons for buttons -->
   <script src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>
 
@@ -25,13 +28,13 @@
 
 <body>
 
-  <main>
+  <main id="main-screen">
     <section class="full-height timer-section">
 
       <!-- Contains the header : logo, title -->
       <div class="header-container">
         <a href="#">
-          <img class="pomo-logo" src="assets/img/PomoHeroLogo2.png" alt="pomo hero logo" href="#">
+          <img class="pomo-logo" src="assets/img/PomoHeroLogo2.png" alt="PomoHero Logo" href="#">
         </a>
         <a href="#">
           <img class="banner" src="assets/img/PomoTitleA.png" alt="PomoHero Banner">
@@ -41,40 +44,47 @@
       <!-- Contains the slide-out tasklist -->
       <task-list></task-list>
 
+      <!-- Contains the pop-up instructions -->
+      <instructions-box></instructions-box>
+
       <!-- Contains the Pomodoro timer -->
       <div class="top-container">
         <div class="main-box">
           <nav class="all-btns">
-            <button id="theme-btn" title="Simple Theme" class="btn"><i class="fas fa-palette fa-x theme-btn"></i></button>
+            <button id="theme-btn" title="Simple Theme" class="btn"><i
+                class="fas fa-palette fa-x theme-btn"></i></button>
             <button id="task-btn" title="Tasklist" class="btn"><i class="fas fa-tasks fa-x"></i></button>
-            <button id="info-btn-new" title="Instructions" class="btn"><i class="fas fa-info-circle fa-x info-btn-new"></i></button>
+            <button id="info-btn-new" title="Instructions" class="btn"><i
+                class="fas fa-info-circle fa-x info-btn-new"></i></button>
           </nav>
           <timer-element></timer-element>
         </div>
       </div>
-    </div>
-    
-    <!-- <div class="middle-container">
-      <h3>Current task:</h3>
-      <div id="current">
-        Do this
-      </div>
-      <button id="check" class="btn"><i class="fas fa-check-circle fa-x tool"></i></button>
-      <h3>Next task:</h3>
-      <div id="next">
-        Do that
-      </div>
-    </div> -->
-    
-    <!-- Contains the current and next task of the user -->
-    <task-display></task-display>
-    
-  </section>
 
-    <!-- Contains the instructions -->
-    <section class="instructions-section flex flex-column">
-      <h2 class="instruct-head">Instructions</h2>
+      <!-- <div class="middle-container">
+        <h3>Current task:</h3>
+        <div id="current">
+          Do this
+        </div>
+        <button id="check" class="btn"><i class="fas fa-check-circle fa-x tool"></i></button>
+        <h3>Next task:</h3>
+        <div id="next">
+          Do that
+        </div>
+      </div> -->
+
+      <!-- Contains the current and next task of the user -->
+      <task-display></task-display>
+
+    </section>
+
+    <!-- Contains the instructions --
+    <section class="instructions-section flex-column">
       <div id="instructions-para">
+        <div class="center-align">
+          <a class="close2 btn">&times;</a>
+        </div>
+        <h2 class="instruct-head">Instructions</h2>
         <h3>Add tasks for the session</h3>
         <ul>
           <li>From the top-right corner, click on the task list button</li>
@@ -104,10 +114,9 @@
           and reducing useless work sessions.
         </p>
       </div>
-      <div class="instruct-bottom">
-        <button id="up-arrow" class="btn" title="Scroll up"><i class="fas fa-arrow-alt-circle-up fa-2x arrow-up-icon"></i></button>
-      </div>
-    </section>
+    </section> -->
+
+
   </main>
 
   <!-- Contains the footer : Copyright for app name -->

@@ -12,6 +12,7 @@ class EventBus {
         this.o_timer_container = document.querySelector("timer-element");
         this.o_task_display = document.querySelector("task-display");
         this.o_toolbar = document.querySelector("nav");
+        this.o_instructions = document.querySelector("instructions-box");
 
         this.registerEvent("startSession", this.handleStartSession.bind(this));
         this.registerEvent("endSession", this.handleEndSession.bind(this));
@@ -43,6 +44,7 @@ class EventBus {
     }
 
     handleStartSession() {
+        let o_start_error = this.o_timer_container.querySelector("#start-error");
         if (this.o_task_list.getNumTasks() != 0 && this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
             this.o_toolbar.querySelector("#task-btn").disabled = true;
             // hide toolbar
@@ -53,10 +55,19 @@ class EventBus {
             this.o_timer_container.handleStartPomo();
             this.o_task_list.closeTaskList();
             this.handleStartWork();
-        } else {
-            console.log("bruh");
-        }
 
+            o_start_error.innerHTML = "";
+            o_start_error.classList.remove("color-error");
+        } else {
+            o_start_error.innerHTML = EventBus.START_ERROR;
+            o_start_error.classList.add("color-error");
+
+            // Make error message disapper after 3 seconds
+            setTimeout(() => {
+                o_start_error.innerHTML = "";
+                o_start_error.classList.remove("color-error");
+            }, 3000);
+        }
     }
 
     handleEndSession() {
@@ -64,7 +75,6 @@ class EventBus {
         this.o_toolbar.style.visibility = "";
         this.o_task_display.handleEndSession();
         this.o_timer_container.handleEndSession();
-
     }
 
     handleStartWork() {
@@ -100,6 +110,7 @@ class EventBus {
 
     handleCloseWindows() {
         this.o_task_list.closeTaskList();
+        this.o_instructions.closeInstructions();
     }
 
     handleShowTasks() {
@@ -121,5 +132,12 @@ class EventBus {
     }
 
 }
+
+/**
+ * Error message when Start button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+EventBus.START_ERROR = "Cannot start session with no tasks!";
 
 export { EventBus };
