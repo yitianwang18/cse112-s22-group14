@@ -98,10 +98,13 @@ class InstructionsBox extends HTMLElement {
      */
     showInstructionsBox() {
         this.querySelector("#instructions").classList.add("instructions-section-open");
+
+        // Hide everything inside instructions box while animating to prevent sandwiching of text
         setTimeout(() => {
           this.querySelector("#instructions-title").classList.toggle("hidden");
           this.querySelector("#instructions-para").classList.toggle("hidden");
         }, 200);
+
         this.querySelector("#instructions-blocker").classList.toggle("hidden");
     }
 
