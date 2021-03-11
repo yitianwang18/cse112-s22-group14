@@ -15,6 +15,8 @@
   --dark-green: #00570e;
   --grey: #949697;
   --transparent: #0000;
+  --alm-transparent: #0000006b;
+  --less-transparent: #0000009c;
 }
 
 /***********************
@@ -23,6 +25,15 @@
 
 hr {
   color: var(--grey);
+}
+
+.instructions-section-blocker {
+  background-color: var(--less-transparent);
+}
+
+.instructions-section {
+background-color: var(--white);
+border-color: var(--white);
 }
 
 /********************
@@ -65,17 +76,27 @@ hr {
 /*****************************
  * Color for Slide-out Tasks *
  *****************************/
+.sidenav-blocker {
+  background-color: var(--less-transparent);
+}
+
+.sidenav-blocker {
+  background-color: rgba(22, 10, 10, 0.42);
+}
 
 .sidenav {
-  background-color: var(--white);
+  background-color: var(--light-blue);
+}
+
+input[type=text] {
+  background-color: var(--light-blue);
 }
 
 .btn {
   color: var(--dark-blue);
 }
 
-.btn:hover:enabled,
-.close:hover {
+.btn:hover:enabled {
   color: var(--light-green);
 }
 
@@ -83,11 +104,14 @@ hr {
   color: var(--grey);
 }
 
-.close {
+.close,
+.close2 {
   color: var(--black);
 }
 
-.close:hover {
+.close:hover,
+.close2:hover,
+#delete-btn:hover:enabled {
   color: var(--red);
 }
 
@@ -102,6 +126,7 @@ hr {
 .timer-box {
   background-color: var(--dark-blue);
   background-image: linear-gradient(to right, var(--darkest-blue), var(--dark-blue), var(--blue));
+  border-color: var(--white);
 }
 
 .timer {
@@ -160,16 +185,21 @@ hr {
 
 .instruct-head {
   color: var(--white);
-  background-color: var(--dark-orange);
+  background-color: var(--dark-green);
   background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
 }
 
+#instructions-title {
+  display: none;
+}
+
 #instructions-para {
+  display: none;
   background-color: var(--white);
 }
 
 .instruct-bottom {
-  background-color: var(--dark-orange);
+  background-color: var(--dark-green);
   background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
 }
 
@@ -186,6 +216,6 @@ hr {
  ********************/
 
 .copy-right {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--darkest-blue);
+  color: var(--white);
 }

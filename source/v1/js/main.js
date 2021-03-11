@@ -1,39 +1,9 @@
 import { TimerContainer } from "./timerContainer.js";
 import { TaskList } from "./taskList.js";
+import { InstructionsBox } from "./instructionsBox.js";
 import { EventBus } from "./eventBus.js";
 import { TaskDisplay } from "./taskDisplay.js";
 document.addEventListener("DOMContentLoaded", () => {
-    // Code for Up arrow scroll-up functionality 
-    const TIMER_SECTION_TARGET = ".timer-section";
-    let up_arrow = document.getElementById("up-arrow");
-    up_arrow.setAttribute("target", TIMER_SECTION_TARGET);
-    up_arrow.addEventListener("click", handleUpBtnPressed.bind(this));
-
-    /**
-     * Event handler function for instruction section: when "up-arrow" button pressed
-     */
-    function handleUpBtnPressed() {
-      let o_target = document.getElementById("up-arrow").getAttribute("target");
-        let n_offset = document.querySelector(o_target).offsetTop;
-
-        scroll({ top: n_offset, behavior: "smooth" });
-    }
-
-    // Code for scrolling to instructions functionality 
-    const S_INSTRUCTIONS_TARGET = ".instructions-section";
-    let info_btn_new = document.getElementById("info-btn-new");
-    info_btn_new.setAttribute("target", S_INSTRUCTIONS_TARGET);
-    info_btn_new.addEventListener("click", handleInfoBtnPressed);
-
-    /**
-     * Event handler function for when the "info" button is pressed
-     */
-    function handleInfoBtnPressed() {
-        let o_target = document.getElementById("info-btn-new").getAttribute("target");
-        let n_offset = document.querySelector(o_target).offsetTop;
-
-        scroll({ top: n_offset, behavior: "smooth" });
-    }
 
     // Code for change theme button functionality
     let theme_btn = document.getElementById("theme-btn");
@@ -67,6 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
     function showTaskList() {
         let tasks = document.querySelector("task-list");
         tasks.showTaskList();
+    }
+
+    // Code for showing / hiding Instructions functionality
+    let info_btn = document.getElementById("info-btn-new");
+    info_btn.addEventListener("click", showInstructions);
+
+    /**
+     * Event handler function to show Instructions when info button is pressed
+     */
+    function showInstructions() {
+        let inst = document.querySelector("instructions-box");
+        inst.showInstructionsBox();
     }
 
     document.EventBus = new EventBus();
