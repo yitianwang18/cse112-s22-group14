@@ -267,12 +267,6 @@ TimerContainer.S_END_MESSAGE = "End Session";
  */
 TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
 
-/**
- * Target selector of the "i" button
- * @static
- * @type {string}
- */
-TimerContainer.S_INSTRUCTIONS_TARGET = ".instructions-section";
 
 /**
  * 
