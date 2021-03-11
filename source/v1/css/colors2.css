@@ -74,6 +74,20 @@ hr {
 }
 
 /*****************************
+  * Color for Error messages *
+  ****************************/
+
+.error-mssg {
+  background-color: #0000;
+  color: #0000;
+}
+
+.color-error {
+  background-color: #ffcdd2;
+  color: #f44336;
+}
+
+/*****************************
   * Color for Slide-out Tasks *
   *****************************/
 

@@ -15,7 +15,7 @@ class TaskList extends HTMLElement {
         this.n_next_task_id = 0;
 
         let o_wrapper_obj_back = document.createElement("div");
-        o_wrapper_obj_back.className = "sidenav-blocker";
+        o_wrapper_obj_back.classList.add("sidenav-blocker", "hidden");
         o_wrapper_obj_back.id = "side-tasks-blocker";
         o_wrapper_obj_back.addEventListener("click", this.closeTaskList.bind(this));
 
@@ -24,14 +24,14 @@ class TaskList extends HTMLElement {
         o_wrapper_obj.id = "side-tasks";
 
         let o_close_button = document.createElement("a");
-        o_close_button.classList.add("close", "btn");
+        o_close_button.classList.add("close", "btn", "hidden");
         o_close_button.id = "close-task";
         o_close_button.innerHTML = "&times;";
         o_close_button.addEventListener("click", this.closeTaskList.bind(this));
 
         let o_task_title_wrapper = document.createElement("div");
         o_task_title_wrapper.id = "task-title";
-
+        o_task_title_wrapper.className = "hidden";
 
         let o_tasklist_title = document.createElement("h1");
         o_tasklist_title.innerText = "TaskList";
@@ -94,6 +94,7 @@ class TaskList extends HTMLElement {
         o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, o_existing_tasks_title, o_error_mssg_2);
 
         let o_tasks = document.createElement("div");
+        o_tasks.className = "hidden";
         o_tasks.id = "all-tasks";
 
         o_wrapper_obj.append(o_close_button, o_task_title_wrapper, o_tasks);
@@ -121,16 +122,16 @@ class TaskList extends HTMLElement {
      * @param {Event} o_event event instance
      */
     handleInputChange(o_event) {
+      let o_add_btn = this.querySelector("#add-btn");
+      let o_add_error = this.querySelector("#add-error");
         if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
-            this.querySelector("#add-btn").disabled = true;
-            this.querySelector("#add-error").innerHTML = TaskList.TASK_ERROR;
-            this.querySelector("#add-error").style.backgroundColor = "#ffcdd2";
-            this.querySelector("#add-error").style.color = "#f44336";
+            o_add_btn.disabled = true;
+            o_add_error.innerHTML = TaskList.TASK_ERROR;
+            o_add_error.classList.toggle("color-error");
         } else {
-            this.querySelector("#add-btn").disabled = false;
-            this.querySelector("#add-error").innerHTML = "";
-            this.querySelector("#add-error").style.backgroundColor = "#0000";
-            this.querySelector("#add-error").style.color = "#0000";
+            o_add_btn.disabled = false;
+            o_add_error.innerHTML = "";
+            o_add_error.classList.toggle("color-error");
         }
     }
 
@@ -206,19 +207,17 @@ class TaskList extends HTMLElement {
         if (TaskList.validateString(o_task_item_input.value)) {
             o_task_item.setAttribute('taskname', o_task_item_input.value.trim());
             o_error_span.innerHTML = "";
-            o_error_span.style.backgroundColor = "#0000";
-            o_error_span.style.color = "#0000";
+            o_error_span.classList.toggle("color-error");
         }
         else {
             o_task_item.setAttribute('taskname', s_curr_input_val);
             o_error_span.innerHTML = TaskList.TASK_ERROR;
-            o_error_span.style.backgroundColor = "#ffcdd2";
-            o_error_span.style.color = "#f44336";
+            o_error_span.classList.toggle("color-error");
 
+            // Make error message disappear after 3 seconds
             setTimeout(() => {
               o_error_span.innerHTML = "";
-              o_error_span.style.backgroundColor = "#0000";
-              o_error_span.style.color = "#0000";
+              o_error_span.classList.toggle("color-error");
             }, 3000);
         }
         // this.editTaskName()
@@ -247,34 +246,37 @@ class TaskList extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showTaskList() {
-        this.querySelector("#close-task").style.display = "block";
+        this.querySelector("#close-task").classList.toggle("hidden");
         let o_tasks = this.querySelector("#side-tasks");
-        o_tasks.style.width = "420px";
         if (window.screen.width <= 500) {
-          o_tasks.style.padding = "0 10%";
+          o_tasks.classList.toggle("sidenav-small");
         } else {
-          o_tasks.style.padding = "0 50px";
+          o_tasks.classList.toggle("sidenav-open");
         }
+
+        // Remove everything during animation to prevent sandwiching of text
         setTimeout(() => {
-          this.querySelector("#task-title").style.display = "block";
-          this.querySelector("#all-tasks").style.display = "block";
+          this.querySelector("#task-title").classList.toggle("hidden");
+          this.querySelector("#all-tasks").classList.toggle("hidden");
         }, 200);
-        let o_tasks_back = this.querySelector("#side-tasks-blocker");
-        o_tasks_back.style.display = "block";
+        
+        this.querySelector("#side-tasks-blocker").classList.toggle("hidden");
     }
 
     /**
      * Function to close task list display from the main user screen
      */
     closeTaskList() {
-        this.querySelector("#close-task").style.display = "none";
+        this.querySelector("#close-task").classList.toggle("hidden");
         let o_tasks = this.querySelector("#side-tasks");
-        o_tasks.style.width = "0";
-        o_tasks.style.padding = "0";
-        this.querySelector("#task-title").style.display = "none";
-        this.querySelector("#all-tasks").style.display = "none";
-        let o_tasks_back = this.querySelector("#side-tasks-blocker");
-        o_tasks_back.style.display = "none";
+        if (o_tasks.classList.contains("sidenav-small")) {
+          o_tasks.classList.toggle("sidenav-small");
+        } else {
+          o_tasks.classList.toggle("sidenav-open");
+        }
+        this.querySelector("#task-title").classList.toggle("hidden");
+        this.querySelector("#all-tasks").classList.toggle("hidden");
+        this.querySelector("#side-tasks-blocker").classList.toggle("hidden");
     }
 
     /**

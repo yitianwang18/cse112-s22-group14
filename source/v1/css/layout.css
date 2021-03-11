@@ -112,7 +112,6 @@ body {
  * Container for slide-out tasks mask
  */
 .sidenav-blocker {
-  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -122,7 +121,7 @@ body {
 }
 
 /**
- * Container for slide-out tasks
+ * Container for slide-out tasks when closed
  */
 .sidenav {
   padding: 0;
@@ -137,10 +136,25 @@ body {
 }
 
 /**
+ * Container for slide-out tasks when open
+ */
+.sidenav-open {
+  width: 420px;
+  padding: 0 50px;
+}
+
+/**
+ * Container for slide-out tasks when screen-width <= 500
+ */
+.sidenav-small {
+  width: 420px;
+  padding: 0 10%;
+}
+
+/**
  * Styling container for header of task list
  */
 #task-title {
-  display: none;
   position: relative;
 }
 
@@ -211,7 +225,6 @@ body {
  * Close button inside slide-out tasks
  */
 .close {
-  display: none;
   text-decoration: none;
   position: relative;
   top: 20px;
@@ -240,7 +253,6 @@ input[type=text] {
  * Container displaying all of the user tasks
  */
 #all-tasks {
-  display: none;
   margin-top: 25px;
   height: calc(100vh - 320px);
   width: 420px;
@@ -685,9 +697,8 @@ input[type=text] {
     padding: 10px 10px;
   }
 
-  .sidenav {
+  .sidenav-small {
     max-width: 80%;
-    padding: 0;
   }
 
   #edit-error {
@@ -703,15 +714,17 @@ input[type=text] {
     width: 0;
   }
 
-  #wrap-add-btn #add-error {
-    width: 93vw;
-    bottom: 220%;
-    margin-left: -50vw;
-  }
-
   #instructions-para {
     font-size: 0.8rem;
     line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 487px) {
+  #wrap-add-btn #add-error {
+    width: 70vw;
+    bottom: 220%;
+    margin-left: -40vw;
   }
 }
 
@@ -719,6 +732,14 @@ input[type=text] {
   #instructions-para {
     font-size: 0.7rem;
     line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  #wrap-add-btn #add-error {
+    width: 67vw;
+    bottom: 220%;
+    margin-left: -40vw;
   }
 }
 
@@ -747,6 +768,12 @@ input[type=text] {
   #instructions-para {
     font-size: 0.7rem;
     line-height: 16px;
+  }
+
+  #wrap-add-btn #add-error {
+    width: 63vw;
+    bottom: 220%;
+    margin-left: -40vw;
   }
 }
 
