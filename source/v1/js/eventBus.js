@@ -38,29 +38,30 @@ class EventBus {
     }
 
     handleStartSession() {
-        // if (this.o_task_list.getNumTasks() != 0) {
-        //     this.o_toolbar.querySelector("#task-btn").disabled = true;
-        //     // hide toolbar
-        //     this.o_toolbar.style.visibility = "hidden";
+        if (this.o_task_list.getNumTasks() != 0) {
+            this.o_toolbar.querySelector("#task-btn").disabled = true;
+            // hide toolbar
+            this.o_toolbar.style.visibility = "hidden";
 
-        //     this.o_task_display.handleStartSession();
-        //     this.updateTaskDisplay();
-        //     this.o_timer_container.handleStartPomo();
-        //     this.o_task_list.closeTaskList();
-        //     this.handleStartWork();
-        // } else {
-        //     console.log("bruh");
-        // }
-        // this.o_toolbar.querySelector("#task-btn").disabled = true;
-        // // hide toolbar
-        // this.o_toolbar.style.visibility = "hidden";
+            this.o_task_display.handleStartSession();
+            this.updateTaskDisplay();
+            this.o_timer_container.handleStartPomo();
+            this.o_task_list.closeTaskList();
+            this.handleStartWork();
 
-        this.o_task_display.handleStartSession();
-        this.updateTaskDisplay();
-        this.o_timer_container.handleStartPomo();
-        this.o_task_list.closeTaskList();
-        this.handleStartWork();
-
+            this.o_timer_container.querySelector("#start-error").innerHTML = "";
+            this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#0000";
+            this.o_timer_container.querySelector("#start-error").style.color = "#0000";
+        } else { 
+          this.o_timer_container.querySelector("#start-error").innerHTML = EventBus.START_ERROR;
+          this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#ffcdd2";
+          this.o_timer_container.querySelector("#start-error").style.color = "#f44336";
+          setTimeout(() => {
+              this.o_timer_container.querySelector("#start-error").innerHTML = "";
+              this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#0000";
+              this.o_timer_container.querySelector("#start-error").style.color = "#0000";
+          }, 3000);
+        }
     }
 
     handleEndSession() {
@@ -102,5 +103,12 @@ class EventBus {
     }
 
 }
+
+/**
+ * Error message when Start button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+EventBus.START_ERROR = "Cannot start session with no tasks!";
 
 export { EventBus };

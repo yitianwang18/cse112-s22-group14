@@ -5,16 +5,19 @@
 :root {
   --white: #fff;
   --black: #000;
-  --red: #f00;
+  --red: #f44336;
   --light-green: #b1f060;
+  --olive-green: #3c463a;
   --green: #178800;
   --dark-green: #00570e;
   --darker-green: #003809;
   --darkest-green: #001303;
-  --grey: #949697;
+  --grey: #7e7f80;
   --transparent: #0000;
   --alm-transparent: #0000006b;
   --less-transparent: #0000009c;
+  --least-transparent: #000000e8;
+  --least-transparent2: #061105ef;
 }
 
 /*******************************
@@ -26,9 +29,14 @@
   background-size: cover;
 }
 
+.instructions-section-blocker {
+  background-color: var(--less-transparent);
+}
+
 .instructions-section {
-  background-image: url("../assets/img/1.jpg");
-  background-size: cover;
+  background-color: var(--least-transparent);
+  color:var(--white);
+  border-color: var(--white);
 }
 
 /***********************
@@ -79,16 +87,26 @@ hr {
   * Color for Slide-out Tasks *
   *****************************/
 
-.sidenav {
-  background-color: var(--white);
+.sidenav-blocker {
+  background-color: var(--less-transparent);
 }
+
+.sidenav {
+  background-color: var(--olive-green);
+  color: var(--white);
+}
+
+input[type=text] {
+  background-color: var(--olive-green);
+  color: var(--white);
+}
+
 
 .btn {
   color: var(--white);
 }
 
-.btn:hover:enabled,
-.close:hover {
+.btn:hover:enabled{
   color: var(--green);
 }
 
@@ -98,24 +116,28 @@ hr {
 
 #add-btn,
 #delete-btn {
-  color: var(--black);
+  color: var(--white);
 }
 
-#add-btn:hover:enabled,
-#delete-btn:hover:enabled {
-  color: var(--green);
+#add-btn:hover:enabled {
+  color: var(--light-green);
 }
 
-#add-btn:disabled,
-#delete-btn:disabled {
+#add-btn:disabled {
   color: var(--grey);
 }
 
 .close {
-  color: var(--black);
+  color: var(--white);
 }
 
-.close:hover {
+.close2 {
+  color: var(--white);
+}
+
+.close:hover,
+.close2:hover,
+#delete-btn:hover:enabled {
   color: var(--red);
 }
 
@@ -129,6 +151,7 @@ hr {
 
 .timer-box {
   background-color: var(--less-transparent);
+  border-color: var(--white);
 }
 
 .timer {
@@ -188,24 +211,17 @@ hr {
 
 .instruct-head {
   color: var(--white);
-  background-color: var(--less-transparent);
+  background-color: var(--least-transparent);
 }
 
 #instructions-para {
-  background-color: var(--alm-transparent);
+  background-color: var(--transparent);
   color: var(--white);
 }
 
-.arrow-up-icon {
-  color: var(--white);
-}
-
-.instruct-bottom {
-  background-color: var(--less-transparent);
-}
-
-.arrow-up-icon:hover {
-  color: var(--green);
+.center-align {
+  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
+  background-color: var(--dark-green);
 }
 
 /********************
