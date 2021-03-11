@@ -33,6 +33,7 @@ hr {
 
 .instructions-section {
 background-color: var(--white);
+border-color: var(--white);
 }
 
 /********************
