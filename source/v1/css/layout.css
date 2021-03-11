@@ -501,6 +501,9 @@ input[type=text] {
   font-size: 2.5rem;
 }
 
+/**
+ * Styling individual sections inside instructions WC
+ */
 .inst-headers {
   margin-bottom: 10px;
   margin-top: 10px;
@@ -545,6 +548,9 @@ input[type=text] {
   text-align: center;
 }
 
+/**
+ * Hotkey text styling
+ */
 #inst-hotkeys-text {
   text-align: center;
   font-size: 90%;
@@ -596,9 +602,6 @@ input[type=text] {
  * Responsiveness with media queries *
  *************************************/
 
-/**
- * When the viewport is 900px or smaller
- */
 @media screen and (max-width: 900px) {
   .timer-box {
     max-width: 50%;
@@ -666,9 +669,6 @@ input[type=text] {
   }
 }
 
-/**
- * When the viewport is 500px or smaller
- */
 @media screen and (max-width: 500px) {
   .instruct-head {
     font-size: 2rem;
