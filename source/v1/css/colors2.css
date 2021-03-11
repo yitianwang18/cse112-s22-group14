@@ -29,16 +29,6 @@
   background-size: cover;
 }
 
-.instructions-section-blocker {
-  background-color: var(--less-transparent);
-}
-
-.instructions-section {
-  background-color: var(--least-transparent);
-  color:var(--white);
-  border-color: var(--white);
-}
-
 /***********************
   * Color for HTML Tags *
   ***********************/
@@ -84,6 +74,20 @@ hr {
 }
 
 /*****************************
+  * Color for Error messages *
+  ****************************/
+
+.error-mssg {
+  background-color: #0000;
+  color: #0000;
+}
+
+.color-error {
+  background-color: #ffcdd2;
+  color: #f44336;
+}
+
+/*****************************
   * Color for Slide-out Tasks *
   *****************************/
 
@@ -101,12 +105,11 @@ input[type=text] {
   color: var(--white);
 }
 
-
 .btn {
   color: var(--white);
 }
 
-.btn:hover:enabled{
+.btn:hover:enabled {
   color: var(--green);
 }
 
@@ -208,6 +211,16 @@ input[type=text] {
 /**************************
   * Color for Instructions *
   **************************/
+
+.instructions-section-blocker {
+  background-color: var(--less-transparent);
+}
+
+.instructions-section {
+  background-color: var(--least-transparent);
+  color: var(--white);
+  border-color: var(--white);
+}
 
 .instruct-head {
   color: var(--white);

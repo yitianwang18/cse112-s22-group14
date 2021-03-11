@@ -11,7 +11,7 @@ class InstructionsBox extends HTMLElement {
     constructor() {
         super();
         let o_wrapper_obj_back = document.createElement("div");
-        o_wrapper_obj_back.className = "instructions-section-blocker";
+        o_wrapper_obj_back.classList.add("instructions-section-blocker", "hidden");
         o_wrapper_obj_back.id = "instructions-blocker";
         o_wrapper_obj_back.addEventListener("click", this.closeInstructions.bind(this));
 
@@ -25,6 +25,7 @@ class InstructionsBox extends HTMLElement {
         o_close_button.addEventListener("click", this.closeInstructions.bind(this));
 
         let o_inst_title_wrapper = document.createElement("div");
+        o_inst_title_wrapper.className = "hidden";
         o_inst_title_wrapper.id = "instructions-title";
 
         let o_inst_title = document.createElement("h2");
@@ -32,6 +33,7 @@ class InstructionsBox extends HTMLElement {
         o_inst_title.innerText = "Instructions";
 
         let o_inst_text = document.createElement("div");
+        o_inst_text.className = "hidden";
         o_inst_text.id = "instructions-para";
 
         let o_inst_tasks = document.createElement("h3");
@@ -75,7 +77,7 @@ class InstructionsBox extends HTMLElement {
         let o_inst_pomo_text = document.createElement("p");
         o_inst_pomo_text.innerText = "The Pomodoro technique is a scientifically proven way to help increase productivity. Ultimately, people are more productive by taking small mental breaks. PomoHero automates the process for you, making it easier for you to focus on your work and reduce distractions.";
 
-        let o_inst_hot = document.createElement("h5");
+        let o_inst_hot = document.createElement("h4");
         o_inst_hot.innerText = "Hotkeys:";
         o_inst_hot.className = "inst-hotkeys";
 
@@ -95,32 +97,26 @@ class InstructionsBox extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showInstructionsBox() {
-        let o_instructions = this.querySelector("#instructions");
-        o_instructions.style.width = "80%";
-        o_instructions.style.height = "90vh";
+        this.querySelector("#instructions").classList.add("instructions-section-open");
+
+        // Hide everything inside instructions box while animating to prevent sandwiching of text
         setTimeout(() => {
           this.querySelector("#instructions-title").style.display = "block";
           this.querySelector("#instructions-para").style.display = "block";
         }, 200);
-        let o_instructions_back = this.querySelector("#instructions-blocker");
-        o_instructions_back.style.display = "block";
+
+        this.querySelector("#instructions-blocker").style.display = "block";
     }
 
     /**
      * Function to close task list display from the main user screen
      */
     closeInstructions() {
-        let o_instructions = this.querySelector("#instructions");
-        o_instructions.style.width = "0";
-        o_instructions.style.height = "0";
+        this.querySelector("#instructions").classList.remove("instructions-section-open");
         this.querySelector("#instructions-title").style.display = "none";
         this.querySelector("#instructions-para").style.display = "none";
-        let o_instructions_back = this.querySelector("#instructions-blocker");
-        o_instructions_back.style.display = "none";
+        this.querySelector("#instructions-blocker").style.display = "none";
     }
-
-
-
 }
 
 customElements.define("instructions-box", InstructionsBox);
