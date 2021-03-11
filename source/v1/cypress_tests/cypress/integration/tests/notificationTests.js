@@ -43,7 +43,13 @@ describe('Notification Tests', () => {
             },
         });
         
-        cy.get('timer-element').invoke('attr','toggleDebug');
+        cy.document().then((doc) => { 
+            cy.window().its('customElements').then(x => {              
+                if(!x.get('timer-element').DEBUG){
+                    doc.querySelector('timer-element').toggleDebug();
+                }            
+            });   
+        });
 
         cy.get('input').clear().type('t1');
         cy.get('#add-btn').trigger('click');
@@ -90,7 +96,14 @@ describe('Notification Tests', () => {
         
             },
         });
-        cy.get('timer-element').invoke('attr','toggleDebug');
+        
+        cy.document().then((doc) => { 
+            cy.window().its('customElements').then(x => {              
+                if(!x.get('timer-element').DEBUG){
+                    doc.querySelector('timer-element').toggleDebug();
+                }            
+            });   
+        });
 
         cy.get('input').clear().type('t1');
         cy.get('#add-btn').trigger('click');
@@ -133,7 +146,14 @@ describe('Notification Tests', () => {
         
             },
         });
-        cy.get('timer-element').invoke('attr','toggleDebug');
+        
+        cy.document().then((doc) => { 
+            cy.window().its('customElements').then(x => {              
+                if(!x.get('timer-element').DEBUG){
+                    doc.querySelector('timer-element').toggleDebug();
+                }            
+            });   
+        });
 
         cy.get('input').clear().type('t1');
         cy.get('#add-btn').trigger('click');
@@ -176,8 +196,15 @@ describe('Notification Tests', () => {
         
             },
         });
-        cy.get('timer-element').invoke('attr','toggleDebug');
         
+        cy.document().then((doc) => { 
+            cy.window().its('customElements').then(x => {              
+                if(!x.get('timer-element').DEBUG){
+                    doc.querySelector('timer-element').toggleDebug();
+                }            
+            });   
+        });
+
         cy.get('input').clear().type('t1');
         cy.get('#add-btn').trigger('click');
         cy.get('#start-btn').trigger('click');
