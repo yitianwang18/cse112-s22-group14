@@ -128,11 +128,11 @@ body {
   padding: 0;
   height: 100%;
   width: 0;
-  position: absolute;
+  position: fixed;
   z-index: 2;
   top: 0;
   right: 0;
-  box-shadow: -5px 5px 10px;
+  box-shadow: -5px 5px 10px black;
   transition: 0.3s;
 }
 
@@ -490,7 +490,7 @@ input[type=text] {
 /**
  * Paragraph of instructions within instructions section
  */
-.instructions-para {
+#instructions-para {
   padding: 20px;
   margin: auto;
   width: auto;
@@ -589,7 +589,7 @@ input[type=text] {
     max-width: 80%;
   }
 
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 1.1rem;
     line-height: 24px;
@@ -601,7 +601,7 @@ input[type=text] {
 }
 
 @media screen and (max-width: 750px) {
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 1.0rem;
     line-height: 23px;
@@ -609,7 +609,7 @@ input[type=text] {
 }
 
 @media screen and (max-width: 675px) {
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.9rem;
     line-height: 23px;
@@ -617,7 +617,7 @@ input[type=text] {
 }
 
 @media screen and (max-width: 600px) {
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.9rem;
     line-height: 22px;
@@ -625,7 +625,7 @@ input[type=text] {
 }
 
 @media screen and (max-width: 570px) {
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.85rem;
     line-height: 21px;
@@ -633,7 +633,7 @@ input[type=text] {
 }
 
 @media screen and (max-width: 520px) {
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.82rem;
     line-height: 21px;
@@ -691,7 +691,7 @@ input[type=text] {
     margin-left: -50vw;
   }
 
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.8rem;
     line-height: 20px;
@@ -699,7 +699,7 @@ input[type=text] {
 }
 
 @media screen and (max-width: 460px) {
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.7rem;
     line-height: 20px;
@@ -707,7 +707,7 @@ input[type=text] {
 }
 
 @media screen and (max-width: 400px) {
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.7rem;
     line-height: 18px;
@@ -722,7 +722,7 @@ input[type=text] {
     padding-bottom: 21px;
   }
 
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.7rem;
     line-height: 17px;
@@ -730,7 +730,7 @@ input[type=text] {
 }
 
 @media screen and (max-width: 325px) {
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.7rem;
     line-height: 16px;
@@ -744,7 +744,7 @@ input[type=text] {
     padding-bottom: 23px;
   }
 
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.7rem;
     line-height: 15px;
@@ -758,7 +758,7 @@ input[type=text] {
     padding-bottom: 23px;
   }
 
-  .instructions-para {
+  #instructions-para {
     padding: 20px;
     font-size: 0.7rem;
     line-height: 14px;

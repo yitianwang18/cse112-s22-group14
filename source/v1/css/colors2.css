@@ -7,12 +7,12 @@
   --black: #000;
   --red: #f44336;
   --light-green: #b1f060;
-  --olive-green: #bdddb6;
+  --olive-green: #3c463a;
   --green: #178800;
   --dark-green: #00570e;
   --darker-green: #003809;
   --darkest-green: #001303;
-  --grey: #949697;
+  --grey: #7e7f80;
   --transparent: #0000;
   --alm-transparent: #0000006b;
   --less-transparent: #0000009c;
@@ -34,7 +34,7 @@
 }
 
 .instructions-section {
-  background-color: var(--least-transparent2);
+  background-color: var(--least-transparent);
   color:var(--white);
   border-color: var(--white);
 }
@@ -88,23 +88,25 @@ hr {
   *****************************/
 
 .sidenav-blocker {
-  background-color: var(--alm-transparent);
+  background-color: var(--less-transparent);
 }
 
 .sidenav {
   background-color: var(--olive-green);
+  color: var(--white);
 }
 
 input[type=text] {
   background-color: var(--olive-green);
+  color: var(--white);
 }
+
 
 .btn {
   color: var(--white);
 }
 
-.btn:hover:enabled,
-.close:hover {
+.btn:hover:enabled{
   color: var(--green);
 }
 
@@ -114,11 +116,11 @@ input[type=text] {
 
 #add-btn,
 #delete-btn {
-  color: var(--black);
+  color: var(--white);
 }
 
 #add-btn:hover:enabled {
-  color: var(--green);
+  color: var(--light-green);
 }
 
 #add-btn:disabled {
@@ -126,7 +128,7 @@ input[type=text] {
 }
 
 .close {
-  color: var(--black);
+  color: var(--white);
 }
 
 .close2 {
@@ -209,12 +211,12 @@ input[type=text] {
 
 .instruct-head {
   color: var(--white);
-  background-color: var(--least-transparent2);
+  background-color: var(--least-transparent);
 }
 
 #instructions-para {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--transparent);
+  color: var(--white);
 }
 
 .center-align {
