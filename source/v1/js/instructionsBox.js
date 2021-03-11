@@ -75,7 +75,7 @@ class InstructionsBox extends HTMLElement {
         let o_inst_pomo_text = document.createElement("p");
         o_inst_pomo_text.innerText = "The Pomodoro technique is a scientifically proven way to help increase productivity. Ultimately, people are more productive by taking small mental breaks. PomoHero automates the process for you, making it easier for you to focus on your work and reduce distractions.";
 
-        let o_inst_hot = document.createElement("h5");
+        let o_inst_hot = document.createElement("h4");
         o_inst_hot.innerText = "Hotkeys:";
         o_inst_hot.className = "inst-hotkeys";
 
