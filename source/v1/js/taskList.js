@@ -6,9 +6,6 @@ import { TaskDisplay } from "./taskDisplay.js";
  * @extends HTMLElement
  */
 class TaskList extends HTMLElement {
-    o_tasks;
-    n_next_task_id;
-
     /**
      * Constructs a new Timer Display, initializing all elements and adding handlers
      */
@@ -280,7 +277,7 @@ class TaskList extends HTMLElement {
     }
 
     /**
-     * Function to return number of tasks 
+     * Function to return number of tasks
      */
     getNumTasks() {
         return Object.keys(this.o_tasks).length;
