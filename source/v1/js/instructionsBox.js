@@ -36,6 +36,7 @@ class InstructionsBox extends HTMLElement {
 
         let o_inst_tasks = document.createElement("h3");
         o_inst_tasks.innerText = "Add tasks for the session";
+        o_inst_tasks.className = "inst-headers";
 
         let o_inst_tasks_list = document.createElement("ul");
         o_inst_tasks_list.className = "inst-list";
@@ -51,6 +52,7 @@ class InstructionsBox extends HTMLElement {
 
         let o_inst_cycle = document.createElement("h3");
         o_inst_cycle.innerText = "Work-Break Cycle";
+        o_inst_cycle.className = "inst-headers";
     
         let o_inst_cycle_list = document.createElement("ul");
         o_inst_cycle_list.className = "inst-list";
@@ -68,12 +70,21 @@ class InstructionsBox extends HTMLElement {
 
         let o_inst_pomo = document.createElement("h3");
         o_inst_pomo.innerText = "The Pomodoro Technique";
+        o_inst_pomo.className = "inst-headers";
 
         let o_inst_pomo_text = document.createElement("p");
         o_inst_pomo_text.innerText = "The Pomodoro technique is a scientifically proven way to help increase productivity. Ultimately, people are more productive by taking small mental breaks. PomoHero automates the process for you, making it easier for you to focus on your work and reduce distractions.";
 
+        let o_inst_hot = document.createElement("h5");
+        o_inst_hot.innerText = "Hotkeys:";
+        o_inst_hot.className = "inst-hotkeys";
+
+        let o_inst_hot_text = document.createElement("p");
+        o_inst_hot_text.innerText = "c - color change, t - tasklist, esc - close pop-up, space - start/end session, n - next task";
+        o_inst_hot_text.id = "inst-hotkeys-text";
+
         o_inst_title_wrapper.append(o_inst_title);
-        o_inst_text.append(o_inst_tasks, o_inst_tasks_list, o_inst_cycle, o_inst_cycle_list, o_inst_pomo, o_inst_pomo_text);
+        o_inst_text.append(o_inst_tasks, o_inst_tasks_list, o_inst_cycle, o_inst_cycle_list, o_inst_pomo, o_inst_pomo_text, o_inst_hot, o_inst_hot_text);
         o_wrapper_obj.append(o_close_button, o_inst_title_wrapper, o_inst_text);
         this.append(o_wrapper_obj_back);
         this.append(o_wrapper_obj);
