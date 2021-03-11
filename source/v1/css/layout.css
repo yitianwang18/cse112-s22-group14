@@ -466,7 +466,8 @@ input[type=text] {
   bottom: 0;
   margin: auto;
   z-index: 2;
-  border: 2px solid;
+  border-width: 2px;
+  border-style: solid;
 }
 
 /**
@@ -486,7 +487,7 @@ input[type=text] {
 }
 
 .inst-list {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .inst-hotkeys {
@@ -495,10 +496,8 @@ input[type=text] {
 }
 
 #inst-hotkeys-text {
-  margin-top: 0px;
+  margin-top: 0;
 }
-
-
 
 /**
  * Styling title for instructions
@@ -521,8 +520,6 @@ input[type=text] {
   align-items: left;
   line-height: 25px;
 }
-
-
 
 /**
  * Headers within the instruction para
@@ -627,7 +624,7 @@ input[type=text] {
 
 @media screen and (max-width: 750px) {
   #instructions-para {
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 23px;
   }
 }
@@ -681,7 +678,7 @@ input[type=text] {
   .close2 {
     left: 45%;
   }
-  
+
   .timer-box {
     width: 100%;
     padding: 10px 21% 20px 21%;
@@ -775,4 +772,3 @@ input[type=text] {
     line-height: 14px;
   }
 }
-
