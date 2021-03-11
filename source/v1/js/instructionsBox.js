@@ -11,7 +11,7 @@ class InstructionsBox extends HTMLElement {
     constructor() {
         super();
         let o_wrapper_obj_back = document.createElement("div");
-        o_wrapper_obj_back.className = "instructions-section-blocker";
+        o_wrapper_obj_back.classList.add("instructions-section-blocker", "hidden");
         o_wrapper_obj_back.id = "instructions-blocker";
         o_wrapper_obj_back.addEventListener("click", this.closeInstructions.bind(this));
 
@@ -25,6 +25,7 @@ class InstructionsBox extends HTMLElement {
         o_close_button.addEventListener("click", this.closeInstructions.bind(this));
 
         let o_inst_title_wrapper = document.createElement("div");
+        o_inst_title_wrapper.className = "hidden";
         o_inst_title_wrapper.id = "instructions-title";
 
         let o_inst_title = document.createElement("h2");
@@ -32,6 +33,7 @@ class InstructionsBox extends HTMLElement {
         o_inst_title.innerText = "Instructions";
 
         let o_inst_text = document.createElement("div");
+        o_inst_text.className = "hidden";
         o_inst_text.id = "instructions-para";
 
         let o_inst_tasks = document.createElement("h3");
@@ -95,34 +97,23 @@ class InstructionsBox extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showInstructionsBox() {
-        let o_instructions = this.querySelector("#instructions");
-        o_instructions.style.width = "80%";
-        o_instructions.style.height = "90vh";
-        this.querySelector(".instructions-section").style.borderWidth = "2px";
+        this.querySelector("#instructions").classList.add("instructions-section-open");
         setTimeout(() => {
-          this.querySelector("#instructions-title").style.display = "block";
-          this.querySelector("#instructions-para").style.display = "block";
+          this.querySelector("#instructions-title").classList.toggle("hidden");
+          this.querySelector("#instructions-para").classList.toggle("hidden");
         }, 200);
-        let o_instructions_back = this.querySelector("#instructions-blocker");
-        o_instructions_back.style.display = "block";
+        this.querySelector("#instructions-blocker").classList.toggle("hidden");
     }
 
     /**
      * Function to close task list display from the main user screen
      */
     closeInstructions() {
-        let o_instructions = this.querySelector("#instructions");
-        o_instructions.style.width = "0";
-        o_instructions.style.height = "0";
-        this.querySelector(".instructions-section").style.borderWidth = "0";
-        this.querySelector("#instructions-title").style.display = "none";
-        this.querySelector("#instructions-para").style.display = "none";
-        let o_instructions_back = this.querySelector("#instructions-blocker");
-        o_instructions_back.style.display = "none";
+        this.querySelector("#instructions").classList.remove("instructions-section-open");
+        this.querySelector("#instructions-title").classList.toggle("hidden");
+        this.querySelector("#instructions-para").classList.toggle("hidden");
+        this.querySelector("#instructions-blocker").classList.toggle("hidden");
     }
-
-
-
 }
 
 customElements.define("instructions-box", InstructionsBox);

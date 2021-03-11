@@ -334,7 +334,7 @@ input[type=text] {
 }
 
 /**
- * Hiding buttons
+ * Hide
  */
 .hidden {
   display: none;
@@ -441,7 +441,6 @@ input[type=text] {
  * Container for slide-out tasks mask
  */
 #instructions-blocker {
-  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -452,7 +451,7 @@ input[type=text] {
 }
 
 /**
- * Container for instructions
+ * Container for instructions when it is closed
  */
 .instructions-section {
   overflow: hidden;
@@ -468,6 +467,15 @@ input[type=text] {
   z-index: 2;
   border-width: 0;
   border-style: solid;
+}
+
+/**
+ * Container for instructions when it is open
+ */
+.instructions-section-open {
+  width: 80%;
+  height: 90vh;
+  border-width: 2px;
 }
 
 /**
@@ -497,13 +505,6 @@ input[type=text] {
 
 #inst-hotkeys-text {
   margin-top: 0;
-}
-
-/**
- * Styling title for instructions
- */
-#instructions-title {
-  display: none;
 }
 
 /**
