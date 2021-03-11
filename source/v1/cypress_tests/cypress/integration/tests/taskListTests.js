@@ -4,15 +4,15 @@ describe('Task List Tests', () => {
         cy.visit('http://127.0.0.1:5500/source/v1/index.html');
     });
 
-    it('Test TaskList onShow functionality', () => {
-        cy.get('task-list').should('be.hidden');
-        cy.get('#task-btn').trigger('click');
-        cy.get('task-list').should('be.visible');
-    });
+    // it('Test TaskList onShow functionality', () => {
+    //     cy.get('task-list').should('be.hidden');
+    //     cy.get('#task-btn').trigger('click');
+    //     cy.get('task-list').should('be.visible');
+    // });
 
     it('Test TaskList onClose functionality', () => {
 
-        cy.get('#task-btn').trigger('click');
+        // cy.get('#task-btn').trigger('click');
         cy.get('task-list').should('be.visible');
 
         cy.get('task-list').within(() => {
@@ -24,7 +24,7 @@ describe('Task List Tests', () => {
 
     it("Test Tasklist addItem and deleteItem functionality", () => {
         // add one item
-        cy.get("#task-btn").trigger("click");
+        //cy.get("#task-btn").trigger("click");
         cy.get("task-list #add-task input").type("Task1");
         cy.get("task-list #add-task #add-btn").click();
         cy.get("task-list #add-task input").then(($el) => {
@@ -73,8 +73,13 @@ describe('Task List Tests', () => {
     });
     it('Test TaskList functionality when Session Starts / Ends', () => {
 
-        cy.get('task-list').should('be.hidden');
-        cy.get('#task-btn').should('be.enabled');
+        //cy.get('task-list').should('be.hidden');
+        //cy.get('#task-btn').should('be.enabled');
+
+        cy.get('task-list').within(() => {
+            cy.get('#task-input').clear().type('First Test Task');
+            cy.get('#add-btn').trigger('click');
+        });
 
         cy.get('timer-element').within(() => {
             cy.get("#start-btn").trigger('click');

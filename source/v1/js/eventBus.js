@@ -38,19 +38,28 @@ class EventBus {
     }
 
     handleStartSession() {
-        if (this.o_task_list.getNumTasks() != 0) {
-            this.o_toolbar.querySelector("#task-btn").disabled = true;
-            // hide toolbar
-            this.o_toolbar.style.visibility = "hidden";
+        // if (this.o_task_list.getNumTasks() != 0) {
+        //     this.o_toolbar.querySelector("#task-btn").disabled = true;
+        //     // hide toolbar
+        //     this.o_toolbar.style.visibility = "hidden";
 
-            this.o_task_display.handleStartSession();
-            this.updateTaskDisplay();
-            this.o_timer_container.handleStartPomo();
-            this.o_task_list.closeTaskList();
-            this.handleStartWork();
-        } else {
-            console.log("bruh");
-        }
+        //     this.o_task_display.handleStartSession();
+        //     this.updateTaskDisplay();
+        //     this.o_timer_container.handleStartPomo();
+        //     this.o_task_list.closeTaskList();
+        //     this.handleStartWork();
+        // } else {
+        //     console.log("bruh");
+        // }
+        // this.o_toolbar.querySelector("#task-btn").disabled = true;
+        // // hide toolbar
+        // this.o_toolbar.style.visibility = "hidden";
+
+        this.o_task_display.handleStartSession();
+        this.updateTaskDisplay();
+        this.o_timer_container.handleStartPomo();
+        this.o_task_list.closeTaskList();
+        this.handleStartWork();
 
     }
 

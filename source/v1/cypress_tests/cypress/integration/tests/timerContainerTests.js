@@ -4,6 +4,14 @@ describe('Timer Container Tests', () => {
   });
 
   it('Test Start Button / Reset Button Toggle', () => {
+    
+    // TODO: Add test to see start button disabled when no tasks are inputted
+
+    cy.get('task-list').within(() => {
+      cy.get('#task-input').clear().type('First Test Task');
+      cy.get('#add-btn').trigger('click');
+    });
+
     cy.get('timer-element').within(() => {
 
       cy.get('#start-btn').should('be.visible');
@@ -28,6 +36,12 @@ describe('Timer Container Tests', () => {
   });
 
   it('Test Start Button functionality', () => {
+
+    cy.get('task-list').within(() => {
+      cy.get('#task-input').clear().type('First Test Task');
+      cy.get('#add-btn').trigger('click');
+    });
+
     cy.get('timer-element').within(() => {
       cy.clock();
 
@@ -51,6 +65,12 @@ describe('Timer Container Tests', () => {
   });
 
   it('Test Reset Button functionality', () => {
+
+    cy.get('task-list').within(() => {
+      cy.get('#task-input').clear().type('First Test Task');
+      cy.get('#add-btn').trigger('click');
+    });
+
     cy.get('timer-element').within(() => {
       cy.clock();
 
@@ -98,6 +118,12 @@ describe('Timer Container Tests', () => {
   });
 
   it('Test End Button functionality', () => {
+
+    cy.get('task-list').within(() => {
+      cy.get('#task-input').clear().type('First Test Task');
+      cy.get('#add-btn').trigger('click');
+    });
+
     cy.get('timer-element').within(() => {
       cy.clock();
 
@@ -140,6 +166,12 @@ describe('Timer Container Tests', () => {
   });
 
   it('Test Timer Countdown', () => {
+
+    cy.get('task-list').within(() => {
+      cy.get('#task-input').clear().type('First Test Task');
+      cy.get('#add-btn').trigger('click');
+    });
+
     cy.get('timer-element').within(() => {
       cy.clock();
       cy.get('#start-btn').trigger('click');
@@ -171,6 +203,12 @@ describe('Timer Container Tests', () => {
   });
 
   it('Test User Life Cycle', () => {
+
+    cy.get('task-list').within(() => {
+      cy.get('#task-input').clear().type('First Test Task');
+      cy.get('#add-btn').trigger('click');
+    });
+
     cy.get('timer-element').within(() => {
       
       cy.clock();
@@ -295,7 +333,7 @@ describe('Timer Container Tests', () => {
 
       cy.tick(100);
 
-      cy.get('#work-message').should('contain', 'Long Break - Relax and unwind');
+      cy.get('#work-message').should('contain', 'Long Break - Relax');
       cy.get('timer-display').then(function ($el) {
         expect($el).to.have.attr('time', 3000);
         expect($el).to.have.attr('pomos-comp', 4);
@@ -303,7 +341,7 @@ describe('Timer Container Tests', () => {
 
       cy.tick(3000);
 
-      cy.get('#work-message').should('contain', 'Long Break - Relax and unwind');
+      cy.get('#work-message').should('contain', 'Long Break - Relax');
       cy.get('timer-display').then(function ($el) {
         expect($el).to.have.attr('time', 0);
         expect($el).to.have.attr('pomos-comp', 4);
