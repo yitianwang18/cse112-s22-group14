@@ -277,7 +277,7 @@ TimerContainer.S_INSTRUCTIONS_TARGET = ".instructions-section";
 /**
  * 
  */
-TimerContainer.DEBUG = false;
+TimerContainer.DEBUG = true;
 
 /**
  * Enumerator for 'not started' state

@@ -1,5 +1,5 @@
 import { Task } from "./task.js";
-import { TaskDisplay } from "./taskDisplay.js";
+//import { TaskDisplay } from "./taskDisplay.js";
 
 /**
  * Custom HTML element encapsulating all of the functionality related to the Task List
@@ -48,6 +48,7 @@ class TaskList extends HTMLElement {
 
         // add input field
         let o_add_task_input = document.createElement("input");
+        o_add_task_input.id = "task-input";
         o_add_task_input.type = "text";
         o_add_task_input.name = "task";
         o_add_task_input.placeholder = "Enter task description";
