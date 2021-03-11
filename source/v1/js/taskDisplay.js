@@ -145,9 +145,9 @@ class TaskDisplay extends HTMLElement {
      */
     disableCheck() {
         this.querySelector("#check").disabled = true;
-        this.querySelector("#check-error").title = "";
-        this.querySelector("#check-error").style.backgroundColor = "#ffcdd2";
-        this.querySelector("#check-error").style.color = "#f44336";
+        let o_check_error = this.querySelector("#check-error");
+        o_check_error.title = "";
+        o_check_error.classList.add("color-error");
     }
 
     /**
@@ -157,8 +157,7 @@ class TaskDisplay extends HTMLElement {
     enableCheck() {
         this.querySelector("#check").disabled = false;
         this.querySelector("#check-error").title = TaskDisplay.CHECK_TOOLTIP;
-        this.querySelector("#check-error").style.backgroundColor = "#0000";
-        this.querySelector("#check-error").style.color = "#0000";
+        this.querySelector("#check-error").classList.remove("color-error");
     }
 
     // /**

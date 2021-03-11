@@ -762,6 +762,10 @@ input[type=text] {
     font-size: 0.7rem;
     line-height: 17px;
   }
+
+  #time-display {
+    font-size: 3rem;
+  }
 }
 
 @media screen and (max-width: 350px) {

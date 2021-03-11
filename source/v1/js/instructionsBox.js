@@ -101,11 +101,11 @@ class InstructionsBox extends HTMLElement {
 
         // Hide everything inside instructions box while animating to prevent sandwiching of text
         setTimeout(() => {
-          this.querySelector("#instructions-title").classList.toggle("hidden");
-          this.querySelector("#instructions-para").classList.toggle("hidden");
+          this.querySelector("#instructions-title").style.display = "block";
+          this.querySelector("#instructions-para").style.display = "block";
         }, 200);
 
-        this.querySelector("#instructions-blocker").classList.toggle("hidden");
+        this.querySelector("#instructions-blocker").style.display = "block";
     }
 
     /**
@@ -113,9 +113,9 @@ class InstructionsBox extends HTMLElement {
      */
     closeInstructions() {
         this.querySelector("#instructions").classList.remove("instructions-section-open");
-        this.querySelector("#instructions-title").classList.toggle("hidden");
-        this.querySelector("#instructions-para").classList.toggle("hidden");
-        this.querySelector("#instructions-blocker").classList.toggle("hidden");
+        this.querySelector("#instructions-title").style.display = "none";
+        this.querySelector("#instructions-para").style.display = "none";
+        this.querySelector("#instructions-blocker").style.display = "none";
     }
 }
 

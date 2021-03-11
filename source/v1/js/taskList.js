@@ -127,11 +127,11 @@ class TaskList extends HTMLElement {
         if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
             o_add_btn.disabled = true;
             o_add_error.innerHTML = TaskList.TASK_ERROR;
-            o_add_error.classList.toggle("color-error");
+            o_add_error.classList.add("color-error");
         } else {
             o_add_btn.disabled = false;
             o_add_error.innerHTML = "";
-            o_add_error.classList.toggle("color-error");
+            o_add_error.classList.remove("color-error");
         }
     }
 
@@ -207,17 +207,17 @@ class TaskList extends HTMLElement {
         if (TaskList.validateString(o_task_item_input.value)) {
             o_task_item.setAttribute('taskname', o_task_item_input.value.trim());
             o_error_span.innerHTML = "";
-            o_error_span.classList.toggle("color-error");
+            o_error_span.classList.remove("color-error");
         }
         else {
             o_task_item.setAttribute('taskname', s_curr_input_val);
             o_error_span.innerHTML = TaskList.TASK_ERROR;
-            o_error_span.classList.toggle("color-error");
+            o_error_span.classList.add("color-error");
 
             // Make error message disappear after 3 seconds
             setTimeout(() => {
               o_error_span.innerHTML = "";
-              o_error_span.classList.toggle("color-error");
+              o_error_span.classList.remove("color-error");
             }, 3000);
         }
         // this.editTaskName()
@@ -246,37 +246,34 @@ class TaskList extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showTaskList() {
-        this.querySelector("#close-task").classList.toggle("hidden");
+        this.querySelector("#close-task").style.display = "block";
         let o_tasks = this.querySelector("#side-tasks");
         if (window.screen.width <= 500) {
-          o_tasks.classList.toggle("sidenav-small");
+            o_tasks.classList.add("sidenav-small");
         } else {
-          o_tasks.classList.toggle("sidenav-open");
+            o_tasks.classList.add("sidenav-open");
         }
 
         // Remove everything during animation to prevent sandwiching of text
         setTimeout(() => {
-          this.querySelector("#task-title").classList.toggle("hidden");
-          this.querySelector("#all-tasks").classList.toggle("hidden");
+            this.querySelector("#task-title").style.display = "block";
+            this.querySelector("#all-tasks").style.display = "block";
         }, 200);
         
-        this.querySelector("#side-tasks-blocker").classList.toggle("hidden");
+        this.querySelector("#side-tasks-blocker").style.display = "block";
     }
 
     /**
      * Function to close task list display from the main user screen
      */
     closeTaskList() {
-        this.querySelector("#close-task").classList.toggle("hidden");
+        this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
-        if (o_tasks.classList.contains("sidenav-small")) {
-          o_tasks.classList.toggle("sidenav-small");
-        } else {
-          o_tasks.classList.toggle("sidenav-open");
-        }
-        this.querySelector("#task-title").classList.toggle("hidden");
-        this.querySelector("#all-tasks").classList.toggle("hidden");
-        this.querySelector("#side-tasks-blocker").classList.toggle("hidden");
+        o_tasks.classList.remove("sidenav-small");
+        o_tasks.classList.remove("sidenav-open");
+        this.querySelector("#task-title").style.display = "none";
+        this.querySelector("#all-tasks").style.display = "none";
+        this.querySelector("#side-tasks-blocker").style.display = "none";
     }
 
     /**
