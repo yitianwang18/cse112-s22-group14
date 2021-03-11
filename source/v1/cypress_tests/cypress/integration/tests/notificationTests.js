@@ -3,7 +3,7 @@ describe('Notification Tests', () => {
       cy.visit('http://127.0.0.1:5500/cse110-w21-group30/source/v1/index.html');
     });
 
-    it('Tests alert when notifications ar enot supported', () => {
+    it('Tests alert when notifications are not supported', () => {                 
         cy.visit('http://127.0.0.1:5500/cse110-w21-group30/source/v1/index.html', {
           onBeforeLoad (window) {
             delete window.Notification;
@@ -43,6 +43,8 @@ describe('Notification Tests', () => {
             },
         });
         
+        cy.get('timer-element').invoke('attr','toggleDebug');
+
         cy.get('input').clear().type('t1');
         cy.get('#add-btn').trigger('click');
         cy.get('#start-btn').trigger('click');
@@ -88,6 +90,7 @@ describe('Notification Tests', () => {
         
             },
         });
+        cy.get('timer-element').invoke('attr','toggleDebug');
 
         cy.get('input').clear().type('t1');
         cy.get('#add-btn').trigger('click');
@@ -130,6 +133,7 @@ describe('Notification Tests', () => {
         
             },
         });
+        cy.get('timer-element').invoke('attr','toggleDebug');
 
         cy.get('input').clear().type('t1');
         cy.get('#add-btn').trigger('click');
@@ -172,6 +176,7 @@ describe('Notification Tests', () => {
         
             },
         });
+        cy.get('timer-element').invoke('attr','toggleDebug');
         
         cy.get('input').clear().type('t1');
         cy.get('#add-btn').trigger('click');
