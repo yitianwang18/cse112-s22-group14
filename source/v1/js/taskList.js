@@ -207,7 +207,7 @@ class TaskList extends HTMLElement {
     }
 
     /**
-     * Function to return number of tasks 
+     * Function to return number of tasks
      */
     getNumTasks() {
         return Object.keys(this.o_tasks).length;
