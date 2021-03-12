@@ -81,15 +81,19 @@ class TaskDisplay extends HTMLElement {
 
     /**
      * Handler for when attributes are changed
+     * An attribute name is passed in to select the element in the taskDisplay, append
+     * its respective attributes are changed based on the name passed in
      * @param {String} name name of changed attribute
      * @param {*} oldValue old value of attribute
      * @param {*} newValue new value of attribute
      */
     attributeChangedCallback(name, oldValue, newValue) {
+        // don't display tasks if 1 or none
         if (name == "numtasks" && newValue <= 1) {
             this.querySelector("#next").style.display = "none";
             this.getElementsByTagName("h3")[1].style.display = "none";
         }
+        // if newValue (num of tasks) > 1, display current & next task
         else if (name == "numtasks" && newValue > 1) {
             this.querySelector("#next").style.display = "";
             this.getElementsByTagName("h3")[1].style.display = "";
@@ -249,10 +253,17 @@ class TaskDisplay extends HTMLElement {
     //     }
     // }
 
+    /**
+     * hides all TaskDisplay related items within task-display
+     */
     handleEndSession() {
         this.querySelector(".middle-container").style.display = "none";
     }
 
+
+    /**
+     * shows all TaskDisplay related items within task-display
+     */
     handleStartSession() {
         this.querySelector(".middle-container").style.display = "block";
     }
