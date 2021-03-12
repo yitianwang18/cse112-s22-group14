@@ -99,16 +99,6 @@ test("TaskList showTaskList + closeTaskList", () => {
       expect(o_tasklist.querySelector("#side-tasks").style.display).toBe(s_is_not_displayed);
 });
 
-test("TaskList get task number", () => {
-      let o_tasklist = new TaskList();
-
-      o_tasklist.showTaskList();
-      expect(o_tasklist.querySelector("#side-tasks").style.display).toBe(s_is_displayed);
-
-      o_tasklist.closeTaskList();
-      expect(o_tasklist.querySelector("#side-tasks").style.display).toBe(s_is_not_displayed);
-});
-
 test('TaskList test get number of tasks', () => {
     let o_tasklist = new TaskList();
 
@@ -139,7 +129,7 @@ test('TaskList test pop tasks', () => {
     expect(o_tasklist.getNumTasks()).toBe(0);
 });
 
-test('TaskList test get next task + get next-next task', () => {
+test('TaskList test getNextTask + getNextNextTask', () => {
     let o_tasklist = new TaskList();
 
     // adding single item
@@ -160,7 +150,7 @@ test('TaskList test get next task + get next-next task', () => {
 });
 
 
-test("TaskList showTaskList + closeTaskList", () => {
+test("TaskList test handleStartSession", () => {
       let o_tasklist = new TaskList();
       const s_is_displayed = "block";
       const s_is_not_displayed = "none";

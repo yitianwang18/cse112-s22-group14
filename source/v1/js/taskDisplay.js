@@ -1,5 +1,5 @@
 import { Task } from "./task.js";
-import { TaskList } from "./taskList.js";
+// import { TaskList } from "./taskList.js";
 import { TimerContainer } from "./timerContainer.js";
 
 /**
@@ -121,7 +121,7 @@ class TaskDisplay extends HTMLElement {
     //         return;
     //     }
 
-    //     //removes task   
+    //     //removes task
     //     document.querySelector("task-list").removeItem(this.n_curr_taskid);
     //     delete this.o_tasks[this.n_curr_taskid];
     //     this.setAttribute("numtasks", this.o_tasks.length);
@@ -130,7 +130,7 @@ class TaskDisplay extends HTMLElement {
 
     /**
      * Helper function called from parent component to disable button during breaks.
-     * 
+     *
      */
     disableCheck() {
         this.querySelector("#check").disabled = true;
@@ -138,7 +138,7 @@ class TaskDisplay extends HTMLElement {
 
     /**
      * Helper function called from parent component to enable button.
-     * 
+     *
      */
     enableCheck() {
         this.querySelector("#check").disabled = false;
@@ -146,7 +146,7 @@ class TaskDisplay extends HTMLElement {
 
     // /**
     //  * Helper function called from parent component to hide display.
-    //  * 
+    //  *
     //  */
     // hideDisp() {
     //     document.getElementsByClassName("middle-container").style.display = "none";
@@ -154,7 +154,7 @@ class TaskDisplay extends HTMLElement {
 
     // /**
     //  * Helper function called from parent component to show display.
-    //  * 
+    //  *
     //  */
     // showDisp() {
     //     document.getElementsByClassName("middle-container").style.display = "";
@@ -217,7 +217,7 @@ class TaskDisplay extends HTMLElement {
     // }
 
     // /**
-    //  * Updates the list of tasks to match taskList at start of session. 
+    //  * Updates the list of tasks to match taskList at start of session.
     //  */
     // updateList() {
     //     let temp = document.querySelector("task-list").o_tasks;
