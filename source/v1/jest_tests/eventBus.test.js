@@ -3,6 +3,8 @@ const require = createRequire(import.meta.url);
 import { jest } from '@jest/globals'
 import { EventBus } from "../js/eventBus.js";
 import { TaskDisplay } from "../js/taskDisplay.js";
+import { TaskList } from '../js/taskList.js';
+import { TimerContainer } from '../js/timerContainer.js';
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const { document } = (new JSDOM(`
@@ -143,11 +145,13 @@ const { document } = (new JSDOM(`
 //jest.mock("../js/taskDisplay.js" );
 
 //const mockAction = jest.fn();
-jest.mock("../js/taskDisplay.js", () => {
-        TaskDisplay: jest.fn().mockImplementation(() => ({
-            handleStartSession: mockAction
-    }))
-});
+// jest.mock("../js/taskDisplay.js"
+// //   , () => {
+// //         TaskDisplay: jest.fn().mockImplementation(() => ({
+// //             handleStartSession: mockAction
+// //     }))
+// // }
+// );
 
 // beforeEach(() => {
 //     // Clear all instances and calls to constructor and all methods:
@@ -155,18 +159,35 @@ jest.mock("../js/taskDisplay.js", () => {
 // });
 
 it('First test', () => {
-    let o_event_bus = new EventBus();
+//     // let o_event_bus = new EventBus();
+//     // let o_task_disp = new TaskDisplay();
 
-    o_event_bus.o_task_list = document.querySelector("task-list");
-    o_event_bus.o_timer_container = document.querySelector("timer-element");
-    o_event_bus.o_task_display = document.querySelector("task-display");
-    o_event_bus.o_toolbar = document.querySelector("nav");
+//     // o_event_bus.o_task_list = document.querySelector("task-list");
+//     // o_event_bus.o_timer_container = document.querySelector("timer-element");
+//     // o_event_bus.o_task_display = document.querySelector("task-display");
 
-    let mock_task_disp = TaskDisplay.mock.instances[0];
-    let mock_task_disp_handle_start = mock_task_disp.handleStartSession;
+//     // o_event_bus.o_toolbar = document.querySelector("nav");
 
-    o_event_bus.handleStartSession();
+//     // let mock_task_disp = TaskDisplay.mock.instances[0];
+//     // let mock_task_disp_handle_start = mock_task_disp.handleStartSession;
 
-    expect(mock_task_disp_handle_start).toHaveBeenCalledTimes(1);
+//     // o_event_bus.handleStartSession();
+
+//     // expect(mock_task_disp_handle_start).toHaveBeenCalledTimes(1);
+  
+
+//   let e = new EventBus();
+
+//   e.o_task_list = new TaskList();
+//   e.o_timer_container = new TimerContainer();
+//   e.o_task_display = new TaskDisplay();
+
+//   let t = e.o_task_display;
+//   t.handleStartSession = jest.fn();
+
+//   e.handleStartSession();
+
+//   expect(t.handleStartSession).toHaveBeenCalledTimes(1);
+
 });
 
