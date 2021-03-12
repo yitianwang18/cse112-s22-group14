@@ -38,6 +38,7 @@ class EventBus {
     }
 
     handleStartSession() {
+        let o_start_error = this.o_timer_container.querySelector("#start-error");
         if (this.o_task_list.getNumTasks() != 0) {
             this.o_toolbar.querySelector("#task-btn").disabled = true;
             // hide toolbar
@@ -49,18 +50,17 @@ class EventBus {
             this.o_task_list.closeTaskList();
             this.handleStartWork();
 
-            this.o_timer_container.querySelector("#start-error").innerHTML = "";
-            this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#0000";
-            this.o_timer_container.querySelector("#start-error").style.color = "#0000";
+            o_start_error.innerHTML = "";
+            o_start_error.classList.remove("color-error");
         } else { 
-          this.o_timer_container.querySelector("#start-error").innerHTML = EventBus.START_ERROR;
-          this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#ffcdd2";
-          this.o_timer_container.querySelector("#start-error").style.color = "#f44336";
-          setTimeout(() => {
-              this.o_timer_container.querySelector("#start-error").innerHTML = "";
-              this.o_timer_container.querySelector("#start-error").style.backgroundColor = "#0000";
-              this.o_timer_container.querySelector("#start-error").style.color = "#0000";
-          }, 3000);
+            o_start_error.innerHTML = EventBus.START_ERROR;
+            o_start_error.classList.add("color-error");
+
+            // Make error message disapper after 3 seconds
+            setTimeout(() => {
+                o_start_error.innerHTML = "";
+                o_start_error.classList.remove("color-error");
+            }, 3000);
         }
     }
 
@@ -69,7 +69,6 @@ class EventBus {
         this.o_toolbar.style.visibility = "";
         this.o_task_display.handleEndSession();
         this.o_timer_container.handleEndSession();
-
     }
 
     handleStartWork() {
@@ -85,7 +84,6 @@ class EventBus {
         if (this.o_task_list.getNumTasks() == 0) {
             this.handleEndSession();
         }
-
     }
 
     updateTaskDisplay() {

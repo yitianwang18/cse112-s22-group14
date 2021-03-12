@@ -25,18 +25,38 @@
   ******************************/
 
 .full-height {
-  background-image: url("../assets/img/1.jpg");
+  background-image: url("../assets/img/bground/1.jpg");
   background-size: cover;
 }
 
-.instructions-section-blocker {
-  background-color: var(--less-transparent);
+@media (max-height: 2160px) and (max-width: 3840px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-3840w.webp");
+  }
 }
 
-.instructions-section {
-  background-color: var(--least-transparent);
-  color:var(--white);
-  border-color: var(--white);
+@media (max-height: 1440px) and (max-width: 2560px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-2560w.webp");
+  }
+}
+
+@media (max-height: 1080px) and (max-width: 1920px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-1920w.webp");
+  }
+}
+
+@media (max-height: 720px) and (max-width: 1280px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-1280w.webp");
+  }
+}
+
+@media (max-height: px) and (max-width: 640px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-640w.webp");
+  }
 }
 
 /***********************
@@ -84,6 +104,20 @@ hr {
 }
 
 /*****************************
+  * Color for Error messages *
+  ****************************/
+
+.error-mssg {
+  background-color: #0000;
+  color: #0000;
+}
+
+.color-error {
+  background-color: #ffcdd2;
+  color: #f44336;
+}
+
+/*****************************
   * Color for Slide-out Tasks *
   *****************************/
 
@@ -101,12 +135,11 @@ input[type=text] {
   color: var(--white);
 }
 
-
 .btn {
   color: var(--white);
 }
 
-.btn:hover:enabled{
+.btn:hover:enabled {
   color: var(--green);
 }
 
@@ -208,6 +241,16 @@ input[type=text] {
 /**************************
   * Color for Instructions *
   **************************/
+
+.instructions-section-blocker {
+  background-color: var(--less-transparent);
+}
+
+.instructions-section {
+  background-color: var(--least-transparent);
+  color: var(--white);
+  border-color: var(--white);
+}
 
 .instruct-head {
   color: var(--white);

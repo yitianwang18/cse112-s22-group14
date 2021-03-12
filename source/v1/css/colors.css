@@ -32,8 +32,8 @@ hr {
 }
 
 .instructions-section {
-background-color: var(--white);
-border-color: var(--white);
+  background-color: var(--white);
+  border-color: var(--white);
 }
 
 /********************
@@ -71,6 +71,20 @@ border-color: var(--white);
 
 .info-btn-new:hover {
   color: var(--light-green);
+}
+
+/*****************************
+  * Color for Error messages *
+  ****************************/
+
+.error-mssg {
+  background-color: #0000;
+  color: #0000;
+}
+
+.color-error {
+  background-color: #ffcdd2;
+  color: #f44336;
 }
 
 /*****************************

@@ -89,9 +89,9 @@ class TimerContainer extends HTMLElement {
         this.querySelector("#reset-btn").classList.remove("hidden");
         this.querySelector("#start-btn").classList.add("hidden");
         this.querySelector("#end-btn").disabled = false;
-        this.querySelector("#end-error").innerHTML = "";
-        this.querySelector("#end-error").style.backgroundColor = "#0000";
-        this.querySelector("#end-error").style.color = "#0000";
+        let o_end_error = this.querySelector("#end-error");
+        o_end_error.innerHTML = "";
+        o_end_error.classList.remove("color-error");
         this.renderComponents();
     }
 
@@ -114,9 +114,9 @@ class TimerContainer extends HTMLElement {
         this.endSession();
         this.renderComponents();
         this.querySelector("#end-btn").disabled = true;
-        this.querySelector("#end-error").innerHTML = TimerContainer.END_ERROR;
-        this.querySelector("#end-error").style.backgroundColor = "#ffcdd2";
-        this.querySelector("#end-error").style.color = "#f44336";
+        let o_end_error = this.querySelector("#end-error");
+        o_end_error.innerHTML = TimerContainer.END_ERROR;
+        o_end_error.classList.add("color-error");
         this.querySelector("#reset-btn").classList.add("hidden");
         this.querySelector("#reset-btn").disabled = false;
         this.querySelector("#start-btn").classList.remove("hidden");
@@ -165,9 +165,9 @@ class TimerContainer extends HTMLElement {
         switch (this.n_curr_state) {
             case TimerContainer.WORK:
                 this.querySelector("#reset-btn").disabled = true;
-                this.querySelector("#reset-error").innerHTML = TimerContainer.RESET_ERROR;
-                this.querySelector("#reset-error").style.backgroundColor = "#ffcdd2";
-                this.querySelector("#reset-error").style.color = "#f44336";
+                let o_reset_error = this.querySelector("#reset-error");
+                o_reset_error.innerHTML = TimerContainer.RESET_ERROR;
+                o_reset_error.classList.add("color-error");
                 ++(this.n_done_pomos);
                 if (this.n_done_pomos == 4) {
                     this.n_curr_state = TimerContainer.L_BREAK;
@@ -184,9 +184,9 @@ class TimerContainer extends HTMLElement {
                 document.EventBus.fireEvent("startWork");
             case TimerContainer.NOT_STARTED:
                 this.querySelector("#reset-btn").disabled = false;
-                this.querySelector("#reset-error").innerHTML = "";
-                this.querySelector("#reset-error").style.backgroundColor = "#0000";
-                this.querySelector("#reset-error").style.color = "#0000";
+                let o_reset_error1 = this.querySelector("#reset-error");
+                o_reset_error1.innerHTML = "";
+                o_reset_error1.classList.remove("color-error");
                 this.n_curr_state = TimerContainer.WORK;
                 notify(this.n_curr_state);
                 break;
@@ -267,12 +267,6 @@ TimerContainer.S_END_MESSAGE = "End Session";
  */
 TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
 
-/**
- * Target selector of the "i" button
- * @static
- * @type {string}
- */
-TimerContainer.S_INSTRUCTIONS_TARGET = ".instructions-section";
 
 /**
  * 
