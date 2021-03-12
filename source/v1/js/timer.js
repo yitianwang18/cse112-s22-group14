@@ -22,7 +22,7 @@ class TimerDisplay extends HTMLElement {
         let o_work_message = document.createElement("h1");
         o_work_message.id = "time-display";
 
-        let o_pomos_completed = document.createElement("h3");
+        let o_pomos_completed = document.createElement("h2");
         o_pomos_completed.id = "pomos-completed";
         o_pomos_completed.innerText = "Pomodoros Completed:"
 
@@ -35,6 +35,7 @@ class TimerDisplay extends HTMLElement {
             let o_pomo_image = document.createElement("img");
             o_pomo_image.id = `pomo${n_pomo_index}`;
             o_pomo_image.className = "pomo-count";
+            o_pomo_image.alt = "Pomodoro Count";
             o_pomo_image.src = TimerDisplay.S_POMO_NO_PATH;
             o_wrapper.append(o_pomo_image);
         }

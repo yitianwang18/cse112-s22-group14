@@ -38,6 +38,7 @@ class EventBus {
     }
 
     handleStartSession() {
+        let o_start_error = this.o_timer_container.querySelector("#start-error");
         if (this.o_task_list.getNumTasks() != 0) {
             this.o_toolbar.querySelector("#task-btn").disabled = true;
             // hide toolbar
@@ -48,10 +49,19 @@ class EventBus {
             this.o_timer_container.handleStartPomo();
             this.o_task_list.closeTaskList();
             this.handleStartWork();
-        } else {
-            console.log("bruh");
-        }
 
+            o_start_error.innerHTML = "";
+            o_start_error.classList.remove("color-error");
+        } else { 
+            o_start_error.innerHTML = EventBus.START_ERROR;
+            o_start_error.classList.add("color-error");
+
+            // Make error message disapper after 3 seconds
+            setTimeout(() => {
+                o_start_error.innerHTML = "";
+                o_start_error.classList.remove("color-error");
+            }, 3000);
+        }
     }
 
     handleEndSession() {
@@ -59,7 +69,6 @@ class EventBus {
         this.o_toolbar.style.visibility = "";
         this.o_task_display.handleEndSession();
         this.o_timer_container.handleEndSession();
-
     }
 
     handleStartWork() {
@@ -75,7 +84,6 @@ class EventBus {
         if (this.o_task_list.getNumTasks() == 0) {
             this.handleEndSession();
         }
-
     }
 
     updateTaskDisplay() {
@@ -93,5 +101,12 @@ class EventBus {
     }
 
 }
+
+/**
+ * Error message when Start button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+EventBus.START_ERROR = "Cannot start session with no tasks!";
 
 export { EventBus };

@@ -21,6 +21,10 @@ class TimerContainer extends HTMLElement {
         o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
 
+        let o_wrap_start_btn = document.createElement("span");
+        o_wrap_start_btn.id = "wrap-start-btn";
+        o_wrap_start_btn.className = "btn-wrapper";
+
         let o_start_btn = document.createElement("button");
         o_start_btn.id = "start-btn";
         o_start_btn.className = "custom-btn";
@@ -29,11 +33,25 @@ class TimerContainer extends HTMLElement {
         const f_fire_start_session = () => { document.EventBus.fireEvent("startSession") };
         o_start_btn.addEventListener("click", f_fire_start_session);
 
+        let o_start_error_mssg = document.createElement("span");
+        o_start_error_mssg.id = "start-error";
+        o_start_error_mssg.className = "error-mssg";
+
         let o_reset_btn = document.createElement("button");
         o_reset_btn.id = "reset-btn";
         o_reset_btn.classList.add("custom-btn", "hidden");
         o_reset_btn.innerText = TimerContainer.S_RESET_MESSAGE;
-        o_reset_btn.addEventListener("click", this.handleResetPomo.bind(this))
+        o_reset_btn.addEventListener("click", this.handleResetPomo.bind(this));
+
+        let o_reset_error_mssg = document.createElement("span");
+        o_reset_error_mssg.id = "reset-error";
+        o_reset_error_mssg.className = "error-mssg";
+
+        o_wrap_start_btn.append(o_start_btn, o_start_error_mssg, o_reset_btn, o_reset_error_mssg);
+
+        let o_wrap_end_btn = document.createElement("span");
+        o_wrap_end_btn.id = "wrap-end-btn";
+        o_wrap_end_btn.className = "btn-wrapper";
 
         let o_end_btn = document.createElement("button");
         o_end_btn.id = "end-btn";
@@ -42,7 +60,13 @@ class TimerContainer extends HTMLElement {
         const f_fire_end_session = () => { document.EventBus.fireEvent("endSession") };
         o_end_btn.addEventListener("click", f_fire_end_session);
 
-        o_wrapper.append(o_work_message, o_timer_display, o_start_btn, o_reset_btn, o_end_btn);
+        let o_end_error_mssg = document.createElement("span");
+        o_end_error_mssg.id = "end-error";
+        o_end_error_mssg.className = "error-mssg";
+
+        o_wrap_end_btn.append(o_end_btn, o_end_error_mssg);
+
+        o_wrapper.append(o_work_message, o_timer_display, o_wrap_start_btn, o_wrap_end_btn);
 
         this.append(o_wrapper);
 
@@ -65,6 +89,9 @@ class TimerContainer extends HTMLElement {
         this.querySelector("#reset-btn").classList.remove("hidden");
         this.querySelector("#start-btn").classList.add("hidden");
         this.querySelector("#end-btn").disabled = false;
+        let o_end_error = this.querySelector("#end-error");
+        o_end_error.innerHTML = "";
+        o_end_error.classList.remove("color-error");
         this.renderComponents();
     }
 
@@ -87,6 +114,9 @@ class TimerContainer extends HTMLElement {
         this.endSession();
         this.renderComponents();
         this.querySelector("#end-btn").disabled = true;
+        let o_end_error = this.querySelector("#end-error");
+        o_end_error.innerHTML = TimerContainer.END_ERROR;
+        o_end_error.classList.add("color-error");
         this.querySelector("#reset-btn").classList.add("hidden");
         this.querySelector("#reset-btn").disabled = false;
         this.querySelector("#start-btn").classList.remove("hidden");
@@ -135,6 +165,9 @@ class TimerContainer extends HTMLElement {
         switch (this.n_curr_state) {
             case TimerContainer.WORK:
                 this.querySelector("#reset-btn").disabled = true;
+                let o_reset_error = this.querySelector("#reset-error");
+                o_reset_error.innerHTML = TimerContainer.RESET_ERROR;
+                o_reset_error.classList.add("color-error");
                 ++(this.n_done_pomos);
                 if (this.n_done_pomos == 4) {
                     this.n_curr_state = TimerContainer.L_BREAK;
@@ -151,6 +184,9 @@ class TimerContainer extends HTMLElement {
                 document.EventBus.fireEvent("startWork");
             case TimerContainer.NOT_STARTED:
                 this.querySelector("#reset-btn").disabled = false;
+                let o_reset_error1 = this.querySelector("#reset-error");
+                o_reset_error1.innerHTML = "";
+                o_reset_error1.classList.remove("color-error");
                 this.n_curr_state = TimerContainer.WORK;
                 notify(this.n_curr_state);
                 break;
@@ -231,17 +267,11 @@ TimerContainer.S_END_MESSAGE = "End Session";
  */
 TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
 
-/**
- * Target selector of the "i" button
- * @static
- * @type {string}
- */
-TimerContainer.S_INSTRUCTIONS_TARGET = ".instructions-section";
 
 /**
  * 
  */
-TimerContainer.DEBUG = false;
+TimerContainer.DEBUG = true;
 
 /**
  * Enumerator for 'not started' state
@@ -291,6 +321,20 @@ TimerContainer.A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - G
  * @type {number}
  */
 TimerContainer.N_MILLI_DELAY = 100;
+
+/**
+ * Error message when reset button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+TimerContainer.RESET_ERROR = "Cannot reset timer during breaks!";
+
+/**
+ * Error message when end button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+TimerContainer.END_ERROR = "Session not started!";
 
 customElements.define("timer-element", TimerContainer);
 

@@ -34,18 +34,29 @@ class TaskDisplay extends HTMLElement {
         o_curr_disp.id = "current";
         o_curr_disp.innerHTML = "Do this";
 
+        let o_wrap_btn = document.createElement("span");
+        o_wrap_btn.id = "wrap-check-btn";
+        o_wrap_btn.className = "btn-wrapper";
+
         //check button
         let o_check_btn = document.createElement("button");
         o_check_btn.className = "btn";
-        o_check_btn.id = 'check';
+        o_check_btn.id = "check";
         o_check_btn.title = "Task completed";
 
         let o_next_btn = document.createElement("i");
         o_next_btn.classList.add("fas", "fa-check-circle", "fa-x", "tool");
 
+        let o_error_mssg = document.createElement("span");
+        o_error_mssg.id = "check-error";
+        o_error_mssg.className = "error-mssg";
+        o_error_mssg.innerHTML = TaskDisplay.CHECK_ERROR;
+
         let f_handle_check = () => { document.EventBus.fireEvent("nextTask") };
         o_check_btn.addEventListener("click", f_handle_check);
         o_check_btn.append(o_next_btn);
+
+        o_wrap_btn.append(o_check_btn, o_error_mssg);
 
         //header for next task
         let o_next_title = document.createElement("h3");
@@ -55,7 +66,7 @@ class TaskDisplay extends HTMLElement {
         let o_next_disp = document.createElement("div");
         o_next_disp.id = "next";
 
-        o_wrapper_obj.append(o_curr_title, o_curr_disp, o_check_btn, o_next_title, o_next_disp);
+        o_wrapper_obj.append(o_curr_title, o_curr_disp, o_wrap_btn, o_next_title, o_next_disp);
         this.append(o_wrapper_obj);
 
         /*keeps track of the number of tasks*/
@@ -134,6 +145,9 @@ class TaskDisplay extends HTMLElement {
      */
     disableCheck() {
         this.querySelector("#check").disabled = true;
+        let o_check_error = this.querySelector("#check-error");
+        o_check_error.title = "";
+        o_check_error.classList.add("color-error");
     }
 
     /**
@@ -142,6 +156,8 @@ class TaskDisplay extends HTMLElement {
      */
     enableCheck() {
         this.querySelector("#check").disabled = false;
+        this.querySelector("#check-error").title = TaskDisplay.CHECK_TOOLTIP;
+        this.querySelector("#check-error").classList.remove("color-error");
     }
 
     // /**
@@ -242,6 +258,19 @@ class TaskDisplay extends HTMLElement {
     }
 }
 
+/**
+ * Tooltip when check button is hovered upon
+ * @static
+ * @type {String}
+ */
+TaskDisplay.CHECK_TOOLTIP = "Task completed!";
+
+/**
+ * Error message when check button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+ TaskDisplay.CHECK_ERROR = "Tasks cannot be checked off during breaks!";
 
 customElements.define("task-display", TaskDisplay);
 
