@@ -1,4 +1,4 @@
-    import { TimerDisplay } from "../js/timer.js";
+import { TimerDisplay } from "../js/timer.js";
 
 test('Test timer-display element initialization', () => {
     //Test custom element timer-display shape

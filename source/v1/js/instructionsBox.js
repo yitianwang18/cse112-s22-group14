@@ -55,7 +55,7 @@ class InstructionsBox extends HTMLElement {
         let o_inst_cycle = document.createElement("h3");
         o_inst_cycle.innerText = "Work-Break Cycle";
         o_inst_cycle.className = "inst-headers";
-    
+
         let o_inst_cycle_list = document.createElement("ul");
         o_inst_cycle_list.className = "inst-list";
         let o_cl1 = document.createElement("li");
@@ -92,6 +92,10 @@ class InstructionsBox extends HTMLElement {
         this.append(o_wrapper_obj);
     }
 
+    /** Function to determine if the instructions are currently shown */
+    getIsShown() {
+        return this.querySelector("#instructions").classList.contains("instructions-section-open");
+    }
 
     /**
      * Function to show task list display from the main user screen
@@ -101,8 +105,9 @@ class InstructionsBox extends HTMLElement {
 
         // Hide everything inside instructions box while animating to prevent sandwiching of text
         setTimeout(() => {
-          this.querySelector("#instructions-title").style.display = "block";
-          this.querySelector("#instructions-para").style.display = "block";
+            this.querySelector("#instructions-title").style.display = "block";
+            this.querySelector("#instructions-para").style.display = "block";
+            document.body.focus();
         }, 200);
 
         this.querySelector("#instructions-blocker").style.display = "block";

@@ -13,7 +13,10 @@ class EventBus {
         this.o_task_display = document.querySelector("task-display");
         this.o_toolbar = document.querySelector("nav");
         this.o_instructions = document.querySelector("instructions-box");
+        this.registerEvents();
+    }
 
+    registerEvents() {
         this.registerEvent("startSession", this.handleStartSession.bind(this));
         this.registerEvent("endSession", this.handleEndSession.bind(this));
         this.registerEvent("nextTask", this.handleNextTask.bind(this));
@@ -25,6 +28,7 @@ class EventBus {
         this.registerEvent("showTasks", this.handleShowTasks.bind(this));
         this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
     }
+
 
     /**
      * Registers the event of the specified name
@@ -114,6 +118,9 @@ class EventBus {
     }
 
     handleShowTasks() {
+        if (this.o_instructions.getIsShown()) {
+            this.o_instructions.closeInstructions();
+        }
         this.o_task_list.showTaskList();
     }
 
@@ -132,7 +139,6 @@ class EventBus {
     }
 
 }
-
 /**
  * Error message when Start button is incorrectly handled
  * @static

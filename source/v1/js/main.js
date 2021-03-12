@@ -31,9 +31,10 @@ function showTaskList() {
 /**
  * Event handler function to show Instructions when info button is pressed
  */
-function showInstructions() {
+function showInstructions(o_event) {
     let inst = document.querySelector("instructions-box");
     inst.showInstructionsBox();
+
 }
 
 /**
@@ -41,8 +42,7 @@ function showInstructions() {
  */
 function handleKeyBinds(o_event) {
     console.log(o_event);
-    if (o_event.target.tagName == "BODY") {
-        console.log(o_event);
+    if (o_event.target.tagName != "INPUT") {
         switch (o_event.key) {
             case "c":
                 handleThemeBtnPressed();

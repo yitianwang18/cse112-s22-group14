@@ -275,7 +275,6 @@ class TaskList extends HTMLElement {
     closeTaskList() {
         this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
-        o_tasks.style.display = "none";
         this.clearInput();
 
         o_tasks.classList.remove("sidenav-small");
