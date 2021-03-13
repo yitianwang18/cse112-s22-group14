@@ -7,7 +7,7 @@ import { TimerContainer } from "./timerContainer.js";
  * @extends HTMLElement
  */
 
-class TaskDisplay extends HTMLElement {
+export default class TaskDisplay extends HTMLElement {
 
     /**
      * Attributes that this object observes
@@ -265,6 +265,7 @@ class TaskDisplay extends HTMLElement {
      * shows all TaskDisplay related items within task-display
      */
     handleStartSession() {
+        console.log("bruh");
         this.querySelector(".middle-container").style.display = "block";
     }
 }
