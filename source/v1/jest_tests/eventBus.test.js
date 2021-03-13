@@ -144,13 +144,13 @@ const { document } = (new JSDOM(`
 `, { runScripts: "outside-only" })).window;
 //jest.mock("../js/taskDisplay.js" );
 
-//const mockAction = jest.fn();
-// jest.mock("../js/taskDisplay.js"
-// //   , () => {
-// //         TaskDisplay: jest.fn().mockImplementation(() => ({
-// //             handleStartSession: mockAction
-// //     }))
-// // }
+// const mockAction = jest.fn();
+// jest.mock("../js/eventBus.js"
+//   , () => {
+//         EventBus: jest.fn().mockImplementation(() => ({
+//             registerEvent: mockAction
+//     }))
+// }
 // );
 
 // beforeEach(() => {
@@ -176,18 +176,18 @@ it('First test', () => {
 //     // expect(mock_task_disp_handle_start).toHaveBeenCalledTimes(1);
   
 
-//   let e = new EventBus();
+  // let e = new EventBus();
 
-//   e.o_task_list = new TaskList();
-//   e.o_timer_container = new TimerContainer();
-//   e.o_task_display = new TaskDisplay();
+  // e.o_task_list = new TaskList();
+  // e.o_timer_container = new TimerContainer();
+  // e.o_task_display = new TaskDisplay();
 
-//   let t = e.o_task_display;
-//   t.handleStartSession = jest.fn();
+  // let t = e.o_task_display;
+  //e.registerEvent = jest.fn();
+  // const mockEventBusInstance = EventBus.mock.instances[0];
+  // const mockRegisterEvent = mockEventBusInstance.registerEvent;
 
-//   e.handleStartSession();
-
-//   expect(t.handleStartSession).toHaveBeenCalledTimes(1);
+  // expect(mockRegisterEvent).toHaveBeenCalledTimes(6);
 
 });
 

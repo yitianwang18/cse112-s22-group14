@@ -254,7 +254,6 @@ export default class TaskDisplay extends HTMLElement {
     }
 
     handleStartSession() {
-        console.log("bruh");
         this.querySelector(".middle-container").style.display = "block";
     }
 }
