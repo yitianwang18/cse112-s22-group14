@@ -3,7 +3,9 @@ describe('Timer Container Tests', () => {
   beforeEach(() => {
     cy.visit('http://127.0.0.1:5500/source/v1/index.html');
     cy.document().then((doc) => {
-      doc.querySelector('timer-element').toggleDebug();
+      if (!doc.querySelector('timer-element').DEBUG) {
+        doc.querySelector('timer-element').toggleDebug();
+      }
     });
   });
   

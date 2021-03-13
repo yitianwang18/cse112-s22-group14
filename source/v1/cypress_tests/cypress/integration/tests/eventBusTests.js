@@ -5,10 +5,11 @@ describe('Testing Event Bus', () => {
     
     beforeEach(() => {
         cy.visit('http://127.0.0.1:5500/source/v1/index.html');
-        cy.document().then((o_doc) => {
-            o_doc.querySelector('timer-element').toggleDebug();
-            cy.spy(o_doc.EventBus, "fireEvent");
-            
+        cy.document().then((doc) => {
+            if (!doc.querySelector('timer-element').DEBUG) {
+                doc.querySelector('timer-element').toggleDebug();
+            }
+            cy.spy(doc.EventBus, "fireEvent");
         });
     });
 
