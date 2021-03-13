@@ -1,5 +1,5 @@
 import { Task } from "./task.js";
-import { TaskList } from "./taskList.js";
+// import { TaskList } from "./taskList.js";
 import { TimerContainer } from "./timerContainer.js";
 
 /**
@@ -81,15 +81,19 @@ export default class TaskDisplay extends HTMLElement {
 
     /**
      * Handler for when attributes are changed
+     * An attribute name is passed in to select the element in the taskDisplay, append
+     * its respective attributes are changed based on the name passed in
      * @param {String} name name of changed attribute
      * @param {*} oldValue old value of attribute
      * @param {*} newValue new value of attribute
      */
     attributeChangedCallback(name, oldValue, newValue) {
+        // don't display tasks if 1 or none
         if (name == "numtasks" && newValue <= 1) {
             this.querySelector("#next").style.display = "none";
             this.getElementsByTagName("h3")[1].style.display = "none";
         }
+        // if newValue (num of tasks) > 1, display current & next task
         else if (name == "numtasks" && newValue > 1) {
             this.querySelector("#next").style.display = "";
             this.getElementsByTagName("h3")[1].style.display = "";
@@ -132,7 +136,7 @@ export default class TaskDisplay extends HTMLElement {
     //         return;
     //     }
 
-    //     //removes task   
+    //     //removes task
     //     document.querySelector("task-list").removeItem(this.n_curr_taskid);
     //     delete this.o_tasks[this.n_curr_taskid];
     //     this.setAttribute("numtasks", this.o_tasks.length);
@@ -141,7 +145,7 @@ export default class TaskDisplay extends HTMLElement {
 
     /**
      * Helper function called from parent component to disable button during breaks.
-     * 
+     *
      */
     disableCheck() {
         this.querySelector("#check").disabled = true;
@@ -152,7 +156,7 @@ export default class TaskDisplay extends HTMLElement {
 
     /**
      * Helper function called from parent component to enable button.
-     * 
+     *
      */
     enableCheck() {
         this.querySelector("#check").disabled = false;
@@ -162,7 +166,7 @@ export default class TaskDisplay extends HTMLElement {
 
     // /**
     //  * Helper function called from parent component to hide display.
-    //  * 
+    //  *
     //  */
     // hideDisp() {
     //     document.getElementsByClassName("middle-container").style.display = "none";
@@ -170,7 +174,7 @@ export default class TaskDisplay extends HTMLElement {
 
     // /**
     //  * Helper function called from parent component to show display.
-    //  * 
+    //  *
     //  */
     // showDisp() {
     //     document.getElementsByClassName("middle-container").style.display = "";
@@ -233,7 +237,7 @@ export default class TaskDisplay extends HTMLElement {
     // }
 
     // /**
-    //  * Updates the list of tasks to match taskList at start of session. 
+    //  * Updates the list of tasks to match taskList at start of session.
     //  */
     // updateList() {
     //     let temp = document.querySelector("task-list").o_tasks;
@@ -249,10 +253,17 @@ export default class TaskDisplay extends HTMLElement {
     //     }
     // }
 
+    /**
+     * hides all TaskDisplay related items within task-display
+     */
     handleEndSession() {
         this.querySelector(".middle-container").style.display = "none";
     }
 
+
+    /**
+     * shows all TaskDisplay related items within task-display
+     */
     handleStartSession() {
         console.log("bruh");
         this.querySelector(".middle-container").style.display = "block";
