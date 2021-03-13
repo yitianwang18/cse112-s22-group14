@@ -7,7 +7,7 @@ test('Test timer-display element initialization', () => {
     expect(o_timer_disp_wrapper.childElementCount).toBe(7);
 
     //Test timer-display.o_pomos_completed initialization
-    expect(o_timer_disp_wrapper.querySelector("h3").innerText).toBe("Pomodoros Completed:");
+    expect(o_timer_disp_wrapper.querySelector("h2").innerText).toBe("Pomodoros Completed:");
 
     //Test timer-diplay.o_pomo_images initialization
     let o_pomo_images = o_timer_disp_wrapper.querySelectorAll("img");

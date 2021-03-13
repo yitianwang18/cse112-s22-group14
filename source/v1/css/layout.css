@@ -325,6 +325,7 @@ input[type=text] {
 .pomo-count {
   margin: 5px 5px 10px 5px;
   width: 25px;
+  height: 25px;
 }
 
 /**
@@ -488,6 +489,7 @@ input[type=text] {
   width: 80%;
   height: 90vh;
   border-width: 2px;
+  overflow-y: auto;
 }
 
 /**
@@ -718,6 +720,19 @@ input[type=text] {
     font-size: 0.8rem;
     line-height: 20px;
   }
+
+  .custom-btn {
+    height: 40px;
+    width: 130px;
+    font-size: 1rem;
+    margin: 8px;
+  }
+
+  .pomo-count {
+    margin: 3px 3px 8px 3px;
+    width: 25px;
+    height: 25px;
+  }
 }
 
 @media screen and (max-width: 487px) {
@@ -732,6 +747,10 @@ input[type=text] {
   #instructions-para {
     font-size: 0.7rem;
     line-height: 20px;
+  }
+
+  #time-display {
+    font-size: 3.5rem;
   }
 }
 
@@ -750,6 +769,19 @@ input[type=text] {
   }
 }
 
+@media screen and (max-width: 380px) {
+  #time-display {
+    font-size: 3rem;
+  }
+
+  .custom-btn {
+    height: 35px;
+    width: 120px;
+    font-size: 0.9rem;
+    margin: 7px;
+  }
+}
+
 @media screen and (max-width: 365px) {
   .instruct-head {
     text-align: left;
@@ -763,9 +795,6 @@ input[type=text] {
     line-height: 17px;
   }
 
-  #time-display {
-    font-size: 3rem;
-  }
 }
 
 @media screen and (max-width: 350px) {
@@ -778,6 +807,11 @@ input[type=text] {
     width: 63vw;
     bottom: 220%;
     margin-left: -40vw;
+  }
+
+  #time-display {
+    font-size: 2.8rem;
+    padding: 8px;
   }
 }
 

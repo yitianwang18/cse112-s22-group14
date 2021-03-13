@@ -154,8 +154,8 @@ test('Test getTimeRemaining function', () => {
     //Remaining time is equal to current state time(3000) when session is just started started
     o_timer_cont.n_curr_state = TimerContainer.WORK;
     o_timer_cont.n_start_time = new Date().getTime();
-    expect(o_timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(2900);
-    expect(o_timer_cont.getTimeRemaining()).toBeLessThanOrEqual(3000);
+    expect(o_timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(1499900);
+    expect(o_timer_cont.getTimeRemaining()).toBeLessThanOrEqual(1500000);
 
 });
 
