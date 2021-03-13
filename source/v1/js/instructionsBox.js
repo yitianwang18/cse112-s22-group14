@@ -1,6 +1,6 @@
 
 /**
- * Custom HTML element encapsulating all of the functionality related to the Task List
+ * Custom HTML element encapsulating all of the functionality related to the Intructions Box
  * @extends HTMLElement
  */
 class InstructionsBox extends HTMLElement {
@@ -28,6 +28,7 @@ class InstructionsBox extends HTMLElement {
         o_inst_title_wrapper.className = "hidden";
         o_inst_title_wrapper.id = "instructions-title";
 
+        //Instructions Box header
         let o_inst_title = document.createElement("h2");
         o_inst_title.className = "instruct-head";
         o_inst_title.innerText = "Instructions";
@@ -36,6 +37,7 @@ class InstructionsBox extends HTMLElement {
         o_inst_text.className = "hidden";
         o_inst_text.id = "instructions-para";
 
+        //header for task-list instructions
         let o_inst_tasks = document.createElement("h3");
         o_inst_tasks.innerText = "Add tasks for the session";
         o_inst_tasks.className = "inst-headers";
@@ -52,6 +54,7 @@ class InstructionsBox extends HTMLElement {
         o_tl4.innerText = InstructionsBox.A_TASK_INST[3];
         o_inst_tasks_list.append(o_tl1, o_tl2, o_tl3, o_tl4);
 
+        //header for Work-Break cycle
         let o_inst_cycle = document.createElement("h3");
         o_inst_cycle.innerText = "Work-Break Cycle";
         o_inst_cycle.className = "inst-headers";
@@ -70,6 +73,7 @@ class InstructionsBox extends HTMLElement {
         o_cl5.innerText = InstructionsBox.A_CYCLE_INST[4];
         o_inst_cycle_list.append(o_cl1, o_cl2, o_cl3, o_cl4, o_cl5);
 
+        //header for Pomodoro Technique overview
         let o_inst_pomo = document.createElement("h3");
         o_inst_pomo.innerText = "The Pomodoro Technique";
         o_inst_pomo.className = "inst-headers";
@@ -77,6 +81,7 @@ class InstructionsBox extends HTMLElement {
         let o_inst_pomo_text = document.createElement("p");
         o_inst_pomo_text.innerText = InstructionsBox.S_POMO_INST;
 
+        //header for hotkeys/shortcuts
         let o_inst_hot = document.createElement("h4");
         o_inst_hot.innerText = "Hotkeys:";
         o_inst_hot.className = "inst-hotkeys";
@@ -84,6 +89,7 @@ class InstructionsBox extends HTMLElement {
         let o_inst_hot_text = document.createElement("p");
         o_inst_hot_text.innerText = InstructionsBox.S_HOTKEYS_INST;
         o_inst_hot_text.id = "inst-hotkeys-text";
+
 
         o_inst_title_wrapper.append(o_inst_title);
         o_inst_text.append(o_inst_tasks, o_inst_tasks_list, o_inst_cycle, o_inst_cycle_list, o_inst_pomo, o_inst_pomo_text, o_inst_hot, o_inst_hot_text);
