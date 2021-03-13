@@ -21,8 +21,6 @@ describe('Theme Change Tests', () => {
         cy.get('#theme-btn').should('have.attr','title','Simple Theme');
         cy.get('link').its('1').should('have.attr', 'href', './css/colors2.css');
 
-
-
     });
 
 });
