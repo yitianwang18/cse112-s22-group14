@@ -269,7 +269,7 @@ TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
 
 
 /**
- * 
+ *
  */
 TimerContainer.DEBUG = true;
 
