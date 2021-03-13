@@ -1,3 +1,5 @@
+import { TimerContainer } from "./timerContainer.js";
+
 class EventBus {
 
     /**
@@ -10,15 +12,23 @@ class EventBus {
         this.o_timer_container = document.querySelector("timer-element");
         this.o_task_display = document.querySelector("task-display");
         this.o_toolbar = document.querySelector("nav");
+        this.o_instructions = document.querySelector("instructions-box");
+        this.registerEvents();
+    }
 
+    registerEvents() {
         this.registerEvent("startSession", this.handleStartSession.bind(this));
         this.registerEvent("endSession", this.handleEndSession.bind(this));
         this.registerEvent("nextTask", this.handleNextTask.bind(this));
         this.registerEvent("fetchTask", this.updateTaskDisplay.bind(this));
         this.registerEvent("startBreak", this.handleStartBreak.bind(this));
         this.registerEvent("startWork", this.handleStartWork.bind(this));
-
+        this.registerEvent("closeWindows", this.handleCloseWindows.bind(this));
+        this.registerEvent("spaceKeybind", this.handleSpaceKeybind.bind(this));
+        this.registerEvent("showTasks", this.handleShowTasks.bind(this));
+        this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
     }
+
 
     /**
      * Registers the event of the specified name
@@ -39,7 +49,7 @@ class EventBus {
 
     handleStartSession() {
         let o_start_error = this.o_timer_container.querySelector("#start-error");
-        if (this.o_task_list.getNumTasks() != 0) {
+        if (this.o_task_list.getNumTasks() != 0 && this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
             this.o_toolbar.querySelector("#task-btn").disabled = true;
             // hide toolbar
             this.o_toolbar.style.visibility = "hidden";
@@ -52,7 +62,7 @@ class EventBus {
 
             o_start_error.innerHTML = "";
             o_start_error.classList.remove("color-error");
-        } else { 
+        } else {
             o_start_error.innerHTML = EventBus.START_ERROR;
             o_start_error.classList.add("color-error");
 
@@ -80,10 +90,38 @@ class EventBus {
     }
 
     handleNextTask() {
-        this.updateTaskCompleted();
-        if (this.o_task_list.getNumTasks() == 0) {
-            this.handleEndSession();
+        if (this.o_timer_container.n_curr_state == TimerContainer.WORK) {
+            this.updateTaskCompleted();
+            if (this.o_task_list.getNumTasks() == 0) {
+                this.handleEndSession();
+            }
         }
+    }
+
+    handleSpaceKeybind() {
+        if (this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
+            this.fireEvent("startSession");
+        } else {
+            this.fireEvent("endSession");
+        }
+    }
+
+    handleResetPomo() {
+        if (this.o_timer_container.n_curr_state == TimerContainer.WORK) {
+            this.o_timer_container.resetPomo();
+        }
+    }
+
+    handleCloseWindows() {
+        this.o_task_list.closeTaskList();
+        this.o_instructions.closeInstructions();
+    }
+
+    handleShowTasks() {
+        if (this.o_instructions.getIsShown()) {
+            this.o_instructions.closeInstructions();
+        }
+        this.o_task_list.showTaskList();
     }
 
     updateTaskDisplay() {
@@ -101,7 +139,6 @@ class EventBus {
     }
 
 }
-
 /**
  * Error message when Start button is incorrectly handled
  * @static

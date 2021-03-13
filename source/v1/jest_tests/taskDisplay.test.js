@@ -6,6 +6,7 @@ test('Testing attributeChangedCallback function to correctly alter task display'
     // task display should not show when no task
     o_task_disp.setAttribute("numtasks", 0);
     expect(o_task_disp.querySelector("#next").style.display).toBe("none");
+
     expect(o_task_disp.getElementsByTagName("h3")[1].style.display).toBe("none");
 
     // task display should not show when only 1 task
@@ -58,3 +59,4 @@ test('Testing Task Display disableCheck()', () => {
     expect(o_task_disp.querySelector("#check-error").title).toBe("");
     expect(o_task_disp.querySelector("#check-error").classList.contains("color-error")).toBe(true);
 });
+

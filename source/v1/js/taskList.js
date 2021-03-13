@@ -40,7 +40,7 @@ class TaskList extends HTMLElement {
         o_add_task.id = "add-task";
 
         let o_add_label_container = document.createElement("div")
-        
+
         let o_make_add_label_bold = document.createElement("strong");
         o_make_add_label_bold.innerHTML = "Add task:";
 
@@ -81,7 +81,7 @@ class TaskList extends HTMLElement {
         let o_hr = document.createElement("hr");
 
         let o_existing_tasks_title = document.createElement("div")
-        
+
         let o_make_bold = document.createElement("strong");
         o_make_bold.innerHTML = "Tasks remaining:";
 
@@ -122,8 +122,8 @@ class TaskList extends HTMLElement {
      * @param {Event} o_event event instance
      */
     handleInputChange(o_event) {
-      let o_add_btn = this.querySelector("#add-btn");
-      let o_add_error = this.querySelector("#add-error");
+        let o_add_btn = this.querySelector("#add-btn");
+        let o_add_error = this.querySelector("#add-error");
         if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
             o_add_btn.disabled = true;
             o_add_error.innerHTML = TaskList.TASK_ERROR;
@@ -140,8 +140,11 @@ class TaskList extends HTMLElement {
      * @param {Event} o_event event instance
      */
     handleKeyUpChange(o_event) {
-        if (o_event.keyCode == TaskList.N_ENTER_KEYCODE) {
+        if (o_event.key == "Enter") {
             this.handleAddTask();
+        } else if (o_event.key == "Escape") {
+            this.querySelector("input").blur();
+            this.closeTaskList();
         }
     }
 
@@ -216,8 +219,8 @@ class TaskList extends HTMLElement {
 
             // Make error message disappear after 3 seconds
             setTimeout(() => {
-              o_error_span.innerHTML = "";
-              o_error_span.classList.remove("color-error");
+                o_error_span.innerHTML = "";
+                o_error_span.classList.remove("color-error");
             }, 3000);
         }
         // this.editTaskName()
@@ -248,6 +251,8 @@ class TaskList extends HTMLElement {
     showTaskList() {
         this.querySelector("#close-task").style.display = "block";
         let o_tasks = this.querySelector("#side-tasks");
+        o_tasks.style.display = "block";
+
         if (window.screen.width <= 500) {
             o_tasks.classList.add("sidenav-small");
         } else {
@@ -258,8 +263,9 @@ class TaskList extends HTMLElement {
         setTimeout(() => {
             this.querySelector("#task-title").style.display = "block";
             this.querySelector("#all-tasks").style.display = "block";
+            this.querySelector("input").focus();
         }, 200);
-        
+
         this.querySelector("#side-tasks-blocker").style.display = "block";
     }
 
@@ -269,6 +275,8 @@ class TaskList extends HTMLElement {
     closeTaskList() {
         this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
+        this.clearInput();
+
         o_tasks.classList.remove("sidenav-small");
         o_tasks.classList.remove("sidenav-open");
         this.querySelector("#task-title").style.display = "none";
