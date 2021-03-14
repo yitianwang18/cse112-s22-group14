@@ -520,10 +520,6 @@ input[type=text] {
   margin-top: 10px;
 }
 
-#inst-hotkeys-text {
-  margin-top: 0;
-}
-
 /**
  * Paragraph of instructions within instructions section
  */
@@ -554,6 +550,7 @@ input[type=text] {
  * Hotkey text styling
  */
 #inst-hotkeys-text {
+  margin-top: 0;
   text-align: center;
   font-size: 90%;
 }
@@ -794,7 +791,6 @@ input[type=text] {
     font-size: 0.7rem;
     line-height: 17px;
   }
-
 }
 
 @media screen and (max-width: 350px) {

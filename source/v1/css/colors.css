@@ -94,10 +94,6 @@ hr {
   background-color: var(--less-transparent);
 }
 
-.sidenav-blocker {
-  background-color: rgba(22, 10, 10, 0.42);
-}
-
 .sidenav {
   background-color: var(--light-blue);
 }
@@ -110,12 +106,12 @@ input[type=text] {
   color: var(--dark-blue);
 }
 
-.btn:hover:enabled {
-  color: var(--light-green);
-}
-
 .btn:disabled {
   color: var(--grey);
+}
+
+.btn:hover:enabled {
+  color: var(--light-green);
 }
 
 .close,
@@ -165,13 +161,13 @@ input[type=text] {
   background-color: var(--transparent);
 }
 
+.custom-btn:disabled {
+  background-color: var(--grey);
+}
+
 .custom-btn:hover:enabled {
   background-color: var(--white);
   color: var(--dark-blue);
-}
-
-.custom-btn:disabled {
-  background-color: var(--grey);
 }
 
 /****************************

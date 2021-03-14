@@ -139,12 +139,12 @@ input[type=text] {
   color: var(--white);
 }
 
-.btn:hover:enabled {
-  color: var(--green);
-}
-
 .btn:disabled {
   color: var(--grey);
+}
+
+.btn:hover:enabled {
+  color: var(--green);
 }
 
 #add-btn,
@@ -152,12 +152,12 @@ input[type=text] {
   color: var(--white);
 }
 
-#add-btn:hover:enabled {
-  color: var(--light-green);
-}
-
 #add-btn:disabled {
   color: var(--grey);
+}
+
+#add-btn:hover:enabled {
+  color: var(--light-green);
 }
 
 .close {
@@ -209,13 +209,13 @@ input[type=text] {
   background-color: var(--transparent);
 }
 
+.custom-btn:disabled {
+  background-color: var(--grey);
+}
+
 .custom-btn:hover:enabled {
   background-color: var(--white);
   color: var(--black);
-}
-
-.custom-btn:disabled {
-  background-color: var(--grey);
 }
 
 /****************************
