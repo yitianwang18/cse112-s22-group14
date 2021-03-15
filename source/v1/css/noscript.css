@@ -14,18 +14,13 @@ noscript > div {
   z-index: 30000000;
   height: 100%;
   width: 100%;
+
+  /* Color for NoScript */
+  background-color: var(--dark-orange);
 }
 
 noscript > div > p {
   margin-top: 50px;
   font-family: 'Helvetica', 'Calibri', sans-serif;
   font-size: 1.5rem;
-}
-
-/**********************
- * Color for NoScript *
- **********************/
-
-noscript > div {
-  background-color: var(--dark-orange);
 }

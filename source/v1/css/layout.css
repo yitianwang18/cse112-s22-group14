@@ -167,6 +167,22 @@ body {
 }
 
 /**
+ * Fields for displaying task description
+ */
+.middle-container > div {
+  overflow-x: auto;
+  width: 450px;
+  margin: 0 5px;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+/**
  * Styling div placed immediately after h1 inside task-title
  */
 #task-title > h1 + div {
@@ -403,22 +419,6 @@ input[type=text] {
 }
 
 /**
- * Fields for displaying task description
- */
-.middle-container > div {
-  overflow-x: auto;
-  width: 450px;
-  margin: 0 5px;
-  padding: 10px 20px;
-  display: inline-block;
-  border: 2px solid;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 1rem;
-  font-weight: normal;
-}
-
-/**
  * Wrapper class for check button in Task Display
  */
 #wrap-check-btn {
@@ -520,10 +520,6 @@ input[type=text] {
   margin-top: 10px;
 }
 
-#inst-hotkeys-text {
-  margin-top: 0;
-}
-
 /**
  * Paragraph of instructions within instructions section
  */
@@ -554,6 +550,7 @@ input[type=text] {
  * Hotkey text styling
  */
 #inst-hotkeys-text {
+  margin-top: 0;
   text-align: center;
   font-size: 90%;
 }
@@ -794,7 +791,6 @@ input[type=text] {
     font-size: 0.7rem;
     line-height: 17px;
   }
-
 }
 
 @media screen and (max-width: 350px) {

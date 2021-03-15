@@ -8,14 +8,14 @@
   --darkest-blue: #050a3f;
   --dark-blue: #1f288f;
   --blue: #539eff;
-  --light-blue: #eaeaf5;
+  --light-blue: #effbff;
+  --error-back: #ffcdd2;
   --red: #f00;
   --light-green: #b1f060;
   --green: #178800;
   --dark-green: #00570e;
-  --grey: #949697;
+  --grey: #969696;
   --transparent: #0000;
-  --alm-transparent: #0000006b;
   --less-transparent: #0000009c;
 }
 
@@ -78,13 +78,13 @@ hr {
   ****************************/
 
 .error-mssg {
-  background-color: #0000;
-  color: #0000;
+  background-color: var(--transparent);
+  color: var(--transparent);
 }
 
 .color-error {
-  background-color: #ffcdd2;
-  color: #f44336;
+  background-color: var(--error-back);
+  color: var(--red);
 }
 
 /*****************************
@@ -92,10 +92,6 @@ hr {
  *****************************/
 .sidenav-blocker {
   background-color: var(--less-transparent);
-}
-
-.sidenav-blocker {
-  background-color: rgba(22, 10, 10, 0.42);
 }
 
 .sidenav {
@@ -110,12 +106,12 @@ input[type=text] {
   color: var(--dark-blue);
 }
 
-.btn:hover:enabled {
-  color: var(--light-green);
-}
-
 .btn:disabled {
   color: var(--grey);
+}
+
+.btn:hover:enabled {
+  color: var(--light-green);
 }
 
 .close,
@@ -165,13 +161,13 @@ input[type=text] {
   background-color: var(--transparent);
 }
 
+.custom-btn:disabled {
+  background-color: var(--grey);
+}
+
 .custom-btn:hover:enabled {
   background-color: var(--white);
   color: var(--dark-blue);
-}
-
-.custom-btn:disabled {
-  background-color: var(--grey);
 }
 
 /****************************
