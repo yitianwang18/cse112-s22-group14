@@ -3,7 +3,9 @@ describe('Timer Container Tests', () => {
   beforeEach(() => {
     cy.visit('http://127.0.0.1:5500/source/v1/index.html');
     cy.document().then((doc) => {
-      doc.querySelector('timer-element').toggleDebug();
+      if (!doc.querySelector('timer-element').DEBUG) {
+        doc.querySelector('timer-element').toggleDebug();
+      }
     });
   });
   
@@ -74,8 +76,6 @@ describe('Timer Container Tests', () => {
 
   it('Test Start Button functionality', () => {
 
-    
-
     //Task added so that session could be started for testing
     cy.get('#task-btn').trigger('click');
     cy.get('task-list').within(() => {
@@ -134,7 +134,7 @@ describe('Timer Container Tests', () => {
 
       cy.tick(2000);
 
-      //Timer runs down to 100000ms after a 1400000ms pause 
+      //Timer runs down to 1000ms after a 2000ms pause 
       cy.get('#work-message').should('contain', 'Pomodoro - Start working!');
       cy.get('timer-display').then(function ($el) {
         expect($el).to.have.attr('time', 1000);

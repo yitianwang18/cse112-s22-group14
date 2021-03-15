@@ -8,7 +8,7 @@ import { TaskDisplay } from "./taskDisplay.js";
  */
 function handleThemeBtnPressed() {
     // Obtains an array of all <link> elements. Select your element using indexing. 
-    let theme = document.getElementsByTagName('link')[1];
+    let theme = document.getElementById("theme");
     let theme_btn = document.getElementById("theme-btn");
 
     // Change the value of href attribute to change the css sheet.
