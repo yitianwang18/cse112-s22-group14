@@ -167,6 +167,22 @@ body {
 }
 
 /**
+ * Fields for displaying task description
+ */
+.middle-container > div {
+  overflow-x: auto;
+  width: 450px;
+  margin: 0 5px;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+/**
  * Styling div placed immediately after h1 inside task-title
  */
 #task-title > h1 + div {
@@ -400,22 +416,6 @@ input[type=text] {
  */
 .middle-container > h3 {
   position: relative;
-}
-
-/**
- * Fields for displaying task description
- */
-.middle-container > div {
-  overflow-x: auto;
-  width: 450px;
-  margin: 0 5px;
-  padding: 10px 20px;
-  display: inline-block;
-  border: 2px solid;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 1rem;
-  font-weight: normal;
 }
 
 /**

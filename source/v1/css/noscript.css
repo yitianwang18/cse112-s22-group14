@@ -15,7 +15,7 @@ noscript > div {
   height: 100%;
   width: 100%;
 
-  /*Color for NoScript */
+  /* Color for NoScript */
   background-color: var(--dark-orange);
 }
 
