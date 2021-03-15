@@ -10,6 +10,7 @@ class InstructionsBox extends HTMLElement {
      */
     constructor() {
         super();
+        // most of this content is simply initializing the html to go in the webcomponent
         let o_wrapper_obj_back = document.createElement("div");
         o_wrapper_obj_back.classList.add("instructions-section-blocker", "hidden");
         o_wrapper_obj_back.id = "instructions-blocker";
@@ -86,7 +87,8 @@ class InstructionsBox extends HTMLElement {
         o_inst_hot_text.id = "inst-hotkeys-text";
 
         o_inst_title_wrapper.append(o_inst_title);
-        o_inst_text.append(o_inst_tasks, o_inst_tasks_list, o_inst_cycle, o_inst_cycle_list, o_inst_pomo, o_inst_pomo_text, o_inst_hot, o_inst_hot_text);
+        o_inst_text.append(o_inst_tasks, o_inst_tasks_list, o_inst_cycle, o_inst_cycle_list, o_inst_pomo,
+            o_inst_pomo_text, o_inst_hot, o_inst_hot_text);
         o_wrapper_obj.append(o_close_button, o_inst_title_wrapper, o_inst_text);
         this.append(o_wrapper_obj_back);
         this.append(o_wrapper_obj);
@@ -129,9 +131,9 @@ class InstructionsBox extends HTMLElement {
  * @static
  * @type {string[]}
  */
- InstructionsBox.A_TASK_INST = ["Click on the task list button, add all tasks you want to do", 
-    "Tasks can only be added before starting the Pomodoro session", 
-    "Once the session begins, you can see the current and the next tasks", 
+InstructionsBox.A_TASK_INST = ["Click on the task list button, add all tasks you want to do",
+    "Tasks can only be added before starting the Pomodoro session",
+    "Once the session begins, you can see the current and the next tasks",
     "If you are done with a task, hit the 'check' button"];
 
 /**
@@ -142,7 +144,7 @@ class InstructionsBox extends HTMLElement {
 InstructionsBox.A_CYCLE_INST = ["One Pomodoro = 25 minutes of work/studying",
     "Once you start, the timer won’t stop until you finish!",
     "Take a 5-minute break after every Pomo and a 30-minute break after every 4 Pomos",
-    "If you get distracted, click “Restart” to restart the current interval", 
+    "If you get distracted, click “Restart” to restart the current interval",
     "Have other things to do? Hit “End Session” to log out"];
 
 /**

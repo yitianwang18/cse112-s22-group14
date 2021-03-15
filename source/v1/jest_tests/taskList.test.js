@@ -71,8 +71,6 @@ test("Tasklist clearInput", () => {
 });
 
 test("TaskList static validateString", () => {
-    let o_tasklist = new TaskList();
-
     const s_empty_string = "";
     const s_whitespace = "   \t\n";
     const s_normal = "task12345";

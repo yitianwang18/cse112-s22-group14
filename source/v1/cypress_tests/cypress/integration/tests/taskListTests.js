@@ -1,36 +1,37 @@
 /// <reference types="Cypress" />
-describe('Task List Tests', () => {
+import { TimerContainer } from "../../../../js/timerContainer";
+describe("Task List Tests", () => {
     beforeEach(() => {
-        cy.visit('http://127.0.0.1:5500/source/v1/index.html');
+        cy.visit("http://127.0.0.1:5500/source/v1/index.html");
         if (!TimerContainer.DEBUG) {
             cy.document().then((doc) => {
-                doc.querySelector('timer-element').toggleDebug();
+                doc.querySelector("timer-element").toggleDebug();
             });
         }
     });
 
-    it('Test TaskList onShow functionality', () => {
+    it("Test TaskList onShow functionality", () => {
         //Initially, TaskList is hidden
-        cy.get('task-list').should('be.hidden');
+        cy.get("task-list").should("be.hidden");
         //TaskList Show button clicked
-        cy.get('#task-btn').trigger('click');
+        cy.get("#task-btn").trigger("click");
         //Tasklist becomes visible
-        cy.get('task-list').should('be.visible');
+        cy.get("task-list").should("be.visible");
     });
 
-    it('Test TaskList onClose functionality', () => {
+    it("Test TaskList onClose functionality", () => {
 
         //TaskList is made visible 
-        cy.get('#task-btn').trigger('click');
-        cy.get('task-list').should('be.visible');
+        cy.get("#task-btn").trigger("click");
+        cy.get("task-list").should("be.visible");
 
         //TaskList Close button clicked
-        cy.get('task-list').within(() => {
-            cy.get(".close").trigger('click');
+        cy.get("task-list").within(() => {
+            cy.get(".close").trigger("click");
         });
 
         //Tasklist becomes hidden
-        cy.get('task-list').should('be.hidden');
+        cy.get("task-list").should("be.hidden");
 
     });
 
@@ -84,46 +85,46 @@ describe('Task List Tests', () => {
         });
     });
 
-    it('Test TaskList functionality when Session Starts / Ends', () => {
+    it("Test TaskList functionality when Session Starts / Ends", () => {
 
         //TaskList made visible
-        cy.get('task-list').should('be.hidden');
-        cy.get('#task-btn').should('be.enabled');
-        cy.get('#task-btn').trigger('click');
+        cy.get("task-list").should("be.hidden");
+        cy.get("#task-btn").should("be.enabled");
+        cy.get("#task-btn").trigger("click");
 
         //Task added in the TaskList
-        cy.get('task-list').within(() => {
-            cy.get('#task-input').clear().type('First Test Task');
-            cy.get('#add-btn').trigger('click');
-            cy.get('#close-task').trigger('click');
+        cy.get("task-list").within(() => {
+            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#add-btn").trigger("click");
+            cy.get("#close-task").trigger("click");
         });
 
         //Session started
-        cy.get('timer-element').within(() => {
-            cy.get("#start-btn").trigger('click');
+        cy.get("timer-element").within(() => {
+            cy.get("#start-btn").trigger("click");
         });
 
         //TaskList is hidden and disabled once session is started
-        cy.get('task-list').should('be.hidden');
-        cy.get('#task-btn').should('be.disabled');
+        cy.get("task-list").should("be.hidden");
+        cy.get("#task-btn").should("be.disabled");
 
         //Session ended
-        cy.get('timer-element').within(() => {
-            cy.get("#end-btn").trigger('click');
+        cy.get("timer-element").within(() => {
+            cy.get("#end-btn").trigger("click");
         });
 
         //TaskList stays hidden but is enabled once session ends
-        cy.get('task-list').should('be.hidden');
-        cy.get('#task-btn').should('be.enabled');
+        cy.get("task-list").should("be.hidden");
+        cy.get("#task-btn").should("be.enabled");
 
         //TaskList can be made visible once session ends
-        cy.get('#task-btn').trigger('click');
-        cy.get('task-list').should('be.visible');
-        cy.get('#task-btn').should('be.enabled');
+        cy.get("#task-btn").trigger("click");
+        cy.get("task-list").should("be.visible");
+        cy.get("#task-btn").should("be.enabled");
 
         //TaskList closed
-        cy.get('task-list').within(() => {
-            cy.get('#close-task').trigger('click');
+        cy.get("task-list").within(() => {
+            cy.get("#close-task").trigger("click");
         });
     });
 });

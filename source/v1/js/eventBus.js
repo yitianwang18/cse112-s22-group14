@@ -1,5 +1,8 @@
 import { TimerContainer } from "./timerContainer.js";
 
+/**
+ * Class representing an Event Hub to centralize all event logic
+ */
 class EventBus {
 
     /**
@@ -23,7 +26,6 @@ class EventBus {
         this.registerEvent("startSession", this.handleStartSession.bind(this));
         this.registerEvent("endSession", this.handleEndSession.bind(this));
         this.registerEvent("nextTask", this.handleNextTask.bind(this));
-        this.registerEvent("fetchTask", this.updateTaskDisplay.bind(this));
         this.registerEvent("startBreak", this.handleStartBreak.bind(this));
         this.registerEvent("startWork", this.handleStartWork.bind(this));
         this.registerEvent("closeWindows", this.handleCloseWindows.bind(this));
@@ -55,21 +57,22 @@ class EventBus {
      */
     handleStartSession() {
         let o_start_error = this.o_timer_container.querySelector("#start-error");
+        // check for valid application states
         if (this.o_task_list.getNumTasks() != 0 && this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
+            // hide toolbar and disable task button
             this.o_toolbar.querySelector("#task-btn").disabled = true;
-            // hide toolbar
             this.o_toolbar.style.visibility = "hidden";
 
             this.o_task_display.handleStartSession();
-            this.updateTaskDisplay();
             this.o_timer_container.handleStartPomo();
             this.o_task_list.closeTaskList();
+            this.updateTaskDisplay();
             this.handleStartWork();
 
             o_start_error.innerHTML = "";
             o_start_error.classList.remove("color-error");
         } else {
-            o_start_error.innerHTML = EventBus.START_ERROR;
+            o_start_error.innerHTML = EventBus.S_START_ERROR;
             o_start_error.classList.add("color-error");
 
             // Make error message disapper after 3 seconds
@@ -80,6 +83,9 @@ class EventBus {
         }
     }
 
+    /**
+     * Event handler function for the 'endSession' event
+     */
     handleEndSession() {
         this.o_toolbar.querySelector("#task-btn").disabled = false;
         this.o_toolbar.style.visibility = "";
@@ -87,14 +93,23 @@ class EventBus {
         this.o_timer_container.handleEndSession();
     }
 
+    /**
+     * Event Handler function for the 'startWork' event
+     */
     handleStartWork() {
         this.o_task_display.enableCheck();
     }
 
+    /**
+     * Event Handler function for the 'startBreak' event
+     */
     handleStartBreak() {
         this.o_task_display.disableCheck();
     }
 
+    /**
+     * Event Handler function for the 'nextTask' event
+     */
     handleNextTask() {
         if (this.o_timer_container.n_curr_state == TimerContainer.WORK) {
             this.updateTaskCompleted();
@@ -104,6 +119,9 @@ class EventBus {
         }
     }
 
+    /**
+     * Event Handler function for the 'spaceKeybind' event
+     */
     handleSpaceKeybind() {
         if (this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
             this.fireEvent("startSession");
@@ -112,17 +130,26 @@ class EventBus {
         }
     }
 
+    /**
+     * Event Handler function for the 'resetPomo' event
+     */
     handleResetPomo() {
         if (this.o_timer_container.n_curr_state == TimerContainer.WORK) {
             this.o_timer_container.resetPomo();
         }
     }
 
+    /**
+     * Event Handler function for the 'closeWindows' event
+     */
     handleCloseWindows() {
         this.o_task_list.closeTaskList();
         this.o_instructions.closeInstructions();
     }
 
+    /**
+     * Event Handler function for the 'showTasks' event
+     */
     handleShowTasks() {
         if (this.o_instructions.getIsShown()) {
             this.o_instructions.closeInstructions();
@@ -130,6 +157,17 @@ class EventBus {
         this.o_task_list.showTaskList();
     }
 
+    /**
+     * Helper function to pop the next task and update the taskdisplay.
+     */
+    updateTaskCompleted() {
+        this.o_task_list.popTask();
+        this.updateTaskDisplay();
+    }
+
+    /**
+     * Helper function to poll the next tasks, and updates the taskdisplay accordingly
+     */
     updateTaskDisplay() {
         let s_next_task = this.o_task_list.getNextTask();
         let s_next_next_task = this.o_task_list.getNextNextTask();
@@ -138,18 +176,12 @@ class EventBus {
         this.o_task_display.setAttribute("nexttask", s_next_next_task);
         this.o_task_display.setAttribute("numtasks", n_num_tasks);
     }
-
-    updateTaskCompleted() {
-        this.o_task_list.popTask();
-        this.updateTaskDisplay();
-    }
-
 }
 /**
  * Error message when Start button is incorrectly handled
  * @static
  * @type {String}
  */
-EventBus.START_ERROR = "Cannot start session with no tasks!";
+EventBus.S_START_ERROR = "Cannot start session with no tasks!";
 
 export { EventBus };

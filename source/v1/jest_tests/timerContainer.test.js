@@ -1,253 +1,29 @@
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-import { jest } from '@jest/globals';
 import { TimerContainer } from "../js/timerContainer.js";
-import { EventBus } from "../js/eventBus.js"
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
 
-const { document } = (new JSDOM(`
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+test("Test getTimeRemaining function", () => {
 
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="Pomodoro Timer">
-  <meta name="keywords" content="Pomodoro, Tomato, Timer">
-  <meta name="author" content="Group 30: Teamato">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  let o_timer_cont = new TimerContainer();
 
-  <title>PomoHero</title>
+  if (!TimerContainer.DEBUG) {
+    o_timer_cont.toggleDebug();
+  }
 
-  <!-- Import css stylesheets for layout and colors -->
-  <link rel="stylesheet" href="./css/layout.css">
-  <link rel="stylesheet" href="./css/colors2.css">
+  //Remaining time is default when session is not started
+  o_timer_cont.n_start_time = new Date().getTime();
+  o_timer_cont.n_curr_state = TimerContainer.NOT_STARTED;
+  expect(o_timer_cont.getTimeRemaining()).toBe(0);
 
-  <!-- Import icons for buttons -->
-  <script src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>
-
-  <!-- Add stylesheet for when javascript is disabled or not supported -->
-  <noscript>
-    <link href='./css/noscript.css' rel='stylesheet'>
-  </noscript>
-</head>
-
-<body>
-
-  <main>
-    <section class="full-height timer-section">
-
-      <!-- Contains the header : logo, title -->
-      <div class="header-container">
-        <a href="#">
-          <img class="pomo-logo" src="assets/img/PomoHeroLogo2.png" alt="pomo hero logo" href="#">
-        </a>
-        <a href="#">
-          <img class="banner" src="assets/img/PomoTitleA.png" alt="PomoHero Banner">
-        </a>
-      </div>
-
-      <!-- Contains the slide-out tasklist -->
-      <task-list></task-list>
-
-      <!-- Contains the Pomodoro timer -->
-      <div class="top-container">
-        <div class="main-box">
-          <nav class="all-btns">
-            <button id="theme-btn" title="Simple Theme" class="btn"><i class="fas fa-palette fa-x theme-btn"></i></button>
-            <button id="task-btn" title="Tasklist" class="btn"><i class="fas fa-tasks fa-x"></i></button>
-            <button id="info-btn-new" title="Instructions" class="btn"><i class="fas fa-info-circle fa-x info-btn-new"></i></button>
-          </nav>
-          <timer-element></timer-element>
-        </div>
-      </div>
-    </div>
-
-    <!-- <div class="middle-container">
-      <h3>Current task:</h3>
-      <div id="current">
-        Do this
-      </div>
-      <button id="check" class="btn"><i class="fas fa-check-circle fa-x tool"></i></button>
-      <h3>Next task:</h3>
-      <div id="next">
-        Do that
-      </div>
-    </div> -->
-
-    <!-- Contains the current and next task of the user -->
-    <task-display></task-display>
-
-  </section>
-
-    <!-- Contains the instructions -->
-    <section class="instructions-section flex flex-column">
-      <h2 class="instruct-head">Instructions</h2>
-      <div id="instructions-para">
-        <h3>Add tasks for the session</h3>
-        <ul>
-          <li>From the top-right corner, click on the task list button</li>
-          <li>In the slide-out container, add all tasks for the session</li>
-          <li>Note: Tasks can only be added before starting the Pomodoro session</li>
-          <li>Tasks can be added, edited, or deleted</li>
-          <li>Once the session begins, you can see the current and the next tasks below the timer</li>
-          <li>If you are done with the task, hit the 'check' button next to the current task</li>
-        </ul>
-        <h3>Work-Break-Work</h3>
-        <ul>
-          <li>Click on “Start” when you are ready</li>
-          <li>Note: Once started, there is no going back. The timer won’t stop</li>
-          <li>Take a 5-minute break after every Pomodoro and a 30-minute break after every 4
-            Pomodoros</li>
-          <li>Get distracted at your own risk. If distracted, click “Restart” and you will have to start
-            your current interval from the very beginning</li>
-          <li>Have other jobs to do? Hit “End Session” to log out</li>
-        </ul>
-        <h3>Pomodoro Technique</h3>
-        <p>
-          The Pomodoro technique is a scientifically proven way to help increase productivity.
-          It is a way to work with time instead of struggling against it.
-          It is a smart method for handling interruptions,
-          meeting deadlines,
-          improving content of work,
-          and reducing useless work sessions.
-        </p>
-      </div>
-      <div class="instruct-bottom">
-        <button id="up-arrow" class="btn" title="Scroll up"><i class="fas fa-arrow-alt-circle-up fa-2x arrow-up-icon"></i></button>
-      </div>
-    </section>
-  </main>
-
-  <!-- Contains the footer : Copyright for app name -->
-  <footer>
-    <p class="copy-right">© PomoHero 2021</p>
-  </footer>
-
-  <!-- Add sound for notifications -->
-  <audio id="notifs" src="assets/audio/notif_tone.mp3"></audio>
-
-  <!-- Import JS source files -->
-  <script type="module" src="js/main.js"></script>
-  <script src="js/timerContainer.js"></script>
-
-  <!-- No Script for when JS is not supported or disabled -->
-  <noscript>
-    <div>
-      <p>Sorry, either your browser does not support JavaScript, or it has been disabled...</p>
-    </div>
-  </noscript>
-</body>
-
-</html>
-`, { runScripts: "outside-only" })).window;
-
-test('Test getTimeRemaining function', () => {
-
-    let o_timer_cont = new TimerContainer();
-
-    if(!TimerContainer.DEBUG) {
-      o_timer_cont.toggleDebug();
-    }
-
-    //Remaining time is default when session is not started
-    o_timer_cont.n_start_time = new Date().getTime();
-    o_timer_cont.n_curr_state = TimerContainer.NOT_STARTED;
-    expect(o_timer_cont.getTimeRemaining()).toBe(0); 
-
-    //Remaining time is equal to current state time(3000) when session is just started started
-    o_timer_cont.n_curr_state = TimerContainer.WORK;
-    o_timer_cont.n_start_time = new Date().getTime();
-    expect(o_timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(2900);
-    expect(o_timer_cont.getTimeRemaining()).toBeLessThanOrEqual(3000);
+  //Remaining time is equal to current state time(3000) when session is just started started
+  o_timer_cont.n_curr_state = TimerContainer.WORK;
+  o_timer_cont.n_start_time = new Date().getTime();
+  expect(o_timer_cont.getTimeRemaining()).toBeGreaterThanOrEqual(2900);
+  expect(o_timer_cont.getTimeRemaining()).toBeLessThanOrEqual(3000);
 
 });
 
-// test('Test TimerContainer lifecycle', () => {
-//     let o_timer_cont = new TimerContainer();
-
-//     // Default state is session 'NOT STARTED' and no pomos have been completed
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.NOT_STARTED);
-//     expect(o_timer_cont.n_done_pomos).toBe(0);
-
-//     o_timer_cont.progressState();
-
-//     // On progressState call, state changes from NOT STARTED to WORK and no pomos have been completed
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.WORK);
-//     expect(o_timer_cont.n_done_pomos).toBe(0);
-
-//     o_timer_cont.progressState();
-
-//     // On progressState call, state changes from WORK to SHORT BREAK and 1 pomo have been completed
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.S_BREAK);
-//     expect(o_timer_cont.n_done_pomos).toBe(1);
-
-//     o_timer_cont.progressState();
-
-//     // On progressState call, state changes from SHORT BREAK to WORK and no more pomos have been completed
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.WORK);
-//     expect(o_timer_cont.n_done_pomos).toBe(1);
-
-//     o_timer_cont.progressState();
-
-//     // On progressState call, state changes from WORK to SHORT BREAK and 2 pomos have been completed
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.S_BREAK);
-//     expect(o_timer_cont.n_done_pomos).toBe(2);
-
-//     o_timer_cont.progressState();
-
-//     // On progressState call, state changes from SHORT BREAK to WORK and no more pomos have been completed
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.WORK);
-//     expect(o_timer_cont.n_done_pomos).toBe(2);
-
-//     o_timer_cont.progressState();
-
-//     // On progressState call, state changes from WORK to SHORT BREAK and 3 pomo have been completed
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.S_BREAK);
-//     expect(o_timer_cont.n_done_pomos).toBe(3);
-
-//     o_timer_cont.progressState();
-
-//     // On progressState call, state changes from SHORT BREAK to WORK and no more pomos have been completed
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.WORK);
-//     expect(o_timer_cont.n_done_pomos).toBe(3);
-
-//     o_timer_cont.progressState();
-
-//     // On progressState call, state changes from WORK to LONG BREAK and 4 pomo have been completed
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.L_BREAK);
-//     expect(o_timer_cont.n_done_pomos).toBe(4);
-
-//     o_timer_cont.progressState();
-
-//     // On progressState call, state changes from LONG BREAK to WORK and completed pomos are reset back to 0
-//     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.WORK);
-//     expect(o_timer_cont.n_done_pomos).toBe(0);
-
-//     // Progress State Cycle succesfully achieved
-// });
-
-test('Test timer container default values', () => {
-    let o_timer_cont = new TimerContainer();
-    expect(o_timer_cont.n_curr_state).toBe(TimerContainer.NOT_STARTED);
-    expect(o_timer_cont.n_done_pomos).toBe(0);
+test("Test timer container default values", () => {
+  let o_timer_cont = new TimerContainer();
+  expect(o_timer_cont.n_curr_state).toBe(TimerContainer.NOT_STARTED);
+  expect(o_timer_cont.n_done_pomos).toBe(0);
 });
-
-// test ('Test disable start button functionality', () => {
-//     let o_timer_cont = document.querySelector('timer-element');
-//     let o_start_btn = o_timer_cont.querySelector('#start-btn');
-//     o_start_btn.click();
-// });
-
-// test('Test timer container default values', () => {
-//   let o_timer_cont = new TimerContainer();
-//   let o_event_bus = new EventBus();
-
-//   o_timer_cont.querySelector('#start-btn').click();
-  
-
-//   expect(o_event_bus.fireEvent.mock.calls.length).toBe(1);
-
-// });
-
 

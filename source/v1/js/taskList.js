@@ -1,5 +1,4 @@
 import { Task } from "./task.js";
-//import { TaskDisplay } from "./taskDisplay.js";
 
 /**
  * Custom HTML element encapsulating all of the functionality related to the Task List
@@ -14,24 +13,27 @@ class TaskList extends HTMLElement {
         this.o_tasks = {};
         this.n_next_task_id = 0;
 
+        // background mask
         let o_wrapper_obj_back = document.createElement("div");
         o_wrapper_obj_back.classList.add("sidenav-blocker", "hidden");
         o_wrapper_obj_back.id = "side-tasks-blocker";
         o_wrapper_obj_back.addEventListener("click", this.closeTaskList.bind(this));
 
+        // actual sidebar
         let o_wrapper_obj = document.createElement("div");
         o_wrapper_obj.className = "sidenav";
         o_wrapper_obj.id = "side-tasks";
 
+        // close button
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn", "hidden");
         o_close_button.id = "close-task";
         o_close_button.innerHTML = "&times;";
         o_close_button.addEventListener("click", this.closeTaskList.bind(this));
 
+        // wrapper for input/headers
         let o_task_title_wrapper = document.createElement("div");
         o_task_title_wrapper.id = "task-title";
-        o_task_title_wrapper.className = "hidden";
 
         let o_tasklist_title = document.createElement("h1");
         o_tasklist_title.innerText = "TaskList";
@@ -39,6 +41,7 @@ class TaskList extends HTMLElement {
         let o_add_task = document.createElement("div");
         o_add_task.id = "add-task";
 
+        // Add Tasks Header
         let o_add_label_container = document.createElement("div")
 
         let o_make_add_label_bold = document.createElement("strong");
@@ -68,6 +71,7 @@ class TaskList extends HTMLElement {
         o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-x");
         o_add_task_button.appendChild(o_add_task_icon);
 
+        // error message for add button
         let o_error_mssg = document.createElement("span");
         o_error_mssg.id = "add-error";
         o_error_mssg.className = "error-mssg";
@@ -80,6 +84,7 @@ class TaskList extends HTMLElement {
 
         let o_hr = document.createElement("hr");
 
+        // Tasks remaining header
         let o_existing_tasks_title = document.createElement("div")
 
         let o_make_bold = document.createElement("strong");
@@ -126,7 +131,7 @@ class TaskList extends HTMLElement {
         let o_add_error = this.querySelector("#add-error");
         if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
             o_add_btn.disabled = true;
-            o_add_error.innerHTML = TaskList.TASK_ERROR;
+            o_add_error.innerHTML = TaskList.S_TASK_ERROR;
             o_add_error.classList.add("color-error");
         } else {
             o_add_btn.disabled = false;
@@ -151,9 +156,8 @@ class TaskList extends HTMLElement {
     /**
      * Handles the event for adding a task. o_event should be useless as you don't care about the object that was clicked.
      * Validates the string, and if it's valid, it updates the data structure and adds a Task to the DOM
-     * @param {Event} o_event event instance
      */
-    handleAddTask(o_event) {
+    handleAddTask() {
         let o_input = this.querySelector("input[name=task]");
         let s_task_name = o_input.value.trim();
 
@@ -203,18 +207,18 @@ class TaskList extends HTMLElement {
      */
     editItemName(n_task_id) {
         // get the task object that we'll be editing the name of
-        let o_task_item = this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`);
-        let o_task_item_input = o_task_item.querySelector('input');
-        let s_curr_input_val = o_task_item.getAttribute('taskname');
+        let o_task_item = this.querySelector(`#all-tasks task-item[taskid="${n_task_id}"]`);
+        let o_task_item_input = o_task_item.querySelector("input");
+        let s_curr_input_val = o_task_item.getAttribute("taskname");
         let o_error_span = this.querySelector("#edit-error");
         if (TaskList.validateString(o_task_item_input.value)) {
-            o_task_item.setAttribute('taskname', o_task_item_input.value.trim());
+            o_task_item.setAttribute("taskname", o_task_item_input.value.trim());
             o_error_span.innerHTML = "";
             o_error_span.classList.remove("color-error");
         }
         else {
-            o_task_item.setAttribute('taskname', s_curr_input_val);
-            o_error_span.innerHTML = TaskList.TASK_ERROR;
+            o_task_item.setAttribute("taskname", s_curr_input_val);
+            o_error_span.innerHTML = TaskList.S_TASK_ERROR;
             o_error_span.classList.add("color-error");
 
             // Make error message disappear after 3 seconds
@@ -223,9 +227,8 @@ class TaskList extends HTMLElement {
                 o_error_span.classList.remove("color-error");
             }, 3000);
         }
-        // this.editTaskName()
         // update array of tasks (o_tasks)
-        this.o_tasks[n_task_id] = o_task_item.getAttribute('taskname');
+        this.o_tasks[n_task_id] = o_task_item.getAttribute("taskname");
     }
 
     /**
@@ -241,7 +244,7 @@ class TaskList extends HTMLElement {
         delete this.o_tasks[n_task_id];
 
         // attribute query selector
-        this.querySelector(`#all-tasks task-item[taskid='${n_task_id}']`).remove();
+        this.querySelector(`#all-tasks task-item[taskid="${n_task_id}"]`).remove();
         return item;
     }
 
@@ -348,7 +351,7 @@ TaskList.N_ENTER_KEYCODE = 13;
  * @static
  * @type {String}
  */
-TaskList.TASK_ERROR = "Input cannot be empty or be more than 50 chars long!";
+TaskList.S_TASK_ERROR = "Input cannot be empty or be more than 50 chars long!";
 
 customElements.define("task-list", TaskList);
 

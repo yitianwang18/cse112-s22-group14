@@ -8,7 +8,7 @@ class TimerDisplay extends HTMLElement {
      * @static
      * @type {string[]}
      */
-    static get observedAttributes() { return ['time', 'pomos-comp']; }
+    static get observedAttributes() { return ["time", "pomos-comp"]; }
 
     /**
      * Constructs a new Timer Display
@@ -31,6 +31,7 @@ class TimerDisplay extends HTMLElement {
 
         o_wrapper.append(o_work_message, o_pomos_completed, o_br);
 
+        // construct pomos icons
         for (let n_pomo_index = 1; n_pomo_index <= 4; n_pomo_index++) {
             let o_pomo_image = document.createElement("img");
             o_pomo_image.id = `pomo${n_pomo_index}`;
@@ -41,8 +42,6 @@ class TimerDisplay extends HTMLElement {
         }
 
         this.append(o_wrapper);
-
-        // this.renderComponents();
     }
 
     /**
@@ -77,7 +76,9 @@ class TimerDisplay extends HTMLElement {
      * Uses the attributes 'time' and 'pomos-comp' as inputs
      */
     renderComponents() {
+        // update time display
         this.querySelector("#time-display").innerHTML = TimerDisplay.formatMilliTime(Number(this.getAttribute("time")));
+        // update status of pomo icons based on number of pomos completed
         for (let n_pomo_index = 1; n_pomo_index <= 4; n_pomo_index++) {
             let s_pomo_done = (n_pomo_index <= this.getAttribute("pomos-comp")) ? "Yes" : "No";
             this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", `assets/img/PomoCount${s_pomo_done}.png`);

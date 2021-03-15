@@ -1,10 +1,8 @@
 /// <reference types="Cypress" />
-
-import { EventBus } from "../../../../js/eventBus.js";
-
-describe('Keybind Integration Tests', () => {
+describe("Keybind Integration Tests", () => {
+    const N_DELAY = 200;
     beforeEach(() => {
-        cy.visit('http://127.0.0.1:5500/source/v1/index.html');
+        cy.visit("http://127.0.0.1:5500/source/v1/index.html");
         cy.document().then((o_doc) => {
             cy.spy(o_doc.EventBus, "fireEvent");
             cy.spy(o_doc.EventBus, "updateTaskCompleted");
@@ -15,10 +13,10 @@ describe('Keybind Integration Tests', () => {
         })
     });
 
-    it('Testing t (tasklist opening)', () => {
+    it("Testing t (tasklist opening)", () => {
         // opening normally
         cy.get("body").type("t");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             cy.get("#side-tasks").should("have.class", "sidenav-open");
             expect(o_doc.querySelector("task-list").showTaskList).to.be.called;
@@ -30,7 +28,7 @@ describe('Keybind Integration Tests', () => {
         cy.get("#side-tasks").should("not.have.class", "sidenav-open");
         cy.get("#info-btn-new").click();
         cy.get("body").type("t");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             cy.get("#side-tasks").should("have.class", "sidenav-open");
             expect(o_doc.querySelector("task-list").showTaskList).to.have.callCount(2);
@@ -40,9 +38,10 @@ describe('Keybind Integration Tests', () => {
 
     });
 
-    it('Testing Escape (Close out of windows)', () => {
+    it("Testing Escape (Close out of windows)", () => {
         // opening normally
         cy.get("body").type("t");
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             cy.get("#side-tasks").should("have.class", "sidenav-open");
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("showTasks");
@@ -50,9 +49,9 @@ describe('Keybind Integration Tests', () => {
 
         // opening when information box is out
         cy.get("body").type("{esc}");
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             cy.get("#side-tasks").should("not.have.class", "sidenav-open");
-            expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("closeWindows");
         });
 
         // open instructions
@@ -60,14 +59,15 @@ describe('Keybind Integration Tests', () => {
         cy.get("#info-btn-new").click();
         cy.get("instructions-box").should("be.visible");
         cy.get("body").type("{esc}");
-
+        cy.get("instructions-box").should("not.be.visible");
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.have.callCount(3);
+            expect(o_doc.EventBus.fireEvent).to.have.callCount(2);
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("closeWindows");
         });
     });
 
-    it('Testing c (color change)', () => {
+    it("Testing c (color change)", () => {
         // test toggling theme
         cy.get("#theme").should("have.attr", "href", "./css/colors2.css");
         cy.get("body").type("c");
@@ -76,16 +76,16 @@ describe('Keybind Integration Tests', () => {
         cy.get("#theme").should("have.attr", "href", "./css/colors2.css");
     });
 
-    it('Testing space (start/end pomo)', () => {
+    it("Testing space (start/end pomo)", () => {
         // testing space without a session
         cy.get("body").type(" ");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("startSession");
             expect(o_doc.querySelector("timer-element").beginSession).to.not.be.called;
         });
 
-        // get task list using document, cy.get() doesn't work 
+        // get task list using document, cy.get() doesn"t work 
         cy.document().then((o_doc) => {
             let o_task_list = o_doc.querySelector("task-list");
             o_task_list.addItem("Task1");
@@ -93,22 +93,22 @@ describe('Keybind Integration Tests', () => {
         });
 
         cy.get("body").type(" ");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("startSession");
             expect(o_doc.querySelector("timer-element").beginSession).to.be.called;
         });
 
         cy.get("body").type(" ");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("endSession");
             expect(o_doc.querySelector("timer-element").endSession).to.be.called;
         });
     });
 
-    it('Testing r (reset pomo)', () => {
-        // make sure that the timer-element's reset is not called when not in session
+    it("Testing r (reset pomo)", () => {
+        // make sure that the timer-element"s reset is not called when not in session
         cy.get("body").type("r");
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("resetPomo");
@@ -123,13 +123,13 @@ describe('Keybind Integration Tests', () => {
         });
 
         cy.get("body").type(" ");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("startSession");
         });
 
         cy.get("body").type("r");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("resetPomo");
             expect(o_doc.querySelector("timer-element").resetPomo).to.be.called;
@@ -138,10 +138,10 @@ describe('Keybind Integration Tests', () => {
         cy.get("body").type(" ");
     });
 
-    it('Testing n (next task)', () => {
+    it("Testing n (next task)", () => {
         // make sure that taskdisplay is not updated without a session
         cy.get("body").type("n");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("nextTask");
             expect(o_doc.EventBus.updateTaskCompleted).to.be.not.called;
@@ -155,20 +155,20 @@ describe('Keybind Integration Tests', () => {
         });
 
         cy.get("body").type(" ");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("startSession");
         });
 
         cy.get("body").type("n");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("nextTask");
             expect(o_doc.EventBus.updateTaskCompleted).callCount(1);
         });
 
         cy.get("body").type("n");
-        cy.wait(200);
+        cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("nextTask");
             expect(o_doc.EventBus.updateTaskCompleted).callCount(2);

@@ -30,6 +30,7 @@ function showTaskList() {
 
 /**
  * Event handler function to show Instructions when info button is pressed
+ * @param {Event} o_event event instance
  */
 function showInstructions(o_event) {
     let inst = document.querySelector("instructions-box");
@@ -39,6 +40,7 @@ function showInstructions(o_event) {
 
 /**
  * Event handler function to handleKeybinds
+ * @param {Event} o_event event instance
  */
 function handleKeyBinds(o_event) {
     console.log(o_event);
@@ -77,19 +79,20 @@ function handleKeyBinds(o_event) {
 document.addEventListener("DOMContentLoaded", () => {
 
     // Code for change theme button functionality
-    let theme_btn = document.getElementById("theme-btn");
-    theme_btn.addEventListener("click", handleThemeBtnPressed);
+    let o_theme_btn = document.getElementById("theme-btn");
+    o_theme_btn.addEventListener("click", handleThemeBtnPressed);
 
     // Code for showing / hiding TaskList functionality
-    let task_btn = document.getElementById("task-btn");
-    task_btn.addEventListener("click", showTaskList);
+    let o_task_btn = document.getElementById("task-btn");
+    o_task_btn.addEventListener("click", showTaskList);
 
     document.addEventListener("keydown", handleKeyBinds);
 
     // Code for showing / hiding Instructions functionality
-    let info_btn = document.getElementById("info-btn-new");
-    info_btn.addEventListener("click", showInstructions);
+    let o_info_btn = document.getElementById("info-btn-new");
+    o_info_btn.addEventListener("click", showInstructions);
 
+    // initialize Event Bus instance
     document.EventBus = new EventBus();
 
 });

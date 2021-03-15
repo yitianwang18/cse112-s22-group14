@@ -9,7 +9,7 @@ class Task extends HTMLElement {
      * @static
      * @type {String[]}
      */
-    static get observedAttributes() { return ['taskname', 'taskid']; }
+    static get observedAttributes() { return ["taskname", "taskid"]; }
 
     /**
      * Constructs a Task item, initializing the task name and delete button
@@ -21,8 +21,8 @@ class Task extends HTMLElement {
 
         let o_item = document.createElement("input");
         // let o_item_input = document.createElement("input");
-        o_item.setAttribute('type', 'text');
-        o_item.setAttribute('name', 'task');
+        o_item.setAttribute("type", "text");
+        o_item.setAttribute("name", "task");
 
         let o_del_button = document.createElement("button");
         o_del_button.id = "delete-btn";
@@ -62,7 +62,7 @@ class Task extends HTMLElement {
      * @param {String} oldValue old value of attribute
      * @param {String} newValue new value of attribute
      */
-    attributeChangedCallback(name, oldValue, newValue) {
+    attributeChangedCallback() {
         this.renderComponents();
     }
 

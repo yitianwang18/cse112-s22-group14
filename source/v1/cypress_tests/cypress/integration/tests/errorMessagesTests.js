@@ -1,9 +1,9 @@
 describe("Error Messages Tests", () => {
     beforeEach(() => {
         cy.visit("http://127.0.0.1:5500/source/v1/index.html");
-        cy.document().then((doc) => {
-            if (!doc.querySelector('timer-element').DEBUG) {
-                doc.querySelector('timer-element').toggleDebug();
+        cy.document().then((o_doc) => {
+            if (!o_doc.querySelector("timer-element").DEBUG) {
+                o_doc.querySelector("timer-element").toggleDebug();
             }
         });
     });
@@ -14,10 +14,10 @@ describe("Error Messages Tests", () => {
         // First time opening tasklist with empty input
         cy.get("#task-btn").trigger("click");
         cy.get("#add-error")
-        .then(($el) => {
-            expect($el).to.have.class("color-error");
-            expect($el).to.contain("Input cannot be empty");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Input cannot be empty");
+            });
 
         // Non-empty input
         cy.get("#task-input").clear().type("abc");
@@ -48,19 +48,19 @@ describe("Error Messages Tests", () => {
         // make input empty and check error
         cy.get("#all-tasks input").clear();
         cy.get("#edit-error")
-        .then(($el) => {
-            expect($el).to.have.class("color-error");
-            expect($el).to.contain("Input cannot be empty");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Input cannot be empty");
+            });
 
         // delete a task, make input empty of remaining task and check error
         cy.get("task-list #all-tasks task-item[taskid='1'] button").click();
         cy.get("#all-tasks input").clear();
         cy.get("#edit-error")
-        .then(($el) => {
-            expect($el).to.have.class("color-error");
-            expect($el).to.contain("Input cannot be empty");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Input cannot be empty");
+            });
 
         cy.get("#close-task").trigger("click");
     });
@@ -69,61 +69,61 @@ describe("Error Messages Tests", () => {
     it("Shows Start error message", () => {
 
         // Trigger start button
-        cy.get("#start-error").should('not.have.class', 'color-error');
+        cy.get("#start-error").should("not.have.class", "color-error");
 
         cy.clock();
-        cy.get("#start-btn").trigger('click');
+        cy.get("#start-btn").trigger("click");
         cy.get("#start-error")
-        .then(($el) => {
-            expect($el).to.have.class("color-error");
-            expect($el).to.contain("Cannot start session");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Cannot start session");
+            });
 
         // Wait for 3 seconds, error message should have disappeared
         cy.tick(3000);
         cy.get("#start-error")
-        .then(($el) => {
-            expect($el).to.not.have.class("color-error");
-            expect($el).to.not.contain("Cannot start session");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.not.have.class("color-error");
+                expect($o_el).to.not.contain("Cannot start session");
+            });
     });
 
     // Testing Reset error message
     it("Shows Reset error message", () => {
 
         // Check reset error class
-        cy.get("#reset-error").should('not.have.class', 'color-error');
-        
+        cy.get("#reset-error").should("not.have.class", "color-error");
+
         // Add tasks
         cy.get("#task-btn").trigger("click");
         cy.get("#task-input").clear().type("abc");
         cy.get("#add-btn").trigger("click");
         cy.get("#task-input").clear().type("123");
         cy.get("#add-btn").trigger("click");
-        
+
         cy.get("#close-task").trigger("click");
 
         // Start session
         cy.clock();
-        cy.get("#start-btn").trigger('click');
+        cy.get("#start-btn").trigger("click");
 
         // During short break, disable reset button
         cy.tick(5000);
 
         cy.get("#reset-error")
-        .then(($el) => {
-            expect($el).to.have.class("color-error");
-            expect($el).to.contain("Cannot reset timer");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Cannot reset timer");
+            });
 
         // After break ends
         cy.tick(3000);
 
         cy.get("#reset-error")
-        .then(($el) => {
-            expect($el).to.not.have.class("color-error");
-            expect($el).to.not.contain("Cannot reset timer");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.not.have.class("color-error");
+                expect($o_el).to.not.contain("Cannot reset timer");
+            });
     });
 
     // Testing End error message
@@ -131,80 +131,80 @@ describe("Error Messages Tests", () => {
 
         // Without starting session
         cy.get("#end-error")
-        .then(($el) => {
-            expect($el).to.have.class("color-error");
-            expect($el).to.contain("Session not started");
-        });
-        
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Session not started");
+            });
+
         // Add tasks
         cy.get("#task-btn").trigger("click");
         cy.get("#task-input").clear().type("abc");
         cy.get("#add-btn").trigger("click");
         cy.get("#task-input").clear().type("123");
         cy.get("#add-btn").trigger("click");
-        
+
         cy.get("#close-task").trigger("click");
 
         // Start session
-        cy.get("#start-btn").trigger('click');
+        cy.get("#start-btn").trigger("click");
 
         cy.get("#end-error")
-        .then(($el) => {
-            expect($el).to.not.have.class("color-error");
-            expect($el).to.not.contain("Session not started");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.not.have.class("color-error");
+                expect($o_el).to.not.contain("Session not started");
+            });
 
         // After ending session
-        cy.get("#end-btn").trigger('click');
+        cy.get("#end-btn").trigger("click");
 
         cy.get("#end-error")
-        .then(($el) => {
-            expect($el).to.have.class("color-error");
-            expect($el).to.contain("Session not started");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Session not started");
+            });
     });
 
     // Testing Check error message
     it("Shows Check error message", () => {
 
-        // Check 'check' error class
-        cy.get("#check-error").should('not.be.visible');
-        
+        // Check "check" error class
+        cy.get("#check-error").should("not.be.visible");
+
         // Add tasks
         cy.get("#task-btn").trigger("click");
         cy.get("#task-input").clear().type("abc");
         cy.get("#add-btn").trigger("click");
         cy.get("#task-input").clear().type("123");
         cy.get("#add-btn").trigger("click");
-        
+
         cy.get("#close-task").trigger("click");
 
         // Start session
         cy.clock();
-        cy.get("#start-btn").trigger('click');
+        cy.get("#start-btn").trigger("click");
 
         cy.get("#check-error")
-        .then(($el) => {
-            expect($el).to.not.have.class("color-error");
-            expect($el).to.contain("Tasks cannot be checked off");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.not.have.class("color-error");
+                expect($o_el).to.contain("Tasks cannot be checked off");
+            });
 
         // During short break, disable check button
         cy.tick(5000);
 
         cy.get("#check-error")
-        .then(($el) => {
-            expect($el).to.have.class("color-error");
-            expect($el).to.contain("Tasks cannot be checked off");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Tasks cannot be checked off");
+            });
 
         // After break ends
         cy.tick(3000);
 
         cy.get("#check-error")
-        .then(($el) => {
-            expect($el).to.not.have.class("color-error");
-            expect($el).to.contain("Tasks cannot be checked off");
-        });
+            .then(($o_el) => {
+                expect($o_el).to.not.have.class("color-error");
+                expect($o_el).to.contain("Tasks cannot be checked off");
+            });
     });
 });
