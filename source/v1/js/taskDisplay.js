@@ -89,8 +89,6 @@ export default class TaskDisplay extends HTMLElement {
      */
     attributeChangedCallback(name, oldValue, newValue) {
         this.wrapperAttributeFunction(name, oldValue, newValue);
-        // let helperAttrib = wrapperAttributeFunction;
-        // helperAttrib(name, oldValue, newValue);
     }
 
     /**
