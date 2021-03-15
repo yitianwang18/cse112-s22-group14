@@ -83,6 +83,19 @@ export default class TaskDisplay extends HTMLElement {
      * @param {*} newValue new value of attribute
      */
     attributeChangedCallback(name, oldValue, newValue) {
+        this.wrapperAttributeFunction(name, oldValue, newValue);
+    }
+
+    /**
+     * Helper function for attributeChangedCallback:
+     * When attributes are changed
+     * An attribute name is passed in to select the element in the taskDisplay, append
+     * its respective attributes are changed based on the name passed in
+     * @param {String} name name of changed attribute
+     * @param {*} oldValue old value of attribute
+     * @param {*} newValue new value of attribute
+     */
+    wrapperAttributeFunction(name, oldValue, newValue) {
         // don't display tasks if 1 or none
         if (name == "numtasks" && newValue <= 1) {
             this.querySelector("#next").style.display = "none";
