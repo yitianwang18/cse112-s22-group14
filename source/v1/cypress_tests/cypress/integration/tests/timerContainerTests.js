@@ -1,4 +1,3 @@
-import { TimerContainer } from "../../../../js/timerContainer.js";
 describe('Timer Container Tests', () => {
   beforeEach(() => {
     cy.visit('http://127.0.0.1:5500/source/v1/index.html');
@@ -8,7 +7,7 @@ describe('Timer Container Tests', () => {
       }
     });
   });
-  
+
   it('Test Start Button does not start session when no tasks have been added', () => {
 
     //Session doesnot start when start button is clicked
@@ -17,7 +16,7 @@ describe('Timer Container Tests', () => {
       cy.get('#start-btn').trigger('click');
       cy.get('#work-message').should('contain', 'Ready to focus?');
     });
-  
+
     //A task is added
     cy.get('#task-btn').trigger('click');
     cy.get('task-list').within(() => {
@@ -45,7 +44,7 @@ describe('Timer Container Tests', () => {
     });
 
     cy.get('timer-element').within(() => {
-      
+
       //Initially start button is visible and reset button is not
       cy.get('#start-btn').should('be.visible');
       cy.get('#reset-btn').should('be.hidden');
@@ -93,7 +92,7 @@ describe('Timer Container Tests', () => {
         expect($el).to.have.attr('time', -1);
         expect($el).to.have.attr('pomos-comp', 0);
       });
-      
+
       //Start button clicked
       cy.get('#start-btn').trigger('click');
 
@@ -287,7 +286,7 @@ describe('Timer Container Tests', () => {
     });
 
     cy.get('timer-element').within(() => {
-      
+
       cy.clock();
 
       //Initially, Session not started
@@ -299,14 +298,14 @@ describe('Timer Container Tests', () => {
 
       //Start button clicked; Session started
       cy.get('#start-btn').trigger('click');
-      
+
       //Session enters Work cycle; Timer displays 3000ms (Work cycle duration); 0 pomos completed
       cy.get('#work-message').should('contain', 'Pomodoro - Start working!');
-      cy.get('timer-display').then(function($el) {
+      cy.get('timer-display').then(function ($el) {
         expect($el).to.have.attr('time', 3000);
         expect($el).to.have.attr('pomos-comp', 0);
       });
-      
+
       cy.tick(3000);
 
       //Session still in Work Cycle after 3000ms; Timer displays 0ms
@@ -450,7 +449,7 @@ describe('Timer Container Tests', () => {
         expect($el).to.have.attr('time', 3000);
         expect($el).to.have.attr('pomos-comp', 0);
       });
-    
+
     });
   });
 });

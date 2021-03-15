@@ -1,8 +1,5 @@
-import { EventBus } from "../../../../js/eventBus";
-import TaskDisplay from "../../../../js/taskDisplay";
-
 describe('Testing Event Bus', () => {
-    
+
     beforeEach(() => {
         cy.visit('http://127.0.0.1:5500/source/v1/index.html');
         cy.document().then((doc) => {
@@ -12,14 +9,6 @@ describe('Testing Event Bus', () => {
             cy.spy(doc.EventBus, "fireEvent");
         });
     });
-
-    // it('Test all events are registered correctly', () => {
-    //     // cy.document().then((o_doc) => {
-    //     //     cy.spy(o_doc.EventBus, "registerEvent");
-    //     //     expect(o_doc.EventBus.registerEvent).to.have.callCount(6);
-    //     // });
-    //     cy.spy()
-    // });
 
     it('Test "Start Session" event is fired correctly', () => {
         //Task added in the TaskList
@@ -222,7 +211,7 @@ describe('Testing Event Bus', () => {
             expect($el).to.have.class("color-error");
             expect($el).to.contain("Cannot start session");
         });
-        
+
         //Fire 'startSession' with non-empty tasklist
         cy.get('#task-btn').trigger('click');
         cy.get('task-list').within(() => {
@@ -400,7 +389,7 @@ describe('Testing Event Bus', () => {
             cy.get("#instructions-blocker").should('be.hidden');
         });
     });
-    
+
     it('Test functionality when "Space Keybind" event is fired', () => {
         //Fire the "Space Keybind" event when the session has not started
         cy.get("body").type(' ');

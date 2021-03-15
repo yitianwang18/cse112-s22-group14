@@ -16,6 +16,9 @@ class EventBus {
         this.registerEvents();
     }
 
+    /**
+     * Registers all of the events that will be fired
+     */
     registerEvents() {
         this.registerEvent("startSession", this.handleStartSession.bind(this));
         this.registerEvent("endSession", this.handleEndSession.bind(this));
@@ -40,13 +43,16 @@ class EventBus {
     }
 
     /**
-     * Fires 
-     * @param {*} s_event_name 
+     * Fires the specified event
+     * @param {String} s_event_name 
      */
     fireEvent(s_event_name) {
         this.o_bus.dispatchEvent(new CustomEvent(s_event_name));
     }
 
+    /**
+     * Event handler function for the 'startSession' Event
+     */
     handleStartSession() {
         let o_start_error = this.o_timer_container.querySelector("#start-error");
         if (this.o_task_list.getNumTasks() != 0 && this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
