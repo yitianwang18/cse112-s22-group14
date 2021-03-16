@@ -33,4 +33,8 @@ parserOptions:
 #########
 # Rules #
 #########
-rules: {}
+rules:
+  no-case-declarations: "off"
+  no-fall-through: "off"
+  cypress/no-unnecessary-waiting: "off"
+  no-unused-vars: "off"
