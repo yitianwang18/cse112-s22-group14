@@ -1,7 +1,3 @@
-import { Task } from "./task.js";
-// import { TaskList } from "./taskList.js";
-import { TimerContainer } from "./timerContainer.js";
-
 /**
  * Custom HTML element encapsulating the display of current and next task during a pomo
  * @extends HTMLElement
@@ -17,7 +13,7 @@ export default class TaskDisplay extends HTMLElement {
     static get observedAttributes() { return ["currtask", "nexttask", "numtasks"]; }
 
     /**
-     * Constructor. Initializes task display.
+     * Constructor. Initializes elements of taskdisplay, and default valu of attributes.
      */
     constructor() {
         super();
@@ -25,7 +21,7 @@ export default class TaskDisplay extends HTMLElement {
         let o_wrapper_obj = document.createElement("div");
         o_wrapper_obj.className = "middle-container";
 
-        //current header
+        //current task header
         let o_curr_title = document.createElement("h3");
         o_curr_title.innerText = "Current Task:";
 
@@ -42,7 +38,7 @@ export default class TaskDisplay extends HTMLElement {
         let o_check_btn = document.createElement("button");
         o_check_btn.className = "btn";
         o_check_btn.id = "check";
-        o_check_btn.title = "Task completed";
+        o_check_btn.title = TaskDisplay.S_CHECK_BUTTON_TITLE;
 
         let o_next_btn = document.createElement("i");
         o_next_btn.classList.add("fas", "fa-check-circle", "fa-x", "tool");
@@ -50,8 +46,9 @@ export default class TaskDisplay extends HTMLElement {
         let o_error_mssg = document.createElement("span");
         o_error_mssg.id = "check-error";
         o_error_mssg.className = "error-mssg";
-        o_error_mssg.innerHTML = TaskDisplay.CHECK_ERROR;
+        o_error_mssg.innerHTML = TaskDisplay.S_CHECK_ERROR;
 
+        // assign event handler for checking tasks off
         let f_handle_check = () => { document.EventBus.fireEvent("nextTask") };
         o_check_btn.addEventListener("click", f_handle_check);
         o_check_btn.append(o_next_btn);
@@ -71,8 +68,6 @@ export default class TaskDisplay extends HTMLElement {
 
         /*keeps track of the number of tasks*/
         this.setAttribute("numtasks", 0);
-
-        /*keeps track of current and next task*/
         this.setAttribute("currtask", -1);
         this.setAttribute("nexttask", -1);
 
@@ -118,155 +113,28 @@ export default class TaskDisplay extends HTMLElement {
             this.querySelector("#next").innerText = newValue;
         }
     }
-    // /**
-    //  * Finishes display at end of session.
-    //  * @param {Event} o_event event instance
-    //  */
-    // endDisp(o_event) {
-    //     this.querySelector("#current").innerHTML = "All tasks for this session completed!";
-    //     this.querySelector("#next").innerHTML = "All tasks for this session completed!";
-    //     this.o_tasks = {};
-    //     this.tasksComplete();
-    // }
-
-    // /**
-    //  * Initializes display on session start.
-    //  * @param {object} o_event click event
-    //  */
-    // startDisp(o_event) {
-    //     this.updateList();
-    // }
-
-    // /**
-    //  * Handles pressing the check button.
-    //  * @param {Event} o_event event instance
-    //  */
-    // pressCheck(o_event) {
-    //     //checks edge cases
-    //     if (this.o_tasks == undefined || Object.values(this.o_tasks).length == 0
-    //         || document.querySelector("timer-element").n_curr_state !== 0) {
-    //         return;
-    //     }
-
-    //     //removes task
-    //     document.querySelector("task-list").removeItem(this.n_curr_taskid);
-    //     delete this.o_tasks[this.n_curr_taskid];
-    //     this.setAttribute("numtasks", this.o_tasks.length);
-    //     this.updateDisp();
-    // }
 
     /**
      * Helper function called from parent component to disable button during breaks.
-     *
      */
     disableCheck() {
         this.querySelector("#check").disabled = true;
-        let o_check_error = this.querySelector("#check-error");
-        o_check_error.title = "";
-        o_check_error.classList.add("color-error");
+        let o_S_CHECK_ERROR = this.querySelector("#check-error");
+        o_S_CHECK_ERROR.title = "";
+        o_S_CHECK_ERROR.classList.add("color-error");
     }
 
     /**
      * Helper function called from parent component to enable button.
-     *
      */
     enableCheck() {
         this.querySelector("#check").disabled = false;
-        this.querySelector("#check-error").title = TaskDisplay.CHECK_TOOLTIP;
+        this.querySelector("#check-error").title = TaskDisplay.S_CHECK_TOOLTIP;
         this.querySelector("#check-error").classList.remove("color-error");
     }
 
-    // /**
-    //  * Helper function called from parent component to hide display.
-    //  *
-    //  */
-    // hideDisp() {
-    //     document.getElementsByClassName("middle-container").style.display = "none";
-    // }
-
-    // /**
-    //  * Helper function called from parent component to show display.
-    //  *
-    //  */
-    // showDisp() {
-    //     document.getElementsByClassName("middle-container").style.display = "";
-    // }
-
     /**
-     * Mimics end of session functionality when all tasks are completed.
-     */
-    // tasksComplete() {
-    //     let o_vals = new Array(Object.values(this.o_tasks));
-    //     //no tasks left, so it displays finish
-    //     if (o_vals[0].length == 0) {
-    //         this.querySelector("#current").innerHTML = "All tasks for this session completed!";
-    //         this.querySelector("#next").innerHTML = "All tasks for this session completed!";
-    //         this.querySelector("#next").style.display = "none";
-    //         // document.querySelector("timer-element").endSession();
-    //         // document.querySelector("timer-element").renderComponents();
-    //         // document.querySelector("#reset-btn").classList.add("hidden");
-    //         // document.querySelector("#reset-btn").disabled = false;
-    //         // document.querySelector("#start-btn").classList.remove("hidden");
-    //         // document.querySelector("#task-btn").disabled = false;
-    //         this.setAttribute("currtask", -1);
-    //         this.setAttribute("nexttask", -1);
-    //         this.setAttribute("numtasks", 0);
-    //     }
-    // }
-
-    /**
-     * Updates display for current and next task (from task list).
-     */
-    // updateDisp() {
-    //     let b_curr = false;
-    //     let b_next = false;
-
-    //     //iterate through tasks and find first two valid tasks to display
-    //     for (const [key, value] of Object.entries(this.o_tasks)) {
-    //         if (!b_curr && this.o_tasks[key] != undefined) {
-    //             this.querySelector("#current").innerHTML = value;
-    //             b_curr = true;
-    //             this.n_curr_taskid = key;
-    //             this.setAttribute("currtask", key);
-    //         }
-    //         else if (b_next == false && this.o_tasks[key] != undefined) {
-    //             this.n_next_taskid = key;
-    //             this.querySelector("#next").innerHTML = value;
-    //             b_next = true;
-    //             this.setAttribute("nexttask", key);
-    //             return;
-    //         }
-    //     }
-    //     //if bools are false and exits loop, there are no tasks to fill next or current
-    //     if (!b_curr) {
-    //         this.tasksComplete();
-    //     }
-
-    //     else if (!b_next) {
-    //         this.querySelector("#next").innerHTML = "No more tasks for this session!";
-    //         this.querySelector("#next").style.display = "none";
-    //     }
-    // }
-
-    // /**
-    //  * Updates the list of tasks to match taskList at start of session.
-    //  */
-    // updateList() {
-    //     let temp = document.querySelector("task-list").o_tasks;
-    //     this.o_tasks = temp;
-    //     this.setAttribute("numtasks", this.o_tasks.length);
-    //     this.updateDisp();
-    //     //hides next task if no next available
-    //     if (this.o_tasks.length <= 1) {
-    //         this.querySelector("#next").style.display = "none";
-    //     }
-    //     else if (this.o_tasks.length >= 2) {
-    //         this.querySelector("#next").style.display = "";
-    //     }
-    // }
-
-    /**
-     * hides all TaskDisplay related items within task-display
+     * Hides all TaskDisplay related items within task-display
      */
     handleEndSession() {
         this.querySelector(".middle-container").style.display = "none";
@@ -286,15 +154,21 @@ export default class TaskDisplay extends HTMLElement {
  * @static
  * @type {String}
  */
-TaskDisplay.CHECK_TOOLTIP = "Task completed!";
+TaskDisplay.S_CHECK_TOOLTIP = "Task completed!";
 
 /**
  * Error message when check button is incorrectly handled
  * @static
  * @type {String}
  */
- TaskDisplay.CHECK_ERROR = "Tasks cannot be checked off during breaks!";
+TaskDisplay.S_CHECK_ERROR = "Tasks cannot be checked off during breaks!";
 
+/**
+ * Title message of check button
+ * @static
+ * @type {String}
+ */
+TaskDisplay.S_CHECK_BUTTON_TITLE = "Task completed";
 customElements.define("task-display", TaskDisplay);
 
 

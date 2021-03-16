@@ -1,7 +1,7 @@
 import { TaskDisplay } from "../js/taskDisplay.js";
 import { jest } from '@jest/globals';
 
-test('Mock Testing attributeChangedCallback() to correctly alter taskdisplay', () => {
+test("Testing attributeChangedCallback function to correctly alter task display", () => {
     let o_task_disp = new TaskDisplay();
 
     const f_mockCallback = jest.spyOn(o_task_disp, "wrapperAttributeFunction");
@@ -57,14 +57,14 @@ test('Mock Testing attributeChangedCallback() to correctly alter taskdisplay', (
 
 });
 
-test('Testing Task Display handleStartSession', () => {
+test("Testing Task Display handleStartSession", () => {
     let o_task_disp = new TaskDisplay();
 
     o_task_disp.handleStartSession();
     expect(o_task_disp.querySelector(".middle-container").style.display).toBe("block");
 });
 
-test('Testing Task Display handleEndSession', () => {
+test("Testing Task Display handleEndSession", () => {
     let o_task_disp = new TaskDisplay();
 
     o_task_disp.handleEndSession();
@@ -73,7 +73,7 @@ test('Testing Task Display handleEndSession', () => {
     expect(o_task_disp.querySelector(".middle-container").style.display).toBe("block");
 });
 
-test('Testing Task Display enableCheck()', () => {
+test("Testing Task Display enableCheck()", () => {
     let o_task_disp = new TaskDisplay();
 
     o_task_disp.enableCheck();
@@ -82,7 +82,7 @@ test('Testing Task Display enableCheck()', () => {
     expect(o_task_disp.querySelector("#check-error").classList.contains("color-error")).toBe(false);
 });
 
-test('Testing Task Display disableCheck()', () => {
+test("Testing Task Display disableCheck()", () => {
     let o_task_disp = new TaskDisplay();
     o_task_disp.disableCheck();
     expect(o_task_disp.querySelector("#check").disabled).toBe(true);
