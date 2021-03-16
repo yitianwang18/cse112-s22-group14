@@ -30,6 +30,8 @@ parserOptions:
   ecmaVersion: 6
   sourceType: module
 
+ignorePatterns: ["**/cypress/**/*.js"]
+
 #########
 # Rules #
 #########
