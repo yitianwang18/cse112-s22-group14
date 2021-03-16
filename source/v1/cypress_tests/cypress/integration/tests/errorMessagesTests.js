@@ -2,7 +2,7 @@ describe("Error Messages Tests", () => {
     beforeEach(() => {
         cy.visit("http://127.0.0.1:5500/source/v1/index.html");
         cy.document().then((o_doc) => {
-            if (!o_doc.querySelector("timer-element").DEBUG) {
+            if (!o_doc.querySelector("timer-element").B_DEBUG) {
                 o_doc.querySelector("timer-element").toggleDebug();
             }
         });
