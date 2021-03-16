@@ -79,8 +79,6 @@ class Task extends HTMLElement {
      * @param {Function}  edit_action
      */
     bindHandleEdit(f_edit_action) {
-        // let text = this.querySelector("div").addEventListener("click", f_edit_action);
-        // this.f_handle_edit = f_edit_action;
         this.querySelector("input").addEventListener("change", f_edit_action);
     }
 

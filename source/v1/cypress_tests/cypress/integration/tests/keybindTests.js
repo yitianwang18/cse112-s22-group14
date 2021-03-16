@@ -85,7 +85,7 @@ describe("Keybind Integration Tests", () => {
             expect(o_doc.querySelector("timer-element").beginSession).to.not.be.called;
         });
 
-        // get task list using document, cy.get() doesn"t work 
+        // get task list using document, cy.get() doesn't work 
         cy.document().then((o_doc) => {
             let o_task_list = o_doc.querySelector("task-list");
             o_task_list.addItem("Task1");
