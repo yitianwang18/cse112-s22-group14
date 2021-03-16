@@ -2,9 +2,173 @@ describe("Timer Container Tests", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:5500/source/v1/index.html");
     cy.document().then((o_doc) => {
-      if (!o_doc.querySelector("timer-element").DEBUG) {
+      if (!o_doc.querySelector("timer-element").B_DEBUG) {
         o_doc.querySelector("timer-element").toggleDebug();
       }
+      cy.spy(o_doc.querySelector("timer-element"), "resetPomo");
+      cy.spy(o_doc.querySelector("timer-element"), "beginSession");
+      cy.spy(o_doc.querySelector("timer-element"), "endSession");
+      cy.spy(o_doc.querySelector("timer-element"), "progressState");
+    });
+  });
+
+  it("Test beginSession function is being called correctly", () => {
+    
+    //Task added so that session could be started for testing
+    cy.get("#task-btn").trigger("click");
+    cy.get("task-list").within(() => {
+      cy.get("#task-input").clear().type("First Test Task");
+      cy.get("#add-btn").trigger("click");
+      cy.get("#close-task").trigger("click");
+    });
+
+    //Click Start session button
+    cy.get("timer-element").within(() => {
+      cy.get("#start-btn").trigger("click");
+    });
+
+    //beginSession function called
+    cy.document().then((o_doc) => {
+      expect(o_doc.querySelector("timer-element").beginSession).to.be.called;
+    });
+
+  });
+
+  it("Test resetPomo function is being called correctly", () => {
+
+    //Task added so that session could be started for testing
+    cy.get("#task-btn").trigger("click");
+    cy.get("task-list").within(() => {
+      cy.get("#task-input").clear().type("First Test Task");
+      cy.get("#add-btn").trigger("click");
+      cy.get("#close-task").trigger("click");
+    });
+
+    //Click Reset session button twice, the second one after a delay
+    cy.get("timer-element").within(() => {
+      cy.clock()
+      cy.get("#start-btn").trigger("click");
+      cy.get("#reset-btn").trigger("click");
+      cy.tick(1000);
+      cy.get("#reset-btn").trigger("click");
+    });
+
+    //resetPomo function called twice
+    cy.document().then((o_doc) => {
+      expect(o_doc.querySelector("timer-element").resetPomo).to.have.callCount(2);
+    });
+
+  });
+
+  it("Test endSession function is being called correctly", () => {
+
+    //Task added so that session could be started for testing
+    cy.get("#task-btn").trigger("click");
+    cy.get("task-list").within(() => {
+      cy.get("#task-input").clear().type("First Test Task");
+      cy.get("#add-btn").trigger("click");
+      cy.get("#close-task").trigger("click");
+    });
+
+    //Click End Session button during Work cycle
+    cy.get("timer-element").within(() => {
+      cy.get("#start-btn").trigger("click");
+      cy.get("#end-btn").trigger("click");
+    });
+
+    //Click End Session button during break
+    cy.get("timer-element").within(() => {
+      cy.clock()
+      cy.get("#start-btn").trigger("click");
+      cy.tick(3100);
+      cy.get("#end-btn").trigger("click");
+    });
+
+    // endSession called twice
+    cy.document().then((o_doc) => {
+      expect(o_doc.querySelector("timer-element").endSession).to.have.callCount(2);
+    });
+
+  });
+
+  it("Test progressState function is being called correctly", () => {
+
+    //Task added so that session could be started for testing
+    cy.get("#task-btn").trigger("click");
+    cy.get("task-list").within(() => {
+      cy.get("#task-input").clear().type("First Test Task");
+      cy.get("#add-btn").trigger("click");
+      cy.get("#close-task").trigger("click");
+    });
+
+    cy.get("timer-element").within(() => {
+
+      cy.clock();
+
+      //Session started
+      cy.get("#start-btn").trigger("click");
+
+      //Work: progressState called once by now
+      cy.document().then((o_doc) => {
+        expect(o_doc.querySelector("timer-element").progressState).to.have.callCount(1);
+      });
+
+      cy.tick(3100);
+
+      //Short Break: progressState called twice by now
+      cy.document().then((o_doc) => {
+        expect(o_doc.querySelector("timer-element").progressState).to.have.callCount(2);
+      });
+
+      cy.tick(3100);
+
+      //Work: progressState called thrice by now
+      cy.document().then((o_doc) => {
+        expect(o_doc.querySelector("timer-element").progressState).to.have.callCount(3);
+      });
+
+      cy.tick(3100);
+
+      //Short Break: progressState called four times by now
+      cy.document().then((o_doc) => {
+        expect(o_doc.querySelector("timer-element").progressState).to.have.callCount(4);
+      });
+
+      cy.tick(3100);
+
+      //Work: progressState called five times by now
+      cy.document().then((o_doc) => {
+        expect(o_doc.querySelector("timer-element").progressState).to.have.callCount(5);
+      });
+
+      cy.tick(3100);
+
+      //Short Break: progressState called six times by now
+      cy.document().then((o_doc) => {
+        expect(o_doc.querySelector("timer-element").progressState).to.have.callCount(6);
+      });
+
+      cy.tick(3100);
+
+      //Work: progressState called seven times by now
+      cy.document().then((o_doc) => {
+        expect(o_doc.querySelector("timer-element").progressState).to.have.callCount(7);
+      });
+
+      cy.tick(3100);
+
+      //Long Break: progressState called eight times by now
+      cy.document().then((o_doc) => {
+        expect(o_doc.querySelector("timer-element").progressState).to.have.callCount(8);
+      });
+
+      cy.tick(3100);
+
+      //Work: progressState called ninetimes by now
+      cy.document().then((o_doc) => {
+        expect(o_doc.querySelector("timer-element").progressState).to.have.callCount(9);
+      });
+
     });
   });
 

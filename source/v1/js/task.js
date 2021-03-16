@@ -68,7 +68,7 @@ class Task extends HTMLElement {
 
     /**
      * Binds delete handler to the delete button. Must be done to access data from the Task list.
-     * @param {Function} f_delete_action
+     * @param {Function} f_delete_action function that handles the delete action
      */
     bindHandleDelete(f_delete_action) {
         this.querySelector("button").addEventListener("click", f_delete_action);
@@ -76,11 +76,9 @@ class Task extends HTMLElement {
 
     /**
      * Binds edit handler to the task-item. Allows task name to be editable upon click
-     * @param {Function}  edit_action
+     * @param {Function}  edit_action function that handles the edit action
      */
     bindHandleEdit(f_edit_action) {
-        // let text = this.querySelector("div").addEventListener("click", f_edit_action);
-        // this.f_handle_edit = f_edit_action;
         this.querySelector("input").addEventListener("change", f_edit_action);
     }
 
