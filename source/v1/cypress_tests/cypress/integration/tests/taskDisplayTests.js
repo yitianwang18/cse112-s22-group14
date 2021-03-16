@@ -1,10 +1,74 @@
 describe("Timer Container Tests", () => {
     beforeEach(() => {
         cy.visit("http://127.0.0.1:5500/source/v1/index.html");
-        cy.document().then((doc) => {
-            if (!doc.querySelector("timer-element").DEBUG) {
-                doc.querySelector("timer-element").toggleDebug();
+        cy.document().then((o_doc) => {
+            if (!o_doc.querySelector("timer-element").DEBUG) {
+                o_doc.querySelector("timer-element").toggleDebug();
             }
+            cy.spy(o_doc.querySelector("task-display"), "enableCheck");
+            cy.spy(o_doc.querySelector("task-display"), "disableCheck");
+        });
+    });
+
+    it("Test enableCkeck function is called correctly", () => {
+
+        //Task added so that session could be started for testing
+        cy.get("#task-btn").trigger("click");
+        cy.get("task-list").within(() => {
+            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#add-btn").trigger("click");
+            cy.get("#close-task").trigger("click");
+        });
+
+        cy.clock();
+
+        //Session started
+        cy.get("timer-element").within(() => {
+            cy.get("#start-btn").trigger("click");
+        });
+
+        //enableCheck function called when session starts
+        cy.document().then((o_doc) => {
+            expect(o_doc.querySelector("task-display").enableCheck).to.have.callCount(1);
+        });
+
+        cy.tick(6200);
+
+        //enableCheck function called when break ends and work cycle starts
+        cy.document().then((o_doc) => {
+            expect(o_doc.querySelector("task-display").enableCheck).to.have.callCount(2);
+        });
+    });
+
+    it("Test disableCkeck function is called correctly", () => {
+
+        //Task added so that session could be started for testing
+        cy.get("#task-btn").trigger("click");
+        cy.get("task-list").within(() => {
+            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#add-btn").trigger("click");
+            cy.get("#close-task").trigger("click");
+        });
+
+        cy.clock();
+
+        //Session started
+        cy.get("timer-element").within(() => {
+            cy.get("#start-btn").trigger("click");
+        });
+
+        cy.tick(3100);
+
+        //disableCheck function called when work cycle ends and short break starts
+        cy.document().then((o_doc) => {
+            expect(o_doc.querySelector("task-display").enableCheck).to.have.callCount(1);
+        });
+
+        cy.tick(6200 * 3);
+
+        //disableCheck function called when work cycle ends and long break starts
+        cy.document().then((o_doc) => {
+            expect(o_doc.querySelector("task-display").enableCheck).to.have.callCount(4);
         });
     });
 

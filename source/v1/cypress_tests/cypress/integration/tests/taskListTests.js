@@ -3,11 +3,22 @@ import { TimerContainer } from "../../../../js/timerContainer";
 describe("Task List Tests", () => {
     beforeEach(() => {
         cy.visit("http://127.0.0.1:5500/source/v1/index.html");
-        if (!TimerContainer.B_DEBUG) {
-            cy.document().then((doc) => {
-                doc.querySelector("timer-element").toggleDebug();
-            });
-        }
+        cy.document().then((o_doc) => {
+            if (!o_doc.querySelector("timer-element").DEBUG) {
+                o_doc.querySelector("timer-element").toggleDebug();
+            }
+            cy.spy(o_doc.querySelector("task-list"), "showTaskList");
+            cy.spy(o_doc.querySelector("task-list"), "closeTaskList");
+        });
+    });
+
+    it("Test showTaskList function being called correctly", () => {
+        //TaskList Show button clicked
+        cy.get("#task-btn").trigger("click");
+        //showTaskList function called
+        cy.document().then((o_doc) => {
+            expect(o_doc.querySelector("task-list").showTaskList).to.be.called;
+        });
     });
 
     it("Test TaskList onShow functionality", () => {
