@@ -6,7 +6,7 @@ describe("Testing Event Bus", () => {
             if (!o_doc.querySelector("timer-element").DEBUG) {
                 o_doc.querySelector("timer-element").toggleDebug();
             }
-            cy.spy(o_doc.EventBus, 'fireEvent');
+            cy.spy(o_doc.EventBus, "fireEvent");
         });
     });
 
@@ -19,12 +19,12 @@ describe("Testing Event Bus", () => {
             cy.get("#close-task").trigger("click");
         });
         // Start session
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         //"startSession" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('startSession');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startSession");
         });
     });
 
@@ -37,16 +37,16 @@ describe("Testing Event Bus", () => {
             cy.get("#close-task").trigger("click");
         });
         // Start session
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         // End session
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#end-btn").trigger("click");
         });
         //"endSession" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('endSession');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("endSession");
         });
     });
 
@@ -61,16 +61,16 @@ describe("Testing Event Bus", () => {
             cy.get("#close-task").trigger("click");
         });
         // Start session
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         // Check Current Task as completed
         cy.get("task-display").within(() => {
-            cy.get('#check').trigger("click");
+            cy.get("#check").trigger("click");
         });
         //"nextTask" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('nextTask');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("nextTask");
         });
     });
 
@@ -84,14 +84,14 @@ describe("Testing Event Bus", () => {
         });
         cy.clock();
         // Start session
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         // Wait for break
         cy.tick(3100);
         //"startBreak" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('startBreak');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startBreak");
         });
     });
 
@@ -105,7 +105,7 @@ describe("Testing Event Bus", () => {
         });
         cy.clock();
         // Start session
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         // Wait for break
@@ -114,34 +114,34 @@ describe("Testing Event Bus", () => {
         cy.tick(3100);
         //"startWork" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('startWork');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startWork");
         });
     });
 
     it("Test 'close Windows' event is fired correctly", () => {
         //Press the Esc key
-        cy.get('body').type("{esc}");
+        cy.get("body").type("{esc}");
         //"closeWindows" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('closeWindows');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("closeWindows");
         });
     });
 
-    it("Test 'space Keybind' event is fired correctly", () => {
+    it("Test "space Keybind" event is fired correctly", () => {
         //Press the Space key
-        cy.get('body').type(" ");
+        cy.get("body").type(" ");
         //"closeWindows" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('spaceKeybind');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("spaceKeybind");
         });
     });
 
     it("Test 'show Tasks' event is fired correctly", () => {
         //Press the t key
-        cy.get('body').type("t");
+        cy.get("body").type("t");
         //"showTasks" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('showTasks');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("showTasks");
         });
         //Close TaskList
         cy.get("task-list").within(() => {
@@ -151,7 +151,7 @@ describe("Testing Event Bus", () => {
         cy.get("#task-btn").trigger("click");
         //"showTasks" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('showTasks');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("showTasks");
         });
     });
 
@@ -164,28 +164,28 @@ describe("Testing Event Bus", () => {
             cy.get("#close-task").trigger("click");
         });
         //Start Session
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         //Press the r key
-        cy.get('body').type("r");
+        cy.get("body").type("r");
         //"resetPomo" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('resetPomo');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("resetPomo");
         });
     });
 
     it("Test functionality when 'Start Session' event is fired", () => {
         //Fire "startSession" with empty tasklist
-        cy.get('#start-btn').trigger("click");
+        cy.get("#start-btn").trigger("click");
         //"startSession" Event fired on empty TaskList
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('startSession');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startSession");
         });
         //error thrown
-        cy.get('#start-error').then(($o_el) => {
-            expect($o_el).to.have.class('color-error');
-            expect($o_el).to.contain('Cannot start session');
+        cy.get("#start-error").then(($o_el) => {
+            expect($o_el).to.have.class("color-error");
+            expect($o_el).to.contain("Cannot start session");
         });
 
         //Fire "startSession" with non-empty tasklist
@@ -197,15 +197,15 @@ describe("Testing Event Bus", () => {
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         //"startSession" Event fired on non-empty tasklist
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('startSession');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startSession");
         });
         //Session started with no errors
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#work-message").should("contain", "Pomodoro - Start working!");
         });
         //TaskList is hidden and disabled once session is started
@@ -215,8 +215,8 @@ describe("Testing Event Bus", () => {
         cy.get("nav").should("be.hidden");
         //TaskDisplay shows the correct current and next tasks
         cy.get("task-display").within(() => {
-            cy.get('#current').should("contain", "First Test Task");
-            cy.get('#next').should("contain", "Second Test Task");
+            cy.get("#current").should("contain", "First Test Task");
+            cy.get("#next").should("contain", "Second Test Task");
         });
     });
 
@@ -228,15 +228,15 @@ describe("Testing Event Bus", () => {
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#end-btn").trigger("click");
         });
         //"endSession" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('endSession');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("endSession");
         });
         //Session ended
         cy.get("#work-message").should("contain", "Ready to focus?");
@@ -259,33 +259,33 @@ describe("Testing Event Bus", () => {
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         cy.get("task-display").within(() => {
-            cy.get('#current').should("contain", "First Test Task");
-            cy.get('#next').should("contain", "Second Test Task");
+            cy.get("#current").should("contain", "First Test Task");
+            cy.get("#next").should("contain", "Second Test Task");
         });
         cy.get("task-display").within(() => {
-            cy.get('#check').trigger("click");
+            cy.get("#check").trigger("click");
         });
         //"nextTask" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('nextTask');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("nextTask");
         });
         //Correct tasks shown in task display
         cy.get("task-display").within(() => {
             //Current task display -> second task & Next task Display -> None
-            cy.get('#current').should("contain", "Second Test Task");
-            cy.get('#next').should("be.hidden");
+            cy.get("#current").should("contain", "Second Test Task");
+            cy.get("#next").should("be.hidden");
         });
         //Fire "nextTask" event again
         cy.get("task-display").within(() => {
-            cy.get('#check').trigger("click");
+            cy.get("#check").trigger("click");
         });
         //"nextTask" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('nextTask');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("nextTask");
         });
         //Tasks completed: Session ended
         cy.get("#work-message").should("contain", "Ready to focus?");
@@ -302,17 +302,17 @@ describe("Testing Event Bus", () => {
             cy.get("#close-task").trigger("click");
         });
         cy.clock();
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         cy.tick(3100);
         //"startBreak" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('startBreak');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startBreak");
         });
         // Button to check Current Task as complete disabled
         cy.get("task-display").within(() => {
-            cy.get('#check').should("be.disabled");
+            cy.get("#check").should("be.disabled");
         });
     });
 
@@ -325,60 +325,60 @@ describe("Testing Event Bus", () => {
             cy.get("#close-task").trigger("click");
         });
         cy.clock();
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         cy.tick(3100);
         cy.tick(3100);
         //"startWork" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('startWork');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startWork");
         });
         // Button to check Current Task as complete enabled
         cy.get("task-display").within(() => {
-            cy.get('#check').should("be.enabled");
+            cy.get("#check").should("be.enabled");
         });
     });
 
     it("Test functionality when 'close Windows' event is fired", () => {
         //Fire "closeWindows" Event on open tasklist
         cy.get("#task-btn").trigger("click");
-        cy.get('body').type("{esc}");
+        cy.get("body").type("{esc}");
         //"closeWindows" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('closeWindows');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("closeWindows");
         });
         //TaskList is closed
         cy.get("task-list").should("be.hidden");
 
         //Fire "closeWindows" Event on open instruction modal
         cy.get("#info-btn-new").trigger("click");
-        cy.get('body').type("{esc}");
+        cy.get("body").type("{esc}");
         //"closeWindows" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('closeWindows');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("closeWindows");
         });
         //Instruction modal is closed
         cy.get("instructions-box").within(() => {
-            cy.get('#instructions-title').should("be.hidden");
-            cy.get('#instructions-para').should("be.hidden");
-            cy.get('#instructions-blocker').should("be.hidden");
+            cy.get("#instructions-title").should("be.hidden");
+            cy.get("#instructions-para").should("be.hidden");
+            cy.get("#instructions-blocker").should("be.hidden");
         });
     });
 
     it("Test functionality when 'Space Keybind' event is fired", () => {
-        //Fire the 'Space Keybind' event when the session has not started
-        cy.get('body').type(" ");
+        //Fire the "Space Keybind" event when the session has not started
+        cy.get("body").type(" ");
         //"Space Keybind" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('spaceKeybind');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("spaceKeybind");
         });
         // Start session event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('startSession');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startSession");
         });
 
-        //Fire the 'Space Keybind' event when the session has started
+        //Fire the "Space Keybind" event when the session has started
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
             cy.get("#task-input").clear().type("First Test Task");
@@ -387,17 +387,17 @@ describe("Testing Event Bus", () => {
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
-        cy.get('body').type(" ");
+        cy.get("body").type(" ");
         //"Space Keybind" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('spaceKeybind');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("spaceKeybind");
         });
         // End session event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('endSession');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("endSession");
         });
     });
 
@@ -406,7 +406,7 @@ describe("Testing Event Bus", () => {
         cy.get("#task-btn").trigger("click");
         //"showTasks" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('showTasks');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("showTasks");
         });
         //TaskList is shown
         cy.get("task-list").should("be.visible");
@@ -422,14 +422,14 @@ describe("Testing Event Bus", () => {
         });
         //Start Session
         cy.clock();
-        cy.get('timer-element').within(() => {
+        cy.get("timer-element").within(() => {
             cy.get("#start-btn").trigger("click");
         });
         //Press the r key
-        cy.get('body').type("r");
+        cy.get("body").type("r");
         //"resetPomo" Event fired
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly('resetPomo');
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("resetPomo");
         });
         //Correct Reset Functionality
         cy.get("timer-element").within(() => {

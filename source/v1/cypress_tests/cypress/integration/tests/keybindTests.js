@@ -108,7 +108,7 @@ describe("Keybind Integration Tests", () => {
     });
 
     it("Testing r (reset pomo)", () => {
-        // make sure that the timer-element"s reset is not called when not in session
+        // make sure that the timer-element's reset is not called when not in session
         cy.get("body").type("r");
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("resetPomo");

@@ -156,14 +156,14 @@ InstructionsBox.A_CYCLE_INST = ["One Pomodoro = 25 minutes of work/studying",
 /**
  * String describing the Pomodoro Technique
  * @static
- * @type {string}
+ * @type {String}
  */
 InstructionsBox.S_POMO_INST = "The Pomodoro technique is a scientifically proven way to help increase productivity. Ultimately, people are more productive by taking small mental breaks. PomoHero automates the process for you, making it easier for you to focus on your work and reduce distractions.";
 
 /**
  * String describing the site's hotkeys
  * @static
- * @type {string}
+ * @type {String}
  */
 InstructionsBox.S_HOTKEYS_INST = "c - color change, t - tasklist, esc - close pop-up, space - start/end session, n - next task";
 
