@@ -58,7 +58,7 @@ class EventBus {
     handleStartSession() {
         let o_start_error = this.o_timer_container.querySelector("#start-error");
         // check for valid application states
-        if (this.o_task_list.getNumTasks() != 0 && this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
+        if (this.o_task_list.getNumTasks() != 0 && this.o_timer_container.n_curr_state == TimerContainer.N_NOT_STARTED) {
             // hide toolbar and disable task button
             this.o_toolbar.querySelector("#task-btn").disabled = true;
             this.o_toolbar.style.visibility = "hidden";
@@ -111,7 +111,7 @@ class EventBus {
      * Event Handler function for the 'nextTask' event
      */
     handleNextTask() {
-        if (this.o_timer_container.n_curr_state == TimerContainer.WORK) {
+        if (this.o_timer_container.n_curr_state == TimerContainer.N_WORK) {
             this.updateTaskCompleted();
             if (this.o_task_list.getNumTasks() == 0) {
                 this.handleEndSession();
@@ -123,7 +123,7 @@ class EventBus {
      * Event Handler function for the 'spaceKeybind' event
      */
     handleSpaceKeybind() {
-        if (this.o_timer_container.n_curr_state == TimerContainer.NOT_STARTED) {
+        if (this.o_timer_container.n_curr_state == TimerContainer.N_NOT_STARTED) {
             this.fireEvent("startSession");
         } else {
             this.fireEvent("endSession");
@@ -134,7 +134,7 @@ class EventBus {
      * Event Handler function for the 'resetPomo' event
      */
     handleResetPomo() {
-        if (this.o_timer_container.n_curr_state == TimerContainer.WORK) {
+        if (this.o_timer_container.n_curr_state == TimerContainer.N_WORK) {
             this.o_timer_container.resetPomo();
         }
     }

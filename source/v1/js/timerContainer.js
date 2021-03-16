@@ -77,7 +77,7 @@ class TimerContainer extends HTMLElement {
 
         // initialize state variables
         this.n_start_time = -1;
-        this.n_curr_state = TimerContainer.NOT_STARTED;
+        this.n_curr_state = TimerContainer.N_NOT_STARTED;
         this.n_done_pomos = 0;
         this.n_interval_id = -1;
 
@@ -171,7 +171,7 @@ class TimerContainer extends HTMLElement {
      */
     progressState() {
         switch (this.n_curr_state) {
-            case TimerContainer.WORK:
+            case TimerContainer.N_WORK:
                 this.querySelector("#reset-btn").disabled = true;
                 let o_reset_error = this.querySelector("#reset-error");
                 // handle reset error logic
@@ -180,28 +180,28 @@ class TimerContainer extends HTMLElement {
                 ++(this.n_done_pomos);
                 // go to long break after 4 pomos
                 if (this.n_done_pomos == 4) {
-                    this.n_curr_state = TimerContainer.L_BREAK;
+                    this.n_curr_state = TimerContainer.N_L_BREAK;
 
                     notify(this.n_curr_state);
                     // go to short break otherwise
                 } else {
-                    this.n_curr_state = TimerContainer.S_BREAK;
+                    this.n_curr_state = TimerContainer.N_S_BREAK;
 
                     notify(this.n_curr_state)
                 }
                 document.EventBus.fireEvent("startBreak");
                 break;
             // all of these cases trigger a work session
-            case TimerContainer.L_BREAK:
+            case TimerContainer.N_L_BREAK:
                 this.n_done_pomos = 0;
-            case TimerContainer.S_BREAK:
+            case TimerContainer.N_S_BREAK:
                 document.EventBus.fireEvent("startWork");
-            case TimerContainer.NOT_STARTED:
+            case TimerContainer.N_NOT_STARTED:
                 this.querySelector("#reset-btn").disabled = false;
                 let o_reset_error1 = this.querySelector("#reset-error");
                 o_reset_error1.innerHTML = "";
                 o_reset_error1.classList.remove("color-error");
-                this.n_curr_state = TimerContainer.WORK;
+                this.n_curr_state = TimerContainer.N_WORK;
 
                 notify(this.n_curr_state);
                 break;
@@ -214,7 +214,7 @@ class TimerContainer extends HTMLElement {
      * Resets the current pomodoro start time. Does nothing if the current state is not a work session.
      */
     resetPomo() {
-        if (this.n_curr_state == TimerContainer.WORK) {
+        if (this.n_curr_state == TimerContainer.N_WORK) {
             this.n_start_time = new Date().getTime();
         }
     }
@@ -224,7 +224,7 @@ class TimerContainer extends HTMLElement {
      * Does nothing if the previous state was not NOT_STARTED
      */
     beginSession() {
-        if (this.n_curr_state == TimerContainer.NOT_STARTED) {
+        if (this.n_curr_state == TimerContainer.N_NOT_STARTED) {
             // create the interval, and assign it's id to a member variable so it can be cancelled later
             this.n_interval_id = setInterval(() => {
                 let n_time_remaining = this.getTimeRemaining();
@@ -243,7 +243,7 @@ class TimerContainer extends HTMLElement {
      */
     endSession() {
         // state logic for ending the session
-        this.n_curr_state = TimerContainer.NOT_STARTED;
+        this.n_curr_state = TimerContainer.N_NOT_STARTED;
         this.n_start_time = -1;
         this.n_done_pomos = 0;
         clearInterval(this.n_interval_id);
@@ -255,12 +255,12 @@ class TimerContainer extends HTMLElement {
      */
     toggleDebug() {
         // Speed up timer if in debug mode
-        if (!TimerContainer.DEBUG) {
+        if (!TimerContainer.B_DEBUG) {
             TimerContainer.A_STATE_DURATIONS = [3000, 3000, 3000, 0];
         } else {
             TimerContainer.A_STATE_DURATIONS = [1500000, 300000, 2100000, 0];
         }
-        TimerContainer.DEBUG = !TimerContainer.DEBUG;
+        TimerContainer.B_DEBUG = !TimerContainer.B_DEBUG;
     }
 }
 /**
@@ -288,35 +288,35 @@ TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
 /**
  *
  */
-TimerContainer.DEBUG = false;
+TimerContainer.B_DEBUG = false;
 
 /**
  * Enumerator for 'not started' state
  * @static
  * @type {number}
  */
-TimerContainer.NOT_STARTED = 3;
+TimerContainer.N_NOT_STARTED = 3;
 
 /**
  * Enumerator for 'work' state
  * @static
  * @type {number}
  */
-TimerContainer.WORK = 0;
+TimerContainer.N_WORK = 0;
 
 /**
  * Enumerator for 'short break' state
  * @static
  * @type {number}
  */
-TimerContainer.S_BREAK = 1;
+TimerContainer.N_S_BREAK = 1;
 
 /**
  * Enumerator for 'long break' state
  * @static
  * @type {number}
  */
-TimerContainer.L_BREAK = 2;
+TimerContainer.N_L_BREAK = 2;
 
 /**
  * Array mapping states to their corresponding durations

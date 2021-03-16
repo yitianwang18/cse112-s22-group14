@@ -127,7 +127,7 @@ describe("Testing Event Bus", () => {
         });
     });
 
-    it("Test "space Keybind" event is fired correctly", () => {
+    it("Test 'space Keybind' event is fired correctly", () => {
         //Press the Space key
         cy.get("body").type(" ");
         //"closeWindows" Event fired

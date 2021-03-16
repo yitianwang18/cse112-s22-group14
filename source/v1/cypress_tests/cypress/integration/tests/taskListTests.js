@@ -3,7 +3,7 @@ import { TimerContainer } from "../../../../js/timerContainer";
 describe("Task List Tests", () => {
     beforeEach(() => {
         cy.visit("http://127.0.0.1:5500/source/v1/index.html");
-        if (!TimerContainer.DEBUG) {
+        if (!TimerContainer.B_DEBUG) {
             cy.document().then((doc) => {
                 doc.querySelector("timer-element").toggleDebug();
             });
