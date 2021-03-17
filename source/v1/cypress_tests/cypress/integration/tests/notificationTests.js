@@ -1,11 +1,11 @@
 describe("Notification Tests", () => {
     beforeEach(() => {
-        cy.visit("http://127.0.0.1:5500/source/v1/index.html");
+        cy.visit("https://pomo-hero-dev.web.app/");
     });
 
     it("Tests alert when notifications are not supported", () => {
         //no notifs in browser, so it deletes notifs
-        cy.visit("http://127.0.0.1:5500/source/v1/index.html", {
+        cy.visit("https://pomo-hero-dev.web.app/", {
             onBeforeLoad(window) {
                 delete window.Notification;
             },
@@ -46,7 +46,7 @@ describe("Notification Tests", () => {
 
     it("Test 1 cycle with asking permission", () => {
         cy.window().should("have.property", "Notification").should("be.a", "function");
-        cy.visit("http://127.0.0.1:5500/source/v1/index.html", {
+        cy.visit("https://pomo-hero-dev.web.app/", {
             //before page loads stubs notifs to access them
             onBeforeLoad(window) {
                 cy.stub(window.Notification, "permission", "unknown");
@@ -106,7 +106,7 @@ describe("Notification Tests", () => {
 
     it("Test 1 cycle when permission is already granted", () => {
         cy.window().should("have.property", "Notification").should("be.a", "function");
-        cy.visit("http://127.0.0.1:5500/source/v1/index.html", {
+        cy.visit("https://pomo-hero-dev.web.app/", {
             //before page loads stubs notifs to access them    
             onBeforeLoad(window) {
                 cy.stub(window.Notification, "permission", "granted");
@@ -162,7 +162,7 @@ describe("Notification Tests", () => {
 
     it("Test 1 cycle with notifs not allowed", () => {
         cy.window().should("have.property", "Notification").should("be.a", "function");
-        cy.visit("http://127.0.0.1:5500/source/v1/index.html", {
+        cy.visit("https://pomo-hero-dev.web.app/", {
             //before page loads stubs notifs to access them      
             onBeforeLoad(window) {
                 cy.stub(window.Notification, "permission", "denied");
@@ -218,7 +218,7 @@ describe("Notification Tests", () => {
 
     it("Test notifs when resetting", () => {
         cy.window().should("have.property", "Notification").should("be.a", "function");
-        cy.visit("http://127.0.0.1:5500/source/v1/index.html", {
+        cy.visit("https://pomo-hero-dev.web.app/", {
             //before page loads stubs notifs to access them 
             onBeforeLoad(window) {
                 cy.stub(window.Notification, "permission", "granted");
