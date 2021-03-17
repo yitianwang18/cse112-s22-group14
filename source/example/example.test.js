@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { hello, sub } from './example.js';
+import { hello, sum } from './example.js';
 
 // tests for hello (msg)
 test('print hello msg', () => {
@@ -9,6 +9,6 @@ test('print hello msg', () => {
 });
 
 // tests for sum (a, b)
-test('sub 1 - 2 to equal -1', () => {
-    expect(sub(1, 2)).toBe(-1);
+test('expect 1 + 2 to equal 3', () => {
+    expect(sum(1, 2)).toBe(-1);
 });
