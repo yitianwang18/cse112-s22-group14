@@ -10,13 +10,13 @@
       "source" : "**/*.@(js|css)",
       "headers" : [ {
         "key" : "Cache-Control",
-        "value" : "max-age=604800"
+        "value" : "max-age=31536000"
       } ]
     }, {
       "source" : "**/*.@(jpg|jpeg|png|webp)",
       "headers" : [ {
         "key" : "Cache-Control",
-        "value" : "max-age=604800"
+        "value" : "max-age=31536000"
       } ]
     }, {
       "source" : "404.html",
