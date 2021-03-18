@@ -1,6 +1,6 @@
 # Teamato
 
-## Final Project Report
+## Onboarding Document
 
 ### Project Summary
 
