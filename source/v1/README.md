@@ -1,21 +1,19 @@
-# PomoHero Version 1 (***DEPRECATED***)
+# PomoHero Version 3
 
-*Release date: February 20, 2021*  
+*Release date: March 18, 2021*  
 *Minimum:*
 | Chrome | Edge | Firefox | Internet Explorer | Opera | Safari |
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|22|No|63|No|25|No|
+|22|No|63|No|25|7|
 
-This is the very first version of PomoHero, a web application to help users implement the Pomodoro Technique and find themselves master time management and focus undistractedly on their tasks.
+This is the third version of PomoHero, a web application to help users implement the Pomodoro Technique and find themselves master time management and focus undistractedly on their tasks.
 
-Being our Minimum Viable Product (MVP), it contains all of the most basic features that you as a user would need to succeed in your tasks with flying colors.
+With having implemented all of the major features that had been planned, and with the coming of the end the project lifecycle, we have polished some of the existing features in order to bring to you a better experience.
 
-With features like a self-working timer, an option to end your working session, a way to take small refreshment breaks between individual Pomodoros, and to enjoy a long break after having given your complete focus to your tasks for two hours straight as a reward.
-"But what if I am immersed in my work and don't know when to stop?". Don't worry, we have got you covered. You will get notification pings when it is time to enjoy a break (do not forget to enable notifications!).
+This version will see the incorporation of error messages in order to assist users to know why certain buttons have been disabled at certain times. Colors have been assisted with text in order to make our app accessible for color-blind persons. Keeping the user flow in mind, we have decided to turn our instructions into a modal popup which will not be accessible during breaks so that the user has as least of distraction as possible.
 
-Do keep in mind that our web application will not allow to, and even force you (in a good way) to not get distracted while working. If you do get distracted, fret not. There is a reset button to restart your current Pomodoro.
-This encourages you to not just pause and play the timer whenever you feel like, and it is a way of punishing you by making you work again for the time that you did spend working before getting distracted.
+Animations have been added to the task list and instructions box to counter a monotonous app experience. Remaining time can be seen in the titlebar which allows the user to minimize the tab and work on other tabs.
 
-To go to the website, ~~[Click here](https://pomo-hero-dev.web.app/)~~
+Overall, this version brings an experience which keeps in mind the wants of the user and offers a seamless and hopefully flawless interaction.
 
-**CAUTION**: This version of the app has been DEPRECATED! All URL redirects to the web page will lead to the current version of the app!
+[Click here](https://pomo-hero.web.app/) to use the app!
