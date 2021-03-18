@@ -40,3 +40,4 @@ rules:
   no-fall-through: "off"
   cypress/no-unnecessary-waiting: "off"
   no-unused-vars: "off"
+  no-fallthrough: "off"
