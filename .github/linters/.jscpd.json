@@ -1,0 +1,6 @@
+{
+    "threshold": 0,
+    "reporters": ["console"],
+    "ignore": ["**/cypress_tests/**", "**/jest_tests/**", "**/example/**", ".github/**"],
+    "absolute": true
+}

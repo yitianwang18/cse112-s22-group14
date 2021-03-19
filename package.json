@@ -5,15 +5,28 @@
     "private": true,
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js source/",
-        "docs": "jsdoc source -r -d docs"
+        "docs": "jsdoc source -r -d docs",
+        "html": "htmlhint --config .github/linters/.htmlhintrc source/**/*.html",
+        "css": "stylelint --config .github/linters/.stylelintrc.json source/**/*.css",
+        "js": "eslint -c .github/linters/.eslintrc.yml source/**/*.js",
+        "cypress": "eslint -c source/v1/cypress_tests/.eslintrc.json source/v1/cypress_tests/cypress/integration",
+        "lint": "npm run html & npm run css & npm run js"
     },
     "dependencies": {
+        "eslint": "^7.21.0",
+        "eslint-plugin-cypress": "^2.11.2",
+        "htmlhint": "^0.14.2",
         "jest": "26.4.2",
         "jsdoc": "3.6.6",
-        "jsdom": "^16.4.0"
+        "jsdom": "^16.4.0",
+        "stylelint": "^13.11.0",
+        "stylelint-config-standard": "^20.0.0"
     },
     "jest": {
         "testEnvironment": "jest-environment-jsdom",
         "transform": {}
+    },
+    "devDependencies": {
+        "cypress": "^6.5.0"
     }
 }

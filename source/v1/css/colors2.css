@@ -1,0 +1,277 @@
+/************************************
+ * Declare and initialize variables *
+ ************************************/
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --red: #f44336;
+  --error-back: #ffcdd2;
+  --light-green: #b1f060;
+  --olive-green: #3c463a;
+  --green: #178800;
+  --dark-green: #00570e;
+  --darker-green: #003809;
+  --darkest-green: #001303;
+  --grey: #7e7f80;
+  --transparent: #0000;
+  --alm-transparent: #0000006b;
+  --less-transparent: #0000009c;
+  --least-transparent: #000000e8;
+}
+
+/*******************************
+  * Background image for theme *
+  ******************************/
+
+.full-height {
+  background-image: url("../assets/img/bground/1.jpg");
+  background-size: cover;
+}
+
+@media (max-height: 2160px) and (max-width: 3840px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-3840w.webp");
+  }
+}
+
+@media (max-height: 1440px) and (max-width: 2560px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-2560w.webp");
+  }
+}
+
+@media (max-height: 1080px) and (max-width: 1920px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-1920w.webp");
+  }
+}
+
+@media (max-height: 720px) and (max-width: 1280px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-1280w.webp");
+  }
+}
+
+@media (max-height: px) and (max-width: 640px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg-640w.webp");
+  }
+}
+
+/***********************
+  * Color for HTML Tags *
+  ***********************/
+
+hr {
+  color: var(--grey);
+}
+
+/********************
+  * Color for header *
+  ********************/
+
+.header-container {
+  background-color: var(--less-transparent);
+}
+
+/******************************
+  * Color for Nav Bar Buttons *
+  *****************************/
+
+.theme-btn {
+  color: var(--white);
+}
+
+.theme-btn:hover {
+  color: var(--green);
+}
+
+.task-btn {
+  color: var(--white);
+}
+
+.task-btn:hover {
+  color: var(--green);
+}
+
+.info-btn-new {
+  color: var(--white);
+}
+
+.info-btn-new:hover {
+  color: var(--green);
+}
+
+/*****************************
+  * Color for Error messages *
+  ****************************/
+
+.error-mssg {
+  background-color: var(--transparent);
+  color: var(--transparent);
+}
+
+.color-error {
+  background-color: var(--error-back);
+  color: var(--red);
+}
+
+/*****************************
+  * Color for Slide-out Tasks *
+  *****************************/
+
+.sidenav-blocker {
+  background-color: var(--less-transparent);
+}
+
+.sidenav {
+  background-color: var(--olive-green);
+  color: var(--white);
+}
+
+input[type=text] {
+  background-color: var(--olive-green);
+  color: var(--white);
+}
+
+.btn {
+  color: var(--white);
+}
+
+.btn:disabled {
+  color: var(--grey);
+}
+
+.btn:hover:enabled {
+  color: var(--green);
+}
+
+#add-btn,
+#delete-btn {
+  color: var(--white);
+}
+
+#add-btn:disabled {
+  color: var(--grey);
+}
+
+#add-btn:hover:enabled {
+  color: var(--light-green);
+}
+
+.close {
+  color: var(--white);
+}
+
+.close2 {
+  color: var(--white);
+}
+
+.close:hover,
+.close2:hover,
+#delete-btn:hover:enabled {
+  color: var(--red);
+}
+
+/****************************
+  * Color for Pomodoro Timer *
+  ****************************/
+
+.timer-section {
+  background-color: var(--transparent);
+}
+
+.timer-box {
+  background-color: var(--less-transparent);
+  border-color: var(--white);
+}
+
+.timer {
+  background-color: var(--transparent);
+}
+
+#time-display {
+  color: var(--white);
+}
+
+#work-message {
+  color: var(--white);
+}
+
+#pomos-completed {
+  color: var(--white);
+}
+
+.custom-btn {
+  border-color: var(--white);
+  color: var(--white);
+  background-color: var(--transparent);
+}
+
+.custom-btn:disabled {
+  background-color: var(--grey);
+}
+
+.custom-btn:hover:enabled {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/****************************
+  * Color for Viewable Tasks *
+  ****************************/
+
+.middle-container {
+  background-color: var(--transparent);
+  color: var(--white);
+}
+
+#current {
+  background-color: var(--less-transparent);
+  color: var(--white);
+  border-color: var(--white);
+}
+
+#next {
+  background-color: var(--less-transparent);
+  border-color: var(--white);
+}
+
+/**************************
+  * Color for Instructions *
+  **************************/
+
+.instructions-section-blocker {
+  background-color: var(--less-transparent);
+}
+
+.instructions-section {
+  background-color: var(--least-transparent);
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.instruct-head {
+  color: var(--white);
+  background-color: var(--least-transparent);
+}
+
+#instructions-para {
+  background-color: var(--transparent);
+  color: var(--white);
+}
+
+.center-align {
+  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
+  background-color: var(--dark-green);
+}
+
+/********************
+  * Color for Footer *
+  ********************/
+
+.copy-right {
+  background-color: var(--black);
+  color: var(--white);
+}

@@ -1,0 +1,231 @@
+/************************************
+ * Declare and initialize variables *
+ ************************************/
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --darkest-blue: #050a3f;
+  --dark-blue: #1f288f;
+  --blue: #539eff;
+  --light-blue: #effbff;
+  --error-back: #ffcdd2;
+  --red: #f00;
+  --light-green: #b1f060;
+  --green: #178800;
+  --dark-green: #00570e;
+  --grey: #969696;
+  --transparent: #0000;
+  --less-transparent: #0000009c;
+}
+
+/***********************
+ * Color for HTML Tags *
+ ***********************/
+
+hr {
+  color: var(--grey);
+}
+
+.instructions-section-blocker {
+  background-color: var(--less-transparent);
+}
+
+.instructions-section {
+  background-color: var(--white);
+  border-color: var(--white);
+}
+
+/********************
+ * Color for header *
+ ********************/
+
+.header-container {
+  background-color: var(--dark-blue);
+  background-image: linear-gradient(to right, var(--darkest-blue), var(--dark-blue), var(--blue));
+}
+
+/************************************
+ * Color for Navigation Bar Buttons *
+ ************************************/
+
+.theme-btn {
+  color: var(--dark-blue);
+}
+
+.theme-btn:hover {
+  color: var(--light-green);
+}
+
+.task-btn {
+  color: var(--dark-blue);
+}
+
+.task-btn:hover {
+  color: var(--light-green);
+}
+
+.info-btn-new {
+  color: var(--dark-blue);
+}
+
+.info-btn-new:hover {
+  color: var(--light-green);
+}
+
+/*****************************
+  * Color for Error messages *
+  ****************************/
+
+.error-mssg {
+  background-color: var(--transparent);
+  color: var(--transparent);
+}
+
+.color-error {
+  background-color: var(--error-back);
+  color: var(--red);
+}
+
+/*****************************
+ * Color for Slide-out Tasks *
+ *****************************/
+.sidenav-blocker {
+  background-color: var(--less-transparent);
+}
+
+.sidenav {
+  background-color: var(--light-blue);
+}
+
+input[type=text] {
+  background-color: var(--light-blue);
+}
+
+.btn {
+  color: var(--dark-blue);
+}
+
+.btn:disabled {
+  color: var(--grey);
+}
+
+.btn:hover:enabled {
+  color: var(--light-green);
+}
+
+.close,
+.close2 {
+  color: var(--black);
+}
+
+.close:hover,
+.close2:hover,
+#delete-btn:hover:enabled {
+  color: var(--red);
+}
+
+/****************************
+ * Color for Pomodoro Timer *
+ ****************************/
+
+.timer-section {
+  background-color: var(--white);
+}
+
+.timer-box {
+  background-color: var(--dark-blue);
+  background-image: linear-gradient(to right, var(--darkest-blue), var(--dark-blue), var(--blue));
+  border-color: var(--white);
+}
+
+.timer {
+  background-color: var(--transparent);
+}
+
+#time-display {
+  color: var(--white);
+}
+
+#work-message {
+  color: var(--white);
+}
+
+#pomos-completed {
+  color: var(--white);
+}
+
+.custom-btn {
+  border-color: var(--white);
+  color: var(--white);
+  background-color: var(--transparent);
+}
+
+.custom-btn:disabled {
+  background-color: var(--grey);
+}
+
+.custom-btn:hover:enabled {
+  background-color: var(--white);
+  color: var(--dark-blue);
+}
+
+/****************************
+ * Color for Viewable Tasks *
+ ****************************/
+
+.middle-container {
+  background-color: var(--white);
+}
+
+#current {
+  background-color: var(--white);
+  color: var(--black);
+  border-color: var(--dark-blue);
+}
+
+#next {
+  background-color: var(--light-blue);
+  border-color: var(--dark-blue);
+}
+
+/**************************
+ * Color for Instructions *
+ **************************/
+
+.instruct-head {
+  color: var(--white);
+  background-color: var(--dark-green);
+  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
+}
+
+#instructions-title {
+  display: none;
+}
+
+#instructions-para {
+  display: none;
+  background-color: var(--white);
+}
+
+.instruct-bottom {
+  background-color: var(--dark-green);
+  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
+}
+
+.arrow-up-icon {
+  color: var(--white);
+}
+
+.arrow-up-icon:hover {
+  color: var(--black);
+}
+
+/********************
+ * Color for Footer *
+ ********************/
+
+.copy-right {
+  background-color: var(--darkest-blue);
+  color: var(--white);
+}

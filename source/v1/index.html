@@ -3,70 +3,92 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="Pomodoro Timer">
+  <meta name="keywords" content="Pomodoro, Tomato, Timer">
+  <meta name="author" content="Group 30: Teamato">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>PomoHero</title>
-  <link rel="stylesheet" href="./css/styles.css">
-  <link rel="icon" href="./assets/img/PomoCountYesFavicon.png">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Montserrat:wght@500&family=Sacramento&display=swap"
-    rel="stylesheet"> <!-- <script src="https://use.fontawesome.com/e3f6f09fc4.js"></script> -->
+
+  <!-- Import css stylesheets for layout and colors -->
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/colors2.css" id="theme">
+
+  <!-- Add favicon -->
+  <link rel="icon" type="image/png" href="./assets/img/PomoHeroLogo2_120x.png">
+
+  <!-- Import icons for buttons -->
+  <script defer src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>
+
+  <!-- Add stylesheet for when javascript is disabled or not supported -->
+  <noscript>
+    <link href="./css/noscript.css" rel="stylesheet">
+  </noscript>
 </head>
 
 <body>
-  <section class="full-height timer-section">
-    <div class="header-container">
-      <a href="#">
-        <img class="pomo-logo" src="assets/img/PomoHeroLogo.png" alt="pomo hero logo" href="#">
-      </a>
-      <a href="#">
-        <img class="banner" src="assets/img/PomoTitle.png" alt="PomoHero Banner">
-      </a>
-    </div>
-    <hr>
-    <div class="top-container">
-      <div class="main-box">
-        <timer-element></timer-element>
+
+  <main id="main-screen">
+    <section class="full-height timer-section">
+
+      <!-- Contains the header : logo, title -->
+      <div class="header-container">
+        <a href="#">
+          <img class="pomo-logo" src="assets/img/PomoHeroLogo2_120x.png" width="60" height="54" alt="PomoHero Logo"
+            href="#">
+        </a>
+        <a href="#">
+          <img class="banner" src="assets/img/PomoTitleA-500x.png" width="250" height="58" alt="PomoHero Banner">
+        </a>
       </div>
-    </div>
-  </section>
 
-  <section class="instructions-section full-height flex flex-column">
-    <h2 class="instruct-head">Instructions</h2>
-    <p id="instructions-para">
-      <h3>How To Use</h3>
-      <ul>
-        <li>List all of the tasks you want to get done for the day</li>
-        <li>Click on “Start” when you are ready</li>
-        <li>Note: Once started, there is no going back. The timer won’t stop</li>
-        <li>Take a 5-minute break after every Pomodoro and a 30-minute break after every 4
-          Pomodoros</li>
-        <li>Get distracted at your own risk. If distracted, click “Restart” and you will have to start
-          your current interval from the very beginning</li>
-        <li>Have other jobs to do? Hit “End Session” to log out</li>
-      </ul>
+      <!-- Contains the slide-out tasklist -->
+      <task-list></task-list>
 
-      <h3>Pomodoro Technique</h3>
-      <p>
-        The Pomodoro technique is a scientifically proven way to help increase productivity. 
-        It is a way to work with time instead of struggling against it. 
-        It is a smart method for handling interruptions, 
-        meeting deadlines, 
-        improving content of work, 
-        and reducing useless work sessions.
-      </p>
-    </p>
-    <i id="up-arrow" class="fas fa-arrow-alt-circle-up fa-5x arrow-up-icon"></i>
-  </section>
+      <!-- Contains the pop-up instructions -->
+      <instructions-box></instructions-box>
 
-  <div class="bottom-container">
+      <!-- Contains the Pomodoro timer -->
+      <div class="top-container">
+        <div class="main-box">
+          <nav class="all-btns">
+            <button id="theme-btn" title="Simple Theme" class="btn"><i
+                class="fas fa-palette fa-x theme-btn"></i></button>
+            <button id="task-btn" title="Tasklist" class="btn"><i class="fas fa-tasks fa-x"></i></button>
+            <button id="info-btn-new" title="Instructions" class="btn"><i
+                class="fas fa-info-circle fa-x info-btn-new"></i></button>
+          </nav>
+          <timer-element></timer-element>
+        </div>
+      </div>
+
+      <!-- Contains the current and next task of the user -->
+      <task-display></task-display>
+
+    </section>
+
+  </main>
+
+  <!-- Contains the footer : Copyright for app name -->
+  <footer>
     <p class="copy-right">© PomoHero 2021</p>
-  </div>
+  </footer>
 
+  <!-- Add sound for notifications -->
   <audio id="notifs" src="assets/audio/notif_tone.mp3"></audio>
 
-  <script src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>
+  <!-- Import JS source files -->
   <script type="module" src="js/main.js"></script>
-  <!-- <script src="js/timer.js"></script>
-  <script src="js/timerContainer.js"></script> -->
+
+  <!-- Import icons for buttons -->
+  <script defer src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>
+
+  <!-- No Script for when JS is not supported or disabled -->
+  <noscript>
+    <div>
+      <p>Sorry, either your browser does not support JavaScript, or it has been disabled...</p>
+    </div>
+  </noscript>
 </body>
 
 </html>

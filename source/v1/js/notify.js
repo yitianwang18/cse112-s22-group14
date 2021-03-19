@@ -10,9 +10,10 @@ function notify(n_state){
   //check if notifications are supported
   if (!("Notification" in window)) {
     alert("This browser does not support desktop notifications.");
+    return;
   }
   
-  //check is notifications are turned on
+  //check if notifications are turned on
   if (Notification.permission !== "denied") {
     Notification.requestPermission().then(function (permission) {
       //ask user to enable notifications
@@ -25,31 +26,31 @@ function notify(n_state){
         
         //start new pomo notif
         if(n_state==0){
-          var o_notification = new Notification("Time to start the next work session!",o_options);
-          var o_audio = document.getElementById("notifs");
+          let o_notification = new Notification("Time to start the next work session!",o_options);
+          let o_audio = document.getElementById("notifs");
           o_audio.play();
           return o_notification;
         }
         //start short break notif
         else if(n_state==1){
-          var o_notification = new Notification("Time for a short break!",o_options);
-          var o_audio = document.getElementById("notifs");
+          let o_notification = new Notification("Time for a short break!",o_options);
+          let o_audio = document.getElementById("notifs");
           o_audio.play();
           return o_notification;
         }
         
         //start long break notif
         else if(n_state==2){
-          var o_notification = new Notification("Time for a long break!",o_options);
-          var o_audio = document.getElementById("notifs");
+          let o_notification = new Notification("Time for a long break!",o_options);
+          let o_audio = document.getElementById("notifs");
           o_audio.play();
           return o_notification
         }
       
         //end of session notif
         else{
-          var o_notification = new Notification("All tasks completed. Good work!",o_options);
-          var o_audio = document.getElementById("notifs");
+          let o_notification = new Notification("All tasks completed. Good work!",o_options);
+          let o_audio = document.getElementById("notifs");
           o_audio.play();
           return o_notification;
         }

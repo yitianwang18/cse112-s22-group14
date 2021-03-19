@@ -1,0 +1,43 @@
+---
+
+#############################
+#############################
+## JavaScript Linter rules ##
+#############################
+#############################
+
+############
+# Env Vars #
+############
+env:
+  browser: true
+  es6: true
+  jest: true
+
+###############
+# Global Vars #
+###############
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+
+extends: "eslint:recommended"
+
+###############
+# Parser vars #
+###############
+parserOptions:
+  ecmaVersion: 6
+  sourceType: module
+
+ignorePatterns: ["**/cypress/**/*.js"]
+
+#########
+# Rules #
+#########
+rules:
+  no-case-declarations: "off"
+  no-fall-through: "off"
+  cypress/no-unnecessary-waiting: "off"
+  no-unused-vars: "off"
+  no-fallthrough: "off"

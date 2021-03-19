@@ -1,3 +1,11 @@
 # Dependency directories
 node_modules/
 .vscode/
+
+/cypress/
+/source/v1/cypress
+/source/v1/js/taskList.test.js
+cypress.json
+
+source/v1/cypress_tests/package-lock.json
+source/v1/cypress_tests/package.json
