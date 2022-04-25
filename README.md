@@ -8,4 +8,4 @@ With the power of the Pomodoro, you are in for a nice and long focussed session 
 Make sure you are all alone, phones put away, social networking sites' notifications turned off, a *Do not Disturb* sign hung on your door, and you are all set :)
 
 Use the following link -  
-[Click Me](https://pomo-hero.web.app/)
+[Click Me](https://cse112-redeem-team.web.app/)
