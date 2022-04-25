@@ -10,7 +10,8 @@
         "css": "stylelint --config .github/linters/.stylelintrc.json source/**/*.css",
         "js": "eslint -c .github/linters/.eslintrc.yml source/**/*.js",
         "cypress": "eslint -c source/v1/cypress_tests/.eslintrc.json source/v1/cypress_tests/cypress/integration",
-        "lint": "npm run html & npm run css & npm run js"
+        "lint": "npm run html & npm run css & npm run js",
+        "build": "cp -R ./source/v1 build"
     },
     "dependencies": {
         "eslint": "^7.21.0",
