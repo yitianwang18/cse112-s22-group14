@@ -199,6 +199,10 @@ class TaskList extends HTMLElement {
         // bind a function that listen to an onchange for a task input element
 
         this.querySelector("#all-tasks").append(o_task);
+
+        //add to local storage
+        const add_button = this.querySelector("#add-btn");
+        add_button.addEventListener('click',window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks)));
     }
 
     /**
@@ -215,6 +219,15 @@ class TaskList extends HTMLElement {
             o_task_item.setAttribute("taskname", o_task_item_input.value.trim());
             o_error_span.innerHTML = "";
             o_error_span.classList.remove("color-error");
+
+            //update local storage
+            if(window.localStorage.getItem("current_tasks") != null){
+                this.o_tasks = window.localStorage.getItem("current_tasks");
+                this.o_tasks = JSON.parse(this.o_tasks);
+            };
+
+            this.o_tasks[n_task_id] = o_task_item_input.value.trim();
+            window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
         }
         else {
             o_task_item.setAttribute("taskname", s_curr_input_val);
@@ -236,6 +249,9 @@ class TaskList extends HTMLElement {
      * @param {Number} n_task_id id of task to remove
      */
     removeItem(n_task_id) {
+        //type string when passed from popTask()
+        n_task_id = parseInt(n_task_id);
+
         if (this.o_tasks[n_task_id] == undefined) {
             return -1;
         }
@@ -245,6 +261,29 @@ class TaskList extends HTMLElement {
 
         // attribute query selector
         this.querySelector(`#all-tasks task-item[taskid="${n_task_id}"]`).remove();
+
+        //remove from local storage and update task id
+        let new_tasks = {};
+        let task_num = this.getNumTasks();
+        let i = 0;
+        for(let j = 0; j < task_num; j++){
+            if(i == n_task_id){
+                break;
+            }
+            new_tasks[j] = this.o_tasks[i++];
+        }
+        this.o_tasks = new_tasks;
+        this.n_next_task_id = n_task_id;
+        window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
+
+        let curr_item = {};
+        let curr_id = n_task_id+1;
+        while((curr_item = this.querySelector(`#all-tasks task-item[taskid="${curr_id}"]`))!= null){
+            this.querySelector(`#all-tasks task-item[taskid="${curr_id}"]`).remove();
+            this.addItem(curr_item.getAttribute("taskname"));
+            curr_id++;
+        }
+
         return item;
     }
 
@@ -270,6 +309,27 @@ class TaskList extends HTMLElement {
         }, 200);
 
         this.querySelector("#side-tasks-blocker").style.display = "block";
+
+        //load from local storage
+        if((this.getNumTasks() == 0) & (window.localStorage.getItem("current_tasks")!=null)){
+            this.o_tasks = window.localStorage.getItem("current_tasks");
+            this.o_tasks = JSON.parse(this.o_tasks);
+            let num_tasks = Object.keys(this.o_tasks).length;
+            console.log(num_tasks);
+            for(let i = 0; i < num_tasks; i++){
+                if(this.o_tasks[i] != null){
+                    let o_task = new Task();
+                    o_task.setAttribute("taskname", this.o_tasks[i]);
+                    o_task.setAttribute("taskid", i);
+                    console.log(this.n_task_id);
+                    o_task.bindHandleDelete(() => { this.removeItem(i) });
+                    o_task.bindHandleEdit(() => { this.editItemName(i); });
+                    // bind a function that listen to an onchange for a task input element
+                    this.n_next_task_id++;
+                    this.querySelector("#all-tasks").append(o_task);
+                }
+            }
+        }
     }
 
     /**
