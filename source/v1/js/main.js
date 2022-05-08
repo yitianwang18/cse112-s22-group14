@@ -78,6 +78,16 @@ function handleKeyBinds(o_event) {
  */
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Code to automatically open instructions if it has been a month since the last time the website was used
+    let o_date = new Date();
+    let n_currDate = o_date.getDay() + o_date.getMonth() + o_date.getFullYear();
+    let n_prevDate = localStorage.getItem("n_prevDate");
+
+    if (n_prevDate == null || n_prevDate - n_currDate >= 30) {
+        showInstructions();
+    }
+    localStorage.setItem("n_prevDate", n_currDate);
+
     // Code for change theme button functionality
     let o_theme_btn = document.getElementById("theme-btn");
     o_theme_btn.addEventListener("click", handleThemeBtnPressed);
