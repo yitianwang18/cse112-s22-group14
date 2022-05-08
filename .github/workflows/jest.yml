@@ -5,8 +5,10 @@ name: Jest
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
   pull_request:
+    # only changes in the source folder will trigger this workflow
+    paths:
+      - 'source/*'
     branches: [ main, dev ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -26,8 +28,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: install jest
-        run: npm i jest
+      # npm install will respect the package.json, while npm ci will respect package-lock.json
+        run: npm install
 
       # Runs a set of commands using the runners shell
       - name: Run jest
-        run: sudo npm test
+        run: npm run test
