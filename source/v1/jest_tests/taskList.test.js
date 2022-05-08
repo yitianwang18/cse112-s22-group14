@@ -39,17 +39,17 @@ test("TaskList Item Removing", () => {
     o_tasklist.removeItem(1);
     expect(Object.keys(o_tasklist.o_tasks).length).toBe(2);
     expect(o_tasklist.o_tasks[0]).toBe("Task1");
-    expect(o_tasklist.o_tasks[1]).toBe(undefined);
-    expect(o_tasklist.o_tasks[2]).toBe("Task3");
-    expect(o_tasklist.n_next_task_id).toBe(3);
+    // expect(o_tasklist.o_tasks[1]).toBe(undefined);
+    expect(o_tasklist.o_tasks[1]).toBe("Task3");
+    expect(o_tasklist.n_next_task_id).toBe(2);
 
     o_tasklist.addItem("Task4");
     expect(Object.keys(o_tasklist.o_tasks).length).toBe(3);
     expect(o_tasklist.o_tasks[0]).toBe("Task1");
-    expect(o_tasklist.o_tasks[1]).toBe(undefined);
-    expect(o_tasklist.o_tasks[2]).toBe("Task3");
-    expect(o_tasklist.o_tasks[3]).toBe("Task4");
-    expect(o_tasklist.n_next_task_id).toBe(4);
+    //expect(o_tasklist.o_tasks[1]).toBe(undefined);
+    expect(o_tasklist.o_tasks[1]).toBe("Task3");
+    expect(o_tasklist.o_tasks[2]).toBe("Task4");
+    expect(o_tasklist.n_next_task_id).toBe(3);
 });
 
 test("Tasklist getItems", () => {
