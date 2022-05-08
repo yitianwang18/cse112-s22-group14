@@ -186,7 +186,7 @@ class TaskList extends HTMLElement {
 
     /**
      * Adds an item to the task list, and also adds it to the dom
-     * @param {Stromg} s_task_name name of the task
+     * @param {String} s_task_name name of the task
      */
     addItem(s_task_name) {
         let n_task_id = this.n_next_task_id++;
