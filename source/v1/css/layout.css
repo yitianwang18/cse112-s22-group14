@@ -55,6 +55,13 @@ body {
   margin: auto;
 }
 
+#header-line {
+  padding: 0px;
+  margin: 0px;
+  height: 1px;
+  color: white;
+  background-color: white;
+}
 /**************************
  * Styling Navigation Bar *
  **************************/
@@ -132,6 +139,8 @@ body {
   top: 0;
   right: 0;
   box-shadow: -5px 5px 10px black;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
   transition: 0.3s;
 }
 
@@ -157,6 +166,7 @@ body {
 #task-title {
   position: relative;
 }
+
 
 /**
  * Horizontal rule used to separate add and show tasks
@@ -451,7 +461,7 @@ input[type=text] {
  ************************/
 
 /**
- * Container for slide-out tasks mask
+ * Container for instructions box mask
  */
 #instructions-blocker {
   position: fixed;
@@ -478,8 +488,8 @@ input[type=text] {
   bottom: 0;
   margin: auto;
   z-index: 2;
-  border-width: 0;
-  border-style: solid;
+  border-radius: 1rem;
+  box-shadow: 10px black;
 }
 
 /**
@@ -666,6 +676,19 @@ input[type=text] {
     font-size: 0.82rem;
     line-height: 21px;
   }
+
+  #task-input {
+    width: 70%;
+  }
+
+  #all-tasks, #wrap-tasks {
+    position: relative;
+    width: 100%;
+  }
+
+  .task-input {
+    width: 1rem;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -704,10 +727,6 @@ input[type=text] {
     bottom: -15px;
   }
 
-  #all-tasks {
-    max-width: 100%;
-    height: calc(100vh - 365px);
-  }
 
   .pomo-logo {
     width: 0;

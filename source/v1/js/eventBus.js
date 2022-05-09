@@ -57,6 +57,7 @@ class EventBus {
      */
     handleStartSession() {
         let o_start_error = this.o_timer_container.querySelector("#start-error");
+        this.o_task_list.showTaskList();
         // check for valid application states
         if (this.o_task_list.getNumTasks() != 0 && this.o_timer_container.n_curr_state == TimerContainer.N_NOT_STARTED) {
             // hide toolbar and disable task button

@@ -1,0 +1,174 @@
+/************************************
+ * Declare and initialize variables *
+ ************************************/
+
+:root {
+  --red: #f00;
+  --light-grey: #828282;
+  --timer-box-color: #111111;
+  --secondary-color: #222222;
+  --light-color: #e0e0e0;
+  --less-transparent: #0000009c;
+}
+
+/***********************
+ * Color for HTML Tags *
+ ***********************/
+
+hr {
+  color: var(--light-grey);
+}
+
+/********************
+ * Color for header *
+ ********************/
+
+.header-container {
+  background-color: var(--timer-box-color);
+}
+
+/*****************************
+  * Color for Error messages *
+  ****************************/
+
+.error-mssg {
+  background-color: transparent;
+  color: transparent;
+}
+
+.color-error {
+  color: var(--red);
+}
+
+/*****************************
+ * Color for Slide-out Tasks *
+ *****************************/
+.sidenav-blocker {
+  background-color: var(--less-transparent);
+}
+
+.sidenav {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+input[type=text] {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/*****************************
+ * Color for Buttons *
+ *****************************/
+.btn {
+  color: white;
+}
+
+.btn:disabled {
+  color: var(--light-grey);
+}
+
+.btn:hover:enabled {
+  color: var(--light-grey);
+}
+
+.close,
+.close2 {
+  color: white;
+}
+
+.close:hover,
+.close2:hover,
+#delete-btn:hover:enabled {
+  color: var(--red);
+}
+
+/****************************
+ * Color for Pomodoro Timer *
+ ****************************/
+
+.timer-section {
+  background-color: black;
+}
+
+.timer-box {
+  background-color: var(--timer-box-color);
+  border-color: white;
+}
+
+.timer {
+  background-color: transparent;
+}
+
+#time-display {
+  color: white;
+}
+
+#work-message {
+  color: white;
+}
+
+#pomos-completed {
+  color: white;
+}
+
+.custom-btn {
+  border-color: white;
+  color: white;
+  background-color: transparent;
+}
+
+.custom-btn:disabled {
+  background-color: var(--light-grey);
+}
+
+.custom-btn:hover:enabled {
+  background-color: white;
+  color: black;
+}
+
+/****************************
+ * Color for Viewable Tasks *
+ ****************************/
+
+ .middle-container {
+  background-color: transparent;
+  color: white;
+}
+
+#current {
+  background-color: var(--secondary-color);
+  color: white;
+  border-color: white;
+}
+
+#next {
+  background-color: var(--secondary-color);
+  border-color: white;
+}
+
+/**************************
+  * Color for Instructions *
+  **************************/
+
+  .instructions-section-blocker {
+    background-color: var(--less-transparent);
+  }
+  
+  .instructions-section {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+  }
+  
+  .instruct-head, .inst-headers {
+    color: white;
+  }
+  
+/********************
+ * Color for Footer *
+ ********************/
+
+.copy-right {
+  background-color: black;
+  color: white;
+}

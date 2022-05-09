@@ -27,6 +27,7 @@ class TaskList extends HTMLElement {
         // close button
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn", "hidden");
+        o_close_button.title = "Close Tasklist";
         o_close_button.id = "close-task";
         o_close_button.innerHTML = "&times;";
         o_close_button.addEventListener("click", this.closeTaskList.bind(this));
@@ -45,7 +46,7 @@ class TaskList extends HTMLElement {
         let o_add_label_container = document.createElement("div")
 
         let o_make_add_label_bold = document.createElement("strong");
-        o_make_add_label_bold.innerHTML = "Add task:";
+        o_make_add_label_bold.innerHTML = "New Task:";
 
         o_add_label_container.append(o_make_add_label_bold);
 
@@ -66,6 +67,7 @@ class TaskList extends HTMLElement {
         let o_add_task_button = document.createElement("button");
         o_add_task_button.classList.add("btn");
         o_add_task_button.id = "add-btn";
+        o_add_task_button.title = "Add Task"
 
         let o_add_task_icon = document.createElement("i");
         o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-x");
@@ -96,7 +98,8 @@ class TaskList extends HTMLElement {
         o_error_mssg_2.id = "edit-error";
         o_error_mssg_2.className = "error-mssg";
 
-        o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, o_existing_tasks_title, o_error_mssg_2);
+        o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, 
+            o_existing_tasks_title, o_error_mssg_2);
 
         let o_tasks = document.createElement("div");
         o_tasks.className = "hidden";
@@ -154,7 +157,8 @@ class TaskList extends HTMLElement {
     }
 
     /**
-     * Handles the event for adding a task. o_event should be useless as you don't care about the object that was clicked.
+     * Handles the event for adding a task. o_event should be useless as you don't care about the object
+     * that was clicked.
      * Validates the string, and if it's valid, it updates the data structure and adds a Task to the DOM
      */
     handleAddTask() {
@@ -186,7 +190,7 @@ class TaskList extends HTMLElement {
 
     /**
      * Adds an item to the task list, and also adds it to the dom
-     * @param {Stromg} s_task_name name of the task
+     * @param {String} s_task_name name of the task
      */
     addItem(s_task_name) {
         let n_task_id = this.n_next_task_id++;
@@ -194,11 +198,16 @@ class TaskList extends HTMLElement {
         let o_task = new Task();
         o_task.setAttribute("taskname", s_task_name);
         o_task.setAttribute("taskid", n_task_id);
-        o_task.bindHandleDelete(() => { this.removeItem(n_task_id) });
+        o_task.bindHandleDelete(() => { this.removeItem(n_task_id); });
         o_task.bindHandleEdit(() => { this.editItemName(n_task_id); });
         // bind a function that listen to an onchange for a task input element
 
         this.querySelector("#all-tasks").append(o_task);
+
+        //add to local storage
+        const o_add_button = this.querySelector("#add-btn");
+        o_add_button.addEventListener('click',window.localStorage.setItem("current_tasks",
+        JSON.stringify(this.o_tasks)));
     }
 
     /**
@@ -215,6 +224,15 @@ class TaskList extends HTMLElement {
             o_task_item.setAttribute("taskname", o_task_item_input.value.trim());
             o_error_span.innerHTML = "";
             o_error_span.classList.remove("color-error");
+
+            //update local storage
+            if(window.localStorage.getItem("current_tasks") != null){
+                this.o_tasks = window.localStorage.getItem("current_tasks");
+                this.o_tasks = JSON.parse(this.o_tasks);
+            };
+
+            this.o_tasks[n_task_id] = o_task_item_input.value.trim();
+            window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
         }
         else {
             o_task_item.setAttribute("taskname", s_curr_input_val);
@@ -236,6 +254,9 @@ class TaskList extends HTMLElement {
      * @param {Number} n_task_id id of task to remove
      */
     removeItem(n_task_id) {
+        //type string when passed from popTask()
+        n_task_id = parseInt(n_task_id);
+
         if (this.o_tasks[n_task_id] == undefined) {
             return -1;
         }
@@ -245,6 +266,29 @@ class TaskList extends HTMLElement {
 
         // attribute query selector
         this.querySelector(`#all-tasks task-item[taskid="${n_task_id}"]`).remove();
+
+        //remove from local storage
+        let o_new_tasks = {};
+        let n_task_num = this.getNumTasks();
+        let i = 0;
+        for(let j = 0; j < n_task_num; j++){
+            if(i == n_task_id) break;
+            o_new_tasks[j] = this.o_tasks[i++];
+        }
+        this.o_tasks = o_new_tasks;
+        this.n_next_task_id = n_task_id;
+        window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
+
+        //update task id
+        let o_curr_item = {};
+        let n_curr_id = n_task_id+1;
+        while((o_curr_item = this.querySelector(`#all-tasks task-item[taskid="${n_curr_id}"]`))!= 
+        null){
+            this.querySelector(`#all-tasks task-item[taskid="${n_curr_id}"]`).remove();
+            this.addItem(o_curr_item.getAttribute("taskname"));
+            n_curr_id++;
+        }
+
         return item;
     }
 
@@ -270,6 +314,26 @@ class TaskList extends HTMLElement {
         }, 200);
 
         this.querySelector("#side-tasks-blocker").style.display = "block";
+
+        //load from local storage
+        if((this.getNumTasks() == 0) & (window.localStorage.getItem("current_tasks")!=null)){
+            this.o_tasks = window.localStorage.getItem("current_tasks");
+            this.o_tasks = JSON.parse(this.o_tasks);
+            let n_num_tasks = Object.keys(this.o_tasks).length;
+            for(let i = 0; i < n_num_tasks; i++){
+                if(this.o_tasks[i] != null){
+                    let o_task = new Task();
+                    o_task.setAttribute("taskname", this.o_tasks[i]);
+                    o_task.setAttribute("taskid", i);
+                    console.log(this.n_task_id);
+                    o_task.bindHandleDelete(() => { this.removeItem(i); });
+                    o_task.bindHandleEdit(() => { this.editItemName(i); });
+                    // bind a function that listen to an onchange for a task input element
+                    this.n_next_task_id++;
+                    this.querySelector("#all-tasks").append(o_task);
+                }
+            }
+        }
     }
 
     /**
