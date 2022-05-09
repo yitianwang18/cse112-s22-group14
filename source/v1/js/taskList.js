@@ -96,7 +96,8 @@ class TaskList extends HTMLElement {
         o_error_mssg_2.id = "edit-error";
         o_error_mssg_2.className = "error-mssg";
 
-        o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, o_existing_tasks_title, o_error_mssg_2);
+        o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, 
+            o_existing_tasks_title, o_error_mssg_2);
 
         let o_tasks = document.createElement("div");
         o_tasks.className = "hidden";
@@ -154,7 +155,8 @@ class TaskList extends HTMLElement {
     }
 
     /**
-     * Handles the event for adding a task. o_event should be useless as you don't care about the object that was clicked.
+     * Handles the event for adding a task. o_event should be useless as you don't care about the object
+     * that was clicked.
      * Validates the string, and if it's valid, it updates the data structure and adds a Task to the DOM
      */
     handleAddTask() {
@@ -194,15 +196,16 @@ class TaskList extends HTMLElement {
         let o_task = new Task();
         o_task.setAttribute("taskname", s_task_name);
         o_task.setAttribute("taskid", n_task_id);
-        o_task.bindHandleDelete(() => { this.removeItem(n_task_id) });
+        o_task.bindHandleDelete(() => { this.removeItem(n_task_id); });
         o_task.bindHandleEdit(() => { this.editItemName(n_task_id); });
         // bind a function that listen to an onchange for a task input element
 
         this.querySelector("#all-tasks").append(o_task);
 
         //add to local storage
-        const add_button = this.querySelector("#add-btn");
-        add_button.addEventListener('click',window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks)));
+        const o_add_button = this.querySelector("#add-btn");
+        o_add_button.addEventListener('click',window.localStorage.setItem("current_tasks",
+        JSON.stringify(this.o_tasks)));
     }
 
     /**
@@ -262,26 +265,26 @@ class TaskList extends HTMLElement {
         // attribute query selector
         this.querySelector(`#all-tasks task-item[taskid="${n_task_id}"]`).remove();
 
-        //remove from local storage and update task id
-        let new_tasks = {};
-        let task_num = this.getNumTasks();
+        //remove from local storage
+        let o_new_tasks = {};
+        let n_task_num = this.getNumTasks();
         let i = 0;
-        for(let j = 0; j < task_num; j++){
-            if(i == n_task_id){
-                break;
-            }
-            new_tasks[j] = this.o_tasks[i++];
+        for(let j = 0; j < n_task_num; j++){
+            if(i == n_task_id) break;
+            o_new_tasks[j] = this.o_tasks[i++];
         }
-        this.o_tasks = new_tasks;
+        this.o_tasks = o_new_tasks;
         this.n_next_task_id = n_task_id;
         window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
 
-        let curr_item = {};
-        let curr_id = n_task_id+1;
-        while((curr_item = this.querySelector(`#all-tasks task-item[taskid="${curr_id}"]`))!= null){
-            this.querySelector(`#all-tasks task-item[taskid="${curr_id}"]`).remove();
-            this.addItem(curr_item.getAttribute("taskname"));
-            curr_id++;
+        //update task id
+        let o_curr_item = {};
+        let n_curr_id = n_task_id+1;
+        while((o_curr_item = this.querySelector(`#all-tasks task-item[taskid="${n_curr_id}"]`))!= 
+        null){
+            this.querySelector(`#all-tasks task-item[taskid="${n_curr_id}"]`).remove();
+            this.addItem(o_curr_item.getAttribute("taskname"));
+            n_curr_id++;
         }
 
         return item;
@@ -314,15 +317,14 @@ class TaskList extends HTMLElement {
         if((this.getNumTasks() == 0) & (window.localStorage.getItem("current_tasks")!=null)){
             this.o_tasks = window.localStorage.getItem("current_tasks");
             this.o_tasks = JSON.parse(this.o_tasks);
-            let num_tasks = Object.keys(this.o_tasks).length;
-            console.log(num_tasks);
-            for(let i = 0; i < num_tasks; i++){
+            let n_num_tasks = Object.keys(this.o_tasks).length;
+            for(let i = 0; i < n_num_tasks; i++){
                 if(this.o_tasks[i] != null){
                     let o_task = new Task();
                     o_task.setAttribute("taskname", this.o_tasks[i]);
                     o_task.setAttribute("taskid", i);
                     console.log(this.n_task_id);
-                    o_task.bindHandleDelete(() => { this.removeItem(i) });
+                    o_task.bindHandleDelete(() => { this.removeItem(i); });
                     o_task.bindHandleEdit(() => { this.editItemName(i); });
                     // bind a function that listen to an onchange for a task input element
                     this.n_next_task_id++;
