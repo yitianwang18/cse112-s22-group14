@@ -20,12 +20,15 @@ class Task extends HTMLElement {
         o_div.id = "wrap-task";
 
         let o_item = document.createElement("input");
+        o_item.title = "Click to Edit";
+        o_item.id = "task-input";
         // let o_item_input = document.createElement("input");
         o_item.setAttribute("type", "text");
         o_item.setAttribute("name", "task");
 
         let o_del_button = document.createElement("button");
         o_del_button.id = "delete-btn";
+        o_del_button.title = "Delete Task";
         o_del_button.classList.add("btn");
         let o_del_button_icon = document.createElement("i");
         o_del_button_icon.classList.add("fas", "fa-trash-alt", "fa-x");
