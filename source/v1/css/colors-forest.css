@@ -3,21 +3,15 @@
  ************************************/
 
 :root {
-  --white: #fff;
-  --black: #000;
-  --red: #f44336;
-  --error-back: #ffcdd2;
-  --light-green: #b1f060;
-  --olive-green: #3c463a;
+  --red: #f00;
   --green: #178800;
-  --dark-green: #00570e;
-  --darker-green: #003809;
-  --darkest-green: #001303;
-  --grey: #7e7f80;
+  --secondary-color: #222222;
+  --light-grey: #828282;
   --transparent: #0000;
   --alm-transparent: #0000006b;
   --less-transparent: #0000009c;
   --least-transparent: #000000e8;
+  --light-color: #d6d6d6;
 }
 
 /*******************************
@@ -64,7 +58,7 @@
   ***********************/
 
 hr {
-  color: var(--grey);
+  color: var(--light-grey);
 }
 
 /********************
@@ -73,34 +67,6 @@ hr {
 
 .header-container {
   background-color: var(--less-transparent);
-}
-
-/******************************
-  * Color for Nav Bar Buttons *
-  *****************************/
-
-.theme-btn {
-  color: var(--white);
-}
-
-.theme-btn:hover {
-  color: var(--green);
-}
-
-.task-btn {
-  color: var(--white);
-}
-
-.task-btn:hover {
-  color: var(--green);
-}
-
-.info-btn-new {
-  color: var(--white);
-}
-
-.info-btn-new:hover {
-  color: var(--green);
 }
 
 /*****************************
@@ -113,7 +79,6 @@ hr {
 }
 
 .color-error {
-  background-color: var(--error-back);
   color: var(--red);
 }
 
@@ -126,21 +91,24 @@ hr {
 }
 
 .sidenav {
-  background-color: var(--olive-green);
-  color: var(--white);
+  background-color: var(--secondary-color);
+  color: white;
 }
 
 input[type=text] {
-  background-color: var(--olive-green);
-  color: var(--white);
+  background-color: var(--secondary-color);
+  color: white;
 }
 
+/*****************************
+ * Color for Buttons *
+ *****************************/
 .btn {
-  color: var(--white);
+  color: white;
 }
 
 .btn:disabled {
-  color: var(--grey);
+  color: var(--light-grey);
 }
 
 .btn:hover:enabled {
@@ -149,23 +117,23 @@ input[type=text] {
 
 #add-btn,
 #delete-btn {
-  color: var(--white);
+  color: white;
 }
 
 #add-btn:disabled {
-  color: var(--grey);
+  color: var(--light-grey);
 }
 
 #add-btn:hover:enabled {
-  color: var(--light-green);
+  color: var(--green);
 }
 
 .close {
-  color: var(--white);
+  color: white;
 }
 
 .close2 {
-  color: var(--white);
+  color: white;
 }
 
 .close:hover,
@@ -184,7 +152,7 @@ input[type=text] {
 
 .timer-box {
   background-color: var(--less-transparent);
-  border-color: var(--white);
+  border-color: white;
 }
 
 .timer {
@@ -192,30 +160,30 @@ input[type=text] {
 }
 
 #time-display {
-  color: var(--white);
+  color: white;
 }
 
 #work-message {
-  color: var(--white);
+  color: white;
 }
 
 #pomos-completed {
-  color: var(--white);
+  color: white;
 }
 
 .custom-btn {
-  border-color: var(--white);
-  color: var(--white);
+  border-color: white;
+  color: white;
   background-color: var(--transparent);
 }
 
 .custom-btn:disabled {
-  background-color: var(--grey);
+  background-color: var(--light-grey);
 }
 
 .custom-btn:hover:enabled {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: white;
+  color: black;
 }
 
 /****************************
@@ -224,18 +192,18 @@ input[type=text] {
 
 .middle-container {
   background-color: var(--transparent);
-  color: var(--white);
+  color: white;
 }
 
 #current {
   background-color: var(--less-transparent);
-  color: var(--white);
-  border-color: var(--white);
+  color: white;
+  border-color: white;
 }
 
 #next {
   background-color: var(--less-transparent);
-  border-color: var(--white);
+  border-color: white;
 }
 
 /**************************
@@ -247,24 +215,12 @@ input[type=text] {
 }
 
 .instructions-section {
-  background-color: var(--least-transparent);
-  color: var(--white);
-  border-color: var(--white);
+  background-color: var(--secondary-color);
+  color: var(--light-color);
 }
 
-.instruct-head {
-  color: var(--white);
-  background-color: var(--least-transparent);
-}
-
-#instructions-para {
-  background-color: var(--transparent);
-  color: var(--white);
-}
-
-.center-align {
-  background-image: linear-gradient(to right, var(--dark-green), var(--green), var(--light-green));
-  background-color: var(--dark-green);
+.instruct-head, .inst-headers {
+  color: white;
 }
 
 /********************
@@ -272,6 +228,6 @@ input[type=text] {
   ********************/
 
 .copy-right {
-  background-color: var(--black);
-  color: var(--white);
+  background-color: black;
+  color: white;
 }

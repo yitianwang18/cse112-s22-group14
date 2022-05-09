@@ -12,12 +12,12 @@ function handleThemeBtnPressed() {
     let theme_btn = document.getElementById("theme-btn");
 
     // Change the value of href attribute to change the css sheet.
-    if (theme.getAttribute("href") == "./css/colors.css") {
-        theme.setAttribute("href", "./css/colors2.css");
-        theme_btn.setAttribute("title", "Simple Theme");
+    if (theme.getAttribute("href") == "./css/colors-dark.css") {
+        theme.setAttribute("href", "./css/colors-forest.css");
+        theme_btn.setAttribute("title", "Dark Theme");
     } else {
-        theme.setAttribute("href", "./css/colors.css");
-        theme_btn.setAttribute("title", "Complex Theme");
+        theme.setAttribute("href", "./css/colors-dark.css");
+        theme_btn.setAttribute("title", "Forest Theme");
     }
 }
 
