@@ -79,11 +79,13 @@ function handleKeyBinds(o_event) {
 document.addEventListener("DOMContentLoaded", () => {
 
     // Code to automatically open instructions if it has been a month since the last time the website was used
+    let a_daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
     let o_date = new Date();
-    let n_currDate = o_date.getDay() + o_date.getMonth() + o_date.getFullYear();
+    let n_currDate = o_date.getDay() + (o_date.getMonth() * a_daysInMonth[o_date.getMonth()]) + (o_date.getFullYear() * 365);
     let n_prevDate = localStorage.getItem("n_prevDate");
 
-    if (n_prevDate == null || n_prevDate - n_currDate >= 30) {
+    if (n_prevDate == null || n_currDate - n_prevDate >= 30) {
         showInstructions();
     }
     localStorage.setItem("n_prevDate", n_currDate);
