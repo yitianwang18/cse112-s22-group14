@@ -37,7 +37,7 @@ function notify(n_state){
 
         // check safari
         var b_isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
-        
+
         //start new pomo notif
         if (b_isSafari) {
           var promise = document.getElementById("notifs").play();
@@ -58,36 +58,6 @@ function notify(n_state){
           o_audio.play();
        }
        return o_notification;
-    //     //start new pomo notif
-    //     if(n_state==0){
-    //       let o_notification = new Notification("Time to start the next work session!",o_options);
-    //       let o_audio = document.getElementById("notifs");
-    //       o_audio.play();
-    //       return o_notification;
-    //     }
-    //     //start short break notif
-    //     else if(n_state==1){
-    //       let o_notification = new Notification("Time for a short break!",o_options);
-    //       let o_audio = document.getElementById("notifs");
-    //       o_audio.play();
-    //       return o_notification;
-    //     }
-        
-    //     //start long break notif
-    //     else if(n_state==2){
-    //       let o_notification = new Notification("Time for a long break!",o_options);
-    //       let o_audio = document.getElementById("notifs");
-    //       o_audio.play();
-    //       return o_notification
-    //     }
-      
-    //     //end of session notif
-    //     else{
-    //       let o_notification = new Notification("All tasks completed. Good work!",o_options);
-    //       let o_audio = document.getElementById("notifs");
-    //       o_audio.play();
-    //       return o_notification;
-    //     }
        }
      });
   }
