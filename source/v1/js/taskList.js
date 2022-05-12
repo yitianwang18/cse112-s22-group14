@@ -27,6 +27,7 @@ class TaskList extends HTMLElement {
         // close button
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn", "hidden");
+        o_close_button.title = "Close Tasklist";
         o_close_button.id = "close-task";
         o_close_button.innerHTML = "&times;";
         o_close_button.addEventListener("click", this.closeTaskList.bind(this));
@@ -45,7 +46,7 @@ class TaskList extends HTMLElement {
         let o_add_label_container = document.createElement("div")
 
         let o_make_add_label_bold = document.createElement("strong");
-        o_make_add_label_bold.innerHTML = "Add task:";
+        o_make_add_label_bold.innerHTML = "New Task:";
 
         o_add_label_container.append(o_make_add_label_bold);
 
@@ -66,6 +67,7 @@ class TaskList extends HTMLElement {
         let o_add_task_button = document.createElement("button");
         o_add_task_button.classList.add("btn");
         o_add_task_button.id = "add-btn";
+        o_add_task_button.title = "Add Task"
 
         let o_add_task_icon = document.createElement("i");
         o_add_task_icon.classList.add("fas", "fa-plus-square", "fa-x");
