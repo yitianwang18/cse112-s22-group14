@@ -36,20 +36,20 @@ function notify(n_state){
         let o_notification = new Notification(s_alert, o_options);
 
         // check safari
-        var b_isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
+        let b_isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
 
         //start new pomo notif
         if (b_isSafari) {
-          var promise = document.getElementById("notifs").play();
+          let o_promise = document.getElementById("notifs").play();
 
-          if (promise !== undefined) {
-              promise.catch(error => {
+          if (o_promise !== undefined) {
+              o_promise.catch(error => {
               // Auto-play was prevented
               // Show a UI element to let the user manually start playback
-                console.log('Please enable "Preference window -> Websites -> Auto-Play" to get the notification audio');
-               }).then(() => {
+                 console.log('Please enable "Preference window -> Websites -> Auto-Play" to get the notification audio');
+              }).then(() => {
                // Auto-play started
-                console.log('Auto-play started');
+                 console.log('Auto-play started');
               });
            }
 
