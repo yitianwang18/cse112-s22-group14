@@ -16,6 +16,16 @@ class Task extends HTMLElement {
      */
     constructor() {
         super();
+        
+        // set dragging class/attribute
+        this.setAttribute("draggable", true);
+        this.style.cursor = 'move';
+        this.classList.add("draggable");
+        // event listener to tell when this task is being dragged 
+        this.addEventListener('dragstart', () => {
+           this.classList.add('dragging');
+        });
+
         let o_div = document.createElement("div");
         o_div.id = "wrap-task";
 
@@ -83,6 +93,15 @@ class Task extends HTMLElement {
      */
     bindHandleEdit(f_edit_action) {
         this.querySelector("input").addEventListener("change", f_edit_action);
+    }
+
+    /**
+     * Binds dragend handler to the task-item. Sets the new order of the task
+     * within the task list
+     * @param {Function}  f_dragend_action function that handles dragover
+     */
+    bindHandleDragend(f_dragend_action) {
+        this.addEventListener("dragend", f_dragend_action);
     }
 
 }

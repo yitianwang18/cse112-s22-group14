@@ -199,6 +199,26 @@ body {
   margin-bottom: 10px;
 }
 
+#wrap-task {
+  background-color: green;
+  padding: 10px 0;
+  margin: 15px 0;
+}
+
+/**
+ * Class for distinguishing draggable tasks
+ */
+.draggable {
+  cursor: 'move';
+}
+
+/**
+ * Class for when dragging/moving an task
+ */
+.dragging {
+  opacity: 0.5;
+}
+
 /**
  * Wrapper for adding error messages to buttons
  */
