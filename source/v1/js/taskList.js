@@ -35,9 +35,10 @@ class TaskList extends HTMLElement {
         // wrapper for input/headers
         let o_task_title_wrapper = document.createElement("div");
         o_task_title_wrapper.id = "task-title";
+        o_task_title_wrapper.classList.add("hidden")
 
         let o_tasklist_title = document.createElement("h1");
-        o_tasklist_title.innerText = "TaskList";
+        o_tasklist_title.innerText = "Task List";
 
         let o_add_task = document.createElement("div");
         o_add_task.id = "add-task";
@@ -98,14 +99,14 @@ class TaskList extends HTMLElement {
         o_error_mssg_2.id = "edit-error";
         o_error_mssg_2.className = "error-mssg";
 
-        o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, 
+        o_task_title_wrapper.append(o_close_button, o_tasklist_title, o_add_label_container, o_add_task, o_hr, 
             o_existing_tasks_title, o_error_mssg_2);
 
         let o_tasks = document.createElement("div");
         o_tasks.className = "hidden";
         o_tasks.id = "all-tasks";
 
-        o_wrapper_obj.append(o_close_button, o_task_title_wrapper, o_tasks);
+        o_wrapper_obj.append(o_task_title_wrapper, o_tasks);
         this.append(o_wrapper_obj_back);
         this.append(o_wrapper_obj);
 
@@ -296,7 +297,6 @@ class TaskList extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showTaskList() {
-        this.querySelector("#close-task").style.display = "block";
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "block";
 
@@ -308,10 +308,11 @@ class TaskList extends HTMLElement {
 
         // Remove everything during animation to prevent sandwiching of text
         setTimeout(() => {
+            this.querySelector("#close-task").style.display = "block";
             this.querySelector("#task-title").style.display = "block";
             this.querySelector("#all-tasks").style.display = "block";
             this.querySelector("input").focus();
-        }, 200);
+        }, 300);
 
         this.querySelector("#side-tasks-blocker").style.display = "block";
 
