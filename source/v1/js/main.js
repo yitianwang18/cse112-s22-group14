@@ -12,12 +12,12 @@ function handleThemeBtnPressed() {
     let theme_btn = document.getElementById("theme-btn");
 
     // Change the value of href attribute to change the css sheet.
-    if (theme.getAttribute("href") == "./css/colors.css") {
-        theme.setAttribute("href", "./css/colors2.css");
-        theme_btn.setAttribute("title", "Simple Theme");
+    if (theme.getAttribute("href") == "./css/colors-dark.css") {
+        theme.setAttribute("href", "./css/colors-forest.css");
+        theme_btn.setAttribute("title", "Dark Theme");
     } else {
-        theme.setAttribute("href", "./css/colors.css");
-        theme_btn.setAttribute("title", "Complex Theme");
+        theme.setAttribute("href", "./css/colors-dark.css");
+        theme_btn.setAttribute("title", "Forest Theme");
     }
 }
 
@@ -77,6 +77,18 @@ function handleKeyBinds(o_event) {
  * This event listener is used for initializing anything that isn't associated with any specific webcomponent.
  */
 document.addEventListener("DOMContentLoaded", () => {
+
+    // Code to automatically open instructions if it has been a month since the last time the website was used
+    let a_daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    let o_date = new Date();
+    let n_currDate = o_date.getDay() + (o_date.getMonth() * a_daysInMonth[o_date.getMonth()]) + (o_date.getFullYear() * 365);
+    let n_prevDate = localStorage.getItem("n_prevDate");
+
+    if (n_prevDate == null || n_currDate - n_prevDate >= 30) {
+        showInstructions();
+    }
+    localStorage.setItem("n_prevDate", n_currDate);
 
     // Code for change theme button functionality
     let o_theme_btn = document.getElementById("theme-btn");

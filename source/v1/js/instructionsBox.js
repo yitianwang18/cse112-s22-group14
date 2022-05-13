@@ -40,7 +40,7 @@ class InstructionsBox extends HTMLElement {
 
         //header for task-list instructions
         let o_inst_tasks = document.createElement("h3");
-        o_inst_tasks.innerText = "Add tasks for the session";
+        o_inst_tasks.innerText = "Add Tasks for the Session";
         o_inst_tasks.className = "inst-headers";
 
         let o_inst_tasks_list = document.createElement("ul");
@@ -137,8 +137,8 @@ class InstructionsBox extends HTMLElement {
  * @static
  * @type {string[]}
  */
-InstructionsBox.A_TASK_INST = ["Click on the task list button, add all tasks you want to do",
-    "Tasks can only be added before starting the Pomodoro session",
+InstructionsBox.A_TASK_INST = ["Click on the task list button and add all tasks you want to do",
+    "Tasks can only be added before starting the Pomodoro session to limit distractions while you work",
     "Once the session begins, you can see the current and the next tasks",
     "If you are done with a task, hit the 'check' button"];
 
@@ -158,7 +158,7 @@ InstructionsBox.A_CYCLE_INST = ["One Pomodoro = 25 minutes of work/studying",
  * @static
  * @type {String}
  */
-InstructionsBox.S_POMO_INST = "The Pomodoro technique is a scientifically proven way to help increase productivity. Ultimately, people are more productive by taking small mental breaks. PomoHero automates the process for you, making it easier for you to focus on your work and reduce distractions.";
+InstructionsBox.S_POMO_INST = "The Pomodoro technique is a scientifically proven way to help increase productivity. Ultimately, people are more productive by taking small mental breaks. PomoHero automates the process for you, making it easier for you to reduce distractions and focus on your work.";
 
 /**
  * String describing the site's hotkeys

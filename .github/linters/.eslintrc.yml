@@ -36,8 +36,7 @@ ignorePatterns: ["**/cypress/**/*.js"]
 # Rules #
 #########
 rules:
-  no-case-declarations: "off"
-  no-fall-through: "off"
+  no-case-declarations: "warn"
   cypress/no-unnecessary-waiting: "off"
-  no-unused-vars: "off"
-  no-fallthrough: "off"
+  no-unused-vars: "warn"
+  no-fallthrough: "warn"
