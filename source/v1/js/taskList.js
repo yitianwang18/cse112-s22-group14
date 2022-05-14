@@ -283,7 +283,7 @@ class TaskList extends HTMLElement {
             if(window.localStorage.getItem("current_tasks") != null){
                 this.o_tasks = window.localStorage.getItem("current_tasks");
                 this.o_tasks = JSON.parse(this.o_tasks);
-            };
+            }
 
             this.o_tasks[n_task_id] = o_task_item_input.value.trim();
             window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
