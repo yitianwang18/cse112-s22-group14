@@ -209,7 +209,7 @@ body {
  * Class for distinguishing draggable tasks
  */
 .draggable {
-  cursor: 'move';
+  cursor: move;
 }
 
 /**
