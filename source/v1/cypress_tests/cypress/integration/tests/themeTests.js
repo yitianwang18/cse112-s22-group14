@@ -1,6 +1,6 @@
 describe("Theme Change Tests", () => {
   beforeEach(() => {
-    cy.visit("https://pomo-hero-dev.web.app/");
+    cy.visit("https://powelldoro.web.app/");
   });
 
   it("Tests clicking to toggle theme", () => {

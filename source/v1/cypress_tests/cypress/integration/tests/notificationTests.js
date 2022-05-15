@@ -5,7 +5,7 @@ describe("Notification Tests", () => {
 
     it("Tests alert when notifications are not supported", () => {
         //no notifs in browser, so it deletes notifs
-        cy.visit("https://pomo-hero-dev.web.app/", {
+        cy.visit("https://powelldoro.web.app/", {
             onBeforeLoad(window) {
                 delete window.Notification;
             },
