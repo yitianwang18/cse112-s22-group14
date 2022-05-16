@@ -1,5 +1,5 @@
 {
-    "name": "server",
+    "name": "powellhero",
     "type": "module",
     "version": "0.0.0",
     "private": true,
@@ -11,23 +11,21 @@
         "js": "eslint -c .github/linters/.eslintrc.yml source/**/*.js",
         "cypress": "eslint -c source/v1/cypress_tests/.eslintrc.json source/v1/cypress_tests/cypress/integration",
         "lint": "npm run html & npm run css & npm run js",
-        "build": "cp -R ./source/v1 build"
-    },
-    "dependencies": {
-        "eslint": "^7.21.0",
-        "eslint-plugin-cypress": "^2.11.2",
-        "htmlhint": "^0.14.2",
-        "jest": "26.4.2",
-        "jsdoc": "3.6.6",
-        "jsdom": "^16.4.0",
-        "stylelint": "^13.11.0",
-        "stylelint-config-standard": "^20.0.0"
+        "build": "rm -rf build; mkdir build; cp -R ./source/v1/* build; cd build; rm -rf *tests; rm README.md; cd .."
     },
     "jest": {
         "testEnvironment": "jest-environment-jsdom",
         "transform": {}
     },
     "devDependencies": {
-        "cypress": "^6.5.0"
+        "cypress": "^6.5.0",
+        "eslint": "^7.21.0",
+        "eslint-plugin-cypress": "^2.11.2",
+        "htmlhint": "^1.1.4",
+        "jest": "^26.4.2",
+        "jsdoc": "^3.6.6",
+        "jsdom": "^16.4.0",
+        "stylelint": "^13.11.0",
+        "stylelint-config-standard": "^20.0.0"
     }
 }
