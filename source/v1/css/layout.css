@@ -31,17 +31,19 @@ body {
  */
 .header-container {
   padding: 10px 0;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 /**
  * PomoHero App Logo
  */
 .pomo-logo {
-  width: 60px;
+  width: calc(2rem + 2vw);
   height: auto;
   margin-left: 5px;
   padding-left: 10px;
-  padding-top: 5px;
   float: left;
 }
 
@@ -49,7 +51,8 @@ body {
  * Image of PomoHero title
  */
 .banner {
-  width: 250px;
+  width: calc(10rem + 20vw);
+  max-width: 400px;
   height: auto;
   padding-top: 5px;
   margin: auto;
@@ -149,7 +152,7 @@ body {
  */
 .sidenav-open {
   width: 420px;
-  padding: 0 50px;
+  padding: 0 calc(1rem + 1vw);
 }
 
 /**
@@ -197,6 +200,11 @@ body {
  */
 #task-title > h1 + div {
   margin-bottom: 10px;
+}
+
+
+#task-title h1 {
+  margin: calc(0.6rem + 1vw);;
 }
 
 #wrap-task {
@@ -271,12 +279,9 @@ body {
  * Close button inside slide-out tasks
  */
 .close {
-  text-decoration: none;
-  position: relative;
-  top: 20px;
-  right: -50%;
-  padding: 0 9px;
-  transition: 0.3s;
+  position: absolute;
+  top: -0.25rem;
+  right: calc(0.2rem + 1.5vw);
 }
 
 /**
@@ -397,6 +402,13 @@ input[type=text] {
  */
 .hidden {
   display: none;
+}
+
+/**
+ * Take up Empty Space
+ */
+.empty {
+  visibility: hidden;
 }
 
 /**
@@ -644,11 +656,6 @@ input[type=text] {
     max-width: 80%;
   }
 
-  .pomo-logo {
-    width: 45px;
-    padding-top: 15px;
-  }
-
   .middle-container > div {
     max-width: 80%;
   }
@@ -741,15 +748,11 @@ input[type=text] {
 
   .sidenav-small {
     max-width: 80%;
+    padding: 0;
   }
 
   #edit-error {
     bottom: -15px;
-  }
-
-
-  .pomo-logo {
-    width: 0;
   }
 
   #instructions-para {
@@ -768,6 +771,10 @@ input[type=text] {
     margin: 3px 3px 8px 3px;
     width: 25px;
     height: 25px;
+  }
+
+  .close {
+    right: calc(0.05rem + 0.8vw);
   }
 }
 
@@ -796,6 +803,14 @@ input[type=text] {
     bottom: 220%;
     margin-left: -40vw;
   }
+
+  
+  .pomo-logo {
+    visibility: hidden;
+    width: 0;
+  }
+
+
 }
 
 @media screen and (max-width: 417px) {
