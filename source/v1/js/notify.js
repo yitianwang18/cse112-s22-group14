@@ -23,7 +23,7 @@ function notify(n_state){
       
       //send notification
       else if(Notification.permission !== "denied") {
-        var s_alert = "All tasks completed. Good work!";
+        let s_alert = "All tasks completed. Good work!";
          //start new pomo notif
          if(n_state==0){ 
            s_alert = "Time to start the next work session!";
