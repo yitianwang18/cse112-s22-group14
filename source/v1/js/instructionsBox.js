@@ -116,7 +116,7 @@ class InstructionsBox extends HTMLElement {
             this.querySelector("#instructions-title").style.display = "block";
             this.querySelector("#instructions-para").style.display = "block";
             document.body.focus();
-        }, 200);
+        }, 300);
 
         this.querySelector("#instructions-blocker").style.display = "block";
     }
