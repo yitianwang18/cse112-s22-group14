@@ -163,7 +163,7 @@ class TimerContainer extends HTMLElement {
         this.querySelector("timer-display").setAttribute("pomos-comp", this.n_done_pomos);
         let n_remainingTime = this.getTimeRemaining();
         if(n_remainingTime != -1) {
-            document.title = TimerDisplay.formatMilliTime(Number(remainigTime));
+            document.title = TimerDisplay.formatMilliTime(Number(n_remainingTime));
         }
     }
 
