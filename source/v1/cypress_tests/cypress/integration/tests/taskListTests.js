@@ -2,8 +2,7 @@
 import { TimerContainer } from "../../../../js/timerContainer";
 describe("Task List Tests", () => {
     beforeEach(() => {
-        // have to change link to updated dev url to pass this test
-        cy.visit("https://pomo-hero-dev.web.app/");
+        cy.visit("https://powelldoro.web.app/");
         cy.get(".close2").trigger("click");
         cy.document().then((o_doc) => {
             if (!o_doc.querySelector("timer-element").B_DEBUG) {
