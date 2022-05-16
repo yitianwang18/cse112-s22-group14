@@ -9,7 +9,7 @@ For this class, we will be choosing a project that one of our team members worke
 * We immediately ruled out all three Android apps because Android is a difficult language to work with and only a few people had experience with it
 * Ruled out Tony's Chrome Extension because it used ReactJS, which is a framework that most people had little to no experience with
 * Decided against Bill's Pomodoro Timer, Jenny's Bullet Journal, and Evan's Bullet Journal because the projects were overall weaker than the other two options, especially when it came to their UI, which seemed like the most difficult thing to fix.
-* Last Two Choices: 
+* Last Two Choices:
   * Ivan's Pomodoro Timer:
     * Minimal features, but they all work very well
     * Mostly intuitive design
