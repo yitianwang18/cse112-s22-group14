@@ -2,7 +2,7 @@
 describe("Keybind Integration Tests", () => {
     const N_DELAY = 200;
     beforeEach(() => {
-        cy.visit("https://pomo-hero-dev.web.app/");
+        cy.visit("https://powelldoro.web.app/");
         cy.document().then((o_doc) => {
             cy.spy(o_doc.EventBus, "fireEvent");
             cy.spy(o_doc.EventBus, "updateTaskCompleted");
