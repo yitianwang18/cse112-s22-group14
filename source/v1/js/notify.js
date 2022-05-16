@@ -22,40 +22,44 @@ function notify(n_state){
       }
       
       //send notification
-      else if(Notification.permission !== "denied"){
+      else if(Notification.permission !== "denied") {
+        var s_alert = "All tasks completed. Good work!";
+         //start new pomo notif
+         if(n_state==0){ 
+           s_alert = "Time to start the next work session!";
+         } else if(n_state==1) {
+           s_alert = "Time for a short break!";
+         } else if(n_state==2) {
+           s_alert = "Time for a long break!";
+        }
         
+        let o_notification = new Notification(s_alert, o_options);
+
+        // check safari
+        let b_isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
+
         //start new pomo notif
-        if(n_state==0){
-          let o_notification = new Notification("Time to start the next work session!",o_options);
+        if (b_isSafari) {
+          let o_promise = document.getElementById("notifs").play();
+
+          if (o_promise !== undefined) {
+              o_promise.catch(error => {
+              // Auto-play was prevented
+              // Show a UI element to let the user manually start playback
+                 console.log('Please enable "Preference window -> Websites -> Auto-Play" to get the notification audio');
+              }).then(() => {
+               // Auto-play started
+                 console.log('Auto-play started');
+              });
+           }
+
+       } else {
           let o_audio = document.getElementById("notifs");
           o_audio.play();
-          return o_notification;
-        }
-        //start short break notif
-        else if(n_state==1){
-          let o_notification = new Notification("Time for a short break!",o_options);
-          let o_audio = document.getElementById("notifs");
-          o_audio.play();
-          return o_notification;
-        }
-        
-        //start long break notif
-        else if(n_state==2){
-          let o_notification = new Notification("Time for a long break!",o_options);
-          let o_audio = document.getElementById("notifs");
-          o_audio.play();
-          return o_notification
-        }
-      
-        //end of session notif
-        else{
-          let o_notification = new Notification("All tasks completed. Good work!",o_options);
-          let o_audio = document.getElementById("notifs");
-          o_audio.play();
-          return o_notification;
-        }
-      }
-    });
+       }
+       return o_notification;
+       }
+     });
   }
 }
 

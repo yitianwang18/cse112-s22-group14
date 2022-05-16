@@ -105,6 +105,8 @@ class TaskList extends HTMLElement {
         let o_tasks = document.createElement("div");
         o_tasks.className = "hidden";
         o_tasks.id = "all-tasks";
+        // handles reordering task items visually in HTML
+        o_tasks.addEventListener('dragover', (e) => this.handleDrag(o_tasks, e));
 
         o_wrapper_obj.append(o_task_title_wrapper, o_tasks);
         this.append(o_wrapper_obj_back);
@@ -112,6 +114,7 @@ class TaskList extends HTMLElement {
 
         // update the + icon, as it's by default not initialized
         this.handleInputChange(undefined);
+
     }
 
     /**
@@ -124,6 +127,56 @@ class TaskList extends HTMLElement {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Handles setting the order of tasks (in HTML) after being dragged to 
+     * desired spot
+     * @param {Object} o_tasks_container container that holds all tasks created
+     * @param {Event} o_event window event that has occurred
+     */
+    handleDrag(o_tasks_container, o_event) {
+        o_event.preventDefault();
+        // get task that is directly after the position of current task
+        // that is being dragged
+        const o_after_task = this.getDragAfterElement(o_event.clientY);
+        // get current element being dragged
+        const o_dragged_task = document.querySelector('.dragging');
+        // ensure there is a dragged task
+        if (o_dragged_task == null) {
+            return;
+        }
+        // dragging task to end of list
+        if (o_after_task == null) {
+            o_tasks_container.appendChild(o_dragged_task);
+        } 
+        // dragging task to anywhere before the end of the list
+        else {
+            o_tasks_container.insertBefore(o_dragged_task, o_after_task);
+        }
+    }
+
+    /**
+     * Get the closest element to the current task being dragged, so we know 
+     * where to insert dragged task at.
+     * @param {number} n_y_coord y coordinate of current task being dragged
+     * @returns closest task above the currently dragged task
+     */
+    getDragAfterElement(n_y_coord) {
+        // get all tasks except the one that is dragging
+        const o_undragged_tasks = [...this.querySelectorAll('.draggable:not(.dragging)')]
+        return o_undragged_tasks.reduce((closest, curTask) => {
+            const box = curTask.getBoundingClientRect();
+            const offset = n_y_coord - box.top - box.height / 2;
+            // console.log(offset);
+            // if offset is negative, then must be below current element
+            // trying to find the closest element, so also compare with current closest
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, task: curTask };
+            } else {
+                return closest;
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).task;
     }
 
     /**
@@ -201,6 +254,7 @@ class TaskList extends HTMLElement {
         o_task.setAttribute("taskid", n_task_id);
         o_task.bindHandleDelete(() => { this.removeItem(n_task_id); });
         o_task.bindHandleEdit(() => { this.editItemName(n_task_id); });
+        o_task.bindHandleDragend(() => { this.setNewTaskOrder(o_task); });
         // bind a function that listen to an onchange for a task input element
 
         this.querySelector("#all-tasks").append(o_task);
@@ -230,7 +284,7 @@ class TaskList extends HTMLElement {
             if(window.localStorage.getItem("current_tasks") != null){
                 this.o_tasks = window.localStorage.getItem("current_tasks");
                 this.o_tasks = JSON.parse(this.o_tasks);
-            };
+            }
 
             this.o_tasks[n_task_id] = o_task_item_input.value.trim();
             window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
@@ -294,6 +348,34 @@ class TaskList extends HTMLElement {
     }
 
     /**
+     * Once task is dropped, set the new order of tasks for both the o_tasks variable
+     * and localStorage
+     * @param {Object} o_task task HTML object to remove the dragging class from
+     */
+    setNewTaskOrder(o_task) {
+        // remove draggable class on current dragging object
+        o_task.classList.remove('dragging');
+        // update this.o_tasks
+        const n_num_tasks = this.getNumTasks();
+        const o_task_items = document.getElementById('all-tasks').children;
+        // make sure to update eventlisteners, taskid, and taskname
+        for (let i = 0; i < n_num_tasks; i++) {
+            const o_task_item = o_task_items[i]; 
+            console.log(typeof(o_task_item));
+            // remove old event listeners and add new ones to new id
+            o_task_item.unbindDelete();
+            o_task_item.unbindEdit();
+            o_task_item.bindHandleDelete(() => { this.removeItem(i); });
+            o_task_item.bindHandleEdit(() => { this.editItemName(i); });
+            o_task_item.setAttribute("taskid", `${i}`);
+            this.o_tasks[i] = o_task_item.getAttribute("taskname");
+        }
+        // update localStorage
+        console.log(this.o_tasks);
+        window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
+    }
+
+    /**
      * Function to show task list display from the main user screen
      */
     showTaskList() {
@@ -329,6 +411,7 @@ class TaskList extends HTMLElement {
                     console.log(this.n_task_id);
                     o_task.bindHandleDelete(() => { this.removeItem(i); });
                     o_task.bindHandleEdit(() => { this.editItemName(i); });
+                    o_task.bindHandleDragend(() => { this.setNewTaskOrder(o_task); })
                     // bind a function that listen to an onchange for a task input element
                     this.n_next_task_id++;
                     this.querySelector("#all-tasks").append(o_task);

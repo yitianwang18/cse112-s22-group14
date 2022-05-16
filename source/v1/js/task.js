@@ -16,6 +16,19 @@ class Task extends HTMLElement {
      */
     constructor() {
         super();
+
+        // reference to these functions so we can remove the event listeners
+        this.f_delete_action = null;
+        this.f_edit_action = null;
+        
+        // set dragging class/attribute
+        this.setAttribute("draggable", true);
+        this.classList.add("draggable");
+        // event listener to tell when this task is being dragged 
+        this.addEventListener('dragstart', () => {
+           this.classList.add('dragging');
+        });
+
         let o_div = document.createElement("div");
         o_div.id = "wrap-task";
 
@@ -74,7 +87,17 @@ class Task extends HTMLElement {
      * @param {Function} f_delete_action function that handles the delete action
      */
     bindHandleDelete(f_delete_action) {
-        this.querySelector("button").addEventListener("click", f_delete_action);
+        this.f_delete_action = f_delete_action;
+        this.querySelector("button").addEventListener("click", this.f_delete_action);
+    }
+
+    /**
+     * Unbinds delete handler from the delete button. Must be done when reordering
+     * the tasks, because we change the id.
+     */
+    unbindDelete() {
+        this.querySelector("button").removeEventListener("click", this.f_delete_action);
+        this.f_delete_action = null;
     }
 
     /**
@@ -82,7 +105,26 @@ class Task extends HTMLElement {
      * @param {Function}  edit_action function that handles the edit action
      */
     bindHandleEdit(f_edit_action) {
-        this.querySelector("input").addEventListener("change", f_edit_action);
+        this.f_edit_action = f_edit_action;
+        this.querySelector("input").addEventListener("change", this.f_edit_action);
+    }
+
+    /**
+     * Unbinds edit handler from the task-item. Must be done when reordering the 
+     * tasks, because we change the id
+     */
+    unbindEdit() {
+        this.querySelector("input").removeEventListener("change", this.f_edit_action);
+        this.f_edit_action = null;
+    }
+
+    /**
+     * Binds dragend handler to the task-item. Sets the new order of the task
+     * within the task list
+     * @param {Function}  f_dragend_action function that handles dragover
+     */
+    bindHandleDragend(f_dragend_action) {
+        this.addEventListener("dragend", f_dragend_action);
     }
 
 }
