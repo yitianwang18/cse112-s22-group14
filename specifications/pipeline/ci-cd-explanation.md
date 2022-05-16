@@ -10,7 +10,7 @@
 6. Pull Request is approved after checking code quality and functionality
 7. Test with new code added to `dev` since the branch was created
 8. Create Pull Request to merge into `main` branch which will run GitHub Actions
-9.  Deployed after Pull Request is approved after checking code quality and functionality
+9. Deployed after Pull Request is approved after checking code quality and functionality
 
 ## Explanation
 
@@ -20,10 +20,10 @@
 4. Create new tests for the new code that was added to ensure that it works and maintain our code coverage.
 5. The `dev` branch is protected, so it requires a Pull Request to be approved before you can merge code into it. Creating a Pull Request will run GitHub Actions workflows for style checking and running unit tests.
 6. The Pull Request will be manually checked by one of the leads to check for errors, adherance to coding conventions, sufficient testing, etc. Once they are approved, the code will be merged into `dev`.
-7. Run tests again to make sure that multiple features that were added to `dev` during this sprint do not cause problems for each other. 
+7. Run tests again to make sure that multiple features that were added to `dev` during this sprint do not cause problems for each other.
 8. The `main` branch is protected, so it requires a Pull Request to be approved before you can merge code into it. Creating a Pull Request will run GitHub Actions workflows for style checking and running unit tests.
 9. The Pull Request will be manually checked by one of the leads to check for errors, adherance to coding conventions, sufficient testing, etc. Once they are approved, the code will be merged into `main`. This will trigger a GitHub Actions workflow that will automatically deploy the updated website.
 
 ## Errors / Failures
 
-If there are ever any errors or failures in any of the steps, return to Step 2, which is to develop locally in your own branch and progress through the pipeline like usual. 
+If there are ever any errors or failures in any of the steps, return to Step 2, which is to develop locally in your own branch and progress through the pipeline like usual.
