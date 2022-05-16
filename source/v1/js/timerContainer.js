@@ -161,9 +161,9 @@ class TimerContainer extends HTMLElement {
         this.querySelector("#work-message").innerText = TimerContainer.A_STATE_MESSAGES[this.n_curr_state];
         this.querySelector("timer-display").setAttribute("time", this.getTimeRemaining());
         this.querySelector("timer-display").setAttribute("pomos-comp", this.n_done_pomos);
-        let n_remainingTime = this.getTimeRemaining();
-        if(n_remainingTime != -1) {
-            document.title = TimerDisplay.formatMilliTime(Number(n_remainingTime));
+        let n_remaining_time = this.getTimeRemaining();
+        if(n_remaining_time != -1) {
+            document.title = TimerDisplay.formatMilliTime(Number(n_remaining_time));
         }
     }
 
