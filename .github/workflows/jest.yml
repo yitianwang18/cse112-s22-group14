@@ -8,7 +8,7 @@ on:
   pull_request:
     # only changes in the source folder will trigger this workflow
     paths:
-      - 'source/*'
+      - 'source/**'
     branches: [ main, dev ]
 
   # Allows you to run this workflow manually from the Actions tab

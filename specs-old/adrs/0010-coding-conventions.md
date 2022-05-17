@@ -1,8 +1,10 @@
+# Coding Conventions
+
 ## Context and Problem Statement
 
 Multiple people from our team will be developing the code for our Pomodoro Timer. To ensure that every developer's code is consistent to each other, we put some conventions in place which should be followed by all coders on our team.
 
-## Chosen Conventions
+## Decision Outcome
 
 * Variables should have meaningful names.
 * Variable names should not be less then 3 letters.

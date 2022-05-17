@@ -214,6 +214,10 @@ class TimerContainer extends HTMLElement {
         this.querySelector("#work-message").innerText = TimerContainer.A_STATE_MESSAGES[this.n_curr_state];
         this.querySelector("timer-display").setAttribute("time", this.getTimeRemaining());
         this.querySelector("timer-display").setAttribute("pomos-comp", this.n_done_pomos);
+        let n_remaining_time = this.getTimeRemaining();
+        if(n_remaining_time != -1) {
+            document.title = TimerDisplay.formatMilliTime(Number(n_remaining_time));
+        }
     }
 
     // State-updating components
@@ -301,6 +305,7 @@ class TimerContainer extends HTMLElement {
         this.n_done_pomos = 0;
         clearInterval(this.n_interval_id);
         this.n_interval_id = -1;
+        document.title = "Powelldoro Timer";
     }
 
     /**
