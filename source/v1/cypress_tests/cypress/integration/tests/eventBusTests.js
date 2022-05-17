@@ -1,7 +1,7 @@
 describe("Testing Event Bus", () => {
 
     beforeEach(() => {
-        cy.visit("https://pomo-hero-dev.web.app/");
+        cy.visit("https://powelldoro.web.app/");
         cy.document().then((o_doc) => {
             if (!o_doc.querySelector("timer-element").B_DEBUG) {
                 o_doc.querySelector("timer-element").toggleDebug();

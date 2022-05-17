@@ -1,6 +1,6 @@
 describe("Test Tasks", () => {
     beforeEach(() => {
-        cy.visit("https://pomo-hero-dev.web.app/");
+        cy.visit("https://powelldoro.web.app/");
     });
 
     it("Test add task + update task names", () => {

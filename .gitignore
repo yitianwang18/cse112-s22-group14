@@ -1,7 +1,9 @@
 # Dependency directories
 node_modules/
 .vscode/
+.firebase/
 
+coverage/
 build/
 
 /cypress/

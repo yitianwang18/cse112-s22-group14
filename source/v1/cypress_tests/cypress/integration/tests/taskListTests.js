@@ -2,7 +2,8 @@
 import { TimerContainer } from "../../../../js/timerContainer";
 describe("Task List Tests", () => {
     beforeEach(() => {
-        cy.visit("https://pomo-hero-dev.web.app/");
+        cy.visit("https://powelldoro.web.app/");
+        cy.get(".close2").trigger("click");
         cy.document().then((o_doc) => {
             if (!o_doc.querySelector("timer-element").B_DEBUG) {
                 o_doc.querySelector("timer-element").toggleDebug();
@@ -80,7 +81,7 @@ describe("Task List Tests", () => {
         cy.get("task-list #all-tasks").then(($el) => {
             expect($el.children()).to.have.length(1);
             expect($el.children()[0]).to.have.attr("taskname", "Task2");
-            expect($el.children()[0]).to.have.attr("taskid", 1);
+            expect($el.children()[0]).to.have.attr("taskid", 0);
         });
 
         // add new item
@@ -90,9 +91,9 @@ describe("Task List Tests", () => {
         cy.get("task-list #all-tasks").then(($el) => {
             expect($el.children()).to.have.length(2);
             expect($el.children()[0]).to.have.attr("taskname", "Task2");
-            expect($el.children()[0]).to.have.attr("taskid", 1);
+            expect($el.children()[0]).to.have.attr("taskid", 0);
             expect($el.children()[1]).to.have.attr("taskname", "Task3");
-            expect($el.children()[1]).to.have.attr("taskid", 2);
+            expect($el.children()[1]).to.have.attr("taskid", 1);
         });
     });
 
@@ -136,6 +137,84 @@ describe("Task List Tests", () => {
         //TaskList closed
         cy.get("task-list").within(() => {
             cy.get("#close-task").trigger("click");
+        });
+    });
+
+    it("Test Tasklist reordering functionality", () => {
+        // add one item
+        cy.get("#task-btn").trigger("click");
+
+        // add Task1
+        cy.get("task-list #add-task input").type("Task1");
+        cy.get("task-list #add-task #add-btn").click();
+        // add Task2
+        cy.get("task-list #add-task input").type("Task2");
+        cy.get("task-list #add-task #add-btn").click();
+        // add Task3
+        cy.get("task-list #add-task input").type("Task3");
+        cy.get("task-list #add-task #add-btn").click();
+
+        // verify presence
+        cy.get("task-list #all-tasks").then(($el) => {
+            expect($el.children()).to.have.length(3);
+            expect($el.children()[0]).to.have.attr("taskname", "Task1");
+            expect($el.children()[0]).to.have.attr("taskid", 0);
+            expect($el.children()[1]).to.have.attr("taskname", "Task2");
+            expect($el.children()[1]).to.have.attr("taskid", 1);
+            expect($el.children()[2]).to.have.attr("taskname", "Task3");
+            expect($el.children()[2]).to.have.attr("taskid", 2);
+        });
+
+        // pick up Task1 and drop in between Task2 and Task3
+        cy.get("task-item[taskid='0']").drag("task-item[taskid='2']", {
+            target: { x: 0, y: 0 }, // applies to the drop target
+            force: true, // applied to both the source and target element
+        }).then((success) => {
+            assert.isTrue(success);
+        });
+
+        // This is how you do it without the plugin, but very limited in sense 
+        // that you can't specify an offset for where you drag to in dragover
+        // cy.get("task-item[taskid='0']").trigger('dragstart');
+        // cy.get("task-item[taskid='2']").trigger('dragover');
+        // cy.get("task-item[taskid='2'").trigger('drop');
+        cy.get("task-item[taskid='0']").trigger('dragend');
+
+
+
+        // verify if task-list is reordered
+        cy.get("task-list #all-tasks").then(($el) => {
+            expect($el.children()).to.have.length(3);
+            expect($el.children()[0]).to.have.attr("taskname", "Task2");
+            expect($el.children()[1]).to.have.attr("taskname", "Task1");
+            expect($el.children()[2]).to.have.attr("taskname", "Task3");
+        });
+
+        cy.wait(1000);
+
+        // pick up Task1 and drop after Task3
+        cy.get("task-item[taskid='1']").drag("task-item[taskid='2']", {
+            target: { x: 0, y: 100 }, // applies to the drop target
+            force: true, // applied to both the source and target element
+        }).then((success) => {
+            assert.isTrue(success);
+        });
+        cy.get("task-item[taskid='1']").trigger('dragend');
+
+        // verify if task-list is reordered
+        cy.get("task-list #all-tasks").then(($el) => {
+            expect($el.children()).to.have.length(3);
+            expect($el.children()[0]).to.have.attr("taskname", "Task2");
+            expect($el.children()[1]).to.have.attr("taskname", "Task3");
+            expect($el.children()[2]).to.have.attr("taskname", "Task1");
+        });
+
+        // verify localStorage was also updated
+        cy.window().then(win => {
+            const o_tasks = JSON.parse(win.localStorage.getItem("current_tasks"));
+            expect(o_tasks[0]).to.eql("Task2");
+            expect(o_tasks[1]).to.eql("Task3");
+            expect(o_tasks[2]).to.eql("Task1");
         });
     });
 });
