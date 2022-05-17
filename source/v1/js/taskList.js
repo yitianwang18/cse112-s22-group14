@@ -30,6 +30,7 @@ class TaskList extends HTMLElement {
         o_close_button.title = "Close Tasklist";
         o_close_button.id = "close-task";
         o_close_button.innerHTML = "&times;";
+        // event to close the task list
         o_close_button.addEventListener("click", this.closeTaskList.bind(this));
 
         // wrapper for input/headers

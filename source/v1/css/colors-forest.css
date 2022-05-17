@@ -12,6 +12,15 @@
   --less-transparent: #0000009c;
   --least-transparent: #000000e8;
   --light-color: #d6d6d6;
+  --btn-color: rgb(58, 58, 58);
+  --btn-shadow-light: rgb(159, 159, 159);
+  --btn-shadow-dark: rgb(24, 24, 24);
+  --btn-hover-color: rgb(48, 48, 48);
+  --btn-hover-shadow-light: rgba(159, 159, 159, 0.5);
+  --btn-hover-shadow-dark: rgba(24, 24, 24, 0.5);
+  --btn-clicked-color: rgb(30, 30, 30);
+  --btn-clicked-shadow-light: rgb(65, 65, 65);
+  --btn-clicked-shadow-dark: rgb(0, 0, 0);
 }
 
 /*******************************
@@ -99,6 +108,47 @@ input[type=text] {
   background-color: var(--secondary-color);
   color: white;
 }
+
+
+/***************************
+ * Color for Slide-out settings *
+ ***************************/
+
+/**
+ * Container for slide-out tasks mask
+ */
+ .settings-blocker {
+  background-color: var(--less-transparent);
+}
+
+/**
+ * Container for slide-out tasks when closed
+ */
+.settings-class {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+
+.settings-custom-btn {
+  border-color: black;
+  box-shadow: inset 0 5px 5px var(--btn-shadow-light), inset 0 -5px 5px var(--btn-shadow-dark);
+  background-color: var(--btn-color);
+}
+
+.settings-custom-btn:hover {
+  background-color: var(--btn-hover-color);
+  color: grey;
+  box-shadow: inset 0 5px 5px var(--btn-hover-shadow-light), inset 0 -5px 5px var(--btn-hover-shadow-dark);
+}
+
+.clicked-settings-btn, .clicked-settings-btn:hover {
+  background-color: var(--btn-clicked-color);
+  box-shadow: inset 0 5px 5px var(--btn-clicked-shadow-dark), inset 0 -5px 5px var(--btn-clicked-shadow-light);
+  color: white;
+}
+
+
 
 /*****************************
  * Color for Buttons *

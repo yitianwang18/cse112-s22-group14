@@ -1,8 +1,13 @@
 import { TimerContainer } from "./timerContainer.js";
 import { TaskList } from "./taskList.js";
+import { SettingsTab } from "./settingsTab.js";
 import { InstructionsBox } from "./instructionsBox.js";
 import { EventBus } from "./eventBus.js";
 import { TaskDisplay } from "./taskDisplay.js";
+
+// variable for turning on/off console logs used for debugging
+const CONSOLE_LOG_BOOL = false;
+
 /**
  * Event handler function to change the theme
  */
@@ -26,6 +31,50 @@ function handleThemeBtnPressed() {
  */
 function showTaskList() {
     document.EventBus.fireEvent("showTasks");
+}
+
+/**
+ * Event handler function to show TaskList when task button is pressed
+ */
+function showSettingsTab() {
+    document.EventBus.fireEvent("showSettings");
+}
+
+/**
+ * Event handler function for the three POMO session length options
+ */
+function settingOneButtonOne() {
+    document.EventBus.fireEvent("settingOneButtonOne"); 
+}
+function settingOneButtonTwo() {
+    document.EventBus.fireEvent("settingOneButtonTwo"); 
+}
+function settingOneButtonThree() {
+    document.EventBus.fireEvent("settingOneButtonThree"); 
+}
+/**
+ * Event handler function for the three SHORT break length options
+ */
+function settingTwoButtonOne() {
+    document.EventBus.fireEvent("settingTwoButtonOne"); 
+}
+function settingTwoButtonTwo() {
+    document.EventBus.fireEvent("settingTwoButtonTwo"); 
+}
+function settingTwoButtonThree() {
+    document.EventBus.fireEvent("settingTwoButtonThree"); 
+}
+/**
+ * Event handler function for the three LONG break length options
+ */
+function settingThreeButtonOne() {
+    document.EventBus.fireEvent("settingThreeButtonOne"); 
+}
+function settingThreeButtonTwo() {
+    document.EventBus.fireEvent("settingThreeButtonTwo"); 
+}
+function settingThreeButtonThree() {
+    document.EventBus.fireEvent("settingThreeButtonThree"); 
 }
 
 /**
@@ -97,6 +146,38 @@ document.addEventListener("DOMContentLoaded", () => {
     // Code for showing / hiding TaskList functionality
     let o_task_btn = document.getElementById("task-btn");
     o_task_btn.addEventListener("click", showTaskList);
+
+    // Code for showing / hiding Settings functionality
+    let o_sett_btn = document.getElementById("sett-btn");
+    o_sett_btn.addEventListener("click", showSettingsTab);
+
+    // Code for settings customizations for POMO session length
+    let o_setting_one_btn_one = document.getElementById("sett-one-btn-one");
+    o_setting_one_btn_one.addEventListener("click", settingOneButtonOne);
+    let o_setting_one_btn_two = document.getElementById("sett-one-btn-two");
+    o_setting_one_btn_two.addEventListener("click", settingOneButtonTwo);
+    let o_setting_one_btn_three = document.getElementById("sett-one-btn-three");
+    o_setting_one_btn_three.addEventListener("click", settingOneButtonThree);
+    
+    // Code for settings customizations for SHORT break length
+    let o_setting_two_btn_one = document.getElementById("sett-two-btn-one");
+    o_setting_two_btn_one.addEventListener("click", settingTwoButtonOne);
+    let o_setting_two_btn_two = document.getElementById("sett-two-btn-two");
+    o_setting_two_btn_two.addEventListener("click", settingTwoButtonTwo);
+    let o_setting_two_btn_three = document.getElementById("sett-two-btn-three");
+    o_setting_two_btn_three.addEventListener("click", settingTwoButtonThree);
+    
+    // Code for settings customizations for SHORT break length
+    let o_setting_three_btn_one = document.getElementById("sett-three-btn-one");
+    o_setting_three_btn_one.addEventListener("click", settingThreeButtonOne);
+    let o_setting_three_btn_two = document.getElementById("sett-three-btn-two");
+    o_setting_three_btn_two.addEventListener("click", settingThreeButtonTwo);
+    let o_setting_three_btn_three = document.getElementById("sett-three-btn-three");
+    o_setting_three_btn_three.addEventListener("click", settingThreeButtonThree);
+
+
+
+
 
     document.addEventListener("keydown", handleKeyBinds);
 
