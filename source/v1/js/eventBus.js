@@ -160,7 +160,7 @@ class EventBus {
     handleCloseWindows() {
         this.o_task_list.closeTaskList();
         this.o_instructions.closeInstructions();
-        this.o_settings_tab.closeSettings();
+        this.o_settings_tab.closeSettingsTab();
     }
 
     /**

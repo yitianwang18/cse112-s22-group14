@@ -111,6 +111,12 @@ function handleKeyBinds(o_event) {
                 // prevent event from bubbling into input
                 o_event.preventDefault();
                 break;
+            case "s":
+                document.EventBus.fireEvent("showSettings");
+                break;
+            case "i":
+                showInstructions();
+                break;
             case "n":
                 document.EventBus.fireEvent("nextTask");
                 break;
