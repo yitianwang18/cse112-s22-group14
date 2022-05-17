@@ -4,11 +4,11 @@
  */
 class TimerDisplay extends HTMLElement {
     /**
-     * A list of observed attributes ("time" and "pomos-comp");
+     * A list of observed attributes ("time" and "pomos-comp" and "set");
      * @static
      * @type {string[]}
      */
-    static get observedAttributes() { return ["time", "pomos-comp"]; }
+    static get observedAttributes() { return ["time", "pomos-comp", "set"]; }
 
     /**
      * Constructs a new Timer Display
@@ -51,6 +51,7 @@ class TimerDisplay extends HTMLElement {
      */
     static formatMilliTime(n_milli_time) {
         if (n_milli_time < 0) {
+            // TODO - reset to user chosen pomo-length
             return "25:00"
         }
         let o_date = new Date(n_milli_time + 500);
@@ -74,12 +75,43 @@ class TimerDisplay extends HTMLElement {
     /**
      * Re-renders the displayed time on the timer, and updates the tomato icons of the finished pomos.
      * Uses the attributes 'time' and 'pomos-comp' as inputs
+     *
      */
     renderComponents() {
+        // update set based on user setting
+        let n_set = this.getAttribute("set");
+        
+        switch(n_set) {
+            case "1":
+                this.querySelector("#pomo1").style.display = '';
+                this.querySelector("#pomo2").style.display = "none";
+                this.querySelector("#pomo3").style.display = "none";
+                this.querySelector("#pomo4").style.display = "none";
+                break;
+            case "2":
+                this.querySelector("#pomo1").style.display = '';
+                this.querySelector("#pomo2").style.display = '';
+                this.querySelector("#pomo3").style.display = "none";
+                this.querySelector("#pomo4").style.display = "none";
+                break;
+            case "3":
+                this.querySelector("#pomo1").style.display = '';
+                this.querySelector("#pomo2").style.display = '';
+                this.querySelector("#pomo3").style.display = '';
+                this.querySelector("#pomo4").style.display = "none";
+                break;
+            case "4":
+                this.querySelector("#pomo1").style.display = '';
+                this.querySelector("#pomo2").style.display = '';
+                this.querySelector("#pomo3").style.display = '';
+                this.querySelector("#pomo4").style.display = '';
+                break;
+        }
+
         // update time display
         this.querySelector("#time-display").innerHTML = TimerDisplay.formatMilliTime(Number(this.getAttribute("time")));
         // update status of pomo icons based on number of pomos completed
-        for (let n_pomo_index = 1; n_pomo_index <= 4; n_pomo_index++) {
+        for (let n_pomo_index = 1; n_pomo_index <= n_set; n_pomo_index++) {
             let s_pomo_done = (n_pomo_index <= this.getAttribute("pomos-comp")) ? "Yes" : "No";
             this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", `assets/img/PomoCount${s_pomo_done}.png`);
         }

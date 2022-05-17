@@ -22,6 +22,8 @@ class TimerContainer extends HTMLElement {
         let o_timer_display = new TimerDisplay();
         o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
+        o_timer_display.setAttribute("set", 4);
+        o_timer_display.setAttribute("pomo-length", 1500000);
 
         let o_wrap_start_btn = document.createElement("span");
         o_wrap_start_btn.id = "wrap-start-btn";
@@ -89,6 +91,15 @@ class TimerContainer extends HTMLElement {
      * @param {Event} o_event The event instance
      */
     handleStartPomo() {
+
+        //testing handlers - to be removed
+        this.handleSet();
+        this.handlePomoLength();
+        this.handleShortBreak();
+        this.handleLongBreak();
+
+        // end testing
+
         this.beginSession();
         this.querySelector("#reset-btn").classList.remove("hidden");
         this.querySelector("#start-btn").classList.add("hidden");
@@ -100,6 +111,48 @@ class TimerContainer extends HTMLElement {
     }
 
     // Event Handlers
+
+    // new handlers
+    /**
+     * Event handler function for when number of pomos is adjusted
+     */
+    handleSet() {
+        // TODO - grab the value from input
+        let n_set = 2;
+        this.querySelector("timer-display").setAttribute("set", n_set);
+        TimerContainer.N_SET = n_set;
+    }
+
+    /**
+     * Event handler function for when the work time is adjusted
+     */
+    handlePomoLength() {
+        // TODO - grab the value from input
+        let n_work_time = 10000;
+        this.querySelector("timer-display").setAttribute("time", n_work_time);
+        this.querySelector("timer-display").setAttribute("pomo-length", n_work_time);
+        TimerContainer.A_STATE_DURATIONS[0] = n_work_time;
+    }
+
+    /**
+     * Event handler function for when the short break time is adjusted
+     */
+     handleShortBreak() {
+         // TODO - grab the value from input
+         let n_short_break = 10000;
+         TimerContainer.A_STATE_DURATIONS[1] = n_short_break;
+    }
+
+    /**
+     * Event handler function for when the long break time is adjusted
+     */
+    handleLongBreak() {
+        // TODO - grab the value from input
+        let n_long_break = 10000;
+        TimerContainer.A_STATE_DURATIONS[2] = n_long_break;
+    }
+
+    // end of new handlers
 
     /**
      * Event handler function for when the "reset pomo" button is pressed
@@ -178,8 +231,8 @@ class TimerContainer extends HTMLElement {
                 o_reset_error.innerHTML = TimerContainer.S_RESET_ERROR;
                 o_reset_error.classList.add("color-error");
                 ++(this.n_done_pomos);
-                // go to long break after 4 pomos
-                if (this.n_done_pomos == 4) {
+                // go to long break after 4 pomos (default)
+                if (this.n_done_pomos == TimerContainer.N_SET) {
                     this.n_curr_state = TimerContainer.N_L_BREAK;
 
                     notify(this.n_curr_state);
@@ -263,6 +316,14 @@ class TimerContainer extends HTMLElement {
         TimerContainer.B_DEBUG = !TimerContainer.B_DEBUG;
     }
 }
+
+/**
+ * Set count
+ * @static
+ * @type {number}
+ */
+TimerContainer.N_SET = 4;
+
 /**
 * Start Pomo button message
 * @static
