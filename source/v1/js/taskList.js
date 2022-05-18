@@ -139,7 +139,8 @@ class TaskList extends HTMLElement {
         o_event.preventDefault();
         // get task that is directly after the position of current task
         // that is being dragged
-        const o_after_task = this.getDragAfterElement(o_event.clientY) || this.getDragAfterElement(o_event.targetTouches[0].pageY);
+        const n_y_coord = o_event.clientY != null ? o_event.clientY : o_event.targetTouches[0].pageY;
+        const o_after_task = this.getDragAfterElement(n_y_coord); 
         // get current element being dragged
         const o_dragged_task = document.querySelector('.dragging');
         // ensure there is a dragged task
