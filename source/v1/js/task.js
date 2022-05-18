@@ -28,6 +28,9 @@ class Task extends HTMLElement {
         this.addEventListener('dragstart', () => {
            this.classList.add('dragging');
         });
+        this.addEventListener('touchstart', () => {
+            this.classList.add('dragging');
+        })
 
         let o_div = document.createElement("div");
         o_div.id = "wrap-task";
@@ -125,6 +128,7 @@ class Task extends HTMLElement {
      */
     bindHandleDragend(f_dragend_action) {
         this.addEventListener("dragend", f_dragend_action);
+        this.addEventListener("touchend", f_dragend_action);
     }
 
 }

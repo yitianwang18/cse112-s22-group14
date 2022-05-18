@@ -106,6 +106,7 @@ class TaskList extends HTMLElement {
         o_tasks.id = "all-tasks";
         // handles reordering task items visually in HTML
         o_tasks.addEventListener('dragover', (e) => this.handleDrag(o_tasks, e));
+        o_tasks.addEventListener('touchmove', (e) => this.handleDrag(o_tasks, e));
 
         o_wrapper_obj.append(o_close_button, o_task_title_wrapper, o_tasks);
         this.append(o_wrapper_obj_back);
@@ -138,7 +139,7 @@ class TaskList extends HTMLElement {
         o_event.preventDefault();
         // get task that is directly after the position of current task
         // that is being dragged
-        const o_after_task = this.getDragAfterElement(o_event.clientY);
+        const o_after_task = this.getDragAfterElement(o_event.clientY) || this.getDragAfterElement(o_event.targetTouches[0].pageY);
         // get current element being dragged
         const o_dragged_task = document.querySelector('.dragging');
         // ensure there is a dragged task
