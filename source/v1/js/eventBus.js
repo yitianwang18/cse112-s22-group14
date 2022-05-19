@@ -16,6 +16,7 @@ class EventBus {
         this.o_task_display = document.querySelector("task-display");
         this.o_toolbar = document.querySelector("nav");
         this.o_instructions = document.querySelector("instructions-box");
+        this.o_settings_tab = document.querySelector("settings-tab");
         this.registerEvents();
     }
 
@@ -31,7 +32,20 @@ class EventBus {
         this.registerEvent("closeWindows", this.handleCloseWindows.bind(this));
         this.registerEvent("spaceKeybind", this.handleSpaceKeybind.bind(this));
         this.registerEvent("showTasks", this.handleShowTasks.bind(this));
+        this.registerEvent("showSettings", this.handleShowSettings.bind(this));
         this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
+        // settings buttons for first setting - Pomo Length
+        this.registerEvent("settingOneButtonOne", this.settingOneButtonOne.bind(this));
+        this.registerEvent("settingOneButtonTwo", this.settingOneButtonTwo.bind(this));
+        this.registerEvent("settingOneButtonThree", this.settingOneButtonThree.bind(this));
+        // settings buttons for second setting - Short break length
+        this.registerEvent("settingTwoButtonOne", this.settingTwoButtonOne.bind(this));
+        this.registerEvent("settingTwoButtonTwo", this.settingTwoButtonTwo.bind(this));
+        this.registerEvent("settingTwoButtonThree", this.settingTwoButtonThree.bind(this));
+        // settings buttons for third setting - Long break length
+        this.registerEvent("settingThreeButtonOne", this.settingThreeButtonOne.bind(this));
+        this.registerEvent("settingThreeButtonTwo", this.settingThreeButtonTwo.bind(this));
+        this.registerEvent("settingThreeButtonThree", this.settingThreeButtonThree.bind(this));
     }
 
 
@@ -146,6 +160,7 @@ class EventBus {
     handleCloseWindows() {
         this.o_task_list.closeTaskList();
         this.o_instructions.closeInstructions();
+        this.o_settings_tab.closeSettingsTab();
     }
 
     /**
@@ -157,6 +172,59 @@ class EventBus {
         }
         this.o_task_list.showTaskList();
     }
+
+    
+    /**
+     * Event Handler function for the 'showSettings' event
+     */
+    handleShowSettings() {
+        if (this.o_instructions.getIsShown()) {
+            this.o_instructions.closeInstructions();
+        }
+        this.o_settings_tab.showSettings();
+    }
+
+    
+    /**
+     * Event handler function for the three POMO session length options
+     */
+    settingOneButtonOne() {
+        this.o_settings_tab.PSLengthShort();
+    }
+    settingOneButtonTwo() {
+        this.o_settings_tab.PSLengthMed();
+    }
+    settingOneButtonThree() {
+        this.o_settings_tab.PSLengthLong();
+    }
+    /**
+     * Event handler function for the three SHORT break length options
+     */
+    settingTwoButtonOne() {
+        this.o_settings_tab.SBLengthShort();
+    }
+    settingTwoButtonTwo() {
+        this.o_settings_tab.SBLengthMed();
+    }
+    settingTwoButtonThree() {
+        this.o_settings_tab.SBLengthLong();
+    }
+    /**
+     * Event handler function for the three LONG break length options
+     */
+    settingThreeButtonOne() {
+        this.o_settings_tab.LBLengthShort();
+    }
+    settingThreeButtonTwo() {
+        this.o_settings_tab.LBLengthMed();
+    }
+    settingThreeButtonThree() {
+        this.o_settings_tab.LBLengthLong();
+    }
+
+
+
+
 
     /**
      * Helper function to pop the next task and update the taskdisplay.
