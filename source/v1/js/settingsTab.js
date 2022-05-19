@@ -1,5 +1,5 @@
 // variable for turning on/off console logs used for debugging
-const CONSOLE_LOG_BOOL = false;
+const B_CONSOLE_LOG = false;
 
 /**
  * Custom HTML element encapsulating all of the functionality related to the Menu List
@@ -157,7 +157,7 @@ class SettingsTab extends HTMLElement {
      * Function to show menu list display from the main user screen
      */
     showSettings() {
-        if (CONSOLE_LOG_BOOL) {
+        if (B_CONSOLE_LOG) {
             console.log("settingsTab.js - showSettings");
         }
 
@@ -198,7 +198,7 @@ class SettingsTab extends HTMLElement {
      * Event handler function to change pomo length to short (20)
      */
     PSLengthShort() {
-      if (CONSOLE_LOG_BOOL) {
+      if (B_CONSOLE_LOG) {
         console.log("settingsTab.js - PSLengthShort")
       }
       let o_setting_one_btn_one = document.getElementById("sett-one-btn-one");
@@ -214,7 +214,7 @@ class SettingsTab extends HTMLElement {
             
         // ADD FUNCTIONALITY HERE
       } else {
-        if (CONSOLE_LOG_BOOL) {
+        if (B_CONSOLE_LOG) {
           console.log("Pomo Length Already On Short")
         }
       }
@@ -224,7 +224,7 @@ class SettingsTab extends HTMLElement {
      * Event handler function to change pomo length to medium (25)
      */
      PSLengthMed() {
-        if (CONSOLE_LOG_BOOL) {
+        if (B_CONSOLE_LOG) {
           console.log("settingsTab.js - PSLengthMed")
         }
         let o_setting_one_btn_two = document.getElementById("sett-one-btn-two");
@@ -240,7 +240,7 @@ class SettingsTab extends HTMLElement {
               
           // ADD FUNCTIONALITY HERE
         } else {
-          if (CONSOLE_LOG_BOOL) {
+          if (B_CONSOLE_LOG) {
             console.log("Pomo Length Already On Medium")
           }
         }
@@ -250,7 +250,7 @@ class SettingsTab extends HTMLElement {
        * Event handler function to change pomo length to medium (30)
        */
        PSLengthLong() {
-          if (CONSOLE_LOG_BOOL) {
+          if (B_CONSOLE_LOG) {
             console.log("settingsTab.js - PSLengthLong")
           }
           let o_setting_one_btn_three = document.getElementById("sett-one-btn-three");
@@ -266,7 +266,7 @@ class SettingsTab extends HTMLElement {
                 
             // ADD FUNCTIONALITY HERE
           } else {
-            if (CONSOLE_LOG_BOOL) {
+            if (B_CONSOLE_LOG) {
               console.log("Pomo Length Already On Long")
             }
           }
@@ -280,7 +280,7 @@ class SettingsTab extends HTMLElement {
      * Event handler function to change short break length to short (5)
      */
     SBLengthShort() {
-        if (CONSOLE_LOG_BOOL) {
+        if (B_CONSOLE_LOG) {
           console.log("settingsTab.js - SBLengthShort")
         }
         let o_setting_two_btn_one = document.getElementById("sett-two-btn-one");
@@ -296,7 +296,7 @@ class SettingsTab extends HTMLElement {
               
           // ADD FUNCTIONALITY HERE
         } else {
-          if (CONSOLE_LOG_BOOL) {
+          if (B_CONSOLE_LOG) {
             console.log("Short Break Length Already On Short")
           }
         }
@@ -306,7 +306,7 @@ class SettingsTab extends HTMLElement {
        * Event handler function to change short break length to medium (7.5)
        */
        SBLengthMed() {
-          if (CONSOLE_LOG_BOOL) {
+          if (B_CONSOLE_LOG) {
             console.log("settingsTab.js - SBLengthMed")
           }
           let o_setting_two_btn_two = document.getElementById("sett-two-btn-two");
@@ -322,7 +322,7 @@ class SettingsTab extends HTMLElement {
                 
             // ADD FUNCTIONALITY HERE
           } else {
-            if (CONSOLE_LOG_BOOL) {
+            if (B_CONSOLE_LOG) {
               console.log("Short Break Length Already On Medium")
             }
           }
@@ -332,7 +332,7 @@ class SettingsTab extends HTMLElement {
          * Event handler function to change short break length to long (10)
          */
          SBLengthLong() {
-            if (CONSOLE_LOG_BOOL) {
+            if (B_CONSOLE_LOG) {
               console.log("settingsTab.js - SBLengthLong")
             }
             let o_setting_two_btn_three = document.getElementById("sett-two-btn-three");
@@ -348,7 +348,7 @@ class SettingsTab extends HTMLElement {
                   
               // ADD FUNCTIONALITY HERE
             } else {
-              if (CONSOLE_LOG_BOOL) {
+              if (B_CONSOLE_LOG) {
                 console.log("Short Break Length Already On Long")
               }
             }
@@ -361,7 +361,7 @@ class SettingsTab extends HTMLElement {
      * Event handler function to change long break length to short (25)
      */
      LBLengthShort() {
-        if (CONSOLE_LOG_BOOL) {
+        if (B_CONSOLE_LOG) {
           console.log("settingsTab.js - LBLengthShort")
         }
         let o_setting_three_btn_one = document.getElementById("sett-three-btn-one");
@@ -377,7 +377,7 @@ class SettingsTab extends HTMLElement {
               
           // ADD FUNCTIONALITY HERE
         } else {
-          if (CONSOLE_LOG_BOOL) {
+          if (B_CONSOLE_LOG) {
             console.log("Long Break Length Already On Short")
           }
         }
@@ -387,7 +387,7 @@ class SettingsTab extends HTMLElement {
        * Event handler function to change long break length to medium (7.5)
        */
        LBLengthMed() {
-          if (CONSOLE_LOG_BOOL) {
+          if (B_CONSOLE_LOG) {
             console.log("settingsTab.js - LBLengthMed")
           }
           let o_setting_three_btn_two = document.getElementById("sett-three-btn-two");
@@ -403,7 +403,7 @@ class SettingsTab extends HTMLElement {
                 
             // ADD FUNCTIONALITY HERE
           } else {
-            if (CONSOLE_LOG_BOOL) {
+            if (B_CONSOLE_LOG) {
               console.log("Long Break Length Already On Medium")
             }
           }
@@ -413,7 +413,7 @@ class SettingsTab extends HTMLElement {
          * Event handler function to change long break length to long (35)
          */
          LBLengthLong() {
-            if (CONSOLE_LOG_BOOL) {
+            if (B_CONSOLE_LOG) {
               console.log("settingsTab.js - LBLengthLong")
             }
             let o_setting_three_btn_three = document.getElementById("sett-three-btn-three");
@@ -429,7 +429,7 @@ class SettingsTab extends HTMLElement {
                   
               // ADD FUNCTIONALITY HERE
             } else {
-              if (CONSOLE_LOG_BOOL) {
+              if (B_CONSOLE_LOG) {
                 console.log("Long Break Length Already On Long")
               }
             }

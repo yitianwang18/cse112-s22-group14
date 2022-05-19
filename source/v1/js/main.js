@@ -6,7 +6,7 @@ import { EventBus } from "./eventBus.js";
 import { TaskDisplay } from "./taskDisplay.js";
 
 // variable for turning on/off console logs used for debugging
-const CONSOLE_LOG_BOOL = false;
+const B_CONSOLE_LOG = false;
 
 /**
  * Event handler function to change the theme
