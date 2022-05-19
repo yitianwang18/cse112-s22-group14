@@ -12,8 +12,8 @@
         super();
         // most of this content is simply initializing the html to go in the webcomponent
         let o_wrapper_obj_back = document.createElement("div");
-        o_wrapper_obj_back.classList.add("instructions-section-blocker", "hidden");
-        o_wrapper_obj_back.id = "instructions-blocker";
+        o_wrapper_obj_back.classList.add("notification-section-blocker", "hidden");
+        o_wrapper_obj_back.id = "notification-blocker";
         o_wrapper_obj_back.addEventListener("click", this.closeNotification.bind(this));
 
         let o_wrapper_obj = document.createElement("div");

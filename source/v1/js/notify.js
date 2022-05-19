@@ -48,14 +48,17 @@ function notify(n_state){
               // Auto-play was prevented
               // Show a UI element to let the user manually start playback
                  const b_showErrorNotification = localStorage.getItem("safari-error-notification");
-                 if (!b_showErrorNotification) {
-                     localStorage.setItem("safari-error-notification", true)
+                 console.log("catch error kjdshfkja" + b_showErrorNotification);
+
+                 if (b_showErrorNotification == null || b_showErrorNotification == false || b_showErrorNotification == "false") {
                      // show error notification view
                      let o_notifi = document.querySelector("notification-box");
                      o_notifi.showNotificationBox();
+                     localStorage.setItem("safari-error-notification", true)
                  }
               }).then(() => {
                // Auto-play started successfully
+                console.log("kjdshfkja");
               });
            }
 
