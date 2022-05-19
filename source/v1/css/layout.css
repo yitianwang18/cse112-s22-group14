@@ -203,6 +203,7 @@ body {
   background-color: green;
   padding: 10px 0;
   margin: 15px 0;
+  width: 90%; /* So you can still scroll within sidebar*/
 }
 
 /**
@@ -213,9 +214,9 @@ body {
 }
 
 /**
- * Class for when dragging/moving an task
+ * Class to indicate dragging/moving an task
  */
-.dragging {
+task-item[dragging=""] > div {
   opacity: 0.5;
 }
 
