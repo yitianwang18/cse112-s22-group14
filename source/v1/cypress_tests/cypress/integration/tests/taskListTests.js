@@ -167,7 +167,7 @@ describe("Task List Tests", () => {
         });
 
         // pick up Task1 and drop in between Task2 and Task3
-        cy.get("task-item[taskid='0'] > div").drag("task-item[taskid='2'] > div", {
+        cy.get("task-item[taskid='0']").drag("task-item[taskid='2']", {
             target: { x: 0, y: 0 }, // applies to the drop target
             force: true, // applied to both the source and target element
         }).then((success) => {
@@ -194,7 +194,7 @@ describe("Task List Tests", () => {
         cy.wait(1000);
 
         // pick up Task1 and drop after Task3
-        cy.get("task-item[taskid='1'] > div").drag("task-item[taskid='2'] > div", {
+        cy.get("task-item[taskid='1']").drag("task-item[taskid='2']", {
             target: { x: 0, y: 100 }, // applies to the drop target
             force: true, // applied to both the source and target element
         }).then((success) => {

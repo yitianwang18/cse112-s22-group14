@@ -31,7 +31,7 @@ class Task extends HTMLElement {
         o_div.setAttribute("draggable", true);
         o_div.classList.add("draggable");
         // event listener to tell when this task is being dragged 
-        o_div.addEventListener('dragstart', () => {
+        this.addEventListener('dragstart', () => {
            this.setAttribute("dragging", "");
         });
         o_div.addEventListener('touchstart', () => {
@@ -131,7 +131,7 @@ class Task extends HTMLElement {
      */
     bindHandleDragend(f_dragend_action) {
         const o_div = this.querySelector("#wrap-task");
-        o_div.addEventListener("dragend", f_dragend_action);
+        this.addEventListener("dragend", f_dragend_action);
         o_div.addEventListener("touchend", f_dragend_action);
     }
 
