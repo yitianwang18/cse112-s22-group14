@@ -1,3 +1,5 @@
+import { TimerContainer } from "./timerContainer.js"
+
 // variable for turning on/off console logs used for debugging
 const B_CONSOLE_LOG = false;
 
@@ -61,16 +63,19 @@ class SettingsTab extends HTMLElement {
         o_setting_one_btn_one.classList.add("settings-custom-btn");
         o_setting_one_btn_one.id = "sett-one-btn-one";
         o_setting_one_btn_one.innerHTML = "20"; 
+        o_setting_one_btn_one.addEventListener("click", TimerContainer.handlePomoLength(20));
         
         let o_setting_one_btn_two = document.createElement("div");
         o_setting_one_btn_two.classList.add("settings-custom-btn", "clicked-settings-btn");
         o_setting_one_btn_two.id = "sett-one-btn-two";
-        o_setting_one_btn_two.innerHTML = "25"; 
+        o_setting_one_btn_two.innerHTML = "25";
+        o_setting_one_btn_two.addEventListener("click", TimerContainer.handlePomoLength(25)); 
         
         let o_setting_one_btn_three = document.createElement("div");
         o_setting_one_btn_three.classList.add("settings-custom-btn");
         o_setting_one_btn_three.id = "sett-one-btn-three";
-        o_setting_one_btn_three.innerHTML = "30"; 
+        o_setting_one_btn_three.innerHTML = "30";
+        o_setting_one_btn_three.addEventListener("click", TimerContainer.handlePomoLength(30)); 
 
         o_setting_one_buttons.append(o_setting_one_btn_one, o_setting_one_btn_two, o_setting_one_btn_three);
         o_setting_one_wrapper.append(o_setting_one_title, o_setting_one_buttons);

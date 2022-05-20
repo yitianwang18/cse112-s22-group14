@@ -126,12 +126,15 @@ class TimerContainer extends HTMLElement {
     /**
      * Event handler function for when the work time is adjusted
      */
-    handlePomoLength() {
+    static handlePomoLength(n_work_time) {
         // TODO - grab the value from input
-        let n_work_time = 10000;
+        //let n_work_time = 10000;
+        console.log(n_work_time);
+        document.querySelector("timer-display").onload = function () {
         this.querySelector("timer-display").setAttribute("time", n_work_time);
         this.querySelector("timer-display").setAttribute("pomo-length", n_work_time);
         TimerContainer.A_STATE_DURATIONS[0] = n_work_time;
+        }
     }
 
     /**
