@@ -22,7 +22,6 @@ class TimerContainer extends HTMLElement {
         let o_timer_display = new TimerDisplay();
         o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
-        o_timer_display.setAttribute("set", 4);
         o_timer_display.setAttribute("pomo-length", 1500000);
 
         let o_wrap_start_btn = document.createElement("span");
@@ -91,15 +90,6 @@ class TimerContainer extends HTMLElement {
      * @param {Event} o_event The event instance
      */
     handleStartPomo() {
-
-        //testing handlers - to be removed
-        this.handleSet();
-        this.handlePomoLength();
-        this.handleShortBreak();
-        this.handleLongBreak();
-
-        // end testing
-
         this.beginSession();
         this.querySelector("#reset-btn").classList.remove("hidden");
         this.querySelector("#start-btn").classList.add("hidden");
@@ -111,51 +101,33 @@ class TimerContainer extends HTMLElement {
     }
 
     // Event Handlers
-
-    // new handlers
     /**
-     * Event handler function for when number of pomos is adjusted
-     */
-    handleSet() {
-        // TODO - grab the value from input
-        let n_set = 2;
-        this.querySelector("timer-display").setAttribute("set", n_set);
-        TimerContainer.N_SET = n_set;
-    }
-
-    /**
-     * Event handler function for when the work time is adjusted
+     * Event handler function for when the pomodoro length is adjusted
+     * @param {number} n_work_time - the pomodoro length in milliseconds
      */
     static handlePomoLength(n_work_time) {
-        // TODO - grab the value from input
-        //let n_work_time = 10000;
-        console.log(n_work_time);
-        document.querySelector("timer-display").onload = function () {
-        this.querySelector("timer-display").setAttribute("time", n_work_time);
-        this.querySelector("timer-display").setAttribute("pomo-length", n_work_time);
+        let o_timer_display = document.querySelector("timer-display");
+        o_timer_display.setAttribute("time", n_work_time);
+        o_timer_display.setAttribute("pomo-length", n_work_time);
         TimerContainer.A_STATE_DURATIONS[0] = n_work_time;
-        }
+        
     }
 
     /**
      * Event handler function for when the short break time is adjusted
+     * @param {number} n_short_break - the short break time in milliseconds
      */
-     handleShortBreak() {
-         // TODO - grab the value from input
-         let n_short_break = 10000;
+     static handleShortBreak(n_short_break) {
          TimerContainer.A_STATE_DURATIONS[1] = n_short_break;
     }
 
     /**
      * Event handler function for when the long break time is adjusted
+     * @param {number} n_long_break - the long break time in milliseconds
      */
-    handleLongBreak() {
-        // TODO - grab the value from input
-        let n_long_break = 10000;
+    static handleLongBreak(n_long_break) {
         TimerContainer.A_STATE_DURATIONS[2] = n_long_break;
     }
-
-    // end of new handlers
 
     /**
      * Event handler function for when the "reset pomo" button is pressed

@@ -62,21 +62,22 @@ class SettingsTab extends HTMLElement {
         let o_setting_one_btn_one = document.createElement("div");
         o_setting_one_btn_one.classList.add("settings-custom-btn");
         o_setting_one_btn_one.id = "sett-one-btn-one";
-        o_setting_one_btn_one.innerHTML = "20"; 
-        o_setting_one_btn_one.addEventListener("click", TimerContainer.handlePomoLength(20));
+        o_setting_one_btn_one.innerHTML = "20";
+        //o_setting_one_btn_one.addEventListener("click", TimerContainer.handlePomoLength(20));
         
         let o_setting_one_btn_two = document.createElement("div");
         o_setting_one_btn_two.classList.add("settings-custom-btn", "clicked-settings-btn");
         o_setting_one_btn_two.id = "sett-one-btn-two";
-        o_setting_one_btn_two.innerHTML = "25";
-        o_setting_one_btn_two.addEventListener("click", TimerContainer.handlePomoLength(25)); 
+        o_setting_one_btn_two.innerHTML = "25"; 
+        //o_setting_one_btn_two.addEventListener("click", TimerContainer.handlePomoLength(25)); 
         
+
         let o_setting_one_btn_three = document.createElement("div");
         o_setting_one_btn_three.classList.add("settings-custom-btn");
         o_setting_one_btn_three.id = "sett-one-btn-three";
         o_setting_one_btn_three.innerHTML = "30";
-        o_setting_one_btn_three.addEventListener("click", TimerContainer.handlePomoLength(30)); 
-
+        //o_setting_one_btn_three.addEventListener("click", TimerContainer.handlePomoLength(30)); 
+        
         o_setting_one_buttons.append(o_setting_one_btn_one, o_setting_one_btn_two, o_setting_one_btn_three);
         o_setting_one_wrapper.append(o_setting_one_title, o_setting_one_buttons);
         
@@ -217,7 +218,8 @@ class SettingsTab extends HTMLElement {
         let o_setting_one_btn_three = document.getElementById("sett-one-btn-three");
         o_setting_one_btn_three.classList.remove("clicked-settings-btn");
             
-        // ADD FUNCTIONALITY HERE
+        // Adjust function of timer based on new pomo length
+        TimerContainer.handlePomoLength(1200000);
       } else {
         if (B_CONSOLE_LOG) {
           console.log("Pomo Length Already On Short")
@@ -243,7 +245,8 @@ class SettingsTab extends HTMLElement {
           let o_setting_one_btn_three = document.getElementById("sett-one-btn-three");
           o_setting_one_btn_three.classList.remove("clicked-settings-btn");
               
-          // ADD FUNCTIONALITY HERE
+          // Adjust function of timer based on new pomo length
+          TimerContainer.handlePomoLength(1500000);
         } else {
           if (B_CONSOLE_LOG) {
             console.log("Pomo Length Already On Medium")
@@ -269,7 +272,8 @@ class SettingsTab extends HTMLElement {
             let o_setting_one_btn_two = document.getElementById("sett-one-btn-two");
             o_setting_one_btn_two.classList.remove("clicked-settings-btn");
                 
-            // ADD FUNCTIONALITY HERE
+            // Adjust function of timer based on new pomodoro length
+            TimerContainer.handlePomoLength(1800000);
           } else {
             if (B_CONSOLE_LOG) {
               console.log("Pomo Length Already On Long")
@@ -299,7 +303,8 @@ class SettingsTab extends HTMLElement {
           let o_setting_two_btn_three = document.getElementById("sett-two-btn-three");
           o_setting_two_btn_three.classList.remove("clicked-settings-btn");
               
-          // ADD FUNCTIONALITY HERE
+          // Adjust function of timer based on new short break time
+          TimerContainer.handleShortBreak(300000);
         } else {
           if (B_CONSOLE_LOG) {
             console.log("Short Break Length Already On Short")
@@ -325,7 +330,8 @@ class SettingsTab extends HTMLElement {
             let o_setting_two_btn_three = document.getElementById("sett-two-btn-three");
             o_setting_two_btn_three.classList.remove("clicked-settings-btn");
                 
-            // ADD FUNCTIONALITY HERE
+            // Adjust function of timer based on new short break time
+            TimerContainer.handleShortBreak(450000);
           } else {
             if (B_CONSOLE_LOG) {
               console.log("Short Break Length Already On Medium")
@@ -351,7 +357,8 @@ class SettingsTab extends HTMLElement {
               let o_setting_two_btn_two = document.getElementById("sett-two-btn-two");
               o_setting_two_btn_two.classList.remove("clicked-settings-btn");
                   
-              // ADD FUNCTIONALITY HERE
+              // Adjust function of timer based on new short break time
+              TimerContainer.handleShortBreak(600000);
             } else {
               if (B_CONSOLE_LOG) {
                 console.log("Short Break Length Already On Long")
@@ -380,7 +387,8 @@ class SettingsTab extends HTMLElement {
           let o_setting_three_btn_three = document.getElementById("sett-three-btn-three");
           o_setting_three_btn_three.classList.remove("clicked-settings-btn");
               
-          // ADD FUNCTIONALITY HERE
+          // Adjust function of timer based on new long break time
+          TimerContainer.handleLongBreak(1500000);
         } else {
           if (B_CONSOLE_LOG) {
             console.log("Long Break Length Already On Short")
@@ -389,7 +397,7 @@ class SettingsTab extends HTMLElement {
       }
   
       /**
-       * Event handler function to change long break length to medium (7.5)
+       * Event handler function to change long break length to medium (30)
        */
        LBLengthMed() {
           if (B_CONSOLE_LOG) {
@@ -406,7 +414,8 @@ class SettingsTab extends HTMLElement {
             let o_setting_three_btn_three = document.getElementById("sett-three-btn-three");
             o_setting_three_btn_three.classList.remove("clicked-settings-btn");
                 
-            // ADD FUNCTIONALITY HERE
+            // Adjust function of timer based on new long break time
+            TimerContainer.handleLongBreak(1800000);
           } else {
             if (B_CONSOLE_LOG) {
               console.log("Long Break Length Already On Medium")
@@ -432,7 +441,8 @@ class SettingsTab extends HTMLElement {
               let o_setting_three_btn_two = document.getElementById("sett-three-btn-two");
               o_setting_three_btn_two.classList.remove("clicked-settings-btn");
                   
-              // ADD FUNCTIONALITY HERE
+              // Adjust function of timer based on new long break time
+              TimerContainer.handleLongBreak(2100000);
             } else {
               if (B_CONSOLE_LOG) {
                 console.log("Long Break Length Already On Long")
