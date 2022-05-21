@@ -106,8 +106,8 @@ class TaskList extends HTMLElement {
         let o_tasks = document.createElement("div");
         o_tasks.className = "hidden";
         o_tasks.id = "all-tasks";
-        // handles reordering task items visually in HTML
-        o_tasks.addEventListener('dragover', (e) => this.handleDrag(o_tasks, e));
+        // handles reordering task items visually in HTML for desktop
+        o_tasks.addEventListener('dragover', (e) => this.handleDrag(e));
 
         o_wrapper_obj.append(o_task_title_wrapper, o_tasks);
         this.append(o_wrapper_obj_back);
@@ -133,20 +133,23 @@ class TaskList extends HTMLElement {
     /**
      * Handles setting the order of tasks (in HTML) after being dragged to 
      * desired spot
-     * @param {Object} o_tasks_container container that holds all tasks created
      * @param {Event} o_event window event that has occurred
      */
-    handleDrag(o_tasks_container, o_event) {
+    handleDrag(o_event) {
         o_event.preventDefault();
+        // y-coordinate is either from desktop or from mobile
+        const n_y_coord = o_event.clientY != null ? o_event.clientY : o_event.targetTouches[0].pageY;
         // get task that is directly after the position of current task
         // that is being dragged
-        const o_after_task = this.getDragAfterElement(o_event.clientY);
+        const o_after_task = this.getDragAfterElement(n_y_coord); 
         // get current element being dragged
-        const o_dragged_task = document.querySelector('.dragging');
+        const o_dragged_task = this.querySelector('task-item[dragging=""]');
         // ensure there is a dragged task
         if (o_dragged_task == null) {
             return;
         }
+        // add appropriately to tasklist
+        const o_tasks_container = this.querySelector('#all-tasks');
         // dragging task to end of list
         if (o_after_task == null) {
             o_tasks_container.appendChild(o_dragged_task);
@@ -165,7 +168,8 @@ class TaskList extends HTMLElement {
      */
     getDragAfterElement(n_y_coord) {
         // get all tasks except the one that is dragging
-        const o_undragged_tasks = [...this.querySelectorAll('.draggable:not(.dragging)')]
+        const o_undragged_tasks = [...this.querySelectorAll('task-item:not([dragging=""]')]
+        // console.log(o_undragged_tasks);
         return o_undragged_tasks.reduce((closest, curTask) => {
             const box = curTask.getBoundingClientRect();
             const offset = n_y_coord - box.top - box.height / 2;
@@ -254,9 +258,10 @@ class TaskList extends HTMLElement {
         o_task.setAttribute("taskname", s_task_name);
         o_task.setAttribute("taskid", n_task_id);
         o_task.bindHandleDelete(() => { this.removeItem(n_task_id); });
+        // bind a function that listen to an onchange for a task input element
         o_task.bindHandleEdit(() => { this.editItemName(n_task_id); });
         o_task.bindHandleDragend(() => { this.setNewTaskOrder(o_task); });
-        // bind a function that listen to an onchange for a task input element
+        o_task.bindHandleTouchMove((e) => this.handleDrag(e));
 
         this.querySelector("#all-tasks").append(o_task);
 
@@ -354,8 +359,9 @@ class TaskList extends HTMLElement {
      * @param {Object} o_task task HTML object to remove the dragging class from
      */
     setNewTaskOrder(o_task) {
-        // remove draggable class on current dragging object
-        o_task.classList.remove('dragging');
+        // remove dragging attribute on currently dragging object
+        o_task.removeAttribute("dragging");
+        console.log(o_task.children[0]);
         // update this.o_tasks
         const n_num_tasks = this.getNumTasks();
         const o_task_items = document.getElementById('all-tasks').children;
@@ -411,9 +417,10 @@ class TaskList extends HTMLElement {
                     o_task.setAttribute("taskid", i);
                     console.log(this.n_task_id);
                     o_task.bindHandleDelete(() => { this.removeItem(i); });
+                    // bind a function that listen to an onchange for a task input element
                     o_task.bindHandleEdit(() => { this.editItemName(i); });
                     o_task.bindHandleDragend(() => { this.setNewTaskOrder(o_task); })
-                    // bind a function that listen to an onchange for a task input element
+                    o_task.bindHandleTouchMove((e) => this.handleDrag(e));
                     this.n_next_task_id++;
                     this.querySelector("#all-tasks").append(o_task);
                 }
