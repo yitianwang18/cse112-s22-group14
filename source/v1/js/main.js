@@ -2,6 +2,7 @@ import { TimerContainer } from "./timerContainer.js";
 import { TaskList } from "./taskList.js";
 import { SettingsTab } from "./settingsTab.js";
 import { InstructionsBox } from "./instructionsBox.js";
+import { NotificationBox } from "./errorNotificationBox.js";
 import { EventBus } from "./eventBus.js";
 import { TaskDisplay } from "./taskDisplay.js";
 
@@ -84,7 +85,6 @@ function settingThreeButtonThree() {
 function showInstructions(o_event) {
     let inst = document.querySelector("instructions-box");
     inst.showInstructionsBox();
-
 }
 
 /**

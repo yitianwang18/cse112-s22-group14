@@ -7,6 +7,7 @@ function notify(n_state){
   let o_options = {
     silent: true
   }
+
   //check if notifications are supported
   if (!("Notification" in window)) {
     alert("This browser does not support desktop notifications.");
@@ -46,10 +47,18 @@ function notify(n_state){
               o_promise.catch(error => {
               // Auto-play was prevented
               // Show a UI element to let the user manually start playback
-                 console.log('Please enable "Preference window -> Websites -> Auto-Play" to get the notification audio');
+                 const b_showErrorNotification = localStorage.getItem("safari-error-notification");
+                 console.log("catch error kjdshfkja" + b_showErrorNotification);
+
+                 if (b_showErrorNotification == null || b_showErrorNotification == false || b_showErrorNotification == "false") {
+                     // show error notification view
+                     let o_notifi = document.querySelector("notification-box");
+                     o_notifi.showNotificationBox();
+                     localStorage.setItem("safari-error-notification", true)
+                 }
               }).then(() => {
-               // Auto-play started
-                 console.log('Auto-play started');
+               // Auto-play started successfully
+                console.log("kjdshfkja");
               });
            }
 
