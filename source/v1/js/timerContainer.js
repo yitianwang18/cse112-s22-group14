@@ -20,9 +20,19 @@ class TimerContainer extends HTMLElement {
 
         // initialize timerdisplay instance
         let o_timer_display = new TimerDisplay();
-        o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
-        o_timer_display.setAttribute("pomo-length", 1500000);
+
+        // initialize timerdisplay instance based on user settings
+        if(window.localStorage.getItem("timer_settings") != null) {
+            let o_timer_settings = window.localStorage.getItem("timer_settings");
+            o_timer_settings = JSON.parse(o_timer_settings);
+            TimerContainer.A_STATE_DURATIONS = o_timer_settings;
+            o_timer_display.setAttribute("pomo-length", o_timer_settings[0]);
+        } else {
+            o_timer_display.setAttribute("time", 0);
+            o_timer_display.setAttribute("pomo-length", 1500000);
+            window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+        }
 
         let o_wrap_start_btn = document.createElement("span");
         o_wrap_start_btn.id = "wrap-start-btn";
@@ -106,10 +116,12 @@ class TimerContainer extends HTMLElement {
      * @param {number} n_work_time - the pomodoro length in milliseconds
      */
     static handlePomoLength(n_work_time) {
+        console.log(TimerDisplay.formatMilliTime(n_work_time));
         let o_timer_display = document.querySelector("timer-display");
         o_timer_display.setAttribute("time", n_work_time);
         o_timer_display.setAttribute("pomo-length", n_work_time);
         TimerContainer.A_STATE_DURATIONS[0] = n_work_time;
+        window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
         
     }
 
@@ -118,7 +130,9 @@ class TimerContainer extends HTMLElement {
      * @param {number} n_short_break - the short break time in milliseconds
      */
      static handleShortBreak(n_short_break) {
+         console.log(TimerDisplay.formatMilliTime(n_short_break));
          TimerContainer.A_STATE_DURATIONS[1] = n_short_break;
+         window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
     }
 
     /**
@@ -126,7 +140,9 @@ class TimerContainer extends HTMLElement {
      * @param {number} n_long_break - the long break time in milliseconds
      */
     static handleLongBreak(n_long_break) {
+        console.log(TimerDisplay.formatMilliTime(n_long_break));
         TimerContainer.A_STATE_DURATIONS[2] = n_long_break;
+        window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
     }
 
     /**
