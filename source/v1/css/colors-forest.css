@@ -5,7 +5,7 @@
 :root {
   --red: #f00;
   --green: #178800;
-  --secondary-color: #222222;
+  --secondary-color: #222;
   --light-grey: #828282;
   --transparent: #0000;
   --alm-transparent: #0000006b;
@@ -219,7 +219,8 @@ input[type=text] {
   color: var(--light-color);
 }
 
-.instruct-head, .inst-headers {
+.instruct-head,
+.inst-headers {
   color: white;
 }
 

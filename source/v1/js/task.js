@@ -26,7 +26,7 @@ class Task extends HTMLElement {
         this.classList.add("draggable");
         // event listener to tell when this task is being dragged 
         this.addEventListener('dragstart', () => {
-           this.classList.add('dragging');
+            this.classList.add('dragging');
         });
 
         let o_div = document.createElement("div");

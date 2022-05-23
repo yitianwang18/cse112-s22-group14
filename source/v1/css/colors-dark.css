@@ -5,8 +5,8 @@
 :root {
   --red: #f00;
   --light-grey: #828282;
-  --timer-box-color: #111111;
-  --secondary-color: #222222;
+  --timer-box-color: #111;
+  --secondary-color: #222;
   --light-color: #e0e0e0;
   --less-transparent: #0000009c;
 }
@@ -131,7 +131,7 @@ input[type=text] {
  * Color for Viewable Tasks *
  ****************************/
 
- .middle-container {
+.middle-container {
   background-color: transparent;
   color: white;
 }
@@ -151,19 +151,20 @@ input[type=text] {
   * Color for Instructions *
   **************************/
 
-  .instructions-section-blocker {
-    background-color: var(--less-transparent);
-  }
-  
-  .instructions-section {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-  }
-  
-  .instruct-head, .inst-headers {
-    color: white;
-  }
-  
+.instructions-section-blocker {
+  background-color: var(--less-transparent);
+}
+
+.instructions-section {
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+}
+
+.instruct-head,
+.inst-headers {
+  color: white;
+}
+
 /********************
  * Color for Footer *
  ********************/
