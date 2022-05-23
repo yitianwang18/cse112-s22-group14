@@ -20,17 +20,23 @@ class Task extends HTMLElement {
         // reference to these functions so we can remove the event listeners
         this.f_delete_action = null;
         this.f_edit_action = null;
-        
-        // set dragging class/attribute
-        this.setAttribute("draggable", true);
-        this.classList.add("draggable");
-        // event listener to tell when this task is being dragged 
-        this.addEventListener('dragstart', () => {
-            this.classList.add('dragging');
-        });
 
         let o_div = document.createElement("div");
         o_div.id = "wrap-task";
+
+        // MUST SET draggable attr and eventListeners on o_div to work on 
+        // Safari; something weird with unable to set stuff directly on web components
+
+        // set dragging class/attribute
+        o_div.setAttribute("draggable", true);
+        o_div.classList.add("draggable");
+        // event listener to tell when this task is being dragged 
+        this.addEventListener('dragstart', () => {
+            this.setAttribute("dragging", "");
+        });
+        o_div.addEventListener('touchstart', () => {
+           this.setAttribute("dragging", "");
+        })
 
         let o_item = document.createElement("input");
         o_item.title = "Click to Edit";
@@ -124,7 +130,20 @@ class Task extends HTMLElement {
      * @param {Function}  f_dragend_action function that handles dragover
      */
     bindHandleDragend(f_dragend_action) {
+        const o_div = this.querySelector("#wrap-task");
         this.addEventListener("dragend", f_dragend_action);
+        o_div.addEventListener("touchend", f_dragend_action);
+    }
+
+    /**
+     * Binds touchmove handler to the task-item. Enables drag and drop for 
+     * touch-enabled devices, such as mobile. Needs a bind in order to 
+     * differentiate scrolling and moving around tasks.
+     * @param {Function} f_touchmove_action 
+     */
+    bindHandleTouchMove(f_touchmove_action) {
+        const o_div = this.querySelector("#wrap-task");
+        o_div.addEventListener('touchmove', f_touchmove_action);
     }
 
 }
