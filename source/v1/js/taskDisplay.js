@@ -3,7 +3,7 @@
  * @extends HTMLElement
  */
 
-export default class TaskDisplay extends HTMLElement {
+export class TaskDisplay extends HTMLElement {
 
     /**
      * Attributes that this object observes
@@ -172,4 +172,4 @@ TaskDisplay.S_CHECK_BUTTON_TITLE = "Task completed";
 customElements.define("task-display", TaskDisplay);
 
 
-export { TaskDisplay }
+export default { TaskDisplay }

@@ -1,3 +1,12 @@
+/************************************
+ * Declare and initialize variables *
+ ************************************/
+
+:root {
+  --btn-border: calc(1.25rem + 1.25vw);
+}
+
+
 /*********************
  * Styling HTML Tags *
  *********************/
@@ -59,12 +68,13 @@ body {
 }
 
 #header-line {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   height: 1px;
   color: white;
   background-color: white;
 }
+
 /**************************
  * Styling Navigation Bar *
  **************************/
@@ -170,7 +180,6 @@ body {
   position: relative;
 }
 
-
 /**
  * Horizontal rule used to separate add and show tasks
  */
@@ -202,7 +211,6 @@ body {
   margin-bottom: 10px;
 }
 
-
 #task-title h1 {
   margin: calc(0.6rem + 1vw);;
 }
@@ -211,6 +219,7 @@ body {
   background-color: green;
   padding: 10px 0;
   margin: 15px 0;
+  width: 90%; /* So you can still scroll within sidebar*/
 }
 
 /**
@@ -221,9 +230,9 @@ body {
 }
 
 /**
- * Class for when dragging/moving an task
+ * Class to indicate dragging/moving an task
  */
-.dragging {
+task-item[dragging=""] > div {
   opacity: 0.5;
 }
 
@@ -276,7 +285,7 @@ body {
 }
 
 /**
- * Close button inside slide-out tasks
+ * Close button inside slide-out modals
  */
 .close {
   position: absolute;
@@ -309,6 +318,123 @@ input[type=text] {
   width: 420px;
   overflow-y: auto;
 }
+
+
+
+
+
+/***************************
+ * Styling Slide-out Settings *
+ ***************************/
+
+/**
+ * Container for slide-out settings mask
+ */
+ .settings-blocker {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+/**
+ * Container for slide-out settings when closed
+ */
+.settings-class {
+  padding: 0;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  box-shadow: -5px 5px 10px black;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  transition: 0.3s;
+}
+
+/**
+ * Container for slide-out settings when open
+ */
+.settings-class-open {
+  width: 420px;
+  padding: 0 calc(1rem + 1vw);
+}
+
+
+
+/**
+ * Styling container for header of settings
+ */
+ #settings-title {
+  position: relative;
+}
+
+
+/**
+ * Styling div placed immediately after h1 inside task-title
+ */
+ #settings-title > h1 + div {
+  margin-bottom: 10px;
+}
+
+
+#settings-title h1 {
+  margin: calc(0.6rem + 1vw);;
+}
+
+#all-settings {
+  margin: 5rem 0;
+}
+
+.setting-wrap {
+  margin: calc(2rem - 1vw) calc(0.5rem + 1vw);
+}
+
+.setting-wrap label {
+  font-size: calc(0.5rem + 1vw);
+}
+
+.settings-btns {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.settings-custom-btn {
+  font-size: calc(1rem + 1vw);
+  padding: calc(1rem + 1vw);
+  width: 10%;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.settings-custom-btn:first-child {
+  border-top-left-radius: var(--btn-border);
+  border-bottom-left-radius: var(--btn-border);
+}
+
+
+.settings-custom-btn:last-child {
+  border-top-right-radius: var(--btn-border);
+  border-bottom-right-radius: var(--btn-border);
+}
+
+.clicked-settings-btn, .clicked-settings-btn:hover {
+  cursor: default;
+}
+
+.centered-note {
+  margin-top: 1.5vw;
+}
+
+.centered-note footer {
+  margin: 0.8rem;
+}
+
 
 /**************************
  * Styling Pomodoro Timer *
@@ -625,6 +751,29 @@ input[type=text] {
   padding: 0 9px;
 }
 
+/************************
+ * Styling Error Notification *
+ ************************/
+ #notification-blocker {
+  position: fixed;
+  top: 0;
+  right: 30%;
+  left: 30%;
+  bottom: 40%;
+  align-items: center;
+  z-index: 2;
+}
+
+/**
+ * Container for notification when it is open
+ */
+ .notification-section-open {
+  width: 30%;
+  height: 22vh;
+  border-width: 2px;
+  overflow-y: auto;
+}
+
 /******************
  * Styling Footer *
  ******************/
@@ -708,7 +857,8 @@ input[type=text] {
     width: 70%;
   }
 
-  #all-tasks, #wrap-tasks {
+  #all-tasks,
+  #wrap-tasks {
     position: relative;
     width: 100%;
   }
@@ -804,13 +954,10 @@ input[type=text] {
     margin-left: -40vw;
   }
 
-  
   .pomo-logo {
     visibility: hidden;
     width: 0;
   }
-
-
 }
 
 @media screen and (max-width: 417px) {
