@@ -10,7 +10,7 @@ describe("Error Messages Tests", () => {
 
     // Testing Add error message
     it("Shows Add error message", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         // First time opening tasklist with empty input
         cy.get("#task-btn").trigger("click");
         cy.get("#add-error")
@@ -35,7 +35,7 @@ describe("Error Messages Tests", () => {
 
     // Testing Edit error message
     it("Shows Edit error message", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         // Add tasks
         cy.get("#task-btn").trigger("click");
         cy.get("#task-input").clear().type("abc");
@@ -67,7 +67,7 @@ describe("Error Messages Tests", () => {
 
     // Testing Start error message
     it("Shows Start error message", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         // Trigger start button
         cy.get("#start-error").should("not.have.class", "color-error");
 
@@ -90,7 +90,7 @@ describe("Error Messages Tests", () => {
 
     // Testing Reset error message
     it("Shows Reset error message", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         // Check reset error class
         cy.get("#reset-error").should("not.have.class", "color-error");
 
@@ -128,7 +128,7 @@ describe("Error Messages Tests", () => {
 
     // Testing End error message
     it("Shows End error message", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         // Without starting session
         cy.get("#end-error")
             .then(($o_el) => {
@@ -166,7 +166,7 @@ describe("Error Messages Tests", () => {
 
     // Testing Check error message
     it("Shows Check error message", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         // Check "check" error class
         cy.get("#check-error").should("not.be.visible");
 

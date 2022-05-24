@@ -4,7 +4,6 @@ describe("Instruction Box Tests", () => {
   });
 
   it("Tests clicking to open and close instructions", () => {
-
     cy.window().then((win) => {
       const n_prevDate = JSON.parse(win.localStorage.getItem("n_prevDate"));
       
@@ -23,7 +22,7 @@ describe("Instruction Box Tests", () => {
     cy.get("instructions-box").should("not.be.hidden");
 
     //checks if hidden after closed
-    cy.get(".close2").trigger("click");
+    cy.get(".close2").eq(1).trigger("click");
     cy.get("instructions-box").should("be.hidden");
 
     //checks if shown when clicked
@@ -31,7 +30,7 @@ describe("Instruction Box Tests", () => {
     cy.get("instructions-box").should("not.be.hidden");
 
     //checks if hidden after closed
-    cy.get(".close2").trigger("click");
+    cy.get(".close2").eq(1).trigger("click");
     cy.get("instructions-box").should("be.hidden");
 
   });

@@ -13,7 +13,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test beginSession function is being called correctly", () => {
-    
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
@@ -35,7 +35,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test resetPomo function is being called correctly", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
@@ -61,7 +61,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test endSession function is being called correctly", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
@@ -92,7 +92,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test progressState function is being called correctly", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
@@ -173,7 +173,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test Start Button does not start session when no tasks have been added", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Session doesnot start when start button is clicked
     cy.get("timer-element").within(() => {
       cy.get("#work-message").should("contain", "Ready to focus?");
@@ -182,6 +182,7 @@ describe("Timer Container Tests", () => {
     });
 
     //A task is added
+    cy.get("#close-task").trigger("click");
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
       cy.get("#task-input").clear().type("First Test Task");
@@ -198,7 +199,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test Start Button / Reset Button Toggle", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
@@ -238,7 +239,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test Start Button functionality", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
@@ -274,7 +275,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test Reset Button functionality", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
@@ -339,7 +340,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test End Button functionality", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
@@ -394,7 +395,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test Timer Countdown", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {
@@ -440,7 +441,7 @@ describe("Timer Container Tests", () => {
   });
 
   it("Test TimerContainer for the whole Pomodoro Life Cycle", () => {
-
+    cy.get(".close2").eq(1).trigger("click");
     //Task added so that session could be started for testing
     cy.get("#task-btn").trigger("click");
     cy.get("task-list").within(() => {

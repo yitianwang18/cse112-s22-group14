@@ -4,6 +4,7 @@ describe("Test Tasks", () => {
     });
 
     it("Test add task + update task names", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // Testing add first task
         cy.get(".fa-tasks").trigger("click");
         cy.get("input[name=task]").clear().type("Do Homework");
@@ -44,6 +45,7 @@ describe("Test Tasks", () => {
     });
 
     it("Testin case: input task name is empty string or over character count", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // Testing add task
         cy.get(".fa-tasks").trigger("click");
         cy.get("input[type=text]").clear().type("Do Homework");
@@ -71,6 +73,7 @@ describe("Test Tasks", () => {
     });
 
     it("test that the task name is trimmed when spaced input given", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // Testing add task
         cy.get(".fa-tasks").trigger("click");
         cy.get("input[type=text]").clear().type("      Do Homework       ");

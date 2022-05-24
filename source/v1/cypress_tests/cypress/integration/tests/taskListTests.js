@@ -13,6 +13,7 @@ describe("Task List Tests", () => {
     });
 
     it("Test showTaskList function being called correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //TaskList Show button clicked
         cy.get("#task-btn").trigger("click");
         //showTaskList function called
@@ -22,6 +23,7 @@ describe("Task List Tests", () => {
     });
 
     it("Test TaskList onShow functionality", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Initially, TaskList is hidden
         cy.get("task-list").should("be.hidden");
         //TaskList Show button clicked
@@ -31,7 +33,7 @@ describe("Task List Tests", () => {
     });
 
     it("Test TaskList onClose functionality", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         //TaskList is made visible 
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").should("be.visible");
@@ -47,6 +49,7 @@ describe("Task List Tests", () => {
     });
 
     it("Test Tasklist addItem and deleteItem functionality", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // add one item
         cy.get("#task-btn").trigger("click");
         cy.get("task-list #add-task input").type("Task1");
@@ -97,7 +100,7 @@ describe("Task List Tests", () => {
     });
 
     it("Test TaskList functionality when Session Starts / Ends", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         //TaskList made visible
         cy.get("task-list").should("be.hidden");
         cy.get("#task-btn").should("be.enabled");
@@ -140,6 +143,7 @@ describe("Task List Tests", () => {
     });
 
     it("Test Tasklist reordering functionality", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // add one item
         cy.get("#task-btn").trigger("click");
 

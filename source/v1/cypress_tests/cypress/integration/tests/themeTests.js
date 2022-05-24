@@ -4,6 +4,7 @@ describe("Theme Change Tests", () => {
   });
 
   it("Tests clicking to toggle theme", () => {
+    cy.get(".close2").eq(1).trigger("click");
     //checks if default theme is image
     cy.get("#theme-btn").should("not.be.hidden");
     cy.get("#theme-btn").should("have.attr", "title", "Dark Theme");

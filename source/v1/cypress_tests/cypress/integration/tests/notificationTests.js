@@ -4,6 +4,7 @@ describe("Notification Tests", () => {
     });
 
     it("Tests alert when notifications are not supported", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //no notifs in browser, so it deletes notifs
         cy.visit("https://powelldoro.web.app/", {
             onBeforeLoad(window) {
@@ -26,6 +27,7 @@ describe("Notification Tests", () => {
     });
 
     it("Notifs not allowed, no new notifs created", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //checks if notifs exist and then asks for permission, which is denied
         cy.window().should("have.property", "Notification").should("be.a", "function");
         cy.stub(window.Notification, "permission", "denied");
@@ -45,6 +47,7 @@ describe("Notification Tests", () => {
     });
 
     it("Test 1 cycle with asking permission", () => {
+        cy.get(".close2").eq(1).trigger("click");
         cy.window().should("have.property", "Notification").should("be.a", "function");
         cy.visit("https://powelldoro.web.app/", {
             //before page loads stubs notifs to access them
@@ -105,6 +108,7 @@ describe("Notification Tests", () => {
     });
 
     it("Test 1 cycle when permission is already granted", () => {
+        cy.get(".close2").eq(1).trigger("click");
         cy.window().should("have.property", "Notification").should("be.a", "function");
         cy.visit("https://powelldoro.web.app/", {
             //before page loads stubs notifs to access them    
@@ -217,6 +221,7 @@ describe("Notification Tests", () => {
     });
 
     it("Test notifs when resetting", () => {
+        cy.get(".close2").eq(1).trigger("click");
         cy.window().should("have.property", "Notification").should("be.a", "function");
         cy.visit("https://powelldoro.web.app/", {
             //before page loads stubs notifs to access them 

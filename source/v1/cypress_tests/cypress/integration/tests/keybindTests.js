@@ -14,6 +14,7 @@ describe("Keybind Integration Tests", () => {
     });
 
     it("Testing t (tasklist opening)", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // opening normally
         cy.get("body").type("t");
         cy.wait(N_DELAY);
@@ -39,6 +40,7 @@ describe("Keybind Integration Tests", () => {
     });
 
     it("Testing Escape (Close out of windows)", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // opening normally
         cy.get("body").type("t");
         cy.wait(N_DELAY);
@@ -68,6 +70,7 @@ describe("Keybind Integration Tests", () => {
     });
 
     it("Testing c (color change)", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // test toggling theme
         cy.get("#theme").should("have.attr", "href", "./css/colors-forest.css");
         cy.get("body").type("c");
@@ -108,6 +111,7 @@ describe("Keybind Integration Tests", () => {
     });
 
     it("Testing r (reset pomo)", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // make sure that the timer-element's reset is not called when not in session
         cy.get("body").type("r");
         cy.document().then((o_doc) => {
@@ -139,6 +143,7 @@ describe("Keybind Integration Tests", () => {
     });
 
     it("Testing n (next task)", () => {
+        cy.get(".close2").eq(1).trigger("click");
         // make sure that taskdisplay is not updated without a session
         cy.get("body").type("n");
         cy.wait(N_DELAY);

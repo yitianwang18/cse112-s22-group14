@@ -11,6 +11,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test 'Start Session' event is fired correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Task added in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -29,6 +30,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test 'End Session' event is fired correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Task added in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -51,6 +53,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test 'next Task' event is fired correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Add 2 Tasks in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -75,6 +78,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test 'start Break' event is fired correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Add a Task in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -96,6 +100,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test 'start Work' event is fired correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Add a Task in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -119,6 +124,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test 'close Windows' event is fired correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Press the Esc key
         cy.get("body").type("{esc}");
         //"closeWindows" Event fired
@@ -128,6 +134,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test 'space Keybind' event is fired correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Press the Space key
         cy.get("body").type(" ");
         //"closeWindows" Event fired
@@ -137,6 +144,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test 'show Tasks' event is fired correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Press the t key
         cy.get("body").type("t");
         //"showTasks" Event fired
@@ -156,6 +164,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test 'reset Pomo' event is fired correctly", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Add a Task in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -176,6 +185,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test functionality when 'Start Session' event is fired", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Fire "startSession" with empty tasklist
         cy.get("#start-btn").trigger("click");
         //"startSession" Event fired on empty TaskList
@@ -189,6 +199,7 @@ describe("Testing Event Bus", () => {
         });
 
         //Fire "startSession" with non-empty tasklist
+        cy.get("#close-task").trigger("click");
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
             cy.get("#task-input").clear().type("First Test Task");
@@ -221,6 +232,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test functionality when 'End Session' event is fired", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Fire "endSession" event
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -250,6 +262,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test functionality when 'next Task' event is fired", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Fire "nextTask" event
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -294,6 +307,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test functionality when 'start Break' event is fired", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Fire "startBreak" Event
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -317,6 +331,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test functionality when 'start Work' event is fired", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Fire "startWork" Event
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -341,6 +356,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test functionality when 'close Windows' event is fired", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Fire "closeWindows" Event on open tasklist
         cy.get("#task-btn").trigger("click");
         cy.get("body").type("{esc}");
@@ -367,6 +383,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test functionality when 'Space Keybind' event is fired", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Fire the "Space Keybind" event when the session has not started
         cy.get("body").type(" ");
         //"Space Keybind" Event fired
@@ -379,6 +396,7 @@ describe("Testing Event Bus", () => {
         });
 
         //Fire the "Space Keybind" event when the session has started
+        cy.get("#close-task").trigger("click");
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
             cy.get("#task-input").clear().type("First Test Task");
@@ -402,6 +420,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test functionality when 'Show Tasks' event is fired", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Open TaskList
         cy.get("#task-btn").trigger("click");
         //"showTasks" Event fired
@@ -413,6 +432,7 @@ describe("Testing Event Bus", () => {
     });
 
     it("Test functionality when 'Reset Pomo' event is fired", () => {
+        cy.get(".close2").eq(1).trigger("click");
         //Add a Task in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {

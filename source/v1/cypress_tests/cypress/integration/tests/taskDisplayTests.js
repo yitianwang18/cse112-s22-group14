@@ -11,7 +11,7 @@ describe("Timer Container Tests", () => {
     });
 
     it("Test enableCkeck function is called correctly", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         //Task added so that session could be started for testing
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -41,7 +41,7 @@ describe("Timer Container Tests", () => {
     });
 
     it("Test disableCkeck function is called correctly", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         //Task added so that session could be started for testing
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -73,7 +73,7 @@ describe("Timer Container Tests", () => {
     });
 
     it("Test Task Display Functionality when Session Starts and Ends", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         //Two Tasks added to TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -107,7 +107,7 @@ describe("Timer Container Tests", () => {
     });
 
     it("Test Task Display Functionality when Check button is pressed", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         //3 Tasks added to TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -141,7 +141,7 @@ describe("Timer Container Tests", () => {
     });
 
     it("Test Check button is disabled during Break", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         //3 Tasks added to TaskList 
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
@@ -202,7 +202,7 @@ describe("Timer Container Tests", () => {
     });
 
     it("Test Timer Display Functionality on Task Completion", () => {
-
+        cy.get(".close2").eq(1).trigger("click");
         //3 Tasks added to TaskLists
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
