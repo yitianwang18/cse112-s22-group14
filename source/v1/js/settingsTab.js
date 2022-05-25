@@ -147,13 +147,27 @@ class SettingsTab extends HTMLElement {
         o_all_settings_wrapper.append(o_setting_one_wrapper, o_setting_two_wrapper, o_setting_three_wrapper, o_bottom_wrapper);
       
         let b_isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
-
         if (b_isSafari) {
              // add safari error notification check box 
           let o_safari_check_box = document.createElement("input");
-          o_safari_check_box.classList.add("error-check-box");
           o_safari_check_box.id = "safari-check-box";
           o_safari_check_box.setAttribute("type", "checkbox");
+
+          const b_showErrorNotification_preference = localStorage.getItem("safari-error-notification-preference");
+
+          if (b_showErrorNotification_preference == "false") {
+            o_safari_check_box.checked = false;
+          } else {
+            o_safari_check_box.checked = true;
+          }
+
+          o_safari_check_box.addEventListener('change', (event) => {
+            if (event.currentTarget.checked) {
+              localStorage.setItem("safari-error-notification-preference", "true");
+            } else {
+              localStorage.setItem("safari-error-notification-preference", "false");
+            }
+          })
 
           let o_safari_check_box_label = document.createElement("label");
           o_safari_check_box_label.id = "safari-check-box-label";
@@ -162,6 +176,7 @@ class SettingsTab extends HTMLElement {
           // append safari check box
           o_all_settings_wrapper.append(o_safari_check_box);
           o_all_settings_wrapper.append(o_safari_check_box_label);
+
         }
 
 
