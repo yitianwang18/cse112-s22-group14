@@ -161,7 +161,6 @@ class SettingsTab extends HTMLElement {
           // User setting for pomodoro length
           switch(o_timer_settings[0]) {
             case SettingsTab.N_PS_SHORT:
-              console.log("hey");
               this.PSLengthShort();
               break;
             case SettingsTab.N_PS_MED:
@@ -176,20 +175,26 @@ class SettingsTab extends HTMLElement {
           switch(o_timer_settings[1]) {
             case SettingsTab.N_SB_SHORT:
               this.SBLengthShort();
+              break;
             case SettingsTab.N_SB_MED:
               this.SBLengthMed();
+              break;
             case SettingsTab.N_SB_LONG:
               this.SBLengthLong();
+              break;
           }
 
           // User setting for long break
           switch(o_timer_settings[2]) {
             case SettingsTab.N_LB_SHORT:
               this.LBLengthShort();
+              break;
             case SettingsTab.N_LB_MED:
               this.LBLengthMed();
+              break;
             case SettingsTab.N_LB_LONG:
               this.LBLengthLong();
+              break;
           }
       }
 
