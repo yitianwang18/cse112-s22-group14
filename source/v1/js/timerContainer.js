@@ -11,7 +11,7 @@ class TimerContainer extends HTMLElement {
      */
     constructor() {
         super();
-        // intiailization wrappers
+        // initialization wrappers
         let o_wrapper = document.createElement("div");
         o_wrapper.className = "timer-box";
 
