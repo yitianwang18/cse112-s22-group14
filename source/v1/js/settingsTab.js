@@ -131,7 +131,7 @@ class SettingsTab extends HTMLElement {
 
         o_setting_three_buttons.append(o_setting_three_btn_one, o_setting_three_btn_two, o_setting_three_btn_three);
         o_setting_three_wrapper.append(o_setting_three_title, o_setting_three_buttons);
-        
+
 
         // Bottom note to explain settings
         let o_bottom_wrapper = document.createElement("div");
@@ -145,6 +145,25 @@ class SettingsTab extends HTMLElement {
 
         // Add each setting to settings wrapper
         o_all_settings_wrapper.append(o_setting_one_wrapper, o_setting_two_wrapper, o_setting_three_wrapper, o_bottom_wrapper);
+      
+        let b_isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
+
+        if (b_isSafari) {
+             // add safari error notification check box 
+          let o_safari_check_box = document.createElement("input");
+          o_safari_check_box.classList.add("error-check-box");
+          o_safari_check_box.id = "safari-check-box";
+          o_safari_check_box.setAttribute("type", "checkbox");
+
+          let o_safari_check_box_label = document.createElement("label");
+          o_safari_check_box_label.id = "safari-check-box-label";
+          o_safari_check_box_label.innerHTML = "Enable Error Notification";
+
+          // append safari check box
+          o_all_settings_wrapper.append(o_safari_check_box);
+          o_all_settings_wrapper.append(o_safari_check_box_label);
+        }
+
 
         o_settings_title_wrapper.append(o_close_button, o_settings_title);
         o_wrapper_obj.append(o_settings_title_wrapper, o_all_settings_wrapper);
