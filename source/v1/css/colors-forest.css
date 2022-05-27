@@ -281,7 +281,8 @@ input[type=text] {
   color: var(--light-color);
 }
 
-.instruct-head, .inst-headers {
+.instruct-head,
+.inst-headers {
   color: white;
 }
 

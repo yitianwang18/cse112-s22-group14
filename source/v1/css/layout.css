@@ -69,12 +69,13 @@ body {
 }
 
 #header-line {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   height: 1px;
   color: white;
   background-color: white;
 }
+
 /**************************
  * Styling Navigation Bar *
  **************************/
@@ -192,7 +193,6 @@ body {
   position: relative;
 }
 
-
 /**
  * Horizontal rule used to separate add and show tasks
  */
@@ -223,7 +223,6 @@ body {
 #task-title > h1 + div {
   margin-bottom: 10px;
 }
-
 
 #task-title h1 {
   margin: calc(0.6rem + 1vw);;
@@ -467,8 +466,6 @@ scrollbar-width: none;  /* Firefox */
 .centered-note footer {
   margin: 0.8rem;
 }
-
-
 /**************************
  * Styling Pomodoro Timer *
  **************************/
@@ -998,13 +995,10 @@ scrollbar-width: none;  /* Firefox */
     margin-left: -40vw;
   }
 
-  
   .pomo-logo {
     visibility: hidden;
     width: 0;
   }
-
-
 }
 
 @media screen and (max-width: 417px) {

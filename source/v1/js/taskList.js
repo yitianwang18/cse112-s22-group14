@@ -103,14 +103,14 @@ class TaskList extends HTMLElement {
         o_error_mssg_2.id = "edit-error";
         o_error_mssg_2.className = "error-mssg";
 
-        o_task_title_wrapper.append(o_close_button, o_tasklist_title, o_add_label_container, o_add_task, o_hr, 
-            o_existing_tasks_title, o_error_mssg_2);
+        o_task_title_wrapper.append(o_close_button, o_tasklist_title, o_add_label_container, 
+            o_add_task, o_hr, o_existing_tasks_title, o_error_mssg_2);
 
         let o_tasks = document.createElement("div");
         o_tasks.className = "hidden";
         o_tasks.id = "all-tasks";
         // handles reordering task items visually in HTML for desktop
-        o_tasks.addEventListener('dragover', (e) => this.handleDrag(e));
+        o_tasks.addEventListener('dragover', (event) => this.handleDrag(event));
 
         o_wrapper_obj.append(o_task_title_wrapper, o_tasks);
         this.append(o_wrapper_obj_back);
@@ -217,9 +217,10 @@ class TaskList extends HTMLElement {
     }
 
     /**
-     * Handles the event for adding a task. o_event should be useless as you don't care about the object
-     * that was clicked.
-     * Validates the string, and if it's valid, it updates the data structure and adds a Task to the DOM
+     * Handles the event for adding a task. o_event should be useless as you don't care about 
+     * the object that was clicked.
+     * Validates the string, and if it's valid, it updates the data structure and adds a 
+     * Task to the DOM
      */
     handleAddTask() {
         let o_input = this.querySelector("input[name=task]");
@@ -268,8 +269,8 @@ class TaskList extends HTMLElement {
 
         //add to local storage
         const o_add_button = this.querySelector("#add-btn");
-        o_add_button.addEventListener('click',window.localStorage.setItem("current_tasks",
-        JSON.stringify(this.o_tasks)));
+        o_add_button.addEventListener('click', window.localStorage.setItem("current_tasks",
+            JSON.stringify(this.o_tasks)));
     }
 
     /**

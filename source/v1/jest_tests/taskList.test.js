@@ -139,7 +139,8 @@ test('Testing getNextNextTask() for correct retrieval of next-next task', () => 
     // adding another item
     o_tasklist.addItem("Task2");
 
-    expect(o_tasklist.getNextNextTask()).toBe(o_tasklist.o_tasks[Object.keys(o_tasklist.o_tasks)[1]]);
+    expect(o_tasklist.getNextNextTask()).
+        toBe(o_tasklist.o_tasks[Object.keys(o_tasklist.o_tasks)[1]]);
     o_tasklist.popTask();
     expect(o_tasklist.getNextNextTask()).toBe(undefined);
     o_tasklist.popTask();

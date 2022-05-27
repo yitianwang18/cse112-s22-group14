@@ -76,12 +76,14 @@ class TimerDisplay extends HTMLElement {
     }
 
     /**
-     * Re-renders the displayed time on the timer, and updates the tomato icons of the finished pomos.
+     * Re-renders the displayed time on the timer, and updates the tomato icons of the 
+     * finished pomos.
      * Uses the attributes 'time' and 'pomos-comp' as inputs
      */
     renderComponents() {
         // update time display
-        this.querySelector("#time-display").innerHTML = TimerDisplay.formatMilliTime(Number(this.getAttribute("time")));
+        this.querySelector("#time-display").innerHTML = 
+            TimerDisplay.formatMilliTime(Number(this.getAttribute("time")));
         // update status of pomo icons based on number of pomos completed
         for (let n_pomo_index = 1; n_pomo_index <= 4; n_pomo_index++) {
 
