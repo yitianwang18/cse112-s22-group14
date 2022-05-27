@@ -17,13 +17,17 @@ function handleThemeBtnPressed() {
     let o_theme = document.getElementById("theme");
     let o_theme_btn = document.getElementById("theme-btn");
 
+    const o_timer_container = document.querySelector("timer-element");
+    const o_timer_display = o_timer_container.querySelector("timer-display");
     // Change the value of href attribute to change the css sheet.
     if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
         o_theme.setAttribute("href", "./css/colors-forest.css");
-        o_theme_btn.setAttribute("title", "Stars Theme");
+        o_theme_btn.setAttribute("title", "Forest Theme");
+        o_timer_display.setAttribute("theme", "forest");
     } else {
         o_theme.setAttribute("href", "./css/colors-stars.css");
-        o_theme_btn.setAttribute("title", "Forest Theme");
+        o_theme_btn.setAttribute("title", "Stars Theme");
+        o_timer_display.setAttribute("theme", "stars");
     }
 }
 

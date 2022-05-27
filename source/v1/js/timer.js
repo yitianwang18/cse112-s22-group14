@@ -8,11 +8,11 @@ const B_CONSOLE_LOG = false;
  */
 class TimerDisplay extends HTMLElement {
     /**
-     * A list of observed attributes ("time" and "pomos-comp");
+     * A list of observed attributes ("time" and "pomos-comp", "theme");
      * @static
      * @type {string[]}
      */
-    static get observedAttributes() { return ["time", "pomos-comp"]; }
+    static get observedAttributes() { return ["time", "pomos-comp", "theme"]; }
 
     /**
      * Constructs a new Timer Display
@@ -87,16 +87,21 @@ class TimerDisplay extends HTMLElement {
         // update status of pomo icons based on number of pomos completed
         for (let n_pomo_index = 1; n_pomo_index <= 4; n_pomo_index++) {
 
-            // TODO: two cases, depending on current theme
-            let o_theme = document.getElementById("theme");
+            let b_pomo_done = n_pomo_index <= this.getAttribute("pomos-comp");
             // We want to use "PomoCountYes2"
-            if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
-                let s_pomo_done = (n_pomo_index <= this.getAttribute("pomos-comp")) ? "Yes" : "No";
-                this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", `assets/img/PomoCount${s_pomo_done}2.png`);
+            if (this.getAttribute("theme") === "stars") {
+                if (b_pomo_done){
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", TimerDisplay.S_POMO_YES_PATH_STARS);
+                } else {
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", TimerDisplay.S_POMO_NO_PATH_STARS);
+                }
             // We want to use "PomoCountYes"
             } else {
-                let s_pomo_done = (n_pomo_index <= this.getAttribute("pomos-comp")) ? "Yes" : "No";
-                this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", `assets/img/PomoCount${s_pomo_done}.png`);
+                if (b_pomo_done){
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", TimerDisplay.S_POMO_YES_PATH);
+                } else {
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", TimerDisplay.S_POMO_NO_PATH);
+                }
             }
         }
     }
@@ -115,6 +120,20 @@ TimerDisplay.S_POMO_YES_PATH = "./assets/img/PomoCountYes.png";
  * @type {string}
  */
 TimerDisplay.S_POMO_NO_PATH = "./assets/img/PomoCountNo.png";
+
+/**
+ * Path to "Yes" icon.
+ * @static
+ * @type {string}
+ */
+TimerDisplay.S_POMO_YES_PATH_STARS = "./assets/img/PomoCountYes2.png";
+
+/**
+ * Path to "No" icon.
+ * @static
+ * @type {string}
+ */
+TimerDisplay.S_POMO_NO_PATH_STARS = "./assets/img/PomoCountNo2.png";
 customElements.define("timer-display", TimerDisplay);
 
 export { TimerDisplay }

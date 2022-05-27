@@ -27,6 +27,9 @@ class TimerContainer extends HTMLElement {
         o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
 
+        // setting timer display theme default to stars
+        o_timer_display.setAttribute("theme", "stars");
+
         let o_wrap_start_btn = document.createElement("span");
         o_wrap_start_btn.id = "wrap-start-btn";
         o_wrap_start_btn.className = "btn-wrapper";
