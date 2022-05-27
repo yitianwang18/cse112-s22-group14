@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/27</span>
+                <span class='fraction'>0/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>0/23</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/27</span>
+                <span class='fraction'>0/32</span>
             </div>
         
             
@@ -123,7 +123,18 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,6 +144,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -164,14 +176,24 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -195,63 +217,74 @@
  * See timerContainer.js for timer state values.
  */
 function <span class="fstat-no" title="function not covered" >notify(</span>n_state){
-  let o_options = <span class="cstat-no" title="statement not covered" >{</span>
-    silent: true
-  }
-  //check if notifications are supported
-<span class="cstat-no" title="statement not covered" >  if (!("Notification" in window)) {</span>
-<span class="cstat-no" title="statement not covered" >    alert("This browser does not support desktop notifications.");</span>
-<span class="cstat-no" title="statement not covered" >    return;</span>
-  }
+    let o_options = <span class="cstat-no" title="statement not covered" >{</span>
+        silent: true
+    }
+&nbsp;
+    //check if notifications are supported
+<span class="cstat-no" title="statement not covered" >    if (!("Notification" in window)) {</span>
+<span class="cstat-no" title="statement not covered" >        alert("This browser does not support desktop notifications.");</span>
+<span class="cstat-no" title="statement not covered" >        return;</span>
+    }
   
-  //check if notifications are turned on
-<span class="cstat-no" title="statement not covered" >  if (Notification.permission !== "denied") {</span>
-<span class="cstat-no" title="statement not covered" >    Notification.requestPermission().then(<span class="fstat-no" title="function not covered" >fu</span>nction (permission) {</span>
-      //ask user to enable notifications
-<span class="cstat-no" title="statement not covered" >      if (permission !== "granted") {</span>
-<span class="cstat-no" title="statement not covered" >        alert("Please enable notifictaions.");</span>
-      }
-      
-      //send notification
-      else <span class="cstat-no" title="statement not covered" >if(Notification.permission !== "denied") {</span>
-        var s_alert = <span class="cstat-no" title="statement not covered" >"All tasks completed. Good work!";</span>
-         //start new pomo notif
-<span class="cstat-no" title="statement not covered" >         if(n_state==0){ </span>
-<span class="cstat-no" title="statement not covered" >           s_alert = "Time to start the next work session!";</span>
-         } else <span class="cstat-no" title="statement not covered" >if(n_state==1) {</span>
-<span class="cstat-no" title="statement not covered" >           s_alert = "Time for a short break!";</span>
-         } else <span class="cstat-no" title="statement not covered" >if(n_state==2) {</span>
-<span class="cstat-no" title="statement not covered" >           s_alert = "Time for a long break!";</span>
-        }
+    //check if notifications are turned on
+<span class="cstat-no" title="statement not covered" >    if (Notification.permission !== "denied") {</span>
+<span class="cstat-no" title="statement not covered" >        Notification.requestPermission().then(<span class="fstat-no" title="function not covered" >fu</span>nction (permission) {</span>
+            //ask user to enable notifications
+<span class="cstat-no" title="statement not covered" >            if (permission !== "granted") {</span>
+<span class="cstat-no" title="statement not covered" >                alert("Please enable notifictaions.");</span>
+            }
         
-        let o_notification = <span class="cstat-no" title="statement not covered" >new Notification(s_alert, o_options);</span>
+            //send notification
+            else <span class="cstat-no" title="statement not covered" >if(Notification.permission !== "denied") {</span>
+                let s_alert = <span class="cstat-no" title="statement not covered" >"All tasks completed. Good work!";</span>
+                //start new pomo notif
+<span class="cstat-no" title="statement not covered" >                if(n_state==0){ </span>
+<span class="cstat-no" title="statement not covered" >                    s_alert = "Time to start the next work session!";</span>
+                } else <span class="cstat-no" title="statement not covered" >if(n_state==1) {</span>
+<span class="cstat-no" title="statement not covered" >                    s_alert = "Time for a short break!";</span>
+                } else <span class="cstat-no" title="statement not covered" >if(n_state==2) {</span>
+<span class="cstat-no" title="statement not covered" >                    s_alert = "Time for a long break!";</span>
+                }
+          
+                let o_notification = <span class="cstat-no" title="statement not covered" >new Notification(s_alert, o_options);</span>
 &nbsp;
-        // check safari
-        let b_isSafari = <span class="cstat-no" title="statement not covered" >/^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);</span>
+                // check safari
+                let b_isSafari = <span class="cstat-no" title="statement not covered" >/^((?!chrome|android|crios|fxios).)*safari/i.</span>
+                  test(navigator.userAgent);
 &nbsp;
-        //start new pomo notif
-<span class="cstat-no" title="statement not covered" >        if (b_isSafari) {</span>
-          let o_promise = <span class="cstat-no" title="statement not covered" >document.getElementById("notifs").play();</span>
+                //start new pomo notif
+<span class="cstat-no" title="statement not covered" >                if (b_isSafari) {</span>
+                    let o_promise = <span class="cstat-no" title="statement not covered" >document.getElementById("notifs").play();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >          if (o_promise !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >              o_promise.catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; {</span>
-              // Auto-play was prevented
-              // Show a UI element to let the user manually start playback
-<span class="cstat-no" title="statement not covered" >                 console.log('Please enable "Preference window -&gt; Websites -&gt; Auto-Play" to get the notification audio');</span>
-              }).then(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-               // Auto-play started
-<span class="cstat-no" title="statement not covered" >                 console.log('Auto-play started');</span>
-              });
-           }
+<span class="cstat-no" title="statement not covered" >                    if (o_promise !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >                        o_promise.catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; {</span>
+                            // Auto-play was prevented
+                            // Show a UI element to let the user manually start playback
+                            const b_showErrorNotification = <span class="cstat-no" title="statement not covered" >localStorage.getItem("safari-error-notification");</span>
+<span class="cstat-no" title="statement not covered" >                            console.log("catch error kjdshfkja" + b_showErrorNotification);</span>
 &nbsp;
-       } else {
-          let o_audio = <span class="cstat-no" title="statement not covered" >document.getElementById("notifs");</span>
-<span class="cstat-no" title="statement not covered" >          o_audio.play();</span>
-       }
-<span class="cstat-no" title="statement not covered" >       return o_notification;</span>
-       }
-     });
-  }
+<span class="cstat-no" title="statement not covered" >                            if (b_showErrorNotification == null || b_showErrorNotification == false || </span>
+                                b_showErrorNotification == "false") {
+                                // show error notification view
+                                let o_notifi = <span class="cstat-no" title="statement not covered" >document.querySelector("notification-box");</span>
+<span class="cstat-no" title="statement not covered" >                                o_notifi.showNotificationBox();</span>
+<span class="cstat-no" title="statement not covered" >                                localStorage.setItem("safari-error-notification", true)</span>
+                            }
+                        }).then(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
+                            // Auto-play started successfully
+<span class="cstat-no" title="statement not covered" >                            console.log("kjdshfkja");</span>
+                        });
+                    }
+&nbsp;
+                } else {
+                    let o_audio = <span class="cstat-no" title="statement not covered" >document.getElementById("notifs");</span>
+<span class="cstat-no" title="statement not covered" >                    o_audio.play();</span>
+                }
+<span class="cstat-no" title="statement not covered" >                return o_notification;</span>
+            }
+        });
+    }
 }
 &nbsp;
 export { notify };
@@ -262,7 +295,7 @@ export { notify };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun May 15 2022 18:01:41 GMT-0700 (Pacific Daylight Time)
+                at Fri May 27 2022 16:28:46 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="prettify.js"></script>

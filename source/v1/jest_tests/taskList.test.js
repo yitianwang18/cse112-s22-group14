@@ -146,3 +146,60 @@ test('Testing getNextNextTask() for correct retrieval of next-next task', () => 
     o_tasklist.popTask();
     expect(o_tasklist.getNextTask()).toBe(undefined);
 });
+
+test('Testing getDragAfterElement', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+    o_tasklist.addItem("Task2");
+
+    expect(o_tasklist.getDragAfterElement(10)).toBe(undefined);
+    const o_undragged_tasks = [...o_tasklist.querySelectorAll('task-item:not([dragging=""]')]
+    expect(o_undragged_tasks[0].toString()).toBe("[object HTMLElement]");
+});
+
+test('Testing handleDrag', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+    o_tasklist.addItem("Task2");
+
+    expect(o_tasklist.handleAddTask()).toBe(undefined);
+
+    let o_tasks = document.createElement("div");
+    expect(o_tasks.addEventListener('dragover', (event) => this.handleDrag(event))).toBe(undefined);
+});
+
+
+test('Testing editItemName', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+    o_tasklist.addItem("Task2");
+    expect(o_tasklist.editItemName(0)).toBe(undefined);
+
+    o_tasklist.removeItem(0);
+    o_tasklist.addItem("");
+    expect(o_tasklist.editItemName(0)).toBe(undefined);
+});
+
+test('Testing showTaskList', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+
+    expect(o_tasklist.showTaskList()).toBe(undefined);
+    let o_tasks = o_tasklist.querySelector("#side-tasks");
+    expect(o_tasks.style.display).toBe("block");
+
+    o_tasklist.removeItem(0);
+
+    expect(o_tasklist.showTaskList()).toBe(undefined);
+    let o_tasks1 = o_tasklist.querySelector("#side-tasks");
+    expect(o_tasks1.style.display).toBe("block");
+});
+
+test('Testing closeTaskList', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+
+    expect(o_tasklist.closeTaskList()).toBe(undefined);
+    let o_tasks = o_tasklist.querySelector("#close-task");
+    expect(o_tasks.style.display).toBe("none");
+});
