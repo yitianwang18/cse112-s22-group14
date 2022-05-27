@@ -3,7 +3,8 @@
  ************************************/
 
 :root {
-  --btn-border: calc(1.25rem + 1.25vw);
+  --btn-border: calc(0.5rem + 0.5vw);
+  --box-border: calc(0.5rem);
 }
 
 
@@ -124,6 +125,18 @@ body {
   font-size: 2rem;
 }
 
+.inert-btn {
+  background: transparent;
+  border: none !important;
+  opacity: 100%;
+  font-size: 1.75rem;
+  padding: calc(0.25rem + 1vw);
+}
+
+#delete-btn {
+  font-size: 1.75rem;
+}
+
 /***************************
  * Styling Slide-out tasks *
  ***************************/
@@ -216,10 +229,12 @@ body {
 }
 
 #wrap-task {
-  background-color: green;
+  border-radius: var(--box-border);
+  display: flex;
   padding: 10px 0;
-  margin: 15px 0;
-  width: 90%; /* So you can still scroll within sidebar*/
+  margin: 15px 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 /**
@@ -276,10 +291,9 @@ task-item[dragging=""] > div {
 }
 
 /**
- * Styling add and delete buttons
+ * Styling add buttons
  */
-#add-btn,
-#delete-btn {
+#add-btn {
   position: relative;
   top: 5px;
 }
@@ -320,7 +334,25 @@ input[type=text] {
 }
 
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+#all-tasks::-webkit-scrollbar {
+  display: none;
+}
 
+/* Hide scrollbar for IE, Edge and Firefox */
+#all-tasks {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+
+
+#task-input-top {
+  width: 80%;
+}
+
+#task-input {
+  width: 70%;
+}
 
 
 /***************************
@@ -387,11 +419,11 @@ input[type=text] {
 }
 
 #all-settings {
-  margin: 5rem 0;
+  margin: 4rem 0;
 }
 
 .setting-wrap {
-  margin: calc(2rem - 1vw) calc(0.5rem + 1vw);
+  margin: calc(2rem - 1vw) calc(0.5rem + 1vw) calc(3rem - 1vw);
 }
 
 .setting-wrap label {
@@ -406,7 +438,7 @@ input[type=text] {
 
 .settings-custom-btn {
   font-size: calc(1rem + 1vw);
-  padding: calc(1rem + 1vw);
+  padding: calc(0.6rem + 0.75vw) calc(0.9rem + 1vw);
   width: 10%;
   border: 1px solid;
   cursor: pointer;
@@ -658,6 +690,18 @@ input[type=text] {
   overflow-y: auto;
 }
 
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.instructions-section-open::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.instructions-section-open {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+
 /**
  * Styling the header in instructions section
  */
@@ -851,18 +895,17 @@ input[type=text] {
     line-height: 21px;
   }
 
-  #task-input {
+  #task-input-top {
     width: 70%;
   }
 
-  #all-tasks,
-  #wrap-tasks {
-    position: relative;
-    width: 100%;
+  #task-input {
+    width: 60%;
   }
 
-  .task-input {
-    width: 1rem;
+  #all-tasks, #wrap-tasks {
+    position: relative;
+    width: 100%;
   }
 }
 

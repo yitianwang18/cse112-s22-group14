@@ -1,5 +1,8 @@
 import { Task } from "./task.js";
 
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
 /**
  * Custom HTML element encapsulating all of the functionality related to the Task List
  * @extends HTMLElement
@@ -54,7 +57,7 @@ class TaskList extends HTMLElement {
 
         // add input field
         let o_add_task_input = document.createElement("input");
-        o_add_task_input.id = "task-input";
+        o_add_task_input.id = "task-input-top";
         o_add_task_input.type = "text";
         o_add_task_input.name = "task";
         o_add_task_input.placeholder = "Enter task description";
@@ -169,11 +172,9 @@ class TaskList extends HTMLElement {
     getDragAfterElement(n_y_coord) {
         // get all tasks except the one that is dragging
         const o_undragged_tasks = [...this.querySelectorAll('task-item:not([dragging=""]')]
-        // console.log(o_undragged_tasks);
         return o_undragged_tasks.reduce((closest, curTask) => {
             const box = curTask.getBoundingClientRect();
             const offset = n_y_coord - box.top - box.height / 2;
-            // console.log(offset);
             // if offset is negative, then must be below current element
             // trying to find the closest element, so also compare with current closest
             if (offset < 0 && offset > closest.offset) {
@@ -362,14 +363,18 @@ class TaskList extends HTMLElement {
     setNewTaskOrder(o_task) {
         // remove dragging attribute on currently dragging object
         o_task.removeAttribute("dragging");
-        console.log(o_task.children[0]);
+        if (B_CONSOLE_LOG) {
+            console.log(o_task.children[0]);
+        }
         // update this.o_tasks
         const n_num_tasks = this.getNumTasks();
         const o_task_items = document.getElementById('all-tasks').children;
         // make sure to update eventlisteners, taskid, and taskname
         for (let i = 0; i < n_num_tasks; i++) {
             const o_task_item = o_task_items[i]; 
-            console.log(typeof(o_task_item));
+            if (B_CONSOLE_LOG) {
+                console.log(typeof(o_task_item));
+            }
             // remove old event listeners and add new ones to new id
             o_task_item.unbindDelete();
             o_task_item.unbindEdit();
@@ -379,7 +384,9 @@ class TaskList extends HTMLElement {
             this.o_tasks[i] = o_task_item.getAttribute("taskname");
         }
         // update localStorage
-        console.log(this.o_tasks);
+        if (B_CONSOLE_LOG) {
+            console.log(this.o_tasks);
+        }
         window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
     }
 
@@ -416,7 +423,9 @@ class TaskList extends HTMLElement {
                     let o_task = new Task();
                     o_task.setAttribute("taskname", this.o_tasks[i]);
                     o_task.setAttribute("taskid", i);
-                    console.log(this.n_task_id);
+                    if (B_CONSOLE_LOG) {
+                        console.log(this.n_task_id);
+                    }
                     o_task.bindHandleDelete(() => { this.removeItem(i); });
                     // bind a function that listen to an onchange for a task input element
                     o_task.bindHandleEdit(() => { this.editItemName(i); });

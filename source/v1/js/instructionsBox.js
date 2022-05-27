@@ -22,6 +22,7 @@ class InstructionsBox extends HTMLElement {
 
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close2", "btn");
+        o_close_button.id = "close-inst";
         o_close_button.innerHTML = "&times;";
         o_close_button.addEventListener("click", this.closeInstructions.bind(this));
 
@@ -110,11 +111,13 @@ class InstructionsBox extends HTMLElement {
      */
     showInstructionsBox() {
         this.querySelector("#instructions").classList.add("instructions-section-open");
+        this.querySelector("#close-inst").style.display = "none";
 
         // Hide everything inside instructions box while animating to prevent sandwiching of text
         setTimeout(() => {
             this.querySelector("#instructions-title").style.display = "block";
             this.querySelector("#instructions-para").style.display = "block";
+            this.querySelector("#close-inst").style.display = "block";
             document.body.focus();
         }, 300);
 
@@ -129,6 +132,7 @@ class InstructionsBox extends HTMLElement {
         this.querySelector("#instructions-title").style.display = "none";
         this.querySelector("#instructions-para").style.display = "none";
         this.querySelector("#instructions-blocker").style.display = "none";
+        this.querySelector("#close-inst").style.display = "none";
     }
 }
 

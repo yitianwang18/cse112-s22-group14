@@ -1,3 +1,7 @@
+
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
 /**
  * Custom HTML element encapsulating the display of current and next task during a pomo
  * @extends HTMLElement

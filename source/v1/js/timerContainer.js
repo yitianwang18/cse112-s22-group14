@@ -1,5 +1,9 @@
 import { TimerDisplay } from "./timer.js";
 import { notify } from "./notify.js"
+
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
 /**
  * Custom HTML element for a TimerContainer, including the display and functionality
  * @extends HTMLElement
@@ -22,6 +26,9 @@ class TimerContainer extends HTMLElement {
         let o_timer_display = new TimerDisplay();
         o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
+
+        // setting timer display theme default to stars
+        o_timer_display.setAttribute("theme", "stars");
 
         let o_wrap_start_btn = document.createElement("span");
         o_wrap_start_btn.id = "wrap-start-btn";

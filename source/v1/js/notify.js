@@ -1,3 +1,6 @@
+
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
 /**
  * Sends web notifications to the user representing the state of the timer.
  * @param {number} n_state number denoting the state of the timer. 
