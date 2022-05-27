@@ -159,6 +159,7 @@ class SettingsTab extends HTMLElement {
             o_safari_check_box.checked = false;
           } else {
             o_safari_check_box.checked = true;
+            localStorage.setItem("safari-error-notification-preference", "true");
           }
 
           o_safari_check_box.addEventListener('change', (event) => {
