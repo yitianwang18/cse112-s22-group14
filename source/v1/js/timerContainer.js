@@ -116,7 +116,6 @@ class TimerContainer extends HTMLElement {
      * @param {number} n_work_time - the pomodoro length in milliseconds
      */
     static handlePomoLength(n_work_time) {
-        console.log(TimerDisplay.formatMilliTime(n_work_time));
         let o_timer_display = document.querySelector("timer-display");
         o_timer_display.setAttribute("time", n_work_time);
         o_timer_display.setAttribute("pomo-length", n_work_time);
@@ -130,7 +129,6 @@ class TimerContainer extends HTMLElement {
      * @param {number} n_short_break - the short break time in milliseconds
      */
      static handleShortBreak(n_short_break) {
-         console.log(TimerDisplay.formatMilliTime(n_short_break));
          TimerContainer.A_STATE_DURATIONS[1] = n_short_break;
          window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
     }
@@ -140,7 +138,6 @@ class TimerContainer extends HTMLElement {
      * @param {number} n_long_break - the long break time in milliseconds
      */
     static handleLongBreak(n_long_break) {
-        console.log(TimerDisplay.formatMilliTime(n_long_break));
         TimerContainer.A_STATE_DURATIONS[2] = n_long_break;
         window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
     }
@@ -340,7 +337,6 @@ TimerContainer.S_END_MESSAGE = "End Session";
  * @type {string}
  */
 TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
-
 
 /**
  *

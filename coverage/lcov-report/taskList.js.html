@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.39% </span>
+                <span class="strong">53.59% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>126/236</span>
+                <span class='fraction'>127/237</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.61% </span>
+                <span class="strong">55.8% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>124/223</span>
+                <span class='fraction'>125/224</span>
             </div>
         
             
@@ -563,7 +563,9 @@
 <a name='L504'></a><a href='#L504'>504</a>
 <a name='L505'></a><a href='#L505'>505</a>
 <a name='L506'></a><a href='#L506'>506</a>
-<a name='L507'></a><a href='#L507'>507</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L507'></a><a href='#L507'>507</a>
+<a name='L508'></a><a href='#L508'>508</a>
+<a name='L509'></a><a href='#L509'>509</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -595,9 +597,11 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -945,7 +949,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -954,6 +957,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1101,14 +1105,16 @@ class TaskList extends HTMLElement {
         o_close_button.title = "Close Tasklist";
         o_close_button.id = "close-task";
         o_close_button.innerHTML = "&amp;times;";
+        // event to close the task list
         o_close_button.addEventListener("click", this.closeTaskList.bind(this));
 &nbsp;
         // wrapper for input/headers
         let o_task_title_wrapper = document.createElement("div");
         o_task_title_wrapper.id = "task-title";
+        o_task_title_wrapper.classList.add("hidden")
 &nbsp;
         let o_tasklist_title = document.createElement("h1");
-        o_tasklist_title.innerText = "TaskList";
+        o_tasklist_title.innerText = "Task List";
 &nbsp;
         let o_add_task = document.createElement("div");
         o_add_task.id = "add-task";
@@ -1169,7 +1175,7 @@ class TaskList extends HTMLElement {
         o_error_mssg_2.id = "edit-error";
         o_error_mssg_2.className = "error-mssg";
 &nbsp;
-        o_task_title_wrapper.append(o_tasklist_title, o_add_label_container, o_add_task, o_hr, 
+        o_task_title_wrapper.append(o_close_button, o_tasklist_title, o_add_label_container, o_add_task, o_hr, 
             o_existing_tasks_title, o_error_mssg_2);
 &nbsp;
         let o_tasks = document.createElement("div");
@@ -1178,7 +1184,7 @@ class TaskList extends HTMLElement {
         // handles reordering task items visually in HTML
         o_tasks.addEventListener('dragover', <span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >this.handleDrag(o_tasks, e))</span>;
 &nbsp;
-        o_wrapper_obj.append(o_close_button, o_task_title_wrapper, o_tasks);
+        o_wrapper_obj.append(o_task_title_wrapper, o_tasks);
         this.append(o_wrapper_obj_back);
         this.append(o_wrapper_obj);
 &nbsp;
@@ -1449,7 +1455,6 @@ class TaskList extends HTMLElement {
      * Function to show task list display from the main user screen
      */
 <span class="fstat-no" title="function not covered" >    sh</span>owTaskList() {
-<span class="cstat-no" title="statement not covered" >        this.querySelector("#close-task").style.display = "block";</span>
         let o_tasks = <span class="cstat-no" title="statement not covered" >this.querySelector("#side-tasks");</span>
 <span class="cstat-no" title="statement not covered" >        o_tasks.style.display = "block";</span>
 &nbsp;
@@ -1461,10 +1466,11 @@ class TaskList extends HTMLElement {
 &nbsp;
         // Remove everything during animation to prevent sandwiching of text
 <span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            this.querySelector("#close-task").style.display = "block";</span>
 <span class="cstat-no" title="statement not covered" >            this.querySelector("#task-title").style.display = "block";</span>
 <span class="cstat-no" title="statement not covered" >            this.querySelector("#all-tasks").style.display = "block";</span>
 <span class="cstat-no" title="statement not covered" >            this.querySelector("input").focus();</span>
-        }, 200);
+        }, 300);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        this.querySelector("#side-tasks-blocker").style.display = "block";</span>
 &nbsp;
@@ -1582,7 +1588,7 @@ export { TaskList }
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun May 15 2022 18:01:41 GMT-0700 (Pacific Daylight Time)
+                at Fri May 27 2022 01:08:48 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="prettify.js"></script>
