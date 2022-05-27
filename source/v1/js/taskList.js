@@ -393,8 +393,10 @@ class TaskList extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showTaskList() {
+        this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "block";
+
 
         if (window.screen.width <= 500) {
             o_tasks.classList.add("sidenav-small");
