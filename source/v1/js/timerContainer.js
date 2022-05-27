@@ -1,5 +1,9 @@
 import { TimerDisplay } from "./timer.js";
 import { notify } from "./notify.js"
+
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
 /**
  * Custom HTML element for a TimerContainer, including the display and functionality
  * @extends HTMLElement

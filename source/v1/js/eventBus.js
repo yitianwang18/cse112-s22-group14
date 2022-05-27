@@ -1,5 +1,9 @@
 import { TimerContainer } from "./timerContainer.js";
 
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
+
 /**
  * Class representing an Event Hub to centralize all event logic
  */

@@ -14,16 +14,16 @@ const B_CONSOLE_LOG = false;
  */
 function handleThemeBtnPressed() {
     // Obtains an array of all <link> elements. Select your element using indexing. 
-    let theme = document.getElementById("theme");
-    let theme_btn = document.getElementById("theme-btn");
+    let o_theme = document.getElementById("theme");
+    let o_theme_btn = document.getElementById("theme-btn");
 
     // Change the value of href attribute to change the css sheet.
-    if (theme.getAttribute("href") == "./css/colors-dark.css") {
-        theme.setAttribute("href", "./css/colors-forest.css");
-        theme_btn.setAttribute("title", "Dark Theme");
+    if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
+        o_theme.setAttribute("href", "./css/colors-forest.css");
+        o_theme_btn.setAttribute("title", "Stars Theme");
     } else {
-        theme.setAttribute("href", "./css/colors-dark.css");
-        theme_btn.setAttribute("title", "Forest Theme");
+        o_theme.setAttribute("href", "./css/colors-stars.css");
+        o_theme_btn.setAttribute("title", "Forest Theme");
     }
 }
 
@@ -92,7 +92,9 @@ function showInstructions(o_event) {
  * @param {Event} o_event event instance
  */
 function handleKeyBinds(o_event) {
-    console.log(o_event);
+    if (B_CONSOLE_LOG) {
+        console.log(o_event);
+    }
     if (o_event.target.tagName != "INPUT") {
         switch (o_event.key) {
             case "c":
@@ -173,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let o_setting_two_btn_three = document.getElementById("sett-two-btn-three");
     o_setting_two_btn_three.addEventListener("click", settingTwoButtonThree);
     
-    // Code for settings customizations for SHORT break length
+    // Code for settings customizations for LONG break length
     let o_setting_three_btn_one = document.getElementById("sett-three-btn-one");
     o_setting_three_btn_one.addEventListener("click", settingThreeButtonOne);
     let o_setting_three_btn_two = document.getElementById("sett-three-btn-two");

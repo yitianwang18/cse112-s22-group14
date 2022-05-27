@@ -1,3 +1,6 @@
+
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
 /**
  * Sends web notifications to the user representing the state of the timer.
  * @param {number} n_state number denoting the state of the timer. 
@@ -48,7 +51,9 @@ function notify(n_state){
               // Auto-play was prevented
               // Show a UI element to let the user manually start playback
                  const b_showErrorNotification = localStorage.getItem("safari-error-notification");
-                 console.log("catch error kjdshfkja" + b_showErrorNotification);
+                 if (B_CONSOLE_LOG) {
+                   console.log("catch error kjdshfkja" + b_showErrorNotification);
+                 }
 
                  if (b_showErrorNotification == null || b_showErrorNotification == false || b_showErrorNotification == "false") {
                      // show error notification view
@@ -58,7 +63,9 @@ function notify(n_state){
                  }
               }).then(() => {
                // Auto-play started successfully
-                console.log("kjdshfkja");
+               if (B_CONSOLE_LOG) {
+                 console.log("kjdshfkja");
+               }
               });
            }
 

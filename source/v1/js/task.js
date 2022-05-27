@@ -1,3 +1,7 @@
+
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
 /**
  * Custom Element representing a Task item
  * @extends HTMLElement
@@ -37,7 +41,9 @@ class Task extends HTMLElement {
         o_div.addEventListener('touchstart', () => {
            this.setAttribute("dragging", "");
         })
-
+        let o_drag_icon = document.createElement("i");
+        o_drag_icon.classList.add("fas", "fa-bars", "fa-x", "inert-btn");
+        o_drag_icon.title = "Click and Drag to Reorder";
         let o_item = document.createElement("input");
         o_item.title = "Click to Edit";
         o_item.id = "task-input";
@@ -54,7 +60,7 @@ class Task extends HTMLElement {
 
         o_del_button.append(o_del_button_icon);
 
-        o_div.append(o_item, o_del_button);
+        o_div.append(o_drag_icon, o_item, o_del_button);
         this.append(o_div);
     }
 

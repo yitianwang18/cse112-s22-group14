@@ -1,3 +1,7 @@
+
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
 /**
  * Custom HTML element for a timer display, where the values to display are passed in as attributes
  * @extends HTMLElement
@@ -80,8 +84,18 @@ class TimerDisplay extends HTMLElement {
         this.querySelector("#time-display").innerHTML = TimerDisplay.formatMilliTime(Number(this.getAttribute("time")));
         // update status of pomo icons based on number of pomos completed
         for (let n_pomo_index = 1; n_pomo_index <= 4; n_pomo_index++) {
-            let s_pomo_done = (n_pomo_index <= this.getAttribute("pomos-comp")) ? "Yes" : "No";
-            this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", `assets/img/PomoCount${s_pomo_done}.png`);
+
+            // TODO: two cases, depending on current theme
+            let o_theme = document.getElementById("theme");
+            // We want to use "PomoCountYes2"
+            if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
+                let s_pomo_done = (n_pomo_index <= this.getAttribute("pomos-comp")) ? "Yes" : "No";
+                this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", `assets/img/PomoCount${s_pomo_done}2.png`);
+            // We want to use "PomoCountYes"
+            } else {
+                let s_pomo_done = (n_pomo_index <= this.getAttribute("pomos-comp")) ? "Yes" : "No";
+                this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", `assets/img/PomoCount${s_pomo_done}.png`);
+            }
         }
     }
 
