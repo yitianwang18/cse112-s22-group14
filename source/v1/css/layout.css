@@ -707,7 +707,7 @@ scrollbar-width: none;  /* Firefox */
  */
 .instruct-head {
   text-align: center;
-  margin-top: -38px;
+  margin-top: 10px;
   margin-bottom: 0;
   padding: 15px 15px 5px 15px;
   font-size: 2.5rem;
@@ -785,12 +785,9 @@ scrollbar-width: none;  /* Firefox */
  * Style close button for instructions modal popup
  */
 .close2 {
-  text-decoration: none;
-  position: relative;
-  top: 20px;
-  margin-right: 10px;
-  left: 47%;
-  padding: 0 9px;
+  position: absolute;
+  top: 7.5vh;
+  right: 12%;
 }
 
 /************************
@@ -839,10 +836,6 @@ scrollbar-width: none;  /* Firefox */
     max-width: 50%;
   }
 
-  .close2 {
-    left: 46%;
-  }
-
   .sidenav {
     max-width: 80%;
   }
@@ -876,6 +869,10 @@ scrollbar-width: none;  /* Firefox */
 
   .inst-list {
     padding-left: 6%;
+  }
+
+  .close2 {
+    right: 15%;
   }
 }
 
@@ -940,10 +937,6 @@ scrollbar-width: none;  /* Firefox */
 
   .inst-hotkeys {
     margin-top: 5px;
-  }
-
-  .close2 {
-    left: 45%;
   }
 
   .timer-box {
@@ -1094,5 +1087,9 @@ scrollbar-width: none;  /* Firefox */
   #instructions-para {
     font-size: 0.7rem;
     line-height: 14px;
+  }
+
+  .close2 {
+    top: 5.25vh;
   }
 }

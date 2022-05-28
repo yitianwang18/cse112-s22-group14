@@ -30,7 +30,7 @@ class TaskList extends HTMLElement {
         // close button
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn", "hidden");
-        o_close_button.title = "Close Tasklist";
+        o_close_button.title = "Close Tasklist (esc)";
         o_close_button.id = "close-task";
         o_close_button.innerHTML = "&times;";
         // event to close the task list

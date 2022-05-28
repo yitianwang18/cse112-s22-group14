@@ -22,11 +22,11 @@ function handleThemeBtnPressed() {
     // Change the value of href attribute to change the css sheet.
     if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
         o_theme.setAttribute("href", "./css/colors-forest.css");
-        o_theme_btn.setAttribute("title", "Forest Theme");
+        o_theme_btn.setAttribute("title", "Stars Theme (c)");
         o_timer_display.setAttribute("theme", "forest");
     } else {
         o_theme.setAttribute("href", "./css/colors-stars.css");
-        o_theme_btn.setAttribute("title", "Stars Theme");
+        o_theme_btn.setAttribute("title", "Forest Theme (c)");
         o_timer_display.setAttribute("theme", "stars");
     }
 }
