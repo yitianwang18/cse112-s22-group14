@@ -77,12 +77,12 @@ test("TaskList static validateString", () => {
     const s_normal_padded = " \t\ntask12345\t\n ";
     const s_oversize = "".padStart(TaskList.N_MAX_TASK_LENGTH + 1, "A");
     const s_oversize_padded = " \t\n" + "".padStart(TaskList.N_MAX_TASK_LENGTH - 2, "A") + "\t\n ";
-    expect(TaskList.validateString(s_empty_string)).toBe(false);
-    expect(TaskList.validateString(s_whitespace)).toBe(false);
-    expect(TaskList.validateString(s_normal)).toBe(true);
-    expect(TaskList.validateString(s_normal_padded)).toBe(true);
-    expect(TaskList.validateString(s_oversize)).toBe(false);
-    expect(TaskList.validateString(s_oversize_padded)).toBe(true);
+    expect(TaskList.validateString(s_empty_string)).toBe(1);
+    expect(TaskList.validateString(s_whitespace)).toBe(1);
+    expect(TaskList.validateString(s_normal)).toBe(0);
+    expect(TaskList.validateString(s_normal_padded)).toBe(0);
+    expect(TaskList.validateString(s_oversize)).toBe(2);
+    expect(TaskList.validateString(s_oversize_padded)).toBe(0);
 });
 
 test('Testing getNumTasks() for correct number of tasks returned', () => {
