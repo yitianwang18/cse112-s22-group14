@@ -43,10 +43,6 @@ class TimerContainer extends HTMLElement {
         const f_fire_start_session = () => { document.EventBus.fireEvent("startSession") };
         o_start_btn.addEventListener("click", f_fire_start_session);
 
-        let o_start_error_mssg = document.createElement("span");
-        o_start_error_mssg.id = "start-error";
-        o_start_error_mssg.className = "error-mssg";
-
         // initialize reset button
         let o_reset_btn = document.createElement("button");
         o_reset_btn.id = "reset-btn";
@@ -58,7 +54,7 @@ class TimerContainer extends HTMLElement {
         o_reset_error_mssg.id = "reset-error";
         o_reset_error_mssg.className = "error-mssg";
 
-        o_wrap_start_btn.append(o_start_btn, o_start_error_mssg, o_reset_btn, o_reset_error_mssg);
+        o_wrap_start_btn.append(o_start_btn, o_reset_btn, o_reset_error_mssg);
 
         // initialize end button
         let o_wrap_end_btn = document.createElement("span");

@@ -569,15 +569,6 @@ scrollbar-width: none;  /* Firefox */
 }
 
 /**
- * Positioning Start button error
- */
-#wrap-start-btn #start-error {
-  visibility: visible;
-  bottom: 100%;
-  margin-left: -170px;
-}
-
-/**
  * Positioning Reset button error
  */
 #wrap-start-btn #reset-error {
