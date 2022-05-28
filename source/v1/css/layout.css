@@ -847,6 +847,24 @@ scrollbar-width: none;  /* Firefox */
     max-width: 80%;
   }
 
+  .settings-class {
+    max-width: 80%;
+  }
+
+  .settings-custom-btn {
+    font-size: calc(1.25rem + 0.5vw);
+    padding: calc(1.25rem + 0.5vw) calc(1.25rem + 0.5vw);
+  }
+
+  .setting-wrap label {
+    font-size: calc(0.75rem + 0.5vw);
+  }
+  
+  .centered-note footer {
+    margin: 0.5rem;
+    font-size: calc(0.75rem + 0.5vw);
+  }
+
   .middle-container > div {
     max-width: 80%;
   }
@@ -999,6 +1017,12 @@ scrollbar-width: none;  /* Firefox */
     visibility: hidden;
     width: 0;
   }
+  
+  .settings-custom-btn {
+    font-size: calc(1rem + 0.5vw);
+    padding: calc(1rem + 0.5vw) calc(1rem + 0.5vw);
+  }
+
 }
 
 @media screen and (max-width: 417px) {
