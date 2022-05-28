@@ -190,16 +190,15 @@ class TaskList extends HTMLElement {
      * @param {Event} o_event event instance
      */
     handleInputChange(o_event) {
-        let o_add_btn = this.querySelector("#add-btn");
         let o_add_error = this.querySelector("#add-error");
         if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
-            o_add_btn.disabled = true;
             o_add_error.innerHTML = TaskList.S_TASK_ERROR;
             o_add_error.classList.add("color-error");
         } else {
-            o_add_btn.disabled = false;
             o_add_error.innerHTML = "";
+            o_add_error.style.visibility = "hidden";
             o_add_error.classList.remove("color-error");
+            this.querySelector("input[name=task]").classList.remove("task-input-error");
         }
     }
 
@@ -225,11 +224,19 @@ class TaskList extends HTMLElement {
     handleAddTask() {
         let o_input = this.querySelector("input[name=task]");
         let s_task_name = o_input.value.trim();
+        let o_add_error = this.querySelector("#add-error");
 
         if (TaskList.validateString(s_task_name)) {
             this.addItem(s_task_name);
             this.clearInput();
             this.handleInputChange(undefined);
+        } 
+        // make input box red, and show error message
+        else {
+            o_input.classList.add("task-input-error");
+            o_add_error.classList.add("color-error");
+            o_add_error.innerHTML = TaskList.S_TASK_ERROR;
+            o_add_error.style.visibility = "visible";
         }
     }
 
@@ -239,6 +246,11 @@ class TaskList extends HTMLElement {
     clearInput() {
         let o_input = this.querySelector("input[name=task]");
         o_input.value = "";
+        // also remove error messages
+        o_input.classList.remove("task-input-error");
+        let o_add_error = this.querySelector("#add-error");
+        o_add_error.style.visibility = "hidden";
+
     }
 
     /**
@@ -301,11 +313,15 @@ class TaskList extends HTMLElement {
             o_task_item.setAttribute("taskname", s_curr_input_val);
             o_error_span.innerHTML = TaskList.S_TASK_ERROR;
             o_error_span.classList.add("color-error");
+            // add red border
+            o_task_item_input.classList.add("task-input-error");
+            o_task_item_input.blur();
 
             // Make error message disappear after 3 seconds
             setTimeout(() => {
                 o_error_span.innerHTML = "";
                 o_error_span.classList.remove("color-error");
+                o_task_item_input.classList.remove("task-input-error");
             }, 3000);
         }
         // update array of tasks (o_tasks)

@@ -72,11 +72,7 @@ class TimerContainer extends HTMLElement {
         const f_fire_end_session = () => { document.EventBus.fireEvent("endSession") };
         o_end_btn.addEventListener("click", f_fire_end_session);
 
-        let o_end_error_mssg = document.createElement("span");
-        o_end_error_mssg.id = "end-error";
-        o_end_error_mssg.className = "error-mssg";
-
-        o_wrap_end_btn.append(o_end_btn, o_end_error_mssg);
+        o_wrap_end_btn.append(o_end_btn);
 
         o_wrapper.append(o_work_message, o_timer_display, o_wrap_start_btn, o_wrap_end_btn);
 
@@ -101,9 +97,7 @@ class TimerContainer extends HTMLElement {
         this.querySelector("#reset-btn").classList.remove("hidden");
         this.querySelector("#start-btn").classList.add("hidden");
         this.querySelector("#end-btn").disabled = false;
-        let o_end_error = this.querySelector("#end-error");
-        o_end_error.innerHTML = "";
-        o_end_error.classList.remove("color-error");
+        this.querySelector("#end-btn").style.cursor = "pointer";
         this.renderComponents();
     }
 
@@ -124,9 +118,7 @@ class TimerContainer extends HTMLElement {
         this.endSession();
         this.renderComponents();
         this.querySelector("#end-btn").disabled = true;
-        let o_end_error = this.querySelector("#end-error");
-        o_end_error.innerHTML = TimerContainer.S_END_ERROR;
-        o_end_error.classList.add("color-error");
+        this.querySelector("#end-btn").style.cursor = "not-allowed";
         this.querySelector("#reset-btn").classList.add("hidden");
         this.querySelector("#reset-btn").disabled = false;
         this.querySelector("#start-btn").classList.remove("hidden");
@@ -360,13 +352,6 @@ TimerContainer.N_MILLI_DELAY = 100;
  * @type {String}
  */
 TimerContainer.S_RESET_ERROR = "Cannot reset timer during breaks!";
-
-/**
- * Error message when end button is incorrectly handled
- * @static
- * @type {String}
- */
-TimerContainer.S_END_ERROR = "Session not started!";
 
 customElements.define("timer-element", TimerContainer);
 
