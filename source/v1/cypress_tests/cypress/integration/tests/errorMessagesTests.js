@@ -24,6 +24,14 @@ describe("Error Messages Tests", () => {
         cy.get("#task-input-top").clear().type("abc");
         cy.get("#add-error").should("not.have.class", "color-error");
 
+        // Non-empty over 50 char input
+        cy.get("#task-input-top").clear().type("this is not empty this is not empty this is not empty this is not empty this is not empty this is not empty ");
+        cy.get("#add-error")
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Input cannot be more than 50 chars long!");
+            });
+
         // Empty input
         cy.get("#task-input-top").clear();
         cy.get("#add-error").should("have.class", "color-error");
@@ -69,23 +77,21 @@ describe("Error Messages Tests", () => {
     // Testing Start error message
     it("Shows Start error message", () => {
 
-        // Trigger start button
-        cy.get("#start-error").should("not.have.class", "color-error");
-
-        cy.clock();
         cy.get("#start-btn").trigger("click");
-        cy.get("#start-error")
+        cy.get("#add-error")
             .then(($o_el) => {
                 expect($o_el).to.have.class("color-error");
-                expect($o_el).to.contain("Cannot start session");
+                expect($o_el).to.contain("Can not start without tasks");
             });
+        // cy.get("#add-error").should("have.class", "color-error");
+        // cy.get("#add-error").should("contain", "Can not start without tasks");
 
-        // Wait for 3 seconds, error message should have disappeared
-        cy.tick(3000);
-        cy.get("#start-error")
+        // Type, error message should have disappeared
+        cy.get("input[name=task]").type("abc");
+        cy.get("#add-error")
             .then(($o_el) => {
                 expect($o_el).to.not.have.class("color-error");
-                expect($o_el).to.not.contain("Cannot start session");
+                expect($o_el).to.not.contain("Can not start without tasks");
             });
     });
 
