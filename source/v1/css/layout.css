@@ -897,6 +897,10 @@ scrollbar-width: none;  /* Firefox */
     position: relative;
     width: 100%;
   }
+
+  #wrap-add-btn #add-error {
+    margin-left: -70vw;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -957,13 +961,6 @@ scrollbar-width: none;  /* Firefox */
   .close {
     right: calc(0.05rem + 0.8vw);
   }
-}
-
-@media screen and (max-width: 487px) {
-  #wrap-add-btn #add-error {
-    width: 70vw;
-    margin-left: -70vw;
-  }
 
   #task-title hr {
     margin: 50px 0;
@@ -982,11 +979,6 @@ scrollbar-width: none;  /* Firefox */
 }
 
 @media screen and (max-width: 440px) {
-  #wrap-add-btn #add-error {
-    width: 67vw;
-    margin-left: -70vw;
-  }
-
   .pomo-logo {
     visibility: hidden;
     width: 0;
@@ -1031,12 +1023,6 @@ scrollbar-width: none;  /* Firefox */
   #instructions-para {
     font-size: 0.7rem;
     line-height: 16px;
-  }
-
-  #wrap-add-btn #add-error {
-    width: 63vw;
-    bottom: 220%;
-    margin-left: -75vw;
   }
 
   #task-title hr {
