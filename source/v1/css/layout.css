@@ -334,7 +334,6 @@ input[type=text] {
   overflow-y: auto;
 }
 
-
 /* Hide scrollbar for Chrome, Safari and Opera */
 #all-tasks::-webkit-scrollbar {
   display: none;
@@ -342,10 +341,9 @@ input[type=text] {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 #all-tasks {
--ms-overflow-style: none;  /* IE and Edge */
-scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
-
 
 #task-input-top {
   width: 80%;
@@ -355,7 +353,6 @@ scrollbar-width: none;  /* Firefox */
   width: 70%;
 }
 
-
 /***************************
  * Styling Slide-out Settings *
  ***************************/
@@ -363,7 +360,7 @@ scrollbar-width: none;  /* Firefox */
 /**
  * Container for slide-out settings mask
  */
- .settings-blocker {
+.settings-blocker {
   position: fixed;
   top: 0;
   right: 0;
@@ -397,8 +394,6 @@ scrollbar-width: none;  /* Firefox */
   padding: 0 calc(1rem + 1vw);
 }
 
-
-
 /**
  * Styling container for header of settings
  */
@@ -406,14 +401,12 @@ scrollbar-width: none;  /* Firefox */
   position: relative;
 }
 
-
 /**
  * Styling div placed immediately after h1 inside task-title
  */
- #settings-title > h1 + div {
+#settings-title > h1 + div {
   margin-bottom: 10px;
 }
-
 
 #settings-title h1 {
   margin: calc(0.6rem + 1vw);;
@@ -450,13 +443,13 @@ scrollbar-width: none;  /* Firefox */
   border-bottom-left-radius: var(--btn-border);
 }
 
-
 .settings-custom-btn:last-child {
   border-top-right-radius: var(--btn-border);
   border-bottom-right-radius: var(--btn-border);
 }
 
-.clicked-settings-btn, .clicked-settings-btn:hover {
+.clicked-settings-btn, 
+.clicked-settings-btn:hover {
   cursor: default;
 }
 
@@ -467,6 +460,7 @@ scrollbar-width: none;  /* Firefox */
 .centered-note footer {
   margin: 0.8rem;
 }
+
 /**************************
  * Styling Pomodoro Timer *
  **************************/
@@ -671,7 +665,6 @@ scrollbar-width: none;  /* Firefox */
   overflow-y: auto;
 }
 
-
 /* Hide scrollbar for Chrome, Safari and Opera */
 .instructions-section-open::-webkit-scrollbar {
   display: none;
@@ -679,8 +672,8 @@ scrollbar-width: none;  /* Firefox */
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .instructions-section-open {
--ms-overflow-style: none;  /* IE and Edge */
-scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /**
@@ -777,7 +770,7 @@ scrollbar-width: none;  /* Firefox */
 /************************
  * Styling Error Notification *
  ************************/
- #notification-blocker {
+#notification-blocker {
   position: fixed;
   top: 0;
   right: 30%;
@@ -790,7 +783,7 @@ scrollbar-width: none;  /* Firefox */
 /**
  * Container for notification when it is open
  */
- .notification-section-open {
+.notification-section-open {
   width: 30%;
   height: 22vh;
   border-width: 2px;
@@ -884,7 +877,8 @@ scrollbar-width: none;  /* Firefox */
     width: 60%;
   }
 
-  #all-tasks, #wrap-tasks {
+  #all-tasks, 
+  #wrap-tasks {
     position: relative;
     width: 100%;
   }
