@@ -358,7 +358,7 @@ class TaskList extends HTMLElement {
         o_task.classList.remove('dragging');
         // update this.o_tasks
         const n_num_tasks = this.getNumTasks();
-        const o_task_items = document.getElementById('all-tasks').children;
+        const o_task_items = this.querySelector('#all-tasks').children;
         // make sure to update eventlisteners, taskid, and taskname
         for (let i = 0; i < n_num_tasks; i++) {
             const o_task_item = o_task_items[i]; 

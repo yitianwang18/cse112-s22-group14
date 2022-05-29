@@ -53,5 +53,15 @@ test("Test timer container handleLongBreak function", () => {
   expect(n_short_break).toBe(n_input_time);
 });
 
+test("Test title timer display", () => {
+  let o_timer_cont = new TimerContainer();
+  expect(document.title).toBe("Powelldoro Timer");
+
+  o_timer_cont.n_curr_state = TimerContainer.N_WORK;
+  o_timer_cont.n_start_time = new Date().getTime();
+  o_timer_cont.renderComponents();
+  expect(document.title).toBe("20:00");
+});
+
 
 
