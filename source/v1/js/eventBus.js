@@ -1,7 +1,7 @@
 import { TimerContainer } from "./timerContainer.js";
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 
 /**
@@ -88,17 +88,6 @@ class EventBus {
             this.o_task_list.closeTaskList();
             this.updateTaskDisplay();
             this.handleStartWork();
-            // Make sure the button can't be seen
-            document.querySelector("#close-task").style.visibility = "hidden";
-            
-            o_start_error.innerHTML = "";
-            o_start_error.classList.remove("color-error");
-            // This time must be the greater than the timeout for displaying the task list in taskList.js
-            setTimeout(() => {
-                document.querySelector("#close-task").style.display = "none";
-                document.querySelector("#task-title").style.display = "none";
-                document.querySelector("#all-tasks").style.display = "none";
-            }, 310);
         } else {
             // show start error message
             o_add_error.innerHTML = EventBus.S_START_ERROR;

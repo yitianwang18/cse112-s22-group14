@@ -165,9 +165,12 @@ test('Testing setNewTaskOrder', () => {
     let dragged = tasks.children["2"];
     dragged.classList.add('dragging');
     
-    expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute("taskname")).toBe("Task0");
-    expect(o_tasklist.querySelector(`#all-tasks`).children["1"].getAttribute("taskname")).toBe("Task1");
-    expect(o_tasklist.querySelector(`#all-tasks`).children["2"].getAttribute("taskname")).toBe("Task2");
+    expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute("taskname"))
+        .toBe("Task0");
+    expect(o_tasklist.querySelector(`#all-tasks`).children["1"].getAttribute("taskname"))
+        .toBe("Task1");
+    expect(o_tasklist.querySelector(`#all-tasks`).children["2"].getAttribute("taskname"))
+        .toBe("Task2");
     
     tasks.insertBefore(dragged, tasks.children["0"]);
     expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute("taskid")).toBe("2");
