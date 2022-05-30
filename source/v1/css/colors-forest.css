@@ -94,6 +94,11 @@ hr {
   color: var(--red);
 }
 
+/* Use important tag to override current border style */
+.task-input-error {
+  border: 2px solid var(--red) !important;
+}
+
 /*****************************
   * Color for Slide-out Tasks *
   *****************************/
@@ -281,7 +286,8 @@ input[type=text] {
   color: var(--light-color);
 }
 
-.instruct-head, .inst-headers {
+.instruct-head,
+.inst-headers {
   color: white;
 }
 

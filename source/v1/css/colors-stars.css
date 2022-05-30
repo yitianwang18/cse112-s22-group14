@@ -94,6 +94,11 @@ hr {
   color: var(--red);
 }
 
+/* Use important tag to override current border style */
+.task-input-error {
+  border: 2px solid var(--red) !important;
+}
+
 /*****************************
  * Color for Slide-out Tasks *
  *****************************/
@@ -239,7 +244,7 @@ input[type=text] {
  * Color for Viewable Tasks *
  ****************************/
 
- .middle-container {
+.middle-container {
   background-color: transparent;
   color: white;
 }
@@ -259,19 +264,20 @@ input[type=text] {
   * Color for Instructions *
   **************************/
 
-  .instructions-section-blocker {
-    background-color: var(--less-transparent);
-  }
-  
-  .instructions-section {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-  }
-  
-  .instruct-head, .inst-headers {
-    color: white;
-  }
-  
+.instructions-section-blocker {
+  background-color: var(--less-transparent);
+}
+
+.instructions-section {
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+}
+
+.instruct-head,
+.inst-headers {
+  color: white;
+}
+
 /********************
  * Color for Footer *
  ********************/

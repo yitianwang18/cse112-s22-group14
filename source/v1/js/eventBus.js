@@ -74,10 +74,11 @@ class EventBus {
      * Event handler function for the 'startSession' Event
      */
     handleStartSession() {
-        let o_start_error = this.o_timer_container.querySelector("#start-error");
+        let o_add_error = document.querySelector("#add-error");
         this.o_task_list.showTaskList();
         // check for valid application states
-        if (this.o_task_list.getNumTasks() != 0 && this.o_timer_container.n_curr_state == TimerContainer.N_NOT_STARTED) {
+        if (this.o_task_list.getNumTasks() != 0 && 
+        this.o_timer_container.n_curr_state == TimerContainer.N_NOT_STARTED) {
             // hide toolbar and disable task button
             this.o_toolbar.querySelector("#task-btn").disabled = true;
             this.o_toolbar.style.visibility = "hidden";
@@ -99,14 +100,10 @@ class EventBus {
                 document.querySelector("#all-tasks").style.display = "none";
             }, 310);
         } else {
-            o_start_error.innerHTML = EventBus.S_START_ERROR;
-            o_start_error.classList.add("color-error");
-
-            // Make error message disapper after 3 seconds
-            setTimeout(() => {
-                o_start_error.innerHTML = "";
-                o_start_error.classList.remove("color-error");
-            }, 3000);
+            // show start error message
+            o_add_error.innerHTML = EventBus.S_START_ERROR;
+            o_add_error.classList.add("color-error");
+            o_add_error.style.visibility = "visible";
         }
     }
 
@@ -265,6 +262,6 @@ class EventBus {
  * @static
  * @type {String}
  */
-EventBus.S_START_ERROR = "Cannot start session with no tasks!";
+EventBus.S_START_ERROR = "Can not start without tasks. Please enter a task!";
 
 export { EventBus };

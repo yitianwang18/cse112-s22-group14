@@ -15,7 +15,7 @@ class TimerContainer extends HTMLElement {
      */
     constructor() {
         super();
-        // intiailization wrappers
+        // initialization wrappers
         let o_wrapper = document.createElement("div");
         o_wrapper.className = "timer-box";
 
@@ -24,8 +24,22 @@ class TimerContainer extends HTMLElement {
 
         // initialize timerdisplay instance
         let o_timer_display = new TimerDisplay();
-        o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
+
+        // initialize timerdisplay instance based on user settings
+        if(window.localStorage.getItem("timer_settings") != null) {
+            let o_timer_settings = window.localStorage.getItem("timer_settings");
+            o_timer_settings = JSON.parse(o_timer_settings);
+            TimerContainer.A_STATE_DURATIONS = o_timer_settings;
+            o_timer_display.setAttribute("pomo-length", o_timer_settings[0]);
+        } else {
+            o_timer_display.setAttribute("time", 0);
+            o_timer_display.setAttribute("pomo-length", 1500000);
+            window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+        }
+      
+        // setting timer display theme default to stars
+        o_timer_display.setAttribute("theme", "stars");
 
         let o_wrap_start_btn = document.createElement("span");
         o_wrap_start_btn.id = "wrap-start-btn";
@@ -40,10 +54,6 @@ class TimerContainer extends HTMLElement {
         const f_fire_start_session = () => { document.EventBus.fireEvent("startSession") };
         o_start_btn.addEventListener("click", f_fire_start_session);
 
-        let o_start_error_mssg = document.createElement("span");
-        o_start_error_mssg.id = "start-error";
-        o_start_error_mssg.className = "error-mssg";
-
         // initialize reset button
         let o_reset_btn = document.createElement("button");
         o_reset_btn.id = "reset-btn";
@@ -55,7 +65,7 @@ class TimerContainer extends HTMLElement {
         o_reset_error_mssg.id = "reset-error";
         o_reset_error_mssg.className = "error-mssg";
 
-        o_wrap_start_btn.append(o_start_btn, o_start_error_mssg, o_reset_btn, o_reset_error_mssg);
+        o_wrap_start_btn.append(o_start_btn, o_reset_btn, o_reset_error_mssg);
 
         // initialize end button
         let o_wrap_end_btn = document.createElement("span");
@@ -69,11 +79,7 @@ class TimerContainer extends HTMLElement {
         const f_fire_end_session = () => { document.EventBus.fireEvent("endSession") };
         o_end_btn.addEventListener("click", f_fire_end_session);
 
-        let o_end_error_mssg = document.createElement("span");
-        o_end_error_mssg.id = "end-error";
-        o_end_error_mssg.className = "error-mssg";
-
-        o_wrap_end_btn.append(o_end_btn, o_end_error_mssg);
+        o_wrap_end_btn.append(o_end_btn);
 
         o_wrapper.append(o_work_message, o_timer_display, o_wrap_start_btn, o_wrap_end_btn);
 
@@ -89,7 +95,8 @@ class TimerContainer extends HTMLElement {
     }
 
     /**
-     * Event handler function for when the "start session" button is pressed. Hides/shows relevant elements, and triggers errors
+     * Event handler function for when the "start session" button is pressed. 
+     * Hides/shows relevant elements, and triggers errors
      * @param {Event} o_event The event instance
      */
     handleStartPomo() {
@@ -97,13 +104,41 @@ class TimerContainer extends HTMLElement {
         this.querySelector("#reset-btn").classList.remove("hidden");
         this.querySelector("#start-btn").classList.add("hidden");
         this.querySelector("#end-btn").disabled = false;
-        let o_end_error = this.querySelector("#end-error");
-        o_end_error.innerHTML = "";
-        o_end_error.classList.remove("color-error");
+        this.querySelector("#end-btn").style.cursor = "pointer";
         this.renderComponents();
     }
 
     // Event Handlers
+    /**
+     * Event handler function for when the pomodoro length is adjusted
+     * @param {number} n_work_time - the pomodoro length in milliseconds
+     */
+    static handlePomoLength(n_work_time) {
+        let o_timer_display = document.querySelector("timer-display");
+        o_timer_display.setAttribute("time", n_work_time);
+        o_timer_display.setAttribute("pomo-length", n_work_time);
+        TimerContainer.A_STATE_DURATIONS[0] = n_work_time;
+        window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+        
+    }
+
+    /**
+     * Event handler function for when the short break time is adjusted
+     * @param {number} n_short_break - the short break time in milliseconds
+     */
+     static handleShortBreak(n_short_break) {
+         TimerContainer.A_STATE_DURATIONS[1] = n_short_break;
+         window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+    }
+
+    /**
+     * Event handler function for when the long break time is adjusted
+     * @param {number} n_long_break - the long break time in milliseconds
+     */
+    static handleLongBreak(n_long_break) {
+        TimerContainer.A_STATE_DURATIONS[2] = n_long_break;
+        window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+    }
 
     /**
      * Event handler function for when the "reset pomo" button is pressed
@@ -120,9 +155,7 @@ class TimerContainer extends HTMLElement {
         this.endSession();
         this.renderComponents();
         this.querySelector("#end-btn").disabled = true;
-        let o_end_error = this.querySelector("#end-error");
-        o_end_error.innerHTML = TimerContainer.S_END_ERROR;
-        o_end_error.classList.add("color-error");
+        this.querySelector("#end-btn").style.cursor = "not-allowed";
         this.querySelector("#reset-btn").classList.add("hidden");
         this.querySelector("#reset-btn").disabled = false;
         this.querySelector("#start-btn").classList.remove("hidden");
@@ -158,11 +191,12 @@ class TimerContainer extends HTMLElement {
     }
 
     /**
-     * Re-renders all pertinent components, including updating the timer-display custom element and updating
-     * the work message
+     * Re-renders all pertinent components, including updating the timer-display custom element 
+     * and updating the work message
      */
     renderComponents() {
-        this.querySelector("#work-message").innerText = TimerContainer.A_STATE_MESSAGES[this.n_curr_state];
+        this.querySelector("#work-message").innerText = 
+            TimerContainer.A_STATE_MESSAGES[this.n_curr_state];
         this.querySelector("timer-display").setAttribute("time", this.getTimeRemaining());
         this.querySelector("timer-display").setAttribute("pomos-comp", this.n_done_pomos);
         let n_remaining_time = this.getTimeRemaining();
@@ -179,47 +213,47 @@ class TimerContainer extends HTMLElement {
      */
     progressState() {
         switch (this.n_curr_state) {
-            case TimerContainer.N_WORK:
-                this.querySelector("#reset-btn").disabled = true;
-                let o_reset_error = this.querySelector("#reset-error");
-                // handle reset error logic
-                o_reset_error.innerHTML = TimerContainer.S_RESET_ERROR;
-                o_reset_error.classList.add("color-error");
-                ++(this.n_done_pomos);
-                // go to long break after 4 pomos
-                if (this.n_done_pomos == 4) {
-                    this.n_curr_state = TimerContainer.N_L_BREAK;
-
-                    notify(this.n_curr_state);
-                    // go to short break otherwise
-                } else {
-                    this.n_curr_state = TimerContainer.N_S_BREAK;
-
-                    notify(this.n_curr_state)
-                }
-                document.EventBus.fireEvent("startBreak");
-                break;
-            // all of these cases trigger a work session
-            case TimerContainer.N_L_BREAK:
-                this.n_done_pomos = 0;
-            case TimerContainer.N_S_BREAK:
-                document.EventBus.fireEvent("startWork");
-            case TimerContainer.N_NOT_STARTED:
-                this.querySelector("#reset-btn").disabled = false;
-                let o_reset_error1 = this.querySelector("#reset-error");
-                o_reset_error1.innerHTML = "";
-                o_reset_error1.classList.remove("color-error");
-                this.n_curr_state = TimerContainer.N_WORK;
+        case TimerContainer.N_WORK:
+            this.querySelector("#reset-btn").disabled = true;
+            let o_reset_error = this.querySelector("#reset-error");
+            // handle reset error logic
+            o_reset_error.innerHTML = TimerContainer.S_RESET_ERROR;
+            o_reset_error.classList.add("color-error");
+            ++(this.n_done_pomos);
+            // go to long break after 4 pomos
+            if (this.n_done_pomos == TimerContainer.N_SET) {
+                this.n_curr_state = TimerContainer.N_L_BREAK;
 
                 notify(this.n_curr_state);
-                break;
+                // go to short break otherwise
+            } else {
+                this.n_curr_state = TimerContainer.N_S_BREAK;
 
+                notify(this.n_curr_state)
+            }
+            document.EventBus.fireEvent("startBreak");
+            break;
+        // all of these cases trigger a work session
+        case TimerContainer.N_L_BREAK:
+            this.n_done_pomos = 0;
+        case TimerContainer.N_S_BREAK:
+            document.EventBus.fireEvent("startWork");
+        case TimerContainer.N_NOT_STARTED:
+            this.querySelector("#reset-btn").disabled = false;
+            let o_reset_error1 = this.querySelector("#reset-error");
+            o_reset_error1.innerHTML = "";
+            o_reset_error1.classList.remove("color-error");
+            this.n_curr_state = TimerContainer.N_WORK;
+
+            notify(this.n_curr_state);
+            break;
         }
         this.n_start_time = new Date().getTime();
     }
 
     /**
-     * Resets the current pomodoro start time. Does nothing if the current state is not a work session.
+     * Resets the current pomodoro start time. 
+     * Does nothing if the current state is not a work session.
      */
     resetPomo() {
         if (this.n_curr_state == TimerContainer.N_WORK) {
@@ -233,7 +267,7 @@ class TimerContainer extends HTMLElement {
      */
     beginSession() {
         if (this.n_curr_state == TimerContainer.N_NOT_STARTED) {
-            // create the interval, and assign it's id to a member variable so it can be cancelled later
+            // create the interval, and assign it's id to a member variable
             this.n_interval_id = setInterval(() => {
                 let n_time_remaining = this.getTimeRemaining();
                 if (n_time_remaining < 0) {
@@ -272,6 +306,14 @@ class TimerContainer extends HTMLElement {
         TimerContainer.B_DEBUG = !TimerContainer.B_DEBUG;
     }
 }
+
+/**
+ * Set count
+ * @static
+ * @type {number}
+ */
+TimerContainer.N_SET = 4;
+
 /**
 * Start Pomo button message
 * @static
@@ -292,7 +334,6 @@ TimerContainer.S_END_MESSAGE = "End Session";
  * @type {string}
  */
 TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
-
 
 /**
  *
@@ -339,7 +380,8 @@ TimerContainer.A_STATE_DURATIONS = [1500000, 300000, 2100000, 0];
  * @static
  * @type {string[]}
  */
-TimerContainer.A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - Good job!", "Long Break - Relax", "Ready to focus?"];
+TimerContainer.A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - Good job!", 
+    "Long Break - Relax", "Ready to focus?"];
 
 /**
  * Delay of interval
@@ -354,13 +396,6 @@ TimerContainer.N_MILLI_DELAY = 100;
  * @type {String}
  */
 TimerContainer.S_RESET_ERROR = "Cannot reset timer during breaks!";
-
-/**
- * Error message when end button is incorrectly handled
- * @static
- * @type {String}
- */
-TimerContainer.S_END_ERROR = "Session not started!";
 
 customElements.define("timer-element", TimerContainer);
 

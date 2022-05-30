@@ -69,11 +69,11 @@ describe("Keybind Integration Tests", () => {
 
     it("Testing c (color change)", () => {
         // test toggling theme
-        cy.get("#theme").should("have.attr", "href", "./css/colors2.css");
+        cy.get("#theme").should("have.attr", "href", "./css/colors-forest.css");
         cy.get("body").type("c");
-        cy.get("#theme").should("have.attr", "href", "./css/colors.css");
+        cy.get("#theme").should("have.attr", "href", "./css/colors-dark.css");
         cy.get("body").type("c");
-        cy.get("#theme").should("have.attr", "href", "./css/colors2.css");
+        cy.get("#theme").should("have.attr", "href", "./css/colors-forest.css");
     });
 
     it("Testing space (start/end pomo)", () => {

@@ -17,13 +17,17 @@ function handleThemeBtnPressed() {
     let o_theme = document.getElementById("theme");
     let o_theme_btn = document.getElementById("theme-btn");
 
+    const o_timer_container = document.querySelector("timer-element");
+    const o_timer_display = o_timer_container.querySelector("timer-display");
     // Change the value of href attribute to change the css sheet.
     if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
         o_theme.setAttribute("href", "./css/colors-forest.css");
-        o_theme_btn.setAttribute("title", "Stars Theme");
+        o_theme_btn.setAttribute("title", "Forest Theme");
+        o_timer_display.setAttribute("theme", "forest");
     } else {
         o_theme.setAttribute("href", "./css/colors-stars.css");
-        o_theme_btn.setAttribute("title", "Forest Theme");
+        o_theme_btn.setAttribute("title", "Stars Theme");
+        o_timer_display.setAttribute("theme", "stars");
     }
 }
 
@@ -80,9 +84,8 @@ function settingThreeButtonThree() {
 
 /**
  * Event handler function to show Instructions when info button is pressed
- * @param {Event} o_event event instance
  */
-function showInstructions(o_event) {
+function showInstructions() {
     let inst = document.querySelector("instructions-box");
     inst.showInstructionsBox();
 }
@@ -97,49 +100,51 @@ function handleKeyBinds(o_event) {
     }
     if (o_event.target.tagName != "INPUT") {
         switch (o_event.key) {
-            case "c":
-                handleThemeBtnPressed();
-                break;
-            case " ":
-                document.EventBus.fireEvent("spaceKeybind");
-                // disable space scrolling
-                o_event.preventDefault();
-                break;
-            case "Escape":
-                document.EventBus.fireEvent("closeWindows");
-                break;
-            case "t":
-                document.EventBus.fireEvent("showTasks");
-                // prevent event from bubbling into input
-                o_event.preventDefault();
-                break;
-            case "s":
-                document.EventBus.fireEvent("showSettings");
-                break;
-            case "i":
-                showInstructions();
-                break;
-            case "n":
-                document.EventBus.fireEvent("nextTask");
-                break;
-            case "r":
-                document.EventBus.fireEvent("resetPomo");
-                break;
+        case "c":
+            handleThemeBtnPressed();
+            break;
+        case " ":
+            document.EventBus.fireEvent("spaceKeybind");
+            // disable space scrolling
+            o_event.preventDefault();
+            break;
+        case "Escape":
+            document.EventBus.fireEvent("closeWindows");
+            break;
+        case "t":
+            document.EventBus.fireEvent("showTasks");
+            // prevent event from bubbling into input
+            o_event.preventDefault();
+            break;
+        case "s":
+            document.EventBus.fireEvent("showSettings");
+            break;
+        case "i":
+            showInstructions();
+            break;
+        case "n":
+            document.EventBus.fireEvent("nextTask");
+            break;
+        case "r":
+            document.EventBus.fireEvent("resetPomo");
+            break;
         }
     }
 
 }
 
 /**
- * This event listener is used for initializing anything that isn't associated with any specific webcomponent.
+ * This event listener is used for initializing anything that isn't associated with 
+ * any specific webcomponent.
  */
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Code to automatically open instructions if it has been a month since the last time the website was used
+    // Code to automatically open instructions if it has been a month since the last visit
     let a_daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     let o_date = new Date();
-    let n_currDate = o_date.getDay() + (o_date.getMonth() * a_daysInMonth[o_date.getMonth()]) + (o_date.getFullYear() * 365);
+    let n_currDate = o_date.getDay() + (o_date.getMonth() * a_daysInMonth[o_date.getMonth()]) + 
+        (o_date.getFullYear() * 365);
     let n_prevDate = localStorage.getItem("n_prevDate");
 
     if (n_prevDate == null || n_currDate - n_prevDate >= 30) {
