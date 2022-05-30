@@ -147,6 +147,41 @@ test('Testing getNextNextTask() for correct retrieval of next-next task', () => 
     expect(o_tasklist.getNextTask()).toBe(undefined);
 });
 
+test('Testing setNewTaskOrder', () => {
+    let o_tasklist = new TaskList();
+
+    // adding single item
+    o_tasklist.addItem("Task0");
+    // adding another item
+    o_tasklist.addItem("Task1");
+    // adding another item
+    o_tasklist.addItem("Task2");
+
+    let tasks = o_tasklist.querySelector(`#all-tasks`);
+    tasks.children["0"].setAttribute("taskname", "newTask0");
+    o_tasklist.editItemName(tasks.children["0"].getAttribute("taskid"));
+    tasks.children["0"].setAttribute("taskname", "Task0");
+    o_tasklist.editItemName(tasks.children["0"].getAttribute("taskid"));
+    let dragged = tasks.children["2"];
+    dragged.classList.add('dragging');
+    
+    expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute("taskname")).toBe("Task0");
+    expect(o_tasklist.querySelector(`#all-tasks`).children["1"].getAttribute("taskname")).toBe("Task1");
+    expect(o_tasklist.querySelector(`#all-tasks`).children["2"].getAttribute("taskname")).toBe("Task2");
+    
+    tasks.insertBefore(dragged, tasks.children["0"]);
+    expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute("taskid")).toBe("2");
+    expect(o_tasklist.querySelector(`#all-tasks`).children["1"].getAttribute("taskid")).toBe("0");
+    expect(o_tasklist.querySelector(`#all-tasks`).children["2"].getAttribute("taskid")).toBe("1");
+    expect(dragged.classList.contains('dragging')).toBe(true);
+    
+    o_tasklist.setNewTaskOrder(dragged);
+    expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute("taskid")).toBe("0");
+    expect(o_tasklist.querySelector(`#all-tasks`).children["1"].getAttribute("taskid")).toBe("1");
+    expect(o_tasklist.querySelector(`#all-tasks`).children["2"].getAttribute("taskid")).toBe("2");
+    expect(dragged.classList.contains('dragging')).toBe(false);
+});
+
 test('Testing getDragAfterElement', () => {
     let o_tasklist = new TaskList();
     o_tasklist.addItem("Task1");
@@ -203,4 +238,3 @@ test('Testing closeTaskList', () => {
     let o_tasks = o_tasklist.querySelector("#close-task");
     expect(o_tasks.style.display).toBe("none");
 });
-
