@@ -22,7 +22,7 @@ function notify(n_state){
         Notification.requestPermission().then(function (permission) {
             //ask user to enable notifications
             if (permission !== "granted") {
-                alert("Please enable notifictaions.");
+                alert("Please enable notifications.");
             }
         
             //send notification
