@@ -86,7 +86,8 @@ describe("Test Nofification ask permission granted Not Safari", ()=> {
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
-        expect(window.Notification).toHaveBeenCalledWith("Time to start the next work session!", { silent: true });
+        expect(window.Notification).toHaveBeenCalledWith("Time to start the next work session!", 
+            { silent: true });
         expect(document.getElementById("notifs").play).toHaveBeenCalled();
     });
     
@@ -96,7 +97,8 @@ describe("Test Nofification ask permission granted Not Safari", ()=> {
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
-        expect(window.Notification).toHaveBeenCalledWith("Time for a short break!", { silent: true });
+        expect(window.Notification).toHaveBeenCalledWith("Time for a short break!", 
+            { silent: true });
         expect(document.getElementById("notifs").play).toHaveBeenCalled();
     });
 
@@ -106,7 +108,8 @@ describe("Test Nofification ask permission granted Not Safari", ()=> {
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
-        expect(window.Notification).toHaveBeenCalledWith("Time for a long break!", { silent: true });
+        expect(window.Notification).toHaveBeenCalledWith("Time for a long break!", 
+            { silent: true });
         expect(document.getElementById("notifs").play).toHaveBeenCalled();
     });
     
@@ -116,7 +119,8 @@ describe("Test Nofification ask permission granted Not Safari", ()=> {
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
-        expect(window.Notification).toHaveBeenCalledWith("All tasks completed. Good work!", { silent: true });
+        expect(window.Notification).toHaveBeenCalledWith("All tasks completed. Good work!", 
+            { silent: true });
         expect(document.getElementById("notifs").play).toHaveBeenCalled();
     });
 
@@ -171,7 +175,8 @@ describe("Test Nofification ask permission granted Safari", ()=> {
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
-        expect(window.Notification).toHaveBeenCalledWith("Time to start the next work session!", { silent: true });
+        expect(window.Notification).toHaveBeenCalledWith("Time to start the next work session!", 
+            { silent: true });
         expect(document.getElementById("notifs").play).toHaveBeenCalled();
     });
     
@@ -181,7 +186,8 @@ describe("Test Nofification ask permission granted Safari", ()=> {
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
-        expect(window.Notification).toHaveBeenCalledWith("Time for a short break!", { silent: true });
+        expect(window.Notification).toHaveBeenCalledWith("Time for a short break!", 
+            { silent: true });
         expect(document.getElementById("notifs").play).toHaveBeenCalled();
     });
 
@@ -191,7 +197,8 @@ describe("Test Nofification ask permission granted Safari", ()=> {
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
-        expect(window.Notification).toHaveBeenCalledWith("Time for a long break!", { silent: true });
+        expect(window.Notification).toHaveBeenCalledWith("Time for a long break!", 
+            { silent: true });
         expect(document.getElementById("notifs").play).toHaveBeenCalled();
     });
     
@@ -201,7 +208,8 @@ describe("Test Nofification ask permission granted Safari", ()=> {
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
-        expect(window.Notification).toHaveBeenCalledWith("All tasks completed. Good work!", { silent: true });
+        expect(window.Notification).toHaveBeenCalledWith("All tasks completed. Good work!", 
+            { silent: true });
         expect(document.getElementById("notifs").play).toHaveBeenCalled();
     });
 

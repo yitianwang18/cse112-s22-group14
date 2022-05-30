@@ -1,6 +1,6 @@
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 /**
  * Custom Element representing a Task item
@@ -46,7 +46,7 @@ class Task extends HTMLElement {
             this.setAttribute("dragging", "");
         });
         o_div.addEventListener('touchstart', () => {
-           this.setAttribute("dragging", "");
+            this.setAttribute("dragging", "");
         })
         let o_drag_icon = document.createElement("i");
         o_drag_icon.classList.add("fas", "fa-bars", "fa-x", "inert-btn");

@@ -7,7 +7,6 @@
   --hover-color: #28a8e4;
   --light-grey: #828282;
   --secondary-color: #101b27;
-  /* --secondary-color: #222222; */
   --light-color: #e0e0e0;
   --light-transparent: #ffffff09;
   --light-less-transparent: #ffffff15;
@@ -29,42 +28,42 @@
   * Background image for theme *
   ******************************/
 
+.full-height {
+  background-image: url("../assets/img/bground/2.jpg");
+  background-size: cover;
+  background-position: bottom;
+}
+
+@media (max-height: 2160px) and (max-width: 3840px) {
   .full-height {
-    background-image: url("../assets/img/bground/2.jpg");
-    background-size: cover;
-    background-position: bottom;
+    background-image: url("../assets/img/bground/bg2-3840w.webp");
   }
-  
-  @media (max-height: 2160px) and (max-width: 3840px) {
-    .full-height {
-      background-image: url("../assets/img/bground/bg2-3840w.webp");
-    }
+}
+
+@media (max-height: 1440px) and (max-width: 2560px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg2-2560w.webp");
   }
-  
-  @media (max-height: 1440px) and (max-width: 2560px) {
-    .full-height {
-      background-image: url("../assets/img/bground/bg2-2560w.webp");
-    }
+}
+
+@media (max-height: 1080px) and (max-width: 1920px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg2-1920w.webp");
   }
-  
-  @media (max-height: 1080px) and (max-width: 1920px) {
-    .full-height {
-      background-image: url("../assets/img/bground/bg2-1920w.webp");
-    }
+}
+
+@media (max-height: 720px) and (max-width: 1280px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg2-1280w.webp");
   }
-  
-  @media (max-height: 720px) and (max-width: 1280px) {
-    .full-height {
-      background-image: url("../assets/img/bground/bg2-1280w.webp");
-    }
+}
+
+@media (max-height: 360px) and (max-width: 640px) {
+  .full-height {
+    background-image: url("../assets/img/bground/bg2-640w.webp");
   }
-  
-  @media (max-height: 360px) and (max-width: 640px) {
-    .full-height {
-      background-image: url("../assets/img/bground/bg2-640w.webp");
-    }
-  }
-  
+}
+
 /***********************
  * Color for HTML Tags *
  ***********************/
@@ -116,10 +115,9 @@ input[type=text] {
   color: white;
 }
 
-
 #wrap-task {
-  background-color:  var(--light-less-transparent);
-  box-shadow: 0px 0px 5px var(--less-transparent);
+  background-color: var(--light-less-transparent);
+  box-shadow: 0 0 5px var(--less-transparent);
 }
 
 /***************************
@@ -129,7 +127,7 @@ input[type=text] {
 /**
  * Container for slide-out tasks mask
  */
- .settings-blocker {
+.settings-blocker {
   background-color: var(--less-transparent);
 }
 
@@ -140,7 +138,6 @@ input[type=text] {
   background-color: var(--secondary-color);
   color: white;
 }
-
 
 .settings-custom-btn {
   border-color: black;
@@ -154,13 +151,12 @@ input[type=text] {
   box-shadow: inset 0 3px 3px var(--btn-hover-shadow-light), inset 0 -3px 3px var(--btn-hover-shadow-dark);
 }
 
-.clicked-settings-btn, .clicked-settings-btn:hover {
+.clicked-settings-btn,
+.clicked-settings-btn:hover {
   background-color: var(--btn-transparent);
   box-shadow: inset 0 3px 3px var(--btn-clicked-shadow-dark), inset 0 -3px 3px var(--btn-clicked-shadow-light);
   color: white;
 }
-
-
 
 /*****************************
  * Color for Buttons *

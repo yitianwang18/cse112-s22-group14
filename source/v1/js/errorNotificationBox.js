@@ -1,12 +1,12 @@
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 /**
  * Custom HTML element encapsulating all of the functionality related to the Notification Box
  * @extends HTMLElement
  */
- class NotificationBox extends HTMLElement {
+class NotificationBox extends HTMLElement {
 
     /**
      * Constructs a new Notification Box, initializing all elements
@@ -40,7 +40,8 @@ const B_CONSOLE_LOG = false;
         let o_inst_text = document.createElement("div");
         o_inst_text.className = "hidden";
         o_inst_text.id = "instructions-para";
-        o_inst_text.innerText = "Please go to 'Preference window' -> 'Websites' -> 'Auto-Play' to enable the notification audio";
+        o_inst_text.innerText = "Please go to 'Preference window' -> 'Websites' -> \
+            'Auto-Play' to enable the notification audio";
         o_inst_title_wrapper.append(o_inst_title);
     
 

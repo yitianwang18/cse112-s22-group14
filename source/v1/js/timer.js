@@ -1,6 +1,6 @@
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 /**
  * Custom HTML element for a timer display, where the values to display are passed in as attributes
@@ -95,16 +95,20 @@ class TimerDisplay extends HTMLElement {
             // We want to use "PomoCountYes2"
             if (this.getAttribute("theme") === "stars") {
                 if (b_pomo_done){
-                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", TimerDisplay.S_POMO_YES_PATH_STARS);
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
+                        TimerDisplay.S_POMO_YES_PATH_STARS);
                 } else {
-                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", TimerDisplay.S_POMO_NO_PATH_STARS);
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
+                        TimerDisplay.S_POMO_NO_PATH_STARS);
                 }
             // We want to use "PomoCountYes"
             } else {
                 if (b_pomo_done){
-                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", TimerDisplay.S_POMO_YES_PATH);
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
+                        TimerDisplay.S_POMO_YES_PATH);
                 } else {
-                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", TimerDisplay.S_POMO_NO_PATH);
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
+                        TimerDisplay.S_POMO_NO_PATH);
                 }
             }
         }

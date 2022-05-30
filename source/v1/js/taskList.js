@@ -149,7 +149,8 @@ class TaskList extends HTMLElement {
     handleDrag(o_event) {
         o_event.preventDefault();
         // y-coordinate is either from desktop or from mobile
-        const n_y_coord = o_event.clientY != null ? o_event.clientY : o_event.targetTouches[0].pageY;
+        const n_y_coord = o_event.clientY != null ? o_event.clientY : 
+            o_event.targetTouches[0].pageY;
         // get task that is directly after the position of current task
         // that is being dragged
         const o_after_task = this.getDragAfterElement(n_y_coord); 
@@ -334,7 +335,8 @@ class TaskList extends HTMLElement {
         }
         else {
             o_task_item.setAttribute("taskname", s_curr_input_val);
-            o_error_span.innerHTML = n_validate_result == 1 ? TaskList.S_TASK_ERROR_EMPTY : TaskList.S_TASK_ERROR_TOO_LONG;
+            o_error_span.innerHTML = n_validate_result == 1 ? TaskList.S_TASK_ERROR_EMPTY : 
+                TaskList.S_TASK_ERROR_TOO_LONG;
             o_error_span.classList.add("color-error");
             // add red border
             o_task_item_input.classList.add("task-input-error");
@@ -572,7 +574,8 @@ TaskList.S_TASK_ERROR_EMPTY = "Input cannot be empty!";
  * @static
  * @type {String}
  */
-TaskList.S_TASK_ERROR_TOO_LONG = `Input cannot be more than ${TaskList.N_MAX_TASK_LENGTH} chars long!`;
+TaskList.S_TASK_ERROR_TOO_LONG = `Input cannot be more than \
+    ${TaskList.N_MAX_TASK_LENGTH} chars long!`;
 
 customElements.define("task-list", TaskList);
 

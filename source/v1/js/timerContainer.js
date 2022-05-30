@@ -2,7 +2,7 @@ import { TimerDisplay } from "./timer.js";
 import { notify } from "./notify.js"
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 /**
  * Custom HTML element for a TimerContainer, including the display and functionality
@@ -35,7 +35,8 @@ class TimerContainer extends HTMLElement {
         } else {
             o_timer_display.setAttribute("time", 0);
             o_timer_display.setAttribute("pomo-length", 1500000);
-            window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+            window.localStorage.setItem("timer_settings", 
+                JSON.stringify(TimerContainer.A_STATE_DURATIONS));
         }
       
         // setting timer display theme default to stars
@@ -121,7 +122,8 @@ class TimerContainer extends HTMLElement {
         o_timer_display.setAttribute("time", n_work_time);
         o_timer_display.setAttribute("pomo-length", n_work_time);
         TimerContainer.A_STATE_DURATIONS[0] = n_work_time;
-        window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+        window.localStorage.setItem("timer_settings", 
+            JSON.stringify(TimerContainer.A_STATE_DURATIONS));
         
     }
 
@@ -129,9 +131,10 @@ class TimerContainer extends HTMLElement {
      * Event handler function for when the short break time is adjusted
      * @param {number} n_short_break - the short break time in milliseconds
      */
-     static handleShortBreak(n_short_break) {
-         TimerContainer.A_STATE_DURATIONS[1] = n_short_break;
-         window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+    static handleShortBreak(n_short_break) {
+        TimerContainer.A_STATE_DURATIONS[1] = n_short_break;
+        window.localStorage.setItem("timer_settings", 
+            JSON.stringify(TimerContainer.A_STATE_DURATIONS));
     }
 
     /**
@@ -140,7 +143,8 @@ class TimerContainer extends HTMLElement {
      */
     static handleLongBreak(n_long_break) {
         TimerContainer.A_STATE_DURATIONS[2] = n_long_break;
-        window.localStorage.setItem("timer_settings", JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+        window.localStorage.setItem("timer_settings", 
+            JSON.stringify(TimerContainer.A_STATE_DURATIONS));
     }
 
     /**

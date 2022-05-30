@@ -1,7 +1,7 @@
 import { TimerContainer } from "./timerContainer.js";
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 
 /**
@@ -93,7 +93,7 @@ class EventBus {
             
             o_start_error.innerHTML = "";
             o_start_error.classList.remove("color-error");
-            // This time must be the greater than the timeout for displaying the task list in taskList.js
+            // Time must be the greater than the timeout for displaying the task list in taskList.js
             setTimeout(() => {
                 document.querySelector("#close-task").style.display = "none";
                 document.querySelector("#task-title").style.display = "none";
