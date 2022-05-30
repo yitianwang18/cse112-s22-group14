@@ -24,6 +24,13 @@ class Task extends HTMLElement {
         // reference to these functions so we can remove the event listeners
         this.f_delete_action = null;
         this.f_edit_action = null;
+        
+        // set dragging class/attribute
+        this.setAttribute("draggable", true);
+        this.classList.add("draggable");
+        // event listener to tell when this task is being dragged 
+        let dragging = () => { this.classList.add('dragging') };
+        this.addEventListener('dragstart', dragging);
 
         let o_div = document.createElement("div");
         o_div.id = "wrap-task";
