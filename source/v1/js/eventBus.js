@@ -73,7 +73,8 @@ class EventBus {
     /**
      * Event handler function for the 'startSession' Event
      */
-    handleStartSession() {let o_add_error = document.querySelector("#add-error");
+    handleStartSession() {
+        let o_add_error = document.querySelector("#add-error");
         this.o_task_list.showTaskList();
         // check for valid application states
         if (this.o_task_list.getNumTasks() != 0 && 
