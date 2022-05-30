@@ -3,21 +3,21 @@ import { jest } from '@jest/globals';
 import { NotificationBox } from "../js/errorNotificationBox.js";
 
 test("Test Notification API unsupported", () => {
-    const jsdomAlert = window.alert;
+    const f_jsdom_alert = window.alert;
     window.alert = () => {};
-    const spy = jest.spyOn(window, 'alert');
-    const notification = window.Notification;
+    const f_spy = jest.spyOn(window, 'alert');
+    const o_notification = window.Notification;
     delete window.Notification;
     notify(1);
-    expect(spy).toHaveBeenCalledWith("This browser does not support desktop notifications.");
-    spy.mockRestore();
-    window.Notification = notification;
-    window.alert = jsdomAlert;
+    expect(f_spy).toHaveBeenCalledWith("This browser does not support desktop notifications.");
+    f_spy.mockRestore();
+    window.Notification = o_notification;
+    window.alert = f_jsdom_alert;
 });
 
 
 test("Test Nofification permission denied", ()=>{
-    const jsdomNotification = window.Notification;
+    const o_jsdom_notification = window.Notification;
     window.Notification = jest.fn();
     window.Notification.permission = "denied";
     window.Notification.requestPermission = jest.fn();
@@ -26,49 +26,44 @@ test("Test Nofification permission denied", ()=>{
 
     expect(window.Notification).not.toHaveBeenCalled();
 
-    window.Notification = jsdomNotification;
+    window.Notification = o_jsdom_notification;
 });
 
 test("Test Nofification ask permission denied", async () => {
-    const jsdomAlert = window.alert;
+    const f_jsdom_alert = window.alert;
     window.alert = jest.fn();
-    const jsdomNotification = window.Notification;
+    const o_jsdom_notification = window.Notification;
     window.Notification = jest.fn();
     window.Notification.permission = "default";
-    const p = Promise.resolve("denied");
+    const p_permission = Promise.resolve("denied");
     window.Notification.requestPermission = jest.fn(() => {
         window.Notification.permission = "denied";
-        return p;
+        return p_permission;
     });
 
     notify(1);
-    await p;
+    await p_permission;
 
     expect(window.alert).toHaveBeenCalledWith("Please enable notifications.");
     expect(window.Notification.permission).toMatch("denied");
     expect(window.Notification).not.toHaveBeenCalled();
 
-    window.Notification = jsdomNotification;
-    window.alert = jsdomAlert;
+    window.Notification = o_jsdom_notification;
+    window.alert = f_jsdom_alert;
 });
 
 describe("Test Nofification ask permission granted Not Safari", ()=> {
-    const jsdomNotification = window.Notification;
-    const jsdomAlert = window.alert;
-    const jsdomNavigator = window.navigator;
-    const p = Promise.resolve("granted");
+    const o_jsdom_notification = window.Notification;
+    const f_jsdom_alert = window.alert;
+    const p_permission = Promise.resolve("granted");
     
     beforeAll(() => {
-        const audio = document.createElement("audio");
-        audio.id = "notifs";
-        audio.src = "assets/audio/notif_tone.mp3";
-        document.body.appendChild(audio);
+        const o_audio = document.createElement("audio");
+        o_audio.id = "notifs";
+        o_audio.src = "assets/audio/notif_tone.mp3";
+        document.body.appendChild(o_audio);
 
         HTMLAudioElement.prototype.play = jest.fn();
-        
-        window.navigator = {
-            userAgent: "chrome"
-        };
         
         window.alert = jest.fn();
 
@@ -76,19 +71,18 @@ describe("Test Nofification ask permission granted Not Safari", ()=> {
         window.Notification.permission = "default";
         window.Notification.requestPermission = jest.fn(() => {
             window.Notification.permission = "granted";
-            return p;
+            return p_permission;
         });
     });
 
     afterAll(()=>{
-        window.Notification = jsdomNotification;
-        window.alert = jsdomAlert;        
-        window.navigator = jsdomNavigator;        
+        window.Notification = o_jsdom_notification;
+        window.alert = f_jsdom_alert;        
     })
 
     test("Next work session", async () => {
         notify(0);
-        await p;
+        await p_permission;
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
@@ -98,7 +92,7 @@ describe("Test Nofification ask permission granted Not Safari", ()=> {
     
     test("Short Break", async () => {
         notify(1);
-        await p;
+        await p_permission;
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
@@ -108,7 +102,7 @@ describe("Test Nofification ask permission granted Not Safari", ()=> {
 
     test("Long Break", async () => {
         notify(2);
-        await p;
+        await p_permission;
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
@@ -118,7 +112,7 @@ describe("Test Nofification ask permission granted Not Safari", ()=> {
     
     test("Complete", async () => {
         notify(3);
-        await p;
+        await p_permission;
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
@@ -131,21 +125,21 @@ describe("Test Nofification ask permission granted Not Safari", ()=> {
 });
 
 describe("Test Nofification ask permission granted Safari", ()=> {
-    const jsdomNotification = window.Notification;
-    const jsdomAlert = window.alert;
-    const p = Promise.resolve("granted");
+    const o_jsdom_notification = window.Notification;
+    const f_jsdom_alert = window.alert;
+    const p_permission = Promise.resolve("granted");
     const p_audio = Promise.resolve();
-    const userAgent = window.navigator.userAgent;
-    const audio_play = HTMLAudioElement.prototype.play;
+    const s_user_agent = window.navigator.userAgent;
+    const f_audio_play = HTMLAudioElement.prototype.play;
     
     beforeAll(() => {
-        const audio = document.createElement("audio");
-        audio.id = "notifs";
-        audio.src = "assets/audio/notif_tone.mp3";
-        document.body.appendChild(audio);
+        const o_audio = document.createElement("audio");
+        o_audio.id = "notifs";
+        o_audio.src = "assets/audio/notif_tone.mp3";
+        document.body.appendChild(o_audio);
         
-        const notif_box = new NotificationBox();
-        document.body.appendChild(notif_box);
+        const o_notif_box = new NotificationBox();
+        document.body.appendChild(o_notif_box);
 
         HTMLAudioElement.prototype.play = jest.fn(() => p_audio);
         
@@ -160,20 +154,20 @@ describe("Test Nofification ask permission granted Safari", ()=> {
         window.Notification.permission = "default";
         window.Notification.requestPermission = jest.fn(() => {
             window.Notification.permission = "granted";
-            return p;
+            return p_permission;
         });
     });
 
     afterAll(()=>{
-        window.Notification = jsdomNotification;
-        window.alert = jsdomAlert;        
-        HTMLAudioElement.prototype.play = audio_play;
-        window.navigator.userAgent = userAgent;
+        window.Notification = o_jsdom_notification;
+        window.alert = f_jsdom_alert;        
+        HTMLAudioElement.prototype.play = f_audio_play;
+        window.navigator.userAgent = s_user_agent;
     });
 
     test("Next work session", async () => {
         notify(0);
-        await p;
+        await p_permission;
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
@@ -183,7 +177,7 @@ describe("Test Nofification ask permission granted Safari", ()=> {
     
     test("Short Break", async () => {
         notify(1);
-        await p;
+        await p_permission;
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
@@ -193,7 +187,7 @@ describe("Test Nofification ask permission granted Safari", ()=> {
 
     test("Long Break", async () => {
         notify(2);
-        await p;
+        await p_permission;
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
@@ -203,7 +197,7 @@ describe("Test Nofification ask permission granted Safari", ()=> {
     
     test("Complete", async () => {
         notify(3);
-        await p;
+        await p_permission;
 
         expect(window.alert).not.toHaveBeenCalledWith("Please enable notifications.");
         expect(window.Notification.permission).toMatch("granted");
