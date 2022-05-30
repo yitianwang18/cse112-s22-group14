@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: js/errorNotificationBox.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: js/errorNotificationBox.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+// variable for turning on/off console logs used for debugging
+// const B_CONSOLE_LOG = false;
+
+/**
+ * Custom HTML element encapsulating all of the functionality related to the Notification Box
+ * @extends HTMLElement
+ */
+class NotificationBox extends HTMLElement {
+
+    /**
+     * Constructs a new Notification Box, initializing all elements
+     */
+    constructor() {
+        super();
+        // most of this content is simply initializing the html to go in the webcomponent
+        let o_wrapper_obj_back = document.createElement("div");
+        o_wrapper_obj_back.classList.add("notification-section-blocker", "hidden");
+        o_wrapper_obj_back.id = "notification-blocker";
+        o_wrapper_obj_back.addEventListener("click", this.closeNotification.bind(this));
+
+        let o_wrapper_obj = document.createElement("div");
+        o_wrapper_obj.className = "instructions-section";
+        o_wrapper_obj.id = "instructions";
+
+        let o_close_button = document.createElement("a");
+        o_close_button.classList.add("close2", "btn");
+        o_close_button.innerHTML = "&amp;times;";
+        o_close_button.addEventListener("click", this.closeNotification.bind(this));
+
+        let o_inst_title_wrapper = document.createElement("div");
+        o_inst_title_wrapper.className = "hidden";
+        o_inst_title_wrapper.id = "instructions-title";
+
+        //Instructions Box header
+        let o_inst_title = document.createElement("h2");
+        o_inst_title.className = "instruct-head";
+        o_inst_title.innerText = "Audio Error";
+
+        let o_inst_text = document.createElement("div");
+        o_inst_text.className = "hidden";
+        o_inst_text.id = "instructions-para";
+        o_inst_text.innerText = "Please go to 'Preference window' -> 'Websites' -> \
+            'Auto-Play' to enable the notification audio";
+        o_inst_title_wrapper.append(o_inst_title);
+    
+
+        o_wrapper_obj.append(o_close_button, o_inst_title_wrapper, o_inst_text);
+        this.append(o_wrapper_obj_back);
+        this.append(o_wrapper_obj);
+    }
+
+    /** Function to determine if the notification are currently shown */
+    getIsShown() {
+        return this.querySelector("#instructions").classList.contains("notification-section-open");
+    }
+
+    /**
+     * Function to show task list display from the main user screen
+     */
+    showNotificationBox() {
+        this.querySelector("#instructions").classList.add("notification-section-open");
+
+        // Hide everything inside instructions box while animating to prevent sandwiching of text
+        setTimeout(() => {
+            this.querySelector("#instructions-title").style.display = "block";
+            this.querySelector("#instructions-para").style.display = "block";
+            document.body.focus();
+        }, 300);
+
+        this.querySelector("#notification-blocker").style.display = "block";
+    }
+
+    /**
+     * Function to close task list display from the main user screen
+     */
+    closeNotification() {
+        this.querySelector("#instructions").classList.remove("notification-section-open");
+        this.querySelector("#instructions-title").style.display = "none";
+        this.querySelector("#instructions-para").style.display = "none";
+        this.querySelector("#notification-blocker").style.display = "none";
+    }
+}
+
+customElements.define("notification-box", NotificationBox);
+export { NotificationBox }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EventBus.html">EventBus</a></li><li><a href="InstructionsBox.html">InstructionsBox</a></li><li><a href="NotificationBox.html">NotificationBox</a></li><li><a href="SettingsTab.html">SettingsTab</a></li><li><a href="Task.html">Task</a></li><li><a href="TaskDisplay.html">TaskDisplay</a></li><li><a href="TaskList.html">TaskList</a></li><li><a href="TimerContainer.html">TimerContainer</a></li><li><a href="TimerDisplay.html">TimerDisplay</a></li></ul><h3>Global</h3><ul><li><a href="global.html#handleKeyBinds">handleKeyBinds</a></li><li><a href="global.html#handleThemeBtnPressed">handleThemeBtnPressed</a></li><li><a href="global.html#notify">notify</a></li><li><a href="global.html#settingOneButtonOne">settingOneButtonOne</a></li><li><a href="global.html#settingThreeButtonOne">settingThreeButtonOne</a></li><li><a href="global.html#settingTwoButtonOne">settingTwoButtonOne</a></li><li><a href="global.html#showInstructions">showInstructions</a></li><li><a href="global.html#showSettingsTab">showSettingsTab</a></li><li><a href="global.html#showTaskList">showTaskList</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon May 30 2022 14:56:51 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
