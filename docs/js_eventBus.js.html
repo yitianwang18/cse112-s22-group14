@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: js/eventBus.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: js/eventBus.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { TimerContainer } from "./timerContainer.js";
+
+// variable for turning on/off console logs used for debugging
+// const B_CONSOLE_LOG = false;
+
+
+/**
+ * Class representing an Event Hub to centralize all event logic
+ */
+class EventBus {
+
+    /**
+     * Constructs a new EventBus, by obtaining references to all major webcomponents
+     * and registering events
+     */
+    constructor() {
+        this.o_bus = document.createElement("div");
+        this.o_task_list = document.querySelector("task-list");
+        this.o_timer_container = document.querySelector("timer-element");
+        this.o_task_display = document.querySelector("task-display");
+        this.o_toolbar = document.querySelector("nav");
+        this.o_instructions = document.querySelector("instructions-box");
+        this.o_settings_tab = document.querySelector("settings-tab");
+        this.registerEvents();
+    }
+
+    /**
+     * Registers all of the events that will be fired
+     */
+    registerEvents() {
+        this.registerEvent("startSession", this.handleStartSession.bind(this));
+        this.registerEvent("endSession", this.handleEndSession.bind(this));
+        this.registerEvent("nextTask", this.handleNextTask.bind(this));
+        this.registerEvent("startBreak", this.handleStartBreak.bind(this));
+        this.registerEvent("startWork", this.handleStartWork.bind(this));
+        this.registerEvent("closeWindows", this.handleCloseWindows.bind(this));
+        this.registerEvent("spaceKeybind", this.handleSpaceKeybind.bind(this));
+        this.registerEvent("showTasks", this.handleShowTasks.bind(this));
+        this.registerEvent("showSettings", this.handleShowSettings.bind(this));
+        this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
+        // settings buttons for first setting - Pomo Length
+        this.registerEvent("settingOneButtonOne", this.settingOneButtonOne.bind(this));
+        this.registerEvent("settingOneButtonTwo", this.settingOneButtonTwo.bind(this));
+        this.registerEvent("settingOneButtonThree", this.settingOneButtonThree.bind(this));
+        // settings buttons for second setting - Short break length
+        this.registerEvent("settingTwoButtonOne", this.settingTwoButtonOne.bind(this));
+        this.registerEvent("settingTwoButtonTwo", this.settingTwoButtonTwo.bind(this));
+        this.registerEvent("settingTwoButtonThree", this.settingTwoButtonThree.bind(this));
+        // settings buttons for third setting - Long break length
+        this.registerEvent("settingThreeButtonOne", this.settingThreeButtonOne.bind(this));
+        this.registerEvent("settingThreeButtonTwo", this.settingThreeButtonTwo.bind(this));
+        this.registerEvent("settingThreeButtonThree", this.settingThreeButtonThree.bind(this));
+    }
+
+
+    /**
+     * Registers the event of the specified name
+     * @param {String} s_event_name name to fire off
+     * @param {Function} f_callback callback function to call
+     */
+    registerEvent(s_event_name, f_callback) {
+        this.o_bus.addEventListener(s_event_name, f_callback);
+    }
+
+    /**
+     * Fires the specified event
+     * @param {String} s_event_name 
+     */
+    fireEvent(s_event_name) {
+        this.o_bus.dispatchEvent(new CustomEvent(s_event_name));
+    }
+
+    /**
+     * Event handler function for the 'startSession' Event
+     */
+    handleStartSession() {
+        let o_add_error = document.querySelector("#add-error");
+        this.o_task_list.showTaskList();
+        // check for valid application states
+        if (this.o_task_list.getNumTasks() != 0 &amp;&amp; 
+        this.o_timer_container.n_curr_state == TimerContainer.N_NOT_STARTED) {
+            // hide toolbar and disable task button
+            this.o_toolbar.querySelector("#task-btn").disabled = true;
+            this.o_toolbar.style.visibility = "hidden";
+
+            this.o_task_display.handleStartSession();
+            this.o_timer_container.handleStartPomo();
+            this.o_task_list.closeTaskList();
+            this.updateTaskDisplay();
+            this.handleStartWork();
+        } else {
+            // show start error message
+            o_add_error.innerHTML = EventBus.S_START_ERROR;
+            o_add_error.classList.add("color-error");
+            o_add_error.style.visibility = "visible";
+        }
+    }
+
+    /**
+     * Event handler function for the 'endSession' event
+     */
+    handleEndSession() {
+        this.o_toolbar.querySelector("#task-btn").disabled = false;
+        this.o_toolbar.style.visibility = "";
+        this.o_task_display.handleEndSession();
+        this.o_timer_container.handleEndSession();
+        // Make sure the close task button can be seen again
+        document.querySelector("#close-task").style.visibility = "visible";
+    }
+
+    /**
+     * Event Handler function for the 'startWork' event
+     */
+    handleStartWork() {
+        this.o_task_display.enableCheck();
+    }
+
+    /**
+     * Event Handler function for the 'startBreak' event
+     */
+    handleStartBreak() {
+        this.o_task_display.disableCheck();
+    }
+
+    /**
+     * Event Handler function for the 'nextTask' event
+     */
+    handleNextTask() {
+        if (this.o_timer_container.n_curr_state == TimerContainer.N_WORK) {
+            this.updateTaskCompleted();
+            if (this.o_task_list.getNumTasks() == 0) {
+                this.handleEndSession();
+            }
+        }
+    }
+
+    /**
+     * Event Handler function for the 'spaceKeybind' event
+     */
+    handleSpaceKeybind() {
+        if (this.o_timer_container.n_curr_state == TimerContainer.N_NOT_STARTED) {
+            this.fireEvent("startSession");
+        } else {
+            this.fireEvent("endSession");
+        }
+    }
+
+    /**
+     * Event Handler function for the 'resetPomo' event
+     */
+    handleResetPomo() {
+        if (this.o_timer_container.n_curr_state == TimerContainer.N_WORK) {
+            this.o_timer_container.resetPomo();
+        }
+    }
+
+    /**
+     * Event Handler function for the 'closeWindows' event
+     */
+    handleCloseWindows() {
+        this.o_task_list.closeTaskList();
+        this.o_instructions.closeInstructions();
+        this.o_settings_tab.closeSettingsTab();
+    }
+
+    /**
+     * Event Handler function for the 'showTasks' event
+     */
+    handleShowTasks() {
+        if (this.o_instructions.getIsShown()) {
+            this.o_instructions.closeInstructions();
+        }
+        this.o_task_list.showTaskList();
+    }
+
+    
+    /**
+     * Event Handler function for the 'showSettings' event
+     */
+    handleShowSettings() {
+        if (this.o_instructions.getIsShown()) {
+            this.o_instructions.closeInstructions();
+        }
+        this.o_settings_tab.showSettings();
+    }
+
+    
+    /**
+     * Event handler function for the three POMO session length options
+     */
+    settingOneButtonOne() {
+        this.o_settings_tab.PSLengthShort();
+    }
+    settingOneButtonTwo() {
+        this.o_settings_tab.PSLengthMed();
+    }
+    settingOneButtonThree() {
+        this.o_settings_tab.PSLengthLong();
+    }
+    /**
+     * Event handler function for the three SHORT break length options
+     */
+    settingTwoButtonOne() {
+        this.o_settings_tab.SBLengthShort();
+    }
+    settingTwoButtonTwo() {
+        this.o_settings_tab.SBLengthMed();
+    }
+    settingTwoButtonThree() {
+        this.o_settings_tab.SBLengthLong();
+    }
+    /**
+     * Event handler function for the three LONG break length options
+     */
+    settingThreeButtonOne() {
+        this.o_settings_tab.LBLengthShort();
+    }
+    settingThreeButtonTwo() {
+        this.o_settings_tab.LBLengthMed();
+    }
+    settingThreeButtonThree() {
+        this.o_settings_tab.LBLengthLong();
+    }
+
+
+
+
+
+    /**
+     * Helper function to pop the next task and update the taskdisplay.
+     */
+    updateTaskCompleted() {
+        this.o_task_list.popTask();
+        this.updateTaskDisplay();
+    }
+
+    /**
+     * Helper function to poll the next tasks, and updates the taskdisplay accordingly
+     */
+    updateTaskDisplay() {
+        let s_next_task = this.o_task_list.getNextTask();
+        let s_next_next_task = this.o_task_list.getNextNextTask();
+        let n_num_tasks = Math.min(this.o_task_list.getNumTasks(), 2);
+        this.o_task_display.setAttribute("currtask", s_next_task);
+        this.o_task_display.setAttribute("nexttask", s_next_next_task);
+        this.o_task_display.setAttribute("numtasks", n_num_tasks);
+    }
+}
+/**
+ * Error message when Start button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+EventBus.S_START_ERROR = "Can not start without tasks. Please enter a task!";
+
+export { EventBus };</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EventBus.html">EventBus</a></li><li><a href="InstructionsBox.html">InstructionsBox</a></li><li><a href="NotificationBox.html">NotificationBox</a></li><li><a href="SettingsTab.html">SettingsTab</a></li><li><a href="Task.html">Task</a></li><li><a href="TaskDisplay.html">TaskDisplay</a></li><li><a href="TaskList.html">TaskList</a></li><li><a href="TimerContainer.html">TimerContainer</a></li><li><a href="TimerDisplay.html">TimerDisplay</a></li></ul><h3>Global</h3><ul><li><a href="global.html#handleKeyBinds">handleKeyBinds</a></li><li><a href="global.html#handleThemeBtnPressed">handleThemeBtnPressed</a></li><li><a href="global.html#notify">notify</a></li><li><a href="global.html#settingOneButtonOne">settingOneButtonOne</a></li><li><a href="global.html#settingThreeButtonOne">settingThreeButtonOne</a></li><li><a href="global.html#settingTwoButtonOne">settingTwoButtonOne</a></li><li><a href="global.html#showInstructions">showInstructions</a></li><li><a href="global.html#showSettingsTab">showSettingsTab</a></li><li><a href="global.html#showTaskList">showTaskList</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon May 30 2022 14:56:51 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
