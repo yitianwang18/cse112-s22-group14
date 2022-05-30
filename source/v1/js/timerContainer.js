@@ -48,6 +48,7 @@ class TimerContainer extends HTMLElement {
         // initialize start button
         let o_start_btn = document.createElement("button");
         o_start_btn.id = "start-btn";
+        o_start_btn.title = "Start Work Session";
         o_start_btn.className = "custom-btn";
         o_start_btn.innerText = TimerContainer.S_BEGIN_MESSAGE;
 
@@ -57,6 +58,7 @@ class TimerContainer extends HTMLElement {
         // initialize reset button
         let o_reset_btn = document.createElement("button");
         o_reset_btn.id = "reset-btn";
+        o_reset_btn.title = "Restart This Interval";
         o_reset_btn.classList.add("custom-btn", "hidden");
         o_reset_btn.innerText = TimerContainer.S_RESET_MESSAGE;
         o_reset_btn.addEventListener("click", this.handleResetPomo.bind(this));
@@ -74,6 +76,7 @@ class TimerContainer extends HTMLElement {
 
         let o_end_btn = document.createElement("button");
         o_end_btn.id = "end-btn";
+        o_end_btn.title = "End Work Session";
         o_end_btn.className = "custom-btn";
         o_end_btn.innerText = TimerContainer.S_END_MESSAGE;
         const f_fire_end_session = () => { document.EventBus.fireEvent("endSession") };

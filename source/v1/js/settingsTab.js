@@ -30,7 +30,7 @@ class SettingsTab extends HTMLElement {
         // close button
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn", "hidden");
-        o_close_button.title = "Close Settings";
+        o_close_button.title = "Close Settings (esc)";
         o_close_button.id = "close-settings";
         o_close_button.innerHTML = "&times;";
         // event to close the menu if you click the x
@@ -62,19 +62,22 @@ class SettingsTab extends HTMLElement {
         let o_setting_one_btn_one = document.createElement("div");
         o_setting_one_btn_one.classList.add("settings-custom-btn");
         o_setting_one_btn_one.id = "sett-one-btn-one";
-        o_setting_one_btn_one.innerHTML = "20";
+        o_setting_one_btn_one.innerHTML = "20"; 
+        o_setting_one_btn_one.title = "20 Min. Work Session"; 
         
         let o_setting_one_btn_two = document.createElement("div");
         o_setting_one_btn_two.classList.add("settings-custom-btn", "clicked-settings-btn");
         o_setting_one_btn_two.id = "sett-one-btn-two";
-        o_setting_one_btn_two.innerHTML = "25";  
+        o_setting_one_btn_two.innerHTML = "25"; 
+        o_setting_one_btn_two.title = "25 Min. Work Session"; 
         
 
         let o_setting_one_btn_three = document.createElement("div");
         o_setting_one_btn_three.classList.add("settings-custom-btn");
         o_setting_one_btn_three.id = "sett-one-btn-three";
         o_setting_one_btn_three.innerHTML = "30"; 
-        
+        o_setting_one_btn_three.title = "30 Min. Work Session"; 
+
         o_setting_one_buttons.append(o_setting_one_btn_one, o_setting_one_btn_two, o_setting_one_btn_three);
         o_setting_one_wrapper.append(o_setting_one_title, o_setting_one_buttons);
         
@@ -92,16 +95,19 @@ class SettingsTab extends HTMLElement {
         o_setting_two_btn_one.classList.add("settings-custom-btn", "clicked-settings-btn");
         o_setting_two_btn_one.id = "sett-two-btn-one";
         o_setting_two_btn_one.innerHTML = "5"; 
+        o_setting_two_btn_one.title = "5 Min. Short Break"; 
         
         let o_setting_two_btn_two = document.createElement("div");
         o_setting_two_btn_two.classList.add("settings-custom-btn");
         o_setting_two_btn_two.id = "sett-two-btn-two";
         o_setting_two_btn_two.innerHTML = "7.5"; 
+        o_setting_two_btn_two.title = "7.5 Min. Short Break"; 
         
         let o_setting_two_btn_three = document.createElement("div");
         o_setting_two_btn_three.classList.add("settings-custom-btn");
         o_setting_two_btn_three.id = "sett-two-btn-three";
         o_setting_two_btn_three.innerHTML = "10"; 
+        o_setting_two_btn_three.title = "10 Min. Short Break"; 
 
         o_setting_two_buttons.append(o_setting_two_btn_one, o_setting_two_btn_two, o_setting_two_btn_three);
         o_setting_two_wrapper.append(o_setting_two_title, o_setting_two_buttons);
@@ -120,17 +126,20 @@ class SettingsTab extends HTMLElement {
         let o_setting_three_btn_one = document.createElement("div");
         o_setting_three_btn_one.classList.add("settings-custom-btn");
         o_setting_three_btn_one.id = "sett-three-btn-one";
-        o_setting_three_btn_one.innerHTML = "25"; 
+        o_setting_three_btn_one.innerHTML = "25";
+        o_setting_three_btn_one.title = "25 Min. Long Break"; 
         
         let o_setting_three_btn_two = document.createElement("div");
         o_setting_three_btn_two.classList.add("settings-custom-btn");
         o_setting_three_btn_two.id = "sett-three-btn-two";
         o_setting_three_btn_two.innerHTML = "30"; 
+        o_setting_three_btn_two.title = "30 Min. Long Break"; 
         
         let o_setting_three_btn_three = document.createElement("div");
         o_setting_three_btn_three.classList.add("settings-custom-btn", "clicked-settings-btn");
         o_setting_three_btn_three.id = "sett-three-btn-three";
         o_setting_three_btn_three.innerHTML = "35"; 
+        o_setting_three_btn_three.title = "35 Min. Long Break"; 
 
         o_setting_three_buttons.append(o_setting_three_btn_one, o_setting_three_btn_two, o_setting_three_btn_three);
         o_setting_three_wrapper.append(o_setting_three_title, o_setting_three_buttons);

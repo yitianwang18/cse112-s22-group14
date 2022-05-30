@@ -688,7 +688,7 @@ scrollbar-width: none;  /* Firefox */
  */
 .instruct-head {
   text-align: center;
-  margin-top: -38px;
+  margin-top: 10px;
   margin-bottom: 0;
   padding: 15px 15px 5px 15px;
   font-size: 2.5rem;
@@ -766,12 +766,9 @@ scrollbar-width: none;  /* Firefox */
  * Style close button for instructions modal popup
  */
 .close2 {
-  text-decoration: none;
-  position: relative;
-  top: 20px;
-  margin-right: 10px;
-  left: 47%;
-  padding: 0 9px;
+  position: absolute;
+  top: 7.5vh;
+  right: 12%;
 }
 
 /************************
@@ -820,12 +817,26 @@ scrollbar-width: none;  /* Firefox */
     max-width: 50%;
   }
 
-  .close2 {
-    left: 46%;
-  }
-
   .sidenav {
     max-width: 80%;
+  }
+
+  .settings-class {
+    max-width: 80%;
+  }
+
+  .settings-custom-btn {
+    font-size: calc(1.25rem + 0.5vw);
+    padding: calc(1.25rem + 0.5vw) calc(1.25rem + 0.5vw);
+  }
+
+  .setting-wrap label {
+    font-size: calc(0.75rem + 0.5vw);
+  }
+  
+  .centered-note footer {
+    margin: 0.5rem;
+    font-size: calc(0.75rem + 0.5vw);
   }
 
   .middle-container > div {
@@ -839,6 +850,10 @@ scrollbar-width: none;  /* Firefox */
 
   .inst-list {
     padding-left: 6%;
+  }
+
+  .close2 {
+    right: 15%;
   }
 }
 
@@ -909,10 +924,6 @@ scrollbar-width: none;  /* Firefox */
     margin-top: 5px;
   }
 
-  .close2 {
-    left: 45%;
-  }
-
   .timer-box {
     width: 100%;
     padding: 10px 21% 20px 21%;
@@ -974,6 +985,12 @@ scrollbar-width: none;  /* Firefox */
     visibility: hidden;
     width: 0;
   }
+  
+  .settings-custom-btn {
+    font-size: calc(1rem + 0.5vw);
+    padding: calc(1rem + 0.5vw) calc(1rem + 0.5vw);
+  }
+
 }
 
 @media screen and (max-width: 417px) {
@@ -1043,5 +1060,9 @@ scrollbar-width: none;  /* Firefox */
   #instructions-para {
     font-size: 0.7rem;
     line-height: 14px;
+  }
+
+  .close2 {
+    top: 5.25vh;
   }
 }
