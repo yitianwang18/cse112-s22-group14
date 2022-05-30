@@ -77,12 +77,12 @@ test("TaskList static validateString", () => {
     const s_normal_padded = " \t\ntask12345\t\n ";
     const s_oversize = "".padStart(TaskList.N_MAX_TASK_LENGTH + 1, "A");
     const s_oversize_padded = " \t\n" + "".padStart(TaskList.N_MAX_TASK_LENGTH - 2, "A") + "\t\n ";
-    expect(TaskList.validateString(s_empty_string)).toBe(false);
-    expect(TaskList.validateString(s_whitespace)).toBe(false);
-    expect(TaskList.validateString(s_normal)).toBe(true);
-    expect(TaskList.validateString(s_normal_padded)).toBe(true);
-    expect(TaskList.validateString(s_oversize)).toBe(false);
-    expect(TaskList.validateString(s_oversize_padded)).toBe(true);
+    expect(TaskList.validateString(s_empty_string)).toBe(1);
+    expect(TaskList.validateString(s_whitespace)).toBe(1);
+    expect(TaskList.validateString(s_normal)).toBe(0);
+    expect(TaskList.validateString(s_normal_padded)).toBe(0);
+    expect(TaskList.validateString(s_oversize)).toBe(2);
+    expect(TaskList.validateString(s_oversize_padded)).toBe(0);
 });
 
 test('Testing getNumTasks() for correct number of tasks returned', () => {
@@ -139,7 +139,8 @@ test('Testing getNextNextTask() for correct retrieval of next-next task', () => 
     // adding another item
     o_tasklist.addItem("Task2");
 
-    expect(o_tasklist.getNextNextTask()).toBe(o_tasklist.o_tasks[Object.keys(o_tasklist.o_tasks)[1]]);
+    expect(o_tasklist.getNextNextTask()).
+        toBe(o_tasklist.o_tasks[Object.keys(o_tasklist.o_tasks)[1]]);
     o_tasklist.popTask();
     expect(o_tasklist.getNextNextTask()).toBe(undefined);
     o_tasklist.popTask();
@@ -179,4 +180,61 @@ test('Testing setNewTaskOrder', () => {
     expect(o_tasklist.querySelector(`#all-tasks`).children["1"].getAttribute("taskid")).toBe("1");
     expect(o_tasklist.querySelector(`#all-tasks`).children["2"].getAttribute("taskid")).toBe("2");
     expect(dragged.classList.contains('dragging')).toBe(false);
+});
+
+test('Testing getDragAfterElement', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+    o_tasklist.addItem("Task2");
+
+    expect(o_tasklist.getDragAfterElement(10)).toBe(undefined);
+    const o_undragged_tasks = [...o_tasklist.querySelectorAll('task-item:not([dragging=""]')]
+    expect(o_undragged_tasks[0].toString()).toBe("[object HTMLElement]");
+});
+
+test('Testing handleDrag', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+    o_tasklist.addItem("Task2");
+
+    expect(o_tasklist.handleAddTask()).toBe(undefined);
+
+    let o_tasks = document.createElement("div");
+    expect(o_tasks.addEventListener('dragover', (event) => this.handleDrag(event))).toBe(undefined);
+});
+
+
+test('Testing editItemName', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+    o_tasklist.addItem("Task2");
+    expect(o_tasklist.editItemName(0)).toBe(undefined);
+
+    o_tasklist.removeItem(0);
+    o_tasklist.addItem("");
+    expect(o_tasklist.editItemName(0)).toBe(undefined);
+});
+
+test('Testing showTaskList', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+
+    expect(o_tasklist.showTaskList()).toBe(undefined);
+    let o_tasks = o_tasklist.querySelector("#side-tasks");
+    expect(o_tasks.style.display).toBe("block");
+
+    o_tasklist.removeItem(0);
+
+    expect(o_tasklist.showTaskList()).toBe(undefined);
+    let o_tasks1 = o_tasklist.querySelector("#side-tasks");
+    expect(o_tasks1.style.display).toBe("block");
+});
+
+test('Testing closeTaskList', () => {
+    let o_tasklist = new TaskList();
+    o_tasklist.addItem("Task1");
+
+    expect(o_tasklist.closeTaskList()).toBe(undefined);
+    let o_tasks = o_tasklist.querySelector("#close-task");
+    expect(o_tasks.style.display).toBe("none");
 });

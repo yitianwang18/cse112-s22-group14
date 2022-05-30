@@ -4,20 +4,23 @@
 
 :root {
   --red: #f00;
-  --green: #178800;
-  --secondary-color: #222222;
+  --hover-color: #178800;
+  --secondary-color: #162219;
+  /* --secondary-color: #222222; */
   --light-grey: #828282;
   --transparent: #0000;
-  --alm-transparent: #0000006b;
+  --light-transparent: #ffffff09;
+  --light-less-transparent: #ffffff15;
+  --alm-transparent: #00000012;
   --less-transparent: #0000009c;
-  --least-transparent: #000000e8;
+  --btn-transparent: #0000005a;
   --light-color: #d6d6d6;
   --btn-color: rgb(58, 58, 58);
   --btn-shadow-light: rgb(159, 159, 159);
   --btn-shadow-dark: rgb(24, 24, 24);
   --btn-hover-color: rgb(48, 48, 48);
   --btn-hover-shadow-light: rgba(159, 159, 159, 0.5);
-  --btn-hover-shadow-dark: rgba(24, 24, 24, 0.5);
+  --btn-hover-shadow-dark: rgba(16, 16, 16, 0.584);
   --btn-clicked-color: rgb(30, 30, 30);
   --btn-clicked-shadow-light: rgb(65, 65, 65);
   --btn-clicked-shadow-dark: rgb(0, 0, 0);
@@ -56,7 +59,7 @@
   }
 }
 
-@media (max-height: px) and (max-width: 640px) {
+@media (max-height: 360px) and (max-width: 640px) {
   .full-height {
     background-image: url("../assets/img/bground/bg-640w.webp");
   }
@@ -91,6 +94,11 @@ hr {
   color: var(--red);
 }
 
+/* Use important tag to override current border style */
+.task-input-error {
+  border: 2px solid var(--red) !important;
+}
+
 /*****************************
   * Color for Slide-out Tasks *
   *****************************/
@@ -109,6 +117,11 @@ input[type=text] {
   color: white;
 }
 
+
+#wrap-task {
+  background-color: var(--light-less-transparent);
+  box-shadow: 0px 0px 5px var(--less-transparent);
+}
 
 /***************************
  * Color for Slide-out settings *
@@ -132,19 +145,19 @@ input[type=text] {
 
 .settings-custom-btn {
   border-color: black;
-  box-shadow: inset 0 5px 5px var(--btn-shadow-light), inset 0 -5px 5px var(--btn-shadow-dark);
-  background-color: var(--btn-color);
+  box-shadow: inset 0 3px 3px var(--btn-shadow-light), inset 0 -3px 3px var(--btn-shadow-dark);
+  background-color: var(--light-transparent);
 }
 
 .settings-custom-btn:hover {
-  background-color: var(--btn-hover-color);
+  background-color: var(--alm-transparent);
   color: grey;
-  box-shadow: inset 0 5px 5px var(--btn-hover-shadow-light), inset 0 -5px 5px var(--btn-hover-shadow-dark);
+  box-shadow: inset 0 3px 3px var(--btn-hover-shadow-light), inset 0 -3px 3px var(--btn-hover-shadow-dark);
 }
 
 .clicked-settings-btn, .clicked-settings-btn:hover {
-  background-color: var(--btn-clicked-color);
-  box-shadow: inset 0 5px 5px var(--btn-clicked-shadow-dark), inset 0 -5px 5px var(--btn-clicked-shadow-light);
+  background-color: var(--btn-transparent);
+  box-shadow: inset 0 3px 3px var(--btn-clicked-shadow-dark), inset 0 -3px 3px var(--btn-clicked-shadow-light);
   color: white;
 }
 
@@ -162,7 +175,11 @@ input[type=text] {
 }
 
 .btn:hover:enabled {
-  color: var(--green);
+  color: var(--hover-color);
+}
+
+.inert-btn {
+  color: var(--light-color);
 }
 
 #add-btn,
@@ -175,7 +192,7 @@ input[type=text] {
 }
 
 #add-btn:hover:enabled {
-  color: var(--green);
+  color: var(--hover-color);
 }
 
 .close {
@@ -269,7 +286,8 @@ input[type=text] {
   color: var(--light-color);
 }
 
-.instruct-head, .inst-headers {
+.instruct-head,
+.inst-headers {
   color: white;
 }
 

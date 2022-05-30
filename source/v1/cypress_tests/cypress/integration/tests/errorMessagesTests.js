@@ -1,6 +1,7 @@
 describe("Error Messages Tests", () => {
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
+        cy.get('instructions-box > #instructions > .close2').click();
         cy.document().then((o_doc) => {
             if (!o_doc.querySelector("timer-element").B_DEBUG) {
                 o_doc.querySelector("timer-element").toggleDebug();
@@ -20,11 +21,19 @@ describe("Error Messages Tests", () => {
             });
 
         // Non-empty input
-        cy.get("#task-input").clear().type("abc");
+        cy.get("#task-input-top").clear().type("abc");
         cy.get("#add-error").should("not.have.class", "color-error");
 
+        // Non-empty over 50 char input
+        cy.get("#task-input-top").clear().type("this is not empty this is not empty this is not empty this is not empty this is not empty this is not empty ");
+        cy.get("#add-error")
+            .then(($o_el) => {
+                expect($o_el).to.have.class("color-error");
+                expect($o_el).to.contain("Input cannot be more than 50 chars long!");
+            });
+
         // Empty input
-        cy.get("#task-input").clear();
+        cy.get("#task-input-top").clear();
         cy.get("#add-error").should("have.class", "color-error");
 
         // Reopen tasklist and check error message
@@ -38,9 +47,9 @@ describe("Error Messages Tests", () => {
 
         // Add tasks
         cy.get("#task-btn").trigger("click");
-        cy.get("#task-input").clear().type("abc");
+        cy.get("#task-input-top").clear().type("abc");
         cy.get("#add-btn").trigger("click");
-        cy.get("#task-input").clear().type("123");
+        cy.get("#task-input-top").clear().type("123");
         cy.get("#add-btn").trigger("click");
 
         cy.get("#edit-error").should("not.have.class", "color-error");
@@ -68,37 +77,35 @@ describe("Error Messages Tests", () => {
     // Testing Start error message
     it("Shows Start error message", () => {
 
-        // Trigger start button
-        cy.get("#start-error").should("not.have.class", "color-error");
-
-        cy.clock();
         cy.get("#start-btn").trigger("click");
-        cy.get("#start-error")
+        cy.get("#add-error")
             .then(($o_el) => {
                 expect($o_el).to.have.class("color-error");
-                expect($o_el).to.contain("Cannot start session");
+                expect($o_el).to.contain("Can not start without tasks");
             });
+        // cy.get("#add-error").should("have.class", "color-error");
+        // cy.get("#add-error").should("contain", "Can not start without tasks");
 
-        // Wait for 3 seconds, error message should have disappeared
-        cy.tick(3000);
-        cy.get("#start-error")
+        // Type, error message should have disappeared
+        cy.get("input[name=task]").type("abc");
+        cy.get("#add-error")
             .then(($o_el) => {
                 expect($o_el).to.not.have.class("color-error");
-                expect($o_el).to.not.contain("Cannot start session");
+                expect($o_el).to.not.contain("Can not start without tasks");
             });
     });
 
-    // Testing Reset error message
-    it("Shows Reset error message", () => {
+    // Testing Reset with no tasks
+    it("Cannot press Reset", () => {
 
         // Check reset error class
         cy.get("#reset-error").should("not.have.class", "color-error");
 
         // Add tasks
         cy.get("#task-btn").trigger("click");
-        cy.get("#task-input").clear().type("abc");
+        cy.get("#task-input-top").clear().type("abc");
         cy.get("#add-btn").trigger("click");
-        cy.get("#task-input").clear().type("123");
+        cy.get("#task-input-top").clear().type("123");
         cy.get("#add-btn").trigger("click");
 
         cy.get("#close-task").trigger("click");
@@ -126,21 +133,17 @@ describe("Error Messages Tests", () => {
             });
     });
 
-    // Testing End error message
-    it("Shows End error message", () => {
+    // Testing Cannot Press End Without Starting
+    it("Cannot press End without Starting", () => {
 
-        // Without starting session
-        cy.get("#end-error")
-            .then(($o_el) => {
-                expect($o_el).to.have.class("color-error");
-                expect($o_el).to.contain("Session not started");
-            });
+        // Without starting session, should be disabled
+        cy.get("#end-btn").should('have.attr', 'disabled');
 
         // Add tasks
         cy.get("#task-btn").trigger("click");
-        cy.get("#task-input").clear().type("abc");
+        cy.get("#task-input-top").clear().type("abc");
         cy.get("#add-btn").trigger("click");
-        cy.get("#task-input").clear().type("123");
+        cy.get("#task-input-top").clear().type("123");
         cy.get("#add-btn").trigger("click");
 
         cy.get("#close-task").trigger("click");
@@ -148,20 +151,12 @@ describe("Error Messages Tests", () => {
         // Start session
         cy.get("#start-btn").trigger("click");
 
-        cy.get("#end-error")
-            .then(($o_el) => {
-                expect($o_el).to.not.have.class("color-error");
-                expect($o_el).to.not.contain("Session not started");
-            });
+        cy.get("#end-btn").should('not.have.attr', 'disabled');
 
         // After ending session
         cy.get("#end-btn").trigger("click");
 
-        cy.get("#end-error")
-            .then(($o_el) => {
-                expect($o_el).to.have.class("color-error");
-                expect($o_el).to.contain("Session not started");
-            });
+        cy.get("#end-btn").should('have.attr', 'disabled');
     });
 
     // Testing Check error message
@@ -172,9 +167,9 @@ describe("Error Messages Tests", () => {
 
         // Add tasks
         cy.get("#task-btn").trigger("click");
-        cy.get("#task-input").clear().type("abc");
+        cy.get("#task-input-top").clear().type("abc");
         cy.get("#add-btn").trigger("click");
-        cy.get("#task-input").clear().type("123");
+        cy.get("#task-input-top").clear().type("123");
         cy.get("#add-btn").trigger("click");
 
         cy.get("#close-task").trigger("click");

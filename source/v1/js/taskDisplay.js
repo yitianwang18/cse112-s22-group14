@@ -1,9 +1,13 @@
+
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
 /**
  * Custom HTML element encapsulating the display of current and next task during a pomo
  * @extends HTMLElement
  */
 
-export default class TaskDisplay extends HTMLElement {
+export class TaskDisplay extends HTMLElement {
 
     /**
      * Attributes that this object observes
@@ -172,4 +176,4 @@ TaskDisplay.S_CHECK_BUTTON_TITLE = "Task completed";
 customElements.define("task-display", TaskDisplay);
 
 
-export { TaskDisplay }
+export default { TaskDisplay }

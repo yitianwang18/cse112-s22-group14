@@ -1,9 +1,9 @@
 /// <reference types="Cypress" />
-import { TimerContainer } from "../../../../js/timerContainer";
+
 describe("Task List Tests", () => {
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
-        cy.get(".close2").trigger("click");
+        cy.get('instructions-box > #instructions > .close2').click();
         cy.document().then((o_doc) => {
             if (!o_doc.querySelector("timer-element").B_DEBUG) {
                 o_doc.querySelector("timer-element").toggleDebug();
@@ -62,6 +62,12 @@ describe("Task List Tests", () => {
             expect($el.children()[0]).to.have.attr("taskid", 0);
         });
 
+        // verify localStorage was also updated
+        cy.window().then((win) => {
+            const o_tasks = JSON.parse(win.localStorage.getItem("current_tasks"));
+            expect(o_tasks[0]).to.eql("Task1");
+        });
+
         // add another item
         cy.get("task-list #add-task input").type("Task2");
         cy.get("task-list #add-task #add-btn").click();
@@ -75,6 +81,13 @@ describe("Task List Tests", () => {
             expect($el.children()[1]).to.have.attr("taskid", 1);
         });
 
+        // verify localStorage was also updated
+        cy.window().then((win) => {
+            const o_tasks = JSON.parse(win.localStorage.getItem("current_tasks"));
+            expect(o_tasks[0]).to.eql("Task1");
+            expect(o_tasks[1]).to.eql("Task2");
+        });
+
         // delete the first item
         cy.get("task-list #all-tasks task-item[taskid='0'] button").click();
         // verify deletion
@@ -82,6 +95,12 @@ describe("Task List Tests", () => {
             expect($el.children()).to.have.length(1);
             expect($el.children()[0]).to.have.attr("taskname", "Task2");
             expect($el.children()[0]).to.have.attr("taskid", 0);
+        });
+
+        // verify localStorage was also updated
+        cy.window().then((win) => {
+            const o_tasks = JSON.parse(win.localStorage.getItem("current_tasks"));
+            expect(o_tasks[0]).to.eql("Task2");
         });
 
         // add new item
@@ -94,6 +113,13 @@ describe("Task List Tests", () => {
             expect($el.children()[0]).to.have.attr("taskid", 0);
             expect($el.children()[1]).to.have.attr("taskname", "Task3");
             expect($el.children()[1]).to.have.attr("taskid", 1);
+        });
+
+        // verify localStorage was also updated
+        cy.window().then((win) => {
+            const o_tasks = JSON.parse(win.localStorage.getItem("current_tasks"));
+            expect(o_tasks[0]).to.eql("Task2");
+            expect(o_tasks[1]).to.eql("Task3");
         });
     });
 
@@ -141,7 +167,7 @@ describe("Task List Tests", () => {
     });
 
     it("Test Tasklist reordering functionality", () => {
-        // add one item
+        // open sidebar
         cy.get("#task-btn").trigger("click");
 
         // add Task1
@@ -165,6 +191,14 @@ describe("Task List Tests", () => {
             expect($el.children()[2]).to.have.attr("taskid", 2);
         });
 
+        // verify localStorage was also updated
+        cy.window().then((win) => {
+            const o_tasks = JSON.parse(win.localStorage.getItem("current_tasks"));
+            expect(o_tasks[0]).to.eql("Task1");
+            expect(o_tasks[1]).to.eql("Task2");
+            expect(o_tasks[2]).to.eql("Task3");
+        });
+
         // pick up Task1 and drop in between Task2 and Task3
         cy.get("task-item[taskid='0']").drag("task-item[taskid='2']", {
             target: { x: 0, y: 0 }, // applies to the drop target
@@ -177,7 +211,7 @@ describe("Task List Tests", () => {
         // that you can't specify an offset for where you drag to in dragover
         // cy.get("task-item[taskid='0']").trigger('dragstart');
         // cy.get("task-item[taskid='2']").trigger('dragover');
-        // cy.get("task-item[taskid='2'").trigger('drop');
+        // cy.get("task-item[taskid='2']").trigger('drop');
         cy.get("task-item[taskid='0']").trigger('dragend');
 
 
@@ -210,11 +244,65 @@ describe("Task List Tests", () => {
         });
 
         // verify localStorage was also updated
-        cy.window().then(win => {
+        cy.window().then((win) => {
             const o_tasks = JSON.parse(win.localStorage.getItem("current_tasks"));
             expect(o_tasks[0]).to.eql("Task2");
             expect(o_tasks[1]).to.eql("Task3");
             expect(o_tasks[2]).to.eql("Task1");
+        });
+    });
+
+    it("Test Tasklist reordering functionality (mobile)", () => {
+        // change view to mobile
+        cy.viewport("iphone-xr");
+
+        // open sidebar
+        cy.get("#task-btn").trigger("click");
+
+        // add Task1
+        cy.get("task-list #add-task input").type("Task1");
+        cy.get("task-list #add-task #add-btn").click();
+        // add Task2
+        cy.get("task-list #add-task input").type("Task2");
+        cy.get("task-list #add-task #add-btn").click();
+        // add Task3
+        cy.get("task-list #add-task input").type("Task3");
+        cy.get("task-list #add-task #add-btn").click();
+
+        // verify presence
+        cy.get("task-list #all-tasks").then(($el) => {
+            expect($el.children()).to.have.length(3);
+            expect($el.children()[0]).to.have.attr("taskname", "Task1");
+            expect($el.children()[0]).to.have.attr("taskid", 0);
+            expect($el.children()[1]).to.have.attr("taskname", "Task2");
+            expect($el.children()[1]).to.have.attr("taskid", 1);
+            expect($el.children()[2]).to.have.attr("taskname", "Task3");
+            expect($el.children()[2]).to.have.attr("taskid", 2);
+        });
+
+        // verify localStorage was also updated
+        cy.window().then((win) => {
+            const o_tasks = JSON.parse(win.localStorage.getItem("current_tasks"));
+            expect(o_tasks[0]).to.eql("Task1");
+            expect(o_tasks[1]).to.eql("Task2");
+            expect(o_tasks[2]).to.eql("Task3");
+        });
+
+        // pick up Task1 and drop in between Task2 and Task3
+
+        // Plugin doesn't account for touch events, so manually test this
+        cy.get("task-item[taskid='0']").trigger('touchstart');
+        cy.get("task-item[taskid='2']").trigger('touchmove');
+        cy.get("task-item[taskid='0']").trigger('touchend');
+
+
+
+        // verify if task-list is reordered
+        cy.get("task-list #all-tasks").then(($el) => {
+            expect($el.children()).to.have.length(3);
+            expect($el.children()[0]).to.have.attr("taskname", "Task2");
+            expect($el.children()[1]).to.have.attr("taskname", "Task1");
+            expect($el.children()[2]).to.have.attr("taskname", "Task3");
         });
     });
 });

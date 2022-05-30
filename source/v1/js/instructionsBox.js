@@ -22,6 +22,7 @@ class InstructionsBox extends HTMLElement {
 
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close2", "btn");
+        o_close_button.id = "close-inst";
         o_close_button.innerHTML = "&times;";
         o_close_button.addEventListener("click", this.closeInstructions.bind(this));
 
@@ -93,8 +94,8 @@ class InstructionsBox extends HTMLElement {
 
 
         o_inst_title_wrapper.append(o_inst_title);
-        o_inst_text.append(o_inst_tasks, o_inst_tasks_list, o_inst_cycle, o_inst_cycle_list, o_inst_pomo,
-            o_inst_pomo_text, o_inst_hot, o_inst_hot_text);
+        o_inst_text.append(o_inst_tasks, o_inst_tasks_list, o_inst_cycle, o_inst_cycle_list, 
+            o_inst_pomo, o_inst_pomo_text, o_inst_hot, o_inst_hot_text);
         o_wrapper_obj.append(o_close_button, o_inst_title_wrapper, o_inst_text);
         this.append(o_wrapper_obj_back);
         this.append(o_wrapper_obj);
@@ -110,11 +111,13 @@ class InstructionsBox extends HTMLElement {
      */
     showInstructionsBox() {
         this.querySelector("#instructions").classList.add("instructions-section-open");
+        this.querySelector("#close-inst").style.display = "none";
 
         // Hide everything inside instructions box while animating to prevent sandwiching of text
         setTimeout(() => {
             this.querySelector("#instructions-title").style.display = "block";
             this.querySelector("#instructions-para").style.display = "block";
+            this.querySelector("#close-inst").style.display = "block";
             document.body.focus();
         }, 300);
 
@@ -129,6 +132,7 @@ class InstructionsBox extends HTMLElement {
         this.querySelector("#instructions-title").style.display = "none";
         this.querySelector("#instructions-para").style.display = "none";
         this.querySelector("#instructions-blocker").style.display = "none";
+        this.querySelector("#close-inst").style.display = "none";
     }
 }
 
@@ -138,7 +142,8 @@ class InstructionsBox extends HTMLElement {
  * @type {string[]}
  */
 InstructionsBox.A_TASK_INST = ["Click on the task list button and add all tasks you want to do",
-    "Tasks can only be added before starting the Pomodoro session to limit distractions while you work",
+    "Tasks can only be added before starting the Pomodoro session to limit distractions \
+    while you work",
     "Once the session begins, you can see the current and the next tasks",
     "If you are done with a task, hit the 'check' button"];
 
@@ -158,14 +163,18 @@ InstructionsBox.A_CYCLE_INST = ["One Pomodoro = 25 minutes of work/studying",
  * @static
  * @type {String}
  */
-InstructionsBox.S_POMO_INST = "The Pomodoro technique is a scientifically proven way to help increase productivity. Ultimately, people are more productive by taking small mental breaks. PomoHero automates the process for you, making it easier for you to reduce distractions and focus on your work.";
+InstructionsBox.S_POMO_INST = "The Pomodoro technique is a scientifically proven way to help \
+    increase productivity. Ultimately, people are more productive by taking small mental breaks. \
+    PomoHero automates the process for you, making it easier for you to reduce distractions and \
+    focus on your work.";
 
 /**
  * String describing the site's hotkeys
  * @static
  * @type {String}
  */
-InstructionsBox.S_HOTKEYS_INST = "c - color change, t - tasklist, esc - close pop-up, space - start/end session, n - next task";
+InstructionsBox.S_HOTKEYS_INST = "c - color change, t - tasklist, esc - close pop-up, \
+    space - start/end session, n - next task";
 
 customElements.define("instructions-box", InstructionsBox);
 

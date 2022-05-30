@@ -1,3 +1,7 @@
+
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
 /**
  * Custom Element representing a Task item
  * @extends HTMLElement
@@ -31,6 +35,22 @@ class Task extends HTMLElement {
         let o_div = document.createElement("div");
         o_div.id = "wrap-task";
 
+        // MUST SET draggable attr and eventListeners on o_div to work on 
+        // Safari; something weird with unable to set stuff directly on web components
+
+        // set dragging class/attribute
+        o_div.setAttribute("draggable", true);
+        o_div.classList.add("draggable");
+        // event listener to tell when this task is being dragged 
+        this.addEventListener('dragstart', () => {
+            this.setAttribute("dragging", "");
+        });
+        o_div.addEventListener('touchstart', () => {
+           this.setAttribute("dragging", "");
+        })
+        let o_drag_icon = document.createElement("i");
+        o_drag_icon.classList.add("fas", "fa-bars", "fa-x", "inert-btn");
+        o_drag_icon.title = "Click and Drag to Reorder";
         let o_item = document.createElement("input");
         o_item.title = "Click to Edit";
         o_item.id = "task-input";
@@ -47,7 +67,7 @@ class Task extends HTMLElement {
 
         o_del_button.append(o_del_button_icon);
 
-        o_div.append(o_item, o_del_button);
+        o_div.append(o_drag_icon, o_item, o_del_button);
         this.append(o_div);
     }
 
@@ -123,7 +143,20 @@ class Task extends HTMLElement {
      * @param {Function}  f_dragend_action function that handles dragover
      */
     bindHandleDragend(f_dragend_action) {
+        const o_div = this.querySelector("#wrap-task");
         this.addEventListener("dragend", f_dragend_action);
+        o_div.addEventListener("touchend", f_dragend_action);
+    }
+
+    /**
+     * Binds touchmove handler to the task-item. Enables drag and drop for 
+     * touch-enabled devices, such as mobile. Needs a bind in order to 
+     * differentiate scrolling and moving around tasks.
+     * @param {Function} f_touchmove_action 
+     */
+    bindHandleTouchMove(f_touchmove_action) {
+        const o_div = this.querySelector("#wrap-task");
+        o_div.addEventListener('touchmove', f_touchmove_action);
     }
 
 }
