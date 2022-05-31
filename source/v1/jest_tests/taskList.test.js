@@ -163,7 +163,8 @@ test('Testing setNewTaskOrder', () => {
     tasks.children["0"].setAttribute("taskname", "Task0");
     o_tasklist.editItemName(tasks.children["0"].getAttribute("taskid"));
     let dragged = tasks.children["2"];
-    dragged.classList.add('dragging');
+    dragged.setAttribute("dragging", true);
+    dragged.classList.add("dragging");
     
     expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute("taskname"))
         .toBe("Task0");
@@ -176,13 +177,13 @@ test('Testing setNewTaskOrder', () => {
     expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute("taskid")).toBe("2");
     expect(o_tasklist.querySelector(`#all-tasks`).children["1"].getAttribute("taskid")).toBe("0");
     expect(o_tasklist.querySelector(`#all-tasks`).children["2"].getAttribute("taskid")).toBe("1");
-    expect(dragged.classList.contains('dragging')).toBe(true);
+    expect(dragged.getAttribute('dragging')).toBe("true");
     
     o_tasklist.setNewTaskOrder(dragged);
     expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute("taskid")).toBe("0");
     expect(o_tasklist.querySelector(`#all-tasks`).children["1"].getAttribute("taskid")).toBe("1");
     expect(o_tasklist.querySelector(`#all-tasks`).children["2"].getAttribute("taskid")).toBe("2");
-    expect(dragged.classList.contains('dragging')).toBe(false);
+    expect(dragged.getAttribute('dragging')).toBe(null);
 });
 
 test('Testing getDragAfterElement', () => {
