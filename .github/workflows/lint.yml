@@ -17,7 +17,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "test"
-  test:
+  lint:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -32,5 +32,11 @@ jobs:
         run: npm install
 
       # Runs a set of commands using the runners shell
-      - name: Run 
-        run: npm run lint
+      - name: Run HTML Lint
+        run: npm run html
+        
+      - name: Run CSS Lint
+        run: npm run css
+        
+      - name: Run JS Lint
+        run: npm run js

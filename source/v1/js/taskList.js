@@ -1,5 +1,8 @@
 import { Task } from "./task.js";
 
+// variable for turning on/off console logs used for debugging
+const B_CONSOLE_LOG = false;
+
 /**
  * Custom HTML element encapsulating all of the functionality related to the Task List
  * @extends HTMLElement
@@ -27,7 +30,7 @@ class TaskList extends HTMLElement {
         // close button
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn", "hidden");
-        o_close_button.title = "Close Tasklist";
+        o_close_button.title = "Close Tasklist (esc)";
         o_close_button.id = "close-task";
         o_close_button.innerHTML = "&times;";
         // event to close the task list
@@ -54,7 +57,7 @@ class TaskList extends HTMLElement {
 
         // add input field
         let o_add_task_input = document.createElement("input");
-        o_add_task_input.id = "task-input";
+        o_add_task_input.id = "task-input-top";
         o_add_task_input.type = "text";
         o_add_task_input.name = "task";
         o_add_task_input.placeholder = "Enter task description";
@@ -121,13 +124,21 @@ class TaskList extends HTMLElement {
     /**
      * Static helper function to validate an input string with given parameters
      * @param {String} s_input string to validate
+     * @return {Number} 0 if valid, 1 if empty, 2 if greater than N_MAX_TASK_LENGTH
      */
     static validateString(s_input) {
         s_input = s_input.trim();
-        if (s_input.length == 0 || s_input.length > TaskList.N_MAX_TASK_LENGTH) {
-            return false;
-        }
-        return true;
+        // greater than max_length, so return error code 2
+        if (s_input.length > TaskList.N_MAX_TASK_LENGTH) {
+            return 2;
+        } 
+        // empty string, so return error code 1
+        else if (s_input.length == 0) {
+            return 1;
+        } 
+
+        // no errors, so return 0
+        return 0;
     }
 
     /**
@@ -138,7 +149,8 @@ class TaskList extends HTMLElement {
     handleDrag(o_event) {
         o_event.preventDefault();
         // y-coordinate is either from desktop or from mobile
-        const n_y_coord = o_event.clientY != null ? o_event.clientY : o_event.targetTouches[0].pageY;
+        const n_y_coord = o_event.clientY != null ? o_event.clientY : 
+            o_event.targetTouches[0].pageY;
         // get task that is directly after the position of current task
         // that is being dragged
         const o_after_task = this.getDragAfterElement(n_y_coord); 
@@ -169,11 +181,9 @@ class TaskList extends HTMLElement {
     getDragAfterElement(n_y_coord) {
         // get all tasks except the one that is dragging
         const o_undragged_tasks = [...this.querySelectorAll('task-item:not([dragging=""]')]
-        // console.log(o_undragged_tasks);
         return o_undragged_tasks.reduce((closest, curTask) => {
             const box = curTask.getBoundingClientRect();
             const offset = n_y_coord - box.top - box.height / 2;
-            // console.log(offset);
             // if offset is negative, then must be below current element
             // trying to find the closest element, so also compare with current closest
             if (offset < 0 && offset > closest.offset) {
@@ -189,16 +199,26 @@ class TaskList extends HTMLElement {
      * @param {Event} o_event event instance
      */
     handleInputChange(o_event) {
-        let o_add_btn = this.querySelector("#add-btn");
         let o_add_error = this.querySelector("#add-error");
-        if (o_event == undefined || !TaskList.validateString(o_event.target.value)) {
-            o_add_btn.disabled = true;
-            o_add_error.innerHTML = TaskList.S_TASK_ERROR;
+        let o_top_input = this.querySelector("input[name=task]");
+        let s_input = o_event == undefined ? o_top_input.value : o_event.target.value;
+        let n_validate_result = TaskList.validateString(s_input);
+        // string is greater than max length
+        if (n_validate_result == 2) {
+            o_add_error.innerHTML = `${TaskList.S_TASK_ERROR_TOO_LONG} Count: ${s_input.length}`;
             o_add_error.classList.add("color-error");
-        } else {
-            o_add_btn.disabled = false;
+            o_top_input.classList.add("task-input-error");
+            o_add_error.style.visibility = "visible";
+        } 
+        else if (n_validate_result == 1) {
+            o_add_error.innerHTML = TaskList.S_TASK_ERROR_EMPTY;
+            o_add_error.classList.add("color-error");
+        }
+        else {
             o_add_error.innerHTML = "";
+            o_add_error.style.visibility = "hidden";
             o_add_error.classList.remove("color-error");
+            o_top_input.classList.remove("task-input-error");
         }
     }
 
@@ -224,12 +244,23 @@ class TaskList extends HTMLElement {
     handleAddTask() {
         let o_input = this.querySelector("input[name=task]");
         let s_task_name = o_input.value.trim();
+        let o_add_error = this.querySelector("#add-error");
+        let n_validate_result = TaskList.validateString(s_task_name);
 
-        if (TaskList.validateString(s_task_name)) {
+        // string is validated
+        if (n_validate_result == 0) {
             this.addItem(s_task_name);
             this.clearInput();
             this.handleInputChange(undefined);
         }
+        // make input box red, and show error message
+        else if (n_validate_result == 1) {
+            o_input.classList.add("task-input-error");
+            o_add_error.classList.add("color-error");
+            o_add_error.innerHTML = TaskList.S_TASK_ERROR_EMPTY;
+            o_add_error.style.visibility = "visible";
+        }
+        // don't need to account for exceeding max length, because would already be showing
     }
 
     /**
@@ -238,6 +269,11 @@ class TaskList extends HTMLElement {
     clearInput() {
         let o_input = this.querySelector("input[name=task]");
         o_input.value = "";
+        // also remove error messages
+        o_input.classList.remove("task-input-error");
+        let o_add_error = this.querySelector("#add-error");
+        o_add_error.style.visibility = "hidden";
+
     }
 
     /**
@@ -282,7 +318,8 @@ class TaskList extends HTMLElement {
         let o_task_item_input = o_task_item.querySelector("input");
         let s_curr_input_val = o_task_item.getAttribute("taskname");
         let o_error_span = this.querySelector("#edit-error");
-        if (TaskList.validateString(o_task_item_input.value)) {
+        let n_validate_result = TaskList.validateString(o_task_item_input.value);
+        if (n_validate_result == 0) {
             o_task_item.setAttribute("taskname", o_task_item_input.value.trim());
             o_error_span.innerHTML = "";
             o_error_span.classList.remove("color-error");
@@ -298,13 +335,18 @@ class TaskList extends HTMLElement {
         }
         else {
             o_task_item.setAttribute("taskname", s_curr_input_val);
-            o_error_span.innerHTML = TaskList.S_TASK_ERROR;
+            o_error_span.innerHTML = n_validate_result == 1 ? TaskList.S_TASK_ERROR_EMPTY : 
+                TaskList.S_TASK_ERROR_TOO_LONG;
             o_error_span.classList.add("color-error");
+            // add red border
+            o_task_item_input.classList.add("task-input-error");
+            o_task_item_input.blur();
 
             // Make error message disappear after 3 seconds
             setTimeout(() => {
                 o_error_span.innerHTML = "";
                 o_error_span.classList.remove("color-error");
+                o_task_item_input.classList.remove("task-input-error");
             }, 3000);
         }
         // update array of tasks (o_tasks)
@@ -362,14 +404,18 @@ class TaskList extends HTMLElement {
     setNewTaskOrder(o_task) {
         // remove dragging attribute on currently dragging object
         o_task.removeAttribute("dragging");
-        console.log(o_task.children[0]);
+        if (B_CONSOLE_LOG) {
+            console.log(o_task.children[0]);
+        }
         // update this.o_tasks
         const n_num_tasks = this.getNumTasks();
-        const o_task_items = document.getElementById('all-tasks').children;
+        const o_task_items = this.querySelector('#all-tasks').children;
         // make sure to update eventlisteners, taskid, and taskname
         for (let i = 0; i < n_num_tasks; i++) {
             const o_task_item = o_task_items[i]; 
-            console.log(typeof(o_task_item));
+            if (B_CONSOLE_LOG) {
+                console.log(typeof(o_task_item));
+            }
             // remove old event listeners and add new ones to new id
             o_task_item.unbindDelete();
             o_task_item.unbindEdit();
@@ -379,7 +425,9 @@ class TaskList extends HTMLElement {
             this.o_tasks[i] = o_task_item.getAttribute("taskname");
         }
         // update localStorage
-        console.log(this.o_tasks);
+        if (B_CONSOLE_LOG) {
+            console.log(this.o_tasks);
+        }
         window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
     }
 
@@ -387,8 +435,10 @@ class TaskList extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showTaskList() {
+        this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "block";
+
 
         if (window.screen.width <= 500) {
             o_tasks.classList.add("sidenav-small");
@@ -416,7 +466,9 @@ class TaskList extends HTMLElement {
                     let o_task = new Task();
                     o_task.setAttribute("taskname", this.o_tasks[i]);
                     o_task.setAttribute("taskid", i);
-                    console.log(this.n_task_id);
+                    if (B_CONSOLE_LOG) {
+                        console.log(this.n_task_id);
+                    }
                     o_task.bindHandleDelete(() => { this.removeItem(i); });
                     // bind a function that listen to an onchange for a task input element
                     o_task.bindHandleEdit(() => { this.editItemName(i); });
@@ -509,6 +561,21 @@ TaskList.N_ENTER_KEYCODE = 13;
  * @type {String}
  */
 TaskList.S_TASK_ERROR = "Input cannot be empty or be more than 50 chars long!";
+
+/**
+ * Error message for adding or editing task incorrectly
+ * @static
+ * @type {String}
+ */
+TaskList.S_TASK_ERROR_EMPTY = "Input cannot be empty!";
+
+/**
+ * Error message for adding or editing task incorrectly
+ * @static
+ * @type {String}
+ */
+TaskList.S_TASK_ERROR_TOO_LONG = `Input cannot be more than \
+    ${TaskList.N_MAX_TASK_LENGTH} chars long!`;
 
 customElements.define("task-list", TaskList);
 

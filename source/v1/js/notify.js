@@ -1,3 +1,6 @@
+
+// variable for turning on/off console logs used for debugging
+// const B_CONSOLE_LOG = false;
 /**
  * Sends web notifications to the user representing the state of the timer.
  * @param {number} n_state number denoting the state of the timer. 
@@ -19,7 +22,7 @@ function notify(n_state){
         Notification.requestPermission().then(function (permission) {
             //ask user to enable notifications
             if (permission !== "granted") {
-                alert("Please enable notifictaions.");
+                alert("Please enable notifications.");
             }
         
             //send notification
@@ -38,29 +41,31 @@ function notify(n_state){
 
                 // check safari
                 let b_isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.
-                  test(navigator.userAgent);
+                    test(navigator.userAgent);
 
                 //start new pomo notif
                 if (b_isSafari) {
                     let o_promise = document.getElementById("notifs").play();
 
                     if (o_promise !== undefined) {
-                        o_promise.catch(error => {
+                        o_promise.catch(() => {
                             // Auto-play was prevented
                             // Show a UI element to let the user manually start playback
-                            const b_showErrorNotification = localStorage.getItem("safari-error-notification");
-                            console.log("catch error kjdshfkja" + b_showErrorNotification);
+                            const b_showErrorNotification = localStorage.
+                                getItem("safari-error-notification");
+                            const b_showErrorNotification_preference = localStorage.
+                                getItem("safari-error-notification-preference");
 
-                            if (b_showErrorNotification == null || b_showErrorNotification == false || 
-                                b_showErrorNotification == "false") {
+                            if (b_showErrorNotification === null || 
+                                    b_showErrorNotification === "false" || 
+                                    b_showErrorNotification_preference === "true") {
                                 // show error notification view
                                 let o_notifi = document.querySelector("notification-box");
                                 o_notifi.showNotificationBox();
-                                localStorage.setItem("safari-error-notification", true)
-                            }
+                                localStorage.setItem("safari-error-notification", "true")
+                            } 
                         }).then(() => {
                             // Auto-play started successfully
-                            console.log("kjdshfkja");
                         });
                     }
 

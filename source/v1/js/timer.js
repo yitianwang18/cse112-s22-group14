@@ -1,14 +1,18 @@
+
+// variable for turning on/off console logs used for debugging
+// const B_CONSOLE_LOG = false;
+
 /**
  * Custom HTML element for a timer display, where the values to display are passed in as attributes
  * @extends HTMLElement
  */
 class TimerDisplay extends HTMLElement {
     /**
-     * A list of observed attributes ("time" and "pomos-comp");
+     * A list of observed attributes ("time" and "pomos-comp", "theme");
      * @static
      * @type {string[]}
      */
-    static get observedAttributes() { return ["time", "pomos-comp"]; }
+    static get observedAttributes() { return ["time", "pomos-comp", "theme"]; }
 
     /**
      * Constructs a new Timer Display
@@ -50,9 +54,12 @@ class TimerDisplay extends HTMLElement {
      * @return {string} The formatted XX:YY time.
      */
     static formatMilliTime(n_milli_time) {
-        if (n_milli_time < 0) {
-            return "25:00"
+        // reset to user chosen pomodoro length
+        if (n_milli_time < 0) {    
+            let o_timer_display = document.querySelector("timer-display");
+            n_milli_time = Number(o_timer_display.getAttribute("pomo-length"));
         }
+
         let o_date = new Date(n_milli_time + 500);
         let s_minutes = String(o_date.getMinutes()).padStart(2, "0");
         let s_seconds = String(o_date.getSeconds()).padStart(2, "0");
@@ -75,6 +82,7 @@ class TimerDisplay extends HTMLElement {
      * Re-renders the displayed time on the timer, and updates the tomato icons of the 
      * finished pomos.
      * Uses the attributes 'time' and 'pomos-comp' as inputs
+     *
      */
     renderComponents() {
         // update time display
@@ -82,9 +90,27 @@ class TimerDisplay extends HTMLElement {
             TimerDisplay.formatMilliTime(Number(this.getAttribute("time")));
         // update status of pomo icons based on number of pomos completed
         for (let n_pomo_index = 1; n_pomo_index <= 4; n_pomo_index++) {
-            let s_pomo_done = (n_pomo_index <= this.getAttribute("pomos-comp")) ? "Yes" : "No";
-            this.querySelector(`#pomo${n_pomo_index}`)
-                .setAttribute("src", `assets/img/PomoCount${s_pomo_done}.png`);
+
+            let b_pomo_done = n_pomo_index <= this.getAttribute("pomos-comp");
+            // We want to use "PomoCountYes2"
+            if (this.getAttribute("theme") === "stars") {
+                if (b_pomo_done){
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
+                        TimerDisplay.S_POMO_YES_PATH_STARS);
+                } else {
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
+                        TimerDisplay.S_POMO_NO_PATH_STARS);
+                }
+            // We want to use "PomoCountYes"
+            } else {
+                if (b_pomo_done){
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
+                        TimerDisplay.S_POMO_YES_PATH);
+                } else {
+                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
+                        TimerDisplay.S_POMO_NO_PATH);
+                }
+            }
         }
     }
 
@@ -102,6 +128,20 @@ TimerDisplay.S_POMO_YES_PATH = "./assets/img/PomoCountYes.png";
  * @type {string}
  */
 TimerDisplay.S_POMO_NO_PATH = "./assets/img/PomoCountNo.png";
+
+/**
+ * Path to "Yes" icon.
+ * @static
+ * @type {string}
+ */
+TimerDisplay.S_POMO_YES_PATH_STARS = "./assets/img/PomoCountYes2.png";
+
+/**
+ * Path to "No" icon.
+ * @static
+ * @type {string}
+ */
+TimerDisplay.S_POMO_NO_PATH_STARS = "./assets/img/PomoCountNo2.png";
 customElements.define("timer-display", TimerDisplay);
 
 export { TimerDisplay }

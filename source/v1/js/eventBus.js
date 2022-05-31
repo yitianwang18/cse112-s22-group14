@@ -1,5 +1,9 @@
 import { TimerContainer } from "./timerContainer.js";
 
+// variable for turning on/off console logs used for debugging
+// const B_CONSOLE_LOG = false;
+
+
 /**
  * Class representing an Event Hub to centralize all event logic
  */
@@ -70,7 +74,7 @@ class EventBus {
      * Event handler function for the 'startSession' Event
      */
     handleStartSession() {
-        let o_start_error = this.o_timer_container.querySelector("#start-error");
+        let o_add_error = document.querySelector("#add-error");
         this.o_task_list.showTaskList();
         // check for valid application states
         if (this.o_task_list.getNumTasks() != 0 && 
@@ -84,18 +88,11 @@ class EventBus {
             this.o_task_list.closeTaskList();
             this.updateTaskDisplay();
             this.handleStartWork();
-
-            o_start_error.innerHTML = "";
-            o_start_error.classList.remove("color-error");
         } else {
-            o_start_error.innerHTML = EventBus.S_START_ERROR;
-            o_start_error.classList.add("color-error");
-
-            // Make error message disapper after 3 seconds
-            setTimeout(() => {
-                o_start_error.innerHTML = "";
-                o_start_error.classList.remove("color-error");
-            }, 3000);
+            // show start error message
+            o_add_error.innerHTML = EventBus.S_START_ERROR;
+            o_add_error.classList.add("color-error");
+            o_add_error.style.visibility = "visible";
         }
     }
 
@@ -107,6 +104,8 @@ class EventBus {
         this.o_toolbar.style.visibility = "";
         this.o_task_display.handleEndSession();
         this.o_timer_container.handleEndSession();
+        // Make sure the close task button can be seen again
+        document.querySelector("#close-task").style.visibility = "visible";
     }
 
     /**
@@ -252,6 +251,6 @@ class EventBus {
  * @static
  * @type {String}
  */
-EventBus.S_START_ERROR = "Cannot start session with no tasks!";
+EventBus.S_START_ERROR = "Can not start without tasks. Please enter a task!";
 
 export { EventBus };
