@@ -118,6 +118,7 @@ class EventBus {
         this.o_timer_container.handleEndSession();
         // Make sure the close task button can be seen again
         document.querySelector("#close-task").style.visibility = "visible";
+        document.querySelector("#close-task").style.display = "none";
     }
 
     /**
