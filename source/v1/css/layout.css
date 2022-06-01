@@ -431,7 +431,7 @@ input[type=text] {
 
 .settings-custom-btn {
   font-size: calc(1rem + 1vw);
-  padding: calc(0.6rem + 0.75vw) calc(0.9rem + 1vw);
+  padding: calc(0.75rem + 0.25vw) calc(1rem + .5vw);
   width: 10%;
   border: 1px solid;
   cursor: pointer;
@@ -763,6 +763,24 @@ input[type=text] {
   right: 12%;
 }
 
+#instructions-para li {
+  align-items: center;
+}
+
+.inline-icon {
+  margin: 0 calc(0.25rem + 0.25vw);
+  color: white;
+  font-size: calc(1rem + 0.5vw);
+}
+
+.inline-link {
+  font-weight: 550;
+  text-decoration: none;
+}
+.inline-link:hover {
+  text-decoration: underline;
+}
+
 /************************
  * Styling Error Notification *
  ************************/
@@ -819,7 +837,7 @@ input[type=text] {
 
   .settings-custom-btn {
     font-size: calc(1.25rem + 0.5vw);
-    padding: calc(1.25rem + 0.5vw) calc(1.25rem + 0.5vw);
+    padding: calc(1rem + 0.25vw) calc(1.25rem + .25vw);
   }
 
   .setting-wrap label {

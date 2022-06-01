@@ -4,8 +4,9 @@
 
 :root {
   --red: #f00;
-  --hover-color: #178800;
-  --secondary-color: #162219;
+  --hover-color: #4adb2d;
+  --hover-color-light: #b5e4ab;
+  --secondary-color: #141f17;
   --light-grey: #828282;
   --transparent: #0000;
   --light-transparent: #ffffff09;
@@ -285,6 +286,17 @@ input[type=text] {
 .instruct-head,
 .inst-headers {
   color: white;
+}
+
+.inline-text i {
+  color: white;
+}
+
+.inline-link {
+  color: var(--hover-color);
+}
+.inline-link:hover {
+  color: var(--hover-color-light);
 }
 
 /********************

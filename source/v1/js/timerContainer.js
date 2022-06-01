@@ -49,7 +49,7 @@ class TimerContainer extends HTMLElement {
         // initialize start button
         let o_start_btn = document.createElement("button");
         o_start_btn.id = "start-btn";
-        o_start_btn.title = "Start Work Session";
+        o_start_btn.title = "Start Work Session (space)";
         o_start_btn.className = "custom-btn";
         o_start_btn.innerText = TimerContainer.S_BEGIN_MESSAGE;
 
@@ -77,7 +77,7 @@ class TimerContainer extends HTMLElement {
 
         let o_end_btn = document.createElement("button");
         o_end_btn.id = "end-btn";
-        o_end_btn.title = "End Work Session";
+        o_end_btn.title = "End Work Session (space)";
         o_end_btn.className = "custom-btn";
         o_end_btn.innerText = TimerContainer.S_END_MESSAGE;
         const f_fire_end_session = () => { document.EventBus.fireEvent("endSession") };
@@ -326,7 +326,7 @@ TimerContainer.N_SET = 4;
 * @static
 * @type {string}
 */
-TimerContainer.S_BEGIN_MESSAGE = "Start Pomo!";
+TimerContainer.S_BEGIN_MESSAGE = "Start Session";
 
 /**
  * End session button message
@@ -340,7 +340,7 @@ TimerContainer.S_END_MESSAGE = "End Session";
  * @static
  * @type {string}
  */
-TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
+TimerContainer.S_RESET_MESSAGE = "Restart";
 
 /**
  *
