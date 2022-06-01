@@ -51,8 +51,7 @@ function notify(n_state){
                         o_promise.catch(() => {
                             // Auto-play was prevented
                             // Show a UI element to let the user manually start playback
-                            // const b_showErrorNotification = localStorage.
-                            //     getItem("safari-error-notification");
+
                             const b_showErrorNotification_preference = localStorage.
                                 getItem("safari-error-notification-preference");
 
@@ -61,7 +60,6 @@ function notify(n_state){
                                 // show error notification view
                                 let o_notifi = document.querySelector("notification-box");
                                 o_notifi.showNotificationBox();
-                                // localStorage.setItem("safari-error-notification", "true")
                             } 
                         }).then(() => {
                             // Auto-play started successfully
