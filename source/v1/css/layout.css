@@ -792,7 +792,7 @@ input[type=text] {
  */
 .notification-section-open {
   width: 30%;
-  height: 22vh;
+  height: 28vh;
   border-width: 2px;
   overflow-y: auto;
 }
