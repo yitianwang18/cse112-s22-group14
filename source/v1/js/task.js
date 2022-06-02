@@ -1,6 +1,6 @@
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 /**
  * Custom Element representing a Task item
@@ -24,6 +24,13 @@ class Task extends HTMLElement {
         // reference to these functions so we can remove the event listeners
         this.f_delete_action = null;
         this.f_edit_action = null;
+        
+        // set dragging class/attribute
+        this.setAttribute("draggable", true);
+        this.classList.add("draggable");
+        // event listener to tell when this task is being dragged 
+        let dragging = () => { this.classList.add('dragging') };
+        this.addEventListener('dragstart', dragging);
 
         let o_div = document.createElement("div");
         o_div.id = "wrap-task";
@@ -35,12 +42,11 @@ class Task extends HTMLElement {
         o_div.setAttribute("draggable", true);
         o_div.classList.add("draggable");
         // event listener to tell when this task is being dragged 
-        this.addEventListener('dragstart', () => {
-            this.setAttribute("dragging", "");
-        });
-        o_div.addEventListener('touchstart', () => {
-           this.setAttribute("dragging", "");
-        })
+        let draggingAttr = () => { this.setAttribute("dragging", "") };
+
+        this.addEventListener('dragstart', draggingAttr);
+        o_div.addEventListener('touchstart', draggingAttr);
+        
         let o_drag_icon = document.createElement("i");
         o_drag_icon.classList.add("fas", "fa-bars", "fa-x", "inert-btn");
         o_drag_icon.title = "Click and Drag to Reorder";

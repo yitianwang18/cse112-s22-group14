@@ -2,7 +2,7 @@ import { TimerDisplay } from "./timer.js";
 import { notify } from "./notify.js"
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 /**
  * Custom HTML element for a TimerContainer, including the display and functionality
@@ -15,7 +15,7 @@ class TimerContainer extends HTMLElement {
      */
     constructor() {
         super();
-        // intiailization wrappers
+        // initialization wrappers
         let o_wrapper = document.createElement("div");
         o_wrapper.className = "timer-box";
 
@@ -24,9 +24,21 @@ class TimerContainer extends HTMLElement {
 
         // initialize timerdisplay instance
         let o_timer_display = new TimerDisplay();
-        o_timer_display.setAttribute("time", 0);
         o_timer_display.setAttribute("pomos-comp", 0);
 
+        // initialize timerdisplay instance based on user settings
+        if(window.localStorage.getItem("timer_settings") != null) {
+            let o_timer_settings = window.localStorage.getItem("timer_settings");
+            o_timer_settings = JSON.parse(o_timer_settings);
+            TimerContainer.A_STATE_DURATIONS = o_timer_settings;
+            o_timer_display.setAttribute("pomo-length", o_timer_settings[0]);
+        } else {
+            o_timer_display.setAttribute("time", 0);
+            o_timer_display.setAttribute("pomo-length", 1500000);
+            window.localStorage.setItem("timer_settings", 
+                JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+        }
+      
         // setting timer display theme default to stars
         o_timer_display.setAttribute("theme", "stars");
 
@@ -37,6 +49,7 @@ class TimerContainer extends HTMLElement {
         // initialize start button
         let o_start_btn = document.createElement("button");
         o_start_btn.id = "start-btn";
+        o_start_btn.title = "Start Work Session";
         o_start_btn.className = "custom-btn";
         o_start_btn.innerText = TimerContainer.S_BEGIN_MESSAGE;
 
@@ -46,6 +59,7 @@ class TimerContainer extends HTMLElement {
         // initialize reset button
         let o_reset_btn = document.createElement("button");
         o_reset_btn.id = "reset-btn";
+        o_reset_btn.title = "Restart This Interval";
         o_reset_btn.classList.add("custom-btn", "hidden");
         o_reset_btn.innerText = TimerContainer.S_RESET_MESSAGE;
         o_reset_btn.addEventListener("click", this.handleResetPomo.bind(this));
@@ -63,6 +77,7 @@ class TimerContainer extends HTMLElement {
 
         let o_end_btn = document.createElement("button");
         o_end_btn.id = "end-btn";
+        o_end_btn.title = "End Work Session";
         o_end_btn.className = "custom-btn";
         o_end_btn.innerText = TimerContainer.S_END_MESSAGE;
         const f_fire_end_session = () => { document.EventBus.fireEvent("endSession") };
@@ -98,6 +113,39 @@ class TimerContainer extends HTMLElement {
     }
 
     // Event Handlers
+    /**
+     * Event handler function for when the pomodoro length is adjusted
+     * @param {number} n_work_time - the pomodoro length in milliseconds
+     */
+    static handlePomoLength(n_work_time) {
+        let o_timer_display = document.querySelector("timer-display");
+        o_timer_display.setAttribute("time", n_work_time);
+        o_timer_display.setAttribute("pomo-length", n_work_time);
+        TimerContainer.A_STATE_DURATIONS[0] = n_work_time;
+        window.localStorage.setItem("timer_settings", 
+            JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+        
+    }
+
+    /**
+     * Event handler function for when the short break time is adjusted
+     * @param {number} n_short_break - the short break time in milliseconds
+     */
+    static handleShortBreak(n_short_break) {
+        TimerContainer.A_STATE_DURATIONS[1] = n_short_break;
+        window.localStorage.setItem("timer_settings", 
+            JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+    }
+
+    /**
+     * Event handler function for when the long break time is adjusted
+     * @param {number} n_long_break - the long break time in milliseconds
+     */
+    static handleLongBreak(n_long_break) {
+        TimerContainer.A_STATE_DURATIONS[2] = n_long_break;
+        window.localStorage.setItem("timer_settings", 
+            JSON.stringify(TimerContainer.A_STATE_DURATIONS));
+    }
 
     /**
      * Event handler function for when the "reset pomo" button is pressed
@@ -180,7 +228,7 @@ class TimerContainer extends HTMLElement {
             o_reset_error.classList.add("color-error");
             ++(this.n_done_pomos);
             // go to long break after 4 pomos
-            if (this.n_done_pomos == 4) {
+            if (this.n_done_pomos == TimerContainer.N_SET) {
                 this.n_curr_state = TimerContainer.N_L_BREAK;
 
                 notify(this.n_curr_state);
@@ -265,6 +313,14 @@ class TimerContainer extends HTMLElement {
         TimerContainer.B_DEBUG = !TimerContainer.B_DEBUG;
     }
 }
+
+/**
+ * Set count
+ * @static
+ * @type {number}
+ */
+TimerContainer.N_SET = 4;
+
 /**
 * Start Pomo button message
 * @static
@@ -285,7 +341,6 @@ TimerContainer.S_END_MESSAGE = "End Session";
  * @type {string}
  */
 TimerContainer.S_RESET_MESSAGE = "Reset Pomo!";
-
 
 /**
  *

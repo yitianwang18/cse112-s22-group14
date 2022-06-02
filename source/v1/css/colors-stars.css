@@ -33,13 +33,13 @@
   background-size: cover;
   background-position: bottom;
 }
-  
+
 @media (max-height: 2160px) and (max-width: 3840px) {
   .full-height {
     background-image: url("../assets/img/bground/bg2-3840w.webp");
   }
 }
-  
+
 @media (max-height: 1440px) and (max-width: 2560px) {
   .full-height {
     background-image: url("../assets/img/bground/bg2-2560w.webp");
@@ -63,7 +63,7 @@
     background-image: url("../assets/img/bground/bg2-640w.webp");
   }
 }
-  
+
 /***********************
  * Color for HTML Tags *
  ***********************/
@@ -116,7 +116,7 @@ input[type=text] {
 }
 
 #wrap-task {
-  background-color:  var(--light-less-transparent);
+  background-color: var(--light-less-transparent);
   box-shadow: 0 0 5px var(--less-transparent);
 }
 
@@ -151,12 +151,19 @@ input[type=text] {
   box-shadow: inset 0 3px 3px var(--btn-hover-shadow-light), inset 0 -3px 3px var(--btn-hover-shadow-dark);
 }
 
-.clicked-settings-btn, 
+.clicked-settings-btn,
 .clicked-settings-btn:hover {
   background-color: var(--btn-transparent);
   box-shadow: inset 0 3px 3px var(--btn-clicked-shadow-dark), inset 0 -3px 3px var(--btn-clicked-shadow-light);
   color: white;
 }
+
+
+.bottom-btn:hover {
+  color: black;
+  background-color: white;
+}
+
 
 /*****************************
  * Color for Buttons *

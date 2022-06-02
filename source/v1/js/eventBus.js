@@ -1,7 +1,7 @@
 import { TimerContainer } from "./timerContainer.js";
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 
 /**
@@ -38,6 +38,7 @@ class EventBus {
         this.registerEvent("showTasks", this.handleShowTasks.bind(this));
         this.registerEvent("showSettings", this.handleShowSettings.bind(this));
         this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
+        this.registerEvent("resetSettings", this.handleResetSettings.bind(this));
         // settings buttons for first setting - Pomo Length
         this.registerEvent("settingOneButtonOne", this.settingOneButtonOne.bind(this));
         this.registerEvent("settingOneButtonTwo", this.settingOneButtonTwo.bind(this));
@@ -74,6 +75,7 @@ class EventBus {
      * Event handler function for the 'startSession' Event
      */
     handleStartSession() {
+        let o_start_error = this.o_timer_container.querySelector("#start-error");
         let o_add_error = document.querySelector("#add-error");
         this.o_task_list.showTaskList();
         // check for valid application states
@@ -88,6 +90,17 @@ class EventBus {
             this.o_task_list.closeTaskList();
             this.updateTaskDisplay();
             this.handleStartWork();
+            // Make sure the button can't be seen
+            document.querySelector("#close-task").style.visibility = "hidden";
+            
+            o_start_error.innerHTML = "";
+            o_start_error.classList.remove("color-error");
+            // This time must be the greater than the timeout for displaying the task list in taskList.js
+            setTimeout(() => {
+                document.querySelector("#close-task").style.display = "none";
+                document.querySelector("#task-title").style.display = "none";
+                document.querySelector("#all-tasks").style.display = "none";
+            }, 310);
         } else {
             // show start error message
             o_add_error.innerHTML = EventBus.S_START_ERROR;
@@ -104,6 +117,9 @@ class EventBus {
         this.o_toolbar.style.visibility = "";
         this.o_task_display.handleEndSession();
         this.o_timer_container.handleEndSession();
+        // Make sure the close task button can be seen again
+        document.querySelector("#close-task").style.visibility = "visible";
+        document.querySelector("#close-task").style.display = "none";
     }
 
     /**
@@ -218,6 +234,13 @@ class EventBus {
     }
     settingThreeButtonThree() {
         this.o_settings_tab.LBLengthLong();
+    }
+
+    /**
+     * Event handler function to reset times to default
+     */
+     handleResetSettings() {
+        this.o_settings_tab.resetSettings();
     }
 
 

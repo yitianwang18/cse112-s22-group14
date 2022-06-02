@@ -152,11 +152,16 @@ input[type=text] {
   box-shadow: inset 0 3px 3px var(--btn-hover-shadow-light), inset 0 -3px 3px var(--btn-hover-shadow-dark);
 }
 
-.clicked-settings-btn, 
+.clicked-settings-btn,
 .clicked-settings-btn:hover {
   background-color: var(--btn-transparent);
   box-shadow: inset 0 3px 3px var(--btn-clicked-shadow-dark), inset 0 -3px 3px var(--btn-clicked-shadow-light);
   color: white;
+}
+
+.bottom-btn:hover {
+  color: black;
+  background-color: white;
 }
 
 /*****************************

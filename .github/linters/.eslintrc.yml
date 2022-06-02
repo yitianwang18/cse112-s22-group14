@@ -12,6 +12,7 @@
 env:
   browser: true
   es6: true
+  es2017: true
   jest: true
 
 ###############
@@ -27,7 +28,7 @@ extends: "eslint:recommended"
 # Parser vars #
 ###############
 parserOptions:
-  ecmaVersion: 6
+  ecmaVersion: 8
   sourceType: module
 
 ignorePatterns: ["**/cypress/**/*.js"]

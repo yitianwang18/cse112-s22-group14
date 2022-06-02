@@ -30,7 +30,7 @@ class TaskList extends HTMLElement {
         // close button
         let o_close_button = document.createElement("a");
         o_close_button.classList.add("close", "btn", "hidden");
-        o_close_button.title = "Close Tasklist";
+        o_close_button.title = "Close Tasklist (esc)";
         o_close_button.id = "close-task";
         o_close_button.innerHTML = "&times;";
         // event to close the task list
@@ -149,7 +149,8 @@ class TaskList extends HTMLElement {
     handleDrag(o_event) {
         o_event.preventDefault();
         // y-coordinate is either from desktop or from mobile
-        const n_y_coord = o_event.clientY != null ? o_event.clientY : o_event.targetTouches[0].pageY;
+        const n_y_coord = o_event.clientY != null ? o_event.clientY : 
+            o_event.targetTouches[0].pageY;
         // get task that is directly after the position of current task
         // that is being dragged
         const o_after_task = this.getDragAfterElement(n_y_coord); 
@@ -334,7 +335,8 @@ class TaskList extends HTMLElement {
         }
         else {
             o_task_item.setAttribute("taskname", s_curr_input_val);
-            o_error_span.innerHTML = n_validate_result == 1 ? TaskList.S_TASK_ERROR_EMPTY : TaskList.S_TASK_ERROR_TOO_LONG;
+            o_error_span.innerHTML = n_validate_result == 1 ? TaskList.S_TASK_ERROR_EMPTY : 
+                TaskList.S_TASK_ERROR_TOO_LONG;
             o_error_span.classList.add("color-error");
             // add red border
             o_task_item_input.classList.add("task-input-error");
@@ -407,7 +409,7 @@ class TaskList extends HTMLElement {
         }
         // update this.o_tasks
         const n_num_tasks = this.getNumTasks();
-        const o_task_items = document.getElementById('all-tasks').children;
+        const o_task_items = this.querySelector('#all-tasks').children;
         // make sure to update eventlisteners, taskid, and taskname
         for (let i = 0; i < n_num_tasks; i++) {
             const o_task_item = o_task_items[i]; 
@@ -433,14 +435,11 @@ class TaskList extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showTaskList() {
+        this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "block";
 
-        if (window.screen.width <= 500) {
-            o_tasks.classList.add("sidenav-small");
-        } else {
-            o_tasks.classList.add("sidenav-open");
-        }
+        o_tasks.classList.add("sidenav-open");
 
         // Remove everything during animation to prevent sandwiching of text
         setTimeout(() => {
@@ -484,8 +483,6 @@ class TaskList extends HTMLElement {
         this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
         this.clearInput();
-
-        o_tasks.classList.remove("sidenav-small");
         o_tasks.classList.remove("sidenav-open");
         this.querySelector("#task-title").style.display = "none";
         this.querySelector("#all-tasks").style.display = "none";
@@ -570,7 +567,8 @@ TaskList.S_TASK_ERROR_EMPTY = "Input cannot be empty!";
  * @static
  * @type {String}
  */
-TaskList.S_TASK_ERROR_TOO_LONG = `Input cannot be more than ${TaskList.N_MAX_TASK_LENGTH} chars long!`;
+TaskList.S_TASK_ERROR_TOO_LONG = `Input cannot be more than \
+    ${TaskList.N_MAX_TASK_LENGTH} chars long!`;
 
 customElements.define("task-list", TaskList);
 

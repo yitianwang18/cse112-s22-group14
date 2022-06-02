@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: js/notify.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: js/notify.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+// variable for turning on/off console logs used for debugging
+// const B_CONSOLE_LOG = false;
+/**
+ * Sends web notifications to the user representing the state of the timer.
+ * @param {number} n_state number denoting the state of the timer. 
+ * See timerContainer.js for timer state values.
+ */
+function notify(n_state){
+    let o_options = {
+        silent: true
+    }
+
+    //check if notifications are supported
+    if (!("Notification" in window)) {
+        alert("This browser does not support desktop notifications.");
+        return;
+    }
+  
+    //check if notifications are turned on
+    if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(function (permission) {
+            //ask user to enable notifications
+            if (permission !== "granted") {
+                alert("Please enable notifications.");
+            }
+        
+            //send notification
+            else if(Notification.permission !== "denied") {
+                let s_alert = "All tasks completed. Good work!";
+                //start new pomo notif
+                if(n_state==0){ 
+                    s_alert = "Time to start the next work session!";
+                } else if(n_state==1) {
+                    s_alert = "Time for a short break!";
+                } else if(n_state==2) {
+                    s_alert = "Time for a long break!";
+                }
+          
+                let o_notification = new Notification(s_alert, o_options);
+
+                // check safari
+                let b_isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.
+                    test(navigator.userAgent);
+
+                //start new pomo notif
+                if (b_isSafari) {
+                    let o_promise = document.getElementById("notifs").play();
+
+                    if (o_promise !== undefined) {
+                        o_promise.catch(() => {
+                            // Auto-play was prevented
+                            // Show a UI element to let the user manually start playback
+                            const b_showErrorNotification = localStorage.
+                                getItem("safari-error-notification");
+                            const b_showErrorNotification_preference = localStorage.
+                                getItem("safari-error-notification-preference");
+
+                            if (b_showErrorNotification === null || 
+                                    b_showErrorNotification === "false" || 
+                                    b_showErrorNotification_preference === "true") {
+                                // show error notification view
+                                let o_notifi = document.querySelector("notification-box");
+                                o_notifi.showNotificationBox();
+                                localStorage.setItem("safari-error-notification", "true")
+                            } 
+                        }).then(() => {
+                            // Auto-play started successfully
+                        });
+                    }
+
+                } else {
+                    let o_audio = document.getElementById("notifs");
+                    o_audio.play();
+                }
+                return o_notification;
+            }
+        });
+    }
+}
+
+export { notify };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EventBus.html">EventBus</a></li><li><a href="InstructionsBox.html">InstructionsBox</a></li><li><a href="NotificationBox.html">NotificationBox</a></li><li><a href="SettingsTab.html">SettingsTab</a></li><li><a href="Task.html">Task</a></li><li><a href="TaskDisplay.html">TaskDisplay</a></li><li><a href="TaskList.html">TaskList</a></li><li><a href="TimerContainer.html">TimerContainer</a></li><li><a href="TimerDisplay.html">TimerDisplay</a></li></ul><h3>Global</h3><ul><li><a href="global.html#handleKeyBinds">handleKeyBinds</a></li><li><a href="global.html#handleThemeBtnPressed">handleThemeBtnPressed</a></li><li><a href="global.html#notify">notify</a></li><li><a href="global.html#resetSettings">resetSettings</a></li><li><a href="global.html#settingOneButtonOne">settingOneButtonOne</a></li><li><a href="global.html#settingThreeButtonOne">settingThreeButtonOne</a></li><li><a href="global.html#settingTwoButtonOne">settingTwoButtonOne</a></li><li><a href="global.html#showInstructions">showInstructions</a></li><li><a href="global.html#showSettingsTab">showSettingsTab</a></li><li><a href="global.html#showTaskList">showTaskList</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Jun 01 2022 23:34:48 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

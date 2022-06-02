@@ -7,7 +7,6 @@
   --box-border: calc(0.5rem);
 }
 
-
 /*********************
  * Styling HTML Tags *
  *********************/
@@ -397,7 +396,7 @@ input[type=text] {
 /**
  * Styling container for header of settings
  */
- #settings-title {
+#settings-title {
   position: relative;
 }
 
@@ -417,7 +416,7 @@ input[type=text] {
 }
 
 .setting-wrap {
-  margin: calc(2rem - 1vw) calc(0.5rem + 1vw) calc(3rem - 1vw);
+  margin: calc(1.5rem - 1vw) calc(0.5rem + 1vw) calc(2rem - 1vw);
 }
 
 .setting-wrap label {
@@ -448,17 +447,28 @@ input[type=text] {
   border-bottom-right-radius: var(--btn-border);
 }
 
-.clicked-settings-btn, 
+.clicked-settings-btn,
 .clicked-settings-btn:hover {
   cursor: default;
 }
 
 .centered-note {
   margin-top: 1.5vw;
+  display: flex;
+  justify-content: center;
 }
 
-.centered-note footer {
-  margin: 0.8rem;
+.bottom-btn {
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+  border: 2px solid;
+  padding: calc(0.5rem + 0.5vw);
+  font-size: calc(0.75rem + 0.25vw);
+  font-weight: 600;
 }
 
 /**************************
@@ -681,7 +691,7 @@ input[type=text] {
  */
 .instruct-head {
   text-align: center;
-  margin-top: -38px;
+  margin-top: 10px;
   margin-bottom: 0;
   padding: 15px 15px 5px 15px;
   font-size: 2.5rem;
@@ -759,12 +769,9 @@ input[type=text] {
  * Style close button for instructions modal popup
  */
 .close2 {
-  text-decoration: none;
-  position: relative;
-  top: 20px;
-  margin-right: 10px;
-  left: 47%;
-  padding: 0 9px;
+  position: absolute;
+  top: 7.5vh;
+  right: 12%;
 }
 
 /************************
@@ -785,7 +792,7 @@ input[type=text] {
  */
 .notification-section-open {
   width: 30%;
-  height: 22vh;
+  height: 28vh;
   border-width: 2px;
   overflow-y: auto;
 }
@@ -813,12 +820,26 @@ input[type=text] {
     max-width: 50%;
   }
 
-  .close2 {
-    left: 46%;
-  }
-
   .sidenav {
     max-width: 80%;
+  }
+
+  .settings-class {
+    max-width: 80%;
+  }
+
+  .settings-custom-btn {
+    font-size: calc(1.25rem + 0.5vw);
+    padding: calc(1.25rem + 0.5vw) calc(1.25rem + 0.5vw);
+  }
+
+  .setting-wrap label {
+    font-size: calc(0.75rem + 0.5vw);
+  }
+
+  .centered-note footer {
+    margin: 0.5rem;
+    font-size: calc(0.75rem + 0.5vw);
   }
 
   .middle-container > div {
@@ -832,6 +853,10 @@ input[type=text] {
 
   .inst-list {
     padding-left: 6%;
+  }
+
+  .close2 {
+    right: 15%;
   }
 }
 
@@ -877,7 +902,7 @@ input[type=text] {
     width: 60%;
   }
 
-  #all-tasks, 
+  #all-tasks,
   #wrap-tasks {
     position: relative;
     width: 100%;
@@ -901,10 +926,6 @@ input[type=text] {
 
   .inst-hotkeys {
     margin-top: 5px;
-  }
-
-  .close2 {
-    left: 45%;
   }
 
   .timer-box {
@@ -950,6 +971,16 @@ input[type=text] {
   #task-title hr {
     margin: 50px 0;
   }
+
+  .setting-wrap {
+    margin: calc(1rem - 1vw) calc(0.5rem + 1vw) calc(1.25rem - 1vw);
+  }
+
+  .settings-btns {
+    margin: 0.5rem 1rem;
+  }
+  
+
 }
 
 @media screen and (max-width: 471px) {
@@ -967,6 +998,11 @@ input[type=text] {
   .pomo-logo {
     visibility: hidden;
     width: 0;
+  }
+
+  .settings-custom-btn {
+    font-size: calc(1rem + 0.5vw);
+    padding: calc(1rem + 0.5vw) calc(1rem + 0.5vw);
   }
 }
 
@@ -1037,5 +1073,9 @@ input[type=text] {
   #instructions-para {
     font-size: 0.7rem;
     line-height: 14px;
+  }
+
+  .close2 {
+    top: 5.25vh;
   }
 }

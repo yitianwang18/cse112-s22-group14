@@ -22,11 +22,11 @@ function handleThemeBtnPressed() {
     // Change the value of href attribute to change the css sheet.
     if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
         o_theme.setAttribute("href", "./css/colors-forest.css");
-        o_theme_btn.setAttribute("title", "Forest Theme");
+        o_theme_btn.setAttribute("title", "Stars Theme (c)");
         o_timer_display.setAttribute("theme", "forest");
     } else {
         o_theme.setAttribute("href", "./css/colors-stars.css");
-        o_theme_btn.setAttribute("title", "Stars Theme");
+        o_theme_btn.setAttribute("title", "Forest Theme (c)");
         o_timer_display.setAttribute("theme", "stars");
     }
 }
@@ -88,6 +88,13 @@ function settingThreeButtonThree() {
 function showInstructions() {
     let inst = document.querySelector("instructions-box");
     inst.showInstructionsBox();
+}
+
+/**
+ * Event handler function to reset time lengths to default
+ */
+ function resetSettings() {
+    document.EventBus.fireEvent("resetSettings");
 }
 
 /**
@@ -187,6 +194,10 @@ document.addEventListener("DOMContentLoaded", () => {
     o_setting_three_btn_two.addEventListener("click", settingThreeButtonTwo);
     let o_setting_three_btn_three = document.getElementById("sett-three-btn-three");
     o_setting_three_btn_three.addEventListener("click", settingThreeButtonThree);
+
+    // Code for resetting time lengths to default
+    let o_reset_sett_btn = document.getElementById("reset-time-btn");
+    o_reset_sett_btn.addEventListener("click", resetSettings);
 
 
 

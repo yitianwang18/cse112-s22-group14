@@ -1,12 +1,12 @@
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+// const B_CONSOLE_LOG = false;
 
 /**
  * Custom HTML element encapsulating all of the functionality related to the Notification Box
  * @extends HTMLElement
  */
- class NotificationBox extends HTMLElement {
+class NotificationBox extends HTMLElement {
 
     /**
      * Constructs a new Notification Box, initializing all elements
@@ -40,11 +40,41 @@ const B_CONSOLE_LOG = false;
         let o_inst_text = document.createElement("div");
         o_inst_text.className = "hidden";
         o_inst_text.id = "instructions-para";
-        o_inst_text.innerText = "Please go to 'Preference window' -> 'Websites' -> 'Auto-Play' to enable the notification audio";
+        o_inst_text.innerText = "Please go to 'Preference window' -> 'Websites' -> \
+            'Auto-Play' to enable the notification audio";
         o_inst_title_wrapper.append(o_inst_title);
     
+            // add safari error notification check box 
+        let o_safari_check_box = document.createElement("input");
+        o_safari_check_box.id = "safari-check-box";
+        o_safari_check_box.setAttribute("type", "checkbox");
+
+        const b_showErrorNotification_preference = 
+        localStorage.getItem("safari-error-notification-preference");
+
+        if (b_showErrorNotification_preference === null) {
+            localStorage.setItem("safari-error-notification-preference", "false");
+            o_safari_check_box.checked = false;        
+        }
+
+        o_safari_check_box.addEventListener('change', (event) => {
+            if (event.currentTarget.checked) {
+                localStorage.setItem("safari-error-notification-preference", "true");
+            } else {
+                localStorage.setItem("safari-error-notification-preference", "false");
+            }
+        })
+
+        let o_safari_check_box_label = document.createElement("label");
+        o_safari_check_box_label.id = "safari-check-box-label";
+        o_safari_check_box_label.innerHTML = "Do Not Show Me This Again";
+
+            // append safari check box
 
         o_wrapper_obj.append(o_close_button, o_inst_title_wrapper, o_inst_text);
+        o_wrapper_obj.append(o_safari_check_box);
+        o_wrapper_obj.append(o_safari_check_box_label);
+
         this.append(o_wrapper_obj_back);
         this.append(o_wrapper_obj);
     }

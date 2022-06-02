@@ -1,7 +1,7 @@
 import { TimerContainer } from "../js/timerContainer.js";
 
 test("Test getTimeRemaining function", () => {
-
+    document.body.innerHTML = "<timer-element></timer-element>";
     let o_timer_cont = new TimerContainer();
 
     if (!TimerContainer.B_DEBUG) {
@@ -22,8 +22,45 @@ test("Test getTimeRemaining function", () => {
 });
 
 test("Test timer container default values", () => {
+    document.body.innerHTML = "<timer-element></timer-element>";
     let o_timer_cont = new TimerContainer();
     expect(o_timer_cont.n_curr_state).toBe(TimerContainer.N_NOT_STARTED);
     expect(o_timer_cont.n_done_pomos).toBe(0);
 });
+
+test("Test timer container handlePomoLength function", () => {
+    document.body.innerHTML = "<timer-element></timer-element>";
+    let n_input_time = 1200000;
+    TimerContainer.handlePomoLength(n_input_time);
+    let n_work_time = TimerContainer.A_STATE_DURATIONS[0];
+    expect(n_work_time).toBe(n_input_time);
+});
+
+test("Test timer container handleShortBreak function", () => {
+    document.body.innerHTML = "<timer-element></timer-element>";
+    let n_input_time = 450000;
+    TimerContainer.handleShortBreak(n_input_time);
+    let n_short_break= TimerContainer.A_STATE_DURATIONS[1];
+    expect(n_short_break).toBe(n_input_time);
+});
+
+test("Test timer container handleLongBreak function", () => {
+    document.body.innerHTML = "<timer-element></timer-element>";
+    let n_input_time = 1800000;
+    TimerContainer.handleLongBreak(n_input_time);
+    let n_short_break= TimerContainer.A_STATE_DURATIONS[2];
+    expect(n_short_break).toBe(n_input_time);
+});
+
+test("Test title timer display", () => {
+    let o_timer_cont = new TimerContainer();
+    expect(document.title).toBe("Powelldoro Timer");
+
+    o_timer_cont.n_curr_state = TimerContainer.N_WORK;
+    o_timer_cont.n_start_time = new Date().getTime();
+    o_timer_cont.renderComponents();
+    expect(document.title).toBe("20:00");
+});
+
+
 
