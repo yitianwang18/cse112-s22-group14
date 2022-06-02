@@ -215,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //display user theme preference(default to stars)
     const o_theme_preference = window.localStorage.getItem("o_theme_preference");  
     let o_theme = document.getElementById("theme");
+    const o_timer_container = document.querySelector("timer-element");
     const o_timer_display = o_timer_container.querySelector("timer-display");
 
     // Change the value of href attribute to change the css sheet.
