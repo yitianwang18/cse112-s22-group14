@@ -35,6 +35,15 @@ class SettingsTab extends HTMLElement {
         o_close_button.innerHTML = "&times;";
         // event to close the menu if you click the x
         o_close_button.addEventListener("click", this.closeSettingsTab.bind(this));
+        o_close_button.setAttribute("tabIndex", "1");
+
+        o_close_button.addEventListener('focus', (event) => {
+            o_close_button.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.closeSettingsTab();
+                }
+            });
+        });
 
         // wrapper for input/headers
         let o_settings_title_wrapper = document.createElement("div");
@@ -59,17 +68,36 @@ class SettingsTab extends HTMLElement {
         let o_setting_one_buttons = document.createElement("div");
         o_setting_one_buttons.classList.add("settings-btns");
 
+
         let o_setting_one_btn_one = document.createElement("div");
         o_setting_one_btn_one.classList.add("settings-custom-btn");
         o_setting_one_btn_one.id = "sett-one-btn-one";
         o_setting_one_btn_one.innerHTML = "20"; 
         o_setting_one_btn_one.title = "20 Min. Work Session"; 
+        o_setting_one_btn_one.setAttribute("tabIndex", "3");
         
+        o_setting_one_btn_one.addEventListener('focus', (event) => {
+            o_setting_one_btn_one.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.PSLengthShort();
+                }
+            });
+        });
+
         let o_setting_one_btn_two = document.createElement("div");
         o_setting_one_btn_two.classList.add("settings-custom-btn", "clicked-settings-btn");
         o_setting_one_btn_two.id = "sett-one-btn-two";
         o_setting_one_btn_two.innerHTML = "25"; 
         o_setting_one_btn_two.title = "25 Min. Work Session"; 
+        o_setting_one_btn_two.setAttribute("tabIndex", "4");
+        
+        o_setting_one_btn_two.addEventListener('focus', (event) => {
+            o_setting_one_btn_two.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.PSLengthMed();
+                }
+            });
+        });
         
 
         let o_setting_one_btn_three = document.createElement("div");
@@ -77,6 +105,15 @@ class SettingsTab extends HTMLElement {
         o_setting_one_btn_three.id = "sett-one-btn-three";
         o_setting_one_btn_three.innerHTML = "30"; 
         o_setting_one_btn_three.title = "30 Min. Work Session"; 
+        o_setting_one_btn_three.setAttribute("tabIndex", "5");
+
+        o_setting_one_btn_three.addEventListener('focus', (event) => {
+            o_setting_one_btn_three.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.PSLengthLong();
+                }
+            });
+        });
 
         o_setting_one_buttons.append(o_setting_one_btn_one, o_setting_one_btn_two, 
             o_setting_one_btn_three);
@@ -97,18 +134,48 @@ class SettingsTab extends HTMLElement {
         o_setting_two_btn_one.id = "sett-two-btn-one";
         o_setting_two_btn_one.innerHTML = "5"; 
         o_setting_two_btn_one.title = "5 Min. Short Break"; 
+        o_setting_two_btn_one.setAttribute("tabIndex", "6");
+
+        o_setting_two_btn_one.addEventListener('focus', (event) => {
+            o_setting_two_btn_one.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.SBLengthShort();
+                }
+            });
+        });
+
         
         let o_setting_two_btn_two = document.createElement("div");
         o_setting_two_btn_two.classList.add("settings-custom-btn");
         o_setting_two_btn_two.id = "sett-two-btn-two";
         o_setting_two_btn_two.innerHTML = "7.5"; 
         o_setting_two_btn_two.title = "7.5 Min. Short Break"; 
+        o_setting_two_btn_two.setAttribute("tabIndex", "7");
+
+        o_setting_two_btn_two.addEventListener('focus', (event) => {
+            o_setting_two_btn_two.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.SBLengthMed();
+                }
+            });
+        });
+
         
         let o_setting_two_btn_three = document.createElement("div");
         o_setting_two_btn_three.classList.add("settings-custom-btn");
         o_setting_two_btn_three.id = "sett-two-btn-three";
         o_setting_two_btn_three.innerHTML = "10"; 
         o_setting_two_btn_three.title = "10 Min. Short Break"; 
+        o_setting_two_btn_three.setAttribute("tabIndex", "8");
+
+        o_setting_two_btn_three.addEventListener('focus', (event) => {
+            o_setting_two_btn_three.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.SBLengthLong();
+                }
+            });
+        });
+
 
         o_setting_two_buttons.append(o_setting_two_btn_one, o_setting_two_btn_two, 
             o_setting_two_btn_three);
@@ -130,18 +197,48 @@ class SettingsTab extends HTMLElement {
         o_setting_three_btn_one.id = "sett-three-btn-one";
         o_setting_three_btn_one.innerHTML = "25";
         o_setting_three_btn_one.title = "25 Min. Long Break"; 
+        o_setting_three_btn_one.setAttribute("tabIndex", "9");
+
+        o_setting_three_btn_one.addEventListener('focus', (event) => {
+            o_setting_three_btn_one.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.LBLengthShort();
+                }
+            });
+        });
+
         
         let o_setting_three_btn_two = document.createElement("div");
         o_setting_three_btn_two.classList.add("settings-custom-btn");
         o_setting_three_btn_two.id = "sett-three-btn-two";
         o_setting_three_btn_two.innerHTML = "30"; 
         o_setting_three_btn_two.title = "30 Min. Long Break"; 
+        o_setting_three_btn_two.setAttribute("tabIndex", "10");
+
+        o_setting_three_btn_two.addEventListener('focus', (event) => {
+            o_setting_three_btn_two.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.LBLengthMed();
+                }
+            });
+        });
+
         
         let o_setting_three_btn_three = document.createElement("div");
         o_setting_three_btn_three.classList.add("settings-custom-btn", "clicked-settings-btn");
         o_setting_three_btn_three.id = "sett-three-btn-three";
         o_setting_three_btn_three.innerHTML = "35"; 
         o_setting_three_btn_three.title = "35 Min. Long Break"; 
+        o_setting_three_btn_three.setAttribute("tabIndex", "11");
+
+        o_setting_three_btn_three.addEventListener('focus', (event) => {
+            o_setting_three_btn_three.addEventListener('keypress', (event) => {
+                if(event.key === "Enter"){
+                    this.LBLengthLong();
+                }
+            });
+        });
+
 
         o_setting_three_buttons.append(o_setting_three_btn_one, o_setting_three_btn_two, 
             o_setting_three_btn_three);
@@ -155,12 +252,14 @@ class SettingsTab extends HTMLElement {
         o_bottom_theme.innerText = "Change Theme";
         o_bottom_theme.title = "Forest Theme (c)";
         o_bottom_theme.id = "theme-btn";
+        o_bottom_theme.setAttribute("tabIndex", "12");
 
         let o_bottom_reset = document.createElement("div");
         o_bottom_reset.innerText = "Reset Settings";
         o_bottom_reset.classList.add("bottom-btn");
         o_bottom_reset.title = "Reset to Default Times";
         o_bottom_reset.id = "reset-time-btn";
+        o_bottom_reset.setAttribute("tabIndex", "13");
         o_bottom_wrapper.append(o_bottom_theme, o_bottom_reset);
 
 
@@ -270,7 +369,6 @@ class SettingsTab extends HTMLElement {
         o_menu.style.display = "block";
         o_menu.classList.add("settings-class-open");
         this.querySelector("#side-settings-blocker").style.display = "block";
-
 
         // Show text after animation to prevent sandwiching
         setTimeout(() => {
