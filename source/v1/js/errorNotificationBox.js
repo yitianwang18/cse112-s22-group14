@@ -67,7 +67,7 @@ class NotificationBox extends HTMLElement {
 
         let o_safari_check_box_label = document.createElement("label");
         o_safari_check_box_label.id = "safari-check-box-label";
-        o_safari_check_box_label.innerHTML = "Not Show Error Notification Again";
+        o_safari_check_box_label.innerHTML = "Do Not Show Me This Again";
 
             // append safari check box
 
