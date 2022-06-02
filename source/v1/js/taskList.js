@@ -439,12 +439,7 @@ class TaskList extends HTMLElement {
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "block";
 
-
-        if (window.screen.width <= 500) {
-            o_tasks.classList.add("sidenav-small");
-        } else {
-            o_tasks.classList.add("sidenav-open");
-        }
+        o_tasks.classList.add("sidenav-open");
 
         // Remove everything during animation to prevent sandwiching of text
         setTimeout(() => {
@@ -488,8 +483,6 @@ class TaskList extends HTMLElement {
         this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
         this.clearInput();
-
-        o_tasks.classList.remove("sidenav-small");
         o_tasks.classList.remove("sidenav-open");
         this.querySelector("#task-title").style.display = "none";
         this.querySelector("#all-tasks").style.display = "none";
