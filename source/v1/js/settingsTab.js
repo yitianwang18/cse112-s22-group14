@@ -620,7 +620,7 @@ class SettingsTab extends HTMLElement {
         //Call the functions to set each time back to the original
         this.PSLengthMed();
         this.SBLengthShort();
-        this.LBLengthMed();
+        this.LBLengthLong();
      }
 
 }

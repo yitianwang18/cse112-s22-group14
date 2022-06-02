@@ -1,6 +1,7 @@
 import { TimerContainer } from "./timerContainer.js";
 import { TaskList } from "./taskList.js";
 import { SettingsTab } from "./settingsTab.js";
+import { WelcomeBox } from "./welcomeBox.js";
 import { InstructionsBox } from "./instructionsBox.js";
 import { NotificationBox } from "./errorNotificationBox.js";
 import { EventBus } from "./eventBus.js";
@@ -93,6 +94,13 @@ function showInstructions() {
 /**
  * Event handler function to reset time lengths to default
  */
+ function showWelcome() {
+    document.EventBus.fireEvent("showWelcome");
+}
+
+/**
+ * Event handler function to reset time lengths to default
+ */
  function resetSettings() {
     document.EventBus.fireEvent("resetSettings");
 }
@@ -105,36 +113,45 @@ function handleKeyBinds(o_event) {
     if (B_CONSOLE_LOG) {
         console.log(o_event);
     }
-    if (o_event.target.tagName != "INPUT") {
-        switch (o_event.key) {
-        case "c":
-            handleThemeBtnPressed();
-            break;
-        case " ":
-            document.EventBus.fireEvent("spaceKeybind");
-            // disable space scrolling
-            o_event.preventDefault();
-            break;
-        case "Escape":
-            document.EventBus.fireEvent("closeWindows");
-            break;
-        case "t":
-            document.EventBus.fireEvent("showTasks");
-            // prevent event from bubbling into input
-            o_event.preventDefault();
-            break;
-        case "s":
-            document.EventBus.fireEvent("showSettings");
-            break;
-        case "i":
-            showInstructions();
-            break;
-        case "n":
-            document.EventBus.fireEvent("nextTask");
-            break;
-        case "r":
-            document.EventBus.fireEvent("resetPomo");
-            break;
+    else if (o_event.target.tagName != "INPUT") {
+        //if Welcome Box is open, only hotkey is to close it
+        if (document.querySelector("welcome-box").getIsShown()) {
+            switch (o_event.key) {
+            case "Escape":
+                document.EventBus.fireEvent("closeWindows");
+                break;
+            }
+        } else {
+            switch (o_event.key) {
+            case "c":
+                handleThemeBtnPressed();
+                break;
+            case " ":
+                document.EventBus.fireEvent("spaceKeybind");
+                // disable space scrolling
+                o_event.preventDefault();
+                break;
+            case "Escape":
+                document.EventBus.fireEvent("closeWindows");
+                break;
+            case "t":
+                document.EventBus.fireEvent("showTasks");
+                // prevent event from bubbling into input
+                o_event.preventDefault();
+                break;
+            case "s":
+                document.EventBus.fireEvent("showSettings");
+                break;
+            case "i":
+                showInstructions();
+                break;
+            case "n":
+                document.EventBus.fireEvent("nextTask");
+                break;
+            case "r":
+                document.EventBus.fireEvent("resetPomo");
+                break;
+            }
         }
     }
 
@@ -146,7 +163,7 @@ function handleKeyBinds(o_event) {
  */
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Code to automatically open instructions if it has been a month since the last visit
+    // Code to automatically open welcome message if it has been a month since the last visit
     let a_daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     let o_date = new Date();
@@ -154,14 +171,22 @@ document.addEventListener("DOMContentLoaded", () => {
         (o_date.getFullYear() * 365);
     let n_prevDate = localStorage.getItem("n_prevDate");
 
-    if (n_prevDate == null || n_currDate - n_prevDate >= 30) {
-        showInstructions();
+    if (n_prevDate == null || ( n_currDate - n_prevDate >= 30)){
+        if (B_CONSOLE_LOG) {
+            console.log("First time in site or it's been over a month");
+        }
+        let welc = document.querySelector("welcome-box");
+        welc.showWelcomeBox();
     }
     localStorage.setItem("n_prevDate", n_currDate);
 
     // Code for change theme button functionality
     let o_theme_btn = document.getElementById("theme-btn");
     o_theme_btn.addEventListener("click", handleThemeBtnPressed);
+
+    // This code was used to test the welcome pop up
+    // let o_welc_btn = document.getElementById("welc-btn");
+    // o_welc_btn.addEventListener("click", showWelcome);
 
     // Code for showing / hiding TaskList functionality
     let o_task_btn = document.getElementById("task-btn");
