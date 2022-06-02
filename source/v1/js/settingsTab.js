@@ -352,7 +352,7 @@ class SettingsTab extends HTMLElement {
     }
 
     /**
-     * Event handler function to change pomo length to medium (30)
+     * Event handler function to change pomo length to long (30)
      */
     PSLengthLong() {
         if (B_CONSOLE_LOG) {
@@ -555,8 +555,10 @@ class SettingsTab extends HTMLElement {
         if (B_CONSOLE_LOG) {
             console.log("settingsTab.js - resetSettings")
         }
-        //ADD FUNCTIONALITY HERE - Probably something like this:
-        //TimerContainer.handleDefaultTimes();
+        //Call the functions to set each time back to the original
+        this.PSLengthMed();
+        this.SBLengthShort();
+        this.LBLengthMed();
      }
 
 }
