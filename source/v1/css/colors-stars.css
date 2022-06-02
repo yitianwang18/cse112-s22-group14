@@ -158,6 +158,13 @@ input[type=text] {
   color: white;
 }
 
+
+.bottom-btn:hover {
+  color: black;
+  background-color: white;
+}
+
+
 /*****************************
  * Color for Buttons *
  *****************************/
