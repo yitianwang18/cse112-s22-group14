@@ -38,6 +38,7 @@ class EventBus {
         this.registerEvent("showTasks", this.handleShowTasks.bind(this));
         this.registerEvent("showSettings", this.handleShowSettings.bind(this));
         this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
+        this.registerEvent("resetSettings", this.handleResetSettings.bind(this));
         // settings buttons for first setting - Pomo Length
         this.registerEvent("settingOneButtonOne", this.settingOneButtonOne.bind(this));
         this.registerEvent("settingOneButtonTwo", this.settingOneButtonTwo.bind(this));
@@ -233,6 +234,13 @@ class EventBus {
     }
     settingThreeButtonThree() {
         this.o_settings_tab.LBLengthLong();
+    }
+
+    /**
+     * Event handler function to reset times to default
+     */
+     handleResetSettings() {
+        this.o_settings_tab.resetSettings();
     }
 
 

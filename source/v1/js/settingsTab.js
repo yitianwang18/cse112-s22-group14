@@ -52,7 +52,6 @@ class SettingsTab extends HTMLElement {
 
         let o_settings_title = document.createElement("h1");
         o_settings_title.innerText = "Settings";
-        // o_settings_title.setAttribute("tabIndex", "1");
 
         // wrapper for all settings
         let o_all_settings_wrapper = document.createElement("div");
@@ -65,7 +64,6 @@ class SettingsTab extends HTMLElement {
 
         let o_setting_one_title = document.createElement("label");
         o_setting_one_title.innerText = "Pomo Session Length:";
-        // o_setting_one_title.setAttribute("tabIndex", "3");
 
         let o_setting_one_buttons = document.createElement("div");
         o_setting_one_buttons.classList.add("settings-btns");
@@ -127,7 +125,6 @@ class SettingsTab extends HTMLElement {
 
         let o_setting_two_title = document.createElement("label");
         o_setting_two_title.innerText = "Short Break Length:";
-        // o_setting_two_title.setAttribute("tabIndex", "7");
 
         let o_setting_two_buttons = document.createElement("div");
         o_setting_two_buttons.classList.add("settings-btns");
@@ -191,7 +188,6 @@ class SettingsTab extends HTMLElement {
 
         let o_setting_three_title = document.createElement("label");
         o_setting_three_title.innerText = "Long Break Length:";
-        // o_setting_three_title.setAttribute("tabIndex", "11");
 
         let o_setting_three_buttons = document.createElement("div");
         o_setting_three_buttons.classList.add("settings-btns");
@@ -248,15 +244,23 @@ class SettingsTab extends HTMLElement {
             o_setting_three_btn_three);
         o_setting_three_wrapper.append(o_setting_three_title, o_setting_three_buttons);
       
-        // Bottom note to explain settings
+        // Bottom two settings not related to times
         let o_bottom_wrapper = document.createElement("div");
         o_bottom_wrapper.classList.add("centered-note");
-        let o_bottom_note = document.createElement("footer");
-        o_bottom_note.innerText = "Note: Numbers are in minutes";
-        let o_bottom_example = document.createElement("footer");
-        o_bottom_example.innerText = "(i.e. 7.5 = 7 minutes and 30 seconds)";
-        o_bottom_wrapper.append(o_bottom_note, o_bottom_example);
-        // o_bottom_wrapper.setAttribute("tabIndex", "15");
+        let o_bottom_theme = document.createElement("div");
+        o_bottom_theme.classList.add("bottom-btn");
+        o_bottom_theme.innerText = "Change Theme";
+        o_bottom_theme.title = "Forest Theme (c)";
+        o_bottom_theme.id = "theme-btn";
+        o_bottom_theme.setAttribute("tabIndex", "12");
+
+        let o_bottom_reset = document.createElement("div");
+        o_bottom_reset.innerText = "Reset Settings";
+        o_bottom_reset.classList.add("bottom-btn");
+        o_bottom_reset.title = "Reset to Default Times";
+        o_bottom_reset.id = "reset-time-btn";
+        o_bottom_reset.setAttribute("tabIndex", "13");
+        o_bottom_wrapper.append(o_bottom_theme, o_bottom_reset);
 
 
         // Add each setting to settings wrapper
@@ -440,23 +444,23 @@ class SettingsTab extends HTMLElement {
             TimerContainer.handlePomoLength(SettingsTab.N_PS_MED);
         } else {
             if (B_CONSOLE_LOG) {
-                console.log("Pomo Length Already On Medium")
+                console.log("Pomo Length Already On Medium");
             }
         }
     }
 
     /**
-     * Event handler function to change pomo length to medium (30)
+     * Event handler function to change pomo length to long (30)
      */
     PSLengthLong() {
         if (B_CONSOLE_LOG) {
-            console.log("settingsTab.js - PSLengthLong")
+            console.log("settingsTab.js - PSLengthLong");
         }
         let o_setting_one_btn_three = document.getElementById("sett-one-btn-three");
         // if not already on long pomo length, change it
         if (o_setting_one_btn_three.classList.contains("clicked-settings-btn") != true) {
             //make this button look clicked
-            o_setting_one_btn_three.classList.add("clicked-settings-btn")
+            o_setting_one_btn_three.classList.add("clicked-settings-btn");
             //make other buttons in this setting not clicked
             let o_setting_one_btn_one = document.getElementById("sett-one-btn-one");
             o_setting_one_btn_one.classList.remove("clicked-settings-btn");
@@ -467,7 +471,7 @@ class SettingsTab extends HTMLElement {
             TimerContainer.handlePomoLength(SettingsTab.N_PS_LONG);
         } else {
             if (B_CONSOLE_LOG) {
-                console.log("Pomo Length Already On Long")
+                console.log("Pomo Length Already On Long");
             }
         }
     }
@@ -481,13 +485,13 @@ class SettingsTab extends HTMLElement {
      */
     SBLengthShort() {
         if (B_CONSOLE_LOG) {
-            console.log("settingsTab.js - SBLengthShort")
+            console.log("settingsTab.js - SBLengthShort");
         }
         let o_setting_two_btn_one = document.getElementById("sett-two-btn-one");
         // if not already on short pomo length, change it
         if (o_setting_two_btn_one.classList.contains("clicked-settings-btn") != true) {
             //make this button look clicked
-            o_setting_two_btn_one.classList.add("clicked-settings-btn")
+            o_setting_two_btn_one.classList.add("clicked-settings-btn");
             //make other buttons in this setting not clicked
             let o_setting_two_btn_two = document.getElementById("sett-two-btn-two");
             o_setting_two_btn_two.classList.remove("clicked-settings-btn");
@@ -498,7 +502,7 @@ class SettingsTab extends HTMLElement {
             TimerContainer.handleShortBreak(SettingsTab.N_SB_SHORT);
         } else {
             if (B_CONSOLE_LOG) {
-                console.log("Short Break Length Already On Short")
+                console.log("Short Break Length Already On Short");
             }
         }
     }
@@ -508,13 +512,13 @@ class SettingsTab extends HTMLElement {
      */
     SBLengthMed() {
         if (B_CONSOLE_LOG) {
-            console.log("settingsTab.js - SBLengthMed")
+            console.log("settingsTab.js - SBLengthMed");
         }
         let o_setting_two_btn_two = document.getElementById("sett-two-btn-two");
         // if not already on medium pomo length, change it
         if (o_setting_two_btn_two.classList.contains("clicked-settings-btn") != true) {
             //make this button look clicked
-            o_setting_two_btn_two.classList.add("clicked-settings-btn")
+            o_setting_two_btn_two.classList.add("clicked-settings-btn");
             //make other buttons in this setting not clicked
             let o_setting_two_btn_one = document.getElementById("sett-two-btn-one");
             o_setting_two_btn_one.classList.remove("clicked-settings-btn");
@@ -525,7 +529,7 @@ class SettingsTab extends HTMLElement {
             TimerContainer.handleShortBreak(SettingsTab.N_SB_MED);
         } else {
             if (B_CONSOLE_LOG) {
-                console.log("Short Break Length Already On Medium")
+                console.log("Short Break Length Already On Medium");
             }
         }
     }
@@ -535,13 +539,13 @@ class SettingsTab extends HTMLElement {
      */
     SBLengthLong() {
         if (B_CONSOLE_LOG) {
-            console.log("settingsTab.js - SBLengthLong")
+            console.log("settingsTab.js - SBLengthLong");
         }
         let o_setting_two_btn_three = document.getElementById("sett-two-btn-three");
         // if not already on long pomo length, change it
         if (o_setting_two_btn_three.classList.contains("clicked-settings-btn") != true) {
             //make this button look clicked
-            o_setting_two_btn_three.classList.add("clicked-settings-btn")
+            o_setting_two_btn_three.classList.add("clicked-settings-btn");
             //make other buttons in this setting not clicked
             let o_setting_two_btn_one = document.getElementById("sett-two-btn-one");
             o_setting_two_btn_one.classList.remove("clicked-settings-btn");
@@ -552,7 +556,7 @@ class SettingsTab extends HTMLElement {
             TimerContainer.handleShortBreak(SettingsTab.N_SB_LONG);
         } else {
             if (B_CONSOLE_LOG) {
-                console.log("Short Break Length Already On Long")
+                console.log("Short Break Length Already On Long");
             }
         }
     }
@@ -565,13 +569,13 @@ class SettingsTab extends HTMLElement {
      */
     LBLengthShort() {
         if (B_CONSOLE_LOG) {
-            console.log("settingsTab.js - LBLengthShort")
+            console.log("settingsTab.js - LBLengthShort");
         }
         let o_setting_three_btn_one = document.getElementById("sett-three-btn-one");
         // if not already on short pomo length, change it
         if (o_setting_three_btn_one.classList.contains("clicked-settings-btn") != true) {
             //make this button look clicked
-            o_setting_three_btn_one.classList.add("clicked-settings-btn")
+            o_setting_three_btn_one.classList.add("clicked-settings-btn");
             //make other buttons in this setting not clicked
             let o_setting_three_btn_two = document.getElementById("sett-three-btn-two");
             o_setting_three_btn_two.classList.remove("clicked-settings-btn");
@@ -582,7 +586,7 @@ class SettingsTab extends HTMLElement {
             TimerContainer.handleLongBreak(SettingsTab.N_LB_SHORT);
         } else {
             if (B_CONSOLE_LOG) {
-                console.log("Long Break Length Already On Short")
+                console.log("Long Break Length Already On Short");
             }
         }
     }
@@ -592,13 +596,13 @@ class SettingsTab extends HTMLElement {
      */
     LBLengthMed() {
         if (B_CONSOLE_LOG) {
-            console.log("settingsTab.js - LBLengthMed")
+            console.log("settingsTab.js - LBLengthMed");
         }
         let o_setting_three_btn_two = document.getElementById("sett-three-btn-two");
         // if not already on medium pomo length, change it
         if (o_setting_three_btn_two.classList.contains("clicked-settings-btn") != true) {
             //make this button look clicked
-            o_setting_three_btn_two.classList.add("clicked-settings-btn")
+            o_setting_three_btn_two.classList.add("clicked-settings-btn");
             //make other buttons in this setting not clicked
             let o_setting_three_btn_one = document.getElementById("sett-three-btn-one");
             o_setting_three_btn_one.classList.remove("clicked-settings-btn");
@@ -609,7 +613,7 @@ class SettingsTab extends HTMLElement {
             TimerContainer.handleLongBreak(SettingsTab.N_LB_MED);
         } else {
             if (B_CONSOLE_LOG) {
-                console.log("Long Break Length Already On Medium")
+                console.log("Long Break Length Already On Medium");
             }
         }
     }
@@ -619,13 +623,13 @@ class SettingsTab extends HTMLElement {
      */
     LBLengthLong() {
         if (B_CONSOLE_LOG) {
-            console.log("settingsTab.js - LBLengthLong")
+            console.log("settingsTab.js - LBLengthLong");
         }
         let o_setting_three_btn_three = document.getElementById("sett-three-btn-three");
         // if not already on long pomo length, change it
         if (o_setting_three_btn_three.classList.contains("clicked-settings-btn") != true) {
             //make this button look clicked
-            o_setting_three_btn_three.classList.add("clicked-settings-btn")
+            o_setting_three_btn_three.classList.add("clicked-settings-btn");
             //make other buttons in this setting not clicked
             let o_setting_three_btn_one = document.getElementById("sett-three-btn-one");
             o_setting_three_btn_one.classList.remove("clicked-settings-btn");
@@ -636,10 +640,25 @@ class SettingsTab extends HTMLElement {
             TimerContainer.handleLongBreak(SettingsTab.N_LB_LONG);
         } else {
             if (B_CONSOLE_LOG) {
-                console.log("Long Break Length Already On Long")
+                console.log("Long Break Length Already On Long");
             }
         }
     }
+
+
+    /**
+     * Event handler function to reset to default times
+     */
+     resetSettings() {
+        if (B_CONSOLE_LOG) {
+            console.log("settingsTab.js - resetSettings")
+        }
+        //Call the functions to set each time back to the original
+        this.PSLengthMed();
+        this.SBLengthShort();
+        this.LBLengthMed();
+     }
+
 }
 
 /**
