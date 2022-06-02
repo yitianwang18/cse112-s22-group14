@@ -416,7 +416,7 @@ input[type=text] {
 }
 
 .setting-wrap {
-  margin: calc(2rem - 1vw) calc(0.5rem + 1vw) calc(3rem - 1vw);
+  margin: calc(1.5rem - 1vw) calc(0.5rem + 1vw) calc(2rem - 1vw);
 }
 
 .setting-wrap label {
@@ -454,10 +454,21 @@ input[type=text] {
 
 .centered-note {
   margin-top: 1.5vw;
+  display: flex;
+  justify-content: center;
 }
 
-.centered-note footer {
-  margin: 0.8rem;
+.bottom-btn {
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  margin: 10px;
+  border: 2px solid;
+  padding: calc(0.5rem + 0.5vw);
+  font-size: calc(0.75rem + 0.25vw);
+  font-weight: 600;
 }
 
 /**************************
@@ -960,6 +971,16 @@ input[type=text] {
   #task-title hr {
     margin: 50px 0;
   }
+
+  .setting-wrap {
+    margin: calc(1rem - 1vw) calc(0.5rem + 1vw) calc(1.25rem - 1vw);
+  }
+
+  .settings-btns {
+    margin: 0.5rem 1rem;
+  }
+  
+
 }
 
 @media screen and (max-width: 471px) {
