@@ -168,7 +168,7 @@ InstructionsBox.A_TASK_INST = ["First add all the tasks you want to work on by \
     clicking on the task list button ",
     "Tasks can only be added before starting the work session to limit distractions \
     while you work",
-    "Once you start the session, you can only see the current and the next task",
+    "Once you start the session, you can only see the current task!",
     "If you are done with a task, hit the check next to it "];
 
 /**
