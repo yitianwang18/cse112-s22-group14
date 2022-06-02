@@ -248,6 +248,12 @@ class SettingsTab extends HTMLElement {
         }
     }
 
+    
+    /** Function to determine if the settings are currently shown */
+    getIsShown() {
+        return this.querySelector("#side-settings").classList.contains("settings-class-open");
+    }
+
 
     /**
      * Function to show menu list display from the main user screen

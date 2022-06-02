@@ -100,13 +100,14 @@ class InstructionsBox extends HTMLElement {
         "https://todoist.com/productivity-methods/pomodoro-technique");
         o_inst_pomo_text_link.setAttribute("target", "_blank");
         o_inst_pomo_text_link.classList.add("inline-link");
-        o_inst_pomo_text_link.innerHTML = "here!"
+        o_inst_pomo_text_link.innerHTML = "here!";
+        o_inst_pomo_text_link.title = "Link to Pomodoro Technique";
         o_inst_pomo_text.append(o_inst_pomo_text_link);
 
         //header for hotkeys/shortcuts
-        let o_inst_hot = document.createElement("h4");
+        let o_inst_hot = document.createElement("h3");
         o_inst_hot.innerText = "Hotkeys:";
-        o_inst_hot.className = "inst-hotkeys";
+        o_inst_hot.className = "inst-headers";
 
         let o_inst_hot_text = document.createElement("p");
         o_inst_hot_text.innerText = InstructionsBox.S_HOTKEYS_INST;
