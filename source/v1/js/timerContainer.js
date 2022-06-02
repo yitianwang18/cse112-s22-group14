@@ -38,9 +38,14 @@ class TimerContainer extends HTMLElement {
             window.localStorage.setItem("timer_settings", 
                 JSON.stringify(TimerContainer.A_STATE_DURATIONS));
         }
-      
-        // setting timer display theme default to stars
-        o_timer_display.setAttribute("theme", "stars");
+
+         // Change the value of href attribute to change the css sheet.
+         const o_theme_preference = window.localStorage.getItem("user-theme-preference");  
+         if (o_theme_preference == null || o_theme_preference === "forest") {
+             o_timer_display.setAttribute("theme", "forest");
+         } else {
+             o_timer_display.setAttribute("theme", "stars");
+         }
 
         let o_wrap_start_btn = document.createElement("span");
         o_wrap_start_btn.id = "wrap-start-btn";

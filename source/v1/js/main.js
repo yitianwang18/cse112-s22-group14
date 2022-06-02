@@ -19,15 +19,18 @@ function handleThemeBtnPressed() {
 
     const o_timer_container = document.querySelector("timer-element");
     const o_timer_display = o_timer_container.querySelector("timer-display");
+    const o_theme_preference = localStorage.getItem("user-theme-preference");
+
     // Change the value of href attribute to change the css sheet.
     if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
         o_theme.setAttribute("href", "./css/colors-forest.css");
         o_theme_btn.setAttribute("title", "Stars Theme (c)");
         o_timer_display.setAttribute("theme", "forest");
+        localStorage.setItem("user-theme-preference", "forest");
     } else {
         o_theme.setAttribute("href", "./css/colors-stars.css");
         o_theme_btn.setAttribute("title", "Forest Theme (c)");
-        o_timer_display.setAttribute("theme", "stars");
+        localStorage.setItem("user-theme-preference", "stars");
     }
 }
 
@@ -200,6 +203,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // initialize Event Bus instance
     document.EventBus = new EventBus();
+
+    //display user theme preference(default to forest)
+    const o_theme_preference = window.localStorage.getItem("user-theme-preference");  
+    let o_theme = document.getElementById("theme");
+
+    // Change the value of href attribute to change the css sheet.
+    if (o_theme_preference == null || o_theme_preference === "forest") {
+        o_theme.setAttribute("href", "./css/colors-forest.css");
+        o_theme_btn.setAttribute("title", "Stars Theme (c)");
+    } else {
+        o_theme.setAttribute("href", "./css/colors-stars.css");
+        o_theme_btn.setAttribute("title", "Forest Theme (c)");
+    }
 
 });
 
