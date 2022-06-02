@@ -256,7 +256,7 @@ class EventBus {
     /**
      * Event handler function to reset times to default
      */
-     handleResetSettings() {
+    handleResetSettings() {
         this.o_settings_tab.resetSettings();
     }
 
