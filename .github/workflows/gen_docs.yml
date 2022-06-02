@@ -5,6 +5,8 @@ name: Generate Documentation
 # Controls when the action will run.
 on:
   pull_request:
+    paths:
+      - 'source/**'
     branches:
       - main
     type:
@@ -21,13 +23,13 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-      #Check out the repository
+      # Check out the repository
       - name: Checkout Code
       - uses: actions/checkout@v2
-      #Generate the JSDocs under source directory and output to docs directory
+      # Runs a single command using the runners shell
+      - name: install JSDoc
+      # npm install will respect the package.json, while npm ci will respect package-lock.json
+        run: npm install
+      # Generate the JSDocs under source directory and output to docs directory
       - name: Generate Documentation
-        uses: andstor/jsdoc-action@v1
-        with:
-          source_dir: ./source
-          recurse: true
-          output_dir: ./docs
+        run: npm run docs
