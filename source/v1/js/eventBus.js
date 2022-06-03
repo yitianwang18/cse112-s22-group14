@@ -76,7 +76,6 @@ class EventBus {
      * Event handler function for the 'startSession' Event
      */
     handleStartSession() {
-        let o_start_error = this.o_timer_container.querySelector("#start-error");
         let o_add_error = document.querySelector("#add-error");
         this.o_task_list.showTaskList();
         // check for valid application states
@@ -94,8 +93,6 @@ class EventBus {
             // Make sure the button can't be seen
             document.querySelector("#close-task").style.visibility = "hidden";
             
-            o_start_error.innerHTML = "";
-            o_start_error.classList.remove("color-error");
             // This time must be the greater than the timeout for displaying the task list in taskList.js
             setTimeout(() => {
                 document.querySelector("#close-task").style.display = "none";
