@@ -613,14 +613,14 @@ class SettingsTab extends HTMLElement {
     /**
      * Event handler function to reset to default times
      */
-     resetSettings() {
+    resetSettings() {
         if (B_CONSOLE_LOG) {
             console.log("settingsTab.js - resetSettings")
         }
         //Call the functions to set each time back to the original
         this.PSLengthMed();
         this.SBLengthShort();
-        this.LBLengthMed();
+        this.LBLengthLong();
      }
 
 }

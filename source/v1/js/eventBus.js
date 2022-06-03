@@ -19,6 +19,7 @@ class EventBus {
         this.o_timer_container = document.querySelector("timer-element");
         this.o_task_display = document.querySelector("task-display");
         this.o_toolbar = document.querySelector("nav");
+        this.o_welcome = document.querySelector("welcome-box");
         this.o_instructions = document.querySelector("instructions-box");
         this.o_settings_tab = document.querySelector("settings-tab");
         this.registerEvents();
@@ -37,6 +38,7 @@ class EventBus {
         this.registerEvent("spaceKeybind", this.handleSpaceKeybind.bind(this));
         this.registerEvent("showTasks", this.handleShowTasks.bind(this));
         this.registerEvent("showSettings", this.handleShowSettings.bind(this));
+        this.registerEvent("showWelcome", this.handleShowWelcome.bind(this));
         this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
         this.registerEvent("resetSettings", this.handleResetSettings.bind(this));
         // settings buttons for first setting - Pomo Length
@@ -175,14 +177,26 @@ class EventBus {
         this.o_task_list.closeTaskList();
         this.o_instructions.closeInstructions();
         this.o_settings_tab.closeSettingsTab();
+        this.o_welcome.closeWelcome();
     }
 
+    /**
+     * Event Handler function for the 'showTasks' event
+     */
+     handleShowWelcome() {
+        this.o_welcome.showWelcomeBox();
+    }
+
+    
     /**
      * Event Handler function for the 'showTasks' event
      */
     handleShowTasks() {
         if (this.o_instructions.getIsShown()) {
             this.o_instructions.closeInstructions();
+        }
+        if (this.o_welcome.getIsShown()) {
+            this.o_welcome.closeWelcome();
         }
         this.o_task_list.showTaskList();
     }
@@ -194,6 +208,9 @@ class EventBus {
     handleShowSettings() {
         if (this.o_instructions.getIsShown()) {
             this.o_instructions.closeInstructions();
+        }
+        if (this.o_welcome.getIsShown()) {
+            this.o_welcome.closeWelcome();
         }
         this.o_settings_tab.showSettings();
     }
@@ -239,7 +256,7 @@ class EventBus {
     /**
      * Event handler function to reset times to default
      */
-     handleResetSettings() {
+    handleResetSettings() {
         this.o_settings_tab.resetSettings();
     }
 

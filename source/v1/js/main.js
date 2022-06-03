@@ -1,6 +1,7 @@
 import { TimerContainer } from "./timerContainer.js";
 import { TaskList } from "./taskList.js";
 import { SettingsTab } from "./settingsTab.js";
+import { WelcomeBox } from "./welcomeBox.js";
 import { InstructionsBox } from "./instructionsBox.js";
 import { NotificationBox } from "./errorNotificationBox.js";
 import { EventBus } from "./eventBus.js";
@@ -19,15 +20,19 @@ function handleThemeBtnPressed() {
 
     const o_timer_container = document.querySelector("timer-element");
     const o_timer_display = o_timer_container.querySelector("timer-display");
+    const o_theme_preference = localStorage.getItem("o_theme_preference");
+
     // Change the value of href attribute to change the css sheet.
     if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
         o_theme.setAttribute("href", "./css/colors-forest.css");
         o_theme_btn.setAttribute("title", "Stars Theme (c)");
         o_timer_display.setAttribute("theme", "forest");
+        localStorage.setItem("o_theme_preference", "forest");
     } else {
         o_theme.setAttribute("href", "./css/colors-stars.css");
         o_theme_btn.setAttribute("title", "Forest Theme (c)");
         o_timer_display.setAttribute("theme", "stars");
+        localStorage.setItem("o_theme_preference", "stars");
     }
 }
 
@@ -93,6 +98,13 @@ function showInstructions() {
 /**
  * Event handler function to reset time lengths to default
  */
+ function showWelcome() {
+    document.EventBus.fireEvent("showWelcome");
+}
+
+/**
+ * Event handler function to reset time lengths to default
+ */
  function resetSettings() {
     document.EventBus.fireEvent("resetSettings");
 }
@@ -105,36 +117,45 @@ function handleKeyBinds(o_event) {
     if (B_CONSOLE_LOG) {
         console.log(o_event);
     }
-    if (o_event.target.tagName != "INPUT") {
-        switch (o_event.key) {
-        case "c":
-            handleThemeBtnPressed();
-            break;
-        case " ":
-            document.EventBus.fireEvent("spaceKeybind");
-            // disable space scrolling
-            o_event.preventDefault();
-            break;
-        case "Escape":
-            document.EventBus.fireEvent("closeWindows");
-            break;
-        case "t":
-            document.EventBus.fireEvent("showTasks");
-            // prevent event from bubbling into input
-            o_event.preventDefault();
-            break;
-        case "s":
-            document.EventBus.fireEvent("showSettings");
-            break;
-        case "i":
-            showInstructions();
-            break;
-        case "n":
-            document.EventBus.fireEvent("nextTask");
-            break;
-        case "r":
-            document.EventBus.fireEvent("resetPomo");
-            break;
+    else if (o_event.target.tagName != "INPUT") {
+        //if Welcome Box is open, only hotkey is to close it
+        if (document.querySelector("welcome-box").getIsShown()) {
+            switch (o_event.key) {
+            case "Escape":
+                document.EventBus.fireEvent("closeWindows");
+                break;
+            }
+        } else {
+            switch (o_event.key) {
+            case "c":
+                handleThemeBtnPressed();
+                break;
+            case " ":
+                document.EventBus.fireEvent("spaceKeybind");
+                // disable space scrolling
+                o_event.preventDefault();
+                break;
+            case "Escape":
+                document.EventBus.fireEvent("closeWindows");
+                break;
+            case "t":
+                document.EventBus.fireEvent("showTasks");
+                // prevent event from bubbling into input
+                o_event.preventDefault();
+                break;
+            case "s":
+                document.EventBus.fireEvent("showSettings");
+                break;
+            case "i":
+                showInstructions();
+                break;
+            case "n":
+                document.EventBus.fireEvent("nextTask");
+                break;
+            case "r":
+                document.EventBus.fireEvent("resetPomo");
+                break;
+            }
         }
     }
 
@@ -146,7 +167,7 @@ function handleKeyBinds(o_event) {
  */
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Code to automatically open instructions if it has been a month since the last visit
+    // Code to automatically open welcome message if it has been a month since the last visit
     let a_daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     let o_date = new Date();
@@ -154,14 +175,22 @@ document.addEventListener("DOMContentLoaded", () => {
         (o_date.getFullYear() * 365);
     let n_prevDate = localStorage.getItem("n_prevDate");
 
-    if (n_prevDate == null || n_currDate - n_prevDate >= 30) {
-        showInstructions();
+    if (n_prevDate == null || ( n_currDate - n_prevDate >= 30)){
+        if (B_CONSOLE_LOG) {
+            console.log("First time in site or it's been over a month");
+        }
+        let welc = document.querySelector("welcome-box");
+        welc.showWelcomeBox();
     }
     localStorage.setItem("n_prevDate", n_currDate);
 
     // Code for change theme button functionality
     let o_theme_btn = document.getElementById("theme-btn");
     o_theme_btn.addEventListener("click", handleThemeBtnPressed);
+
+    // This code was used to test the welcome pop up
+    // let o_welc_btn = document.getElementById("welc-btn");
+    // o_welc_btn.addEventListener("click", showWelcome);
 
     // Code for showing / hiding TaskList functionality
     let o_task_btn = document.getElementById("task-btn");
@@ -199,10 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let o_reset_sett_btn = document.getElementById("reset-time-btn");
     o_reset_sett_btn.addEventListener("click", resetSettings);
 
-
-
-
-
     document.addEventListener("keydown", handleKeyBinds);
 
     // Code for showing / hiding Instructions functionality
@@ -211,6 +236,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // initialize Event Bus instance
     document.EventBus = new EventBus();
+
+    //display user theme preference(default to stars)
+    const o_theme_preference = window.localStorage.getItem("o_theme_preference");  
+    let o_theme = document.getElementById("theme");
+    const o_timer_container = document.querySelector("timer-element");
+    const o_timer_display = o_timer_container.querySelector("timer-display");
+
+    // Change the value of href attribute to change the css sheet.
+    if (o_theme_preference == null || o_theme_preference === "stars") {
+        o_theme.setAttribute("href", "./css/colors-stars.css");
+        o_theme_btn.setAttribute("title", "Forest Theme (c)");
+        o_timer_display.setAttribute("theme", "stars");
+    } else {
+        o_theme.setAttribute("href", "./css/colors-forest.css");
+        o_theme_btn.setAttribute("title", "Stars Theme (c)");
+        o_timer_display.setAttribute("theme", "forest");
+    }
 
 });
 
