@@ -436,7 +436,7 @@ input[type=text] {
 
 .settings-custom-btn {
   font-size: calc(1rem + 1vw);
-  padding: calc(0.75rem + 0.25vw) calc(1rem + .5vw);
+  padding: calc(0.75rem + 0.25vw) calc(1rem + 0.5vw);
   width: 10%;
   border: 1px solid;
   cursor: pointer;
@@ -671,7 +671,7 @@ input[type=text] {
   margin: auto;
   z-index: 2;
   border-radius: 1rem;
-  box-shadow: 0px 0px 50px black;
+  box-shadow: 0 0 50px black;
 }
 
 /**
@@ -797,6 +797,7 @@ input[type=text] {
   font-weight: 550;
   text-decoration: none;
 }
+
 .inline-link:hover {
   text-decoration: underline;
 }
@@ -957,7 +958,7 @@ input[type=text] {
 
   .settings-custom-btn {
     font-size: calc(1.25rem + 0.5vw);
-    padding: calc(1rem + 0.25vw) calc(1.25rem + .25vw);
+    padding: calc(1rem + 0.25vw) calc(1.25rem + 0.25vw);
   }
 
   .setting-wrap label {

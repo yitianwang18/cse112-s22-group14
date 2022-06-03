@@ -206,7 +206,7 @@ class EventBus {
     }
 
     /**
-     * Event Handler function for the 'showTasks' event
+     * Event Handler function for the 'showInstructions' event
      */
      handleShowInstructions() {
         if (this.o_task_list.getIsShown()) {

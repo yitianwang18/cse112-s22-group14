@@ -303,7 +303,6 @@ input[type=text] {
   color: white;
 }
 
-
 .inline-text i {
   color: white;
 }
@@ -311,8 +310,10 @@ input[type=text] {
 .inline-link {
   color: var(--hover-color);
 }
+
 .inline-link:hover {
   color: var(--hover-color-light);
+}
 
 /**************************
   * Color for Welcome Box *
