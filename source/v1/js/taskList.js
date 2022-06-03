@@ -214,7 +214,7 @@ class TaskList extends HTMLElement {
             o_add_error.innerHTML = TaskList.S_TASK_ERROR_EMPTY;
             o_add_error.classList.add("color-error");
         }
-        else {
+        else if (o_add_error.innerHTML != TaskList.S_START_ERROR) {
             o_add_error.innerHTML = "";
             o_add_error.style.visibility = "hidden";
             o_add_error.classList.remove("color-error");
@@ -444,12 +444,7 @@ class TaskList extends HTMLElement {
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "block";
 
-
-        if (window.screen.width <= 500) {
-            o_tasks.classList.add("sidenav-small");
-        } else {
-            o_tasks.classList.add("sidenav-open");
-        }
+        o_tasks.classList.add("sidenav-open");
 
         // Remove everything during animation to prevent sandwiching of text
         setTimeout(() => {
@@ -493,8 +488,6 @@ class TaskList extends HTMLElement {
         this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
         this.clearInput();
-
-        o_tasks.classList.remove("sidenav-small");
         o_tasks.classList.remove("sidenav-open");
         this.querySelector("#task-title").style.display = "none";
         this.querySelector("#all-tasks").style.display = "none";
@@ -581,6 +574,13 @@ TaskList.S_TASK_ERROR_EMPTY = "Input cannot be empty!";
  */
 TaskList.S_TASK_ERROR_TOO_LONG = `Input cannot be more than \
     ${TaskList.N_MAX_TASK_LENGTH} chars long!`;
+
+/**
+ * Error message when Start button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+TaskList.S_START_ERROR = "Can not start without tasks. Please enter a task!";
 
 customElements.define("task-list", TaskList);
 
