@@ -480,11 +480,6 @@ input[type=text] {
   font-weight: 600;
 }
 
-.bottom-btn:focus {
-  outline: 2px solid blue;
-  border: 2px solid blue;
-}
-
 /**************************
  * Styling Pomodoro Timer *
  **************************/
@@ -570,11 +565,6 @@ input[type=text] {
   text-align: center;
   margin: 10px;
   border: 2px solid;
-}
-
-.custom-btn:focus {
-  outline: 2px solid blue;
-  border: 2px solid blue;
 }
 
 /**
