@@ -73,7 +73,7 @@ hr {
 }
 
 /********************
- * Color for header *
+ * Color for Header *
  ********************/
 
 .header-container {
@@ -120,9 +120,9 @@ input[type=text] {
   box-shadow: 0 0 5px var(--less-transparent);
 }
 
-/***************************
+/********************************
  * Color for Slide-out settings *
- ***************************/
+ ********************************/
 
 /**
  * Container for slide-out tasks mask
@@ -195,6 +195,16 @@ input[type=text] {
 
 #add-btn:hover:enabled {
   color: var(--hover-color);
+}
+
+.bottom-btn:focus { 
+  outline: 2px solid var(--hover-color);
+  border: 2px solid var(--hover-color);
+}
+
+.custom-btn:focus {
+  outline: 2px solid var(--hover-color);
+  border: 2px solid var(--hover-color);
 }
 
 /****************************
@@ -279,26 +289,24 @@ input[type=text] {
   color: white;
 }
 
-
 /**************************
   * Color for Welcome Box *
   **************************/
 
-  .welcome-section-blocker {
-    background-color: var(--less-transparent);
-  }
-  
-  .welcome-section {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-  }
-  
-  .welcome-head,
-  .welc-headers {
-    color: white;
-  }
-  
-  
+.welcome-section-blocker {
+  background-color: var(--less-transparent);
+}
+
+.welcome-section {
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+}
+
+.welcome-head,
+.welc-headers {
+  color: white;
+}
+
 /**
  * Paragraph of instructions within instructions section
  */
@@ -309,7 +317,6 @@ input[type=text] {
 #welcome-para i {
   color: white;
 }
-
 
 /********************
  * Color for Footer *

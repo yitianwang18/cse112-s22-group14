@@ -73,7 +73,7 @@ hr {
 }
 
 /********************
-  * Color for header *
+  * Color for Header *
   ********************/
 
 .header-container {
@@ -121,9 +121,9 @@ input[type=text] {
   box-shadow: 0 0 5px var(--less-transparent);
 }
 
-/***************************
+/********************************
  * Color for Slide-out settings *
- ***************************/
+ ********************************/
 
 /**
  * Container for slide-out tasks mask
@@ -208,6 +208,16 @@ input[type=text] {
 .close2:hover,
 #delete-btn:hover:enabled {
   color: var(--red);
+}
+
+.bottom-btn:focus {
+  outline: 2px solid var(--hover-color);
+  border: 2px solid var(--hover-color);
+}
+
+.custom-btn:focus {
+  outline: 2px solid var(--hover-color);
+  border: 2px solid var(--hover-color);
 }
 
 /****************************
@@ -299,17 +309,17 @@ input[type=text] {
 .welcome-section-blocker {
   background-color: var(--less-transparent);
 }
-  
+
 .welcome-section {
   background-color: var(--secondary-color);
   color: var(--light-color);
 }
-  
+
 .welcome-head,
 .welc-headers {
   color: white;
 }
-   
+
 /**
  * Paragraph of instructions within instructions section
  */
