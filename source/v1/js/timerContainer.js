@@ -213,7 +213,19 @@ class TimerContainer extends HTMLElement {
         this.querySelector("timer-display").setAttribute("pomos-comp", this.n_done_pomos);
         let n_remaining_time = this.getTimeRemaining();
         if(n_remaining_time != -1) {
-            document.title = TimerDisplay.formatMilliTime(Number(n_remaining_time));
+            let s_state = "";
+            switch(this.n_curr_state) {
+                case TimerContainer.N_S_BREAK:
+                    s_state = "Short Break:";
+                    break;
+                case TimerContainer.N_L_BREAK:
+                    s_state = "Long Break:";
+                    break;
+                case TimerContainer.N_WORK:
+                    s_state = "Session " + (this.n_done_pomos + 1) + ":";
+                    break;
+            }
+            document.title = s_state + " " + TimerDisplay.formatMilliTime(Number(n_remaining_time));
         }
     }
 
