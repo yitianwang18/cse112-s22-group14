@@ -4,8 +4,9 @@
 
 :root {
   --red: #f00;
-  --hover-color: #178800;
-  --secondary-color: #162219;
+  --hover-color: #4adb2d;
+  --hover-color-light: #b5e4ab;
+  --secondary-color: #141f17;
   --light-grey: #828282;
   --transparent: #0000;
   --light-transparent: #ffffff09;
@@ -73,7 +74,7 @@ hr {
 }
 
 /********************
-  * Color for header *
+  * Color for Header *
   ********************/
 
 .header-container {
@@ -121,9 +122,9 @@ input[type=text] {
   box-shadow: 0 0 5px var(--less-transparent);
 }
 
-/***************************
+/********************************
  * Color for Slide-out settings *
- ***************************/
+ ********************************/
 
 /**
  * Container for slide-out tasks mask
@@ -210,6 +211,16 @@ input[type=text] {
   color: var(--red);
 }
 
+.bottom-btn:focus {
+  outline: 2px solid var(--hover-color);
+  border: 2px solid var(--hover-color);
+}
+
+.custom-btn:focus {
+  outline: 2px solid var(--hover-color);
+  border: 2px solid var(--hover-color);
+}
+
 /****************************
   * Color for Pomodoro Timer *
   ****************************/
@@ -292,6 +303,18 @@ input[type=text] {
   color: white;
 }
 
+.inline-text i {
+  color: white;
+}
+
+.inline-link {
+  color: var(--hover-color);
+}
+
+.inline-link:hover {
+  color: var(--hover-color-light);
+}
+
 /**************************
   * Color for Welcome Box *
   **************************/
@@ -299,17 +322,17 @@ input[type=text] {
 .welcome-section-blocker {
   background-color: var(--less-transparent);
 }
-  
+
 .welcome-section {
   background-color: var(--secondary-color);
   color: var(--light-color);
 }
-  
+
 .welcome-head,
 .welc-headers {
   color: white;
 }
-   
+
 /**
  * Paragraph of instructions within instructions section
  */

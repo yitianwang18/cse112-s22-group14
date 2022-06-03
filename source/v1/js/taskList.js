@@ -214,7 +214,7 @@ class TaskList extends HTMLElement {
             o_add_error.innerHTML = TaskList.S_TASK_ERROR_EMPTY;
             o_add_error.classList.add("color-error");
         }
-        else {
+        else if (o_add_error.innerHTML != TaskList.S_START_ERROR) {
             o_add_error.innerHTML = "";
             o_add_error.style.visibility = "hidden";
             o_add_error.classList.remove("color-error");
@@ -430,6 +430,11 @@ class TaskList extends HTMLElement {
         }
         window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
     }
+    
+    /** Function to determine if the task list is currently shown */
+    getIsShown() {
+        return this.querySelector("#side-tasks").classList.contains("sidenav-open");
+    }
 
     /**
      * Function to show task list display from the main user screen
@@ -569,6 +574,13 @@ TaskList.S_TASK_ERROR_EMPTY = "Input cannot be empty!";
  */
 TaskList.S_TASK_ERROR_TOO_LONG = `Input cannot be more than \
     ${TaskList.N_MAX_TASK_LENGTH} chars long!`;
+
+/**
+ * Error message when Start button is incorrectly handled
+ * @static
+ * @type {String}
+ */
+TaskList.S_START_ERROR = "Can not start without tasks. Please enter a task!";
 
 customElements.define("task-list", TaskList);
 

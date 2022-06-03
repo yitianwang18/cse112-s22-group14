@@ -91,8 +91,7 @@ function settingThreeButtonThree() {
  * Event handler function to show Instructions when info button is pressed
  */
 function showInstructions() {
-    let inst = document.querySelector("instructions-box");
-    inst.showInstructionsBox();
+    document.EventBus.fireEvent("showInstructions");
 }
 
 /**
