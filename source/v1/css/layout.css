@@ -124,6 +124,11 @@ body {
   font-size: 2rem;
 }
 
+.btn:focus {
+  outline: 2px solid white;
+  border-radius: 8px;
+}
+
 .inert-btn {
   background: transparent;
   border: none !important;
@@ -437,6 +442,10 @@ input[type=text] {
   cursor: pointer;
 }
 
+.settings-custom-btn:focus {
+  outline: 3px solid white;
+}
+
 .settings-custom-btn:first-child {
   border-top-left-radius: var(--btn-border);
   border-bottom-left-radius: var(--btn-border);
@@ -469,6 +478,11 @@ input[type=text] {
   padding: calc(0.5rem + 0.5vw);
   font-size: calc(0.75rem + 0.25vw);
   font-weight: 600;
+}
+
+.bottom-btn:focus {
+  outline: 2px solid blue;
+  border: 2px solid blue;
 }
 
 /**************************
@@ -556,6 +570,11 @@ input[type=text] {
   text-align: center;
   margin: 10px;
   border: 2px solid;
+}
+
+.custom-btn:focus {
+  outline: 2px solid blue;
+  border: 2px solid blue;
 }
 
 /**
@@ -979,8 +998,6 @@ input[type=text] {
   .settings-btns {
     margin: 0.5rem 1rem;
   }
-  
-
 }
 
 @media screen and (max-width: 471px) {
