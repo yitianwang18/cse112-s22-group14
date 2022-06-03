@@ -430,6 +430,11 @@ class TaskList extends HTMLElement {
         }
         window.localStorage.setItem("current_tasks",JSON.stringify(this.o_tasks));
     }
+    
+    /** Function to determine if the task list is currently shown */
+    getIsShown() {
+        return this.querySelector("#side-tasks").classList.contains("sidenav-open");
+    }
 
     /**
      * Function to show task list display from the main user screen

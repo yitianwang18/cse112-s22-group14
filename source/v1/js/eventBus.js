@@ -37,6 +37,7 @@ class EventBus {
         this.registerEvent("closeWindows", this.handleCloseWindows.bind(this));
         this.registerEvent("spaceKeybind", this.handleSpaceKeybind.bind(this));
         this.registerEvent("showTasks", this.handleShowTasks.bind(this));
+        this.registerEvent("showInstructions", this.handleShowInstructions.bind(this));
         this.registerEvent("showSettings", this.handleShowSettings.bind(this));
         this.registerEvent("showWelcome", this.handleShowWelcome.bind(this));
         this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
@@ -195,10 +196,29 @@ class EventBus {
         if (this.o_instructions.getIsShown()) {
             this.o_instructions.closeInstructions();
         }
+        if (this.o_settings_tab.getIsShown()) {
+            this.o_settings_tab.closeSettingsTab();
+        }
         if (this.o_welcome.getIsShown()) {
             this.o_welcome.closeWelcome();
         }
         this.o_task_list.showTaskList();
+    }
+
+    /**
+     * Event Handler function for the 'showInstructions' event
+     */
+     handleShowInstructions() {
+        if (this.o_task_list.getIsShown()) {
+            this.o_task_list.closeTaskList();
+        }
+        if (this.o_settings_tab.getIsShown()) {
+            this.o_settings_tab.closeSettingsTab();
+        }
+        if (this.o_welcome.getIsShown()) {
+            this.o_welcome.closeWelcome();
+        }
+        this.o_instructions.showInstructionsBox();
     }
 
     
@@ -208,6 +228,9 @@ class EventBus {
     handleShowSettings() {
         if (this.o_instructions.getIsShown()) {
             this.o_instructions.closeInstructions();
+        }
+        if (this.o_task_list.getIsShown()) {
+            this.o_task_list.closeTaskList();
         }
         if (this.o_welcome.getIsShown()) {
             this.o_welcome.closeWelcome();

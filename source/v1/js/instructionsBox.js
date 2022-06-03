@@ -49,23 +49,33 @@ class InstructionsBox extends HTMLElement {
         o_inst_tasks_list.className = "inst-list";
         let o_tl1 = document.createElement("li");
         o_tl1.innerText = InstructionsBox.A_TASK_INST[0];
+        let o_tl1_icon = document.createElement("i");
+        o_tl1_icon.classList.add("fas", "fa-tasks", "fa-x", "inline-icon");
+        o_tl1.append(o_tl1_icon);
         let o_tl2 = document.createElement("li");
         o_tl2.innerText = InstructionsBox.A_TASK_INST[1];
         let o_tl3 = document.createElement("li");
         o_tl3.innerText = InstructionsBox.A_TASK_INST[2];
+        //wrapper to hold text and icon
         let o_tl4 = document.createElement("li");
         o_tl4.innerText = InstructionsBox.A_TASK_INST[3];
+        let o_tl4_icon = document.createElement("i");
+        o_tl4_icon.classList.add("fas", "fa-check-circle", "fa-x", "inline-icon");
+        o_tl4.append(o_tl4_icon);
         o_inst_tasks_list.append(o_tl1, o_tl2, o_tl3, o_tl4);
 
         //header for Work-Break cycle
         let o_inst_cycle = document.createElement("h3");
         o_inst_cycle.innerText = "Work-Break Cycle";
         o_inst_cycle.className = "inst-headers";
-
         let o_inst_cycle_list = document.createElement("ul");
         o_inst_cycle_list.className = "inst-list";
         let o_cl1 = document.createElement("li");
         o_cl1.innerText = InstructionsBox.A_CYCLE_INST[0];
+        let o_cl1_icon = document.createElement("i");
+        o_cl1_icon.classList.add("fas", "fa-cogs", "fa-x", "inline-icon");
+        //append icon to the text
+        o_cl1.append(o_cl1_icon);
         let o_cl2 = document.createElement("li");
         o_cl2.innerText = InstructionsBox.A_CYCLE_INST[1];
         let o_cl3 = document.createElement("li");
@@ -81,13 +91,23 @@ class InstructionsBox extends HTMLElement {
         o_inst_pomo.innerText = "The Pomodoro Technique";
         o_inst_pomo.className = "inst-headers";
 
+        
+        //wrapper to hold text and link
         let o_inst_pomo_text = document.createElement("p");
         o_inst_pomo_text.innerText = InstructionsBox.S_POMO_INST;
+        let o_inst_pomo_text_link = document.createElement("a");
+        o_inst_pomo_text_link.setAttribute("href", 
+        "https://todoist.com/productivity-methods/pomodoro-technique");
+        o_inst_pomo_text_link.setAttribute("target", "_blank");
+        o_inst_pomo_text_link.classList.add("inline-link");
+        o_inst_pomo_text_link.innerHTML = "here!";
+        o_inst_pomo_text_link.title = "Link to Pomodoro Technique";
+        o_inst_pomo_text.append(o_inst_pomo_text_link);
 
         //header for hotkeys/shortcuts
-        let o_inst_hot = document.createElement("h4");
+        let o_inst_hot = document.createElement("h3");
         o_inst_hot.innerText = "Hotkeys:";
-        o_inst_hot.className = "inst-hotkeys";
+        o_inst_hot.className = "inst-headers";
 
         let o_inst_hot_text = document.createElement("p");
         o_inst_hot_text.innerText = InstructionsBox.S_HOTKEYS_INST;
@@ -144,22 +164,25 @@ class InstructionsBox extends HTMLElement {
  * @static
  * @type {string[]}
  */
-InstructionsBox.A_TASK_INST = ["Click on the task list button and add all tasks you want to do",
-    "Tasks can only be added before starting the Pomodoro session to limit distractions \
+InstructionsBox.A_TASK_INST = ["First add all the tasks you want to work on by \
+    clicking on the task list button ",
+    "Tasks can only be added before starting the work session to limit distractions \
     while you work",
-    "Once the session begins, you can see the current and the next tasks",
-    "If you are done with a task, hit the 'check' button"];
+    "Once you start the session, you can only see the current task!",
+    "If you are done with a task, hit the check next to it "];
 
 /**
  * Array storing instructions related to the work-break cycle
  * @static
  * @type {string[]}
  */
-InstructionsBox.A_CYCLE_INST = ["One Pomodoro = 25 minutes of work/studying",
-    "Once you start, the timer won’t stop until you finish!",
-    "Take a 5-minute break after every Pomo and a 30-minute break after every 4 Pomos",
+InstructionsBox.A_CYCLE_INST = ["One work interval is 25 minutes of working or studying \
+    — you can change the length in ",
+    "Once you start, the timer can't be paused, so keep working until your break!",
+    "Take a short break after every work interval and a long break after the 4th \
+    work interval",
     "If you get distracted, click “Restart” to restart the current interval",
-    "Have other things to do? Hit “End Session” to log out"];
+    "Done working for now? Hit “End Session” to stop. Your tasks will be saved!"];
 
 /**
  * String describing the Pomodoro Technique
@@ -168,16 +191,15 @@ InstructionsBox.A_CYCLE_INST = ["One Pomodoro = 25 minutes of work/studying",
  */
 InstructionsBox.S_POMO_INST = "The Pomodoro technique is a scientifically proven way to help \
     increase productivity. Ultimately, people are more productive by taking small mental breaks. \
-    PomoHero automates the process for you, making it easier for you to reduce distractions and \
-    focus on your work.";
+    Want to learn more? Click ";
 
 /**
  * String describing the site's hotkeys
  * @static
  * @type {String}
  */
-InstructionsBox.S_HOTKEYS_INST = "c - color change, t - tasklist, esc - close pop-up, \
-    space - start/end session, n - next task";
+InstructionsBox.S_HOTKEYS_INST = "c - change theme, t - tasklist, s - settings,\
+    i - instructions, esc - close pop-up, space - start/end session, n - next task";
 
 customElements.define("instructions-box", InstructionsBox);
 
