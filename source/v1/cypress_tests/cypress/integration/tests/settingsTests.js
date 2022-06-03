@@ -3,8 +3,7 @@ import { hasUncaughtExceptionCaptureCallback } from "process";
 
 describe("Settings Menu Tests", () => {
     beforeEach(() => {
-        // cy.visit("https://powelldoro.web.app/");
-        cy.visit("http://127.0.0.1:5500/source/v1/index.html");
+        cy.visit("https://powelldoro.web.app/");
         cy.get("#sett-btn").trigger("click");
         cy.document().then((o_doc) => {
             cy.spy(o_doc.querySelector("settings-tab"), "PSLengthShort");
