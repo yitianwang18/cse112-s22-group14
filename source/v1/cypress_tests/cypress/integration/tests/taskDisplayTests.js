@@ -1,4 +1,4 @@
-describe("Timer Container Tests", () => {
+describe("Task Display Tests", () => {
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
         cy.document().then((o_doc) => {
