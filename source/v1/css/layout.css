@@ -794,6 +794,106 @@ input[type=text] {
 }
 
 /************************
+ * Styling Welcome Box *
+ ************************/
+
+/**
+ * Container for instructions box mask
+ */
+#welcome-blocker {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  align-items: center;
+  z-index: 2;
+}
+
+/**
+ * Container for instructions when it is closed
+ */
+.welcome-section {
+  overflow: hidden;
+  position: fixed;
+  transition: 0.3s;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 2;
+  border-radius: 1rem;
+  box-shadow: 10px black;
+}
+
+/**
+ * Container for instructions when it is open
+ */
+.welcome-section-open {
+  width: 80%;
+  height: 90vh;
+  border-width: 2px;
+  overflow-y: auto;
+  box-shadow: 0 0 50px black;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.welcome-section-open::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.welcome-section-open {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/**
+ * Styling the header in instructions section
+ */
+.welcome-head {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding: 15px 15px 5px 15px;
+  font-size: calc(0.5rem + 3vw);
+}
+
+/**
+ * Paragraph of instructions within instructions section
+ */
+#welcome-para {
+  padding: 0 20px;
+  margin: auto;
+  width: auto;
+  max-width: 900px;
+  font-family: 'Helvetica', 'Calibri', sans-serif;
+  font-size: calc(1rem + 0.75vw);
+  text-align: left;
+  align-items: left;
+  line-height: calc(1.5rem + 0.5vw);
+}
+
+#welcome-para p {
+  margin: calc(1rem + 0.25vw) 0 0 0;
+}
+
+.welc-list {
+  padding-left: 5%;
+}
+
+.welc-list li {
+  margin: calc(0.25rem + 0.25vw);
+}
+
+#final-thought-p {
+  padding: calc(1rem + 0.25vw) 0;
+}
+
+/************************
  * Styling Error Notification *
  ************************/
 #notification-blocker {
@@ -997,6 +1097,15 @@ input[type=text] {
 
   .settings-btns {
     margin: 0.5rem 1rem;
+  }
+
+  #welcome-para {
+    font-size: calc(1rem + 0.25vw);
+    line-height: calc(1.25rem + 0.25vw);
+  }
+
+  #welcome-para p {
+    margin: calc(0.5rem + 0.25vw) 0 0 0;
   }
 }
 

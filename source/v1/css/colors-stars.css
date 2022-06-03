@@ -279,6 +279,35 @@ input[type=text] {
   color: white;
 }
 
+/**************************
+  * Color for Welcome Box *
+  **************************/
+
+.welcome-section-blocker {
+  background-color: var(--less-transparent);
+}
+
+.welcome-section {
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+}
+
+.welcome-head,
+.welc-headers {
+  color: white;
+}
+
+/**
+ * Paragraph of instructions within instructions section
+ */
+#welcome-para {
+  color: var(--light-color);
+}
+
+#welcome-para i {
+  color: white;
+}
+
 /********************
  * Color for Footer *
  ********************/
