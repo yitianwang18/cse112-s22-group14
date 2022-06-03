@@ -39,7 +39,6 @@ class EventBus {
         this.registerEvent("showTasks", this.handleShowTasks.bind(this));
         this.registerEvent("showSettings", this.handleShowSettings.bind(this));
         this.registerEvent("showWelcome", this.handleShowWelcome.bind(this));
-        this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
         this.registerEvent("resetSettings", this.handleResetSettings.bind(this));
         // settings buttons for first setting - Pomo Length
         this.registerEvent("settingOneButtonOne", this.settingOneButtonOne.bind(this));
@@ -158,15 +157,6 @@ class EventBus {
             this.fireEvent("startSession");
         } else {
             this.fireEvent("endSession");
-        }
-    }
-
-    /**
-     * Event Handler function for the 'resetPomo' event
-     */
-    handleResetPomo() {
-        if (this.o_timer_container.n_curr_state == TimerContainer.N_WORK) {
-            this.o_timer_container.resetPomo();
         }
     }
 
