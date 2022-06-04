@@ -67,7 +67,8 @@ export class TaskDisplay extends HTMLElement {
         let o_next_disp = document.createElement("div");
         o_next_disp.id = "next";
 
-        o_wrapper_obj.append(o_curr_title, o_curr_disp, o_wrap_btn, o_next_title, o_next_disp);
+        // hidden next tasks When a Session is Active 
+        o_wrapper_obj.append(o_curr_title, o_curr_disp, o_wrap_btn);
         this.append(o_wrapper_obj);
 
         /*keeps track of the number of tasks*/
