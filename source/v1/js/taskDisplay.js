@@ -101,12 +101,7 @@ export class TaskDisplay extends HTMLElement {
      * @param {*} newValue new value of attribute
      */
     wrapperAttributeFunction(name, oldValue, newValue) {
-        // don't display tasks if 1 or none
-        if (name == "numtasks" && newValue <= 1) {
-            this.getElementsByTagName("h3")[1].style.display = "none";
-        }
-        // if newValue (num of tasks) > 1, display current & next task
-        else if (name == "numtasks" && newValue > 1) {
+        if (name == "numtasks" && newValue > 1) {
             this.getElementsByTagName("h3")[1].style.display = "";
         }
         else if (name == "currtask") {
