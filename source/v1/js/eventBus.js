@@ -40,7 +40,6 @@ class EventBus {
         this.registerEvent("showInstructions", this.handleShowInstructions.bind(this));
         this.registerEvent("showSettings", this.handleShowSettings.bind(this));
         this.registerEvent("showWelcome", this.handleShowWelcome.bind(this));
-        this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
         this.registerEvent("resetSettings", this.handleResetSettings.bind(this));
         // settings buttons for first setting - Pomo Length
         this.registerEvent("settingOneButtonOne", this.settingOneButtonOne.bind(this));
@@ -78,7 +77,6 @@ class EventBus {
      * Event handler function for the 'startSession' Event
      */
     handleStartSession() {
-        let o_start_error = this.o_timer_container.querySelector("#start-error");
         let o_add_error = document.querySelector("#add-error");
         this.o_task_list.showTaskList();
         // check for valid application states
@@ -96,8 +94,6 @@ class EventBus {
             // Make sure the button can't be seen
             document.querySelector("#close-task").style.visibility = "hidden";
             
-            o_start_error.innerHTML = "";
-            o_start_error.classList.remove("color-error");
             // This time must be the greater than the timeout for displaying the task list in taskList.js
             setTimeout(() => {
                 document.querySelector("#close-task").style.display = "none";
@@ -159,15 +155,6 @@ class EventBus {
             this.fireEvent("startSession");
         } else {
             this.fireEvent("endSession");
-        }
-    }
-
-    /**
-     * Event Handler function for the 'resetPomo' event
-     */
-    handleResetPomo() {
-        if (this.o_timer_container.n_curr_state == TimerContainer.N_WORK) {
-            this.o_timer_container.resetPomo();
         }
     }
 
