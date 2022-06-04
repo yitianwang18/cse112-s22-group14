@@ -5,6 +5,7 @@
 :root {
   --red: #f00;
   --hover-color: #28a8e4;
+  --hover-color-light: #b4d5e4;
   --light-grey: #828282;
   --secondary-color: #101b27;
   --light-color: #e0e0e0;
@@ -197,7 +198,7 @@ input[type=text] {
   color: var(--hover-color);
 }
 
-.bottom-btn:focus { 
+.bottom-btn:focus {
   outline: 2px solid var(--hover-color);
   border: 2px solid var(--hover-color);
 }
@@ -287,6 +288,18 @@ input[type=text] {
 .instruct-head,
 .inst-headers {
   color: white;
+}
+
+.inline-text i {
+  color: white;
+}
+
+.inline-link {
+  color: var(--hover-color);
+}
+
+.inline-link:hover {
+  color: var(--hover-color-light);
 }
 
 /**************************
