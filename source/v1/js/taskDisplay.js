@@ -67,7 +67,7 @@ export class TaskDisplay extends HTMLElement {
         let o_next_disp = document.createElement("div");
         o_next_disp.id = "next";
 
-        // hidden next tasks When a Session is Active 
+        // hidden(not added) next tasks When a Session is Active 
         o_wrapper_obj.append(o_curr_title, o_curr_disp, o_wrap_btn);
         this.append(o_wrapper_obj);
 
@@ -103,19 +103,14 @@ export class TaskDisplay extends HTMLElement {
     wrapperAttributeFunction(name, oldValue, newValue) {
         // don't display tasks if 1 or none
         if (name == "numtasks" && newValue <= 1) {
-            this.querySelector("#next").style.display = "none";
             this.getElementsByTagName("h3")[1].style.display = "none";
         }
         // if newValue (num of tasks) > 1, display current & next task
         else if (name == "numtasks" && newValue > 1) {
-            this.querySelector("#next").style.display = "";
             this.getElementsByTagName("h3")[1].style.display = "";
         }
         else if (name == "currtask") {
             this.querySelector("#current").innerText = newValue;
-        }
-        else if (name == "nexttask") {
-            this.querySelector("#next").innerText = newValue;
         }
     }
 
