@@ -66,6 +66,7 @@ class EventBus {
         this.registerEvent("showTasks", this.handleShowTasks.bind(this));
         this.registerEvent("showSettings", this.handleShowSettings.bind(this));
         this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
+        this.registerEvent("resetSettings", this.handleResetSettings.bind(this));
         // settings buttons for first setting - Pomo Length
         this.registerEvent("settingOneButtonOne", this.settingOneButtonOne.bind(this));
         this.registerEvent("settingOneButtonTwo", this.settingOneButtonTwo.bind(this));
@@ -102,6 +103,7 @@ class EventBus {
      * Event handler function for the 'startSession' Event
      */
     handleStartSession() {
+        let o_start_error = this.o_timer_container.querySelector("#start-error");
         let o_add_error = document.querySelector("#add-error");
         this.o_task_list.showTaskList();
         // check for valid application states
@@ -116,6 +118,17 @@ class EventBus {
             this.o_task_list.closeTaskList();
             this.updateTaskDisplay();
             this.handleStartWork();
+            // Make sure the button can't be seen
+            document.querySelector("#close-task").style.visibility = "hidden";
+            
+            o_start_error.innerHTML = "";
+            o_start_error.classList.remove("color-error");
+            // This time must be the greater than the timeout for displaying the task list in taskList.js
+            setTimeout(() => {
+                document.querySelector("#close-task").style.display = "none";
+                document.querySelector("#task-title").style.display = "none";
+                document.querySelector("#all-tasks").style.display = "none";
+            }, 310);
         } else {
             // show start error message
             o_add_error.innerHTML = EventBus.S_START_ERROR;
@@ -134,6 +147,7 @@ class EventBus {
         this.o_timer_container.handleEndSession();
         // Make sure the close task button can be seen again
         document.querySelector("#close-task").style.visibility = "visible";
+        document.querySelector("#close-task").style.display = "none";
     }
 
     /**
@@ -250,6 +264,13 @@ class EventBus {
         this.o_settings_tab.LBLengthLong();
     }
 
+    /**
+     * Event handler function to reset times to default
+     */
+     handleResetSettings() {
+        this.o_settings_tab.resetSettings();
+    }
+
 
 
 
@@ -281,7 +302,8 @@ class EventBus {
  */
 EventBus.S_START_ERROR = "Can not start without tasks. Please enter a task!";
 
-export { EventBus };</code></pre>
+export { EventBus };
+</code></pre>
         </article>
     </section>
 
@@ -291,13 +313,13 @@ export { EventBus };</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EventBus.html">EventBus</a></li><li><a href="InstructionsBox.html">InstructionsBox</a></li><li><a href="NotificationBox.html">NotificationBox</a></li><li><a href="SettingsTab.html">SettingsTab</a></li><li><a href="Task.html">Task</a></li><li><a href="TaskDisplay.html">TaskDisplay</a></li><li><a href="TaskList.html">TaskList</a></li><li><a href="TimerContainer.html">TimerContainer</a></li><li><a href="TimerDisplay.html">TimerDisplay</a></li></ul><h3>Global</h3><ul><li><a href="global.html#handleKeyBinds">handleKeyBinds</a></li><li><a href="global.html#handleThemeBtnPressed">handleThemeBtnPressed</a></li><li><a href="global.html#notify">notify</a></li><li><a href="global.html#settingOneButtonOne">settingOneButtonOne</a></li><li><a href="global.html#settingThreeButtonOne">settingThreeButtonOne</a></li><li><a href="global.html#settingTwoButtonOne">settingTwoButtonOne</a></li><li><a href="global.html#showInstructions">showInstructions</a></li><li><a href="global.html#showSettingsTab">showSettingsTab</a></li><li><a href="global.html#showTaskList">showTaskList</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EventBus.html">EventBus</a></li><li><a href="InstructionsBox.html">InstructionsBox</a></li><li><a href="NotificationBox.html">NotificationBox</a></li><li><a href="SettingsTab.html">SettingsTab</a></li><li><a href="Task.html">Task</a></li><li><a href="TaskDisplay.html">TaskDisplay</a></li><li><a href="TaskList.html">TaskList</a></li><li><a href="TimerContainer.html">TimerContainer</a></li><li><a href="TimerDisplay.html">TimerDisplay</a></li></ul><h3>Global</h3><ul><li><a href="global.html#handleKeyBinds">handleKeyBinds</a></li><li><a href="global.html#handleThemeBtnPressed">handleThemeBtnPressed</a></li><li><a href="global.html#notify">notify</a></li><li><a href="global.html#resetSettings">resetSettings</a></li><li><a href="global.html#settingOneButtonOne">settingOneButtonOne</a></li><li><a href="global.html#settingThreeButtonOne">settingThreeButtonOne</a></li><li><a href="global.html#settingTwoButtonOne">settingTwoButtonOne</a></li><li><a href="global.html#showInstructions">showInstructions</a></li><li><a href="global.html#showSettingsTab">showSettingsTab</a></li><li><a href="global.html#showTaskList">showTaskList</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon May 30 2022 14:56:51 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Jun 01 2022 23:34:48 GMT-0700 (Pacific Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

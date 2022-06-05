@@ -19,6 +19,7 @@ class EventBus {
         this.o_timer_container = document.querySelector("timer-element");
         this.o_task_display = document.querySelector("task-display");
         this.o_toolbar = document.querySelector("nav");
+        this.o_welcome = document.querySelector("welcome-box");
         this.o_instructions = document.querySelector("instructions-box");
         this.o_settings_tab = document.querySelector("settings-tab");
         this.registerEvents();
@@ -36,8 +37,10 @@ class EventBus {
         this.registerEvent("closeWindows", this.handleCloseWindows.bind(this));
         this.registerEvent("spaceKeybind", this.handleSpaceKeybind.bind(this));
         this.registerEvent("showTasks", this.handleShowTasks.bind(this));
+        this.registerEvent("showInstructions", this.handleShowInstructions.bind(this));
         this.registerEvent("showSettings", this.handleShowSettings.bind(this));
-        this.registerEvent("resetPomo", this.handleResetPomo.bind(this));
+        this.registerEvent("showWelcome", this.handleShowWelcome.bind(this));
+        this.registerEvent("resetSettings", this.handleResetSettings.bind(this));
         // settings buttons for first setting - Pomo Length
         this.registerEvent("settingOneButtonOne", this.settingOneButtonOne.bind(this));
         this.registerEvent("settingOneButtonTwo", this.settingOneButtonTwo.bind(this));
@@ -74,7 +77,6 @@ class EventBus {
      * Event handler function for the 'startSession' Event
      */
     handleStartSession() {
-        let o_start_error = this.o_timer_container.querySelector("#start-error");
         let o_add_error = document.querySelector("#add-error");
         this.o_task_list.showTaskList();
         // check for valid application states
@@ -92,8 +94,6 @@ class EventBus {
             // Make sure the button can't be seen
             document.querySelector("#close-task").style.visibility = "hidden";
             
-            o_start_error.innerHTML = "";
-            o_start_error.classList.remove("color-error");
             // This time must be the greater than the timeout for displaying the task list in taskList.js
             setTimeout(() => {
                 document.querySelector("#close-task").style.display = "none";
@@ -159,23 +159,23 @@ class EventBus {
     }
 
     /**
-     * Event Handler function for the 'resetPomo' event
-     */
-    handleResetPomo() {
-        if (this.o_timer_container.n_curr_state == TimerContainer.N_WORK) {
-            this.o_timer_container.resetPomo();
-        }
-    }
-
-    /**
      * Event Handler function for the 'closeWindows' event
      */
     handleCloseWindows() {
         this.o_task_list.closeTaskList();
         this.o_instructions.closeInstructions();
         this.o_settings_tab.closeSettingsTab();
+        this.o_welcome.closeWelcome();
     }
 
+    /**
+     * Event Handler function for the 'showTasks' event
+     */
+     handleShowWelcome() {
+        this.o_welcome.showWelcomeBox();
+    }
+
+    
     /**
      * Event Handler function for the 'showTasks' event
      */
@@ -183,7 +183,29 @@ class EventBus {
         if (this.o_instructions.getIsShown()) {
             this.o_instructions.closeInstructions();
         }
+        if (this.o_settings_tab.getIsShown()) {
+            this.o_settings_tab.closeSettingsTab();
+        }
+        if (this.o_welcome.getIsShown()) {
+            this.o_welcome.closeWelcome();
+        }
         this.o_task_list.showTaskList();
+    }
+
+    /**
+     * Event Handler function for the 'showInstructions' event
+     */
+     handleShowInstructions() {
+        if (this.o_task_list.getIsShown()) {
+            this.o_task_list.closeTaskList();
+        }
+        if (this.o_settings_tab.getIsShown()) {
+            this.o_settings_tab.closeSettingsTab();
+        }
+        if (this.o_welcome.getIsShown()) {
+            this.o_welcome.closeWelcome();
+        }
+        this.o_instructions.showInstructionsBox();
     }
 
     
@@ -193,6 +215,12 @@ class EventBus {
     handleShowSettings() {
         if (this.o_instructions.getIsShown()) {
             this.o_instructions.closeInstructions();
+        }
+        if (this.o_task_list.getIsShown()) {
+            this.o_task_list.closeTaskList();
+        }
+        if (this.o_welcome.getIsShown()) {
+            this.o_welcome.closeWelcome();
         }
         this.o_settings_tab.showSettings();
     }
@@ -233,6 +261,13 @@ class EventBus {
     }
     settingThreeButtonThree() {
         this.o_settings_tab.LBLengthLong();
+    }
+
+    /**
+     * Event handler function to reset times to default
+     */
+    handleResetSettings() {
+        this.o_settings_tab.resetSettings();
     }
 
 
