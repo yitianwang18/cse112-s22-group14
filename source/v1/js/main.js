@@ -40,6 +40,7 @@ function handleThemeBtnPressed() {
  * Event handler function to show TaskList when task button is pressed
  */
 function showTaskList() {
+    document.EventBus.pop_up = true;
     document.EventBus.fireEvent("showTasks");
 }
 
