@@ -2,6 +2,7 @@ describe("Testing Event Bus", () => {
 
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
+        cy.get('welcome-box > #welcome > .close2').click();
         cy.document().then((o_doc) => {
             if (!o_doc.querySelector("timer-element").B_DEBUG) {
                 o_doc.querySelector("timer-element").toggleDebug();
@@ -14,7 +15,7 @@ describe("Testing Event Bus", () => {
         //Task added in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -32,7 +33,7 @@ describe("Testing Event Bus", () => {
         //Task added in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -54,9 +55,9 @@ describe("Testing Event Bus", () => {
         //Add 2 Tasks in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Second Test Task");
+            cy.get("#task-input-top").clear().type("Second Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -78,7 +79,7 @@ describe("Testing Event Bus", () => {
         //Add a Task in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -99,7 +100,7 @@ describe("Testing Event Bus", () => {
         //Add a Task in the TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -155,25 +156,6 @@ describe("Testing Event Bus", () => {
         });
     });
 
-    it("Test 'reset Pomo' event is fired correctly", () => {
-        //Add a Task in the TaskList
-        cy.get("#task-btn").trigger("click");
-        cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
-            cy.get("#add-btn").trigger("click");
-            cy.get("#close-task").trigger("click");
-        });
-        //Start Session
-        cy.get("timer-element").within(() => {
-            cy.get("#start-btn").trigger("click");
-        });
-        //Press the r key
-        cy.get("body").type("r");
-        //"resetPomo" Event fired
-        cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("resetPomo");
-        });
-    });
 
     it("Test functionality when 'Start Session' event is fired", () => {
         //Fire "startSession" with empty tasklist
@@ -183,17 +165,17 @@ describe("Testing Event Bus", () => {
             expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startSession");
         });
         //error thrown
-        cy.get("#start-error").then(($o_el) => {
+        cy.get("#add-error").then(($o_el) => {
             expect($o_el).to.have.class("color-error");
-            expect($o_el).to.contain("Cannot start session");
+            expect($o_el).to.contain("Can not start without tasks. Please enter a task!");
         });
 
         //Fire "startSession" with non-empty tasklist
-        cy.get("#task-btn").trigger("click");
+        //cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Second Test Task");
+            cy.get("#task-input-top").clear().type("Second Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -224,7 +206,7 @@ describe("Testing Event Bus", () => {
         //Fire "endSession" event
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -253,9 +235,9 @@ describe("Testing Event Bus", () => {
         //Fire "nextTask" event
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Second Test Task");
+            cy.get("#task-input-top").clear().type("Second Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -297,7 +279,7 @@ describe("Testing Event Bus", () => {
         //Fire "startBreak" Event
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -320,7 +302,8 @@ describe("Testing Event Bus", () => {
         //Fire "startWork" Event
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.wait(3000);
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -376,14 +359,14 @@ describe("Testing Event Bus", () => {
         // Start session event fired
         cy.document().then((o_doc) => {
             expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("startSession");
-        });
+        }); 
 
         //Fire the "Space Keybind" event when the session has started
-        cy.get("#task-btn").trigger("click");
+        //cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Second Test Task");
+            cy.get("#task-input-top").clear().type("Second Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -411,55 +394,5 @@ describe("Testing Event Bus", () => {
         //TaskList is shown
         cy.get("task-list").should("be.visible");
     });
-
-    it("Test functionality when 'Reset Pomo' event is fired", () => {
-        //Add a Task in the TaskList
-        cy.get("#task-btn").trigger("click");
-        cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
-            cy.get("#add-btn").trigger("click");
-            cy.get("#close-task").trigger("click");
-        });
-        //Start Session
-        cy.clock();
-        cy.get("timer-element").within(() => {
-            cy.get("#start-btn").trigger("click");
-        });
-        //Press the r key
-        cy.get("body").type("r");
-        //"resetPomo" Event fired
-        cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("resetPomo");
-        });
-        //Correct Reset Functionality
-        cy.get("timer-element").within(() => {
-            //Work cycle: Timer displays 3000ms
-            cy.get("#work-message").should("contain", "Pomodoro - Start working!");
-            cy.get("timer-display").then(function ($o_el) {
-                expect($o_el).to.have.attr("time", 3000);
-            });
-            cy.tick(2000);
-            //Timer runs down to 1000ms after a 2000ms pause 
-            cy.get("#work-message").should("contain", "Pomodoro - Start working!");
-            cy.get("timer-display").then(function ($o_el) {
-                expect($o_el).to.have.attr("time", 1000);
-            });
-            //Reset button clicked
-            cy.get("#reset-btn").should("be.enabled");
-            cy.get("#reset-btn").trigger("click");
-            //Timer resets to 3000ms
-            cy.get("#work-message").should("contain", "Pomodoro - Start working!");
-            cy.get("timer-display").then(function ($o_el) {
-                expect($o_el).to.have.attr("time", 3000);
-            });
-            cy.tick(3100);
-            //Short Break after a 3100ms pause
-            cy.get("#work-message").should("contain", "Short Break - Good job!");
-            cy.get("timer-display").then(function ($o_el) {
-                expect($o_el).to.have.attr("time", 3000);
-            });
-            //Reset button disables during break
-            cy.get("#reset-btn").should("be.disabled");
-        });
-    });
+    
 });

@@ -3,7 +3,7 @@
 describe("Task List Tests", () => {
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
-        cy.get('instructions-box > #instructions > .close2').click();
+        cy.get('welcome-box > #welcome > .close2').click();
         cy.document().then((o_doc) => {
             if (!o_doc.querySelector("timer-element").B_DEBUG) {
                 o_doc.querySelector("timer-element").toggleDebug();
@@ -132,7 +132,7 @@ describe("Task List Tests", () => {
 
         //Task added in the TaskList
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });

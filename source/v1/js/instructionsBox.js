@@ -131,6 +131,7 @@ class InstructionsBox extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showInstructionsBox() {
+        document.EventBus.pop_up = true;
         this.querySelector("#instructions").classList.add("instructions-section-open");
         this.querySelector("#close-inst").style.display = "none";
 
@@ -150,6 +151,7 @@ class InstructionsBox extends HTMLElement {
      * Function to close task list display from the main user screen
      */
     closeInstructions() {
+        document.EventBus.pop_up = false;
         this.querySelector("#instructions").classList.remove("instructions-section-open");
         this.querySelector("#instructions-title").style.display = "none";
         this.querySelector("#instructions-para").style.display = "none";
