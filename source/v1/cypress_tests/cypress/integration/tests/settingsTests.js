@@ -4,6 +4,7 @@ import { hasUncaughtExceptionCaptureCallback } from "process";
 describe("Settings Menu Tests", () => {
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
+        cy.get('welcome-box > #welcome > .close2').click();
         cy.get("#sett-btn").trigger("click");
         cy.document().then((o_doc) => {
             cy.spy(o_doc.querySelector("settings-tab"), "PSLengthShort");

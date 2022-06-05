@@ -88,6 +88,7 @@ class NotificationBox extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showNotificationBox() {
+        document.EventBus.pop_up = true;
         this.querySelector("#instructions").classList.add("notification-section-open");
 
         // Hide everything inside instructions box while animating to prevent sandwiching of text
@@ -104,6 +105,7 @@ class NotificationBox extends HTMLElement {
      * Function to close task list display from the main user screen
      */
     closeNotification() {
+        document.EventBus.pop_up = false;
         this.querySelector("#instructions").classList.remove("notification-section-open");
         this.querySelector("#instructions-title").style.display = "none";
         this.querySelector("#instructions-para").style.display = "none";

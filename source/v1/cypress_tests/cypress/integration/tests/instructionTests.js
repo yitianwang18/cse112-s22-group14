@@ -10,10 +10,10 @@ describe("Instruction Box Tests", () => {
       
       if (n_prevDate < 30) {
         //checks if hidden initially
-        cy.get("instructions-box").should("be.hidden");
+        cy.get("welcome-box").should("be.hidden");
       } else {
         //checks if shown because it has been at least 30 days
-        cy.get("instructions-box").should("be.instructions-section-open");
+        cy.get("welcome-box").should("be.welcome-section-open");
       }
     })
 

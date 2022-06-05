@@ -1,6 +1,7 @@
 describe("Notification Tests", () => {
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
+        cy.get('welcome-box > #welcome > .close2').click();
     });
 
     it("Tests alert when notifications are not supported", () => {
@@ -14,7 +15,7 @@ describe("Notification Tests", () => {
         //adds task and starts session
         cy.on("window:alert", cy.stub().as("alerted"));
         cy.get("#task-btn").trigger("click");
-        cy.get("input").clear().type("t1");
+        cy.get("#task-input-top").clear().type("t1");
         cy.get("#add-btn").trigger("click");
         cy.get("#close-task").trigger("click");
         cy.get("#start-btn").trigger("click");
@@ -34,7 +35,7 @@ describe("Notification Tests", () => {
 
         //adds task and starts session
         cy.get("#task-btn").trigger("click");
-        cy.get("input").clear().type("t1");
+        cy.get("#task-input-top").clear().type("t1");
         cy.get("#add-btn").trigger("click");
         cy.get("#close-task").trigger("click");
         cy.get("#start-btn").trigger("click");
@@ -66,7 +67,7 @@ describe("Notification Tests", () => {
 
         //ads task and starts session
         cy.get("#task-btn").trigger("click");
-        cy.get("input").clear().type("t1");
+        cy.get("#task-input-top").clear().type("t1");
         cy.get("#add-btn").trigger("click");
         cy.get("#close-task").trigger("click");
         cy.get("#start-btn").trigger("click");
@@ -126,7 +127,7 @@ describe("Notification Tests", () => {
 
         //adds task and starts session
         cy.get("#task-btn").trigger("click");
-        cy.get("input").clear().type("t1");
+        cy.get("#task-input-top").clear().type("t1");
         cy.get("#add-btn").trigger("click");
         cy.get("#close-task").trigger("click");
         cy.get("#start-btn").trigger("click");
@@ -182,7 +183,7 @@ describe("Notification Tests", () => {
 
         //adds task and starts session
         cy.get("#task-btn").trigger("click");
-        cy.get("input").clear().type("t1");
+        cy.get("#task-input-top").clear().type("t1");
         cy.get("#add-btn").trigger("click");
         cy.get("#close-task").trigger("click");
         cy.get("#start-btn").trigger("click");
@@ -238,7 +239,7 @@ describe("Notification Tests", () => {
 
         //adds task and starts session
         cy.get("#task-btn").trigger("click");
-        cy.get("input").clear().type("t1");
+        cy.get("#task-input-top").clear().type("t1");
         cy.get("#add-btn").trigger("click");
         cy.get("#close-task").trigger("click");
         cy.get("#start-btn").trigger("click");
@@ -246,8 +247,6 @@ describe("Notification Tests", () => {
         //checks if initial notif is sent
         cy.get("@Notification").should("have.been.calledWithNew").and("have.been.calledWith", "Time to start the next work session!");
         cy.wait(2000);
-        cy.get("#reset-btn").trigger("click");
-        cy.wait(1000);
         cy.get("#end-btn").trigger("click");
     });
 
