@@ -36,10 +36,6 @@ The Pomodoro technique is a scientifically proven way to help increase productiv
 * Click on the settings button to customize your session time, short break time and long break time!
 * You can also pick between forest theme and night sky theme with the theme button!
 
-## Documentation
-
-You can find the Documentation [here](https://yitianwang18.github.io/cse112-s22-group14/)
-
 ## Contributing
 
 Please check out our [onboarding guidelines](ONBOARD.md)

@@ -1,6 +1,6 @@
-# PomoHero Version 3
+# Powelldoro Version 1
 
-*Release date: March 18, 2021*  
+*Release date: June 5, 2022*  
 *Minimum:*
 | Chrome | Edge | Firefox | Internet Explorer | Opera | Safari |
 |:----:|:----:|:----:|:----:|:----:|:----:|
@@ -16,4 +16,4 @@ Animations have been added to the task list and instructions box to counter a mo
 
 Overall, this version brings an experience which keeps in mind the wants of the user and offers a seamless and hopefully flawless interaction.
 
-[Click here](https://pomo-hero.web.app/) to use the app!
+[Click here](https://powelldoro.web.app/) to use the app!
