@@ -9,7 +9,7 @@ on:
       - "source/**"
     branches:
       - main
-    type:
+    types:
       - closed
 
   # Allows you to run this workflow manually from the Actions tab
