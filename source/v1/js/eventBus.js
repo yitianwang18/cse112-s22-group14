@@ -166,7 +166,6 @@ class EventBus {
      * Event Handler function for the 'closeWindows' event
      */
     handleCloseWindows() {
-        document.EventBus.pop_up = false;
         this.o_task_list.closeTaskList();
         this.o_instructions.closeInstructions();
         this.o_settings_tab.closeSettingsTab();

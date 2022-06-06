@@ -40,7 +40,6 @@ function handleThemeBtnPressed() {
  * Event handler function to show TaskList when task button is pressed
  */
 function showTaskList() {
-    document.EventBus.pop_up = true;
     document.EventBus.fireEvent("showTasks");
 }
 
@@ -158,7 +157,7 @@ function handleKeyBinds(o_event) {
                 break;
             case "i":
                 if(!document.EventBus.in_session && !document.EventBus.pop_up){
-                    showInstructions();
+                    document.EventBus.fireEvent("showInstructions");
                 }
                 break;
             case "n":
