@@ -440,7 +440,9 @@ class TaskList extends HTMLElement {
      * Function to show task list display from the main user screen
      */
     showTaskList() {
-        document.EventBus.pop_up = true;
+        if(document.EventBus != undefined){
+            document.EventBus.pop_up = true;
+        }
         this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
         o_tasks.style.display = "block";
@@ -486,7 +488,9 @@ class TaskList extends HTMLElement {
      * Function to close task list display from the main user screen
      */
     closeTaskList() {
-        document.EventBus.pop_up = false;
+        if(document.EventBus != undefined){
+            document.EventBus.pop_up = false;
+        }
         this.querySelector("#close-task").style.display = "none";
         let o_tasks = this.querySelector("#side-tasks");
         this.clearInput();
