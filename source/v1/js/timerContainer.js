@@ -189,17 +189,17 @@ class TimerContainer extends HTMLElement {
         if(n_remaining_time != -1) {
             let s_state = "";
             switch(this.n_curr_state) {
+                case TimerContainer.N_WORK:
+                    s_state = TimerContainer.A_TAB_STATUS[0];
+                    break;
                 case TimerContainer.N_S_BREAK:
-                    s_state = "Short Break:";
+                    s_state = TimerContainer.A_TAB_STATUS[1];
                     break;
                 case TimerContainer.N_L_BREAK:
-                    s_state = "Long Break:";
-                    break;
-                case TimerContainer.N_WORK:
-                    s_state = "Session " + (this.n_done_pomos + 1) + ":";
+                    s_state = TimerContainer.A_TAB_STATUS[2];
                     break;
             }
-            document.title = s_state + " " + TimerDisplay.formatMilliTime(Number(n_remaining_time));
+            document.title = TimerDisplay.formatMilliTime(Number(n_remaining_time)) + " - " + s_state;
         }
     }
 
@@ -356,6 +356,13 @@ TimerContainer.A_STATE_DURATIONS = [1500000, 300000, 2100000, 0];
  */
 TimerContainer.A_STATE_MESSAGES = ["Pomodoro - Start working!", "Short Break - Good job!", 
     "Long Break - Relax", "Ready to focus?"];
+
+/**
+ * Array mapping states to their tab status 
+ * @static
+ * @type {string[]}
+ */
+TimerContainer.A_TAB_STATUS = ["Work Session", "Short Break", "Long Break"];
 
 /**
  * Delay of interval
