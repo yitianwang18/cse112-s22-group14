@@ -12,7 +12,7 @@ The Redeem Team was formed to complete our CSE 112 project at UCSD, which was to
 - (Bio)
 
 ### Matthew Cohen
-- <img src="../source/v1/assets/img/team/matthew.jpg" alt="Matthew Cohen" width="200"><br>
+<img src="../source/v1/assets/img/team/matthew.jpg" alt="Matthew Cohen" width="200"><br>
 - Position: Developer
 - My name is Matthew and am from Los Angeles. I am a Computer Science major at UCSD in Warren college, graduating in June 2022. My interests include sports like basketball, soccer, and baseball. It was great to learn more about software engineering practices and to be part of this team. I look forward to using these skills in my career as a Software Engineer.
 
