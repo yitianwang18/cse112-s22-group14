@@ -97,7 +97,7 @@ class EventBus {
             // Make sure the button can't be seen
             document.querySelector("#close-task").style.visibility = "hidden";
             
-            // This time must be the greater than the timeout for displaying the task list in taskList.js
+            // Must be the greater than the timeout for displaying the task list in taskList.js
             setTimeout(() => {
                 document.querySelector("#close-task").style.display = "none";
                 document.querySelector("#task-title").style.display = "none";
@@ -175,7 +175,7 @@ class EventBus {
     /**
      * Event Handler function for the 'showTasks' event
      */
-     handleShowWelcome() {
+    handleShowWelcome() {
         this.o_welcome.showWelcomeBox();
     }
 
@@ -199,7 +199,7 @@ class EventBus {
     /**
      * Event Handler function for the 'showInstructions' event
      */
-     handleShowInstructions() {
+    handleShowInstructions() {
         if (this.o_task_list.getIsShown()) {
             this.o_task_list.closeTaskList();
         }

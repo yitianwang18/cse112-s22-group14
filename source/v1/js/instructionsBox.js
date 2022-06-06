@@ -97,7 +97,7 @@ class InstructionsBox extends HTMLElement {
         o_inst_pomo_text.innerText = InstructionsBox.S_POMO_INST;
         let o_inst_pomo_text_link = document.createElement("a");
         o_inst_pomo_text_link.setAttribute("href", 
-        "https://todoist.com/productivity-methods/pomodoro-technique");
+            "https://todoist.com/productivity-methods/pomodoro-technique");
         o_inst_pomo_text_link.setAttribute("target", "_blank");
         o_inst_pomo_text_link.classList.add("inline-link");
         o_inst_pomo_text_link.innerHTML = "here!";
@@ -167,11 +167,10 @@ class InstructionsBox extends HTMLElement {
  * @type {string[]}
  */
 InstructionsBox.A_TASK_INST = ["First add all the tasks you want to work on by \
-    clicking on the task list button ",
-    "Tasks can only be added before starting the work session to limit distractions \
-    while you work",
-    "Once you start the session, you can only see the current task!",
-    "If you are done with a task, hit the check next to it "];
+    clicking on the task list button ", "Tasks can only be added before starting \
+    the work session to limit distractions while you work", "Once you start the \
+    session, you can only see the current task!", "If you are done with a task, \
+    hit the check next to it "];
 
 /**
  * Array storing instructions related to the work-break cycle
@@ -179,12 +178,10 @@ InstructionsBox.A_TASK_INST = ["First add all the tasks you want to work on by \
  * @type {string[]}
  */
 InstructionsBox.A_CYCLE_INST = ["One work interval is 25 minutes of working or studying \
-    — you can change the length in ",
-    "Once you start, the timer can't be paused, so keep working until your break!",
-    "Take a short break after every work interval and a long break after the 4th \
-    work interval",
-    "If you get distracted, click “Restart” to restart the current interval",
-    "Done working for now? Hit “End Session” to stop. Your tasks will be saved!"];
+    — you can change the length in ", "Once you start, the timer can't be paused, so \
+    keep working until your break!", "Take a short break after every work interval and \
+    a long break after the 4th work interval", "Done working for now? Hit “End Session” \
+    to stop. Your tasks will be saved!"];
 
 /**
  * String describing the Pomodoro Technique
