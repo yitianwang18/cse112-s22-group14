@@ -6,7 +6,7 @@ name: Generate Documentation
 on:
   pull_request:
     paths:
-      - 'source/**'
+      - "source/**"
     branches:
       - main
     type:
@@ -24,11 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Check out the repository
-      - name: Checkout Code
       - uses: actions/checkout@v2
       # Runs a single command using the runners shell
       - name: install JSDoc
-      # npm install will respect the package.json, while npm ci will respect package-lock.json
+        # npm install will respect the package.json, while npm ci will respect package-lock.json
         run: npm install
       # Generate the JSDocs under source directory and output to docs directory
       - name: Generate Documentation
