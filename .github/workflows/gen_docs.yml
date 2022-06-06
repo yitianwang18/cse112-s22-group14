@@ -24,7 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Check out the repository
-      - uses: actions/checkout@v2
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
       # Runs a single command using the runners shell
       - name: install JSDoc
         # npm install will respect the package.json, while npm ci will respect package-lock.json
