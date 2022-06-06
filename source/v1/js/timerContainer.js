@@ -189,17 +189,18 @@ class TimerContainer extends HTMLElement {
         if(n_remaining_time != -1) {
             let s_state = "";
             switch(this.n_curr_state) {
-                case TimerContainer.N_WORK:
-                    s_state = TimerContainer.A_TAB_STATUS[0];
-                    break;
-                case TimerContainer.N_S_BREAK:
-                    s_state = TimerContainer.A_TAB_STATUS[1];
-                    break;
-                case TimerContainer.N_L_BREAK:
-                    s_state = TimerContainer.A_TAB_STATUS[2];
-                    break;
+            case TimerContainer.N_WORK:
+                s_state = TimerContainer.A_TAB_STATUS[0];
+                break;
+            case TimerContainer.N_S_BREAK:
+                s_state = TimerContainer.A_TAB_STATUS[1];
+                break;
+            case TimerContainer.N_L_BREAK:
+                s_state = TimerContainer.A_TAB_STATUS[2];
+                break;
             }
-            document.title = TimerDisplay.formatMilliTime(Number(n_remaining_time)) + " - " + s_state;
+            document.title = TimerDisplay.formatMilliTime(Number(n_remaining_time)) + 
+                " - " + s_state;
         }
     }
 
