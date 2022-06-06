@@ -332,7 +332,6 @@ class SettingsTab extends HTMLElement {
         if (B_CONSOLE_LOG) {
             console.log("settingsTab.js - showSettings");
         }
-
         document.EventBus.pop_up = true;
         // // Don't show the text in the menu right away
         // this.querySelector("#settings-title").style.display = "none";
@@ -354,7 +353,7 @@ class SettingsTab extends HTMLElement {
      * Function to close menu list display from the main user screen
      */
     closeSettingsTab() {
-        document.EventBus.pop_up = true;
+        document.EventBus.pop_up = false;
         this.querySelector("#close-settings").style.display = "none";
         let o_menu = this.querySelector("#side-settings");
 
