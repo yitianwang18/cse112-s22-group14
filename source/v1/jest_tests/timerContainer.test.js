@@ -88,7 +88,7 @@ test("Test title timer display", () => {
     o_timer_cont.n_curr_state = TimerContainer.N_WORK;
     o_timer_cont.n_start_time = new Date().getTime();
     o_timer_cont.renderComponents();
-    expect(document.title).toBe("20:00");
+    expect(document.title).toBe("20:00 - Work Session");
 });
 
 test("Test progressing through different states", () => {
@@ -139,7 +139,7 @@ test("Test beginSession in different states", () => {
     o_timer_cont.n_curr_state = TimerContainer.N_NOT_STARTED;
     o_timer_cont.beginSession();
     jest.advanceTimersByTime(TimerContainer.N_MILLI_DELAY);
-    expect(document.title).toBe("20:00");
+    expect(document.title).toBe("20:00 - Work Session");
 });
 
 test("Test endSession shifts to correct state", () => {
