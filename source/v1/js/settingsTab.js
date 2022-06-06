@@ -318,6 +318,12 @@ class SettingsTab extends HTMLElement {
         }
     }
 
+    
+    /** Function to determine if the settings are currently shown */
+    getIsShown() {
+        return this.querySelector("#side-settings").classList.contains("settings-class-open");
+    }
+
 
     /**
      * Function to show menu list display from the main user screen
@@ -327,6 +333,7 @@ class SettingsTab extends HTMLElement {
             console.log("settingsTab.js - showSettings");
         }
 
+        document.EventBus.pop_up = true;
         // // Don't show the text in the menu right away
         // this.querySelector("#settings-title").style.display = "none";
         let o_menu = this.querySelector("#side-settings");
@@ -347,6 +354,7 @@ class SettingsTab extends HTMLElement {
      * Function to close menu list display from the main user screen
      */
     closeSettingsTab() {
+        document.EventBus.pop_up = true;
         this.querySelector("#close-settings").style.display = "none";
         let o_menu = this.querySelector("#side-settings");
 

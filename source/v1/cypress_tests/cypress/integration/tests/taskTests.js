@@ -1,11 +1,12 @@
 describe("Test Tasks", () => {
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
+        cy.get('welcome-box > #welcome > .close2').click();
     });
 
     it("Test add task + update task names", () => {
         // Testing add first task
-        cy.get(".fa-tasks").trigger("click");
+        cy.get("#task-btn").trigger("click");
         cy.get("input[name=task]").clear().type("Do Homework");
         cy.get("input[type=text]").then(function ($o_el) {
             expect($o_el).to.have.value("Do Homework");
@@ -45,7 +46,7 @@ describe("Test Tasks", () => {
 
     it("Testin case: input task name is empty string or over character count", () => {
         // Testing add task
-        cy.get(".fa-tasks").trigger("click");
+        cy.get("#task-btn").trigger("click");
         cy.get("input[type=text]").clear().type("Do Homework");
         // cy.get("#add-task").get("input").clear().type("Do Homework");
         cy.get("input[type='text']").then(function ($o_el) {
@@ -72,7 +73,7 @@ describe("Test Tasks", () => {
 
     it("test that the task name is trimmed when spaced input given", () => {
         // Testing add task
-        cy.get(".fa-tasks").trigger("click");
+        cy.get("#task-btn").trigger("click");
         cy.get("input[type=text]").clear().type("      Do Homework       ");
         cy.get("#add-btn").trigger("click");
         cy.get("task-item[taskid='0'] input").then(function ($o_el) {
