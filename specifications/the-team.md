@@ -22,9 +22,9 @@ The Redeem Team was formed to complete our CSE 112 project at UCSD, which was to
 - (Bio)
 
 ### Justin Huang
-(Image)
+<img src="../source/v1/assets/img/team/justin.png" alt="Justin Huang" width="200"><br>
 - Position: Developer
-- (Bio)
+- Hi, my name is Justin, and I am a Computer Science major at UCSD in Warren College, graduating in Spring 2023. After just taking CSE 110 the quarter before, this was a breath of fresh air, as I found more freedom to create features, and felt more realistic to how software engineering jobs should be like. Through the lectures and my time spent working on this project, I have learned a lot of good practices and cherished useful experiences that I can't wait to apply to the software engineering industry when my time comes. 
 
 ### Ivan Robles
 (Image)
