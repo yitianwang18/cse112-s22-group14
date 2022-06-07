@@ -17,9 +17,9 @@ The Redeem Team was formed to complete our CSE 112 project at UCSD, which was to
 - My name is Matthew and am from Los Angeles. I am a Computer Science major at UCSD in Warren college, graduating in June 2022. My interests include sports like basketball, soccer, and baseball. It was great to learn more about software engineering practices and to be part of this team. I look forward to using these skills in my career as a Software Engineer.
 
 ### Jenny Ding
-(Image)
+<img src="../source/v1/assets/img/team/jenny.jpg" alt="Juan Ding" width="200"><br>
 - Position: Developer
-- (Bio)
+- Hi, I'm Jenny(Juan) Ding and I am a fourth-year Computer Science major student at Warren. Before, I have also taken Pro. Powell's CSE 110, with both classes, I now have a better knowledge of how the software engineering should be like, and how we should handle the real feature in the company by following certain guildlines.
 
 ### Justin Huang
 <img src="../source/v1/assets/img/team/justin.png" alt="Justin Huang" width="200"><br>
