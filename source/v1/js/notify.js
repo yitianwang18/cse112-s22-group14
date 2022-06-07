@@ -68,11 +68,14 @@ function notify(n_state){
 
                 } else {
                     let o_audio = document.getElementById("notifs");
-                    o_audio.play();
+                    if (o_audio){
+                        o_audio.play();
+                    }
+                    
                 }
                 return o_notification;
             }
-        });
+        }).catch(error => console.error(error));
     }
 }
 

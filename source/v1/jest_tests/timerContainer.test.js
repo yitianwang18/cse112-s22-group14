@@ -1,6 +1,33 @@
 import { TimerContainer } from "../js/timerContainer.js";
-import { jest } from '@jest/globals';
+import { jest, beforeAll, afterAll } from '@jest/globals';
 import EventBus from "./EventBus.js";
+
+const o_jsdom_notification = window.Notification;
+const f_jsdom_alert = window.alert;
+const p_permission = Promise.resolve("granted");
+const o_audio = document.createElement("audio");
+HTMLAudioElement.prototype.play = jest.fn();
+o_audio.id = "notifs";
+o_audio.src = "assets/audio/notif_tone.mp3";
+
+beforeAll(() => {
+    
+    document.body.appendChild(o_audio);
+    
+    window.alert = jest.fn();
+
+    window.Notification = jest.fn();
+    window.Notification.permission = "default";
+    window.Notification.requestPermission = jest.fn(() => {
+        window.Notification.permission = "granted";
+        return p_permission;
+    });
+});
+
+afterAll(()=>{
+    window.Notification = o_jsdom_notification;
+    window.alert = f_jsdom_alert;        
+});
 
 test("Test getTimeRemaining function", () => {
     document.body.innerHTML = "<timer-element></timer-element>";

@@ -25,12 +25,12 @@ function handleThemeBtnPressed() {
     // Change the value of href attribute to change the css sheet.
     if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
         o_theme.setAttribute("href", "./css/colors-forest.css");
-        o_theme_btn.setAttribute("title", "Stars Theme (c)");
+        o_theme_btn.setAttribute("title", "Forest Theme (c)");
         o_timer_display.setAttribute("theme", "forest");
         localStorage.setItem("o_theme_preference", "forest");
     } else {
         o_theme.setAttribute("href", "./css/colors-stars.css");
-        o_theme_btn.setAttribute("title", "Forest Theme (c)");
+        o_theme_btn.setAttribute("title", "Stars Theme (c)");
         o_timer_display.setAttribute("theme", "stars");
         localStorage.setItem("o_theme_preference", "stars");
     }
@@ -40,6 +40,7 @@ function handleThemeBtnPressed() {
  * Event handler function to show TaskList when task button is pressed
  */
 function showTaskList() {
+    document.EventBus.pop_up = true;
     document.EventBus.fireEvent("showTasks");
 }
 
@@ -127,32 +128,48 @@ function handleKeyBinds(o_event) {
         } else {
             switch (o_event.key) {
             case "c":
-                handleThemeBtnPressed();
-                break;
+                if(!document.EventBus.in_session && !document.EventBus.pop_up){
+                    handleThemeBtnPressed();
+                }
+                    break;
             case " ":
-                document.EventBus.fireEvent("spaceKeybind");
-                // disable space scrolling
-                o_event.preventDefault();
+                if(!document.EventBus.pop_up){
+                    document.EventBus.fireEvent("spaceKeybind");
+                    // disable space scrolling
+                    o_event.preventDefault();
+                }
                 break;
             case "Escape":
-                document.EventBus.fireEvent("closeWindows");
+                if(!document.EventBus.in_session){
+                    document.EventBus.fireEvent("closeWindows");
+                }
                 break;
             case "t":
-                document.EventBus.fireEvent("showTasks");
-                // prevent event from bubbling into input
-                o_event.preventDefault();
+                if(!document.EventBus.in_session && !document.EventBus.pop_up){
+                    document.EventBus.fireEvent("showTasks");
+                    // prevent event from bubbling into input
+                    o_event.preventDefault();
+                }
                 break;
             case "s":
-                document.EventBus.fireEvent("showSettings");
+                if(!document.EventBus.in_session && !document.EventBus.pop_up){
+                    document.EventBus.fireEvent("showSettings");
+                }
                 break;
             case "i":
-                showInstructions();
+                if(!document.EventBus.in_session && !document.EventBus.pop_up){
+                    showInstructions();
+                }
                 break;
             case "n":
-                document.EventBus.fireEvent("nextTask");
+                if(!document.EventBus.pop_up){
+                    document.EventBus.fireEvent("nextTask");
+                }
                 break;
             case "r":
-                document.EventBus.fireEvent("resetPomo");
+                if(!document.EventBus.in_session && !document.EventBus.pop_up){
+                    document.EventBus.fireEvent("resetPomo");
+                }
                 break;
             }
         }
@@ -245,11 +262,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Change the value of href attribute to change the css sheet.
     if (o_theme_preference == null || o_theme_preference === "stars") {
         o_theme.setAttribute("href", "./css/colors-stars.css");
-        o_theme_btn.setAttribute("title", "Forest Theme (c)");
+        o_theme_btn.setAttribute("title", "Stars Theme (c)");
         o_timer_display.setAttribute("theme", "stars");
     } else {
         o_theme.setAttribute("href", "./css/colors-forest.css");
-        o_theme_btn.setAttribute("title", "Stars Theme (c)");
+        o_theme_btn.setAttribute("title", "Forest Theme (c)");
         o_timer_display.setAttribute("theme", "forest");
     }
 

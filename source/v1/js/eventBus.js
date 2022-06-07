@@ -23,6 +23,8 @@ class EventBus {
         this.o_instructions = document.querySelector("instructions-box");
         this.o_settings_tab = document.querySelector("settings-tab");
         this.registerEvents();
+        this.in_session = false;
+        this.pop_up = false;
     }
 
     /**
@@ -82,6 +84,7 @@ class EventBus {
         // check for valid application states
         if (this.o_task_list.getNumTasks() != 0 && 
         this.o_timer_container.n_curr_state == TimerContainer.N_NOT_STARTED) {
+            document.EventBus.in_session = true;
             // hide toolbar and disable task button
             this.o_toolbar.querySelector("#task-btn").disabled = true;
             this.o_toolbar.style.visibility = "hidden";
@@ -112,6 +115,7 @@ class EventBus {
      * Event handler function for the 'endSession' event
      */
     handleEndSession() {
+        document.EventBus.in_session = false;
         this.o_toolbar.querySelector("#task-btn").disabled = false;
         this.o_toolbar.style.visibility = "";
         this.o_task_display.handleEndSession();
@@ -162,6 +166,7 @@ class EventBus {
      * Event Handler function for the 'closeWindows' event
      */
     handleCloseWindows() {
+        document.EventBus.pop_up = false;
         this.o_task_list.closeTaskList();
         this.o_instructions.closeInstructions();
         this.o_settings_tab.closeSettingsTab();
