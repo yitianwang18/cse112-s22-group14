@@ -51,18 +51,16 @@ function notify(n_state){
                         o_promise.catch(() => {
                             // Auto-play was prevented
                             // Show a UI element to let the user manually start playback
-                            const b_showErrorNotification = localStorage.
-                                getItem("safari-error-notification");
+
                             const b_showErrorNotification_preference = localStorage.
                                 getItem("safari-error-notification-preference");
 
-                            if (b_showErrorNotification === null || 
-                                    b_showErrorNotification === "false" || 
-                                    b_showErrorNotification_preference === "true") {
+                            
+                            if (b_showErrorNotification_preference === null || 
+                                b_showErrorNotification_preference === "false") {
                                 // show error notification view
                                 let o_notifi = document.querySelector("notification-box");
                                 o_notifi.showNotificationBox();
-                                localStorage.setItem("safari-error-notification", "true")
                             } 
                         }).then(() => {
                             // Auto-play started successfully
@@ -71,11 +69,14 @@ function notify(n_state){
 
                 } else {
                     let o_audio = document.getElementById("notifs");
-                    o_audio.play();
+                    if (o_audio){
+                        o_audio.play();
+                    }
+                    
                 }
                 return o_notification;
             }
-        });
+        }).catch(error => console.error(error));
     }
 }
 

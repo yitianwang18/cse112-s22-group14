@@ -1,6 +1,7 @@
-describe("Timer Container Tests", () => {
+describe("Task Display Tests", () => {
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
+        cy.get('welcome-box > #welcome > .close2').click();
         cy.document().then((o_doc) => {
             if (!o_doc.querySelector("timer-element").B_DEBUG) {
                 o_doc.querySelector("timer-element").toggleDebug();
@@ -10,12 +11,12 @@ describe("Timer Container Tests", () => {
         });
     });
 
-    it("Test enableCkeck function is called correctly", () => {
+    it("Test enableCheck function is called correctly", () => {
 
         //Task added so that session could be started for testing
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -40,12 +41,12 @@ describe("Timer Container Tests", () => {
         });
     });
 
-    it("Test disableCkeck function is called correctly", () => {
+    it("Test disableCheck function is called correctly", () => {
 
         //Task added so that session could be started for testing
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -77,9 +78,9 @@ describe("Timer Container Tests", () => {
         //Two Tasks added to TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Second Test Task");
+            cy.get("#task-input-top").clear().type("Second Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -92,8 +93,6 @@ describe("Timer Container Tests", () => {
         cy.get("task-display").within(() => {
             //Current task displays the first task
             cy.get("#current").should("contain", "First Test Task");
-            //Next task displays the second task
-            cy.get("#next").should("contain", "Second Test Task");
         });
 
         //Session ended
@@ -111,11 +110,11 @@ describe("Timer Container Tests", () => {
         //3 Tasks added to TaskList
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Second Test Task");
+            cy.get("#task-input-top").clear().type("Second Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Third Test Task");
+            cy.get("#task-input-top").clear().type("Third Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -128,14 +127,12 @@ describe("Timer Container Tests", () => {
         cy.get("task-display").within(() => {
             //Current task display -> first task & Next task Display -> second task
             cy.get("#current").should("contain", "First Test Task");
-            cy.get("#next").should("contain", "Second Test Task");
 
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
 
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
 
         });
     });
@@ -145,11 +142,11 @@ describe("Timer Container Tests", () => {
         //3 Tasks added to TaskList 
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Second Test Task");
+            cy.get("#task-input-top").clear().type("Second Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Third Test Task");
+            cy.get("#task-input-top").clear().type("Third Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -165,12 +162,10 @@ describe("Timer Container Tests", () => {
             //Work Cycle
             //Current task display -> first task & Next task Display -> second task
             cy.get("#current").should("contain", "First Test Task");
-            cy.get("#next").should("contain", "Second Test Task");
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
 
             //Wait for Short Break
             cy.tick(3100);
@@ -178,12 +173,10 @@ describe("Timer Container Tests", () => {
             //Short Break
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
             //Check button is disabled during a break
             cy.get("#check").should("be.disabled");
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
 
             //Wait for the Work Cycle
             cy.tick(3100);
@@ -191,12 +184,10 @@ describe("Timer Container Tests", () => {
             //Work Cycle
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> third task & Next task Display -> None(hidden)
             cy.get("#current").should("contain", "Third Test Task");
-            cy.get("#next").should("be.hidden");
 
         });
     });
@@ -206,11 +197,11 @@ describe("Timer Container Tests", () => {
         //3 Tasks added to TaskLists
         cy.get("#task-btn").trigger("click");
         cy.get("task-list").within(() => {
-            cy.get("#task-input").clear().type("First Test Task");
+            cy.get("#task-input-top").clear().type("First Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Second Test Task");
+            cy.get("#task-input-top").clear().type("Second Test Task");
             cy.get("#add-btn").trigger("click");
-            cy.get("#task-input").clear().type("Third Test Task");
+            cy.get("#task-input-top").clear().type("Third Test Task");
             cy.get("#add-btn").trigger("click");
             cy.get("#close-task").trigger("click");
         });
@@ -226,22 +217,19 @@ describe("Timer Container Tests", () => {
         cy.get("task-display").within(() => {
             //Current task display -> first task & Next task Display -> second task
             cy.get("#current").should("contain", "First Test Task");
-            cy.get("#next").should("contain", "Second Test Task");
+            cy.wait(3000)
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> third task & Next task Display -> None
             cy.get("#current").should("contain", "Third Test Task");
-            cy.get("#next").should("be.hidden");
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> None & Next task Display -> None (both hidden)
             cy.get("#current").should("be.hidden");
-            cy.get("#next").should("be.hidden");
 
         });
 
