@@ -37,7 +37,7 @@ class SettingsTab extends HTMLElement {
         o_close_button.addEventListener("click", this.closeSettingsTab.bind(this));
         o_close_button.setAttribute("tabIndex", "1");
 
-        o_close_button.addEventListener('focus', (event) => {
+        o_close_button.addEventListener('focus', () => {
             o_close_button.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.closeSettingsTab();
@@ -76,7 +76,7 @@ class SettingsTab extends HTMLElement {
         o_setting_one_btn_one.title = "20 Min. Work Session"; 
         o_setting_one_btn_one.setAttribute("tabIndex", "3");
         
-        o_setting_one_btn_one.addEventListener('focus', (event) => {
+        o_setting_one_btn_one.addEventListener('focus', () => {
             o_setting_one_btn_one.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.PSLengthShort();
@@ -91,7 +91,7 @@ class SettingsTab extends HTMLElement {
         o_setting_one_btn_two.title = "25 Min. Work Session"; 
         o_setting_one_btn_two.setAttribute("tabIndex", "4");
         
-        o_setting_one_btn_two.addEventListener('focus', (event) => {
+        o_setting_one_btn_two.addEventListener('focus', () => {
             o_setting_one_btn_two.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.PSLengthMed();
@@ -107,7 +107,7 @@ class SettingsTab extends HTMLElement {
         o_setting_one_btn_three.title = "30 Min. Work Session"; 
         o_setting_one_btn_three.setAttribute("tabIndex", "5");
 
-        o_setting_one_btn_three.addEventListener('focus', (event) => {
+        o_setting_one_btn_three.addEventListener('focus', () => {
             o_setting_one_btn_three.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.PSLengthLong();
@@ -136,7 +136,7 @@ class SettingsTab extends HTMLElement {
         o_setting_two_btn_one.title = "5 Min. Short Break"; 
         o_setting_two_btn_one.setAttribute("tabIndex", "6");
 
-        o_setting_two_btn_one.addEventListener('focus', (event) => {
+        o_setting_two_btn_one.addEventListener('focus', () => {
             o_setting_two_btn_one.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.SBLengthShort();
@@ -152,7 +152,7 @@ class SettingsTab extends HTMLElement {
         o_setting_two_btn_two.title = "7.5 Min. Short Break"; 
         o_setting_two_btn_two.setAttribute("tabIndex", "7");
 
-        o_setting_two_btn_two.addEventListener('focus', (event) => {
+        o_setting_two_btn_two.addEventListener('focus', () => {
             o_setting_two_btn_two.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.SBLengthMed();
@@ -168,7 +168,7 @@ class SettingsTab extends HTMLElement {
         o_setting_two_btn_three.title = "10 Min. Short Break"; 
         o_setting_two_btn_three.setAttribute("tabIndex", "8");
 
-        o_setting_two_btn_three.addEventListener('focus', (event) => {
+        o_setting_two_btn_three.addEventListener('focus', () => {
             o_setting_two_btn_three.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.SBLengthLong();
@@ -199,7 +199,7 @@ class SettingsTab extends HTMLElement {
         o_setting_three_btn_one.title = "25 Min. Long Break"; 
         o_setting_three_btn_one.setAttribute("tabIndex", "9");
 
-        o_setting_three_btn_one.addEventListener('focus', (event) => {
+        o_setting_three_btn_one.addEventListener('focus', () => {
             o_setting_three_btn_one.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.LBLengthShort();
@@ -215,7 +215,7 @@ class SettingsTab extends HTMLElement {
         o_setting_three_btn_two.title = "30 Min. Long Break"; 
         o_setting_three_btn_two.setAttribute("tabIndex", "10");
 
-        o_setting_three_btn_two.addEventListener('focus', (event) => {
+        o_setting_three_btn_two.addEventListener('focus', () => {
             o_setting_three_btn_two.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.LBLengthMed();
@@ -231,7 +231,7 @@ class SettingsTab extends HTMLElement {
         o_setting_three_btn_three.title = "35 Min. Long Break"; 
         o_setting_three_btn_three.setAttribute("tabIndex", "11");
 
-        o_setting_three_btn_three.addEventListener('focus', (event) => {
+        o_setting_three_btn_three.addEventListener('focus', () => {
             o_setting_three_btn_three.addEventListener('keypress', (event) => {
                 if(event.key === "Enter"){
                     this.LBLengthLong();
@@ -332,7 +332,6 @@ class SettingsTab extends HTMLElement {
         if (B_CONSOLE_LOG) {
             console.log("settingsTab.js - showSettings");
         }
-
         document.EventBus.pop_up = true;
         // // Don't show the text in the menu right away
         // this.querySelector("#settings-title").style.display = "none";
@@ -354,7 +353,7 @@ class SettingsTab extends HTMLElement {
      * Function to close menu list display from the main user screen
      */
     closeSettingsTab() {
-        document.EventBus.pop_up = true;
+        document.EventBus.pop_up = false;
         this.querySelector("#close-settings").style.display = "none";
         let o_menu = this.querySelector("#side-settings");
 
@@ -629,7 +628,7 @@ class SettingsTab extends HTMLElement {
         this.PSLengthMed();
         this.SBLengthShort();
         this.LBLengthLong();
-     }
+    }
 
 }
 

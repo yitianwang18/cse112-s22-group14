@@ -20,7 +20,6 @@ function handleThemeBtnPressed() {
 
     const o_timer_container = document.querySelector("timer-element");
     const o_timer_display = o_timer_container.querySelector("timer-display");
-    const o_theme_preference = localStorage.getItem("o_theme_preference");
 
     // Change the value of href attribute to change the css sheet.
     if (o_theme.getAttribute("href") == "./css/colors-stars.css") {
@@ -40,7 +39,6 @@ function handleThemeBtnPressed() {
  * Event handler function to show TaskList when task button is pressed
  */
 function showTaskList() {
-    document.EventBus.pop_up = true;
     document.EventBus.fireEvent("showTasks");
 }
 
@@ -98,14 +96,14 @@ function showInstructions() {
 /**
  * Event handler function to reset time lengths to default
  */
- function showWelcome() {
+function showWelcome() {
     document.EventBus.fireEvent("showWelcome");
 }
 
 /**
  * Event handler function to reset time lengths to default
  */
- function resetSettings() {
+function resetSettings() {
     document.EventBus.fireEvent("resetSettings");
 }
 
@@ -131,7 +129,7 @@ function handleKeyBinds(o_event) {
                 if(!document.EventBus.in_session && !document.EventBus.pop_up){
                     handleThemeBtnPressed();
                 }
-                    break;
+                break;
             case " ":
                 if(!document.EventBus.pop_up){
                     document.EventBus.fireEvent("spaceKeybind");
@@ -158,7 +156,7 @@ function handleKeyBinds(o_event) {
                 break;
             case "i":
                 if(!document.EventBus.in_session && !document.EventBus.pop_up){
-                    showInstructions();
+                    document.EventBus.fireEvent("showInstructions");
                 }
                 break;
             case "n":

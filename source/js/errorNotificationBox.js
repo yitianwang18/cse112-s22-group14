@@ -44,7 +44,7 @@ class NotificationBox extends HTMLElement {
             'Auto-Play' to enable the notification audio";
         o_inst_title_wrapper.append(o_inst_title);
     
-            // add safari error notification check box 
+        // add safari error notification check box 
         let o_safari_check_box = document.createElement("input");
         o_safari_check_box.id = "safari-check-box";
         o_safari_check_box.setAttribute("type", "checkbox");
@@ -69,8 +69,7 @@ class NotificationBox extends HTMLElement {
         o_safari_check_box_label.id = "safari-check-box-label";
         o_safari_check_box_label.innerHTML = "Do Not Show Me This Again";
 
-            // append safari check box
-
+        // append safari check box
         o_wrapper_obj.append(o_close_button, o_inst_title_wrapper, o_inst_text);
         o_wrapper_obj.append(o_safari_check_box);
         o_wrapper_obj.append(o_safari_check_box_label);

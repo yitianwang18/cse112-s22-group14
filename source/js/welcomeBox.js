@@ -3,7 +3,7 @@
  * Custom HTML element encapsulating all of the functionality related to the Intructions Box
  * @extends HTMLElement
  */
- class WelcomeBox extends HTMLElement {
+class WelcomeBox extends HTMLElement {
 
     /**
      * Constructs a new Welcome Box, initializing all elements

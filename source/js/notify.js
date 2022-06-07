@@ -56,7 +56,8 @@ function notify(n_state){
                                 getItem("safari-error-notification-preference");
 
                             
-                            if (b_showErrorNotification_preference === null || b_showErrorNotification_preference === "false") {
+                            if (b_showErrorNotification_preference === null || 
+                                b_showErrorNotification_preference === "false") {
                                 // show error notification view
                                 let o_notifi = document.querySelector("notification-box");
                                 o_notifi.showNotificationBox();
