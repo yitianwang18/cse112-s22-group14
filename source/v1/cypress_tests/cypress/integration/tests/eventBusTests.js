@@ -1,5 +1,4 @@
 describe("Testing Event Bus", () => {
-
     beforeEach(() => {
         cy.visit("https://powelldoro.web.app/");
         cy.get('welcome-box > #welcome > .close2').click();
@@ -198,7 +197,6 @@ describe("Testing Event Bus", () => {
         //TaskDisplay shows the correct current and next tasks
         cy.get("task-display").within(() => {
             cy.get("#current").should("contain", "First Test Task");
-            cy.get("#next").should("contain", "Second Test Task");
         });
     });
 
@@ -246,7 +244,6 @@ describe("Testing Event Bus", () => {
         });
         cy.get("task-display").within(() => {
             cy.get("#current").should("contain", "First Test Task");
-            cy.get("#next").should("contain", "Second Test Task");
         });
         cy.get("task-display").within(() => {
             cy.get("#check").trigger("click");
@@ -259,7 +256,6 @@ describe("Testing Event Bus", () => {
         cy.get("task-display").within(() => {
             //Current task display -> second task & Next task Display -> None
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("be.hidden");
         });
         //Fire "nextTask" event again
         cy.get("task-display").within(() => {
