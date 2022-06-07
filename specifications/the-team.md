@@ -42,9 +42,9 @@ The Redeem Team was formed to complete our CSE 112 project at UCSD, which was to
 - (Bio)
 
 ### Tony Wang
-(Image)
+<img src="../source/assets/img/team/Tony.jpg" alt="Tony(Yitian) Wang" width="200"><br>
 - Position: Lead
-- (Bio)
+- Hi, my name is Tony(Yitian) Wang. I am a Computer Engineer major at UCSD graduating in June 2022. My CSE 110 experience and this project has taught me so much about software engineering and how to become a leader, and most importantly, how to evaluation situations and make decisions based on values and constraints. I am eager to learn more about software engineering in the future, and I am aspired to become a software engineer that create products that truly help users around the globe. If you want to know me more, here are links to my [GitHub](https://github.com/yitianwang18) and my [LinkedIn](https://www.linkedin.com/in/yitian-wang-51973514b/).
 
 ### Bill Wu
 (Image)
