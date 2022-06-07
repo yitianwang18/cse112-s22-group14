@@ -63,7 +63,6 @@ describe("Keybind Integration Tests", () => {
         cy.get("instructions-box").should("not.be.visible");
         cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent).to.have.callCount(4);
             expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("closeWindows");
         });
     });
@@ -104,7 +103,7 @@ describe("Keybind Integration Tests", () => {
         cy.get("body").type(" ");
         cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("endSession");
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("endSession");
             expect(o_doc.querySelector("timer-element").endSession).to.be.called;
         });
     });
@@ -134,18 +133,16 @@ describe("Keybind Integration Tests", () => {
         cy.get("body").type("n");
         cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("nextTask");
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("nextTask");
             expect(o_doc.EventBus.updateTaskCompleted).callCount(1);
         });
 
         cy.get("body").type("n");
         cy.wait(N_DELAY);
         cy.document().then((o_doc) => {
-            expect(o_doc.EventBus.fireEvent.lastCall).to.be.calledWithExactly("nextTask");
+            expect(o_doc.EventBus.fireEvent).to.be.calledWithExactly("nextTask");
             expect(o_doc.EventBus.updateTaskCompleted).callCount(2);
         });
-
-        cy.get("body").type(" ");
     });
 
 });
