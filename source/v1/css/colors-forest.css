@@ -211,14 +211,30 @@ input[type=text] {
   color: var(--red);
 }
 
+.close:focus,
+.close2:focus,
+#delete-btn:focus {
+  outline: 2px solid var(--red);
+  border: 2px solid var(--red);
+}
+
+#check:focus {
+  outline: 2px solid var(--hover-color);
+  border: 2px solid var(--hover-color);
+}
+
 .bottom-btn:focus {
   outline: 2px solid var(--hover-color);
   border: 2px solid var(--hover-color);
+  color: var(--hover-color);
+  text-decoration: underline;
 }
 
 .custom-btn:focus {
   outline: 2px solid var(--hover-color);
   border: 2px solid var(--hover-color);
+  color: var(--hover-color);
+  text-decoration: underline;
 }
 
 /****************************
