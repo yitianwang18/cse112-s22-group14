@@ -1,7 +1,7 @@
 import { Task } from "./task.js";
 
 // variable for turning on/off console logs used for debugging
-const B_CONSOLE_LOG = false;
+const B_CONSOLE_LOG = true;
 
 /**
  * Custom HTML element encapsulating all of the functionality related to the Task List
