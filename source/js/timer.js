@@ -94,7 +94,7 @@ class TimerDisplay extends HTMLElement {
             let b_pomo_done = n_pomo_index <= this.getAttribute("pomos-comp");
             // We want to use "PomoCountYes2"
             let o_pomo = this.querySelector(`#pomo${n_pomo_index}`);
-            let s_pomo_src = this.querySelector.getAttribute("src");
+            let s_pomo_src = o_pomo.getAttribute("src");
             if (this.getAttribute("theme") === "stars") {
                 if (b_pomo_done && s_pomo_src != TimerDisplay.S_POMO_YES_PATH_STARS){
                     o_pomo.setAttribute("src", TimerDisplay.S_POMO_YES_PATH_STARS);
