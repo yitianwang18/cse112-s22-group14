@@ -36,10 +36,10 @@ The Redeem Team was formed to complete our CSE 112 project at UCSD, which was to
 - Position: Lead
 - Hi, my name is Rishmal Rohin Kumar, and I am a Computer Science major at UCSD, who is graduating in Spring 2023. I have loved learning more about Software Engineering, especially regarding being a lead, while working on this project, and I hope to use this experience in the industry as a Software Engineer. If you want to get to know more about me, here are links to my [LinkedIn](https://www.linkedin.com/in/rishmal-rohin-kumar/) and [GitHub](https://github.com/RishmalRohinkumar).
 
-### George Wang
-(Image)
+### Heqi(George) Wang
+<img src="../source/assets/img/team/george.jpg" alt="Heqi(George) Wang" width="200"><br>
 - Position: Developer
-- (Bio)
+- Hi, my name is Heqi Wang, I am a CS major at UCSD and is graduating June 2022. I took CSE 110 with Gary before and wanted to advanced my software engineering skills, which prepares me to go to industry right after my graduation at UCSD. If you want to go to know me more, here is my [LinkedIn](https://www.linkedin.com/in/heqi-wang/).
 
 ### Tony Wang
 <img src="../source/assets/img/team/Tony.jpg" alt="Tony(Yitian) Wang" width="200"><br>
