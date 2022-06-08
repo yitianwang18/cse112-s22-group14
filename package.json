@@ -11,7 +11,7 @@
         "js": "eslint -c .github/linters/.eslintrc.yml source/**/*.js",
         "cypress": "eslint -c source/cypress_tests/.eslintrc.json source/cypress_tests/cypress/integration",
         "lint": "npm run html & npm run css & npm run js",
-        "build": "rm -rf build; mkdir build; cp -R ./source/* build; cd build; rm -rf *tests; rm README.md; cd .."
+        "build": "rm -rf build; mkdir build; cp -R ./source/* build; cd build; rm -rf *tests; cd .."
     },
     "jest": {
         "testEnvironment": "jest-environment-jsdom",
