@@ -34,3 +34,13 @@ jobs:
       # Generate the JSDocs under source directory and output to docs directory
       - name: Generate Documentation
         run: npm run docs
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Commit JSDocs" -a
+      - name: GitHub Push
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
