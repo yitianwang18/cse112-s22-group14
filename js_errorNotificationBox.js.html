@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: js/errorNotificationBox.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: js/errorNotificationBox.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+// variable for turning on/off console logs used for debugging
+// const B_CONSOLE_LOG = false;
+
+const S_HEADER = "Audio Error";
+const S_PARAGRAPH = "Please go to 'Preference window' -> \
+    'Websites' -> 'Auto-Play' to enable the notification audio";
+const S_CHECKBOX_LABEL = "Do Not Show Me This Again";
+const S_HTML = `
+&lt;notification-blocker class="hidden instructions-section-blocker">&lt;/notification-blocker>
+&lt;notification-section class="instructions-section">
+    &lt;a class="close2 btn">×&lt;/a>
+    &lt;notification-header class="hidden">
+        &lt;h3 class="instruct-head">
+            ${S_HEADER} 
+        &lt;/h3>
+    &lt;/notification-header>
+    &lt;notification-body class="hidden">
+        ${S_PARAGRAPH}
+    &lt;/notification-body>
+    &lt;input id="safari-check-box" type="checkbox">
+    &lt;label id="safari-check-box-label" for="safari-check-box">${S_CHECKBOX_LABEL}&lt;/label>
+&lt;/notification-section>
+`;
+
+/**
+ * Custom HTML element encapsulating all of the functionality related to the Notification Box
+ * @extends HTMLElement
+ */
+class NotificationBox extends HTMLElement {
+
+    /**
+     * Constructs a new Notification Box, initializing all elements
+     */
+    constructor() {
+        super();
+        // most of this content is simply initializing the html to go in the webcomponent
+        this.innerHTML = S_HTML; 
+        this.querySelector("notification-blocker")
+            .addEventListener("click", this.closeNotification.bind(this));
+        this.querySelector("a.close2").addEventListener("click", this.closeNotification.bind(this));
+
+        // add safari error notification check box 
+        const o_safari_check_box = this.querySelector("#safari-check-box");
+
+        const b_showErrorNotification_preference = 
+        localStorage.getItem("safari-error-notification-preference");
+
+        if (b_showErrorNotification_preference === null) {
+            localStorage.setItem("safari-error-notification-preference", "false");
+            o_safari_check_box.checked = false;        
+        }
+
+        o_safari_check_box.addEventListener('change', (event) => {
+            if (event.currentTarget.checked) {
+                localStorage.setItem("safari-error-notification-preference", "true");
+            } else {
+                localStorage.setItem("safari-error-notification-preference", "false");
+            }
+        });
+    }
+
+    /** Function to determine if the notification are currently shown */
+    getIsShown() {
+        return this.querySelector("notification-section")
+            .classList.contains("notification-section-open");
+    }
+
+    /**
+     * Function to show task list display from the main user screen
+     */
+    showNotificationBox() {
+        document.EventBus.pop_up = true;
+        this.querySelector("notification-section").classList.add("notification-section-open");
+
+        // Hide everything inside instructions box while animating to prevent sandwiching of text
+        setTimeout(() => {
+            this.querySelector("notification-header").style.display = "block";
+            this.querySelector("notification-body").style.display = "block";
+            document.body.focus();
+        }, 300);
+
+        this.querySelector("notification-blocker").style.display = "block";
+    }
+
+    /**
+     * Function to close task list display from the main user screen
+     */
+    closeNotification() {
+        document.EventBus.pop_up = false;
+        this.querySelector("notification-section").classList.remove("notification-section-open");
+        this.querySelector("notification-header").style.display = "none";
+        this.querySelector("notification-body").style.display = "none";
+        this.querySelector("notification-blocker").style.display = "none";
+    }
+}
+
+customElements.define("notification-box", NotificationBox);
+export { NotificationBox }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EventBus.html">EventBus</a></li><li><a href="InstructionsBox.html">InstructionsBox</a></li><li><a href="module.html#.exports">exports</a></li><li><a href="NotificationBox.html">NotificationBox</a></li><li><a href="SettingsTab.html">SettingsTab</a></li><li><a href="Task.html">Task</a></li><li><a href="TaskDisplay.html">TaskDisplay</a></li><li><a href="TaskList.html">TaskList</a></li><li><a href="TimerContainer.html">TimerContainer</a></li><li><a href="TimerDisplay.html">TimerDisplay</a></li><li><a href="WelcomeBox.html">WelcomeBox</a></li></ul><h3>Global</h3><ul><li><a href="global.html#handleKeyBinds">handleKeyBinds</a></li><li><a href="global.html#handleThemeBtnPressed">handleThemeBtnPressed</a></li><li><a href="global.html#notify">notify</a></li><li><a href="global.html#resetSettings">resetSettings</a></li><li><a href="global.html#settingOneButtonOne">settingOneButtonOne</a></li><li><a href="global.html#settingThreeButtonOne">settingThreeButtonOne</a></li><li><a href="global.html#settingTwoButtonOne">settingTwoButtonOne</a></li><li><a href="global.html#showInstructions">showInstructions</a></li><li><a href="global.html#showSettingsTab">showSettingsTab</a></li><li><a href="global.html#showTaskList">showTaskList</a></li><li><a href="global.html#showWelcome">showWelcome</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 08 2022 22:14:51 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
