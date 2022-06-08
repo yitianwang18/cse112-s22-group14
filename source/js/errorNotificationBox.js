@@ -3,7 +3,8 @@
 // const B_CONSOLE_LOG = false;
 
 const S_HEADER = "Audio Error";
-const S_PARAGRAPH = "Please go to 'Preference window' -> 'Websites' -> 'Auto-Play' to enable the notification audio";
+const S_PARAGRAPH = "Please go to 'Preference window' -> \
+    'Websites' -> 'Auto-Play' to enable the notification audio";
 const S_CHECKBOX_LABEL = "Do Not Show Me This Again";
 const S_HTML = `
 <notification-blocker class="hidden instructions-section-blocker"></notification-blocker>
@@ -35,7 +36,8 @@ class NotificationBox extends HTMLElement {
         super();
         // most of this content is simply initializing the html to go in the webcomponent
         this.innerHTML = S_HTML; 
-        this.querySelector("notification-blocker").addEventListener("click", this.closeNotification.bind(this));
+        this.querySelector("notification-blocker")
+            .addEventListener("click", this.closeNotification.bind(this));
         this.querySelector("a.close2").addEventListener("click", this.closeNotification.bind(this));
 
         // add safari error notification check box 
@@ -60,7 +62,8 @@ class NotificationBox extends HTMLElement {
 
     /** Function to determine if the notification are currently shown */
     getIsShown() {
-        return this.querySelector("notification-section").classList.contains("notification-section-open");
+        return this.querySelector("notification-section")
+            .classList.contains("notification-section-open");
     }
 
     /**
