@@ -1,0 +1,115 @@
+/**
+ * Container for notification when it is open
+ */
+.notification-section-open {
+  width: 30%;
+  height: 28vh;
+  border-width: 2px;
+  overflow-y: auto;
+}
+
+/**
+ * Paragraph of instructions within instructions section
+ */
+notification-body {
+  padding: 0 20px;
+  margin: auto;
+  width: auto;
+  max-width: 900px;
+  font-family: 'Helvetica', 'Calibri', sans-serif;
+  font-size: 1.2rem;
+  text-align: left;
+  align-items: left;
+  line-height: 25px;
+}
+
+@media screen and (max-width: 900px) {
+  notification-body {
+    font-size: 1.1rem;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  notification-body {
+    font-size: 1rem;
+    line-height: 23px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  notification-body {
+    font-size: 0.9rem;
+    line-height: 23px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  notification-body {
+    font-size: 0.9rem;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  notification-body {
+    font-size: 0.85rem;
+    line-height: 21px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  notification-body {
+    font-size: 0.82rem;
+    line-height: 21px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  notification-body {
+    font-size: 0.8rem;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 471px) {
+  notification-body {
+    font-size: 0.7rem;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 417px) {
+  notification-body {
+    font-size: 0.7rem;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  notification-body {
+    font-size: 0.7rem;
+    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  notification-body {
+    font-size: 0.7rem;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 312px) {
+  notification-body {
+    font-size: 0.7rem;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  notification-body {
+    font-size: 0.7rem;
+    line-height: 14px;
+  }
+}
