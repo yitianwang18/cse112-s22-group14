@@ -93,22 +93,22 @@ class TimerDisplay extends HTMLElement {
 
             let b_pomo_done = n_pomo_index <= this.getAttribute("pomos-comp");
             // We want to use "PomoCountYes2"
+            let o_pomo = this.querySelector(`#pomo${n_pomo_index}`);
+            let s_pomo_src = o_pomo.getAttribute("src");
             if (this.getAttribute("theme") === "stars") {
-                if (b_pomo_done){
-                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
-                        TimerDisplay.S_POMO_YES_PATH_STARS);
-                } else {
-                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
-                        TimerDisplay.S_POMO_NO_PATH_STARS);
+                if (b_pomo_done && s_pomo_src != TimerDisplay.S_POMO_YES_PATH_STARS){
+                    o_pomo.setAttribute("src", TimerDisplay.S_POMO_YES_PATH_STARS);
+                } 
+                else if (!b_pomo_done && s_pomo_src != TimerDisplay.S_POMO_NO_PATH_STARS)  {
+                    o_pomo.setAttribute("src", TimerDisplay.S_POMO_NO_PATH_STARS);
                 }
             // We want to use "PomoCountYes"
             } else {
-                if (b_pomo_done){
-                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
-                        TimerDisplay.S_POMO_YES_PATH);
-                } else {
-                    this.querySelector(`#pomo${n_pomo_index}`).setAttribute("src", 
-                        TimerDisplay.S_POMO_NO_PATH);
+                if (b_pomo_done && s_pomo_src != TimerDisplay.S_POMO_YES_PATH){
+                    o_pomo.setAttribute("src", TimerDisplay.S_POMO_YES_PATH);
+                } 
+                else if (!b_pomo_done && s_pomo_src != TimerDisplay.S_POMO_NO_PATH)  {
+                    o_pomo.setAttribute("src", TimerDisplay.S_POMO_NO_PATH);
                 }
             }
         }
