@@ -1,5 +1,4 @@
 ---
-
 #############################
 #############################
 ## JavaScript Linter rules ##
@@ -44,5 +43,5 @@ rules:
   no-var: "error"
   indent: "warn"
   max-len: ["warn", { "code": 100, "tabWidth": 4 }]
-  id-length: ["warn", { "min": 3 }]
-  camelcase: ["warn", { allow: ["^._"]}] # ignore variables that start with a single letter and an underscore, i.e o_btn
+  # id-length: ["warn", { "min": 3 }]
+  camelcase: ["warn", { allow: ["^._"] }] # ignore variables that start with a single letter and an underscore, i.e o_btn

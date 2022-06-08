@@ -1,4 +1,6 @@
 import { TaskList } from "../js/taskList.js";
+import { jest } from '@jest/globals';
+import { Task } from "../js/task.js";
 
 test('TaskList Item Addition', () => {
     let o_tasklist = new TaskList();
@@ -39,17 +41,16 @@ test("TaskList Item Removing", () => {
     o_tasklist.removeItem(1);
     expect(Object.keys(o_tasklist.o_tasks).length).toBe(2);
     expect(o_tasklist.o_tasks[0]).toBe("Task1");
-    // expect(o_tasklist.o_tasks[1]).toBe(undefined);
     expect(o_tasklist.o_tasks[1]).toBe("Task3");
     expect(o_tasklist.n_next_task_id).toBe(2);
 
     o_tasklist.addItem("Task4");
     expect(Object.keys(o_tasklist.o_tasks).length).toBe(3);
     expect(o_tasklist.o_tasks[0]).toBe("Task1");
-    //expect(o_tasklist.o_tasks[1]).toBe(undefined);
     expect(o_tasklist.o_tasks[1]).toBe("Task3");
     expect(o_tasklist.o_tasks[2]).toBe("Task4");
     expect(o_tasklist.n_next_task_id).toBe(3);
+    expect(o_tasklist.removeItem(10)).toBe(-1);
 });
 
 test("Tasklist getItems", () => {
@@ -190,7 +191,6 @@ test('Testing getDragAfterElement', () => {
     let o_tasklist = new TaskList();
     o_tasklist.addItem("Task1");
     o_tasklist.addItem("Task2");
-
     expect(o_tasklist.getDragAfterElement(10)).toBe(undefined);
     const o_undragged_tasks = [...o_tasklist.querySelectorAll('task-item:not([dragging=""]')]
     expect(o_undragged_tasks[0].toString()).toBe("[object HTMLElement]");
@@ -217,6 +217,8 @@ test('Testing editItemName', () => {
     o_tasklist.removeItem(0);
     o_tasklist.addItem("");
     expect(o_tasklist.editItemName(0)).toBe(undefined);
+    o_tasklist.editItemName(1);
+    expect(o_tasklist.querySelector(`#all-tasks task-item[taskid="0"]`).getAttribute('taskname')).toBe("Task2");
 });
 
 test('Testing showTaskList', () => {
@@ -242,3 +244,123 @@ test('Testing closeTaskList', () => {
     let o_tasks = o_tasklist.querySelector("#close-task");
     expect(o_tasks.style.display).toBe("none");
 });
+
+test('Testing load from local storage', () => {
+    let o_tasklist = new TaskList();
+    // let o_tasklist2 = new TaskList();
+    o_tasklist.addItem('Task0');
+    o_tasklist.addItem('Task1');
+    
+
+    // o_tasklist2.addItem('Task0');
+    // o_tasklist2.addItem('Task1');
+    let localStorage = window.localStorage.getItem('current_tasks');
+    o_tasklist.removeItem(0);
+    o_tasklist.removeItem(0);
+
+    expect(Object.keys(o_tasklist.o_tasks).length).toBe(0);
+    window.localStorage.setItem('current_tasks', localStorage);
+    o_tasklist.showTaskList();
+    
+    expect(Object.keys(o_tasklist.o_tasks).length).toBe(2);
+});
+
+test('Testing handleKeyUpChange', () => {
+    let o_tasklist = new TaskList();
+    let key1 = new KeyboardEvent('keyup', {key: "Enter"});
+    let key2 = new KeyboardEvent('keyup', {key: "Escape"});
+    const mock1 = jest.spyOn(o_tasklist, 'handleAddTask');
+    const mock2 = jest.spyOn(o_tasklist, 'closeTaskList');
+
+    o_tasklist.handleKeyUpChange(key1);
+    o_tasklist.handleKeyUpChange(key2);
+    expect(mock1).toHaveBeenCalled();
+    expect(mock2).toHaveBeenCalled();
+});
+
+test('Testing handleInputChange', () => {
+    let o_tasklist = new TaskList();
+    const oversize = "".padStart(TaskList.N_MAX_TASK_LENGTH + 1, "A");
+    o_tasklist.querySelector("input[name=task]").value = oversize;
+    o_tasklist.handleInputChange(undefined);
+    expect(o_tasklist.querySelector("#add-error").innerHTML).toBe(TaskList.S_TASK_ERROR_TOO_LONG + ' ' + 'Count: ' + oversize.length);
+
+    o_tasklist.querySelector("input[name=task]").value = "Task1";
+    o_tasklist.handleInputChange(undefined);
+    expect(o_tasklist.querySelector("#add-error").innerHTML).toBe('');
+
+
+});
+
+test('Testing handleAddTask', () => {
+    let o_tasklist = new TaskList();
+    const task = "task0";
+
+    o_tasklist.querySelector("input[name=task]").value = task;
+    expect(o_tasklist.querySelector(`#all-tasks`).children["0"]).toBe(undefined);
+    o_tasklist.handleAddTask(); 
+
+    const mock1 = jest.spyOn(o_tasklist, 'addItem');
+    const mock2 = jest.spyOn(o_tasklist, 'clearInput');
+    const mock3 = jest.spyOn(o_tasklist, 'handleInputChange');
+    
+    expect(o_tasklist.querySelector(`#all-tasks`).children["0"].getAttribute('taskname')).toBe('task0');
+});
+
+test('Testing handleStartSession', () => {
+    let o_tasklist = new TaskList();
+    const mock1 = jest.spyOn(o_tasklist, 'closeTaskList');
+
+    o_tasklist.handleStartSession();
+    expect(mock1).toHaveBeenCalled();
+});
+
+// test('Testing handleDrag', () => {
+//     let o_tasklist = new TaskList();
+//     let dragging = o_tasklist.querySelector('task-item[dragging=""]');
+
+    
+//     // let key2 = new DragEvent('keyup', {key: "Escape"});
+//     const mock1 = jest.spyOn(o_tasklist.querySelector('#all-tasks'), 'appendChild');
+//     const mock2 = jest.spyOn(o_tasklist.querySelector('#all-tasks'), 'insertBefore');
+
+//     // o_tasklist.handleDrag(undefined);
+//     o_tasklist.handleDrag(null);
+//     // o_tasklist.handleDrag(key2);
+//     expect(mock1).toHaveBeenCalled();
+//     expect(mock2).toHaveBeenCalled();
+// });
+
+// describe('Event Handler tests', () => {
+// 	let o_tasklist;
+//     let o_task;
+// 	let events = {};
+
+// 	beforeEach(() => {
+//         o_tasklist.querySelector(`#all-tasks`).addEventListener = jest.fn((event, callback) => {
+//             events[event] = callback;
+//         });
+    
+//         o_tasklist.querySelector(`#all-tasks`).removeEventListener = jest.fn((event, callback) => {
+//             delete events[event];
+//         });
+
+//         o_tasklist = new TaskList();
+// 		// Empty our events before each test case
+// 		events = {};
+
+// 		// Define the addEventListener method with a Jest mock function
+// 	});
+
+// 	test('Test handleDrag', () => {
+//         o_tasklist = new TaskList();
+
+//         jest.spyOn(o_tasklist, 'handleDrag');
+        
+//         // events.dragover({event: ondragover});
+// 		// o_tasklist.setupEvents();
+
+//         expect(o_tasklist.handleDrag).toHaveBeenCalled();
+//         expect(events.length).toBe(10);
+// 	});
+// });

@@ -11,7 +11,7 @@ describe("Task Display Tests", () => {
         });
     });
 
-    it("Test enableCkeck function is called correctly", () => {
+    it("Test enableCheck function is called correctly", () => {
 
         //Task added so that session could be started for testing
         cy.get("#task-btn").trigger("click");
@@ -41,7 +41,7 @@ describe("Task Display Tests", () => {
         });
     });
 
-    it("Test disableCkeck function is called correctly", () => {
+    it("Test disableCheck function is called correctly", () => {
 
         //Task added so that session could be started for testing
         cy.get("#task-btn").trigger("click");
@@ -93,8 +93,6 @@ describe("Task Display Tests", () => {
         cy.get("task-display").within(() => {
             //Current task displays the first task
             cy.get("#current").should("contain", "First Test Task");
-            //Next task displays the second task
-            cy.get("#next").should("contain", "Second Test Task");
         });
 
         //Session ended
@@ -129,14 +127,12 @@ describe("Task Display Tests", () => {
         cy.get("task-display").within(() => {
             //Current task display -> first task & Next task Display -> second task
             cy.get("#current").should("contain", "First Test Task");
-            cy.get("#next").should("contain", "Second Test Task");
 
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
 
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
 
         });
     });
@@ -166,12 +162,10 @@ describe("Task Display Tests", () => {
             //Work Cycle
             //Current task display -> first task & Next task Display -> second task
             cy.get("#current").should("contain", "First Test Task");
-            cy.get("#next").should("contain", "Second Test Task");
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
 
             //Wait for Short Break
             cy.tick(3100);
@@ -179,12 +173,10 @@ describe("Task Display Tests", () => {
             //Short Break
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
             //Check button is disabled during a break
             cy.get("#check").should("be.disabled");
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
 
             //Wait for the Work Cycle
             cy.tick(3100);
@@ -192,12 +184,10 @@ describe("Task Display Tests", () => {
             //Work Cycle
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> third task & Next task Display -> None(hidden)
             cy.get("#current").should("contain", "Third Test Task");
-            cy.get("#next").should("be.hidden");
 
         });
     });
@@ -227,23 +217,19 @@ describe("Task Display Tests", () => {
         cy.get("task-display").within(() => {
             //Current task display -> first task & Next task Display -> second task
             cy.get("#current").should("contain", "First Test Task");
-            cy.get("#next").should("contain", "Second Test Task");
             cy.wait(3000)
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> second task & Next task Display -> third task
             cy.get("#current").should("contain", "Second Test Task");
-            cy.get("#next").should("contain", "Third Test Task");
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> third task & Next task Display -> None
             cy.get("#current").should("contain", "Third Test Task");
-            cy.get("#next").should("be.hidden");
             //Check button clicked: Current task checked as complete
             cy.get("#check").trigger("click");
             //Current task display -> None & Next task Display -> None (both hidden)
             cy.get("#current").should("be.hidden");
-            cy.get("#next").should("be.hidden");
 
         });
 

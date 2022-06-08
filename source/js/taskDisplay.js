@@ -102,7 +102,7 @@ export class TaskDisplay extends HTMLElement {
      */
     wrapperAttributeFunction(name, oldValue, newValue) {
         if (name == "numtasks" && newValue > 1) {
-            this.getElementsByTagName("h3")[1].style.display = "";
+            this.getElementsByTagName("h3")[0].style.display = "";
         }
         else if (name == "currtask") {
             this.querySelector("#current").innerText = newValue;
