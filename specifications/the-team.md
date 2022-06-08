@@ -7,9 +7,9 @@ The Redeem Team was formed to complete our CSE 112 project at UCSD, which was to
 ## Team Members
 
 ### Evan Chen
-(Image)
+<img src="../source/assets/img/team/EvanChen.png" alt="Evan Chen" width="200"><br>
 - Position: Developer
-- (Bio)
+- My name is Evan and I am a Computer Engineering major at UCSD that is graduating in Fall 2022. In my free time, I go to the gym, listen to new music, and occasionally game. In this project, I enjoyed gaining more familiarity with software engineering practices, working with other people in a team environment, and being challenged in new ways such as learning about web components.
 
 ### Matthew Cohen
 <img src="../source/assets/img/team/matthew.jpg" alt="Matthew Cohen" width="200"><br>
@@ -36,17 +36,17 @@ The Redeem Team was formed to complete our CSE 112 project at UCSD, which was to
 - Position: Lead
 - Hi, my name is Rishmal Rohin Kumar, and I am a Computer Science major at UCSD, who is graduating in Spring 2023. I have loved learning more about Software Engineering, especially regarding being a lead, while working on this project, and I hope to use this experience in the industry as a Software Engineer. If you want to get to know more about me, here are links to my [LinkedIn](https://www.linkedin.com/in/rishmal-rohin-kumar/) and [GitHub](https://github.com/RishmalRohinkumar).
 
-### George Wang
-(Image)
+### Heqi(George) Wang
+<img src="../source/assets/img/team/Heqi Wang.jpg" alt="Heqi(George) Wang" width="200"><br>
 - Position: Developer
-- (Bio)
+- Hi, my name is Heqi Wang, I am a CS major at UCSD and is graduating June 2022. I took CSE 110 with Gary before and wanted to advanced my software engineering skills, which prepares me to go to industry right after my graduation at UCSD. If you want to go to know me more, here is my [LinkedIn](https://www.linkedin.com/in/heqi-wang/).
 
 ### Tony Wang
-(Image)
+<img src="../source/assets/img/team/Tony.jpg" alt="Tony(Yitian) Wang" width="200"><br>
 - Position: Lead
-- (Bio)
+- Hi, my name is Tony(Yitian) Wang. I am a Computer Engineer major at UCSD graduating in June 2022. My CSE 110 experience and this project has taught me so much about software engineering and how to become a leader, and most importantly, how to evaluation situations and make decisions based on values and constraints. I am eager to learn more about software engineering in the future, and I am aspired to become a software engineer that create products that truly help users around the globe. If you want to know me more, here are links to my [GitHub](https://github.com/yitianwang18) and my [LinkedIn](https://www.linkedin.com/in/yitian-wang-51973514b/).
 
 ### Bill Wu
-(Image)
+<img src="../source/assets/img/team/bill.jpg" alt="Bill Wu" width="200"><br>
 - Position: Developer
-- (Bio)
+- Hello, my name is Bill Wu and I am currently a 4th year Computer Science major graduating in June 2022. I am really grateful for this class, project, team, and professor because not only did it serve as a refresher for web development but also as a learning experience, both interpersonal and technical. I believe this experience will be extremely helpful once I start working in industry as I aspire to one day become a great software engineer.
