@@ -7,9 +7,9 @@ The Redeem Team was formed to complete our CSE 112 project at UCSD, which was to
 ## Team Members
 
 ### Evan Chen
-(Image)
+<img src="../source/assets/img/team/EvanChen.png" alt="Evan Chen" width="200"><br>
 - Position: Developer
-- (Bio)
+- My name is Evan and I am a Computer Engineering major at UCSD that is graduating in Fall 2022. In my free time, I go to the gym, listen to new music, and occasionally game. In this project, I enjoyed gaining more familiarity with software engineering practices, working with other people in a team environment, and being challenged in new ways such as learning about web components.
 
 ### Matthew Cohen
 <img src="../source/assets/img/team/matthew.jpg" alt="Matthew Cohen" width="200"><br>
