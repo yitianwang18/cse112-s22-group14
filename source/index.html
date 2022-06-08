@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Pomodoro Timer">
+  <meta name="keywords" content="Pomodoro, Tomato, Timer">
+  <meta name="author" content="Group 14: The Redeem Team">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Powelldoro Timer</title>
+
+
+  <!-- Import css stylesheets for layout and colors -->
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/notificationbox.module.css">
+  <link rel="stylesheet" href="./css/colors-stars.css" id="theme">
+
+  <!-- Add favicon -->
+  <link rel="icon" type="image/png" href="./assets/img/PowelldoroFav.png">
+
+  <!-- Import icons for buttons -->
+  <script defer src="https://kit.fontawesome.com/ad11314e23.js" crossorigin="anonymous"></script>
+
+  <!-- Add stylesheet for when javascript is disabled or not supported -->
+  <noscript>
+    <link href="./css/noscript.css" rel="stylesheet">
+  </noscript>
+</head>
+
+<body>
+
+  <main id="main-screen">
+    <section class="full-height timer-section">
+
+      <!-- Contains the header : logo, title -->
+      <div class="header-container">
+        <img class="pomo-logo" src="assets/img/PowelldoroLogo.png" alt="Powelldoro Logo">
+        <img class="banner" src="assets/img/PowelldoroWords.png" alt="Powelldoro Banner">
+        <img class="pomo-logo empty" src="assets/img/PowelldoroLogo.png" alt="Powelldoro Logo">
+      </div>
+      <hr id="header-line">
+
+      <!-- Contains the welcome message for new visitors -->
+      <welcome-box></welcome-box>
+
+      <!-- Contains the slide-out tasklist -->
+      <task-list></task-list>
+
+      <!-- Contains the safari error notification -->
+      <notification-box></notification-box>
+
+      <!-- Contains the pop-up instructions -->
+      <instructions-box></instructions-box>
+
+      <!-- Contains the slide-out settings -->
+      <settings-tab></settings-tab>
+
+      <!-- Contains the Pomodoro timer -->
+      <div class="top-container">
+        <div class="main-box">
+          <nav class="all-btns">
+            <!--This welcome btn was just used to test the welcome pop up-->
+            <!-- <button id="welc-btn" title="WELCOME" class="btn">
+              <i class="fas fa-user fa-x"></i>
+            </button> -->
+            <button id="task-btn" title="Tasklist (t)" class="btn">
+              <i class="fas fa-tasks fa-x"></i>
+            </button>
+            <button id="sett-btn" title="Settings (s)" class="btn">
+              <i class="fas fa-cogs fa-x"></i>
+            </button>
+            <button id="info-btn-new" title="Instructions (i)" class="btn">
+              <i class="fas fa-info-circle fa-x info-btn-new"></i>
+            </button>
+          </nav>
+          <timer-element></timer-element>
+        </div>
+      </div>
+
+      <!-- Contains the current and next task of the user -->
+      <task-display></task-display>
+
+    </section>
+
+  </main>
+
+  <!-- Contains the footer : Copyright for app name -->
+  <footer>
+    <p class="copy-right">© Powelldoro 2022</p>
+  </footer>
+
+  <!-- Add sound for notifications -->
+  <audio id="notifs" src="assets/audio/notif_tone.mp3"></audio>
+
+  <!-- Import JS source files -->
+  <script type="module" src="js/main.js"></script>
+
+  <!-- No Script for when JS is not supported or disabled -->
+  <noscript>
+    <div>
+      <p>Sorry, either your browser does not support JavaScript, or it has been disabled...</p>
+    </div>
+  </noscript>
+</body>
+
+</html>

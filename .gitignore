@@ -7,9 +7,9 @@ coverage/
 build/
 
 /cypress/
-/source/v1/cypress
-/source/v1/js/taskList.test.js
+/source/cypress
+/source/js/taskList.test.js
 cypress.json
 
-source/v1/cypress_tests/package-lock.json
-source/v1/cypress_tests/package.json
+source/cypress_tests/package-lock.json
+source/cypress_tests/package.json
