@@ -5,7 +5,7 @@
 const S_HEADER = "Audio Error";
 const S_PARAGRAPH = "Please go to 'Preference window' -> \
     'Websites' -> 'Auto-Play' to enable the notification audio";
-const S_CHECKBOX_LABEL = "Do Not Show Me This Again";
+const S_CHECKBOX_LABEL = "Don't Show Me This Again";
 const S_HTML = `
 <notification-blocker class="hidden instructions-section-blocker"></notification-blocker>
 <notification-section class="instructions-section">
